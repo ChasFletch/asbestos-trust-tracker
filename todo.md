@@ -39,8 +39,8 @@
 - [x] Schema.org Dataset structured data on homepage
 - [x] Schema.org Organization structured data (Danziger & De Llano as funder)
 - [x] Schema.org ResearchProject structured data
-- [ ] robots.txt and sitemap.xml (post-deploy)
-- [ ] Downloadable CSV of trust data (next iteration)
+- [x] robots.txt and sitemap.xml (post-deploy)
+- [x] Downloadable CSV of trust data (/trusts.csv Express route)
 
 ## Phase 6: Cron / Pipeline
 - [x] Weekly cron job handler: /api/scheduled/staleness-check
@@ -56,8 +56,13 @@
 - [x] Checkpoint saved — version b025c7e0
 
 ## Future Iterations
-- [ ] robots.txt and sitemap.xml (post-deploy with real domain)
-- [ ] Downloadable CSV of trust data
+- [x] robots.txt and sitemap.xml (post-deploy with real domain)
+- [x] Downloadable CSV of trust data (/trusts.csv Express route)
+- [x] GitHub runtime fetch pipeline (/api/trust-figures proxies raw GitHub JSON, 1hr cache)
+- [x] Repo made public — raw.githubusercontent.com URL live, no auth needed
+- [x] Aggregate reconciled to Kimi K3 verified figures: $17,041,946,126 documented floor, $22.5B high, $24B payouts
+- [x] Trust records corrected: WRG 30.1%, USG 11%, Armstrong 10.8%, CE 15.3%, Western 51.1%, Rapid-American closed
+- [x] DebtClock updated: documented floor as primary counter, estimated range strip ($17B–$22.5B), payouts sublabel updated
 - [ ] Register weekly Heartbeat cron after first deploy
 - [ ] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (pending PACER account review)
 - [ ] Per-trust detail page (/trusts/:id)

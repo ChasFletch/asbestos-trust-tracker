@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin endpoints
+Disallow: /api/admin/
+Disallow: /api/trpc/admin.
+
+# Sitemap
+Sitemap: https://trustfundclock.org/sitemap.xml

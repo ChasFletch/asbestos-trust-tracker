@@ -8,7 +8,9 @@ export default function Home() {
   const { data: trusts } = trpc.trusts.list.useQuery();
   const { data: news } = trpc.news.list.useQuery({ limit: 3 });
 
-  const remaining = agg ? Math.round((agg.remainingLow + agg.remainingHigh) / 2) : 18600000000;
+  const remaining = agg?.remainingLow ?? 17041946126;
+  const remainingLow = agg?.remainingLow ?? 17041946126;
+  const remainingHigh = agg?.remainingHigh ?? 22500000000;
   const paidOut = agg?.paidOut ?? 24000000000;
 
   const activeTrusts = trusts?.filter((t) => t.status === "active") ?? [];
@@ -62,7 +64,7 @@ export default function Home() {
             {isLoading ? (
               <div className="h-72 rounded-lg animate-pulse" style={{ background: "oklch(0.18 0.05 180)" }} />
             ) : (
-              <DebtClockBillboard remaining={remaining} payouts={paidOut} />
+              <DebtClockBillboard remaining={remaining} payouts={paidOut} remainingLow={remainingLow} remainingHigh={remainingHigh} />
             )}
             <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 text-xs font-mono text-muted-foreground/50 mt-1">
               <span>

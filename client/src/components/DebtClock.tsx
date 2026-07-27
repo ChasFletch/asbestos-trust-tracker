@@ -199,9 +199,11 @@ function LedPanel({ value, label, sublabel, digitSize = 38, compact = false }: {
 interface DebtClockBillboardProps {
   remaining: number;
   payouts: number;
+  remainingLow?: number;
+  remainingHigh?: number;
 }
 
-export function DebtClockBillboard({ remaining, payouts }: DebtClockBillboardProps) {
+export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh }: DebtClockBillboardProps) {
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
@@ -277,10 +279,45 @@ export function DebtClockBillboard({ remaining, payouts }: DebtClockBillboardPro
           {/* Primary counter */}
           <LedPanel
             value={remaining}
-            label="Estimated Remaining Assets"
-            sublabel="Range: $17.2B–$20B"
+            label="Documented Remaining Assets"
+            sublabel="Primary-sourced figures only — see methodology"
             digitSize={primarySize}
           />
+
+          {/* Range strip — full system estimate */}
+          {remainingLow != null && remainingHigh != null && (
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.6rem",
+              marginTop: isMobile ? "0.6rem" : "clamp(0.5rem, 1.2vw, 0.9rem)",
+              padding: isMobile ? "0.45rem 0.75rem" : "0.5rem 1.1rem",
+              borderRadius: "4px",
+              background: "rgba(0,0,0,0.45)",
+              border: "1px solid rgba(255,178,72,0.18)",
+            }}>
+              <span style={{
+                fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
+                color: "rgba(240,236,224,0.55)",
+                fontSize: isMobile ? "0.65rem" : "clamp(0.62rem, 1.1vw, 0.82rem)",
+                fontStyle: "italic",
+                letterSpacing: "0.04em",
+              }}>
+                Full system estimate (incl. modeled):
+              </span>
+              <span style={{
+                fontFamily: "'Courier New', monospace",
+                color: SEG_ON,
+                fontSize: isMobile ? "0.7rem" : "clamp(0.68rem, 1.2vw, 0.88rem)",
+                fontWeight: 700,
+                filter: "drop-shadow(0 0 4px rgba(255,178,72,0.4))",
+                letterSpacing: "0.02em",
+              }}>
+                ${(remainingLow / 1e9).toFixed(1)}B – ${(remainingHigh / 1e9).toFixed(1)}B
+              </span>
+            </div>
+          )}
 
           {/* Secondary counter — lower right */}
           <div style={{
@@ -292,7 +329,7 @@ export function DebtClockBillboard({ remaining, payouts }: DebtClockBillboardPro
               <LedPanel
                 value={payouts}
                 label="Cumulative Payouts Since 1988"
-                sublabel="Across all active trusts"
+                sublabel="Est. from ILR 2016 baseline + 2017–2026"
                 digitSize={secondarySize}
                 compact={!isMobile}
               />

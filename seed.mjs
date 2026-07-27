@@ -12,11 +12,11 @@ await conn.execute(`INSERT INTO aggregate_snapshots
   (remainingLow, remainingHigh, remainingLabel, paidOut, paidOutLabel, totalActiveTrusts, methodology, asOfNote, isCurrent)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   [
-    17200000000,
-    20000000000,
-    "$17.2B–$20B",
+    17041946126,
+    22500000000,
+    "$17,041,946,126 documented floor",
     24000000000,
-    "$24B+",
+    "~$24B since 1988 (est.)",
     60,
     "Aggregate remaining based on net asset figures from trust annual reports and quarterly filings. Sources classified as (a) filed court document, (b) secondary source citing primary, (c) estimate or inference. See methodology page for full details.",
     "Mixed 2021–2025 as-of dates across trusts; Manville figure current as of 2026-03-31 (Q1 2026 quarterly filing).",

@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
+// Backdrop lives in ./debtclock-bg.ts as a data-URI export (no asset files needed).
+import { BILL_BG } from "./debtclock-bg";
+
+// ---------------------------------------------------------------------------
 // Seven-segment LED digit renderer
+// ---------------------------------------------------------------------------
 const SEGMENTS: Record<string, boolean[]> = {
   "0": [true,  true,  true,  true,  true,  true,  false],
   "1": [false, true,  true,  false, false, false, false],
@@ -14,63 +19,99 @@ const SEGMENTS: Record<string, boolean[]> = {
   "9": [true,  true,  true,  true,  false, true,  true ],
 };
 
-const SEG_ON  = "oklch(0.82 0.18 65)";
-const SEG_OFF = "oklch(0.16 0.04 65)";
+const SEG_ON  = "oklch(0.85 0.19 70)";
+const SEG_OFF = "oklch(0.19 0.03 65)";
+const LED_GLOW =
+  "drop-shadow(0 0 5px rgba(255,178,72,0.65)) drop-shadow(0 0 16px rgba(255,150,40,0.30))";
 
 function SevenSegDigit({ char, size = 38 }: { char: string; size?: number }) {
   const segs = SEGMENTS[char];
   if (!segs) {
-    const w = char === "," ? size * 0.28 : char === "$" ? size * 0.55 : size * 0.28;
+    const w = char === "," ? size * 0.26 : char === "$" ? size * 0.52 : size * 0.26;
     return (
       <span style={{
-        display: "inline-flex", alignItems: char === "," ? "flex-end" : "center",
+        display: "inline-flex",
+        alignItems: char === "," ? "flex-end" : "center",
         justifyContent: "center",
         width: `${w}px`, height: `${size * 1.1}px`,
         color: SEG_ON,
-        fontFamily: "monospace",
-        fontSize: `${size * 0.85}px`,
+        fontFamily: "'Courier New', monospace",
+        fontSize: `${size * 0.8}px`,
         fontWeight: 900,
         lineHeight: 1,
         paddingBottom: char === "," ? "3px" : "0",
         flexShrink: 0,
+        filter: LED_GLOW,
       }}>
         {char}
       </span>
     );
   }
-  const W = size * 0.6, H = size * 1.1, T = size * 0.09, G = size * 0.04;
+  const W = size * 0.6, H = size * 1.1, T = size * 0.09, G = size * 0.05;
   const [a, b, c, d, e, f, g] = segs;
-  const horiz = (y: number) =>
-    `M${T+G},${y} L${W/2},${y-T/2} L${W-T-G},${y} L${W-T-G+T/2},${y+T/2} L${W/2},${y+T/2} L${T+G-T/2},${y+T/2} Z`;
-  const vertL = (y1: number, y2: number) =>
-    `M${0},${y1+T+G} L${T},${y1+G} L${T},${y2-G} L${0},${y2-G+T} L${T/2},${y2} L${T/2},${y1+T} Z`;
-  const vertR = (y1: number, y2: number) =>
-    `M${W},${y1+T+G} L${W-T},${y1+G} L${W-T},${y2-G} L${W},${y2-G+T} L${W-T/2},${y2} L${W-T/2},${y1+T} Z`;
+  const horiz = (y0: number) =>
+    `M${G + T / 2},${y0} L${W - G - T / 2},${y0} L${W - G},${y0 + T / 2} ` +
+    `L${W - G - T / 2},${y0 + T} L${G + T / 2},${y0 + T} L${G},${y0 + T / 2} Z`;
+  const vert = (x0: number, y0: number) =>
+    `M${x0 + T / 2},${y0 + G} L${x0 + T},${y0 + G + T / 2} L${x0 + T},${y0 + H / 2 - G - T / 2} ` +
+    `L${x0 + T / 2},${y0 + H / 2 - G} L${x0},${y0 + H / 2 - G - T / 2} L${x0},${y0 + G + T / 2} Z`;
   return (
     <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H}
-      style={{ display: "inline-block", verticalAlign: "middle", flexShrink: 0 }}
+      style={{ display: "inline-block", verticalAlign: "middle", flexShrink: 0, filter: LED_GLOW }}
       aria-hidden="true">
-      <path d={horiz(0)}      fill={a ? SEG_ON : SEG_OFF} />
-      <path d={vertR(0, H/2)} fill={b ? SEG_ON : SEG_OFF} />
-      <path d={vertR(H/2, H)} fill={c ? SEG_ON : SEG_OFF} />
-      <path d={horiz(H)}      fill={d ? SEG_ON : SEG_OFF} />
-      <path d={vertL(H/2, H)} fill={e ? SEG_ON : SEG_OFF} />
-      <path d={vertL(0, H/2)} fill={f ? SEG_ON : SEG_OFF} />
-      <path d={horiz(H/2)}    fill={g ? SEG_ON : SEG_OFF} />
+      <path d={horiz(0)}             fill={a ? SEG_ON : SEG_OFF} />
+      <path d={vert(W - T, 0)}       fill={b ? SEG_ON : SEG_OFF} />
+      <path d={vert(W - T, H / 2)}   fill={c ? SEG_ON : SEG_OFF} />
+      <path d={horiz(H - T)}         fill={d ? SEG_ON : SEG_OFF} />
+      <path d={vert(0, H / 2)}       fill={e ? SEG_ON : SEG_OFF} />
+      <path d={vert(0, 0)}           fill={f ? SEG_ON : SEG_OFF} />
+      <path d={horiz(H / 2 - T / 2)} fill={g ? SEG_ON : SEG_OFF} />
     </svg>
   );
 }
 
-function LedPanel({ value, label, sublabel, digitSize = 38 }: {
-  value: number; label: string; sublabel?: string; digitSize?: number;
+// ---------------------------------------------------------------------------
+// Subtle physical detail: mounting screw head
+// ---------------------------------------------------------------------------
+function Screw({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" aria-hidden="true"
+      style={{ display: "block", filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.7))" }}>
+      <circle cx="10" cy="10" r="9" fill="#2a2f33" stroke="#101315" strokeWidth="1.5" />
+      <circle cx="10" cy="10" r="7.5" fill="none" stroke="#3d444a" strokeWidth="1" />
+      <line x1="4.5" y1="10" x2="15.5" y2="10" stroke="#0b0d0f" strokeWidth="2.2" />
+      <line x1="5" y1="9.2" x2="15" y2="9.2" stroke="#565f66" strokeWidth="0.8" />
+    </svg>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Responsive hook (SSR-safe)
+// ---------------------------------------------------------------------------
+function useViewportWidth() {
+  const [w, setW] = useState(1024);
+  useEffect(() => {
+    const update = () => setW(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return w;
+}
+
+// ---------------------------------------------------------------------------
+// LedPanel — recessed bezel, amber digits, engraved serif label
+// ---------------------------------------------------------------------------
+function LedPanel({ value, label, sublabel, digitSize = 38, compact = false }: {
+  value: number; label: string; sublabel?: string; digitSize?: number; compact?: boolean;
 }) {
-  const [displayed, setDisplayed] = useState(value);
-  const prevRef = useRef(value);
+  const [displayed, setDisplayed] = useState(0);
+  const prevRef = useRef(0);
 
   useEffect(() => {
-    if (value === prevRef.current) return;
     const start = prevRef.current;
     const end = value;
+    if (start === end) return;
     const duration = 1400;
     const startTime = performance.now();
     const tick = (now: number) => {
@@ -87,44 +128,63 @@ function LedPanel({ value, label, sublabel, digitSize = 38 }: {
   const chars = formatted.split("");
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.9rem" }}>
+    <div style={{
+      display: "flex", flexDirection: "column",
+      alignItems: compact ? "flex-end" : "center",
+      gap: compact ? "0.5rem" : "0.75rem",
+      width: "100%",
+    }}>
       <div
         style={{
-          background: "#080808",
-          border: "7px solid #1e1e1e",
-          borderRadius: "7px",
-          boxShadow: "inset 0 3px 12px rgba(0,0,0,0.9), 0 6px 28px rgba(0,0,0,0.7)",
-          padding: "18px 18px 14px",
+          position: "relative",
+          background: "linear-gradient(180deg, #0a0a0a 0%, #030303 60%, #000 100%)",
+          border: compact ? "5px solid #23262a" : "7px solid #1f2225",
+          borderRadius: "5px",
+          boxShadow:
+            "inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), " +
+            "0 1px 0 rgba(255,255,255,0.10), 0 10px 34px rgba(0,0,0,0.8)",
+          padding: compact ? "11px 14px 9px" : "18px 22px 14px",
           display: "flex",
           alignItems: "center",
           gap: "2px",
           flexWrap: "nowrap",
           justifyContent: "center",
-          width: "100%",
           overflow: "hidden",
+          maxWidth: "100%",
         }}
         aria-label={`${label}: ${formatted}`}
       >
+        {/* glass sheen across the panel face */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background:
+            "linear-gradient(115deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.015) 28%, transparent 45%)",
+        }} />
         {chars.map((ch, i) => (
           <SevenSegDigit key={i} char={ch} size={digitSize} />
         ))}
       </div>
       <div style={{
         fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
-        color: "white", fontWeight: 700,
-        fontSize: "clamp(0.75rem, 1.6vw, 1.15rem)",
-        textTransform: "uppercase", letterSpacing: "0.05em",
-        textAlign: "center", textShadow: "0 1px 4px rgba(0,0,0,0.6)", lineHeight: 1.3,
+        color: "#f4f1e8", fontWeight: 800,
+        fontSize: compact
+          ? "clamp(0.8rem, 1.9vw, 1.3rem)"
+          : "clamp(0.95rem, 2.5vw, 1.85rem)",
+        textTransform: "uppercase", letterSpacing: "0.07em",
+        textAlign: compact ? "right" : "center",
+        textShadow: "0 2px 5px rgba(0,0,0,0.85), 0 0 22px rgba(0,0,0,0.5)",
+        lineHeight: 1.2,
       }}>
         {label}
       </div>
       {sublabel && (
         <div style={{
           fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
-          color: "rgba(255,255,255,0.65)",
-          fontSize: "clamp(0.65rem, 1vw, 0.82rem)",
-          fontStyle: "italic", textAlign: "center",
-          textShadow: "0 1px 3px rgba(0,0,0,0.5)", marginTop: "-0.3rem",
+          color: "rgba(240,236,224,0.66)",
+          fontSize: compact ? "clamp(0.58rem, 1vw, 0.75rem)" : "clamp(0.68rem, 1.25vw, 0.9rem)",
+          fontStyle: "italic",
+          textAlign: compact ? "right" : "center",
+          textShadow: "0 1px 3px rgba(0,0,0,0.6)", marginTop: "-0.3rem",
         }}>
           {sublabel}
         </div>
@@ -133,83 +193,133 @@ function LedPanel({ value, label, sublabel, digitSize = 38 }: {
   );
 }
 
+// ---------------------------------------------------------------------------
+// Billboard
+// ---------------------------------------------------------------------------
 interface DebtClockBillboardProps {
   remaining: number;
   payouts: number;
 }
 
 export function DebtClockBillboard({ remaining, payouts }: DebtClockBillboardProps) {
+  const vw = useViewportWidth();
+  const isMobile = vw < 640;
+  const isTablet = vw >= 640 && vw < 900;
+  const primarySize = isMobile ? 19 : isTablet ? 33 : 50;
+  const secondarySize = isMobile ? 17 : isTablet ? 23 : 30;
+
+  const frameEdge = "linear-gradient(145deg, #3a4147 0%, #14181b 22%, #05070a 50%, #23292e 78%, #454e55 100%)";
+
   return (
     <div style={{
       position: "relative",
-      background: "linear-gradient(135deg, #1d7070 0%, #0f5252 35%, #0a3e3e 65%, #1d7070 100%)",
       borderRadius: "10px",
-      overflow: "hidden",
-      padding: "clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem)",
-      boxShadow: "0 10px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.12)",
-      border: "4px solid #2e9090",
+      padding: isMobile ? "9px" : "13px",
+      background: frameEdge,
+      boxShadow:
+        "0 26px 80px rgba(0,0,0,0.9), 0 8px 24px rgba(0,0,0,0.7), " +
+        "inset 0 1px 1px rgba(255,255,255,0.28), inset 0 -1px 2px rgba(0,0,0,0.8)",
     }}>
-      {/* Currency watermark */}
+      {/* face: engraved asbestos banknote */}
       <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='140' viewBox='0 0 260 140'%3E%3Cellipse cx='130' cy='70' rx='90' ry='55' fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='2.5'/%3E%3Cellipse cx='130' cy='70' rx='60' ry='36' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1.5'/%3E%3C/svg%3E")`,
-        backgroundSize: "260px 140px",
-        pointerEvents: "none",
-      }} />
-      <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px)`,
-        pointerEvents: "none",
-      }} />
+        position: "relative",
+        borderRadius: "5px",
+        overflow: "hidden",
+        border: "2px solid #04110e",
+        background: "#0a2b25",
+        padding: isMobile
+          ? "1.6rem 1rem 1.5rem"
+          : "clamp(2.1rem, 4.5vw, 3.4rem) clamp(1.6rem, 4vw, 3rem) clamp(1.6rem, 3.5vw, 2.6rem)",
+        boxShadow: "inset 0 0 70px rgba(0,0,0,0.6)",
+      }}>
+        {/* the bill */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `url("${BILL_BG}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.92,
+          pointerEvents: "none",
+        }} />
+        {/* teal glaze + center-readable scrim */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background:
+            "linear-gradient(180deg, rgba(6,34,29,0.55) 0%, rgba(7,38,32,0.30) 30%, rgba(5,28,24,0.42) 62%, rgba(3,18,15,0.68) 100%)",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background:
+            "radial-gradient(ellipse 72% 62% at 50% 42%, rgba(4,20,17,0.34) 0%, transparent 68%)",
+        }} />
+        {/* glass glare sweep */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background:
+            "linear-gradient(112deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.025) 24%, transparent 42%)",
+        }} />
 
-      <div style={{ position: "relative", zIndex: 1 }}>
-        {/* Title */}
-        <div style={{ textAlign: "center", marginBottom: "clamp(1.25rem, 3vw, 2rem)" }}>
+        <div style={{ position: "relative", zIndex: 1 }}>
+          {/* Title */}
           <div style={{
+            textAlign: "center",
+            marginBottom: isMobile ? "1.05rem" : "clamp(1.2rem, 2.4vw, 1.8rem)",
             fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
-            color: "white", fontWeight: 900,
-            fontSize: "clamp(1.1rem, 3.5vw, 2.4rem)",
+            color: "#f6f3ea", fontWeight: 900,
+            fontSize: "clamp(1.15rem, 4vw, 2.75rem)",
             textTransform: "uppercase", letterSpacing: "0.05em",
-            textShadow: "0 2px 10px rgba(0,0,0,0.7)", lineHeight: 1.15,
+            textShadow: "0 3px 10px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6)",
+            lineHeight: 1.1,
           }}>
             U.S. Asbestos Trust Fund System:
           </div>
-        </div>
 
-        {/* Two LED panels — digit size scales with viewport */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "clamp(0.75rem, 2.5vw, 2rem)",
-          alignItems: "start",
-        }}>
+          {/* Primary counter */}
           <LedPanel
             value={remaining}
             label="Estimated Remaining Assets"
             sublabel="Range: $17.2B–$20B"
-            digitSize={Math.round(window.innerWidth < 640 ? 22 : window.innerWidth < 900 ? 30 : 42)}
+            digitSize={primarySize}
           />
-          <LedPanel
-            value={payouts}
-            label="Cumulative Payouts Since 1988"
-            sublabel="Across all active trusts"
-            digitSize={Math.round(window.innerWidth < 640 ? 22 : window.innerWidth < 900 ? 30 : 42)}
-          />
-        </div>
 
-        {/* Bottom branding */}
-        <div style={{
-          textAlign: "center",
-          marginTop: "clamp(1.25rem, 3vw, 2rem)",
-          fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
-          color: "rgba(255,255,255,0.88)",
-          fontSize: "clamp(0.85rem, 2vw, 1.25rem)",
-          fontWeight: 700, letterSpacing: "0.14em",
-          textTransform: "uppercase", textShadow: "0 1px 6px rgba(0,0,0,0.6)",
-        }}>
-          The Asbestos Trust Fund Clock
+          {/* Secondary counter — lower right */}
+          <div style={{
+            display: "flex",
+            justifyContent: isMobile ? "center" : "flex-end",
+            marginTop: isMobile ? "1.2rem" : "clamp(1.15rem, 2.3vw, 1.75rem)",
+          }}>
+            <div style={{ width: isMobile ? "100%" : "min(45%, 470px)" }}>
+              <LedPanel
+                value={payouts}
+                label="Cumulative Payouts Since 1988"
+                sublabel="Across all active trusts"
+                digitSize={secondarySize}
+                compact={!isMobile}
+              />
+            </div>
+          </div>
+
+          {/* Branding */}
+          <div style={{
+            textAlign: "center",
+            marginTop: isMobile ? "1.3rem" : "clamp(1.4rem, 2.8vw, 2.1rem)",
+            fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
+            color: "rgba(246,243,234,0.94)",
+            fontSize: "clamp(0.85rem, 2.2vw, 1.5rem)",
+            fontWeight: 800, letterSpacing: "0.17em",
+            textTransform: "uppercase",
+            textShadow: "0 2px 7px rgba(0,0,0,0.85)",
+          }}>
+            The Asbestos Trust Fund Clock
+          </div>
         </div>
       </div>
+
+      {/* frame screws */}
+      <div style={{ position: "absolute", top: isMobile ? 3 : 4, left: isMobile ? 3 : 4 }}><Screw size={isMobile ? 11 : 15} /></div>
+      <div style={{ position: "absolute", top: isMobile ? 3 : 4, right: isMobile ? 3 : 4 }}><Screw size={isMobile ? 11 : 15} /></div>
+      <div style={{ position: "absolute", bottom: isMobile ? 3 : 4, left: isMobile ? 3 : 4 }}><Screw size={isMobile ? 11 : 15} /></div>
+      <div style={{ position: "absolute", bottom: isMobile ? 3 : 4, right: isMobile ? 3 : 4 }}><Screw size={isMobile ? 11 : 15} /></div>
     </div>
   );
 }

@@ -106,7 +106,7 @@ export default function Home() {
               { label: "Active Trusts Tracked", value: tf.length > 0 ? activeTrusts.length : 41, icon: Database },
               { label: "Court-Filed Sources", value: tf.length > 0 ? filedTrusts.length : 10, icon: ShieldCheck },
               { label: "Current-Year Data", value: tf.length > 0 ? recentDataTrusts.length : 10, icon: Clock },
-              { label: "Total Trusts in Database", value: tf.length > 0 ? tf.length : 42, icon: BookOpen },
+              { label: "Trusts With Documented Assets", value: tf.length > 0 ? tf.length : 42, icon: BookOpen },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col gap-1">
                 <div className="flex items-center gap-2 text-muted-foreground">

@@ -1,5 +1,4 @@
-# TrustFundClock.org — Project TODO
-# (placeholder domain — will be updated when final domain is selected)
+# AsbestosTrusts.org — Project TODO
 # Cross-links to/from AsbestosAtlas.org throughout
 
 ## Phase 1: Database & Data
@@ -63,6 +62,21 @@
 - [x] Aggregate reconciled to Kimi K3 verified figures: $17,041,946,126 documented floor, $22.5B high, $24B payouts
 - [x] Trust records corrected: WRG 30.1%, USG 11%, Armstrong 10.8%, CE 15.3%, Western 51.1%, Rapid-American closed
 - [x] DebtClock updated: documented floor as primary counter, estimated range strip ($17B–$22.5B), payouts sublabel updated
-- [ ] Register weekly Heartbeat cron after first deploy
+  - [x] Register weekly Heartbeat cron after first deploy
 - [ ] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (pending PACER account review)
 - [ ] Per-trust detail page (/trusts/:id)
+- [x] News feed wired to read from client/src/data/news-drafts/ (Kimi weekly markdown, 15min cache)
+- [x] Quarterly Reports page added at /reports — reads from reports/index.json, graceful pending state
+- [x] Reports nav link added to SiteNav
+- [x] /api/news-drafts and /api/reports Express endpoints added to dataRoutes.ts
+- [x] Domain updated everywhere: asbestostrusts.org (nav, footer, OG tags, Schema.org, sitemap, robots.txt, llms.txt)
+- [x] Warm off-white parchment retheme: index.css tokens, ThemeProvider light, all pages updated
+- [x] Payouts counter updated to derived $26,629,722,253 with methodology tooltip
+- [x] Remaining assets tooltip with top-trust breakdown
+- [x] Last Updated timestamps under both counters (live from trust-figures.json asOf)
+- [x] "Read full methodology" link in both tooltips
+- [x] Trust table rewritten: all 42 trusts from trust-figures.json (was DB-only ~14 trusts)
+- [x] DB data errors fixed: Kaiser 10.6%/$308.8M, Quigley $597.8M, ASARCO $735.9M, Garlock MSV
+- [x] llms.txt added at /llms.txt with canonical figures and citation guidance
+- [x] FAQ JSON-LD schema added to Methodology page (7 questions)
+- [x] Corrections page added at /corrections with submission form and recent corrections log

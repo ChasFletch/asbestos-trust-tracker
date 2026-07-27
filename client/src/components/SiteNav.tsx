@@ -6,6 +6,7 @@ const navLinks = [
   { href: "/", label: "Clock" },
   { href: "/trusts", label: "Trust Data" },
   { href: "/news", label: "News" },
+  { href: "/reports", label: "Reports" },
   { href: "/methodology", label: "Methodology" },
   { href: "/about", label: "About" },
 ];

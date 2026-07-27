@@ -1,6 +1,15 @@
 import { trpc } from "@/lib/trpc";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
+
+interface NewsDraft {
+  filename: string;
+  date: string;
+  title: string;
+  summary: string;
+  category: string;
+  url?: string;
+}
 
 const CATEGORIES = [
   { value: "all", label: "All Updates" },
@@ -13,10 +22,40 @@ const CATEGORIES = [
 
 export default function News() {
   const [category, setCategory] = useState("all");
-  const { data: news, isLoading } = trpc.news.list.useQuery({
+  const { data: news, isLoading: dbLoading } = trpc.news.list.useQuery({
     limit: 50,
     category: category === "all" ? undefined : category as "payment_change" | "annual_report" | "court_filing" | "trust_news" | "system_update",
   });
+
+  const [drafts, setDrafts] = useState<NewsDraft[]>([]);
+  const [draftsLoading, setDraftsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/news-drafts")
+      .then((r) => r.json())
+      .then((d) => setDrafts(d.drafts ?? []))
+      .catch(() => setDrafts([]))
+      .finally(() => setDraftsLoading(false));
+  }, []);
+
+  // Merge: drafts first (newest), then DB items — both filtered by category
+  const filteredDrafts = drafts.filter(
+    (d) => category === "all" || d.category === category
+  );
+  const draftItems = filteredDrafts.map((d) => ({
+    id: `draft-${d.filename}`,
+    title: d.title,
+    summary: d.summary,
+    category: d.category,
+    publishedAt: new Date(d.date).getTime(),
+    url: d.url ?? null,
+    trustId: null,
+    isDraft: true as const,
+  }));
+  const dbItems = (news ?? []).map((n) => ({ ...n, isDraft: false as const }));
+  const allItems = [...draftItems, ...dbItems];
+
+  const isLoading = dbLoading || draftsLoading;
 
   return (
     <div className="container py-10 max-w-3xl">
@@ -54,13 +93,13 @@ export default function News() {
             <div key={i} className="h-24 rounded bg-card/50 animate-pulse" />
           ))}
         </div>
-      ) : !news || news.length === 0 ? (
+      ) : allItems.length === 0 ? (
         <div className="text-center py-16 text-muted-foreground/50">
           <p>No updates found for this category.</p>
         </div>
       ) : (
         <div className="space-y-3">
-          {news.map((item) => (
+          {allItems.map((item) => (
             <div
               key={item.id}
               className="p-4 rounded border border-border/50 bg-card/40 hover:border-border transition-colors"
@@ -69,7 +108,7 @@ export default function News() {
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-1.5">
                     <span className="text-xs font-mono text-muted-foreground/60 uppercase tracking-wider">
-                      {item.category?.replace("_", " ")}
+                      {item.category?.replace(/_/g, " ")}
                     </span>
                     {item.publishedAt && (
                       <span className="text-xs text-muted-foreground/40">
@@ -78,7 +117,12 @@ export default function News() {
                         })}
                       </span>
                     )}
-                    {item.trustId && (
+                    {item.isDraft && (
+                      <span className="text-xs px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
+                        Weekly Update
+                      </span>
+                    )}
+                    {!item.isDraft && item.trustId && (
                       <span className="text-xs px-1.5 py-0.5 rounded bg-primary/10 text-primary/80 border border-primary/20">
                         Trust Record
                       </span>

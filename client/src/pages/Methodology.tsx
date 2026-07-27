@@ -1,6 +1,30 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 
 export default function Methodology() {
+  useEffect(() => {
+    const existing = document.getElementById("faq-schema");
+    if (existing) return;
+    const script = document.createElement("script");
+    script.id = "faq-schema";
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How much money is left in asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "As of July 2026, the documented remaining assets of the U.S. asbestos bankruptcy trust system total $17,041,946,126 based on primary-sourced figures from 42 trusts. The full system estimate including modeled figures is $17.0B–$22.5B. Source: AsbestosTrusts.org." } },
+        { "@type": "Question", "name": "Is the $30 billion asbestos trust fund figure accurate?", "acceptedAnswer": { "@type": "Answer", "text": "No. The '$30 billion' figure is not sourced to any filed court document. It originates from defense-side advocacy literature (RAND Institute for Civil Justice, 2012). The documented floor from primary sources is $17.0B as of 2026, with a full system estimate of $17.0B–$22.5B." } },
+        { "@type": "Question", "name": "How many asbestos trust funds exist in the United States?", "acceptedAnswer": { "@type": "Answer", "text": "AsbestosTrusts.org documents 42 U.S. asbestos bankruptcy trusts established under §524(g) of the Bankruptcy Code. As of June 2025, 41 are active and 1 (Rapid-American) has been depleted and closed." } },
+        { "@type": "Question", "name": "What is a payment percentage in an asbestos trust?", "acceptedAnswer": { "@type": "Answer", "text": "A payment percentage is the fraction of the scheduled value of an approved asbestos claim that the trust actually pays. Payment percentages range from 4.3% (Babcock & Wilcox) to 100% (NARCO) as of 2026." } },
+        { "@type": "Question", "name": "How much has been paid out from asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "The derived estimate for cumulative payouts since 1988 is $26,629,722,253. The hard floor is $17.5 billion, documented by the GAO through 2010 (GAO-11-819). The Manville Trust alone has paid $5,329,722,253 on 1,036,966 claims as of Q1 2026." } },
+        { "@type": "Question", "name": "Which asbestos trust fund has the most money?", "acceptedAnswer": { "@type": "Answer", "text": "As of 2026, the W.R. Grace Asbestos PI Trust has the largest documented net assets at approximately $1.995 billion. The NARCO Asbestos Trust has $1.260 billion (filed, December 2025), and Pittsburgh Corning has $1.294 billion." } },
+        { "@type": "Question", "name": "What is the source classification system used by AsbestosTrusts.org?", "acceptedAnswer": { "@type": "Answer", "text": "AsbestosTrusts.org uses three tiers: (a) Filed Court Document — drawn directly from a U.S. bankruptcy court filing; (b) Secondary Source Citing Primary — a secondary source that explicitly cites a primary filing; (c) Estimate or Inference — derived from available data or actuarial projections." } }
+      ]
+    });
+    document.head.appendChild(script);
+    return () => { script.remove(); };
+  }, []);
+
   return (
     <div className="container py-12 max-w-3xl">
       <div className="mb-8">

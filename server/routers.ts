@@ -99,6 +99,29 @@ export const appRouter = router({
         return { asOf: null, topTrusts: [] };
       }
     }),
+    allTrusts: publicProcedure.query(async () => {
+      try {
+        const data = await fetchTrustFigures() as any;
+        if (!data) return { asOf: null, trusts: [] };
+        const trusts = (data.trusts ?? []).map((t: any) => ({
+          name: t.name as string,
+          shortName: (t.shortName ?? t.name.split(' ').slice(0, 3).join(' ')) as string,
+          netAssets: (t.netAssets ?? null) as number | null,
+          assetsAsOf: (t.assetsAsOf ?? null) as string | null,
+          assetsBasis: (t.assetsBasis ?? null) as string | null,
+          paymentPercentage: (t.paymentPercentage ?? null) as number | null,
+          status: (t.status ?? 'active') as string,
+          confidence: (t.confidence ?? 'c') as string,
+          note: (t.note ?? null) as string | null,
+        }));
+        return {
+          asOf: (data.asOf ?? null) as string | null,
+          trusts,
+        };
+      } catch {
+        return { asOf: null, trusts: [] };
+      }
+    }),
   }),
   news: router({
     list: publicProcedure

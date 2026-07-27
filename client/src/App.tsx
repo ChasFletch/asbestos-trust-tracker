@@ -12,6 +12,7 @@ import TrustDetail from "./pages/TrustDetail";
 import News from "./pages/News";
 import Methodology from "./pages/Methodology";
 import About from "./pages/About";
+import Corrections from "./pages/Corrections";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/news" component={News} />
       <Route path="/methodology" component={Methodology} />
       <Route path="/about" component={About} />
+      <Route path="/corrections" component={Corrections} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

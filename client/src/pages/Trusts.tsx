@@ -1,29 +1,65 @@
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
-import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus, ExternalLink, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus, ExternalLink, ChevronRight, Download } from "lucide-react";
 import { Link } from "wouter";
 
-type SortKey = "name" | "paymentPct" | "netAssets" | "direction" | "administrator";
+type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence";
 type SortDir = "asc" | "desc";
 
-function SourceBadge({ source }: { source: string | null }) {
-  if (!source) return null;
+// Unified trust shape merging JSON + DB data
+interface TrustRow {
+  id: string; // derived from name
+  name: string;
+  shortName: string;
+  netAssets: number | null;
+  assetsAsOf: string | null;
+  assetsBasis: string | null;
+  paymentPercentage: number | null;
+  status: string;
+  confidence: string; // "filed" | "secondary" | "estimate"
+  note: string | null;
+  // DB-only extras (may be null for JSON-only trusts)
+  administrator?: string | null;
+  court?: string | null;
+  docket?: string | null;
+  website?: string | null;
+  direction?: string | null;
+  paymentHistory?: Array<{ pct: number; effective: string; notes?: string }>;
+}
+
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+}
+
+function ConfidenceBadge({ confidence }: { confidence: string }) {
+  const label = confidence === "filed" ? "a" : confidence === "secondary" ? "b" : "c";
   return (
-    <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-xs font-mono badge-source-${source}`}>
-      ({source})
+    <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-xs font-mono badge-source-${label}`}>
+      ({label})
     </span>
   );
 }
 
-function DirectionIcon({ direction }: { direction: string | null }) {
+function StatusBadge({ status }: { status: string }) {
+  if (status === "closed") return (
+    <span className="text-xs px-1.5 py-0.5 rounded bg-red-100 text-red-700 border border-red-200 font-medium">closed</span>
+  );
+  if (status === "active_deferral") return (
+    <span className="text-xs px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-200 font-medium">deferral</span>
+  );
+  return null;
+}
+
+function DirectionIcon({ direction }: { direction?: string | null }) {
   if (direction === "up") return <TrendingUp size={14} className="text-[oklch(0.72_0.18_150)]" />;
   if (direction === "down") return <TrendingDown size={14} className="text-destructive" />;
   return <Minus size={14} className="text-muted-foreground/50" />;
 }
 
 function formatAssets(n: number | null): string {
-  if (n === null) return "—";
-  if (n >= 1e9) return `$${(n / 1e9).toFixed(2)}B`;
+  if (n === null || n === undefined) return "—";
+  if (n === 0) return "$0";
+  if (n >= 1e9) return `$${(n / 1e9).toFixed(3)}B`;
   if (n >= 1e6) return `$${(n / 1e6).toFixed(0)}M`;
   return `$${n.toLocaleString()}`;
 }
@@ -44,39 +80,81 @@ function SortHeader({
 }
 
 export default function Trusts() {
-  const { data: trusts, isLoading } = trpc.trusts.list.useQuery();
-  const [sortKey, setSortKey] = useState<SortKey>("name");
-  const [sortDir, setSortDir] = useState<SortDir>("asc");
-  const [filterAdmin, setFilterAdmin] = useState("all");
-  const [filterDir, setFilterDir] = useState("all");
+  // Primary source: JSON (42 trusts)
+  const { data: jsonData, isLoading: jsonLoading } = trpc.trustFigures.allTrusts.useQuery();
+  // Secondary: DB trusts for extra fields (administrator, court, payment history)
+  const { data: dbTrusts } = trpc.trusts.list.useQuery();
+
+  const [sortKey, setSortKey] = useState<SortKey>("netAssets");
+  const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [filterStatus, setFilterStatus] = useState("active");
+  const [filterConf, setFilterConf] = useState("all");
   const [filterPctMin, setFilterPctMin] = useState("");
   const [filterPctMax, setFilterPctMax] = useState("");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
-  const administrators = useMemo(() => {
-    if (!trusts) return [];
-    return Array.from(new Set(trusts.map((t) => t.administrator).filter(Boolean))).sort();
-  }, [trusts]);
+  // Build a lookup map from DB trusts by slug
+  const dbMap = useMemo(() => {
+    const map = new Map<string, (typeof dbTrusts extends (infer T)[] | undefined ? T : never)>();
+    if (!dbTrusts) return map;
+    for (const t of dbTrusts) {
+      map.set(t.id, t);
+      map.set(slugify(t.name), t);
+      if (t.shortName) map.set(slugify(t.shortName), t);
+    }
+    return map;
+  }, [dbTrusts]);
+
+  // Merge JSON trusts with DB extras
+  const merged: TrustRow[] = useMemo(() => {
+    if (!jsonData?.trusts) return [];
+    return jsonData.trusts.map((jt: NonNullable<typeof jsonData>["trusts"][number]) => {
+      const slug = slugify(jt.name);
+      const db = dbMap.get(slug) ?? dbMap.get(jt.name.toLowerCase());
+      return {
+        id: slug,
+        name: jt.name,
+        shortName: jt.shortName,
+        netAssets: jt.netAssets,
+        assetsAsOf: jt.assetsAsOf,
+        assetsBasis: jt.assetsBasis,
+        paymentPercentage: jt.paymentPercentage,
+        status: jt.status,
+        confidence: jt.confidence,
+        note: jt.note,
+        administrator: db?.administrator ?? null,
+        court: db?.court ?? null,
+        docket: db?.docket ?? null,
+        website: db?.website ?? null,
+        direction: db?.direction ?? null,
+        paymentHistory: (db as any)?.paymentHistory ?? [],
+      };
+    });
+  }, [jsonData, dbMap]);
+
+  const isLoading = jsonLoading;
 
   const filtered = useMemo(() => {
-    if (!trusts) return [];
-    return trusts.filter((t) => {
-      if (filterAdmin !== "all" && t.administrator !== filterAdmin) return false;
-      if (filterDir !== "all" && t.direction !== filterDir) return false;
-      if (filterPctMin && t.paymentPct !== null && t.paymentPct < parseFloat(filterPctMin)) return false;
-      if (filterPctMax && t.paymentPct !== null && t.paymentPct > parseFloat(filterPctMax)) return false;
+    return merged.filter((t) => {
+      if (filterStatus !== "all") {
+        if (filterStatus === "active" && t.status !== "active" && t.status !== "active_deferral") return false;
+        if (filterStatus === "closed" && t.status !== "closed") return false;
+      }
+      if (filterConf !== "all" && t.confidence !== filterConf) return false;
+      if (filterPctMin && t.paymentPercentage !== null && t.paymentPercentage < parseFloat(filterPctMin)) return false;
+      if (filterPctMax && t.paymentPercentage !== null && t.paymentPercentage > parseFloat(filterPctMax)) return false;
       return true;
     });
-  }, [trusts, filterAdmin, filterDir, filterPctMin, filterPctMax]);
+  }, [merged, filterStatus, filterConf, filterPctMin, filterPctMax]);
 
   const sorted = useMemo(() => {
     return [...filtered].sort((a, b) => {
       let av: any, bv: any;
       if (sortKey === "name") { av = a.name; bv = b.name; }
-      else if (sortKey === "paymentPct") { av = a.paymentPct ?? -1; bv = b.paymentPct ?? -1; }
+      else if (sortKey === "paymentPercentage") { av = a.paymentPercentage ?? -1; bv = b.paymentPercentage ?? -1; }
       else if (sortKey === "netAssets") { av = a.netAssets ?? -1; bv = b.netAssets ?? -1; }
-      else if (sortKey === "direction") { av = a.direction ?? ""; bv = b.direction ?? ""; }
-      else if (sortKey === "administrator") { av = a.administrator ?? ""; bv = b.administrator ?? ""; }
+      else if (sortKey === "status") { av = a.status; bv = b.status; }
+      else if (sortKey === "confidence") { av = a.confidence; bv = b.confidence; }
       if (av < bv) return sortDir === "asc" ? -1 : 1;
       if (av > bv) return sortDir === "asc" ? 1 : -1;
       return 0;
@@ -85,7 +163,7 @@ export default function Trusts() {
 
   function handleSort(key: SortKey) {
     if (key === sortKey) setSortDir(d => d === "asc" ? "desc" : "asc");
-    else { setSortKey(key); setSortDir("asc"); }
+    else { setSortKey(key); setSortDir(key === "name" ? "asc" : "desc"); }
   }
 
   function toggleExpand(id: string) {
@@ -96,42 +174,74 @@ export default function Trusts() {
     });
   }
 
+  const activeTrusts = merged.filter(t => t.status !== "closed");
+  const filedCount = merged.filter(t => t.confidence === "filed").length;
+  const totalAssets = merged.reduce((s, t) => s + (t.netAssets ?? 0), 0);
+
   return (
     <div className="container py-10">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="font-display font-bold uppercase tracking-wider text-2xl mb-2">
-          Asbestos Trust Fund Database
-        </h1>
-        <p className="text-sm text-muted-foreground max-w-2xl">
-          All active U.S. asbestos bankruptcy trusts. Payment percentages, net assets, source confidence ratings, and full payment history. Source classifications: <span className="badge-source-a px-1 rounded text-xs font-mono">(a)</span> filed court document · <span className="badge-source-b px-1 rounded text-xs font-mono">(b)</span> secondary citing primary · <span className="badge-source-c px-1 rounded text-xs font-mono">(c)</span> estimate.
-        </p>
+      <div className="mb-6 flex flex-col md:flex-row md:items-end gap-4">
+        <div className="flex-1">
+          <h1 className="font-display font-bold uppercase tracking-wider text-2xl mb-2">
+            Asbestos Trust Fund Database
+          </h1>
+          <p className="text-sm text-muted-foreground max-w-2xl">
+            All {merged.length} documented U.S. asbestos bankruptcy trusts. Payment percentages, net assets, and source confidence ratings.{" "}
+            Source classifications: <span className="badge-source-a px-1 rounded text-xs font-mono">(a)</span> filed court document ·{" "}
+            <span className="badge-source-b px-1 rounded text-xs font-mono">(b)</span> secondary citing primary ·{" "}
+            <span className="badge-source-c px-1 rounded text-xs font-mono">(c)</span> estimate.
+          </p>
+        </div>
+        <a
+          href="/trusts.csv"
+          download
+          className="inline-flex items-center gap-2 text-xs px-3 py-2 rounded border border-border/60 bg-card/60 text-muted-foreground hover:text-foreground hover:bg-card transition-colors self-start md:self-auto"
+        >
+          <Download size={13} />
+          Download CSV
+        </a>
+      </div>
+
+      {/* Summary stats */}
+      <div className="grid grid-cols-3 gap-3 mb-6">
+        {[
+          { label: "Active Trusts", value: activeTrusts.length.toString() },
+          { label: "Filed-Source Records", value: filedCount.toString() },
+          { label: "Documented Assets", value: totalAssets >= 1e9 ? `$${(totalAssets / 1e9).toFixed(2)}B` : `$${(totalAssets / 1e6).toFixed(0)}M` },
+        ].map(({ label, value }) => (
+          <div key={label} className="rounded border border-border/40 bg-card/40 px-4 py-3 text-center">
+            <div className="text-lg font-mono font-bold text-foreground">{value}</div>
+            <div className="text-xs text-muted-foreground mt-0.5">{label}</div>
+          </div>
+        ))}
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-3 mb-6 p-4 rounded border border-border/50 bg-card/50">
+      <div className="flex flex-wrap gap-3 mb-5 p-4 rounded border border-border/50 bg-card/50">
         <div className="flex items-center gap-2">
-          <label className="text-xs text-muted-foreground uppercase tracking-wider">Administrator</label>
+          <label className="text-xs text-muted-foreground uppercase tracking-wider">Status</label>
           <select
-            value={filterAdmin}
-            onChange={e => setFilterAdmin(e.target.value)}
+            value={filterStatus}
+            onChange={e => setFilterStatus(e.target.value)}
             className="text-xs bg-secondary border border-border rounded px-2 py-1 text-foreground"
           >
             <option value="all">All</option>
-            {administrators.map(a => <option key={a} value={a!}>{a}</option>)}
+            <option value="active">Active</option>
+            <option value="closed">Closed</option>
           </select>
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-xs text-muted-foreground uppercase tracking-wider">Direction</label>
+          <label className="text-xs text-muted-foreground uppercase tracking-wider">Source</label>
           <select
-            value={filterDir}
-            onChange={e => setFilterDir(e.target.value)}
+            value={filterConf}
+            onChange={e => setFilterConf(e.target.value)}
             className="text-xs bg-secondary border border-border rounded px-2 py-1 text-foreground"
           >
             <option value="all">All</option>
-            <option value="up">↑ Increasing</option>
-            <option value="down">↓ Decreasing</option>
-            <option value="stable">— Stable</option>
+            <option value="filed">(a) Filed</option>
+            <option value="secondary">(b) Secondary</option>
+            <option value="estimate">(c) Estimate</option>
           </select>
         </div>
         <div className="flex items-center gap-2">
@@ -149,75 +259,73 @@ export default function Trusts() {
           />
         </div>
         <div className="ml-auto text-xs text-muted-foreground self-center">
-          {sorted.length} of {trusts?.length ?? 0} trusts
+          {sorted.length} of {merged.length} trusts
+          {jsonData?.asOf && (
+            <span className="ml-2 text-muted-foreground/50">· data as of {jsonData.asOf}</span>
+          )}
         </div>
       </div>
 
       {/* Table */}
       {isLoading ? (
         <div className="space-y-2">
-          {Array.from({ length: 8 }).map((_, i) => (
+          {Array.from({ length: 10 }).map((_, i) => (
             <div key={i} className="h-12 rounded bg-card/50 animate-pulse" />
           ))}
         </div>
       ) : (
         <div className="rounded border border-border/50 overflow-hidden overflow-x-auto">
           {/* Table header */}
-          <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1.5fr_0.5fr] gap-4 px-4 py-3 bg-card/80 border-b border-border/50 text-xs min-w-[640px]">
+          <div className="grid grid-cols-[2.5fr_1fr_1.2fr_1fr_0.5fr] gap-4 px-4 py-3 bg-card/80 border-b border-border/50 text-xs min-w-[580px]">
             <SortHeader label="Trust Name" sortKey="name" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <SortHeader label="Payment %" sortKey="paymentPct" current={sortKey} dir={sortDir} onSort={handleSort} />
+            <SortHeader label="Payment %" sortKey="paymentPercentage" current={sortKey} dir={sortDir} onSort={handleSort} />
             <SortHeader label="Net Assets" sortKey="netAssets" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <SortHeader label="Direction" sortKey="direction" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <SortHeader label="Administrator" sortKey="administrator" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">Source</span>
+            <SortHeader label="Status" sortKey="status" current={sortKey} dir={sortDir} onSort={handleSort} />
+            <SortHeader label="Source" sortKey="confidence" current={sortKey} dir={sortDir} onSort={handleSort} />
           </div>
 
           {/* Rows */}
           {sorted.map((trust) => {
             const isOpen = expanded.has(trust.id);
-            const ph = (trust as any).paymentHistory ?? [];
+            const ph = trust.paymentHistory ?? [];
             return (
               <div key={trust.id} className="border-b border-border/30 last:border-0">
                 {/* Main row */}
                 <div
-                  className="grid grid-cols-[2fr_1fr_1fr_1fr_1.5fr_0.5fr] gap-4 px-4 py-3 hover:bg-card/60 transition-colors cursor-pointer items-center min-w-[640px]"
+                  className="grid grid-cols-[2.5fr_1fr_1.2fr_1fr_0.5fr] gap-4 px-4 py-3 hover:bg-card/60 transition-colors cursor-pointer items-center min-w-[580px]"
                   onClick={() => toggleExpand(trust.id)}
                 >
                   <div className="flex items-center gap-2 min-w-0">
                     <ChevronRight
                       size={14}
-                      className={`shrink-0 text-muted-foreground/50 transition-transform ${isOpen ? "rotate-90" : ""}`}
+                      className={`shrink-0 text-muted-foreground/50 transition-transform duration-150 ${isOpen ? "rotate-90" : ""}`}
                     />
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-foreground truncate">{trust.shortName ?? trust.name}</div>
-                      <div className="text-xs text-muted-foreground/60 truncate">{trust.company}</div>
+                      <div className="text-sm font-medium text-foreground truncate">{trust.shortName}</div>
+                      <div className="text-xs text-muted-foreground/50 truncate">{trust.name !== trust.shortName ? trust.name : ""}</div>
                     </div>
-                    {trust.isStale && (
-                      <span className="shrink-0 text-xs px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-300">stale</span>
-                    )}
                   </div>
                   <div className="text-sm font-mono">
-                    {trust.paymentPct !== null ? (
-                      <span className="text-foreground">{trust.paymentPct}%</span>
+                    {trust.paymentPercentage !== null ? (
+                      <span className="text-foreground">{trust.paymentPercentage}%</span>
                     ) : (
-                      <span className="text-muted-foreground/40">—</span>
+                      <span className="text-muted-foreground/40 text-xs">MSV/N/A</span>
                     )}
                   </div>
                   <div className="text-sm font-mono">
                     <span className={trust.netAssets ? "text-foreground" : "text-muted-foreground/40"}>
                       {formatAssets(trust.netAssets)}
                     </span>
-                    {trust.netAssetsAsOf && (
-                      <div className="text-xs text-muted-foreground/40">{trust.netAssetsAsOf}</div>
+                    {trust.assetsAsOf && (
+                      <div className="text-xs text-muted-foreground/40">{trust.assetsAsOf}</div>
                     )}
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <DirectionIcon direction={trust.direction} />
-                    <span className="text-xs text-muted-foreground capitalize">{trust.direction}</span>
+                    <StatusBadge status={trust.status} />
+                    {trust.status === "active" && <DirectionIcon direction={trust.direction} />}
                   </div>
-                  <div className="text-xs text-muted-foreground truncate">{trust.administrator}</div>
                   <div>
-                    <SourceBadge source={trust.netAssetsSource} />
+                    <ConfidenceBadge confidence={trust.confidence} />
                   </div>
                 </div>
 
@@ -228,7 +336,9 @@ export default function Trusts() {
                       {/* Details */}
                       <div className="space-y-2 text-xs">
                         <div className="font-semibold text-foreground/70 uppercase tracking-wider mb-2">Trust Details</div>
+                        {trust.assetsBasis && <div><span className="text-muted-foreground">Assets basis: </span><span className="italic">{trust.assetsBasis}</span></div>}
                         {trust.court && <div><span className="text-muted-foreground">Court: </span><span className="font-mono">{trust.court} {trust.docket}</span></div>}
+                        {trust.administrator && <div><span className="text-muted-foreground">Administrator: </span>{trust.administrator}</div>}
                         {trust.website && (
                           <div>
                             <span className="text-muted-foreground">Website: </span>
@@ -237,11 +347,7 @@ export default function Trusts() {
                             </a>
                           </div>
                         )}
-                        {trust.reportingFrequency && <div><span className="text-muted-foreground">Reporting: </span>{trust.reportingFrequency}</div>}
-                        {trust.netAssetsCitation && (
-                          <div><span className="text-muted-foreground">Source: </span><span className="italic">{trust.netAssetsCitation}</span></div>
-                        )}
-                        {trust.notes && <div className="mt-2 text-muted-foreground/70 leading-relaxed">{trust.notes}</div>}
+                        {trust.note && <div className="mt-2 text-muted-foreground/70 leading-relaxed">{trust.note}</div>}
                       </div>
 
                       {/* Payment history */}
@@ -267,14 +373,25 @@ export default function Trusts() {
               </div>
             );
           })}
+
+          {sorted.length === 0 && !isLoading && (
+            <div className="py-12 text-center text-sm text-muted-foreground/50">
+              No trusts match the current filters.
+            </div>
+          )}
         </div>
       )}
 
-      {/* Methodology link */}
-      <div className="mt-6 text-xs text-muted-foreground/60 text-center">
-        Source classifications explained on the{" "}
-        <Link href="/methodology" className="text-primary hover:underline no-underline">methodology page</Link>.
-        Data updated weekly from trust websites and court filings.
+      {/* Footer */}
+      <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground/60">
+        <span>
+          Source classifications explained on the{" "}
+          <Link href="/methodology" className="text-primary hover:underline no-underline">methodology page</Link>.
+          Data updated weekly from trust websites and court filings.
+        </span>
+        {jsonData?.asOf && (
+          <span className="shrink-0">Data as of {jsonData.asOf}</span>
+        )}
       </div>
     </div>
   );

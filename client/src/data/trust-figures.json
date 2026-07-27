@@ -1,0 +1,565 @@
+{
+  "schema": "asbestos-trust-figures/v1",
+  "asOf": "2026-07-27",
+  "aggregate": {
+    "remainingAssetsPoint": 17041946126,
+    "remainingAssetsLow": 17041946126,
+    "remainingAssetsHigh": 22500000000,
+    "cumulativePayoutsPoint": 24000000000,
+    "cumulativePayoutsLow": 17500000000,
+    "trustsWithFigures": 41,
+    "activeTrustsEstimated": 60
+  },
+  "methodology": {
+    "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 9 from filed annual reports/quarterly filings (FY2024-FY2025 or Q1 2026) totaling $3,965,714,789, plus 32 from credible secondary compilations of trust annual reports (mostly FY2022 as-of dates) totaling $13,076,231,337. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
+    "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
+    "cumulativePayoutsPoint": "ESTIMATE. GAO-11-819 (Sept 2011) documents $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow). Point adds an estimated ~$6.5B paid 2011-2025, extrapolated from a documented 8-trust subset (PCC, WRG, Manville, GAF, Western, Plant, API, CE) paying ~$591.9M (2022) and ~$561.2M (2024), with higher run-rates earlier in the period. Treat as order-of-magnitude, not audited.",
+    "viralFiguresDebunked": "'$30B remaining' traces to GAO-11-819's ~$36.8B TOTAL CAPITALIZATION of 60 trusts as of 2011 (initial funding + returns), not a current balance. GAO analyzed reports for only 47 of 60 trusts."
+  },
+  "trusts": [
+    {
+      "name": "NARCO Asbestos Trust",
+      "netAssets": 1260412792,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed)",
+      "paymentPercentage": 100.0,
+      "status": "active",
+      "confidence": "filed",
+      "note": "$1.325B Honeywell buyout 1/30/2023; intake paused 12/31/2025, resumed 1/12/2026 under DCPF administration"
+    },
+    {
+      "name": "DII Industries (Halliburton/Harbison-Walker)",
+      "netAssets": 1149918344,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed)",
+      "paymentPercentage": 60.0,
+      "status": "active",
+      "confidence": "filed",
+      "note": "$121.1M claims expense in 2025; 60% maintained per filed 2024-25 annual reports"
+    },
+    {
+      "name": "Manville Personal Injury Settlement Trust",
+      "netAssets": 539260000,
+      "assetsAsOf": "2026-03-31",
+      "assetsBasis": "net claimants' equity (Q1 2026 filing)",
+      "paymentPercentage": 5.1,
+      "status": "active",
+      "confidence": "filed",
+      "note": "5.1% since Feb 2021; cumulative $5.33B paid on 1.04M claims"
+    },
+    {
+      "name": "Western Asbestos Settlement Trust",
+      "netAssets": 355761441,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed)",
+      "paymentPercentage": 51.1,
+      "status": "active",
+      "confidence": "filed"
+    },
+    {
+      "name": "Thorpe Insulation Company Asbestos Settlement Trust",
+      "netAssets": 338761788,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed)",
+      "paymentPercentage": 58.6,
+      "status": "active",
+      "confidence": "filed"
+    },
+    {
+      "name": "Plant Asbestos Settlement Trust",
+      "netAssets": 148824786,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed)",
+      "paymentPercentage": 20.0,
+      "status": "active",
+      "confidence": "filed"
+    },
+    {
+      "name": "J.T. Thorpe Settlement Trust (CA)",
+      "netAssets": 116383926,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "filed"
+    },
+    {
+      "name": "Maremont Asbestos PI Trust",
+      "netAssets": 48725391,
+      "assetsAsOf": "2024-12-31",
+      "assetsBasis": "net claimants' equity (docketed report)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "filed"
+    },
+    {
+      "name": "API, Inc. Asbestos Settlement Trust",
+      "netAssets": 7666321,
+      "assetsAsOf": "2024-12-31",
+      "assetsBasis": "net claimants' equity (filed)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "filed"
+    },
+    {
+      "name": "W.R. Grace Asbestos PI Trust",
+      "netAssets": 1995075783,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 30.1,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "FY2024 report (PACER-only) shows >$1.84B total assets; % cut 31.7->30.1% eff. 4/17/2025"
+    },
+    {
+      "name": "Pittsburgh Corning Asbestos PI Settlement Trust",
+      "netAssets": 1294204173,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 19.0,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "% cut 24.5->19% Nov 2024 (pending TAC/FCR consent process)"
+    },
+    {
+      "name": "United States Gypsum (USG) Asbestos Trust",
+      "netAssets": 851537722,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 11.0,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "19.2->11% over time; reconsideration notice issued May 2026 - cut possible"
+    },
+    {
+      "name": "Owens Corning/Fibreboard Asbestos PI Trust",
+      "netAssets": 798000451,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "OC Subfund cut June 2026"
+    },
+    {
+      "name": "ASARCO Asbestos PI Settlement Trust",
+      "netAssets": 735865455,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Armstrong World Industries Asbestos PI Trust",
+      "netAssets": 700346779,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 10.8,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "raise-then-cut history: 20->35->10.8%"
+    },
+    {
+      "name": "Bondex (Specialty Products Holding Corp.) Trust",
+      "netAssets": 630031878,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 29.5,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Flintkote Asbestos Trust",
+      "netAssets": 617250943,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 15.0,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Paddock Enterprises (Owens-Illinois) Asbestos Trust",
+      "netAssets": 610000000,
+      "assetsAsOf": "2022-01-01",
+      "assetsBasis": "initial funding (cash + consideration)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "Current balance not publicly posted (DCPF-administered)"
+    },
+    {
+      "name": "Quigley Company Asbestos PI Trust",
+      "netAssets": 597763587,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Federal-Mogul (T&N Subfund) Asbestos PI Trust",
+      "netAssets": 463654031,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 12.2,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Celotex Asbestos Settlement Trust",
+      "netAssets": 454527419,
+      "assetsAsOf": "2021-12-31",
+      "assetsBasis": "assets per FY2021 annual report (secondary compilation)",
+      "paymentPercentage": 7.0,
+      "status": "active_deferral",
+      "confidence": "secondary",
+      "note": "7% since 6/23/2023 (from 8%); Deferral Period in effect since 1/1/2025"
+    },
+    {
+      "name": "Combustion Engineering 524(g) Asbestos PI Trust",
+      "netAssets": 445898474,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 15.3,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "18.5->29.5->15.3%; cut April 2026"
+    },
+    {
+      "name": "Fuller-Austin Asbestos Settlement Trust",
+      "netAssets": 321730938,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Kaiser Asbestos PI Trust",
+      "netAssets": 308820229,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 10.6,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "18.1->10.6% (cut Feb 2025)"
+    },
+    {
+      "name": "Babcock & Wilcox Asbestos PI Settlement Trust",
+      "netAssets": 307145349,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": 4.3,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "4.7->4.3% eff. 6/30/2026 (trust letter; pending TAC/FCR consent); YE2024 total assets ~$291.7M per secondary"
+    },
+    {
+      "name": "G-I Holdings (GAF) Asbestos PI Settlement Trust",
+      "netAssets": 298975718,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Eagle-Picher Industries PI Settlement Trust",
+      "netAssets": 298142186,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Yarway Asbestos PI Trust",
+      "netAssets": 246250241,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "A.P. Green (APG) Asbestos Trust",
+      "netAssets": 208079047,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "NGC Bodily Injury Trust (National Gypsum)",
+      "netAssets": 206617690,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Congoleum Plan Trust",
+      "netAssets": 159982645,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Motors Liquidation Co. (GM) Asbestos PI Trust",
+      "netAssets": 152000000,
+      "assetsAsOf": "2021-12-31",
+      "assetsBasis": "assets per FY2021 annual report (secondary)",
+      "paymentPercentage": 10.3,
+      "status": "active",
+      "confidence": "secondary",
+      "note": "% cut 12.2->10.3% announced 12/3/2025"
+    },
+    {
+      "name": "ACandS Asbestos Settlement Trust",
+      "netAssets": 136046285,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "J.T. Thorpe Company Successor Trust (TX)",
+      "netAssets": 73152903,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Kaiser Gypsum Asbestos PI Trust",
+      "netAssets": 49993178,
+      "assetsAsOf": "2021-12-31",
+      "assetsBasis": "assets per FY2021 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Porter Hayden Bodily Injury Trust",
+      "netAssets": 29957871,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Raytech (Raymark) Trust",
+      "netAssets": 22014500,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Keene Creditors Trust",
+      "netAssets": 20896919,
+      "assetsAsOf": "2021-12-31",
+      "assetsBasis": "assets per FY2021 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "H.K. Porter Asbestos Trust",
+      "netAssets": 20481014,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Christy Refractories Asbestos PI Trust",
+      "netAssets": 12641969,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "A-Best Products Asbestos Trust",
+      "netAssets": 9145960,
+      "assetsAsOf": "2022-12-31",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "paymentPercentage": null,
+      "status": "active",
+      "confidence": "secondary"
+    },
+    {
+      "name": "Rapid-American Asbestos PI Trust",
+      "netAssets": 0,
+      "assetsAsOf": "2025-06-06",
+      "assetsBasis": "depleted",
+      "paymentPercentage": null,
+      "status": "closed",
+      "confidence": "filed",
+      "note": "Stopped accepting claims 6/6/2025, depleted; liquidating trust established Nov 2022; excluded from floor sum"
+    }
+  ],
+  "changes": [
+    {
+      "date": "2026-06-30",
+      "type": "percentage_cut",
+      "trust": "Babcock & Wilcox",
+      "detail": "Payment percentage reduced 4.7% -> 4.3%, trust letter dated 6/30/2026; 4.3% applies 'until further notice' pending TAC/FCR consent",
+      "source": "BW Payment Percentage Notice 6/30/2026, bwasbestostrust.com"
+    },
+    {
+      "date": "2026-05-07",
+      "type": "reconsideration_notice",
+      "trust": "Babcock & Wilcox",
+      "detail": "TDP Section 4.2 reconsideration of payment percentage announced (30-day notice)",
+      "source": "BW Notice of Reconsideration, bwasbestostrust.com"
+    },
+    {
+      "date": "2026-05-01",
+      "type": "reconsideration_notice",
+      "trust": "USG",
+      "detail": "Payment-percentage reconsideration notice issued May 2026; cut possible within 12-24 months per pattern",
+      "source": "USG trust notice (secondary reporting)"
+    },
+    {
+      "date": "2026-04-01",
+      "type": "future_trust",
+      "trust": "Georgia-Pacific",
+      "detail": "GP abandoned Bestwall; planning new Chapter 11. ~$1B+ trust expected in next wave",
+      "source": "bankruptcy docket reporting"
+    },
+    {
+      "date": "2026-04-01",
+      "type": "percentage_cut",
+      "trust": "Combustion Engineering",
+      "detail": "Payment percentage cut April 2026 (current 15.3%; history 18.5->29.5->15.3%)",
+      "source": "trust notice (secondary reporting)"
+    },
+    {
+      "date": "2026-01-12",
+      "type": "administration",
+      "trust": "NARCO",
+      "detail": "Claims intake resumed under DCPF administration after 12/31/2025 pause",
+      "source": "NARCO trust notices"
+    },
+    {
+      "date": "2025-12-10",
+      "type": "governance",
+      "trust": "10 DCPF trusts",
+      "detail": "Cross-Trust Audit Program launched: DCPF monthly random audits of approved-but-unpaid claims across all participating trusts, using pooled claimant data",
+      "source": "identical trust notices Dec 10-11, 2025"
+    },
+    {
+      "date": "2025-12-03",
+      "type": "percentage_cut",
+      "trust": "Motors Liquidation (GM)",
+      "detail": "Payment percentage cut 12.2% -> 10.3%",
+      "source": "CRMC notice (secondary reporting)"
+    },
+    {
+      "date": "2025-11-14",
+      "type": "eligibility_tightening",
+      "trust": "DCPF trusts",
+      "detail": "TDP Section 5.5 amendments effective: non-mesothelioma secondary-exposure claims now require >=5x worker exposure durations; verbatim-identical across trusts",
+      "source": "TDP amendment notices"
+    },
+    {
+      "date": "2025-06-06",
+      "type": "closure",
+      "trust": "Rapid-American",
+      "detail": "Trust closed - stopped accepting claims, depleted. Final payouts ~18-21%",
+      "source": "trust records / docket"
+    },
+    {
+      "date": "2025-04-17",
+      "type": "percentage_cut",
+      "trust": "W.R. Grace",
+      "detail": "Payment percentage cut 31.7% -> 30.1%",
+      "source": "official trust notice"
+    },
+    {
+      "date": "2025-02-01",
+      "type": "percentage_cut",
+      "trust": "Kaiser",
+      "detail": "Payment percentage cut (current 10.6%; from 18.1%)",
+      "source": "trust notice (secondary reporting)"
+    },
+    {
+      "date": "2025-01-01",
+      "type": "deferral",
+      "trust": "Celotex",
+      "detail": "Deferral Period in effect; payment percentage remains 7%",
+      "source": "official trust notice"
+    },
+    {
+      "date": "2024-11-07",
+      "type": "percentage_cut",
+      "trust": "Pittsburgh Corning",
+      "detail": "Payment percentage cut 24.5% -> 19% (pending consent process; true-up if not adopted)",
+      "source": "PCC Notice re. Reconsidered Payment Percentage"
+    },
+    {
+      "date": "2023-06-23",
+      "type": "percentage_cut",
+      "trust": "Celotex",
+      "detail": "Payment percentage cut 8% -> 7%",
+      "source": "Notice of Payment Percentage and DCP Adjustments"
+    },
+    {
+      "date": "2023-01-30",
+      "type": "funding",
+      "trust": "NARCO",
+      "detail": "Honeywell $1.325B buyout paid into trust - largest single cash event in trust history; NCE now $1.26B, percentage 100%",
+      "source": "filed FY2025 annual report"
+    },
+    {
+      "date": "2021-02-15",
+      "type": "percentage_increase",
+      "trust": "Manville",
+      "detail": "Pro rata percentage raised 4.3% -> 5.1% with retroactive true-up (~$5.6M)",
+      "source": "Manville TDP history / Q1 2026 filing"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Filed trust annual reports (wastrust.com, pastrust.com, tistrust.com, jttstrust.com, diiasbestostrust.org, apiincasbestossettlementtrust.com)",
+      "tier": "primary"
+    },
+    {
+      "label": "Manville Q1 2026 quarterly filing (filed 4/27/2026)",
+      "tier": "primary"
+    },
+    {
+      "label": "Trust payment-percentage notices (bwasbestostrust.com, pccasbestostrust.com, celotextrust.com)",
+      "tier": "primary"
+    },
+    {
+      "label": "GAO-11-819, Asbestos Injury Compensation (Sept 2011)",
+      "tier": "primary"
+    },
+    {
+      "label": "asbestosclaims.law trust database (compiles trust annual reports, mostly FY2022)",
+      "tier": "secondary"
+    },
+    {
+      "label": "ILR 'Dubious Distribution' (2018) - $25B + $2B deferred at YE2016",
+      "tier": "secondary"
+    },
+    {
+      "label": "Deep-research audit compiled 2026-07-27 (12 dimensions + 8 follow-ups; filed documents prioritized)",
+      "tier": "methodology"
+    }
+  ]
+}

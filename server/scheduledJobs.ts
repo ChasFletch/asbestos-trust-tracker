@@ -80,7 +80,7 @@ export async function stalenessCheckHandler(req: Request, res: Response) {
       : `Weekly staleness check: No new stale records. ${alreadyStale.length} already stale.`;
 
     await notifyOwner({
-      title: "TrustFundClock — Weekly Staleness Check",
+      title: "AsbestosTrusts — Weekly Staleness Check",
       content: message,
     });
 

@@ -6,7 +6,7 @@ export default function About() {
       <div className="mb-8">
         <div className="text-xs font-mono text-primary/70 uppercase tracking-widest mb-2">About This Project</div>
         <h1 className="font-display font-bold uppercase tracking-wider text-2xl mb-3">
-          Why TrustFundClock.org Exists
+          Why AsbestosTrusts.org Exists
         </h1>
       </div>
 
@@ -15,7 +15,7 @@ export default function About() {
           For more than a decade, the "$30 billion in asbestos trust funds" figure has been repeated across law firm websites, Wikipedia, news articles, and legal scholarship — almost always without a primary source citation, and almost always wrong. The figure traces to a 2011 GAO report on total trust capitalization since 1988, not a current balance. It has been cited, recited, and eventually detached from its origin entirely.
         </p>
         <p>
-          TrustFundClock.org was built to replace that folklore with a primary-sourced, regularly updated, methodologically transparent public record. Every figure in our database is classified by source confidence — filed court document, secondary source citing primary, or estimate — and the methodology for our aggregate calculation is published in full.
+          AsbestosTrusts.org was built to replace that folklore with a primary-sourced, regularly updated, methodologically transparent public record. Every figure in our database is classified by source confidence — filed court document, secondary source citing primary, or estimate — and the methodology for our aggregate calculation is published in full.
         </p>
         <p>
           The site is designed to be citable. Our data is structured with Dataset schema markup, available as a downloadable CSV, and updated weekly from trust websites and court filings. We publish a quarterly "State of the Asbestos Trust System" report summarizing material changes across all active trusts.
@@ -69,7 +69,7 @@ export default function About() {
             This site is structured for citability by AI systems, academic researchers, and journalists. We publish full Dataset schema markup (Schema.org/Dataset) on our data pages, maintain a downloadable CSV of all trust data, and issue quarterly reports with DOI-style stable identifiers.
           </p>
           <p>
-            If you cite this site, please reference: <span className="font-mono text-xs bg-card px-2 py-0.5 rounded border border-border">TrustFundClock.org, "U.S. Asbestos Trust Fund Tracker," [date accessed].</span>
+            If you cite this site, please reference: <span className="font-mono text-xs bg-card px-2 py-0.5 rounded border border-border">AsbestosTrusts.org, "U.S. Asbestos Trust Fund Tracker," [date accessed].</span>
           </p>
         </div>
 

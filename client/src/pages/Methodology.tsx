@@ -9,7 +9,7 @@ export default function Methodology() {
           How We Calculate the Aggregate
         </h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          TrustFundClock.org is the only publicly available tracker that derives its aggregate figures from primary court filings rather than repeating secondary estimates. This page explains exactly how the numbers are calculated, what is known with certainty, what is estimated, and what remains structurally unknowable from public sources.
+          AsbestosTrusts.org is the only publicly available tracker that derives its aggregate figures from primary court filings rather than repeating secondary estimates. This page explains exactly how the numbers are calculated, what is known with certainty, what is estimated, and what remains structurally unknowable from public sources.
         </p>
       </div>
 

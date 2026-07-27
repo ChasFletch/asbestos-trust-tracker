@@ -4,7 +4,7 @@ export function SiteFooter() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <div className="font-mono text-primary font-bold mb-2">TrustFundClock.org</div>
+            <div className="font-mono text-primary font-bold mb-2">AsbestosTrusts.org</div>
             <p className="text-xs leading-relaxed">
               An independent public research platform tracking the real-time state of U.S. asbestos
               bankruptcy trust funds. Data sourced from filed court documents, trust annual reports,

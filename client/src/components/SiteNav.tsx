@@ -23,7 +23,7 @@ export function SiteNav() {
             className="font-mono font-bold text-primary"
             style={{ fontSize: "1.1rem", letterSpacing: "-0.02em" }}
           >
-            TrustFundClock
+            AsbestosTrusts
             <span className="text-muted-foreground">.org</span>
           </span>
         </Link>

@@ -1,13 +1,13 @@
 import { DebtClockBillboard } from "@/components/DebtClock";
 import { trpc } from "@/lib/trpc";
-import { AlertCircle, ArrowRight, Clock, Database, FileText } from "lucide-react";
+import { AlertCircle, ArrowRight, BookOpen, Clock, Database, FileText, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
   const { data: agg, isLoading } = trpc.aggregate.current.useQuery();
-  const { data: trusts } = trpc.trusts.list.useQuery();
   const { data: news } = trpc.news.list.useQuery({ limit: 3 });
   const { data: figures } = trpc.trustFigures.summary.useQuery();
+  const { data: allTrustFigures } = trpc.trustFigures.allTrusts.useQuery();
 
   const remaining = agg?.remainingLow ?? 17041946126;
   const remainingLow = agg?.remainingLow ?? 17041946126;
@@ -17,9 +17,16 @@ export default function Home() {
   const lastUpdated = figures?.asOf ?? "2026-07-27";
   const topTrusts = figures?.topTrusts ?? [];
 
-  const activeTrusts = trusts?.filter((t) => t.status === "active") ?? [];
-  const recentCuts = trusts?.filter((t) => t.direction === "down") ?? [];
-  const recentIncreases = trusts?.filter((t) => t.direction === "up") ?? [];
+  // Derive stats from trust-figures.json (primary source, all 42 trusts)
+  // allTrustFigures returns { asOf, trusts[] }
+  const tf = allTrustFigures?.trusts ?? [];
+  const activeTrusts = tf.filter((t: { status: string }) => t.status === "active" || t.status === "active_deferral");
+  const filedTrusts = tf.filter((t: { confidence: string }) => t.confidence === "filed");
+  const recentDataTrusts = tf.filter((t: { assetsAsOf: string | null }) => {
+    if (!t.assetsAsOf) return false;
+    const year = parseInt(t.assetsAsOf.substring(0, 4));
+    return year >= 2025;
+  });
 
   return (
     <div>
@@ -79,7 +86,7 @@ export default function Home() {
             )}
             <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 text-xs font-mono text-muted-foreground/50 mt-1">
               <span>
-                {activeTrusts.length > 0 ? `${activeTrusts.length} active trusts tracked` : "20+ active trusts tracked"}
+                {tf.length > 0 ? `${activeTrusts.length} active trusts tracked` : "41 active trusts tracked"}
               </span>
               <Link href="/methodology" className="hover:text-primary transition-colors no-underline">
                 How is this calculated? →
@@ -88,16 +95,6 @@ export default function Home() {
           </div>
 
           {/* Alert strip */}
-          {recentCuts.length > 0 && (
-            <div className="w-full max-w-4xl flex items-start gap-3 px-4 py-3 rounded border border-destructive/30 bg-destructive/5 text-sm">
-              <AlertCircle size={16} className="text-destructive mt-0.5 shrink-0" />
-              <span className="text-muted-foreground">
-                <span className="text-foreground font-medium">{recentCuts.length} trust{recentCuts.length > 1 ? "s" : ""}</span> recently reduced payment percentages, including{" "}
-                <span className="text-foreground">{recentCuts.slice(0, 2).map((t) => t.shortName ?? t.name).join(" and ")}</span>.{" "}
-                <Link href="/trusts?filter=down" className="text-primary hover:underline no-underline">View all →</Link>
-              </span>
-            </div>
-          )}
         </div>
       </section>
 
@@ -106,10 +103,10 @@ export default function Home() {
         <div className="container py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: "Active Trusts Tracked", value: activeTrusts.length || "20+", icon: Database },
-              { label: "Quarterly Filers", value: "1", icon: Clock },
-              { label: "Primary-Sourced Records", value: trusts?.filter((t) => t.netAssetsSource === "a").length || "1", icon: FileText },
-              { label: "Recent Payment Cuts", value: recentCuts.length || "2", icon: AlertCircle },
+              { label: "Active Trusts Tracked", value: tf.length > 0 ? activeTrusts.length : 41, icon: Database },
+              { label: "Court-Filed Sources", value: tf.length > 0 ? filedTrusts.length : 10, icon: ShieldCheck },
+              { label: "Current-Year Data", value: tf.length > 0 ? recentDataTrusts.length : 10, icon: Clock },
+              { label: "Total Trusts in Database", value: tf.length > 0 ? tf.length : 42, icon: BookOpen },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col gap-1">
                 <div className="flex items-center gap-2 text-muted-foreground">

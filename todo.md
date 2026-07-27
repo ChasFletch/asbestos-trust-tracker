@@ -63,8 +63,10 @@
 - [x] Trust records corrected: WRG 30.1%, USG 11%, Armstrong 10.8%, CE 15.3%, Western 51.1%, Rapid-American closed
 - [x] DebtClock updated: documented floor as primary counter, estimated range strip ($17B–$22.5B), payouts sublabel updated
   - [x] Register weekly Heartbeat cron after first deploy
-- [ ] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (pending PACER account review)
-- [ ] Per-trust detail page (/trusts/:id)
+- [ ] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (endpoint built at /api/pacer/pull-queue — pending PACER account unlock by support team)
+- [x] Per-trust detail page (/trusts/:id) — all 42 trusts, payment history chart, changes timeline, source citations
+- [x] PACER pull endpoint built: /api/pacer/pull, /api/pacer/pull-queue, /api/pacer/status with CourtListener RECAP fallback
+- [x] pacer-pull-queue.json: 7 priority documents queued ($33-45 total, WRG FY2025 highest priority)
 - [x] Dynamic /reports/:id route rendering full markdown report on-site
 - [x] Key Findings bulleted list on ATR-2026-Q3 report card at /reports
 - [x] Trust table wired to render directly from trust-figures.json as primary source

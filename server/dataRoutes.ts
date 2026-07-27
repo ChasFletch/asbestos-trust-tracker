@@ -18,6 +18,8 @@ const NEWS_CACHE_TTL = 15 * 60 * 1000; // 15 min
 
 let cachedReportsIndex: unknown = null;
 let reportsCacheTs = 0;
+// Force cache bust on each server restart by initialising to 0 (already the case)
+// but also expose a manual bust endpoint for development
 
 // ── Types ────────────────────────────────────────────────────────────────────
 interface NewsDraft {

@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
 import { ExternalLink, FileText, Calendar, ChevronRight } from "lucide-react";
-import { Link } from "wouter";
 
-interface Report {
-  id: string;           // e.g. "ATR-2026-Q3"
+// Kimi's actual index.json schema (asbestos-trust-reports/v1)
+interface KimiReport {
+  id: string;        // e.g. "ATR-2026-Q3"
   title: string;
-  quarter: string;      // e.g. "Q3 2026"
-  publishedAt: string;  // ISO date string
-  summary: string;
-  fileUrl?: string;     // GitHub raw URL to the report markdown/PDF
+  date: string;      // ISO date "2026-07-28"
+  asOf?: string;     // data as-of date
+  path: string;      // repo-relative path to the markdown file
+  // optional enrichment fields (future quarters may add these)
+  summary?: string;
   highlights?: string[];
+  fileUrl?: string;  // explicit URL override
 }
 
 interface ReportsIndex {
-  reports: Report[];
+  schema?: string;
+  reports: KimiReport[];
   lastUpdated?: string;
+}
+
+const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ChasFletch/asbestos-trust-tracker/main";
+
+function deriveFileUrl(report: KimiReport): string {
+  if (report.fileUrl) return report.fileUrl;
+  // path is repo-relative e.g. "reports/2026-Q3-state-of-the-asbestos-trust-system.md"
+  return `${GITHUB_RAW_BASE}/${report.path}`;
 }
 
 export default function Reports() {
@@ -30,8 +41,8 @@ export default function Reports() {
   }, []);
 
   const reports = data?.reports ?? [];
-  const nextReportDate = "October 1, 2026";
-  const nextReportId = "ATR-2026-Q3";
+  const nextReportDate = "January 1, 2027";
+  const nextReportId = "ATR-2027-Q1";
 
   return (
     <div className="container py-10 max-w-3xl">
@@ -56,25 +67,20 @@ export default function Reports() {
           ))}
         </div>
       ) : reports.length === 0 ? (
-        /* ── Pending state: no reports yet ──────────────────────────────── */
+        /* ── Pending state ───────────────────────────────────────────────── */
         <div className="space-y-6">
           <div className="p-6 rounded border border-dashed border-border/60 bg-card/30 text-center">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <FileText size={22} className="text-primary/60" />
             </div>
             <p className="text-sm font-semibold text-foreground mb-1">
-              First report due {nextReportDate}
+              Next report due {nextReportDate}
             </p>
             <p className="text-xs text-muted-foreground mb-3">
               Identifier: <span className="font-mono text-primary/80">{nextReportId}</span>
             </p>
-            <p className="text-xs text-muted-foreground/70 max-w-sm mx-auto">
-              The inaugural quarterly report will cover Q3 2026 system events, aggregate movement
-              since site launch, and a baseline data-quality ledger for all 42 tracked trusts.
-            </p>
           </div>
 
-          {/* What to expect */}
           <div className="p-5 rounded border border-border/40 bg-card/40">
             <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
               What Each Report Covers
@@ -98,37 +104,42 @@ export default function Reports() {
               ))}
             </div>
           </div>
-
-          <p className="text-xs text-muted-foreground/50 text-center">
-            Reports are committed to the public GitHub repository with a stable identifier
-            and indexed in <span className="font-mono">reports/index.json</span> for programmatic access.
-          </p>
         </div>
       ) : (
         /* ── Reports list ─────────────────────────────────────────────── */
         <div className="space-y-4">
           {reports
             .slice()
-            .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+            .sort((a, b) => b.date.localeCompare(a.date))
             .map((report) => (
               <div
                 key={report.id}
                 className="p-5 rounded border border-border/50 bg-card/40 hover:border-border transition-colors"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <FileText size={18} className="text-primary/60" />
+                  </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
                       <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-primary/10 text-primary/80 border border-primary/20">
                         {report.id}
                       </span>
                       <span className="text-xs text-muted-foreground/60 flex items-center gap-1">
                         <Calendar size={10} />
-                        {new Date(report.publishedAt).toLocaleDateString("en-US", {
+                        {new Date(report.date + "T12:00:00Z").toLocaleDateString("en-US", {
                           month: "long", day: "numeric", year: "numeric",
                         })}
                       </span>
+                      {report.asOf && (
+                        <span className="text-xs text-muted-foreground/50">
+                          Data as of {new Date(report.asOf + "T12:00:00Z").toLocaleDateString("en-US", {
+                            month: "short", day: "numeric", year: "numeric",
+                          })}
+                        </span>
+                      )}
                     </div>
-                    <h3 className="text-sm font-semibold text-foreground leading-snug mb-1.5">
+                    <h3 className="text-sm font-semibold text-foreground leading-snug mb-2">
                       {report.title}
                     </h3>
                     {report.summary && (
@@ -146,31 +157,49 @@ export default function Reports() {
                         ))}
                       </ul>
                     )}
-                    {report.fileUrl && (
-                      <a
-                        href={report.fileUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                      >
-                        Read full report <ExternalLink size={10} />
-                      </a>
-                    )}
+                    <a
+                      href={deriveFileUrl(report)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                    >
+                      Read full report <ExternalLink size={10} />
+                    </a>
                   </div>
                 </div>
               </div>
             ))}
 
-          {data?.lastUpdated && (
-            <p className="text-xs text-muted-foreground/40 text-center pt-2">
-              Index last updated: {new Date(data.lastUpdated).toLocaleDateString("en-US", {
-                month: "long", day: "numeric", year: "numeric",
-              })}
-            </p>
-          )}
+          <div className="pt-4 p-5 rounded border border-border/40 bg-card/40">
+            <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
+              What Each Report Covers
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { label: "Aggregate movement", desc: "Documented floor vs. prior quarter, range update" },
+                { label: "Payment-% direction", desc: "Which trusts cut, held, or raised their rates" },
+                { label: "Depletion trends", desc: "Projected depletion dates for top-10 trusts" },
+                { label: "System events", desc: "New filings, closures, court orders, amendments" },
+                { label: "Data-quality ledger", desc: "Count of (a)/(b)/(c) records, upgrades this quarter" },
+                { label: "Watch list", desc: "Trusts with pending decisions in the next 90 days" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-start gap-2.5">
+                  <ChevronRight size={14} className="text-primary/50 mt-0.5 shrink-0" />
+                  <div>
+                    <p className="text-xs font-semibold text-foreground">{item.label}</p>
+                    <p className="text-xs text-muted-foreground">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-xs text-muted-foreground/40 text-center pt-2">
+            Reports are committed to the public GitHub repository with a stable identifier
+            and indexed in <span className="font-mono">reports/index.json</span> for programmatic access.
+          </p>
         </div>
       )}
     </div>
   );
 }
-

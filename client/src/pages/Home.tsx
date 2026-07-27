@@ -1,4 +1,4 @@
-import { DebtClock } from "@/components/DebtClock";
+import { DebtClockBillboard } from "@/components/DebtClock";
 import { trpc } from "@/lib/trpc";
 import { AlertCircle, ArrowRight, Clock, Database, FileText } from "lucide-react";
 import { Link } from "wouter";
@@ -58,55 +58,13 @@ export default function Home() {
           </div>
 
           {/* Clocks */}
-          <div className="w-full max-w-4xl">
-            <div
-              className="grid grid-cols-1 md:grid-cols-2 gap-px"
-              style={{ background: "oklch(0.22 0.01 240)" }}
-            >
-              {/* Remaining */}
-              <div
-                className="flex flex-col items-center justify-center gap-4 p-8 md:p-12"
-                style={{ background: "oklch(0.10 0.006 240)" }}
-              >
-                {isLoading ? (
-                  <div className="h-20 w-64 bg-secondary/50 rounded animate-pulse" />
-                ) : (
-                  <DebtClock
-                    value={remaining}
-                    label="Estimated Remaining Assets"
-                    description={agg?.remainingLabel ? `Range: ${agg.remainingLabel}` : "Range: $17.2B–$20B"}
-                  />
-                )}
-                <div className="text-xs text-muted-foreground/50 font-mono text-center">
-                  {agg?.asOfNote ?? "Mixed 2021–2026 as-of dates"}
-                </div>
-              </div>
-
-              {/* Paid out */}
-              <div
-                className="flex flex-col items-center justify-center gap-4 p-6 md:p-10 overflow-hidden"
-                style={{ background: "oklch(0.10 0.006 240)" }}
-              >
-                {isLoading ? (
-                  <div className="h-20 w-64 bg-secondary/50 rounded animate-pulse" />
-                ) : (
-                  <DebtClock
-                    value={paidOut}
-                    label="Cumulative Payouts Since 1988"
-                    description={agg?.paidOutLabel}
-                  />
-                )}
-                <div className="text-xs text-muted-foreground/50 font-mono text-center">
-                  Across all active trusts · 1988–present
-                </div>
-              </div>
-            </div>
-
-            {/* Clock footer bar */}
-            <div
-              className="flex flex-wrap items-center justify-between gap-3 px-6 py-3 text-xs font-mono text-muted-foreground/60"
-              style={{ background: "oklch(0.09 0.005 240)", borderTop: "1px solid oklch(0.22 0.01 240)" }}
-            >
+          <div className="w-full max-w-5xl">
+            {isLoading ? (
+              <div className="h-72 rounded-lg animate-pulse" style={{ background: "oklch(0.18 0.05 180)" }} />
+            ) : (
+              <DebtClockBillboard remaining={remaining} payouts={paidOut} />
+            )}
+            <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 text-xs font-mono text-muted-foreground/50 mt-1">
               <span>
                 {activeTrusts.length > 0 ? `${activeTrusts.length} active trusts tracked` : "20+ active trusts tracked"}
               </span>

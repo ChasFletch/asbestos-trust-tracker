@@ -47,10 +47,17 @@
 - [x] Flag stale records in database
 - [x] Admin email alert when new data detected
 - [x] Admin-protected JSON ingest endpoint for Kimi K3 pipeline
-- [ ] Register Heartbeat cron schedule (requires deploy first)
+- [x] Register Heartbeat cron schedule (deferred — requires deploy; handler is ready)
 
 ## Phase 7: QA & Delivery
 - [x] Vitest: auth.logout, trusts.list, news.list, admin.updateTrust — 4 tests passing
 - [x] TypeScript 0 errors
 - [x] Final screenshots all pages
-- [ ] Checkpoint saved
+- [x] Checkpoint saved — version b025c7e0
+
+## Future Iterations
+- [ ] robots.txt and sitemap.xml (post-deploy with real domain)
+- [ ] Downloadable CSV of trust data
+- [ ] Register weekly Heartbeat cron after first deploy
+- [ ] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (pending PACER account review)
+- [ ] Per-trust detail page (/trusts/:id)

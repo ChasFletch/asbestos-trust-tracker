@@ -1,8 +1,103 @@
 import { DebtClockBillboard } from "@/components/DebtClock";
 import { trpc } from "@/lib/trpc";
-import { AlertCircle, ArrowRight, BookOpen, Clock, Database, FileText, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, Database, Info, ShieldCheck } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 
+// ── Count-up hook ────────────────────────────────────────────────────────────
+function useCountUp(target: number, duration = 1000, enabled = false) {
+  const [value, setValue] = useState(0);
+  const rafRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!enabled || target === 0) return;
+    setValue(0);
+    const startTime = performance.now();
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(eased * target));
+      if (progress < 1) rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, [target, duration, enabled]);
+  return value;
+}
+
+// ── Animated stat card ───────────────────────────────────────────────────────
+function AnimatedStat({
+  label,
+  target,
+  icon: Icon,
+  tooltip,
+}: {
+  label: string;
+  target: number;
+  icon: React.ElementType;
+  tooltip?: string;
+}) {
+  const [inView, setInView] = useState(false);
+  const [showTip, setShowTip] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Trigger animation when the stats bar scrolls into view
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const displayed = useCountUp(target, 1000, inView);
+
+  return (
+    <div ref={rootRef} className="flex flex-col gap-1">
+      <div className="flex items-center gap-1.5 text-muted-foreground">
+        <Icon size={14} className="shrink-0" />
+        <span className="text-xs uppercase tracking-wider">{label}</span>
+        {tooltip && (
+          <div className="relative ml-auto shrink-0">
+            <button
+              type="button"
+              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors focus:outline-none"
+              onMouseEnter={() => setShowTip(true)}
+              onMouseLeave={() => setShowTip(false)}
+              onFocus={() => setShowTip(true)}
+              onBlur={() => setShowTip(false)}
+              aria-label="More information"
+            >
+              <Info size={12} />
+            </button>
+            {showTip && (
+              <div
+                className="absolute bottom-full right-0 mb-2 w-60 rounded border border-border bg-card text-card-foreground shadow-lg p-3 text-xs leading-relaxed z-50"
+                style={{ pointerEvents: "none" }}
+              >
+                {tooltip}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+      <div className="font-display font-bold text-2xl text-foreground tabular-nums">
+        {inView ? displayed : 0}
+      </div>
+    </div>
+  );
+}
+
+// ── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
   const { data: agg, isLoading } = trpc.aggregate.current.useQuery();
   const { data: news } = trpc.news.list.useQuery({ limit: 3 });
@@ -18,7 +113,6 @@ export default function Home() {
   const topTrusts = figures?.topTrusts ?? [];
 
   // Derive stats from trust-figures.json (primary source, all 42 trusts)
-  // allTrustFigures returns { asOf, trusts[] }
   const tf = allTrustFigures?.trusts ?? [];
   const activeTrusts = tf.filter((t: { status: string }) => t.status === "active" || t.status === "active_deferral");
   const filedTrusts = tf.filter((t: { confidence: string }) => t.confidence === "filed");
@@ -27,6 +121,19 @@ export default function Home() {
     const year = parseInt(t.assetsAsOf.substring(0, 4));
     return year >= 2025;
   });
+
+  const stats = [
+    { label: "Active Trusts Tracked",         target: tf.length > 0 ? activeTrusts.length     : 41, icon: Database   },
+    { label: "Court-Filed Sources",            target: tf.length > 0 ? filedTrusts.length      : 10, icon: ShieldCheck },
+    { label: "Current-Year Data",              target: tf.length > 0 ? recentDataTrusts.length : 10, icon: Clock      },
+    {
+      label: "Trusts With Documented Assets",
+      target: tf.length > 0 ? tf.length : 42,
+      icon: BookOpen,
+      tooltip:
+        "Approximately 60 asbestos trusts are active in the U.S. (GAO-11-819; industry sources 2026). This site tracks the 42 trusts for which publicly documented asset figures are available.",
+    },
+  ] as const;
 
   return (
     <div>
@@ -42,7 +149,8 @@ export default function Home() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "linear-gradient(oklch(0.52 0.18 45 / 0.05) 1px, transparent 1px), linear-gradient(90deg, oklch(0.52 0.18 45 / 0.05) 1px, transparent 1px)",
+            backgroundImage:
+              "linear-gradient(oklch(0.52 0.18 45 / 0.05) 1px, transparent 1px), linear-gradient(90deg, oklch(0.52 0.18 45 / 0.05) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
@@ -93,8 +201,6 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
-          {/* Alert strip */}
         </div>
       </section>
 
@@ -102,19 +208,14 @@ export default function Home() {
       <section className="border-y border-border bg-secondary/60">
         <div className="container py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { label: "Active Trusts Tracked", value: tf.length > 0 ? activeTrusts.length : 41, icon: Database },
-              { label: "Court-Filed Sources", value: tf.length > 0 ? filedTrusts.length : 10, icon: ShieldCheck },
-              { label: "Current-Year Data", value: tf.length > 0 ? recentDataTrusts.length : 10, icon: Clock },
-              { label: "Trusts With Documented Assets", value: tf.length > 0 ? tf.length : 42, icon: BookOpen },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1">
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <stat.icon size={14} />
-                  <span className="text-xs uppercase tracking-wider">{stat.label}</span>
-                </div>
-                <div className="font-display font-bold text-2xl text-foreground">{stat.value}</div>
-              </div>
+            {stats.map((stat) => (
+              <AnimatedStat
+                key={stat.label}
+                label={stat.label}
+                target={stat.target}
+                icon={stat.icon}
+                tooltip={"tooltip" in stat ? stat.tooltip : undefined}
+              />
             ))}
           </div>
         </div>

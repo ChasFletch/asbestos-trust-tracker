@@ -23,15 +23,15 @@ export default function Home() {
       <section
         className="relative overflow-hidden"
         style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.15 0.04 45 / 0.3) 0%, transparent 70%), oklch(0.08 0.005 240)",
-          minHeight: "min(90vh, 700px)",
+          background: "oklch(0.975 0.006 80)",
+          minHeight: "min(82vh, 640px)",
         }}
       >
         {/* Grid overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "linear-gradient(oklch(0.72 0.18 45 / 0.04) 1px, transparent 1px), linear-gradient(90deg, oklch(0.72 0.18 45 / 0.04) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(oklch(0.52 0.18 45 / 0.05) 1px, transparent 1px), linear-gradient(90deg, oklch(0.52 0.18 45 / 0.05) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
@@ -62,7 +62,7 @@ export default function Home() {
           {/* Clocks */}
           <div className="w-full max-w-5xl">
             {isLoading ? (
-              <div className="h-72 rounded-lg animate-pulse" style={{ background: "oklch(0.18 0.05 180)" }} />
+              <div className="h-72 rounded-lg animate-pulse bg-muted" />
             ) : (
               <DebtClockBillboard remaining={remaining} payouts={paidOut} remainingLow={remainingLow} remainingHigh={remainingHigh} />
             )}
@@ -91,7 +91,7 @@ export default function Home() {
       </section>
 
       {/* ── Stats bar ───────────────────────────────────────────────────────── */}
-      <section className="border-y border-border/50 bg-card/50">
+      <section className="border-y border-border bg-secondary/60">
         <div className="container py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -145,7 +145,7 @@ export default function Home() {
       )}
 
       {/* ── CTA strip ───────────────────────────────────────────────────────── */}
-      <section className="border-t border-border/50 bg-card/30">
+      <section className="border-t border-border bg-secondary/40">
         <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="font-display font-bold uppercase tracking-wider text-base mb-1">

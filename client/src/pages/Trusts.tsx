@@ -193,7 +193,7 @@ export default function Trusts() {
                       <div className="text-xs text-muted-foreground/60 truncate">{trust.company}</div>
                     </div>
                     {trust.isStale && (
-                      <span className="shrink-0 text-xs px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">stale</span>
+                      <span className="shrink-0 text-xs px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-300">stale</span>
                     )}
                   </div>
                   <div className="text-sm font-mono">

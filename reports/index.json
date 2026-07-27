@@ -1,0 +1,12 @@
+{
+  "schema": "asbestos-trust-reports/v1",
+  "reports": [
+    {
+      "id": "ATR-2026-Q3",
+      "title": "State of the Asbestos Trust System — Q3 2026",
+      "date": "2026-07-28",
+      "asOf": "2026-07-27",
+      "path": "reports/2026-Q3-state-of-the-asbestos-trust-system.md"
+    }
+  ]
+}

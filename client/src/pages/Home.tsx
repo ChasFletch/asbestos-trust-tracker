@@ -7,11 +7,15 @@ export default function Home() {
   const { data: agg, isLoading } = trpc.aggregate.current.useQuery();
   const { data: trusts } = trpc.trusts.list.useQuery();
   const { data: news } = trpc.news.list.useQuery({ limit: 3 });
+  const { data: figures } = trpc.trustFigures.summary.useQuery();
 
   const remaining = agg?.remainingLow ?? 17041946126;
   const remainingLow = agg?.remainingLow ?? 17041946126;
   const remainingHigh = agg?.remainingHigh ?? 22500000000;
   const paidOut = agg?.paidOut ?? 26629722253;
+
+  const lastUpdated = figures?.asOf ?? "2026-07-27";
+  const topTrusts = figures?.topTrusts ?? [];
 
   const activeTrusts = trusts?.filter((t) => t.status === "active") ?? [];
   const recentCuts = trusts?.filter((t) => t.direction === "down") ?? [];
@@ -64,7 +68,14 @@ export default function Home() {
             {isLoading ? (
               <div className="h-72 rounded-lg animate-pulse bg-muted" />
             ) : (
-              <DebtClockBillboard remaining={remaining} payouts={paidOut} remainingLow={remainingLow} remainingHigh={remainingHigh} />
+              <DebtClockBillboard
+                remaining={remaining}
+                payouts={paidOut}
+                remainingLow={remainingLow}
+                remainingHigh={remainingHigh}
+                lastUpdated={lastUpdated}
+                topTrusts={topTrusts}
+              />
             )}
             <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 text-xs font-mono text-muted-foreground/50 mt-1">
               <span>

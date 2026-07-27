@@ -4,6 +4,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { fetchTrustFigures } from "./dataRoutes";
 import {
   addNewsItem,
   addPaymentHistoryEntry,
@@ -73,6 +74,32 @@ export const appRouter = router({
   }),
 
   // ── News ────────────────────────────────────────────────────────────────────
+  // ── Trust Figures (GitHub JSON) ─────────────────────────────────────────────
+  trustFigures: router({
+    summary: publicProcedure.query(async () => {
+      try {
+        const data = await fetchTrustFigures() as any;
+        if (!data) return { asOf: null, topTrusts: [] };
+        // Sort trusts by netAssets descending, take top 8
+        const sorted = [...(data.trusts ?? [])]
+          .filter((t: any) => t.netAssets && t.netAssets > 0)
+          .sort((a: any, b: any) => (b.netAssets ?? 0) - (a.netAssets ?? 0))
+          .slice(0, 8)
+          .map((t: any) => ({
+            name: t.shortName ?? t.name,
+            netAssets: t.netAssets as number,
+            assetsAsOf: t.assetsAsOf as string | null,
+            confidence: t.confidence as string,
+          }));
+        return {
+          asOf: (data.asOf ?? null) as string | null,
+          topTrusts: sorted,
+        };
+      } catch {
+        return { asOf: null, topTrusts: [] };
+      }
+    }),
+  }),
   news: router({
     list: publicProcedure
       .input(z.object({

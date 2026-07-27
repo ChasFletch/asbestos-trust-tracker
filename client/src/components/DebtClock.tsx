@@ -269,14 +269,77 @@ interface DebtClockBillboardProps {
   payouts: number;
   remainingLow?: number;
   remainingHigh?: number;
+  lastUpdated?: string | null;
+  topTrusts?: Array<{ name: string; netAssets: number; assetsAsOf: string | null; confidence: string }>;
 }
 
-export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh }: DebtClockBillboardProps) {
+export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts }: DebtClockBillboardProps) {
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
   const primarySize = isMobile ? 19 : isTablet ? 33 : 50;
   const secondarySize = isMobile ? 17 : isTablet ? 23 : 30;
+
+  // Format lastUpdated for display
+  const formattedDate = lastUpdated
+    ? (() => {
+        try {
+          const d = new Date(lastUpdated + "T00:00:00Z");
+          return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+        } catch { return lastUpdated; }
+      })()
+    : null;
+
+  // Shared "Last Updated" strip style
+  const lastUpdatedStyle: React.CSSProperties = {
+    fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
+    color: "rgba(240,236,224,0.42)",
+    fontSize: "0.62rem",
+    fontStyle: "italic",
+    letterSpacing: "0.04em",
+    textAlign: "center",
+    marginTop: "0.15rem",
+  };
+
+  // Remaining assets tooltip content
+  const remainingTooltip = topTrusts && topTrusts.length > 0 ? (
+    <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
+      <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+        Top Contributing Trusts
+      </div>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.7rem" }}>
+        <tbody>
+          {topTrusts.map((t, i) => (
+            <tr key={i} style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
+              <td style={{ padding: "4px 6px 4px 0", color: "rgba(240,236,224,0.85)", fontWeight: 600, maxWidth: "140px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {t.name}
+              </td>
+              <td style={{ padding: "4px 4px", fontFamily: "'Courier New', monospace", color: SEG_ON, whiteSpace: "nowrap", fontSize: "0.67rem", textAlign: "right" }}>
+                ${(t.netAssets / 1e9).toFixed(3)}B
+              </td>
+              <td style={{ padding: "4px 0 4px 6px" }}>
+                <span style={{
+                  fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em",
+                  background: t.confidence === "filed" ? "rgba(34,197,94,0.15)" : t.confidence === "secondary" ? "rgba(96,165,250,0.15)" : "rgba(251,191,36,0.15)",
+                  color: t.confidence === "filed" ? "#86efac" : t.confidence === "secondary" ? "#93c5fd" : "#fcd34d",
+                  border: `1px solid ${t.confidence === "filed" ? "rgba(34,197,94,0.3)" : t.confidence === "secondary" ? "rgba(96,165,250,0.3)" : "rgba(251,191,36,0.3)"}`,
+                }}>{t.confidence === "filed" ? "a" : t.confidence === "secondary" ? "b" : "c"}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
+        Documented floor: $17.04B across 42 trusts. Full system estimate $17.0B–$22.5B includes modeled figures for trusts without filed balances.
+      </div>
+      <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
+        onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}
+        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,178,72,0.8)")}
+      >
+        Read full methodology →
+      </a>
+    </div>
+  ) : undefined;
 
   const frameEdge = "linear-gradient(145deg, #3a4147 0%, #14181b 22%, #05070a 50%, #23292e 78%, #454e55 100%)";
 
@@ -349,8 +412,14 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
             value={remaining}
             label="Documented Remaining Assets"
             sublabel="Primary-sourced figures only — see methodology"
+            tooltip={remainingTooltip}
             digitSize={primarySize}
           />
+          {formattedDate && (
+            <div style={{ ...lastUpdatedStyle, textAlign: "center", marginTop: "0.25rem" }}>
+              Last updated: {formattedDate}
+            </div>
+          )}
 
           {/* Range strip — full system estimate */}
           {remainingLow != null && remainingHigh != null && (
@@ -436,11 +505,22 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                    <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
                      Hard floor: $17.5B (GAO-11-819, Sept 2011). Only the Manville post-2010 increment is filed-document sourced. All other post-2010 figures are secondary or estimated. Source classifications follow the (a)/(b)/(c) system explained on the Methodology page.
                    </div>
+                   <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
+                     onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}
+                     onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,178,72,0.8)")}
+                   >
+                     Read full methodology →
+                   </a>
                  </div>
                }
                digitSize={secondarySize}
                compact={!isMobile}
             />
+            {formattedDate && (
+              <div style={{ ...lastUpdatedStyle, textAlign: "right", marginTop: "0.25rem" }}>
+                Last updated: {formattedDate}
+              </div>
+            )}
             </div>
           </div>
 

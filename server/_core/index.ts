@@ -39,6 +39,7 @@ async function startServer() {
   // Scheduled job handlers — must be mounted before tRPC and Vite fallthrough
   app.post("/api/scheduled/staleness-check", stalenessCheckHandler);
   registerDataRoutes(app);
+  registerPacerRoutes(app);
 
   // tRPC API
   app.use(
@@ -70,3 +71,4 @@ async function startServer() {
 startServer().catch(console.error);
 import { stalenessCheckHandler } from "../scheduledJobs";
 import { registerDataRoutes } from "../dataRoutes";
+import { registerPacerRoutes } from "../pacerRoutes";

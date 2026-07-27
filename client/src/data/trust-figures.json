@@ -1,9 +1,9 @@
 {
   "schema": "asbestos-trust-figures/v1",
-  "asOf": "2026-07-27",
+  "asOf": "2026-07-28",
   "aggregate": {
-    "remainingAssetsPoint": 17041946126,
-    "remainingAssetsLow": 17041946126,
+    "remainingAssetsPoint": 17042880106,
+    "remainingAssetsLow": 17042880106,
     "remainingAssetsHigh": 22500000000,
     "cumulativePayoutsPoint": 24000000000,
     "cumulativePayoutsLow": 17500000000,
@@ -11,7 +11,7 @@
     "activeTrustsEstimated": 60
   },
   "methodology": {
-    "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 9 from filed annual reports/quarterly filings (FY2024-FY2025 or Q1 2026) totaling $3,965,714,789, plus 32 from credible secondary compilations of trust annual reports (mostly FY2022 as-of dates) totaling $13,076,231,337. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
+    "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 9 from filed annual reports/quarterly filings (FY2025 annual reports or Q1 2026 quarterly) totaling $3,966,648,769, plus 32 from credible secondary compilations of trust annual reports (mostly FY2022 as-of dates) totaling $13,076,231,337. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
     "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
     "cumulativePayoutsPoint": "ESTIMATE. GAO-11-819 (Sept 2011) documents $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow). Point adds an estimated ~$6.5B paid 2011-2025, extrapolated from a documented 8-trust subset (PCC, WRG, Manville, GAF, Western, Plant, API, CE) paying ~$591.9M (2022) and ~$561.2M (2024), with higher run-rates earlier in the period. Treat as order-of-magnitude, not audited.",
     "viralFiguresDebunked": "'$30B remaining' traces to GAO-11-819's ~$36.8B TOTAL CAPITALIZATION of 60 trusts as of 2011 (initial funding + returns), not a current balance. GAO analyzed reports for only 47 of 60 trusts."
@@ -85,21 +85,23 @@
     },
     {
       "name": "Maremont Asbestos PI Trust",
-      "netAssets": 48725391,
-      "assetsAsOf": "2024-12-31",
-      "assetsBasis": "net claimants' equity (docketed report)",
-      "paymentPercentage": null,
+      "netAssets": 49591466,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed FY2025 annual report, D. Del. 19-10118-LSS Doc 374)",
+      "paymentPercentage": 28.4,
       "status": "active",
-      "confidence": "filed"
+      "confidence": "filed",
+      "note": "Total assets $53.32M; 166 claims paid totaling $2.09M in 2025; 28.4% under TDP 4.3 reconsideration (notice 4/7/2026)"
     },
     {
       "name": "API, Inc. Asbestos Settlement Trust",
-      "netAssets": 7666321,
-      "assetsAsOf": "2024-12-31",
-      "assetsBasis": "net claimants' equity (filed)",
-      "paymentPercentage": null,
+      "netAssets": 7734226,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net claimants' equity (filed FY2025 annual report, Bankr. D. Minn. 05-30073-GFK)",
+      "paymentPercentage": 22.0,
       "status": "active",
-      "confidence": "filed"
+      "confidence": "filed",
+      "note": "Total assets $7.91M; distributions $151.7K in 2025; cumulative claims paid to date $93.99M through 12/31/2025; 22% since 7/1/2023"
     },
     {
       "name": "W.R. Grace Asbestos PI Trust",
@@ -109,7 +111,7 @@
       "paymentPercentage": 30.1,
       "status": "active",
       "confidence": "secondary",
-      "note": "FY2024 report (PACER-only) shows >$1.84B total assets; % cut 31.7->30.1% eff. 4/17/2025"
+      "note": "FY2024 report (PACER-only) shows >$1.84B total assets; % cut 31.7->30.1% eff. 4/17/2025; FY2025 report filed 4/29/2026 (01-01139 Doc 33347), PACER-only - pull pending"
     },
     {
       "name": "Pittsburgh Corning Asbestos PI Settlement Trust",
@@ -119,7 +121,7 @@
       "paymentPercentage": 19.0,
       "status": "active",
       "confidence": "secondary",
-      "note": "% cut 24.5->19% Nov 2024 (pending TAC/FCR consent process)"
+      "note": "% cut 24.5->19% Nov 2024 (pending TAC/FCR consent process); FY2025 report filed ~Apr 2026 (W.D. Pa. 00-22876), PACER-only"
     },
     {
       "name": "United States Gypsum (USG) Asbestos Trust",
@@ -129,7 +131,7 @@
       "paymentPercentage": 11.0,
       "status": "active",
       "confidence": "secondary",
-      "note": "19.2->11% over time; reconsideration notice issued May 2026 - cut possible"
+      "note": "19.2->11% over time; reconsideration notice issued May 2026 - cut possible; FY2025 report unconfirmed - status report filed 7/13/2026 (01-02094 Doc 12923), PACER-only"
     },
     {
       "name": "Owens Corning/Fibreboard Asbestos PI Trust",
@@ -139,7 +141,7 @@
       "paymentPercentage": null,
       "status": "active",
       "confidence": "secondary",
-      "note": "OC Subfund cut June 2026"
+      "note": "OC Subfund cut June 2026; FY2025 report not confirmed docketed as of 7/28/2026 (FY2024: 00-03837 Doc 21261, 4/25/2025)"
     },
     {
       "name": "ASARCO Asbestos PI Settlement Trust",
@@ -158,7 +160,7 @@
       "paymentPercentage": 10.8,
       "status": "active",
       "confidence": "secondary",
-      "note": "raise-then-cut history: 20->35->10.8%"
+      "note": "raise-then-cut history: 20->35->10.8%; FY2025 report served 4/30/2026 (00-04471 Doc 11009), PACER-only"
     },
     {
       "name": "Bondex (Specialty Products Holding Corp.) Trust",
@@ -176,7 +178,8 @@
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
       "paymentPercentage": 15.0,
       "status": "active",
-      "confidence": "secondary"
+      "confidence": "secondary",
+      "note": "FY2025 report served 4/28/2026 (04-11300 Doc 9504), PACER-only"
     },
     {
       "name": "Paddock Enterprises (Owens-Illinois) Asbestos Trust",
@@ -186,7 +189,7 @@
       "paymentPercentage": null,
       "status": "active",
       "confidence": "secondary",
-      "note": "Current balance not publicly posted (DCPF-administered)"
+      "note": "Current balance not publicly posted (DCPF-administered); FY2025 report not confirmed docketed as of 7/28/2026 (FY2024: 20-10028 Doc 1707, 4/29/2025)"
     },
     {
       "name": "Quigley Company Asbestos PI Trust",
@@ -204,7 +207,8 @@
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
       "paymentPercentage": 12.2,
       "status": "active",
-      "confidence": "secondary"
+      "confidence": "secondary",
+      "note": "FY2025 report not confirmed docketed as of 7/28/2026 (FY2024: 01-10578 Doc 582593677, 4/29/2025)"
     },
     {
       "name": "Celotex Asbestos Settlement Trust",
@@ -214,7 +218,7 @@
       "paymentPercentage": 7.0,
       "status": "active_deferral",
       "confidence": "secondary",
-      "note": "7% since 6/23/2023 (from 8%); Deferral Period in effect since 1/1/2025"
+      "note": "7% since 6/23/2023 (from 8%); Deferral Period in effect since 1/1/2025; FY2025 report filed (M.D. Fla. 90-10016), PACER-only"
     },
     {
       "name": "Combustion Engineering 524(g) Asbestos PI Trust",
@@ -253,7 +257,7 @@
       "paymentPercentage": 4.3,
       "status": "active",
       "confidence": "secondary",
-      "note": "4.7->4.3% eff. 6/30/2026 (trust letter; pending TAC/FCR consent); YE2024 total assets ~$291.7M per secondary"
+      "note": "4.7->4.3% eff. 6/30/2026 (trust letter; pending TAC/FCR consent); YE2024 total assets ~$291.7M per secondary; FY2025 report expected ~Apr 2026 (E.D. La. 00-10992), not confirmed retrievable free"
     },
     {
       "name": "G-I Holdings (GAF) Asbestos PI Settlement Trust",
@@ -317,7 +321,7 @@
       "paymentPercentage": 10.3,
       "status": "active",
       "confidence": "secondary",
-      "note": "% cut 12.2->10.3% announced 12/3/2025"
+      "note": "% cut 12.2->10.3% announced 12/3/2025; FY2025 report filed 4/30/2026 (09-50026 Doc 14861), PACER-only - pull pending"
     },
     {
       "name": "ACandS Asbestos Settlement Trust",
@@ -412,6 +416,41 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "Maremont",
+      "detail": "FY2025 annual report filed 4/20/2026 (D. Del. 19-10118-LSS Doc 374; posted free on maremont.mfrclaims.com): NCE $49.59M as of 12/31/2025 (from $48.73M); total assets $53.32M; 166 claims paid totaling $2.09M in 2025; payment percentage 28.4% (filed figure rolled forward FY2024 -> FY2025)",
+      "source": "Maremont FY2025 Annual Report and Financial Statements (filed)"
+    },
+    {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "API, Inc.",
+      "detail": "FY2025 annual report filed 4/29/2026 (Bankr. D. Minn. 05-30073-GFK; posted free on trust site): NCE $7.73M as of 12/31/2025 (from $7.67M); total assets $7.91M; $151.7K distributions in 2025; cumulative claims paid to date $93.99M; 22% payment percentage confirmed",
+      "source": "API, Inc. FY2025 Annual Report of the Trustee (filed)"
+    },
+    {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "W.R. Grace",
+      "detail": "FY2025 annual report filed 4/29/2026 (D. Del. 01-01139 Doc 33347); exhibits PACER-only - figures pending PACER pull; DB retains FY2022 secondary figure (no unverified upgrade)",
+      "source": "CourtListener docket mirror (notice free; exhibits PACER)"
+    },
+    {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "Motors Liquidation (GM)",
+      "detail": "FY2025 annual report filed 4/30/2026 (S.D.N.Y. 09-50026 Doc 14861); exhibits PACER-only - figures pending PACER pull; DB retains FY2021 secondary figure",
+      "source": "CourtListener docket mirror (notice free; exhibits PACER)"
+    },
+    {
+      "date": "2026-04-07",
+      "type": "reconsideration_notice",
+      "trust": "Maremont",
+      "detail": "TDP Section 4.3 reconsideration of payment percentage announced; 28.4% under reconsideration, change possible",
+      "source": "Maremont Notice Regarding Payment Percentage (4/7/2026), maremont.mfrclaims.com"
+    },
     {
       "date": "2026-06-30",
       "type": "percentage_cut",
@@ -560,6 +599,14 @@
     {
       "label": "Deep-research audit compiled 2026-07-27 (12 dimensions + 8 follow-ups; filed documents prioritized)",
       "tier": "methodology"
+    },
+    {
+      "label": "Maremont FY2025 annual report + 4/7/2026 payment-percentage notice (maremont.mfrclaims.com)",
+      "tier": "primary"
+    },
+    {
+      "label": "CourtListener/RECAP docket mirrors (filing verification for WRG, MLC, Armstrong, Flintkote, USG, OC, Federal-Mogul, Paddock; exhibits PACER-only)",
+      "tier": "primary"
     }
   ]
 }

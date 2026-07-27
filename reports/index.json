@@ -6,7 +6,58 @@
       "title": "State of the Asbestos Trust System — Q3 2026",
       "date": "2026-07-28",
       "asOf": "2026-07-27",
-      "path": "reports/2026-Q3-state-of-the-asbestos-trust-system.md"
+      "path": "reports/2026-Q3-state-of-the-asbestos-trust-system.md",
+      "summary": "The first real-time issue: a $17.04B documented floor with 23.3% resting on filed documents, two payment-percentage cuts in the window, a USG reconsideration notice, and DCPF's consolidation to roughly 51% of the documented floor."
+    },
+    {
+      "id": "ATR-2026-Q2",
+      "title": "State of the Asbestos Trust System — Q2 2026",
+      "date": "2026-07-01",
+      "asOf": "2026-06-30",
+      "path": "reports/2026-Q2-state-of-the-asbestos-trust-system.md",
+      "summary": "Filing-season issue: nine trusts move onto FY2025 filed footing, refreshing the documented floor to an exact $17,042,880,106 (23.3% class-(a)); cuts at Combustion Engineering and Babcock & Wilcox, reconsideration notices at Maremont, USG, and B&W; Georgia-Pacific abandons Bestwall and plans a new Chapter 11. Retrospective issue, backfilled July 28, 2026.",
+      "highlights": [
+        "Documented floor refreshed to an exact $17,042,880,106 — nine trusts (23.3%) now rest on filed FY2025/Q1 2026 documents",
+        "Two cuts: Combustion Engineering to 15.3% (April) and Babcock & Wilcox 4.7%→4.3% (June 30, 'until further notice')",
+        "Three reconsideration notices: Maremont (Apr 7), USG (May), B&W (May 7) — B&W's seven-week notice-to-cut is the documented template",
+        "Owens Corning Subfund cut in June; magnitude not yet documented — flagged, not estimated",
+        "Georgia-Pacific abandons Bestwall after eight years, plans a new Chapter 11; ~$1B+ trust expected but uncounted until funded",
+        "FY2025 season splits free vs. PACER-only: WRG, MLC, Armstrong, Flintkote, PCC, and Celotex exhibits sit behind PACER",
+        "DII's $121.1M 2025 claims expense and Manville's $5.33B cumulative payouts newly documented from filed reports"
+      ]
+    },
+    {
+      "id": "ATR-2026-Q1",
+      "title": "State of the Asbestos Trust System — Q1 2026",
+      "date": "2026-04-01",
+      "asOf": "2026-03-31",
+      "path": "reports/2026-Q1-state-of-the-asbestos-trust-system.md",
+      "summary": "NARCO resumes under DCPF administration, the Fourth Circuit's Herlihy decision channels ~60,000 stayed DBMP suits toward a future trust, the Bestwall fight reaches the Supreme Court docket, and the Cross-Trust Audit Program runs its first cycles — a quiet quarter for payment percentages. Retrospective issue, backfilled July 28, 2026.",
+      "highlights": [
+        "No documented cuts or raises — a pause in the post-2023 cadence; trailing record: six cuts, zero raises in the tracked set",
+        "NARCO resumes intake January 12 under DCPF, completing the migration paused December 31; DCPF now administers ~51% of the documented floor",
+        "Herlihy v. DBMP (Feb 11): Fourth Circuit affirms denial of stay relief; ~60,000 stayed suits channel toward an eventual §524(g) trust",
+        "Bestwall fight moves to the Supreme Court docket — cert petition No. 25-1013 filed in February",
+        "Cross-Trust Audit Program runs its first monthly cycles; TDP §5.5 completes its first full quarter in effect",
+        "Floor composition unchanged at ≈$17.0B — the April filing season is the next data event"
+      ]
+    },
+    {
+      "id": "ATR-2025-Q4",
+      "title": "State of the Asbestos Trust System — 2025 Year in Review",
+      "date": "2026-01-01",
+      "asOf": "2025-12-31",
+      "path": "reports/2025-Q4-state-of-the-asbestos-trust-system.md",
+      "summary": "The 2025 year in review: four payment-percentage cuts and the Celotex deferral, Rapid-American's end-of-life, landmark Fourth Circuit rulings in Kaiser Gypsum and Bestwall, and DCPF's §5.5 amendments and Cross-Trust Audit Program consolidating governance across half the documented floor. Retrospective issue, backfilled July 28, 2026.",
+      "highlights": [
+        "Documented floor ≈$17.0B; composition static all year — 32 secondary-carried trusts at exactly $13,076,231,337, nine public filers at FY2024 values",
+        "Four documented cuts in 2025: Kaiser (Feb), W.R. Grace (Apr), Quigley (Oct), Motors Liquidation (Dec); Celotex enters a Deferral Period at 7%",
+        "Zero raises in the tracked set; Shook & Fletcher's 50→58% raise (May) documents movement outside it",
+        "Rapid-American closes June 6, depleted — final payouts ~18–21%, the system's newest end-of-life data point",
+        "Fourth Circuit landmarks: Kaiser Gypsum confirmation affirmed (Apr 29); Bestwall jurisdiction upheld (Aug 1), en banc denied 8–6 (Oct 30)",
+        "Governance consolidation: TDP §5.5 amendments (Nov 14) and the Cross-Trust Audit Program (Dec 10–11) propagate across DCPF's ~$8.7B, ~51% of the floor",
+        "NARCO pauses intake December 31 ahead of DCPF administration — the year ends mid-transition"
+      ]
     }
   ]
 }

@@ -1,26 +1,95 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Asbestos Trust Fund Tracker</title>    
-    <!-- THIS IS THE START OF A COMMENT BLOCK, BLOCK TO BE DELETED: Google Fonts here, example:
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>TrustFundClock.org — Asbestos Trust Fund Tracker</title>
+    <meta name="description" content="The most current, primary-sourced tracker of all active U.S. asbestos bankruptcy trust funds — total remaining assets, cumulative payouts, payment percentages, and reporting schedules." />
+    <meta property="og:title" content="TrustFundClock.org — Asbestos Trust Fund Tracker" />
+    <meta property="og:description" content="Live data on $17B+ in remaining asbestos trust fund assets. Updated from primary court filings." />
+    <meta property="og:type" content="website" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Dataset",
+          "@id": "https://trustfundclock.org/#dataset",
+          "name": "U.S. Asbestos Bankruptcy Trust Fund Database",
+          "description": "A comprehensive, primary-sourced database of all active U.S. asbestos bankruptcy trust funds, including net asset balances, payment percentages, payment history, administrator information, and court docket references. Updated weekly.",
+          "url": "https://trustfundclock.org/trusts",
+          "creator": {
+            "@type": "Organization",
+            "@id": "https://trustfundclock.org/#org",
+            "name": "TrustFundClock.org",
+            "url": "https://trustfundclock.org",
+            "funder": {
+              "@type": "LegalService",
+              "name": "Danziger & De Llano",
+              "url": "https://danzigerlaw.com"
+            }
+          },
+          "license": "https://creativecommons.org/licenses/by/4.0/",
+          "temporalCoverage": "1988/..",
+          "spatialCoverage": "United States",
+          "keywords": ["asbestos", "bankruptcy trust", "mesothelioma", "trust fund", "payment percentage", "asbestos litigation"],
+          "distribution": {
+            "@type": "DataDownload",
+            "encodingFormat": "text/csv",
+            "contentUrl": "https://trustfundclock.org/api/export/trusts.csv"
+          },
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "TrustFundClock.org",
+            "url": "https://trustfundclock.org"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://trustfundclock.org/#website",
+          "name": "TrustFundClock.org",
+          "url": "https://trustfundclock.org",
+          "description": "Independent public research platform tracking the real-time state of U.S. asbestos bankruptcy trust funds.",
+          "publisher": {
+            "@id": "https://trustfundclock.org/#org"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://trustfundclock.org/trusts?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://trustfundclock.org/#org",
+          "name": "TrustFundClock.org",
+          "url": "https://trustfundclock.org",
+          "sameAs": [
+            "https://asbestosatlas.org",
+            "https://wikimesothelioma.com"
+          ],
+          "funder": {
+            "@type": "LegalService",
+            "name": "Danziger & De Llano",
+            "url": "https://danzigerlaw.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Houston",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    THIS IS THE END OF A COMMENT BLOCK, BLOCK TO BE DELETED -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
   </head>
-
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+    <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
-
 </html>

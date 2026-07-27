@@ -36,6 +36,9 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   registerStorageProxy(app);
   registerOAuthRoutes(app);
+  // Scheduled job handlers — must be mounted before tRPC and Vite fallthrough
+  app.post("/api/scheduled/staleness-check", stalenessCheckHandler);
+
   // tRPC API
   app.use(
     "/api/trpc",
@@ -64,3 +67,4 @@ async function startServer() {
 }
 
 startServer().catch(console.error);
+import { stalenessCheckHandler } from "../scheduledJobs";

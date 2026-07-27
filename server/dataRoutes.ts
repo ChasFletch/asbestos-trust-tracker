@@ -1,4 +1,5 @@
 import type { Express } from "express";
+import { marked } from "marked";
 import { getAllTrusts } from "./db";
 
 const GITHUB_REPO = "ChasFletch/asbestos-trust-tracker";
@@ -255,6 +256,97 @@ export function registerDataRoutes(app: Express) {
       res.set("Content-Type", "text/plain; charset=utf-8");
       res.send(content);
     } catch { res.status(500).json({ error: "Failed to fetch report" }); }
+  });
+
+  // /api/reports/:id/pdf — styled printable HTML page (user prints to PDF via browser)
+  app.get("/api/reports/:id/pdf", async (req, res) => {
+    try {
+      const { id } = req.params;
+      if (!/^ATR-\d{4}-Q[1-4]$/.test(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
+      const content = await fetchReportMarkdown(id);
+      if (!content) { res.status(404).json({ error: "Report not found" }); return; }
+      const bodyHtml = await marked.parse(content);
+      const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${id} — AsbestosTrusts.org</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Source+Code+Pro:wght@400;500&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.65;
+    color: #1a1a1a;
+    background: #fff;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 40px;
+  }
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #c0392b;
+    margin-bottom: 36px;
+  }
+  .site-name { font-size: 13pt; font-weight: 700; color: #c0392b; letter-spacing: 0.02em; }
+  .report-id { font-family: 'Source Code Pro', monospace; font-size: 9pt; color: #666; background: #f5f5f5; padding: 3px 8px; border-radius: 3px; }
+  h1 { font-size: 20pt; font-weight: 700; line-height: 1.25; margin-bottom: 8px; color: #111; }
+  h2 { font-size: 13pt; font-weight: 700; margin-top: 28px; margin-bottom: 10px; color: #111; border-bottom: 1px solid #e0e0e0; padding-bottom: 4px; }
+  h3 { font-size: 11pt; font-weight: 600; margin-top: 20px; margin-bottom: 6px; color: #222; }
+  p { margin-bottom: 12px; }
+  ul, ol { margin: 0 0 12px 20px; }
+  li { margin-bottom: 4px; }
+  code { font-family: 'Source Code Pro', monospace; font-size: 9pt; background: #f5f5f5; padding: 1px 4px; border-radius: 2px; }
+  pre { background: #f5f5f5; padding: 12px 16px; border-radius: 4px; overflow-x: auto; margin-bottom: 12px; }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 3px solid #c0392b; padding-left: 14px; color: #555; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 9.5pt; }
+  th { background: #f0f0f0; font-weight: 600; text-align: left; padding: 6px 10px; border: 1px solid #ddd; }
+  td { padding: 5px 10px; border: 1px solid #ddd; }
+  tr:nth-child(even) td { background: #fafafa; }
+  a { color: #c0392b; text-decoration: none; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 24px 0; }
+  .footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid #e0e0e0; font-size: 8.5pt; color: #888; }
+  @media print {
+    body { padding: 0; max-width: 100%; }
+    .no-print { display: none !important; }
+    h2, h3 { page-break-after: avoid; }
+    table, pre, blockquote { page-break-inside: avoid; }
+  }
+  .print-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #c0392b; color: #fff; border: none; border-radius: 4px;
+    padding: 8px 16px; font-size: 10pt; font-family: sans-serif;
+    cursor: pointer; margin-bottom: 24px;
+  }
+  .print-btn:hover { background: #a93226; }
+</style>
+</head>
+<body>
+<div class="site-header">
+  <span class="site-name">AsbestosTrusts.org</span>
+  <span class="report-id">${id}</span>
+</div>
+<button class="print-btn no-print" onclick="window.print()">⬇ Save as PDF</button>
+${bodyHtml}
+<div class="footer">
+  Published by AsbestosTrusts.org — an independent public research platform. Data sourced from filed court documents, trust annual reports, and quarterly filings. This is not legal advice.
+</div>
+<script class="no-print">
+  // Auto-trigger print dialog when opened from download link
+  if (window.location.search.includes('print=1')) { window.addEventListener('load', () => setTimeout(() => window.print(), 400)); }
+<\/script>
+</body>
+</html>`;
+      res.set("Content-Type", "text/html; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=3600");
+      res.send(html);
+    } catch { res.status(500).json({ error: "Failed to generate PDF page" }); }
   });
 
   // /api/reports/:id — report metadata only

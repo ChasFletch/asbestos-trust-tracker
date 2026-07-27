@@ -1,5 +1,5 @@
 import React from "react";
-import { ExternalLink, FileText, Calendar, ChevronRight } from "lucide-react";
+import { ExternalLink, FileText, Calendar, ChevronRight, Download, Star } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 
@@ -10,7 +10,6 @@ interface KimiReport {
   date: string;      // ISO date "2026-07-28"
   asOf?: string;     // data as-of date
   path: string;      // repo-relative path to the markdown file
-  // optional enrichment fields (future quarters may add these)
   summary?: string;
   highlights?: string[];
   fileUrl?: string;  // explicit URL override
@@ -29,12 +28,6 @@ const KEY_FINDINGS: Record<string, string[]> = {
   ],
 };
 
-interface ReportsIndex {
-  schema?: string;
-  reports: KimiReport[];
-  lastUpdated?: string;
-}
-
 const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ChasFletch/asbestos-trust-tracker/main";
 
 function deriveFileUrl(report: KimiReport): string {
@@ -42,11 +35,145 @@ function deriveFileUrl(report: KimiReport): string {
   return `${GITHUB_RAW_BASE}/${report.path}`;
 }
 
+// ── Report card ───────────────────────────────────────────────────────────────
+function ReportCard({ report, isLatest }: { report: KimiReport; isLatest: boolean }) {
+  const findings = (report.highlights && report.highlights.length > 0)
+    ? report.highlights
+    : KEY_FINDINGS[report.id];
+
+  const pdfUrl = `/api/reports/${report.id}/pdf?print=1`;
+
+  return (
+    <div
+      className={[
+        "rounded border transition-colors overflow-hidden",
+        isLatest
+          ? "border-primary/40 bg-primary/5 hover:border-primary/60 shadow-sm"
+          : "border-border/50 bg-card/40 hover:border-border",
+      ].join(" ")}
+    >
+      {/* Latest banner */}
+      {isLatest && (
+        <div className="flex items-center gap-2 px-5 py-2 bg-primary text-primary-foreground">
+          <Star size={12} fill="currentColor" />
+          <span className="text-xs font-semibold uppercase tracking-widest">Latest Report</span>
+          <span className="ml-auto text-xs opacity-75">Most recent issue</span>
+        </div>
+      )}
+
+      <div className="p-5">
+        <div className="flex items-start gap-4">
+          {/* Icon */}
+          <div
+            className={[
+              "w-10 h-10 rounded flex items-center justify-center shrink-0 mt-0.5",
+              isLatest ? "bg-primary/20" : "bg-primary/10",
+            ].join(" ")}
+          >
+            <FileText size={18} className="text-primary/70" />
+          </div>
+
+          <div className="flex-1 min-w-0">
+            {/* Meta row */}
+            <div className="flex flex-wrap items-center gap-2 mb-1.5">
+              <span
+                className={[
+                  "text-xs font-mono px-1.5 py-0.5 rounded border",
+                  isLatest
+                    ? "bg-primary/15 text-primary border-primary/30"
+                    : "bg-primary/10 text-primary/80 border-primary/20",
+                ].join(" ")}
+              >
+                {report.id}
+              </span>
+              <span className="text-xs text-muted-foreground/60 flex items-center gap-1">
+                <Calendar size={10} />
+                {new Date(report.date + "T12:00:00Z").toLocaleDateString("en-US", {
+                  month: "long", day: "numeric", year: "numeric",
+                })}
+              </span>
+              {report.asOf && (
+                <span className="text-xs text-muted-foreground/50">
+                  Data as of {new Date(report.asOf + "T12:00:00Z").toLocaleDateString("en-US", {
+                    month: "short", day: "numeric", year: "numeric",
+                  })}
+                </span>
+              )}
+            </div>
+
+            {/* Title */}
+            <h3 className={["text-sm font-semibold leading-snug mb-2", isLatest ? "text-foreground" : "text-foreground"].join(" ")}>
+              {report.title}
+            </h3>
+
+            {/* Summary */}
+            {report.summary && (
+              <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                {report.summary}
+              </p>
+            )}
+
+            {/* Key findings */}
+            {findings && findings.length > 0 && (
+              <div className="mb-3">
+                <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-1.5">
+                  Key Findings
+                </p>
+                <ul className="space-y-0.5 mb-2">
+                  {findings.map((h, i) => (
+                    <li key={i} className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                      <ChevronRight size={12} className="text-primary/40 mt-0.5 shrink-0" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Action row */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <Link
+                href={`/reports/${report.id}`}
+                className="inline-flex items-center gap-1 text-xs text-primary hover:underline font-medium"
+              >
+                Read full report →
+              </Link>
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded border border-border/60 bg-background text-foreground hover:bg-secondary transition-colors"
+                title="Opens a print-ready page — use your browser's Save as PDF"
+              >
+                <Download size={11} />
+                Download PDF
+              </a>
+              <a
+                href={deriveFileUrl(report)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+              >
+                Raw on GitHub <ExternalLink size={9} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 export default function Reports() {
   const { data, isLoading: loading } = trpc.trustFiguresExtra.reportsIndex.useQuery();
   const reports = (data?.reports ?? []) as KimiReport[];
   const nextReportDate = "January 1, 2027";
   const nextReportId = "ATR-2027-Q1";
+
+  // Sorted newest-first; the first entry is the "latest"
+  const sorted = reports.slice().sort((a, b) => b.date.localeCompare(a.date));
+  const latestId = sorted[0]?.id ?? null;
 
   return (
     <div className="container py-10 max-w-3xl">
@@ -112,84 +239,9 @@ export default function Reports() {
       ) : (
         /* ── Reports list ─────────────────────────────────────────────── */
         <div className="space-y-4">
-          {reports
-            .slice()
-            .sort((a, b) => b.date.localeCompare(a.date))
-            .map((report) => (
-              <div
-                key={report.id}
-                className="p-5 rounded border border-border/50 bg-card/40 hover:border-border transition-colors"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <FileText size={18} className="text-primary/60" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                      <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-primary/10 text-primary/80 border border-primary/20">
-                        {report.id}
-                      </span>
-                      <span className="text-xs text-muted-foreground/60 flex items-center gap-1">
-                        <Calendar size={10} />
-                        {new Date(report.date + "T12:00:00Z").toLocaleDateString("en-US", {
-                          month: "long", day: "numeric", year: "numeric",
-                        })}
-                      </span>
-                      {report.asOf && (
-                        <span className="text-xs text-muted-foreground/50">
-                          Data as of {new Date(report.asOf + "T12:00:00Z").toLocaleDateString("en-US", {
-                            month: "short", day: "numeric", year: "numeric",
-                          })}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-sm font-semibold text-foreground leading-snug mb-2">
-                      {report.title}
-                    </h3>
-                    {report.summary && (
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-2">
-                        {report.summary}
-                      </p>
-                    )}
-                    {/* Key findings: prefer report.highlights, fall back to hard-coded per-ID findings */}
-                    {(() => {
-                      const findings = (report.highlights && report.highlights.length > 0)
-                        ? report.highlights
-                        : KEY_FINDINGS[report.id];
-                      return findings && findings.length > 0 ? (
-                      <div className="mb-3">
-                        <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-1.5">Key Findings</p>
-                      <ul className="space-y-0.5 mb-2">
-                        {findings.map((h, i) => (
-                          <li key={i} className="flex items-start gap-1.5 text-xs text-muted-foreground">
-                            <ChevronRight size={12} className="text-primary/40 mt-0.5 shrink-0" />
-                            {h}
-                          </li>
-                        ))}
-                      </ul>
-                      </div>
-                      ) : null;
-                    })()}
-                    <div className="flex items-center gap-3">
-                      <Link
-                        href={`/reports/${report.id}`}
-                        className="inline-flex items-center gap-1 text-xs text-primary hover:underline font-medium"
-                      >
-                        Read full report →
-                      </Link>
-                      <a
-                        href={deriveFileUrl(report)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
-                      >
-                        Raw on GitHub <ExternalLink size={9} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {sorted.map((report) => (
+            <ReportCard key={report.id} report={report} isLatest={report.id === latestId} />
+          ))}
 
           <div className="pt-4 p-5 rounded border border-border/40 bg-card/40">
             <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">

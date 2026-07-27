@@ -18,6 +18,8 @@ schema: asbestos-trust-report/v1
 
 **Comparability note.** This is the inaugural issue, so there is no prior published report to diff against. The reporting window is the spring–summer annual-report cycle, April 1 – July 27, 2026; movement within the window is reconstructed from the dataset's documented changes log. This issue establishes the baseline for all future quarter-over-quarter comparisons.
 
+*Editor's note (added July 28, 2026): Retrospective back issues — ATR-2025-Q4 (2025 Year in Review), ATR-2026-Q1, and ATR-2026-Q2 — have been added to the archive alongside this issue, each limited to information documented as of its own as-of date. This issue remains the first produced in real time; beginning with ATR-2026-Q4, quarter-over-quarter movement will be diffed against ATR-2026-Q2.*
+
 ## A. Aggregate remaining assets: a $17.0B documented floor inside a wider estimated range
 
 The system's documented floor stands at **$17,041,946,126** — the exact arithmetic sum of the latest located net-asset figure for each of 41 active trusts. Two tiers compose it: **$3,965,714,789 (a)** across 9 trusts from filed annual reports and quarterly filings (FY2024–FY2025, plus Manville's Q1 2026 filing), and **$13,076,231,337 (b)** across 32 trusts from credible secondary compilations of trust annual reports.

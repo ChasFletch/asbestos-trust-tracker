@@ -85,3 +85,5 @@
 - [x] llms.txt added at /llms.txt with canonical figures and citation guidance
 - [x] FAQ JSON-LD schema added to Methodology page (7 questions)
 - [x] Corrections page added at /corrections with submission form and recent corrections log
+- [x] Reports archive backfilled: ATR-2025-Q4 (2025 Year in Review), ATR-2026-Q1, ATR-2026-Q2 retrospective issues with summaries + Key Findings in index.json; editor's note added to ATR-2026-Q3 comparability section
+- [ ] Ingest backfill-verified items into trust-figures.json changes log: Quigley 10/30/2025 cut (14.5→13.3% non-releasing), H.K. Porter 1/31/2025 resumption at 3.0%, Celotex 1/22/2025 audit notice, Shook & Fletcher 50→58% May 2025 (outside floor)

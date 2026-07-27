@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 // Backdrop lives in ./debtclock-bg.ts as a data-URI export (no asset files needed).
 import { BILL_BG } from "./debtclock-bg";
@@ -102,9 +102,25 @@ function useViewportWidth() {
 // ---------------------------------------------------------------------------
 // LedPanel — recessed bezel, amber digits, engraved serif label
 // ---------------------------------------------------------------------------
-function LedPanel({ value, label, sublabel, digitSize = 38, compact = false }: {
-  value: number; label: string; sublabel?: string; digitSize?: number; compact?: boolean;
+function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = false }: {
+  value: number; label: string; sublabel?: string; tooltip?: React.ReactNode; digitSize?: number; compact?: boolean;
 }) {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = useCallback((e: MouseEvent) => {
+    if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
+      setShowTooltip(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showTooltip) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showTooltip, handleClickOutside]);
+
   const [displayed, setDisplayed] = useState(0);
   const prevRef = useRef(0);
 
@@ -187,6 +203,58 @@ function LedPanel({ value, label, sublabel, digitSize = 38, compact = false }: {
           textShadow: "0 1px 3px rgba(0,0,0,0.6)", marginTop: "-0.3rem",
         }}>
           {sublabel}
+        </div>
+      )}
+      {tooltip && (
+        <div ref={tooltipRef} style={{ position: "relative", display: "inline-block", alignSelf: compact ? "flex-end" : "center" }}>
+          <button
+            onClick={() => setShowTooltip(v => !v)}
+            aria-label="Show calculation methodology"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.3rem",
+              background: "rgba(255,178,72,0.12)", border: "1px solid rgba(255,178,72,0.30)",
+              borderRadius: "3px", padding: "2px 8px",
+              color: "rgba(240,236,224,0.70)", cursor: "pointer",
+              fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif",
+              fontSize: "0.65rem", fontStyle: "italic", letterSpacing: "0.04em",
+              transition: "background 160ms ease-out, border-color 160ms ease-out",
+              marginTop: "-0.1rem",
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,178,72,0.22)"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,178,72,0.55)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,178,72,0.12)"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,178,72,0.30)"; }}
+          >
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M8 7v5M8 5v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+            How calculated
+          </button>
+          {showTooltip && (
+            <div style={{
+              position: "absolute", bottom: "calc(100% + 8px)",
+              right: compact ? "0" : "50%",
+              transform: compact ? "none" : "translateX(50%)",
+              width: "min(340px, 90vw)",
+              background: "oklch(0.13 0.02 200 / 0.97)",
+              border: "1px solid rgba(255,178,72,0.25)",
+              borderRadius: "6px",
+              padding: "1rem 1.1rem",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.7)",
+              zIndex: 50,
+              backdropFilter: "blur(6px)",
+            }}>
+              {tooltip}
+              <div style={{
+                position: "absolute", bottom: "-6px",
+                right: compact ? "16px" : "50%",
+                width: "10px", height: "10px",
+                background: "oklch(0.13 0.02 200 / 0.97)",
+                borderRight: "1px solid rgba(255,178,72,0.25)",
+                borderBottom: "1px solid rgba(255,178,72,0.25)",
+                transform: compact ? "rotate(45deg)" : "translateX(50%) rotate(45deg)",
+              }} />
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -327,12 +395,52 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
           }}>
             <div style={{ width: isMobile ? "100%" : "min(45%, 470px)" }}>
               <LedPanel
-                value={payouts}
-                label="Cumulative Payouts Since 1988"
-                sublabel="Est. from ILR 2016 baseline + 2017–2026"
-                digitSize={secondarySize}
-                compact={!isMobile}
-              />
+               value={payouts}
+               label="Cumulative Payouts Since 1988"
+               sublabel="Derived estimate — see methodology"
+               tooltip={
+                 <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
+                   <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                     How $26.6B Is Calculated
+                   </div>
+                   <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
+                     <tbody>
+                       {[
+                         ["$17,500,000,000", "GAO-11-819 floor", "All trusts through 2010", "filed"],
+                         ["+ $2,179,722,253", "Manville post-2010", "Filed Q1 2026 increment", "filed"],
+                         ["+ $2,500,000,000", "W.R. Grace", "Trust website (est. all post-2014)", "secondary"],
+                         ["+ $950,000,000", "NARCO post-2010", "Secondary sources", "secondary"],
+                         ["+ $3,500,000,000", "Other DCPF trusts", "7 trusts, post-2010 est.", "est"],
+                       ].map(([amt, name, note, conf]) => (
+                         <tr key={name} style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
+                           <td style={{ padding: "4px 6px 4px 0", fontFamily: "'Courier New', monospace", color: SEG_ON, whiteSpace: "nowrap", fontSize: "0.68rem" }}>{amt}</td>
+                           <td style={{ padding: "4px 4px", fontWeight: 600, color: "rgba(240,236,224,0.85)" }}>{name}</td>
+                           <td style={{ padding: "4px 0 4px 4px", color: "rgba(240,236,224,0.50)", fontSize: "0.65rem" }}>{note}</td>
+                           <td style={{ padding: "4px 0 4px 6px" }}>
+                             <span style={{
+                               fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em",
+                               background: conf === "filed" ? "rgba(34,197,94,0.15)" : conf === "secondary" ? "rgba(96,165,250,0.15)" : "rgba(251,191,36,0.15)",
+                               color: conf === "filed" ? "#86efac" : conf === "secondary" ? "#93c5fd" : "#fcd34d",
+                               border: `1px solid ${conf === "filed" ? "rgba(34,197,94,0.3)" : conf === "secondary" ? "rgba(96,165,250,0.3)" : "rgba(251,191,36,0.3)"}`,
+                             }}>{conf === "filed" ? "a" : conf === "secondary" ? "b" : "c"}</span>
+                           </td>
+                         </tr>
+                       ))}
+                       <tr style={{ borderTop: "1px solid rgba(255,178,72,0.30)" }}>
+                         <td colSpan={4} style={{ padding: "6px 0 2px", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.72rem", fontWeight: 700 }}>
+                           = $26,629,722,253 &nbsp;<span style={{ color: "rgba(240,236,224,0.45)", fontFamily: "serif", fontWeight: 400, fontSize: "0.65rem" }}>est. total</span>
+                         </td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
+                     Hard floor: $17.5B (GAO-11-819, Sept 2011). Only the Manville post-2010 increment is filed-document sourced. All other post-2010 figures are secondary or estimated. Source classifications follow the (a)/(b)/(c) system explained on the Methodology page.
+                   </div>
+                 </div>
+               }
+               digitSize={secondarySize}
+               compact={!isMobile}
+            />
             </div>
           </div>
 

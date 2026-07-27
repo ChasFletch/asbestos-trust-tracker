@@ -11,7 +11,7 @@ export default function Home() {
   const remaining = agg?.remainingLow ?? 17041946126;
   const remainingLow = agg?.remainingLow ?? 17041946126;
   const remainingHigh = agg?.remainingHigh ?? 22500000000;
-  const paidOut = agg?.paidOut ?? 24000000000;
+  const paidOut = agg?.paidOut ?? 26629722253;
 
   const activeTrusts = trusts?.filter((t) => t.status === "active") ?? [];
   const recentCuts = trusts?.filter((t) => t.direction === "down") ?? [];

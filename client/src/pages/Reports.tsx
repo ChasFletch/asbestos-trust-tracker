@@ -152,11 +152,15 @@ export default function Reports() {
                       </p>
                     )}
                     {/* Key findings: prefer report.highlights, fall back to hard-coded per-ID findings */}
-                    {((report.highlights && report.highlights.length > 0) || KEY_FINDINGS[report.id]) && (
+                    {(() => {
+                      const findings = (report.highlights && report.highlights.length > 0)
+                        ? report.highlights
+                        : KEY_FINDINGS[report.id];
+                      return findings && findings.length > 0 ? (
                       <div className="mb-3">
                         <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-1.5">Key Findings</p>
                       <ul className="space-y-0.5 mb-2">
-                        {(report.highlights ?? KEY_FINDINGS[report.id] ?? []).map((h, i) => (
+                        {findings.map((h, i) => (
                           <li key={i} className="flex items-start gap-1.5 text-xs text-muted-foreground">
                             <ChevronRight size={12} className="text-primary/40 mt-0.5 shrink-0" />
                             {h}
@@ -164,7 +168,8 @@ export default function Reports() {
                         ))}
                       </ul>
                       </div>
-                    )}
+                      ) : null;
+                    })()}
                     <div className="flex items-center gap-3">
                       <Link
                         href={`/reports/${report.id}`}

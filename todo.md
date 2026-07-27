@@ -65,9 +65,9 @@
   - [x] Register weekly Heartbeat cron after first deploy
 - [ ] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (pending PACER account review)
 - [ ] Per-trust detail page (/trusts/:id)
-- [ ] Dynamic /reports/:id route rendering full markdown report on-site
-- [ ] Key Findings bulleted list on ATR-2026-Q3 report card at /reports
-- [ ] Trust table wired to render directly from trust-figures.json as primary source
+- [x] Dynamic /reports/:id route rendering full markdown report on-site
+- [x] Key Findings bulleted list on ATR-2026-Q3 report card at /reports
+- [x] Trust table wired to render directly from trust-figures.json as primary source
 - [x] News feed wired to read from client/src/data/news-drafts/ (Kimi weekly markdown, 15min cache)
 - [x] Quarterly Reports page added at /reports — reads from reports/index.json, graceful pending state
 - [x] Reports nav link added to SiteNav

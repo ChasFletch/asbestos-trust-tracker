@@ -5,6 +5,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { fetchTrustFigures } from "./dataRoutes";
+import { fetchReportsIndex } from "./dataRoutes";
 import {
   addNewsItem,
   addPaymentHistoryEntry,
@@ -120,6 +121,27 @@ export const appRouter = router({
         };
       } catch {
         return { asOf: null, trusts: [] };
+      }
+    }),
+  }),
+  trustFiguresExtra: router({
+    reportsIndex: publicProcedure.query(async () => {
+      try {
+        const data = await fetchReportsIndex() as any;
+        if (!data) return { reports: [] };
+        return {
+          reports: (data.reports ?? []).map((r: any) => ({
+            id: r.id as string,
+            title: r.title as string,
+            date: r.date as string,
+            asOf: (r.asOf ?? null) as string | null,
+            path: (r.path ?? null) as string | null,
+            summary: (r.summary ?? null) as string | null,
+            highlights: (r.highlights ?? []) as string[],
+          })),
+        };
+      } catch {
+        return { reports: [] };
       }
     }),
   }),

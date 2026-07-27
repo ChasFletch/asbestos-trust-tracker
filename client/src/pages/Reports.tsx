@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { ExternalLink, FileText, Calendar, ChevronRight } from "lucide-react";
+import { trpc } from "@/lib/trpc";
+import { Link } from "wouter";
 
 // Kimi's actual index.json schema (asbestos-trust-reports/v1)
 interface KimiReport {
@@ -14,6 +16,19 @@ interface KimiReport {
   fileUrl?: string;  // explicit URL override
 }
 
+// Hard-coded key findings per report ID (populated from Kimi's digest)
+const KEY_FINDINGS: Record<string, string[]> = {
+  "ATR-2026-Q3": [
+    "Documented floor: $17,041,946,126 across 41 of ~60 active trusts -- 23.3% rests on filed documents (a-class)",
+    "Direction of travel is unambiguous: 7 documented percentage cuts, zero raises since January 2023",
+    "Two cuts this window: B&W 4.7%->4.3% (June 30) and Combustion Engineering to 15.3% (April)",
+    "DCPF controls ~$8.7B -- 51% of the documented floor -- and its S.5.5 amendments now propagate systemwide",
+    "USG issued a reconsideration notice in May 2026; B&W's 7-week notice-to-cut is now the documented template",
+    "Formation pipeline: GP, DBMP/CertainTeed (~60,000 stayed claims), Trane -- none counted until funded",
+    'The "$30B" myth corrected in print for the first time with a bottom-up filed figure',
+  ],
+};
+
 interface ReportsIndex {
   schema?: string;
   reports: KimiReport[];
@@ -24,23 +39,12 @@ const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ChasFletch/asbestos-t
 
 function deriveFileUrl(report: KimiReport): string {
   if (report.fileUrl) return report.fileUrl;
-  // path is repo-relative e.g. "reports/2026-Q3-state-of-the-asbestos-trust-system.md"
   return `${GITHUB_RAW_BASE}/${report.path}`;
 }
 
 export default function Reports() {
-  const [data, setData] = useState<ReportsIndex | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/api/reports")
-      .then((r) => r.json())
-      .then((d: ReportsIndex) => setData(d))
-      .catch(() => setData({ reports: [] }))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const reports = data?.reports ?? [];
+  const { data, isLoading: loading } = trpc.trustFiguresExtra.reportsIndex.useQuery();
+  const reports = (data?.reports ?? []) as KimiReport[];
   const nextReportDate = "January 1, 2027";
   const nextReportId = "ATR-2027-Q1";
 
@@ -147,24 +151,36 @@ export default function Reports() {
                         {report.summary}
                       </p>
                     )}
-                    {report.highlights && report.highlights.length > 0 && (
+                    {/* Key findings: prefer report.highlights, fall back to hard-coded per-ID findings */}
+                    {((report.highlights && report.highlights.length > 0) || KEY_FINDINGS[report.id]) && (
+                      <div className="mb-3">
+                        <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-1.5">Key Findings</p>
                       <ul className="space-y-0.5 mb-2">
-                        {report.highlights.map((h, i) => (
+                        {(report.highlights ?? KEY_FINDINGS[report.id] ?? []).map((h, i) => (
                           <li key={i} className="flex items-start gap-1.5 text-xs text-muted-foreground">
                             <ChevronRight size={12} className="text-primary/40 mt-0.5 shrink-0" />
                             {h}
                           </li>
                         ))}
                       </ul>
+                      </div>
                     )}
-                    <a
-                      href={deriveFileUrl(report)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                    >
-                      Read full report <ExternalLink size={10} />
-                    </a>
+                    <div className="flex items-center gap-3">
+                      <Link
+                        href={`/reports/${report.id}`}
+                        className="inline-flex items-center gap-1 text-xs text-primary hover:underline font-medium"
+                      >
+                        Read full report →
+                      </Link>
+                      <a
+                        href={deriveFileUrl(report)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+                      >
+                        Raw on GitHub <ExternalLink size={9} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -17,7 +17,7 @@ let newsDraftsCacheTs = 0;
 const NEWS_CACHE_TTL = 15 * 60 * 1000; // 15 min
 
 let cachedReportsIndex: unknown = null;
-let reportsCacheTs = 0;
+let reportsCacheTs = 0; // reset on every server start to force fresh fetch
 // Force cache bust on each server restart by initialising to 0 (already the case)
 // but also expose a manual bust endpoint for development
 
@@ -129,7 +129,7 @@ async function fetchNewsDrafts(): Promise<NewsDraft[]> {
 }
 
 // ── Reports index ────────────────────────────────────────────────────────────
-async function fetchReportsIndex(): Promise<unknown> {
+export async function fetchReportsIndex(): Promise<unknown> {
   const now = Date.now();
   if (cachedReportsIndex && now - reportsCacheTs < CACHE_TTL_MS) {
     return cachedReportsIndex;
@@ -146,6 +146,30 @@ async function fetchReportsIndex(): Promise<unknown> {
     return data;
   } catch {
     return cachedReportsIndex ?? null;
+  }
+}
+
+// ── Individual report markdown ───────────────────────────────────────────────
+interface ReportEntry { id: string; path: string; title?: string; date?: string; asOf?: string; }
+const reportMarkdownCache = new Map<string, { content: string; ts: number }>();
+const REPORT_MD_TTL = 60 * 60 * 1000;
+
+async function fetchReportMarkdown(reportId: string): Promise<string | null> {
+  const cached = reportMarkdownCache.get(reportId);
+  if (cached && Date.now() - cached.ts < REPORT_MD_TTL) return cached.content;
+  const index = (await fetchReportsIndex()) as { reports?: ReportEntry[] } | null;
+  if (!index?.reports) return null;
+  const entry = index.reports.find((r: ReportEntry) => r.id === reportId);
+  if (!entry?.path) return null;
+  try {
+    const url = `${GITHUB_RAW_BASE}/${entry.path}`;
+    const res = await fetch(url, { headers: { "Cache-Control": "no-cache" }, signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return null;
+    const content = await res.text();
+    reportMarkdownCache.set(reportId, { content, ts: Date.now() });
+    return content;
+  } catch {
+    return reportMarkdownCache.get(reportId)?.content ?? null;
   }
 }
 
@@ -218,5 +242,30 @@ export function registerDataRoutes(app: Express) {
     } catch {
       res.status(500).json({ error: "Failed to fetch reports index" });
     }
+  });
+
+  // /api/reports/:id/markdown — full markdown for a single report
+  app.get("/api/reports/:id/markdown", async (req, res) => {
+    try {
+      const { id } = req.params;
+      if (!/^ATR-\d{4}-Q[1-4]$/.test(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
+      const content = await fetchReportMarkdown(id);
+      if (!content) { res.status(404).json({ error: "Report not found" }); return; }
+      res.set("Cache-Control", "public, max-age=3600");
+      res.set("Content-Type", "text/plain; charset=utf-8");
+      res.send(content);
+    } catch { res.status(500).json({ error: "Failed to fetch report" }); }
+  });
+
+  // /api/reports/:id — report metadata only
+  app.get("/api/reports/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const index = (await fetchReportsIndex()) as { reports?: ReportEntry[] } | null;
+      const entry = index?.reports?.find((r: ReportEntry) => r.id === id);
+      if (!entry) { res.status(404).json({ error: "Report not found" }); return; }
+      res.set("Cache-Control", "public, max-age=3600");
+      res.json(entry);
+    } catch { res.status(500).json({ error: "Failed to fetch report metadata" }); }
   });
 }

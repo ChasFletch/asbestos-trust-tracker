@@ -63,7 +63,24 @@ export async function getTrustById(id: string) {
   const db = await getDb();
   if (!db) return undefined;
   const result = await db.select().from(trusts).where(eq(trusts.id, id)).limit(1);
-  return result[0];
+  return result[0] ?? undefined;
+}
+
+// Slugify helper (mirrors client-side slugify in Trusts.tsx)
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+// Find a trust by its DB id OR by slugified name (for URL routing)
+export async function getTrustBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  // First try direct ID match
+  const byId = await db.select().from(trusts).where(eq(trusts.id, slug)).limit(1);
+  if (byId[0]) return byId[0];
+  // Fall back to scanning all trusts and matching by slugified name
+  const all = await db.select().from(trusts);
+  return all.find(t => slugify(t.name) === slug || (t.shortName && slugify(t.shortName) === slug));
 }
 
 export async function getPaymentHistoryForTrust(trustId: string) {

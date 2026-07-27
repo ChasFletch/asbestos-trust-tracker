@@ -14,6 +14,7 @@ import {
   getCurrentAggregate,
   getPaymentHistoryForTrust,
   getTrustById,
+  getTrustBySlug,
   getVisibleNews,
   markTrustStale,
   updateAggregate,
@@ -61,6 +62,14 @@ export const appRouter = router({
           getPaymentHistoryForTrust(input.id),
         ]);
         if (!trust) throw new TRPCError({ code: "NOT_FOUND" });
+        return { ...trust, paymentHistory: history };
+      }),
+    bySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        const trust = await getTrustBySlug(input.slug);
+        if (!trust) return null;
+        const history = await getPaymentHistoryForTrust(trust.id);
         return { ...trust, paymentHistory: history };
       }),
   }),
@@ -123,6 +132,47 @@ export const appRouter = router({
         return { asOf: null, trusts: [] };
       }
     }),
+    bySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        try {
+          const data = await fetchTrustFigures() as any;
+          if (!data) return null;
+          // Slugify helper (mirrors client-side)
+          const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+          const trust = (data.trusts ?? []).find((t: any) =>
+            slugify(t.name) === input.slug ||
+            (t.shortName && slugify(t.shortName) === input.slug)
+          );
+          if (!trust) return null;
+          const slug = slugify(trust.name);
+          const changes = (data.changes ?? []).filter((c: any) =>
+            slugify(c.trust) === slug ||
+            slugify(c.trust) === input.slug ||
+            (trust.shortName && slugify(c.trust) === slugify(trust.shortName)) ||
+            c.trust === trust.name
+          );
+          return {
+            name: trust.name as string,
+            shortName: (trust.shortName ?? trust.name) as string,
+            netAssets: (trust.netAssets ?? null) as number | null,
+            assetsAsOf: (trust.assetsAsOf ?? null) as string | null,
+            assetsBasis: (trust.assetsBasis ?? null) as string | null,
+            paymentPercentage: (trust.paymentPercentage ?? null) as number | null,
+            status: (trust.status ?? 'active') as string,
+            confidence: (trust.confidence ?? 'c') as string,
+            note: (trust.note ?? null) as string | null,
+            changes: changes.map((c: any) => ({
+              date: c.date as string,
+              type: c.type as string,
+              detail: c.detail as string,
+              source: (c.source ?? null) as string | null,
+            })),
+          };
+        } catch {
+          return null;
+        }
+      }),
   }),
   trustFiguresExtra: router({
     reportsIndex: publicProcedure.query(async () => {

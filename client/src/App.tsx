@@ -21,7 +21,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/trusts" component={Trusts} />
-      <Route path="/trusts/:id" component={TrustDetail} />
+          <Route path="/trusts/:slug" component={TrustDetail} />
       <Route path="/news" component={News} />
       <Route path="/methodology" component={Methodology} />
       <Route path="/about" component={About} />

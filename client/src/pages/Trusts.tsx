@@ -1,6 +1,6 @@
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
-import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus, ExternalLink, ChevronRight, Download } from "lucide-react";
+import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus, ExternalLink, ChevronRight, Download, ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 
 type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence";
@@ -28,7 +28,7 @@ interface TrustRow {
 }
 
 function slugify(name: string) {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 function ConfidenceBadge({ confidence }: { confidence: string }) {
@@ -301,7 +301,23 @@ export default function Trusts() {
                       className={`shrink-0 text-muted-foreground/50 transition-transform duration-150 ${isOpen ? "rotate-90" : ""}`}
                     />
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-foreground truncate">{trust.shortName}</div>
+                      <div className="text-sm font-medium text-foreground truncate flex items-center gap-1">
+                        <Link
+                          href={`/trusts/${trust.id}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="hover:text-primary hover:underline transition-colors truncate"
+                        >
+                          {trust.shortName}
+                        </Link>
+                        <Link
+                          href={`/trusts/${trust.id}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-muted-foreground/30 hover:text-primary transition-colors shrink-0"
+                          title="View trust details"
+                        >
+                          <ArrowUpRight size={11} />
+                        </Link>
+                      </div>
                       <div className="text-xs text-muted-foreground/50 truncate">{trust.name !== trust.shortName ? trust.name : ""}</div>
                     </div>
                   </div>

@@ -9,14 +9,14 @@
     "cumulativePayoutsLow": 17500000000,
     "trustsWithFigures": 41,
     "activeTrustsEstimated": 60,
-    "cumulativePayoutsDocumented": 8565769330,
-    "cumulativePayoutsEstimatedRemainder": 15434230670,
-    "trustsWithCumulativePaidFiled": 4
+    "cumulativePayoutsDocumented": 9381393128,
+    "cumulativePayoutsEstimatedRemainder": 14618606872,
+    "trustsWithCumulativePaidFiled": 7
   },
   "methodology": {
     "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 9 from filed annual reports/quarterly filings (FY2025 annual reports or Q1 2026 quarterly) totaling $3,966,648,769, plus 32 from credible secondary compilations of trust annual reports (mostly FY2022 as-of dates) totaling $13,076,231,337. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
     "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
-    "cumulativePayoutsPoint": "Bottom-up decomposition. DOCUMENTED FLOOR: $8,565,769,330 paid inception-to-date by the 4 trusts with cumulative figures in filed reports - Manville $5,329,722,253 through 3/31/2026 (Q1 2026 quarterly report, Bankr. S.D.N.Y. Doc 4479), Western $2,238,037,573 through 12/31/2025 (22nd Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 13-31914 Doc 1944), NARCO $904,019,504 through 12/31/2025 (FY2025 annual report, W.D. Pa. 02-20198 Doc 8521), API $93,990,000 through 12/31/2025 (FY2025 annual report, Bankr. D. Minn. 05-30073-GFK). ESTIMATED REMAINDER: ~$15.43B for all other trusts, anchored on GAO-11-819 (Sept 2011) documenting $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow) plus the prior ~$6.5B 2011-2025 extrapolation from a documented 8-trust subset paying ~$591.9M (2022) and ~$561.2M (2024). The largest documented-but-unretrieved gaps (USG, PCC, Armstrong, OC/FB, WRG, B&W, Celotex) publish cumulative figures in filed annual reports sequestered on PACER - see pacer-pull-queue.json; each pull converts estimate into documented. NOTE: DII Industries' filed annual reports (FY2024-FY2025 retrieved and verified) contain no inception-to-date cumulative exhibit - only per-year claims data - so a DII cumulative would require summing ~20 years of Exhibit B figures. Point estimate unchanged at $24B pending those pulls; treat remainder as order-of-magnitude, not audited.",
+    "cumulativePayoutsPoint": "Bottom-up decomposition. DOCUMENTED FLOOR: $9,381,393,128 paid inception-to-date by the 7 trusts with cumulative figures in filed reports - Manville $5,329,722,253 through 3/31/2026 (Q1 2026 quarterly report, Bankr. S.D.N.Y. Doc 4479), Western $2,238,037,573 through 12/31/2025 (22nd Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 13-31914 Doc 1944), NARCO $904,019,504 through 12/31/2025 (FY2025 annual report, W.D. Pa. 02-20198 Doc 8521), Thorpe Insulation $433,982,311 through 12/31/2025 (16th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:07-bk-20016-BB Doc 242), Plant $191,680,841 through 12/31/2025 (14th Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 09-31347 Doc 3050), J.T. Thorpe (CA) $189,960,646 through 12/31/2025 (20th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:02-bk-14216-BB Doc 1901), API $93,990,000 through 12/31/2025 (FY2025 annual report, Bankr. D. Minn. 05-30073-GFK). ESTIMATED REMAINDER: ~$14.62B for all other trusts, anchored on GAO-11-819 (Sept 2011) documenting $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow) plus the prior ~$6.5B 2011-2025 extrapolation from a documented 8-trust subset paying ~$591.9M (2022) and ~$561.2M (2024). The largest documented-but-unretrieved gaps (USG, PCC, Armstrong, OC/FB, WRG, B&W, Celotex) publish cumulative figures in filed annual reports sequestered on PACER - see pacer-pull-queue.json; each pull converts estimate into documented. NOTE: DII Industries' filed annual reports (FY2024-FY2025 retrieved and verified) contain no inception-to-date cumulative exhibit - only per-year claims data - so a DII cumulative would require summing ~20 years of Exhibit B figures; Maremont's FY2024-FY2025 annual reports likewise report only per-year payment dollars and inception-to-date claim COUNTS (8,229 claims submitted through 12/31/2025), no cumulative dollar line. Point estimate unchanged at $24B pending those pulls; treat remainder as order-of-magnitude, not audited.",
     "viralFiguresDebunked": "'$30B remaining' traces to GAO-11-819's ~$36.8B TOTAL CAPITALIZATION of 60 trusts as of 2011 (initial funding + returns), not a current balance. GAO analyzed reports for only 47 of 60 trusts."
   },
   "trusts": [
@@ -79,9 +79,9 @@
       "paymentPercentage": 58.6,
       "status": "active",
       "confidence": "filed",
-      "cumulativePaid": null,
-      "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaid": 433982311,
+      "cumulativePaidAsOf": "2025-12-31",
+      "cumulativePaidSource": "Thorpe Insulation Settlement Trust 16th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. C.D. Cal. 2:07-bk-20016-BB, Doc 242, filed 4/28/2026; file-stamped PDF posted free at tistrust.com) - total claims paid since inception $433,982,311 covering trust-processed, pre-petition, and increase payments"
     },
     {
       "name": "Plant Asbestos Settlement Trust",
@@ -91,9 +91,9 @@
       "paymentPercentage": 20.0,
       "status": "active",
       "confidence": "filed",
-      "cumulativePaid": null,
-      "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaid": 191680841,
+      "cumulativePaidAsOf": "2025-12-31",
+      "cumulativePaidSource": "Plant Asbestos Settlement Trust 14th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. N.D. Cal. 09-31347, Doc 3050, filed 4/28/2026; file-stamped PDF posted free at pastrust.com) - total claims paid since inception $191,680,841 covering trust-processed, pre-petition, and increase payments"
     },
     {
       "name": "J.T. Thorpe Settlement Trust (CA)",
@@ -103,9 +103,9 @@
       "paymentPercentage": null,
       "status": "active",
       "confidence": "filed",
-      "cumulativePaid": null,
-      "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaid": 189960646,
+      "cumulativePaidAsOf": "2025-12-31",
+      "cumulativePaidSource": "J.T. Thorpe Settlement Trust 20th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. C.D. Cal. 2:02-bk-14216-BB, Doc 1901, filed 4/28/2026; file-stamped PDF posted free at jttstrust.com) - total claims paid since inception $189,960,646 covering trust-processed, pre-petition, and increase payments"
     },
     {
       "name": "Maremont Asbestos PI Trust",
@@ -547,6 +547,14 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-07-27",
+      "type": "data_addition",
+      "trust": "Thorpe Insulation / Plant / J.T. Thorpe (CA) / Maremont",
+      "detail": "cumulativePaid documented for 3 more Reno-administered CA trusts from their filed FY2025 annual reports, retrieved FREE as file-stamped PDFs from the trusts' own sites (no PACER spend): Thorpe Insulation $433,982,311 (16th AR, Claim Report Exhibit F, Doc 242, Bankr. C.D. Cal. 2:07-bk-20016-BB), Plant $191,680,841 (14th AR, Exhibit F, Doc 3050, Bankr. N.D. Cal. 09-31347), J.T. Thorpe (CA) $189,960,646 (20th AR, Exhibit F, Doc 1901, Bankr. C.D. Cal. 2:02-bk-14216-BB) - each verbatim 'total amount of claims paid since inception' covering trust-processed, pre-petition, and increase payments as of 12/31/2025. Maremont checked and remains null: its FY2025 annual report (Doc 374, Bankr. D. Del. 19-10118-LSS, free at maremont.mfrclaims.com) reports only per-year payments ($2,089,734 in 2025) and inception-to-date claim counts (8,229 submitted), no cumulative dollar figure. Aggregate documented floor rises $8,565,769,330 -> $9,381,393,128 (7 trusts); estimated remainder falls to ~$14.62B.",
+      "source": "TIST 16th AR FY2025 (Doc 242, filed 4/28/2026); PAST 14th AR FY2025 (Doc 3050, filed 4/28/2026); JTTS 20th AR FY2025 (Doc 1901, filed 4/28/2026); Maremont FY2025 AR (Doc 374, filed 4/20/2026)",
+      "confidence": "primary"
+    },
     {
       "date": "2026-07-27",
       "type": "data_addition",

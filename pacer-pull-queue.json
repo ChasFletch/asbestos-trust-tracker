@@ -90,22 +90,6 @@
       "recapCheckedAt": "2026-07-27",
       "recapResult": "CL docket exists (~21,000 entries). Latest AR entries verified on CL: Doc 21257 (FY2020, filed 4/28/2021), Doc 21253 (FY2019); live docket continues (FY2025 AR filed ~4/2026 per PacerMonitor caption case 4614034) - identify exact latest doc number at pull time. RECAP availability of PDFs unverified; presume paywalled per DCPF pattern.",
       "blockedReason": "2026-07-28: FY2025 report located (Doc 21263, filed 4/28/2026: Ex.1 narrative + Ex.A financials) but document 22956363 returns 'could not be accessed from the database' - CM/ECF image error. Trust site ocfbasbestostrust.com publishes no public annual reports (Trust Online is claimant-login only). Retry PACER later. Spend to date $0.40."
-    },
-    {
-      "priority": 11,
-      "trustId": "bw",
-      "trustName": "Babcock & Wilcox Asbestos PI Settlement Trust",
-      "court": "laeb",
-      "caseNo": "2:00-bk-10992",
-      "docNo": "7890",
-      "description": "B&W latest 'Notice of Filing Annual Report and Claim Summary' (recurring on docket; index free via inforuptcy) - cumulativePaid gap: corpus has only a mesothelioma.com transcription (~$1.94B+ since inception, YE2024), banned as a source; filed report converts to documented. Also upgrades $307.1M asset figure from (b) to (a)",
-      "currentConfidence": "b (assets) / null (cumulativePaid)",
-      "currentNetAssets": 307100000,
-      "estimatedCost": "$5",
-      "recapChecked": false,
-      "status": "pending",
-      "recapCheckedAt": "2026-07-27",
-      "recapResult": "No CL docket located. docNo upgraded from null: Doc 7890 (FY2025, filed 4/28/2026, 'Notice of Filing of Annual Report', Atts Exhibit 1 + Exhibit A) identified via bkalerts docket index; FY2024 = Doc 7889. inforuptcy index free; PDFs PACER-only per corpus."
     }
   ],
   "completedPulls": [
@@ -156,6 +140,14 @@
       "source": "PACER D. Del. 04-11300 Doc 9503 (notice + Ex.1 annual report + Ex.1.A audited financials + Ex.1.B claims summary, 32p)",
       "cost": "$4.00",
       "result": "netAssets upgraded to $520,161,996 audited (BDO) at 12/31/2025, confidence filed; cumulativePaid NULL - no inception-to-date line in filing (FY2025 claims paid $37,848,794 / 13,460 claims). Gap: per-year Exhibit 1.B tables summable across ~18 years if wanted."
+    },
+    {
+      "trustId": "bw",
+      "docNo": "7890",
+      "completedAt": "2026-07-28",
+      "source": "PACER E.D. La. 00-10992 Doc 7890 (notice + Ex.1 annual report + Ex.A audited financials, 39p)",
+      "cost": "$4.30",
+      "result": "netAssets upgraded to $295,318,243 audited at 12/31/2025, confidence filed; cumulativePaid NULL - no inception-to-date line in filing (FY2025 ~$19.89M paid / 18,555 claims). Gap flagged; corpus secondary ~$1.94B YE2024 remains non-filed."
     }
   ],
   "notes": "CourtListener RECAP checked first for each document (2026-07-27 sweep). Universal pattern: the 1-page filing NOTICE is free in RECAP, but the financial EXHIBITS (annual report, audited financials, claims summary) are paywalled in every verified case - PACER pulls are still required for figures. Flintkote's RECAP docket is stale (ends 2014). DII and Western post file-stamped annual report PDFs free on their own sites (verified 2026-07-27): Western, Thorpe Insulation, Plant, J.T. Thorpe (CA), and Maremont were all completed free via trust-site PDFs; DII FY2014-FY2025 summed free ($1,254,425,009), with FY2005-FY2013 added as queue entry dii-early-years."

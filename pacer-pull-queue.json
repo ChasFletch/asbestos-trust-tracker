@@ -1,8 +1,8 @@
 {
   "schema": "pacer-pull-queue/v1",
   "description": "Priority PACER document pull queue. Documents here upgrade trust records from (b) secondary to (a) filed confidence. Run the /api/pacer/pull endpoint once PACER account is active.",
-  "accountStatus": "locked - awaiting PACER support response (2026-07-27)",
-  "estimatedCost": "$75-90 total for the remaining 10 queue entries",
+  "accountStatus": "active (2026-07-28; password reset after lockout, browser-session cookie method working)",
+  "estimatedCost": "$45-55 total for the remaining 9 queue entries (dii-early-years completed at $9.90 vs ~$30 estimated)",
   "queue": [
     {
       "priority": 1,
@@ -152,26 +152,17 @@
       "status": "pending",
       "recapCheckedAt": "2026-07-27",
       "recapResult": "No CL docket located. docNo upgraded from null: Doc 7890 (FY2025, filed 4/28/2026, 'Notice of Filing of Annual Report', Atts Exhibit 1 + Exhibit A) identified via bkalerts docket index; FY2024 = Doc 7889. inforuptcy index free; PDFs PACER-only per corpus."
-    },
-    {
-      "priority": 2,
-      "trustId": "dii-early-years",
-      "trustName": "DII Industries (Halliburton/Harbison-Walker) Asbestos PI Trust - FY2005-FY2013 annual reports",
-      "court": "pawb",
-      "caseNo": "03-35592",
-      "docNo": "2903 (FY2013; amended 2911); FY2005-FY2012 doc numbers TBD from docket sheet (docket-sheet search ~2850-2903)",
-      "description": "Early DII annual reports needed to complete the bottom-up cumulativePaid: FY2014-FY2025 already summed free from trust site ($1,254,425,009 Exhibit B cash-basis claims paid); adding FY2005-FY2013 Exhibit B tables completes inception-to-date and converts ~$700M+ from estimate to documented. Each report is ~30 pages + Exhibit B attachment ($3/doc cap).",
-      "currentConfidence": "a (FY2014-FY2025 documented); gap FY2005-FY2013",
-      "currentNetAssets": 1149918344,
-      "estimatedCost": "~$30 (docket sheet + up to 9 reports/exhibits at $3 cap)",
-      "recapChecked": true,
-      "status": "pending",
-      "recapCheckedAt": "2026-07-27",
-      "recapResult": "RECAP indexes only FY2013 (Doc 2903, amended 2911) and FY2017 (Doc 2946/2948) annual reports for this docket; exhibit PDFs NOT archived. Trust-site free archive begins FY2014. Wayback Machine has no DII report PDFs. PACER required for FY2005-FY2013.",
-      "clDocketId": null
     }
   ],
   "completedPulls": [
+    {
+      "trustId": "dii-early-years",
+      "docNo": "2601, 2686, 2697, 2754-2, 2764-2, 2812-2, 2836-2, 2855-2, 2913-1",
+      "completedAt": "2026-07-28",
+      "source": "PACER CM/ECF (ecf.pawb.uscourts.gov) via harvested browser session + goDLS replay (scripts/pacer-pull-dii.mjs)",
+      "cost": "$9.90",
+      "result": "All 9 early-years documents pulled (PDFs in trust-reports/pacer/). Claims paid: FY2005 $0 (audited statement of changes in net claimants' equity, Doc 2601 p.14), FY2006 $21,177,938 (audited cash-flow, Doc 2686 p.15), FY2007 $57,162,897 (audited cash-flow, Doc 2697 p.21), FY2008 $200,470,282.26 (Exhibit B), FY2009 $167,835,242.59 (Exhibit B; excl. supplemental payments on pre-2009 claims), FY2010 $354,406,496.26 (Exhibit B level-summed; filed total row blank, counts reconcile), FY2011 $123,747,055.53, FY2012 $109,937,260.90, FY2013 $59,879,276. DII cumulativePaid = $2,349,041,458 inception-to-date through 12/31/2025 - now in trust-figures.json; aggregate documented floor $11,730,434,586 / 8 trusts."
+    },
     {
       "trustId": "dii",
       "docNo": "3002",

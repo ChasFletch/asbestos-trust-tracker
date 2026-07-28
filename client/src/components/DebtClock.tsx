@@ -333,7 +333,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
         </tbody>
       </table>
       <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-        Documented floor: $17.04B across 42 trusts. Full system estimate $17.0B–$22.5B includes modeled figures for trusts without filed balances.
+        Documented floor: $16.75B (13 filed-asset trusts). Full system estimate $16.7B–$22.5B includes modeled figures for trusts without filed balances.
       </div>
       <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
         onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}
@@ -473,12 +473,12 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
               tooltip={
                 <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
                   <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                    How ~$24B Is Calculated
+                    How $24B Is Calculated
                   </div>
                   <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
                     <tbody>
                       {[
-                      [`$${paidOutDocumented.toLocaleString()}`, `${trustsWithCumulativePaidFiled} trusts — filed reports`, "Manville, Western, NARCO, Thorpe Ins., Plant, J.T. Thorpe, API", "filed"],
+                      [`$${paidOutDocumented.toLocaleString()}`, `${trustsWithCumulativePaidFiled} trusts — filed reports`, "Manville, DII, WRG, MLC, Western, NARCO, Thorpe Ins., Plant, J.T. Thorpe, API", "filed"],
                         // note: trust list updated in footnote below
                         [`+ $${paidOutEstimatedRemainder.toLocaleString()}`, `${42 - trustsWithCumulativePaidFiled} trusts — estimated`, "GAO-11-819 floor + secondary sources", "est"],
                       ].map(([amt, name, note, conf]) => (
@@ -504,7 +504,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                     </tbody>
                   </table>
                   <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-                  ${paidOutDocumented.toLocaleString()} is documented from {trustsWithCumulativePaidFiled} filed annual reports (Manville, Western, NARCO, Thorpe Insulation, Plant, J.T. Thorpe CA, API). The remaining ~${(paidOutEstimatedRemainder / 1e9).toFixed(1)}B is anchored to the GAO-11-819 floor ($17.5B, Sept 2011) plus secondary sources. As PACER pulls complete, the documented share will grow. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
+                  ${paidOutDocumented.toLocaleString()} is documented from {trustsWithCumulativePaidFiled} filed annual reports (Manville, DII, W.R. Grace, MLC, Western, NARCO, Thorpe Insulation, Plant, J.T. Thorpe CA, API). The remaining ~${(paidOutEstimatedRemainder / 1e9).toFixed(1)}B covers 32 trusts without filed inception-to-date figures, anchored to the GAO-11-819 floor. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
                     {/* documented trusts (b0c3acc): Manville, Western, NARCO, Thorpe Insulation, Plant, J.T. Thorpe CA, API */}
                   </div>
                    <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}

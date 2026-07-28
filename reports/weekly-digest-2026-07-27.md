@@ -51,7 +51,7 @@ The live site (`https://asbestostrusts.org/trusts`) is a client-side rendered SP
 | **Fibreboard subfund** | `null` (no separate entry) | mesothelioma.com: **3.5%** | JSON combines OC and Fibreboard under one entry. Fibreboard subfund is 3.5% per mesothelioma.com. No conflict, but JSON does not capture subfund split. |
 | **Celotex** | 7.0% | mesothelioma.com: **7.7%** | **Conflict.** JSON sources to official trust notice (7% since 6/23/2023). mesothelioma.com 7.7% is likely outdated or erroneous. **Recommendation:** Verify via celotextrust.com or FY2025 annual report (PACER-only). |
 | **Congoleum** | `null` | asbestos.com: **8.67%** | JSON lacks Congoleum payment percentage. asbestos.com (Dec 2025) reports 8.67% with $120K mesothelioma scheduled value. **Secondary source only — not upgraded in JSON pending primary-source confirmation.** |
-| **Quigley** | `null` | asbestos.com (Jan 2026): Non-Releasing **13.3%**, Releasing **3.3%** | JSON lacks Quigley payment percentage. asbestos.com reports dual-track percentages. **Secondary source only.** |
+| **Quigley** | **13.3%** (Non-Releasing) | asbestos.com (Jan 2026): Non-Releasing **13.3%**, Releasing **3.3%** | ✅ **RESOLVED 2026-07-27** — verified against official trust notice (cut 14.5% → 13.3% eff. 10/30/2025) and committed to JSON in commit `2a0419d`; dual-track split recorded in entry note. |
 | **Porter Hayden** | `null` | asbestos.com (Jan 2025): **1.8%** | JSON lacks Porter Hayden payment percentage. **Secondary source only.** |
 | **J.T. Thorpe Settlement Trust (CA)** | `null` | asbestos.com (Jan 2026): **50%** | JSON lacks JT Thorpe (CA) payment percentage. asbestos.com reports 50% confirmed Feb 2025. **Secondary source only.** |
 | **Paddock (Owens-Illinois)** | `null` | mesothelioma.com: **50%** | JSON lacks Paddock payment percentage. **Secondary source only.** |
@@ -96,14 +96,16 @@ The PACER account remains **locked** as of 2026-07-27 per `pacer-pull-queue.json
 The following payment percentages were identified from secondary sources (asbestos.com, mesothelioma.com) but **were NOT committed to `trust-figures.json`** because no primary-source trust notice or filed document was located to verify them:
 
 - **Congoleum Plan Trust:** 8.67% (asbestos.com, Dec 2025)
-- **Quigley Company Asbestos PI Trust:** Non-Releasing 13.3%, Releasing 3.3% (asbestos.com, Jan 2026)
+- ~~**Quigley Company Asbestos PI Trust:** Non-Releasing 13.3%, Releasing 3.3% (asbestos.com, Jan 2026)~~ — ✅ **RESOLVED**: verified via official notice (14.5% → 13.3% eff. 10/30/2025) and backfilled in commit `2a0419d` (2026-07-27)
 - **Porter Hayden Bodily Injury Trust:** 1.8% (asbestos.com, Jan 2025)
 - **J.T. Thorpe Settlement Trust (CA):** 50% (asbestos.com, Jan 2026)
 - **Paddock Enterprises (Owens-Illinois):** 50% (mesothelioma.com)
 - **C.E. Thurston & Sons:** 50% (asbestos.com, Jan 2026)
 
+**Post-digest backfill (commit `2a0419d`, 2026-07-27):** four verified items were ingested into the JSON changes log — Quigley Non-Releasing cut 14.5% → 13.3% (eff. 10/30/2025, percentage_cut), Shook & Fletcher raise 50% → 58% (5/30/2025, percentage_increase; outside the 41-trust floor, changes-log entry only), H.K. Porter 3.0% held / offers resumed 1/31/2025 (administration), and the Celotex "2025 Notice to Firms re: Audit" (1/22/2025, governance). Quigley (13.3%) and H.K. Porter (3.0%) trust-entry percentages were also set. Do not re-flag these in future runs.
+
 These may be candidates for future JSON backfill once primary-source notices or annual reports are retrieved.
 
 ---
 
-*Digest compiled from: direct trust website fetches (bwasbestostrust.com, pccasbestostrust.com), asbestos.com, mesothelioma.com, CourtListener/RECAP docket mirrors, and 4th Circuit appellate opinions. Repo JSON (`trust-figures.json`, commit `047edadc`) remains the source of truth; no data commit made this cycle.*
+*Digest compiled from: direct trust website fetches (bwasbestostrust.com, pccasbestostrust.com), asbestos.com, mesothelioma.com, CourtListener/RECAP docket mirrors, and 4th Circuit appellate opinions. Repo JSON (`trust-figures.json`, commit `047edadc`) remains the source of truth; no data commit made this cycle. **Amended 2026-07-27 evening:** backfill commit `2a0419d` added four verified changes-log entries (Quigley, Shook & Fletcher, H.K. Porter, Celotex) and set Quigley/H.K. Porter percentages; flagged-findings list updated accordingly.*

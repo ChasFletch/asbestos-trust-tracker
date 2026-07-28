@@ -478,7 +478,8 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                   <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
                     <tbody>
                       {[
-                        [`$${paidOutDocumented.toLocaleString()}`, `${trustsWithCumulativePaidFiled} trusts — filed reports`, "Manville, NARCO, API (court-filed)", "filed"],
+                      [`$${paidOutDocumented.toLocaleString()}`, `${trustsWithCumulativePaidFiled} trusts — filed reports`, "Manville, Western, NARCO, Thorpe Ins., Plant, J.T. Thorpe, API", "filed"],
+                        // note: trust list updated in footnote below
                         [`+ $${paidOutEstimatedRemainder.toLocaleString()}`, `${42 - trustsWithCumulativePaidFiled} trusts — estimated`, "GAO-11-819 floor + secondary sources", "est"],
                       ].map(([amt, name, note, conf]) => (
                         <tr key={name} style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
@@ -503,7 +504,8 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                     </tbody>
                   </table>
                   <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-                    ${paidOutDocumented.toLocaleString()} is documented from {trustsWithCumulativePaidFiled} filed annual reports (Manville, NARCO, API). The remaining ~${(paidOutEstimatedRemainder / 1e9).toFixed(1)}B is anchored to the GAO-11-819 floor ($17.5B, Sept 2011) plus secondary sources. As PACER pulls complete, the documented share will grow. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
+                  ${paidOutDocumented.toLocaleString()} is documented from {trustsWithCumulativePaidFiled} filed annual reports (Manville, Western, NARCO, Thorpe Insulation, Plant, J.T. Thorpe CA, API). The remaining ~${(paidOutEstimatedRemainder / 1e9).toFixed(1)}B is anchored to the GAO-11-819 floor ($17.5B, Sept 2011) plus secondary sources. As PACER pulls complete, the documented share will grow. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
+                    {/* documented trusts (b0c3acc): Manville, Western, NARCO, Thorpe Insulation, Plant, J.T. Thorpe CA, API */}
                   </div>
                    <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
                      onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}

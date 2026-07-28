@@ -199,6 +199,9 @@ export const appRouter = router({
           status: (t.status ?? 'active') as string,
           confidence: (t.confidence ?? 'c') as string,
           note: (t.note ?? null) as string | null,
+          cumulativePaid: (t.cumulativePaid ?? null) as number | null,
+          cumulativePaidAsOf: (t.cumulativePaidAsOf ?? null) as string | null,
+          cumulativePaidSource: (t.cumulativePaidSource ?? null) as string | null,
         }));
         return {
           asOf: (data.asOf ?? null) as string | null,

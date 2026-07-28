@@ -1,6 +1,6 @@
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
-import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus, ExternalLink, ChevronRight, Download, ArrowUpRight } from "lucide-react";
+import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus, ExternalLink, ChevronRight, Download, ArrowUpRight, FileText } from "lucide-react";
 import { Link } from "wouter";
 
 type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence";
@@ -25,6 +25,9 @@ interface TrustRow {
   website?: string | null;
   direction?: string | null;
   paymentHistory?: Array<{ pct: number; effective: string; notes?: string }>;
+  cumulativePaid?: number | null;
+  cumulativePaidAsOf?: string | null;
+  cumulativePaidSource?: string | null;
 }
 
 function slugify(name: string) {
@@ -128,6 +131,9 @@ export default function Trusts() {
         website: db?.website ?? null,
         direction: db?.direction ?? null,
         paymentHistory: (db as any)?.paymentHistory ?? [],
+        cumulativePaid: (jt as any).cumulativePaid ?? null,
+        cumulativePaidAsOf: (jt as any).cumulativePaidAsOf ?? null,
+        cumulativePaidSource: (jt as any).cumulativePaidSource ?? null,
       };
     });
   }, [jsonData, dbMap]);
@@ -365,6 +371,50 @@ export default function Trusts() {
                         )}
                         {trust.note && <div className="mt-2 text-muted-foreground/70 leading-relaxed">{trust.note}</div>}
                       </div>
+
+                      {/* Cumulative paid source citation */}
+                      {trust.cumulativePaid != null && (
+                        <div className="md:col-span-2 pt-2 border-t border-border/20">
+                          <div className="font-semibold text-foreground/70 uppercase tracking-wider text-xs mb-2 flex items-center gap-1.5">
+                            <FileText size={11} />
+                            Cumulative Payouts — Source Document
+                          </div>
+                          <div className="text-xs space-y-1.5">
+                            <div className="flex items-baseline gap-2 flex-wrap">
+                              <span className="font-mono font-bold text-foreground">
+                                ${trust.cumulativePaid.toLocaleString()}
+                              </span>
+                              <span className="text-muted-foreground/60">
+                                paid since inception (as of {trust.cumulativePaidAsOf})
+                              </span>
+                            </div>
+                            {trust.cumulativePaidSource && (() => {
+                              const freeUrls: Record<string, string> = {
+                                "western-asbestos-settlement-trust": "https://wastrust.com",
+                                "thorpe-insulation-company-asbestos-settlement-trust": "https://tistrust.com",
+                                "plant-asbestos-settlement-trust": "https://pastrust.com",
+                                "j-t-thorpe-settlement-trust-ca": "https://jttstrust.com",
+                              };
+                              const freeUrl = freeUrls[trust.id];
+                              return (
+                                <div className="text-muted-foreground/60 leading-relaxed">
+                                  <span className="italic">{trust.cumulativePaidSource.split(" - ")[0]}</span>
+                                  {freeUrl && (
+                                    <a
+                                      href={freeUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="ml-2 inline-flex items-center gap-1 text-primary hover:underline font-medium not-italic"
+                                    >
+                                      View source PDF <ExternalLink size={10} />
+                                    </a>
+                                  )}
+                                </div>
+                              );
+                            })()}
+                          </div>
+                        </div>
+                      )}
 
                       {/* Payment history */}
                       <div>

@@ -2,25 +2,8 @@
   "schema": "pacer-pull-queue/v1",
   "description": "Priority PACER document pull queue. Documents here upgrade trust records from (b) secondary to (a) filed confidence. Run the /api/pacer/pull endpoint once PACER account is active.",
   "accountStatus": "active (2026-07-28; password reset after lockout, browser-session cookie method working)",
-  "estimatedCost": "$45-55 total for the remaining 9 queue entries (dii-early-years completed at $9.90 vs ~$30 estimated)",
+  "estimatedCost": "$40-50 total for the remaining 8 queue entries (wrg completed at $3.70 vs $6 estimated)",
   "queue": [
-    {
-      "priority": 1,
-      "trustId": "wrg",
-      "trustName": "W.R. Grace Asbestos PI Trust",
-      "court": "deb",
-      "caseNo": "01-01139",
-      "docNo": "33347",
-      "description": "WRG FY2025 Annual Report - would upgrade ~$2B asset figure from (b) to (a); also yields filed cumulativePaid (inception-to-date claims paid), converting part of the aggregate remainder estimate into documented",
-      "currentConfidence": "b",
-      "currentNetAssets": 1995000000,
-      "estimatedCost": "$6",
-      "recapChecked": true,
-      "status": "pending",
-      "recapCheckedAt": "2026-07-27",
-      "recapResult": "Doc 33347 (FY2025, filed 4/29/2026): 1-page filing notice FREE in RECAP (gov.uscourts.deb.31472.33347.0.pdf); Attachments 1-3 (Annual Report Narrative, Audited Financials, CoS) NOT in RECAP - PACER required for figures. Verified 2026-07-27 via corpus followup_dim01 + live entry pages.",
-      "clDocketId": 4216072
-    },
     {
       "priority": 2,
       "trustId": "mlc",
@@ -155,6 +138,14 @@
     }
   ],
   "completedPulls": [
+    {
+      "trustId": "wrg",
+      "docNo": "33347",
+      "completedAt": "2026-07-28",
+      "source": "PACER CM/ECF (ecf.deb.uscourts.gov), goDLS + show_temp.pl chain",
+      "cost": "$3.70",
+      "result": "FY2025 annual report (main + narrative + audited financials, 35 pages). Net assets $1,829,172,468 audited at 12/31/2025 (replaces FY2022 secondary $1.995B). Cumulative paid 'approximately $2.69 billion since inception' as of 12/31/2025 per narrative (no exact cumulative exhibit). FY2025 claims paid $191,550,369. trust-figures.json updated; aggregate documented $14,420,434,586 / 9 trusts."
+    },
     {
       "trustId": "dii-early-years",
       "docNo": "2601, 2686, 2697, 2754-2, 2764-2, 2812-2, 2836-2, 2855-2, 2913-1",

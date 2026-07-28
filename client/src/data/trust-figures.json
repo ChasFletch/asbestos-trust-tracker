@@ -310,7 +310,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "note": "No live official trust website located and no Wayback captures of report PDFs (verified 2026-07-27); a '~$310M paid since establishment' figure circulates on law-firm sites citing a 2022 report but is class-(c) and unusable - cumulativePaid stays null pending PACER"
     },
     {
       "name": "Kaiser Asbestos PI Trust",
@@ -320,7 +321,7 @@
       "paymentPercentage": 10.6,
       "status": "active",
       "confidence": "secondary",
-      "note": "18.1->10.6% (cut Feb 2025)",
+      "note": "18.1->10.6% (cut Feb 2025). Trust website (kaiserasbestostrust.com) posts no annual reports (resources + notices pages verified 2026-07-27) - filed reports are PACER-only; cumulativePaid stays null",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null
@@ -408,7 +409,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "note": "FY2025 annual report (filed D.N.J. 3:09-cv-04371-JAP, Doc 863, free at congoleumtrust.com) reviewed 2026-07-27: reports per-year claim counts only (971 claims paid in 2025) - no cumulative or per-year dollar line in the narrative; cumulativePaid stays null"
     },
     {
       "name": "Motors Liquidation Co. (GM) Asbestos PI Trust",
@@ -433,7 +435,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "note": "Trust website (acandsasbestostrust.com) posts only the FY2013 annual report (verified 2026-07-27) - 13 years stale and contains no cumulative-paid line; cumulativePaid stays null"
     },
     {
       "name": "J.T. Thorpe Company Successor Trust (TX)",
@@ -547,6 +550,14 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-07-27",
+      "type": "verification",
+      "trust": "Congoleum / Fuller-Austin / Kaiser / ACandS",
+      "detail": "Free-archive sweep of 4 more trusts (same method as Western/Reno trusts and DII): checked each trust's official website for file-stamped annual report PDFs with an inception-to-date cumulative-paid line. Results - all four stay null. (1) CONGOLEUM: posts its FY2025 Annual Report and Financial Statements free (D.N.J. 3:09-cv-04371-JAP, Doc 863, filed 4/22/2026) but the report gives per-year claim COUNTS only (971 paid in 2025); dollars appear only as accrual 'claims settled' in the financial statements - no cumulative line. (2) KAISER: kaiserasbestostrust.com posts TDP amendments and payment-percentage notices but no annual reports at all. (3) ACANDs: acandsasbestostrust.com posts only the FY2013 annual report (13 years stale), which also has no cumulative line. (4) FULLER-AUSTIN: no live official site and no Wayback captures located; trust appears inactive. Bottom-up summation for Congoleum/Kaiser via PACER would require ~15-20 years of reports each - not queued on cost/benefit grounds; can be added to pacer-pull-queue.json later if prioritized. No marketing-site figures used.",
+      "source": "congoleumtrust.com (FY2025 AR); kaiserasbestostrust.com; acandsasbestostrust.com (FY2013 AR); Wayback Machine CDX",
+      "confidence": "primary"
+    },
     {
       "date": "2026-07-27",
       "type": "data_addition",

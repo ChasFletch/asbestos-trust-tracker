@@ -20,24 +20,25 @@
       "recapCheckedAt": "2026-07-27",
       "recapResult": "FY2025 = Doc 10965 (filed 4/29/2026, 'Report -Generic-') NOT in RECAP; FY2024 Doc 10964 also not in RECAP. docNo upgraded from null per corpus followup_dim01 (verified 2026-07-27). PACER required.",
       "clDocketId": 4528605,
-      "blockedReason": "2026-07-28: Doc 10965 located (W.D. Pa. 00-22876, filed ~Apr 2026) but all parts return 'could not be accessed from the database' - same CM/ECF image error as Armstrong/USG/OC. pccasbestostrust.com Documents page has NO annual reports (forms/TDP only). Retry PACER later."
+      "blockedReason": "2026-07-28: Doc 10965 located (W.D. Pa. 00-22876, filed ~Apr 2026) but all parts return 'could not be accessed from the database' - same CM/ECF image error as Armstrong/USG/OC. pccasbestostrust.com Documents page has NO annual reports (forms/TDP only). Retry PACER later. Retried 2026-07-28 ~15:00 ET - still failing."
     },
     {
       "priority": 4,
       "trustId": "celotex",
       "trustName": "Celotex Asbestos Settlement Trust",
-      "court": "mdfl",
+      "court": "flmb",
       "caseNo": "90-10016",
-      "docNo": null,
+      "docNo": "14439",
       "description": "Celotex FY2025 Annual Report - $380M current figure; also yields filed cumulativePaid (inception-to-date claims paid), converting part of the aggregate remainder estimate into documented",
       "currentConfidence": "b",
       "currentNetAssets": 380000000,
       "estimatedCost": "$4",
       "recapChecked": true,
-      "status": "pending",
+      "status": "blocked",
       "recapCheckedAt": "2026-07-27",
       "recapResult": "FY2024 Annual Report PACER-only (docket index confirms filing; content not in RECAP). Only the FY2006 report (doc 13816) is archived in RECAP. Latest AR doc number unidentified - locate on docket at pull time.",
-      "clDocketId": 4223541
+      "clDocketId": 4223541,
+      "blockedReason": "2026-07-28: FY2025 Annual Report located (M.D. Fla. BK 90-10016 Doc 14439, filed 4/28/2026, + 4 exhibits; Application = Doc 14438) but ALL documents return 'could not be accessed from the database' (doc ids 93433570, 93433613-616) - verified identical error in user's own browser, so document-level CM/ECF image failure, not session. celotextrust.com publishes no annual reports. Retry PACER later. Spend to date $0.90 (docket queries)."
     },
     {
       "priority": 5,
@@ -55,7 +56,7 @@
       "recapCheckedAt": "2026-07-27",
       "recapResult": "CL docket fresh through 4/30/2026. FY2025 'Filing of Annual Report for the Year Ended December 31, 2025' confirmed via PacerMonitor caption (case 8949339); entry number + RECAP status not directly verified (docket too large to render, ~12k entries). Pattern across all verified DCPF trusts: exhibits paywalled.",
       "clDocketId": 164141,
-      "blockedReason": "2026-07-28: still 'could not be accessed from the database' for Doc 11008 parts (22957200/201/202). Try armstrongworldasbestostrust.com for free filed PDF; else retry PACER later."
+      "blockedReason": "2026-07-28: still 'could not be accessed from the database' for Doc 11008 parts (22957200/201/202). Try armstrongworldasbestostrust.com for free filed PDF; else retry PACER later. Retried 2026-07-28 ~15:00 ET - still failing."
     },
     {
       "priority": 7,
@@ -72,7 +73,7 @@
       "status": "blocked",
       "recapCheckedAt": "2026-07-27",
       "recapResult": "CL docket exists (~13,000 entries); freshness and AR entry RECAP status unverified (search throttling). Index mirrors: PacerMonitor case 8949821. Presume PACER required per DCPF pattern.",
-      "blockedReason": "2026-07-28: FY2025 annual report NOT yet filed (case reopened 1/12/2026, 2026 docket shows only fee receipt #12930). FY2024 report located (Doc 12858, filed 4/28/2025) but document images return 'could not be accessed from the database' - same CM/ECF image error as Armstrong/PCC/OC. Retry later; FY2025 report expected ~April 2027 or upon further docket activity. Spend to date $1.40 (docket queries)."
+      "blockedReason": "2026-07-28: FY2025 annual report NOT yet filed (case reopened 1/12/2026, 2026 docket shows only fee receipt #12930). FY2024 report located (Doc 12858, filed 4/28/2025) but document images return 'could not be accessed from the database' - same CM/ECF image error as Armstrong/PCC/OC. Retry later; FY2025 report expected ~April 2027 or upon further docket activity. Spend to date $1.40 (docket queries). Retried 2026-07-28 ~15:00 ET - still failing."
     },
     {
       "priority": 10,
@@ -89,7 +90,7 @@
       "status": "blocked",
       "recapCheckedAt": "2026-07-27",
       "recapResult": "CL docket exists (~21,000 entries). Latest AR entries verified on CL: Doc 21257 (FY2020, filed 4/28/2021), Doc 21253 (FY2019); live docket continues (FY2025 AR filed ~4/2026 per PacerMonitor caption case 4614034) - identify exact latest doc number at pull time. RECAP availability of PDFs unverified; presume paywalled per DCPF pattern.",
-      "blockedReason": "2026-07-28: FY2025 report located (Doc 21263, filed 4/28/2026: Ex.1 narrative + Ex.A financials) but document 22956363 returns 'could not be accessed from the database' - CM/ECF image error. Trust site ocfbasbestostrust.com publishes no public annual reports (Trust Online is claimant-login only). Retry PACER later. Spend to date $0.40."
+      "blockedReason": "2026-07-28: FY2025 report located (Doc 21263, filed 4/28/2026: Ex.1 narrative + Ex.A financials) but document 22956363 returns 'could not be accessed from the database' - CM/ECF image error. Trust site ocfbasbestostrust.com publishes no public annual reports (Trust Online is claimant-login only). Retry PACER later. Spend to date $0.40. Retried 2026-07-28 ~15:00 ET - still failing."
     }
   ],
   "completedPulls": [

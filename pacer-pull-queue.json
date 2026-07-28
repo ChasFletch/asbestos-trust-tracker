@@ -2,7 +2,7 @@
   "schema": "pacer-pull-queue/v1",
   "description": "Priority PACER document pull queue. Documents here upgrade trust records from (b) secondary to (a) filed confidence. Run the /api/pacer/pull endpoint once PACER account is active.",
   "accountStatus": "locked - awaiting PACER support response (2026-07-27)",
-  "estimatedCost": "$45-60 total for the remaining 9 documents",
+  "estimatedCost": "$75-90 total for the remaining 10 queue entries",
   "queue": [
     {
       "priority": 1,
@@ -152,6 +152,23 @@
       "status": "pending",
       "recapCheckedAt": "2026-07-27",
       "recapResult": "No CL docket located. docNo upgraded from null: Doc 7890 (FY2025, filed 4/28/2026, 'Notice of Filing of Annual Report', Atts Exhibit 1 + Exhibit A) identified via bkalerts docket index; FY2024 = Doc 7889. inforuptcy index free; PDFs PACER-only per corpus."
+    },
+    {
+      "priority": 2,
+      "trustId": "dii-early-years",
+      "trustName": "DII Industries (Halliburton/Harbison-Walker) Asbestos PI Trust - FY2005-FY2013 annual reports",
+      "court": "pawb",
+      "caseNo": "03-35592",
+      "docNo": "2903 (FY2013; amended 2911); FY2005-FY2012 doc numbers TBD from docket sheet (docket-sheet search ~2850-2903)",
+      "description": "Early DII annual reports needed to complete the bottom-up cumulativePaid: FY2014-FY2025 already summed free from trust site ($1,254,425,009 Exhibit B cash-basis claims paid); adding FY2005-FY2013 Exhibit B tables completes inception-to-date and converts ~$700M+ from estimate to documented. Each report is ~30 pages + Exhibit B attachment ($3/doc cap).",
+      "currentConfidence": "a (FY2014-FY2025 documented); gap FY2005-FY2013",
+      "currentNetAssets": 1149918344,
+      "estimatedCost": "~$30 (docket sheet + up to 9 reports/exhibits at $3 cap)",
+      "recapChecked": true,
+      "status": "pending",
+      "recapCheckedAt": "2026-07-27",
+      "recapResult": "RECAP indexes only FY2013 (Doc 2903, amended 2911) and FY2017 (Doc 2946/2948) annual reports for this docket; exhibit PDFs NOT archived. Trust-site free archive begins FY2014. Wayback Machine has no DII report PDFs. PACER required for FY2005-FY2013.",
+      "clDocketId": null
     }
   ],
   "completedPulls": [
@@ -161,7 +178,7 @@
       "completedAt": "2026-07-27",
       "source": "trust website (free file-stamped PDF, diiasbestostrust.org)",
       "cost": "$0.00",
-      "result": "FY2025 + FY2024 annual reports verified: no inception-to-date cumulative exhibit exists; DII cumulativePaid stays null pending bottom-up summation of yearly Exhibit B tables"
+      "result": "FY2014-FY2025 annual reports retrieved free and Exhibit B tables summed: documented cash-basis claims-paid subtotal $1,254,425,009 (12 years). No inception-to-date cumulative exhibit exists in any DII report; FY2005-FY2013 not freely retrievable - see queue entry dii-early-years. cumulativePaid stays null pending those pulls."
     },
     {
       "trustId": "western",
@@ -172,5 +189,5 @@
       "result": "cumulativePaid $2,238,037,573 as of 2025-12-31 (Claim Report Exhibit F); NCE $355,761,441 already on file"
     }
   ],
-  "notes": "CourtListener RECAP checked first for each document (2026-07-27 sweep). Universal pattern: the 1-page filing NOTICE is free in RECAP, but the financial EXHIBITS (annual report, audited financials, claims summary) are paywalled in every verified case - PACER pulls are still required for figures. Flintkote's RECAP docket is stale (ends 2014). DII and Western post file-stamped annual report PDFs free on their trust sites - try those first. CAUTION: CourtListener API now requires authentication (401/403 anonymous), so the site's checkRECAP() fallback in server/pacerRoutes.ts will fail until an API token is configured. RECAP URL pattern: https://www.courtlistener.com/docket/{docket_id}/ Entries 8-11 (added 2026-07-27) target cumulativePaid gaps: filed annual reports contain inception-to-date claims-paid exhibits that convert the aggregate $17.67B remainder estimate into documented figures. Per source policy, no law-firm marketing sites were used to fill these gaps - 39 trusts carry cumulativePaid: null until filed documents are retrieved."
+  "notes": "CourtListener RECAP checked first for each document (2026-07-27 sweep). Universal pattern: the 1-page filing NOTICE is free in RECAP, but the financial EXHIBITS (annual report, audited financials, claims summary) are paywalled in every verified case - PACER pulls are still required for figures. Flintkote's RECAP docket is stale (ends 2014). DII and Western post file-stamped annual report PDFs free on their own sites (verified 2026-07-27): Western, Thorpe Insulation, Plant, J.T. Thorpe (CA), and Maremont were all completed free via trust-site PDFs; DII FY2014-FY2025 summed free ($1,254,425,009), with FY2005-FY2013 added as queue entry dii-early-years."
 }

@@ -1,6 +1,6 @@
 {
   "schema": "asbestos-trust-figures/v1",
-  "asOf": "2026-07-28",
+  "asOf": "2026-07-27",
   "aggregate": {
     "remainingAssetsPoint": 17042880106,
     "remainingAssetsLow": 17042880106,
@@ -128,10 +128,10 @@
       "netAssets": 851537722,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": 11.0,
+      "paymentPercentage": 10.0,
       "status": "active",
       "confidence": "secondary",
-      "note": "19.2->11% over time; reconsideration notice issued May 2026 - cut possible; FY2025 report unconfirmed - status report filed 7/13/2026 (01-02094 Doc 12923), PACER-only"
+      "note": "11%->10% eff. 6/30/2026 (trust notice); FY2025 report unconfirmed - status report filed 7/13/2026 (01-02094 Doc 12923), PACER-only"
     },
     {
       "name": "Owens Corning/Fibreboard Asbestos PI Trust",
@@ -141,7 +141,7 @@
       "paymentPercentage": null,
       "status": "active",
       "confidence": "secondary",
-      "note": "OC Subfund cut June 2026; FY2025 report not confirmed docketed as of 7/28/2026 (FY2024: 00-03837 Doc 21261, 4/25/2025)"
+      "note": "OC Subfund cut June 2026; FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 00-03837 Doc 21261, 4/25/2025)"
     },
     {
       "name": "ASARCO Asbestos PI Settlement Trust",
@@ -189,7 +189,7 @@
       "paymentPercentage": null,
       "status": "active",
       "confidence": "secondary",
-      "note": "Current balance not publicly posted (DCPF-administered); FY2025 report not confirmed docketed as of 7/28/2026 (FY2024: 20-10028 Doc 1707, 4/29/2025)"
+      "note": "Current balance not publicly posted (DCPF-administered); FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 20-10028 Doc 1707, 4/29/2025)"
     },
     {
       "name": "Quigley Company Asbestos PI Trust",
@@ -205,10 +205,10 @@
       "netAssets": 463654031,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": 12.2,
+      "paymentPercentage": 2.9,
       "status": "active",
       "confidence": "secondary",
-      "note": "FY2025 report not confirmed docketed as of 7/28/2026 (FY2024: 01-10578 Doc 582593677, 4/29/2025)"
+      "note": "CORRECTION: prior DB entry carried 12.2%, which was the FMP subfund rate; T&N subfund is 2.9% per official trust notice 6/30/2026 (down from 5.9% in 2022); FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 01-10578 Doc 582593677, 4/29/2025)"
     },
     {
       "name": "Celotex Asbestos Settlement Trust",
@@ -417,6 +417,22 @@
   ],
   "changes": [
     {
+      "date": "2026-07-27",
+      "type": "percentage_cut",
+      "trust": "United States Gypsum (USG)",
+      "detail": "Payment percentage reduced 11.0% -> 10.0%, effective 6/30/2026 per official trust notice (usgasbestostrust.com)",
+      "source": "USG Payment Percentage Notice 6/30/2026, usgasbestostrust.com",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-07-27",
+      "type": "percentage_cut",
+      "trust": "Federal-Mogul (T&N Subfund)",
+      "detail": "Payment percentage corrected to 2.9% for T&N subfund per official trust notice 6/30/2026 (federalmogulasbestostrust.com). Prior DB entry of 12.2% was the FMP subfund rate. T&N history: 5.9% (2022) -> 2.9% (June 2026). FMP subfund remains 12.2%.",
+      "source": "Federal-Mogul T&N Notice Regarding Payment Percentage 6/30/2026, federalmogulasbestostrust.com",
+      "confidence": "primary"
+    },
+    {
       "date": "2026-07-28",
       "type": "annual_report",
       "trust": "Maremont",
@@ -583,7 +599,7 @@
       "tier": "primary"
     },
     {
-      "label": "Trust payment-percentage notices (bwasbestostrust.com, pccasbestostrust.com, celotextrust.com)",
+      "label": "Trust payment-percentage notices (bwasbestostrust.com, usgasbestostrust.com, federalmogulasbestostrust.com, pccasbestostrust.com, celotextrust.com)",
       "tier": "primary"
     },
     {

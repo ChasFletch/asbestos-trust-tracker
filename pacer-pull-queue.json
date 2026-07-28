@@ -2,25 +2,8 @@
   "schema": "pacer-pull-queue/v1",
   "description": "Priority PACER document pull queue. Documents here upgrade trust records from (b) secondary to (a) filed confidence. Run the /api/pacer/pull endpoint once PACER account is active.",
   "accountStatus": "active (2026-07-28; password reset after lockout, browser-session cookie method working)",
-  "estimatedCost": "$40-50 total for the remaining 8 queue entries (wrg completed at $3.70 vs $6 estimated)",
+  "estimatedCost": "$35-45 total for the remaining 7 queue entries",
   "queue": [
-    {
-      "priority": 2,
-      "trustId": "mlc",
-      "trustName": "Motors Liquidation Company Asbestos PI Trust",
-      "court": "nysb",
-      "caseNo": "09-50026",
-      "docNo": "14861",
-      "description": "MLC FY2025 Annual Report",
-      "currentConfidence": "b",
-      "currentNetAssets": null,
-      "estimatedCost": "$6",
-      "recapChecked": true,
-      "status": "pending",
-      "recapCheckedAt": "2026-07-27",
-      "recapResult": "Doc 14861 (FY2025, filed 4/30/2026): main 1-page notice FREE in RECAP (full text verified 2026-07-27); Att.1 (Exhibit 1 - Annual Report, Financial Statements, Claims Summary) and Att.2 (Audit Report) NOT in RECAP - PACER required for figures.",
-      "clDocketId": 4327513
-    },
     {
       "priority": 3,
       "trustId": "pcc",
@@ -138,6 +121,14 @@
     }
   ],
   "completedPulls": [
+    {
+      "trustId": "mlc",
+      "docNo": "14861",
+      "completedAt": "2026-07-28",
+      "source": "PACER CM/ECF (ecf.nysb.uscourts.gov)",
+      "cost": "$3.30",
+      "result": "FY2025 annual report (30 pages). Net assets available for payment of claims $130,075,609 audited at 12/31/2025 (replaces FY2021 secondary $152M). Cumulative paid 'approximately $136.2 million since inception' as of 12/31/2025 (25,296 claims). trust-figures.json updated; aggregate documented $14,556,634,586 / 10 trusts."
+    },
     {
       "trustId": "wrg",
       "docNo": "33347",

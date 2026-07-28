@@ -2,21 +2,21 @@
   "schema": "asbestos-trust-figures/v1",
   "asOf": "2026-07-27",
   "aggregate": {
-    "remainingAssetsPoint": 16876976791,
-    "remainingAssetsLow": 16876976791,
+    "remainingAssetsPoint": 16855052400,
+    "remainingAssetsLow": 16855052400,
     "remainingAssetsHigh": 22500000000,
     "cumulativePayoutsPoint": 24000000000,
     "cumulativePayoutsLow": 17500000000,
     "trustsWithFigures": 41,
     "activeTrustsEstimated": 60,
-    "cumulativePayoutsDocumented": 14420434586,
-    "cumulativePayoutsEstimatedRemainder": 9579565414,
-    "trustsWithCumulativePaidFiled": 9
+    "cumulativePayoutsDocumented": 14556634586,
+    "cumulativePayoutsEstimatedRemainder": 9443365414,
+    "trustsWithCumulativePaidFiled": 10
   },
   "methodology": {
-    "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 10 from filed annual reports/quarterly filings (FY2025 annual reports or Q1 2026 quarterly) totaling $5,795,821,237, plus 31 from credible secondary compilations of trust annual reports (mostly FY2022 as-of dates) totaling $11,081,155,554. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
+    "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 11 from filed annual reports/quarterly filings (FY2025 annual reports or Q1 2026 quarterly) totaling $5,925,896,846, plus 30 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $10,929,155,554. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
     "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
-    "cumulativePayoutsPoint": "Bottom-up decomposition. DOCUMENTED FLOOR: $14,420,434,586 paid inception-to-date by the 9 trusts with cumulative figures in filed reports - Manville $5,329,722,253 through 3/31/2026 (Q1 2026 quarterly report, Bankr. S.D.N.Y. Doc 4479), DII Industries $2,349,041,458 inception-to-date through 12/31/2025 (bottom-up sum of 21 filed annual-report documents, Bankr. W.D. Pa. 03-35592-CMB; FY2005-FY2013 pulled from PACER 2026-07-28), W.R. Grace ~$2,690,000,000 through 12/31/2025 ('approximately $2.69 billion since inception' per FY2025 annual report narrative, Bankr. D. Del. 01-01139 Doc 33347-1, filed 4/29/2026; no exact cumulative dollar exhibit exists), Western $2,238,037,573 through 12/31/2025 (22nd Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 13-31914 Doc 1944), NARCO $904,019,504 through 12/31/2025 (FY2025 annual report, W.D. Pa. 02-20198 Doc 8521), Thorpe Insulation $433,982,311 through 12/31/2025 (16th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:07-bk-20016-BB Doc 242), Plant $191,680,841 through 12/31/2025 (14th Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 09-31347 Doc 3050), J.T. Thorpe (CA) $189,960,646 through 12/31/2025 (20th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:02-bk-14216-BB Doc 1901), API $93,990,000 through 12/31/2025 (FY2025 annual report, Bankr. D. Minn. 05-30073-GFK). ESTIMATED REMAINDER: ~$9.58B for all other trusts, anchored on GAO-11-819 (Sept 2011) documenting $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow) plus the prior ~$6.5B 2011-2025 extrapolation from a documented 8-trust subset paying ~$591.9M (2022) and ~$561.2M (2024). The largest documented-but-unretrieved gaps (USG, PCC, Armstrong, OC/FB, WRG, B&W, Celotex) publish cumulative figures in filed annual reports sequestered on PACER - see pacer-pull-queue.json; each pull converts estimate into documented. NOTE: DII Industries publishes no inception-to-date cumulative exhibit, so its annual reports were summed bottom-up across all 21 years of trust operation (FY2005-FY2025): FY2014-FY2025 from file-stamped PDFs free at diiasbestostrust.org ($1,254,425,009) and FY2005-FY2013 from PACER ($1,094,616,449 across 9 documents pulled 2026-07-28 for $9.90; FY2005 audited statements show $0 claims paid - the trust spent its first year setting up, and claims payments began in 2006). DII's documented total $2,349,041,458 is now part of the documented floor.",
+    "cumulativePayoutsPoint": "Bottom-up decomposition. DOCUMENTED FLOOR: $14,556,634,586 paid inception-to-date by the 10 trusts with cumulative figures in filed reports - Manville $5,329,722,253 through 3/31/2026 (Q1 2026 quarterly report, Bankr. S.D.N.Y. Doc 4479), DII Industries $2,349,041,458 inception-to-date through 12/31/2025 (bottom-up sum of 21 filed annual-report documents, Bankr. W.D. Pa. 03-35592-CMB; FY2005-FY2013 pulled from PACER 2026-07-28), W.R. Grace ~$2,690,000,000 through 12/31/2025 ('approximately $2.69 billion since inception' per FY2025 annual report narrative, Bankr. D. Del. 01-01139 Doc 33347-1, filed 4/29/2026; no exact cumulative dollar exhibit exists), Western $2,238,037,573 through 12/31/2025 (22nd Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 13-31914 Doc 1944), NARCO $904,019,504 through 12/31/2025 (FY2025 annual report, W.D. Pa. 02-20198 Doc 8521), Thorpe Insulation $433,982,311 through 12/31/2025 (16th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:07-bk-20016-BB Doc 242), Plant $191,680,841 through 12/31/2025 (14th Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 09-31347 Doc 3050), J.T. Thorpe (CA) $189,960,646 through 12/31/2025 (20th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:02-bk-14216-BB Doc 1901), API $93,990,000 through 12/31/2025 (FY2025 annual report, Bankr. D. Minn. 05-30073-GFK), MLC ~$136,200,000 through 12/31/2025 ('approximately $136.2 million since inception' per FY2025 annual report claims summary, Bankr. S.D.N.Y. 09-50026 Doc 14861-1). ESTIMATED REMAINDER: ~$9.44B for all other trusts, anchored on GAO-11-819 (Sept 2011) documenting $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow) plus the prior ~$6.5B 2011-2025 extrapolation from a documented 8-trust subset paying ~$591.9M (2022) and ~$561.2M (2024). The largest documented-but-unretrieved gaps (USG, PCC, Armstrong, OC/FB, WRG, B&W, Celotex) publish cumulative figures in filed annual reports sequestered on PACER - see pacer-pull-queue.json; each pull converts estimate into documented. NOTE: DII Industries publishes no inception-to-date cumulative exhibit, so its annual reports were summed bottom-up across all 21 years of trust operation (FY2005-FY2025): FY2014-FY2025 from file-stamped PDFs free at diiasbestostrust.org ($1,254,425,009) and FY2005-FY2013 from PACER ($1,094,616,449 across 9 documents pulled 2026-07-28 for $9.90; FY2005 audited statements show $0 claims paid - the trust spent its first year setting up, and claims payments began in 2006). DII's documented total $2,349,041,458 is now part of the documented floor.",
     "viralFiguresDebunked": "'$30B remaining' traces to GAO-11-819's ~$36.8B TOTAL CAPITALIZATION of 60 trusts as of 2011 (initial funding + returns), not a current balance. GAO analyzed reports for only 47 of 60 trusts."
   },
   "trusts": [
@@ -414,16 +414,16 @@
     },
     {
       "name": "Motors Liquidation Co. (GM) Asbestos PI Trust",
-      "netAssets": 152000000,
-      "assetsAsOf": "2021-12-31",
-      "assetsBasis": "assets per FY2021 annual report (secondary)",
+      "netAssets": 130075609,
+      "assetsAsOf": "2025-12-31",
+      "assetsBasis": "net assets available for the payment of claims, audited special-purpose statements, FY2025 annual report",
       "paymentPercentage": 10.3,
       "status": "active",
-      "confidence": "secondary",
-      "note": "% cut 12.2->10.3% announced 12/3/2025; FY2025 report filed 4/30/2026 (09-50026 Doc 14861), PACER-only - pull pending",
-      "cumulativePaid": null,
-      "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "confidence": "filed",
+      "note": "FY2025 annual report pulled from PACER 2026-07-28 (S.D.N.Y. 09-50026 Doc 14861, filed 4/30/2026): audited net assets available for payment of claims $130,075,609 at 12/31/2025. Cumulative: 'approximately $136.2 million paid to asbestos victims since inception' per annual report claims summary (25,296 claims paid since inception: 12,353 malignancy + 10,170 non-malignancy; claims processing began 4/30/2012). Payment percentage cut 12.2->10.3% announced 12/3/2025.",
+      "cumulativePaid": 136200000,
+      "cumulativePaidAsOf": "2025-12-31",
+      "cumulativePaidSource": "MLC Asbestos PI Trust FY2025 Annual Report and Account, Summary of Claims, Bankr. S.D.N.Y. 09-50026 Doc 14861-1 (filed 4/30/2026): 'The Trust paid approximately $136.2 million to asbestos victims in settlement of their Unliquidated Claims since the date of inception of the Trust' as of 12/31/2025. Approximation per the filed narrative; no exact cumulative dollar exhibit filed."
     },
     {
       "name": "ACandS Asbestos Settlement Trust",
@@ -550,6 +550,13 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-07-28",
+      "type": "data_addition",
+      "trust": "Motors Liquidation Co. (GM) Asbestos PI Trust",
+      "confidence": "primary",
+      "detail": "Queue priority 2 COMPLETE. Pulled FY2025 annual report from PACER (S.D.N.Y. 09-50026 Doc 14861: notice + Exhibit 1 + audit report, 30 pages, $3.30 fees). Upgrades: netAssets $152,000,000 (FY2021 secondary) -> $130,075,609 audited at 12/31/2025 (confidence secondary -> filed); cumulativePaid 136,200,000 as of 2025-12-31 per 'approximately $136.2 million since inception' (25,296 claims paid since inception). Aggregate: documented floor $14,420,434,586 -> $14,556,634,586 (10 trusts), remainder ~$9.44B; remainingAssetsPoint -> $16,855,052,400."
+    },
     {
       "date": "2026-07-28",
       "type": "data_addition",

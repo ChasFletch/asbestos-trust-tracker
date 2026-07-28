@@ -16,10 +16,11 @@
       "currentNetAssets": 1294000000,
       "estimatedCost": "$4",
       "recapChecked": true,
-      "status": "pending",
+      "status": "blocked",
       "recapCheckedAt": "2026-07-27",
       "recapResult": "FY2025 = Doc 10965 (filed 4/29/2026, 'Report -Generic-') NOT in RECAP; FY2024 Doc 10964 also not in RECAP. docNo upgraded from null per corpus followup_dim01 (verified 2026-07-27). PACER required.",
-      "clDocketId": 4528605
+      "clDocketId": 4528605,
+      "blockedReason": "2026-07-28: Doc 10965 located (W.D. Pa. 00-22876, filed ~Apr 2026) but all parts return 'could not be accessed from the database' - same CM/ECF image error as Armstrong/USG/OC. pccasbestostrust.com Documents page has NO annual reports (forms/TDP only). Retry PACER later."
     },
     {
       "priority": 4,
@@ -44,32 +45,17 @@
       "trustName": "Armstrong World Industries Asbestos PI Trust",
       "court": "deb",
       "caseNo": "00-04471",
-      "docNo": null,
+      "docNo": "11008",
       "description": "Armstrong FY2025 Annual Report - $700M current figure, 10.8% payment; also yields filed cumulativePaid (inception-to-date claims paid), converting part of the aggregate remainder estimate into documented",
       "currentConfidence": "b",
       "currentNetAssets": 700000000,
       "estimatedCost": "$4",
       "recapChecked": true,
-      "status": "pending",
+      "status": "blocked",
       "recapCheckedAt": "2026-07-27",
       "recapResult": "CL docket fresh through 4/30/2026. FY2025 'Filing of Annual Report for the Year Ended December 31, 2025' confirmed via PacerMonitor caption (case 8949339); entry number + RECAP status not directly verified (docket too large to render, ~12k entries). Pattern across all verified DCPF trusts: exhibits paywalled.",
-      "clDocketId": 164141
-    },
-    {
-      "priority": 6,
-      "trustId": "flintkote",
-      "trustName": "Flintkote Company Asbestos PI Trust",
-      "court": "deb",
-      "caseNo": "04-11300",
-      "docNo": null,
-      "description": "Flintkote FY2025 Annual Report - $617M current figure, 15% payment",
-      "currentConfidence": "b",
-      "currentNetAssets": 617000000,
-      "estimatedCost": "$4",
-      "recapChecked": true,
-      "status": "pending",
-      "recapCheckedAt": "2026-07-27",
-      "recapResult": "CL/RECAP docket for 04-11300 is STALE: 1,369 entries ending ~Nov 2014 (entry ~8552), while the live docket runs to 2025 (D.I. 9338+ per deb.uscourts.gov opinion; inforuptcy last filing 9/17/2025). FY2025 AR definitively NOT in RECAP. PACER required."
+      "clDocketId": 164141,
+      "blockedReason": "2026-07-28: still 'could not be accessed from the database' for Doc 11008 parts (22957200/201/202). Try armstrongworldasbestostrust.com for free filed PDF; else retry PACER later."
     },
     {
       "priority": 7,
@@ -83,9 +69,10 @@
       "currentNetAssets": 851000000,
       "estimatedCost": "$4",
       "recapChecked": true,
-      "status": "pending",
+      "status": "blocked",
       "recapCheckedAt": "2026-07-27",
-      "recapResult": "CL docket exists (~13,000 entries); freshness and AR entry RECAP status unverified (search throttling). Index mirrors: PacerMonitor case 8949821. Presume PACER required per DCPF pattern."
+      "recapResult": "CL docket exists (~13,000 entries); freshness and AR entry RECAP status unverified (search throttling). Index mirrors: PacerMonitor case 8949821. Presume PACER required per DCPF pattern.",
+      "blockedReason": "2026-07-28: FY2025 annual report NOT yet filed (case reopened 1/12/2026, 2026 docket shows only fee receipt #12930). FY2024 report located (Doc 12858, filed 4/28/2025) but document images return 'could not be accessed from the database' - same CM/ECF image error as Armstrong/PCC/OC. Retry later; FY2025 report expected ~April 2027 or upon further docket activity. Spend to date $1.40 (docket queries)."
     },
     {
       "priority": 10,
@@ -93,15 +80,16 @@
       "trustName": "Owens Corning/Fibreboard Asbestos PI Trust",
       "court": "deb",
       "caseNo": "00-3837",
-      "docNo": null,
+      "docNo": "21263",
       "description": "OC/FB latest Annual Report - cumulativePaid gap (DCPF-administered, PACER-only per corpus; doc number not identified - locate latest annual report on docket); note OC vs FB subfund split to avoid double counting",
       "currentConfidence": "b (assets) / null (cumulativePaid)",
       "currentNetAssets": null,
       "estimatedCost": "$5",
       "recapChecked": true,
-      "status": "pending",
+      "status": "blocked",
       "recapCheckedAt": "2026-07-27",
-      "recapResult": "CL docket exists (~21,000 entries). Latest AR entries verified on CL: Doc 21257 (FY2020, filed 4/28/2021), Doc 21253 (FY2019); live docket continues (FY2025 AR filed ~4/2026 per PacerMonitor caption case 4614034) - identify exact latest doc number at pull time. RECAP availability of PDFs unverified; presume paywalled per DCPF pattern."
+      "recapResult": "CL docket exists (~21,000 entries). Latest AR entries verified on CL: Doc 21257 (FY2020, filed 4/28/2021), Doc 21253 (FY2019); live docket continues (FY2025 AR filed ~4/2026 per PacerMonitor caption case 4614034) - identify exact latest doc number at pull time. RECAP availability of PDFs unverified; presume paywalled per DCPF pattern.",
+      "blockedReason": "2026-07-28: FY2025 report located (Doc 21263, filed 4/28/2026: Ex.1 narrative + Ex.A financials) but document 22956363 returns 'could not be accessed from the database' - CM/ECF image error. Trust site ocfbasbestostrust.com publishes no public annual reports (Trust Online is claimant-login only). Retry PACER later. Spend to date $0.40."
     },
     {
       "priority": 11,
@@ -160,6 +148,14 @@
       "source": "trust website (free file-stamped PDF, wastrust.com)",
       "cost": "$0.00",
       "result": "cumulativePaid $2,238,037,573 as of 2025-12-31 (Claim Report Exhibit F); NCE $355,761,441 already on file"
+    },
+    {
+      "trustId": "flintkote",
+      "docNo": "9503",
+      "completedAt": "2026-07-28",
+      "source": "PACER D. Del. 04-11300 Doc 9503 (notice + Ex.1 annual report + Ex.1.A audited financials + Ex.1.B claims summary, 32p)",
+      "cost": "$4.00",
+      "result": "netAssets upgraded to $520,161,996 audited (BDO) at 12/31/2025, confidence filed; cumulativePaid NULL - no inception-to-date line in filing (FY2025 claims paid $37,848,794 / 13,460 claims). Gap: per-year Exhibit 1.B tables summable across ~18 years if wanted."
     }
   ],
   "notes": "CourtListener RECAP checked first for each document (2026-07-27 sweep). Universal pattern: the 1-page filing NOTICE is free in RECAP, but the financial EXHIBITS (annual report, audited financials, claims summary) are paywalled in every verified case - PACER pulls are still required for figures. Flintkote's RECAP docket is stale (ends 2014). DII and Western post file-stamped annual report PDFs free on their own sites (verified 2026-07-27): Western, Thorpe Insulation, Plant, J.T. Thorpe (CA), and Maremont were all completed free via trust-site PDFs; DII FY2014-FY2025 summed free ($1,254,425,009), with FY2005-FY2013 added as queue entry dii-early-years."

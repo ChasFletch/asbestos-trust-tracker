@@ -274,9 +274,10 @@ interface DebtClockBillboardProps {
   paidOutDocumented?: number;
   paidOutEstimatedRemainder?: number;
   trustsWithCumulativePaidFiled?: number;
+  documentedTrusts?: Array<{ name: string; cumulativePaid: number; cumulativePaidAsOf: string | null }>;
 }
 
-export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 6327731757, paidOutEstimatedRemainder = 17672268243, trustsWithCumulativePaidFiled = 3 }: DebtClockBillboardProps) {
+export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 6327731757, paidOutEstimatedRemainder = 17672268243, trustsWithCumulativePaidFiled = 3, documentedTrusts = [] }: DebtClockBillboardProps) {
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
@@ -471,34 +472,74 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                label="Cumulative Payouts Since 1988"
                sublabel="Derived estimate — see methodology"
               tooltip={
-                <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
-                  <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                    How $24B Is Calculated
-                  </div>
-                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
-                    <tbody>
-                      {[
-                      [`$${paidOutDocumented.toLocaleString()}`, `${trustsWithCumulativePaidFiled} trusts — filed reports`, "Manville, DII, WRG, MLC, Western, NARCO, Thorpe Ins., Plant, J.T. Thorpe, API", "filed"],
-                        // note: trust list updated in footnote below
-                        [`+ $${paidOutEstimatedRemainder.toLocaleString()}`, `${42 - trustsWithCumulativePaidFiled} trusts — estimated`, "GAO-11-819 floor + secondary sources", "est"],
-                      ].map(([amt, name, note, conf]) => (
-                        <tr key={name} style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
-                          <td style={{ padding: "4px 6px 4px 0", fontFamily: "'Courier New', monospace", color: SEG_ON, whiteSpace: "nowrap", fontSize: "0.68rem" }}>{amt}</td>
-                          <td style={{ padding: "4px 4px", fontWeight: 600, color: "rgba(240,236,224,0.85)" }}>{name}</td>
-                          <td style={{ padding: "4px 0 4px 4px", color: "rgba(240,236,224,0.50)", fontSize: "0.65rem" }}>{note}</td>
-                          <td style={{ padding: "4px 0 4px 6px" }}>
-                            <span style={{
-                              fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em",
-                              background: conf === "filed" ? "rgba(34,197,94,0.15)" : conf === "secondary" ? "rgba(96,165,250,0.15)" : "rgba(251,191,36,0.15)",
-                              color: conf === "filed" ? "#86efac" : conf === "secondary" ? "#93c5fd" : "#fcd34d",
-                              border: `1px solid ${conf === "filed" ? "rgba(34,197,94,0.3)" : conf === "secondary" ? "rgba(96,165,250,0.3)" : "rgba(251,191,36,0.3)"}`,
-                            }}>{conf === "filed" ? "a" : conf === "secondary" ? "b" : "c"}</span>
+               <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
+                 <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                   How $24B Is Calculated
+                 </div>
+                 <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
+                   <tbody>
+                      {/* Subheader: documented */}
+                      <tr>
+                        <td colSpan={3} style={{ padding: "2px 0 4px", fontSize: "0.6rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                          Filed annual reports ({trustsWithCumulativePaidFiled} trusts)
+                        </td>
+                        <td style={{ padding: "2px 0 4px", textAlign: "right" }}>
+                          <span style={{ fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em", background: "rgba(34,197,94,0.15)", color: "#86efac", border: "1px solid rgba(34,197,94,0.3)" }}>a</span>
+                        </td>
+                      </tr>
+                      {(documentedTrusts.length > 0 ? documentedTrusts : [
+                        { name: "Manville Personal Injury Settlement Trust", cumulativePaid: 5329722253, cumulativePaidAsOf: "2026-03-31" },
+                        { name: "W.R. Grace Asbestos PI Trust", cumulativePaid: 2690000000, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "DII Industries (Halliburton/Harbison-Walker)", cumulativePaid: 2349041458, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "Western Asbestos Settlement Trust", cumulativePaid: 2238037573, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "NARCO Asbestos Trust", cumulativePaid: 904019504, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "Thorpe Insulation Company Asbestos Settlement Trust", cumulativePaid: 433982311, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "Plant Asbestos Settlement Trust", cumulativePaid: 191680841, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "J.T. Thorpe Settlement Trust (CA)", cumulativePaid: 189960646, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "Motors Liquidation Co. (GM) Asbestos PI Trust", cumulativePaid: 136200000, cumulativePaidAsOf: "2025-12-31" },
+                        { name: "API, Inc. Asbestos Settlement Trust", cumulativePaid: 93990000, cumulativePaidAsOf: "2025-12-31" },
+                      ]).map((t) => (
+                        <tr key={t.name} style={{ borderBottom: "1px solid rgba(255,178,72,0.07)" }}>
+                          <td style={{ padding: "3px 6px 3px 8px", fontFamily: "'Courier New', monospace", color: SEG_ON, whiteSpace: "nowrap", fontSize: "0.66rem" }}>
+                            ${t.cumulativePaid.toLocaleString()}
+                          </td>
+                          <td colSpan={2} style={{ padding: "3px 4px", color: "rgba(240,236,224,0.75)", fontSize: "0.65rem", lineHeight: 1.3 }}>
+                            {t.name.replace("Personal Injury Settlement Trust", "PI Trust").replace("Asbestos Settlement Trust", "Settlement Trust").replace("Asbestos PI Trust", "PI Trust").replace(" (Halliburton/Harbison-Walker)", "").replace("Motors Liquidation Co. (GM) ", "Motors Liquidation (GM) ")}
+                          </td>
+                          <td style={{ padding: "3px 0 3px 4px", color: "rgba(240,236,224,0.35)", fontSize: "0.58rem", whiteSpace: "nowrap", textAlign: "right" }}>
+                            {t.cumulativePaidAsOf ? t.cumulativePaidAsOf.substring(0, 7) : ""}
                           </td>
                         </tr>
                       ))}
-                      <tr style={{ borderTop: "1px solid rgba(255,178,72,0.30)" }}>
-                        <td colSpan={4} style={{ padding: "6px 0 2px", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.72rem", fontWeight: 700 }}>
-                          = ${(paidOutDocumented + paidOutEstimatedRemainder).toLocaleString()} &nbsp;<span style={{ color: "rgba(240,236,224,0.45)", fontFamily: "serif", fontWeight: 400, fontSize: "0.65rem" }}>est. total</span>
+                      {/* Subtotal row */}
+                      <tr style={{ borderTop: "1px solid rgba(255,178,72,0.20)", borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
+                        <td style={{ padding: "3px 6px 3px 0", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.68rem", fontWeight: 700 }}>
+                          ${paidOutDocumented.toLocaleString()}
+                        </td>
+                        <td colSpan={3} style={{ padding: "3px 0", color: "rgba(240,236,224,0.45)", fontSize: "0.62rem", fontStyle: "italic" }}>
+                          subtotal — {trustsWithCumulativePaidFiled} filed trusts
+                        </td>
+                      </tr>
+                      {/* Estimated remainder */}
+                      <tr>
+                        <td colSpan={4} style={{ padding: "6px 0 2px", fontSize: "0.6rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                          Estimated remainder (32 trusts — no filed inception-to-date figures)
+                        </td>
+                      </tr>
+                      <tr style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
+                        <td style={{ padding: "3px 6px 3px 0", fontFamily: "'Courier New', monospace", color: "rgba(255,178,72,0.6)", whiteSpace: "nowrap", fontSize: "0.66rem" }}>
+                          + ${paidOutEstimatedRemainder.toLocaleString()}
+                        </td>
+                        <td colSpan={2} style={{ padding: "3px 4px", color: "rgba(240,236,224,0.55)", fontSize: "0.65rem" }}>
+                          GAO-11-819 floor + secondary sources
+                        </td>
+                        <td style={{ padding: "3px 0 3px 4px", textAlign: "right" }}>
+                          <span style={{ fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em", background: "rgba(251,191,36,0.15)", color: "#fcd34d", border: "1px solid rgba(251,191,36,0.3)" }}>c</span>
+                        </td>
+                      </tr>
+                     <tr style={{ borderTop: "1px solid rgba(255,178,72,0.30)" }}>
+                       <td colSpan={4} style={{ padding: "6px 0 2px", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.72rem", fontWeight: 700 }}>
+                         = ${(paidOutDocumented + paidOutEstimatedRemainder).toLocaleString()} &nbsp;<span style={{ color: "rgba(240,236,224,0.45)", fontFamily: "serif", fontWeight: 400, fontSize: "0.65rem" }}>est. total</span>
                         </td>
                       </tr>
                     </tbody>

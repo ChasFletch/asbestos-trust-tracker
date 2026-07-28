@@ -118,6 +118,13 @@ export default function Home() {
   // Derive stats from trust-figures.json (primary source, all 42 trusts)
   const tf = allTrustFigures?.trusts ?? [];
   const activeTrusts = tf.filter((t: { status: string }) => t.status === "active" || t.status === "active_deferral");
+
+  // Documented trusts with per-trust cumulativePaid for the modal breakdown
+  const documentedTrusts = tf
+    .filter((t: any) => t.cumulativePaid != null)
+    .sort((a: any, b: any) => b.cumulativePaid - a.cumulativePaid)
+    .map((t: any) => ({ name: t.name, cumulativePaid: t.cumulativePaid, cumulativePaidAsOf: t.cumulativePaidAsOf ?? null }));
+
   const filedTrusts = tf.filter((t: { confidence: string }) => t.confidence === "filed");
   const recentDataTrusts = tf.filter((t: { assetsAsOf: string | null }) => {
     if (!t.assetsAsOf) return false;
@@ -187,16 +194,17 @@ export default function Home() {
               <div className="h-72 rounded-lg animate-pulse bg-muted" />
             ) : (
               <DebtClockBillboard
-                remaining={remaining}
-                payouts={paidOut}
-                remainingLow={remainingLow}
-                remainingHigh={remainingHigh}
-                lastUpdated={lastUpdated}
-                topTrusts={topTrusts}
-                paidOutDocumented={paidOutDocumented}
-                paidOutEstimatedRemainder={paidOutEstimatedRemainder}
-                trustsWithCumulativePaidFiled={trustsWithCumulativePaidFiled}
-              />
+               remaining={remaining}
+               payouts={paidOut}
+               remainingLow={remainingLow}
+               remainingHigh={remainingHigh}
+               lastUpdated={lastUpdated}
+               topTrusts={topTrusts}
+               paidOutDocumented={paidOutDocumented}
+               paidOutEstimatedRemainder={paidOutEstimatedRemainder}
+               trustsWithCumulativePaidFiled={trustsWithCumulativePaidFiled}
+               documentedTrusts={documentedTrusts}
+             />
             )}
             <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 text-xs font-mono text-muted-foreground/50 mt-1">
               <span>

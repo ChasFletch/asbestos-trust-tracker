@@ -1,0 +1,83 @@
+{
+  "ranAt": "2026-07-28T17:26:54.243Z",
+  "entries": [
+    {
+      "year": 2013,
+      "label": "Second Amended FY2013 AR (Doc 2913)",
+      "status": "already_downloaded",
+      "file": "dii-2013-exhibit-b.pdf"
+    },
+    {
+      "year": 2012,
+      "label": "FY2012 AR (Doc 2855)",
+      "status": "already_downloaded",
+      "file": "dii-2012-exhibit-b.pdf"
+    },
+    {
+      "year": 2011,
+      "label": "FY2011 AR (Doc 2836)",
+      "status": "already_downloaded",
+      "file": "dii-2011-exhibit-b.pdf"
+    },
+    {
+      "year": 2010,
+      "label": "FY2010 AR (Doc 2812)",
+      "status": "already_downloaded",
+      "file": "dii-2010-exhibit-b.pdf"
+    },
+    {
+      "year": 2009,
+      "label": "FY2009 AR (Doc 2764)",
+      "status": "already_downloaded",
+      "file": "dii-2009-exhibit-b.pdf"
+    },
+    {
+      "year": 2008,
+      "label": "FY2008 AR (Doc 2754)",
+      "status": "already_downloaded",
+      "file": "dii-2008-exhibit-b.pdf"
+    },
+    {
+      "year": 2007,
+      "label": "FY2007 notice (Doc 2697)",
+      "status": "downloaded",
+      "note": "single-document entry; pulled whole document",
+      "receipt": {
+        "billablePages": "30",
+        "cost": "3.00",
+        "description": "Image:2697-0"
+      },
+      "feeAccepted": true,
+      "file": "dii-2007-exhibit-b.pdf",
+      "bytes": 4778303
+    },
+    {
+      "year": 2006,
+      "label": "FY2006 AR (Doc 2686)",
+      "status": "downloaded",
+      "note": "single-document entry; pulled whole document",
+      "receipt": {
+        "billablePages": "30",
+        "cost": "3.00",
+        "description": "Image:2686-0"
+      },
+      "feeAccepted": true,
+      "file": "dii-2006-exhibit-b.pdf",
+      "bytes": 1923721
+    },
+    {
+      "year": 2005,
+      "label": "FY2005 notice (Doc 2601)",
+      "status": "downloaded",
+      "note": "single-document entry; pulled whole document",
+      "receipt": {
+        "billablePages": "30",
+        "cost": "3.00",
+        "description": "Image:2601-0"
+      },
+      "feeAccepted": true,
+      "file": "dii-2005-exhibit-b.pdf",
+      "bytes": 1224200
+    }
+  ]
+}

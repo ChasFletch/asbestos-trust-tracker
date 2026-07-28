@@ -2,7 +2,7 @@
   "schema": "pacer-pull-queue/v1",
   "description": "Priority PACER document pull queue. Documents here upgrade trust records from (b) secondary to (a) filed confidence. Run the /api/pacer/pull endpoint once PACER account is active.",
   "accountStatus": "locked - awaiting PACER support response (2026-07-27)",
-  "estimatedCost": "$48-65 total for all 10 documents",
+  "estimatedCost": "$53-70 total for all 11 documents",
   "queue": [
     {
       "priority": 1,
@@ -143,8 +143,22 @@
       "estimatedCost": "$5",
       "recapChecked": false,
       "status": "pending"
+    },
+    {
+      "priority": 11,
+      "trustId": "bw",
+      "trustName": "Babcock & Wilcox Asbestos PI Settlement Trust",
+      "court": "laeb",
+      "caseNo": "2:00-bk-10992",
+      "docNo": null,
+      "description": "B&W latest 'Notice of Filing Annual Report and Claim Summary' (recurring on docket; index free via inforuptcy) - cumulativePaid gap: corpus has only a mesothelioma.com transcription (~$1.94B+ since inception, YE2024), banned as a source; filed report converts to documented. Also upgrades $307.1M asset figure from (b) to (a)",
+      "currentConfidence": "b (assets) / null (cumulativePaid)",
+      "currentNetAssets": 307100000,
+      "estimatedCost": "$5",
+      "recapChecked": false,
+      "status": "pending"
     }
   ],
   "completedPulls": [],
-  "notes": "CourtListener RECAP should be checked first for each document before spending PACER credits. RECAP URL pattern: https://www.courtlistener.com/docket/{docket_id}/ Entries 8-10 (added 2026-07-27) target cumulativePaid gaps: filed annual reports contain inception-to-date claims-paid exhibits that convert the aggregate $17.67B remainder estimate into documented figures. Per source policy, no law-firm marketing sites were used to fill these gaps - 39 trusts carry cumulativePaid: null until filed documents are retrieved."
+  "notes": "CourtListener RECAP should be checked first for each document before spending PACER credits. RECAP URL pattern: https://www.courtlistener.com/docket/{docket_id}/ Entries 8-11 (added 2026-07-27) target cumulativePaid gaps: filed annual reports contain inception-to-date claims-paid exhibits that convert the aggregate $17.67B remainder estimate into documented figures. Per source policy, no law-firm marketing sites were used to fill these gaps - 39 trusts carry cumulativePaid: null until filed documents are retrieved."
 }

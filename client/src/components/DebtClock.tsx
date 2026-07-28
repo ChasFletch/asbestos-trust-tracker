@@ -271,9 +271,12 @@ interface DebtClockBillboardProps {
   remainingHigh?: number;
   lastUpdated?: string | null;
   topTrusts?: Array<{ name: string; netAssets: number; assetsAsOf: string | null; confidence: string }>;
+  paidOutDocumented?: number;
+  paidOutEstimatedRemainder?: number;
+  trustsWithCumulativePaidFiled?: number;
 }
 
-export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts }: DebtClockBillboardProps) {
+export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 6327731757, paidOutEstimatedRemainder = 17672268243, trustsWithCumulativePaidFiled = 3 }: DebtClockBillboardProps) {
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
@@ -467,44 +470,41 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                value={payouts}
                label="Cumulative Payouts Since 1988"
                sublabel="Derived estimate — see methodology"
-               tooltip={
-                 <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
-                   <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                     How $26.6B Is Calculated
-                   </div>
-                   <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
-                     <tbody>
-                       {[
-                         ["$17,500,000,000", "GAO-11-819 floor", "All trusts through 2010", "filed"],
-                         ["+ $2,179,722,253", "Manville post-2010", "Filed Q1 2026 increment", "filed"],
-                         ["+ $2,500,000,000", "W.R. Grace", "Trust website (est. all post-2014)", "secondary"],
-                         ["+ $950,000,000", "NARCO post-2010", "Secondary sources", "secondary"],
-                         ["+ $3,500,000,000", "Other DCPF trusts", "7 trusts, post-2010 est.", "est"],
-                       ].map(([amt, name, note, conf]) => (
-                         <tr key={name} style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
-                           <td style={{ padding: "4px 6px 4px 0", fontFamily: "'Courier New', monospace", color: SEG_ON, whiteSpace: "nowrap", fontSize: "0.68rem" }}>{amt}</td>
-                           <td style={{ padding: "4px 4px", fontWeight: 600, color: "rgba(240,236,224,0.85)" }}>{name}</td>
-                           <td style={{ padding: "4px 0 4px 4px", color: "rgba(240,236,224,0.50)", fontSize: "0.65rem" }}>{note}</td>
-                           <td style={{ padding: "4px 0 4px 6px" }}>
-                             <span style={{
-                               fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em",
-                               background: conf === "filed" ? "rgba(34,197,94,0.15)" : conf === "secondary" ? "rgba(96,165,250,0.15)" : "rgba(251,191,36,0.15)",
-                               color: conf === "filed" ? "#86efac" : conf === "secondary" ? "#93c5fd" : "#fcd34d",
-                               border: `1px solid ${conf === "filed" ? "rgba(34,197,94,0.3)" : conf === "secondary" ? "rgba(96,165,250,0.3)" : "rgba(251,191,36,0.3)"}`,
-                             }}>{conf === "filed" ? "a" : conf === "secondary" ? "b" : "c"}</span>
-                           </td>
-                         </tr>
-                       ))}
-                       <tr style={{ borderTop: "1px solid rgba(255,178,72,0.30)" }}>
-                         <td colSpan={4} style={{ padding: "6px 0 2px", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.72rem", fontWeight: 700 }}>
-                           = $26,629,722,253 &nbsp;<span style={{ color: "rgba(240,236,224,0.45)", fontFamily: "serif", fontWeight: 400, fontSize: "0.65rem" }}>est. total</span>
-                         </td>
-                       </tr>
-                     </tbody>
-                   </table>
-                   <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-                     Hard floor: $17.5B (GAO-11-819, Sept 2011). Only the Manville post-2010 increment is filed-document sourced. All other post-2010 figures are secondary or estimated. Source classifications follow the (a)/(b)/(c) system explained on the Methodology page.
-                   </div>
+              tooltip={
+                <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
+                  <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                    How ~$24B Is Calculated
+                  </div>
+                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
+                    <tbody>
+                      {[
+                        [`$${paidOutDocumented.toLocaleString()}`, `${trustsWithCumulativePaidFiled} trusts — filed reports`, "Manville, NARCO, API (court-filed)", "filed"],
+                        [`+ $${paidOutEstimatedRemainder.toLocaleString()}`, `${42 - trustsWithCumulativePaidFiled} trusts — estimated`, "GAO-11-819 floor + secondary sources", "est"],
+                      ].map(([amt, name, note, conf]) => (
+                        <tr key={name} style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
+                          <td style={{ padding: "4px 6px 4px 0", fontFamily: "'Courier New', monospace", color: SEG_ON, whiteSpace: "nowrap", fontSize: "0.68rem" }}>{amt}</td>
+                          <td style={{ padding: "4px 4px", fontWeight: 600, color: "rgba(240,236,224,0.85)" }}>{name}</td>
+                          <td style={{ padding: "4px 0 4px 4px", color: "rgba(240,236,224,0.50)", fontSize: "0.65rem" }}>{note}</td>
+                          <td style={{ padding: "4px 0 4px 6px" }}>
+                            <span style={{
+                              fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em",
+                              background: conf === "filed" ? "rgba(34,197,94,0.15)" : conf === "secondary" ? "rgba(96,165,250,0.15)" : "rgba(251,191,36,0.15)",
+                              color: conf === "filed" ? "#86efac" : conf === "secondary" ? "#93c5fd" : "#fcd34d",
+                              border: `1px solid ${conf === "filed" ? "rgba(34,197,94,0.3)" : conf === "secondary" ? "rgba(96,165,250,0.3)" : "rgba(251,191,36,0.3)"}`,
+                            }}>{conf === "filed" ? "a" : conf === "secondary" ? "b" : "c"}</span>
+                          </td>
+                        </tr>
+                      ))}
+                      <tr style={{ borderTop: "1px solid rgba(255,178,72,0.30)" }}>
+                        <td colSpan={4} style={{ padding: "6px 0 2px", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.72rem", fontWeight: 700 }}>
+                          = ${(paidOutDocumented + paidOutEstimatedRemainder).toLocaleString()} &nbsp;<span style={{ color: "rgba(240,236,224,0.45)", fontFamily: "serif", fontWeight: 400, fontSize: "0.65rem" }}>est. total</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
+                    ${paidOutDocumented.toLocaleString()} is documented from {trustsWithCumulativePaidFiled} filed annual reports (Manville, NARCO, API). The remaining ~${(paidOutEstimatedRemainder / 1e9).toFixed(1)}B is anchored to the GAO-11-819 floor ($17.5B, Sept 2011) plus secondary sources. As PACER pulls complete, the documented share will grow. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
+                  </div>
                    <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
                      onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}
                      onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,178,72,0.8)")}

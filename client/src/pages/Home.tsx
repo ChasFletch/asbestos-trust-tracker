@@ -107,7 +107,10 @@ export default function Home() {
   const remaining = agg?.remainingLow ?? 17041946126;
   const remainingLow = agg?.remainingLow ?? 17041946126;
   const remainingHigh = agg?.remainingHigh ?? 22500000000;
-  const paidOut = agg?.paidOut ?? 26629722253;
+  const paidOut = agg?.paidOut ?? 24000000000;
+  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 6327731757;
+  const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 17672268243;
+  const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 3;
 
   const lastUpdated = figures?.asOf ?? "2026-07-27";
   const topTrusts = figures?.topTrusts ?? [];
@@ -190,6 +193,9 @@ export default function Home() {
                 remainingHigh={remainingHigh}
                 lastUpdated={lastUpdated}
                 topTrusts={topTrusts}
+                paidOutDocumented={paidOutDocumented}
+                paidOutEstimatedRemainder={paidOutEstimatedRemainder}
+                trustsWithCumulativePaidFiled={trustsWithCumulativePaidFiled}
               />
             )}
             <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 text-xs font-mono text-muted-foreground/50 mt-1">

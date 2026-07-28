@@ -196,9 +196,10 @@
       "netAssets": 597763587,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": null,
+      "paymentPercentage": 13.3,
       "status": "active",
-      "confidence": "secondary"
+      "confidence": "secondary",
+      "note": "Non-Releasing subfund 13.3% (cut from 14.5% eff. 10/30/2025 per official notice); Releasing subfund 3.3%"
     },
     {
       "name": "Federal-Mogul (T&N Subfund) Asbestos PI Trust",
@@ -382,9 +383,10 @@
       "netAssets": 20481014,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": null,
+      "paymentPercentage": 3.0,
       "status": "active",
-      "confidence": "secondary"
+      "confidence": "secondary",
+      "note": "3.0% maintained per Dec 2024 court-approved ACRP amendment; resumed offers 1/31/2025"
     },
     {
       "name": "Christy Refractories Asbestos PI Trust",
@@ -416,6 +418,38 @@
     }
   ],
   "changes": [
+    {
+      "date": "2025-10-30",
+      "type": "percentage_cut",
+      "trust": "Quigley",
+      "detail": "Non-Releasing subfund payment percentage cut 14.5% -> 13.3% effective 10/30/2025 (official notice); Releasing subfund 3.3%",
+      "source": "Quigley official trust notice, effective 10/30/2025",
+      "confidence": "primary"
+    },
+    {
+      "date": "2025-05-30",
+      "type": "percentage_increase",
+      "trust": "Shook & Fletcher",
+      "detail": "Payment percentage raised 50% -> 58% effective 5/30/2025 (CRMC notice). Trust is outside the tracked 41-trust floor - changes-log entry only, not added to trusts array",
+      "source": "CRMC Notice of Payment Percentage Increase 5/30/2025, claimsres.com",
+      "confidence": "primary"
+    },
+    {
+      "date": "2025-01-31",
+      "type": "administration",
+      "trust": "H.K. Porter",
+      "detail": "Held 3.0% payment percentage; resumed offers 1/31/2025 after court-approved ACRP amendment (Dec 2024)",
+      "source": "asbestosclaims.law / asbestos.com H.K. Porter trust profiles",
+      "confidence": "secondary"
+    },
+    {
+      "date": "2025-01-22",
+      "type": "governance",
+      "trust": "Celotex",
+      "detail": "'2025 Notice to Firms re: Audit' issued 1/22/2025",
+      "source": "Celotex Asbestos Settlement Trust official notice, celotextrust.com",
+      "confidence": "primary"
+    },
     {
       "date": "2026-07-27",
       "type": "percentage_cut",

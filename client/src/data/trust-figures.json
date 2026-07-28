@@ -420,15 +420,17 @@
       "date": "2026-07-28",
       "type": "annual_report",
       "trust": "Maremont",
-      "detail": "FY2025 annual report filed 4/20/2026 (D. Del. 19-10118-LSS Doc 374; posted free on maremont.mfrclaims.com): NCE $49.59M as of 12/31/2025 (from $48.73M); total assets $53.32M; 166 claims paid totaling $2.09M in 2025; payment percentage 28.4% (filed figure rolled forward FY2024 -> FY2025)",
-      "source": "Maremont FY2025 Annual Report and Financial Statements (filed)"
+      "detail": "FY2025 annual report filed 4/20/2026 (D. Del. 19-10118-LSS Doc 374; posted free on maremont.mfrclaims.com): NCE $49.59M as of 12/31/2025 (from $48.73M); total assets $53.32M; 166 claims paid totaling $2.09M in 2025; payment percentage 28.4% estimate (filed figure rolled forward from FY2024)",
+      "source": "Maremont FY2025 Annual Report and Financial Statements (filed)",
+      "confidence": "filed"
     },
     {
       "date": "2026-07-28",
       "type": "annual_report",
       "trust": "API, Inc.",
       "detail": "FY2025 annual report filed 4/29/2026 (Bankr. D. Minn. 05-30073-GFK; posted free on trust site): NCE $7.73M as of 12/31/2025 (from $7.67M); total assets $7.91M; $151.7K distributions in 2025; cumulative claims paid to date $93.99M; 22% payment percentage confirmed",
-      "source": "API, Inc. FY2025 Annual Report of the Trustee (filed)"
+      "source": "API, Inc. FY2025 Annual Report of the Trustee (filed)",
+      "confidence": "filed"
     },
     {
       "date": "2026-07-28",

@@ -191,16 +191,14 @@ export function registerDataRoutes(app: Express) {
     }
   });
 
-  // /trusts.csv — downloadable CSV of all trust records
+  // /trusts.csv — downloadable CSV of all trust records (JSON-first)
   app.get("/trusts.csv", async (_req, res) => {
     try {
-      const trusts = await getAllTrusts();
+      const data = await fetchTrustFigures() as any;
+      const jsonTrusts = data?.trusts ?? [];
       const headers = [
-        "id", "name", "shortName", "company", "established", "administrator",
-        "court", "docket", "website", "paymentPct", "paymentPctEffective",
-        "netAssets", "netAssetsAsOf", "netAssetsSource", "netAssetsCitation",
-        "cumulativePaid", "cumulativeClaims", "reportingFrequency", "status",
-        "direction", "notes",
+        "name", "shortName", "netAssets", "assetsAsOf", "assetsBasis",
+        "paymentPercentage", "status", "confidence", "note",
       ];
       const escape = (v: unknown) => {
         if (v == null) return "";
@@ -212,7 +210,7 @@ export function registerDataRoutes(app: Express) {
       };
       const rows = [
         headers.join(","),
-        ...trusts.map((t) => headers.map((h) => escape((t as Record<string, unknown>)[h])).join(",")),
+        ...jsonTrusts.map((t: any) => headers.map((h: string) => escape(t[h])).join(",")),
       ];
       res.set("Content-Type", "text/csv; charset=utf-8");
       res.set("Content-Disposition", 'attachment; filename="asbestos-trusts.csv"');

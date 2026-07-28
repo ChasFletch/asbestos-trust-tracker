@@ -4,23 +4,87 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { fetchTrustFigures } from "./dataRoutes";
-import { fetchReportsIndex } from "./dataRoutes";
+import { fetchTrustFigures, fetchReportsIndex } from "./dataRoutes";
 import {
   addNewsItem,
   addPaymentHistoryEntry,
   getAllPaymentHistory,
   getAllTrusts,
-  getCurrentAggregate,
-  getPaymentHistoryForTrust,
-  getTrustById,
-  getTrustBySlug,
   getVisibleNews,
   markTrustStale,
   updateAggregate,
   updateTrust,
   upsertTrustFromPipeline,
 } from "./db";
+
+// ── JSON-first trust helpers ─────────────────────────────────────────────────
+// trust-figures.json is the single source of truth for financials.
+// DB retains supplementary metadata (administrator, court, payment history).
+
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+async function loadJsonTrusts() {
+  const data = (await fetchTrustFigures()) as any;
+  return {
+    asOf: (data?.asOf ?? null) as string | null,
+    aggregate: data?.aggregate ?? {},
+    trusts: (data?.trusts ?? []) as any[],
+    changes: (data?.changes ?? []) as any[],
+  };
+}
+
+async function buildTrustMergeMap() {
+  const json = await loadJsonTrusts();
+  const [dbTrusts, allHistory] = await Promise.all([getAllTrusts(), getAllPaymentHistory()]);
+
+  const historyMap: Record<string, typeof allHistory> = {};
+  for (const h of allHistory) {
+    if (!historyMap[h.trustId]) historyMap[h.trustId] = [];
+    historyMap[h.trustId].push(h);
+  }
+
+  const dbBySlug = new Map<string, (typeof dbTrusts)[number]>();
+  for (const t of dbTrusts) {
+    dbBySlug.set(t.id, t);
+    dbBySlug.set(slugify(t.name), t);
+    if (t.shortName) dbBySlug.set(slugify(t.shortName), t);
+  }
+
+  return { json, dbTrusts, dbBySlug, historyMap };
+}
+
+function mergeTrust(jsonTrust: any, dbTrust?: any, history?: any[]) {
+  const slug = slugify(jsonTrust.name);
+  return {
+    id: slug,
+    name: jsonTrust.name,
+    shortName: jsonTrust.shortName ?? jsonTrust.name.split(" ").slice(0, 3).join(" "),
+    company: dbTrust?.company ?? null,
+    established: dbTrust?.established ?? null,
+    administrator: dbTrust?.administrator ?? null,
+    court: dbTrust?.court ?? null,
+    docket: dbTrust?.docket ?? null,
+    website: dbTrust?.website ?? null,
+    // ── Financials: JSON is authoritative ──
+    paymentPct: jsonTrust.paymentPercentage ?? null,
+    paymentPctEffective: dbTrust?.paymentPctEffective ?? null,
+    netAssets: jsonTrust.netAssets ?? null,
+    netAssetsAsOf: jsonTrust.assetsAsOf ?? null,
+    netAssetsSource: jsonTrust.confidence === "filed" ? "a" : jsonTrust.confidence === "secondary" ? "b" : "c",
+    netAssetsCitation: jsonTrust.assetsBasis ?? null,
+    cumulativePaid: dbTrust?.cumulativePaid ?? null,
+    cumulativeClaims: dbTrust?.cumulativeClaims ?? null,
+    reportingFrequency: dbTrust?.reportingFrequency ?? null,
+    status: jsonTrust.status ?? "active",
+    direction: dbTrust?.direction ?? null,
+    confidence: jsonTrust.confidence ?? "c",
+    note: jsonTrust.note ?? null,
+    isStale: dbTrust?.isStale ?? false,
+    paymentHistory: history ?? [],
+  };
+}
 
 // Admin guard middleware
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
@@ -42,44 +106,53 @@ export const appRouter = router({
     }),
   }),
 
-  // ── Trusts ──────────────────────────────────────────────────────────────────
+  // ── Trusts (JSON-first; DB supplies metadata + payment history) ─────────────
   trusts: router({
     list: publicProcedure.query(async () => {
-      const [allTrusts, allHistory] = await Promise.all([getAllTrusts(), getAllPaymentHistory()]);
-      const historyMap: Record<string, typeof allHistory> = {};
-      for (const h of allHistory) {
-        if (!historyMap[h.trustId]) historyMap[h.trustId] = [];
-        historyMap[h.trustId].push(h);
-      }
-      return allTrusts.map((t) => ({ ...t, paymentHistory: historyMap[t.id] ?? [] }));
+      const { json, dbBySlug, historyMap } = await buildTrustMergeMap();
+      return json.trusts.map((jt: any) => {
+        const slug = slugify(jt.name);
+        const db = dbBySlug.get(slug) ?? dbBySlug.get(jt.name.toLowerCase());
+        return mergeTrust(jt, db, historyMap[db?.id ?? ""] ?? []);
+      });
     }),
 
     byId: publicProcedure
       .input(z.object({ id: z.string() }))
       .query(async ({ input }) => {
-        const [trust, history] = await Promise.all([
-          getTrustById(input.id),
-          getPaymentHistoryForTrust(input.id),
-        ]);
-        if (!trust) throw new TRPCError({ code: "NOT_FOUND" });
-        return { ...trust, paymentHistory: history };
+        const { json, dbBySlug, historyMap } = await buildTrustMergeMap();
+        const jt = json.trusts.find((t: any) => slugify(t.name) === input.id || t.name.toLowerCase() === input.id);
+        if (!jt) throw new TRPCError({ code: "NOT_FOUND" });
+        const db = dbBySlug.get(input.id) ?? dbBySlug.get(jt.name.toLowerCase());
+        return mergeTrust(jt, db, historyMap[db?.id ?? ""] ?? []);
       }),
+
     bySlug: publicProcedure
       .input(z.object({ slug: z.string() }))
       .query(async ({ input }) => {
-        const trust = await getTrustBySlug(input.slug);
-        if (!trust) return null;
-        const history = await getPaymentHistoryForTrust(trust.id);
-        return { ...trust, paymentHistory: history };
+        const { json, dbBySlug, historyMap } = await buildTrustMergeMap();
+        const jt = json.trusts.find((t: any) => slugify(t.name) === input.slug || (t.shortName && slugify(t.shortName) === input.slug));
+        if (!jt) return null;
+        const db = dbBySlug.get(input.slug) ?? dbBySlug.get(jt.name.toLowerCase());
+        return mergeTrust(jt, db, historyMap[db?.id ?? ""] ?? []);
       }),
   }),
 
-  // ── Aggregate ───────────────────────────────────────────────────────────────
+  // ── Aggregate (JSON-first) ─────────────────────────────────────────────────
   aggregate: router({
     current: publicProcedure.query(async () => {
-      const agg = await getCurrentAggregate();
-      if (!agg) throw new TRPCError({ code: "NOT_FOUND", message: "No aggregate snapshot found" });
-      return agg;
+      const { asOf, aggregate: agg } = await loadJsonTrusts();
+      return {
+        remainingLow: agg.remainingAssetsPoint ?? 17041946126,
+        remainingHigh: agg.remainingAssetsHigh ?? 22500000000,
+        remainingLabel: `$${(agg.remainingAssetsPoint ?? 17041946126).toLocaleString()} documented floor`,
+        paidOut: agg.cumulativePayoutsPoint ?? 24000000000,
+        paidOutLabel: `~$${((agg.cumulativePayoutsPoint ?? 24000000000) / 1e9).toFixed(0)}B since 1988 (est.)`,
+        totalActiveTrusts: agg.activeTrustsEstimated ?? 60,
+        methodology: "Aggregate remaining based on net asset figures from trust annual reports and quarterly filings. Sources classified as (a) filed court document, (b) secondary source citing primary, (c) estimate or inference. See methodology page for full details.",
+        asOfNote: `Mixed 2021–${asOf?.substring(0, 4) ?? "2026"} as-of dates across trusts; see trust-figures.json for per-trust sources.`,
+        isCurrent: true,
+      };
     }),
   }),
 

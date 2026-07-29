@@ -31,6 +31,7 @@ interface TrustRow {
   cumulativePaid?: number | null;
   cumulativePaidAsOf?: string | null;
   cumulativePaidSource?: string | null;
+  cumulativePaidSourceUrl?: string | null;
 }
 
 function slugify(name: string) {
@@ -154,6 +155,7 @@ export default function Trusts() {
         cumulativePaid: (jt as any).cumulativePaid ?? null,
         cumulativePaidAsOf: (jt as any).cumulativePaidAsOf ?? null,
         cumulativePaidSource: (jt as any).cumulativePaidSource ?? null,
+        cumulativePaidSourceUrl: (jt as any).cumulativePaidSourceUrl ?? null,
       };
     });
   }, [jsonData, dbMap]);
@@ -425,30 +427,21 @@ export default function Trusts() {
                                 paid since inception (as of {trust.cumulativePaidAsOf})
                               </span>
                             </div>
-                            {trust.cumulativePaidSource && (() => {
-                              const freeUrls: Record<string, string> = {
-                                "western-asbestos-settlement-trust": "https://wastrust.com",
-                                "thorpe-insulation-company-asbestos-settlement-trust": "https://tistrust.com",
-                                "plant-asbestos-settlement-trust": "https://pastrust.com",
-                                "j-t-thorpe-settlement-trust-ca": "https://jttstrust.com",
-                              };
-                              const freeUrl = freeUrls[trust.id];
-                              return (
-                                <div className="text-muted-foreground/60 leading-relaxed">
-                                  <span className="italic">{trust.cumulativePaidSource.split(" - ")[0]}</span>
-                                  {freeUrl && (
-                                    <a
-                                      href={freeUrl}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="ml-2 inline-flex items-center gap-1 text-primary hover:underline font-medium not-italic"
-                                    >
-                                      View source PDF <ExternalLink size={10} />
-                                    </a>
-                                  )}
-                                </div>
-                              );
-                            })()}
+                            {trust.cumulativePaidSource && (
+                              <div className="text-muted-foreground/60 leading-relaxed">
+                                <span className="italic">{trust.cumulativePaidSource.split(" - ")[0]}</span>
+                                {trust.cumulativePaidSourceUrl && (
+                                  <a
+                                    href={trust.cumulativePaidSourceUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="ml-2 inline-flex items-center gap-1 text-primary hover:underline font-medium not-italic"
+                                  >
+                                    View source <ExternalLink size={10} />
+                                  </a>
+                                )}
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}

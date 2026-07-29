@@ -102,6 +102,9 @@ export default function TrustDetail() {
         docket: dbTrust?.docket ?? null,
         website: dbTrust?.website ?? null,
         cumulativePaid: dbTrust?.cumulativePaid ?? null,
+        cumulativePaidAsOf: (dbTrust as any)?.cumulativePaidAsOf ?? null,
+        cumulativePaidSource: (dbTrust as any)?.cumulativePaidSource ?? null,
+        cumulativePaidSourceUrl: (dbTrust as any)?.cumulativePaidSourceUrl ?? null,
         cumulativeClaims: dbTrust?.cumulativeClaims ?? null,
         reportingFrequency: dbTrust?.reportingFrequency ?? null,
         direction: dbTrust?.direction ?? null,
@@ -227,8 +230,22 @@ export default function TrustDetail() {
         <div className="bg-card border border-border/50 rounded-lg p-4">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <FileText size={12} />Cumulative Paid
+            {(trust as any).cumulativePaidSourceUrl && (
+              <a
+                href={(trust as any).cumulativePaidSourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto inline-flex items-center gap-0.5 text-primary hover:underline text-[10px] font-medium"
+                title="View source document"
+              >
+                source <ExternalLink size={9} />
+              </a>
+            )}
           </div>
           <div className="text-xl font-mono font-bold text-foreground">{fmt$(trust.cumulativePaid)}</div>
+          {(trust as any).cumulativePaidAsOf && (
+            <div className="text-xs text-muted-foreground/60 mt-0.5">as of {(trust as any).cumulativePaidAsOf}</div>
+          )}
           {trust.cumulativeClaims && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">{trust.cumulativeClaims.toLocaleString()} claims</div>
           )}

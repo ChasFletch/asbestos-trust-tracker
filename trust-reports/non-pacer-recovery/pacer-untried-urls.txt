@@ -1,0 +1,38 @@
+Canonical main doc1 ids from CourtListener RECAP metadata (never requested in the 2026-07-28 run).
+Open the docket entry in a browser and follow the real attachment links rather than incrementing ids.
+
+Armstrong #11008 filed 2026-04-29
+  MAIN https://ecf.deb.uscourts.gov/doc1/042022957199
+  ATT-FLAG https://ecf.deb.uscourts.gov/doc1/042122957199
+
+Armstrong #11009 filed 2026-04-30
+  MAIN https://ecf.deb.uscourts.gov/doc1/042022960662
+  ATT-FLAG https://ecf.deb.uscourts.gov/doc1/042122960662
+
+PCC #10965 filed 2026-04-29
+  MAIN https://ecf.pawb.uscourts.gov/doc1/156031527309
+  ATT-FLAG https://ecf.pawb.uscourts.gov/doc1/156131527309
+
+PCC #10964 filed 2025-04-25
+  MAIN https://ecf.pawb.uscourts.gov/doc1/156030718060
+  ATT-FLAG https://ecf.pawb.uscourts.gov/doc1/156130718060
+
+USG #12858 filed 2025-04-28
+  MAIN https://ecf.deb.uscourts.gov/doc1/042022253565
+  ATT-FLAG https://ecf.deb.uscourts.gov/doc1/042122253565
+
+OCFB #21263 filed 2026-04-28
+  MAIN https://ecf.deb.uscourts.gov/doc1/042022956362
+  ATT-FLAG https://ecf.deb.uscourts.gov/doc1/042122956362
+
+OCFB #21261 filed 2025-04-25
+  MAIN https://ecf.deb.uscourts.gov/doc1/042022251803
+  ATT-FLAG https://ecf.deb.uscourts.gov/doc1/042122251803
+
+Celotex #14439 filed 2026-04-28
+  MAIN https://ecf.flmb.uscourts.gov/doc1/046093433612
+  ATT-FLAG https://ecf.flmb.uscourts.gov/doc1/046193433612
+
+Celotex #14438 filed 2026-04-28
+  MAIN https://ecf.flmb.uscourts.gov/doc1/046093433569
+  ATT-FLAG https://ecf.flmb.uscourts.gov/doc1/046193433569

@@ -9,14 +9,14 @@
     "cumulativePayoutsLow": 17500000000,
     "trustsWithFigures": 41,
     "activeTrustsEstimated": 60,
-    "cumulativePayoutsDocumented": 14556634586,
-    "cumulativePayoutsEstimatedRemainder": 9443365414,
-    "trustsWithCumulativePaidFiled": 10
+    "cumulativePayoutsDocumented": 19810476508,
+    "cumulativePayoutsEstimatedRemainder": 4189523492,
+    "trustsWithCumulativePaidFiled": 14
   },
   "methodology": {
     "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 13 from filed annual reports/quarterly filings (FY2025 annual reports or Q1 2026 quarterly) totaling $6,741,377,085, plus 28 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $10,004,759,262. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
     "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
-    "cumulativePayoutsPoint": "Bottom-up decomposition. DOCUMENTED FLOOR: $14,556,634,586 paid inception-to-date by the 10 trusts with cumulative figures in filed reports - Manville $5,329,722,253 through 3/31/2026 (Q1 2026 quarterly report, Bankr. S.D.N.Y. Doc 4479), DII Industries $2,349,041,458 inception-to-date through 12/31/2025 (bottom-up sum of 21 filed annual-report documents, Bankr. W.D. Pa. 03-35592-CMB; FY2005-FY2013 pulled from PACER 2026-07-28), W.R. Grace ~$2,690,000,000 through 12/31/2025 ('approximately $2.69 billion since inception' per FY2025 annual report narrative, Bankr. D. Del. 01-01139 Doc 33347-1, filed 4/29/2026; no exact cumulative dollar exhibit exists), Western $2,238,037,573 through 12/31/2025 (22nd Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 13-31914 Doc 1944), NARCO $904,019,504 through 12/31/2025 (FY2025 annual report, W.D. Pa. 02-20198 Doc 8521), Thorpe Insulation $433,982,311 through 12/31/2025 (16th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:07-bk-20016-BB Doc 242), Plant $191,680,841 through 12/31/2025 (14th Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 09-31347 Doc 3050), J.T. Thorpe (CA) $189,960,646 through 12/31/2025 (20th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:02-bk-14216-BB Doc 1901), API $93,990,000 through 12/31/2025 (FY2025 annual report, Bankr. D. Minn. 05-30073-GFK), MLC ~$136,200,000 through 12/31/2025 ('approximately $136.2 million since inception' per FY2025 annual report claims summary, Bankr. S.D.N.Y. 09-50026 Doc 14861-1). ESTIMATED REMAINDER: ~$9.44B for all other trusts, anchored on GAO-11-819 (Sept 2011) documenting $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow) plus the prior ~$6.5B 2011-2025 extrapolation from a documented 8-trust subset paying ~$591.9M (2022) and ~$561.2M (2024). The largest documented-but-unretrieved gaps (USG, PCC, Armstrong, OC/FB, WRG, B&W, Celotex) publish cumulative figures in filed annual reports sequestered on PACER - see pacer-pull-queue.json; each pull converts estimate into documented. NOTE: DII Industries publishes no inception-to-date cumulative exhibit, so its annual reports were summed bottom-up across all 21 years of trust operation (FY2005-FY2025): FY2014-FY2025 from file-stamped PDFs free at diiasbestostrust.org ($1,254,425,009) and FY2005-FY2013 from PACER ($1,094,616,449 across 9 documents pulled 2026-07-28 for $9.90; FY2005 audited statements show $0 claims paid - the trust spent its first year setting up, and claims payments began in 2006). DII's documented total $2,349,041,458 is now part of the documented floor.",
+    "cumulativePayoutsPoint": "Bottom-up decomposition. DOCUMENTED FLOOR: $19,810,476,508 paid inception-to-date by the 14 trusts with cumulative figures in filed reports (10 current-era, 4 historical) - Manville $5,329,722,253 through 3/31/2026 (Q1 2026 quarterly report, Bankr. S.D.N.Y. Doc 4479), DII Industries $2,349,041,458 inception-to-date through 12/31/2025 (bottom-up sum of 21 filed annual-report documents, Bankr. W.D. Pa. 03-35592-CMB; FY2005-FY2013 pulled from PACER 2026-07-28), W.R. Grace ~$2,690,000,000 through 12/31/2025 ('approximately $2.69 billion since inception' per FY2025 annual report narrative, Bankr. D. Del. 01-01139 Doc 33347-1, filed 4/29/2026; no exact cumulative dollar exhibit exists), Western $2,238,037,573 through 12/31/2025 (22nd Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 13-31914 Doc 1944), NARCO $904,019,504 through 12/31/2025 (FY2025 annual report, W.D. Pa. 02-20198 Doc 8521), Thorpe Insulation $433,982,311 through 12/31/2025 (16th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:07-bk-20016-BB Doc 242), Plant $191,680,841 through 12/31/2025 (14th Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 09-31347 Doc 3050), J.T. Thorpe (CA) $189,960,646 through 12/31/2025 (20th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:02-bk-14216-BB Doc 1901), API $93,990,000 through 12/31/2025 (FY2025 annual report, Bankr. D. Minn. 05-30073-GFK), MLC ~$136,200,000 through 12/31/2025 ('approximately $136.2 million since inception' per FY2025 annual report claims summary, Bankr. S.D.N.Y. 09-50026 Doc 14861-1). HISTORICAL FILED FIGURES (as-of 2006-2014; floors since payouts continued after those dates; recovered 2026-07-28 via non-PACER sweep, see trust-reports/non-pacer-recovery/): Owens Corning/Fibreboard $2,465,910,000 through 12/31/2009 (computed sum of four verbatim per-category figures, FY2009 AR, Exhibit L to Doc 6491-5 Bankr. S.D.N.Y. 09-50026), Armstrong $1,600,408,304 through 12/31/2014 (FY2014 AR Exhibit 1.B, Wayback copy of trust-posted PDF), USG $612,130,000 through 12/31/2008 (computed sum of two verbatim figures, FY2008 AR, Doc 21942-21 Bankr. D. Del. 01-01139), Celotex $575,393,618 through 12/31/2006 (PI pool, FY2006 AR, Bankr. M.D. Fla. 90-10016 Doc 13816). ESTIMATED REMAINDER: ~$4.19B for all other trusts, anchored on GAO-11-819 (Sept 2011) documenting $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow) plus the prior ~$6.5B 2011-2025 extrapolation from a documented 8-trust subset paying ~$591.9M (2022) and ~$561.2M (2024). The largest documented-but-unretrieved gaps (USG, PCC, Armstrong, OC/FB, WRG, B&W, Celotex) publish cumulative figures in filed annual reports sequestered on PACER - see pacer-pull-queue.json; each pull converts estimate into documented. NOTE: DII Industries publishes no inception-to-date cumulative exhibit, so its annual reports were summed bottom-up across all 21 years of trust operation (FY2005-FY2025): FY2014-FY2025 from file-stamped PDFs free at diiasbestostrust.org ($1,254,425,009) and FY2005-FY2013 from PACER ($1,094,616,449 across 9 documents pulled 2026-07-28 for $9.90; FY2005 audited statements show $0 claims paid - the trust spent its first year setting up, and claims payments began in 2006). DII's documented total $2,349,041,458 is now part of the documented floor.",
     "viralFiguresDebunked": "'$30B remaining' traces to GAO-11-819's ~$36.8B TOTAL CAPITALIZATION of 60 trusts as of 2011 (initial funding + returns), not a current balance. GAO analyzed reports for only 47 of 60 trusts."
   },
   "trusts": [
@@ -168,22 +168,22 @@
       "status": "active",
       "confidence": "secondary",
       "note": "11%->10% eff. 6/30/2026 (trust notice); FY2025 report unconfirmed - status report filed 7/13/2026 (01-02094 Doc 12923), PACER-only",
-      "cumulativePaid": null,
-      "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaid": 612130000,
+      "cumulativePaidAsOf": "2008-12-31",
+      "cumulativePaidSource": "COMPUTED SUM of two verbatim inception-to-date figures in FY2008 Annual Report ('approximately $11.52 million' Pre-Petition Liquidated + 'approximately $600.61 million' Unliquidated, both as of 12/31/2008), Doc 21942-21, Bankr. D. Del. 01-01139 (W.R. Grace docket). HISTORICAL - 17 years stale. FY2024 report (01-02094 Doc 12858) blocked by CM/ECF image failure; FY2025 not yet filed"
     },
     {
       "name": "Owens Corning/Fibreboard Asbestos PI Trust",
       "netAssets": 798000451,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": null,
+      "paymentPercentage": 4.3,
       "status": "active",
       "confidence": "secondary",
       "note": "OC Subfund cut June 2026; FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 00-03837 Doc 21261, 4/25/2025)",
-      "cumulativePaid": null,
-      "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaid": 2465910000,
+      "cumulativePaidAsOf": "2009-12-31",
+      "cumulativePaidSource": "COMPUTED SUM of four verbatim per-category inception-to-date figures in FY2009 Annual Report (OC $345.28M Pre-Petition + $1,400.13M Unliquidated; FB $133.58M Pre-Petition + $586.92M Unliquidated, all as of 12/31/2009), Exhibit L to Doc 6491-5, Bankr. S.D.N.Y. 09-50026 (Motors Liquidation docket). HISTORICAL - 16 years stale. FY2025 report (00-3837 Doc 21263) blocked by CM/ECF image failure"
     },
     {
       "name": "ASARCO Asbestos PI Settlement Trust",
@@ -283,9 +283,9 @@
       "status": "active_deferral",
       "confidence": "secondary",
       "note": "7% since 6/23/2023 (from 8%); Deferral Period in effect since 1/1/2025; FY2025 report filed (M.D. Fla. 90-10016), PACER-only",
-      "cumulativePaid": null,
-      "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaid": 575393618,
+      "cumulativePaidAsOf": "2006-12-31",
+      "cumulativePaidSource": "FY2006 Annual Report, Bankr. M.D. Fla. 90-10016 Doc 13816 (RECAP): 'Since inception the Trust has made 402,937 payments on 305,128 personal injury claims in the aggregate amount of $575,393,617.51' (rounded to integer). PI pool only - excludes PD pool ($147,649,270.05 separately reported) and IRC second installments. HISTORICAL - 19 years stale. FY2025 report (Doc 14439) blocked by CM/ECF image failure"
     },
     {
       "name": "Combustion Engineering 524(g) Asbestos PI Trust",
@@ -550,6 +550,13 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-07-28",
+      "type": "data_addition",
+      "trust": "Armstrong, Owens Corning/Fibreboard, USG, Celotex (non-PACER recovery sweep)",
+      "confidence": "primary",
+      "detail": "Non-PACER recovery sweep (Claude, CourtListener token) located historical FILED annual reports outside PACER for 4 of the 5 CM/ECF-blocked trusts; every figure independently re-verified against source PDFs before merging (OCFB + Celotex verified against rendered page images due to OCR traps). Added cumulativePaid: OCFB $2,465,910,000 as of 2009-12-31 (computed sum of four verbatim per-category figures, FY2009 AR found as Exhibit L on the Motors Liquidation docket); Armstrong $1,600,408,304 as of 2014-12-31 (FY2014 AR Exhibit 1.B, Wayback copy of trust-posted PDF); USG $612,130,000 as of 2008-12-31 (computed sum of two verbatim figures, FY2008 AR found on the W.R. Grace docket); Celotex $575,393,618 as of 2006-12-31 (verbatim PI-pool line, FY2006 AR Doc 13816). All four are HISTORICAL floors (11-19 years stale) - labeled as such per-field and in the aggregate methodology. OCFB paymentPercentage set: OC Sub-Account 4.3% / FB Sub-Account 3.5% eff. 2026-06-30 (trust notices). PCC: honest not-found; circulating $1.29B/$3.14B figures trace only to marketing sites - excluded. Aggregate: documented floor $14,556,634,586 -> $19,810,476,508 (14 trusts), remainder ~$4.19B. No net-assets overwrites (recovered asset figures are older than values on file). Source PDFs + findings in trust-reports/non-pacer-recovery/."
+    },
     {
       "date": "2026-07-28",
       "type": "data_addition",

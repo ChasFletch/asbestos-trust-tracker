@@ -25,13 +25,18 @@ Each trust object may now carry:
 
 ```
 cumulativePayoutsPoint              24,000,000,000   (unchanged point estimate)
-cumulativePayoutsDocumented         14,556,634,586   (sum of the 10 filed figures)
-cumulativePayoutsEstimatedRemainder  9,443,365,414   (point − documented)
-trustsWithCumulativePaidFiled       10
+cumulativePayoutsDocumented         19,810,476,508   (sum of 14 filed figures)
+cumulativePayoutsEstimatedRemainder  4,189,523,492   (point − documented)
+trustsWithCumulativePaidFiled       14
 ```
 
+The documented pool has two tiers, spelled out in the aggregate methodology string:
+- **10 current-era trusts** ($14,556,634,586, as-of 2025/2026): Manville, DII, WRG, Western, NARCO, Thorpe Ins., Plant, J.T. Thorpe, API, MLC
+- **4 historical filed figures** ($5,253,841,922, as-of 2006–2014 — floors, true current values higher): OC/FB $2,465,910,000 (2009), Armstrong $1,600,408,304 (2014), USG $612,130,000 (2008), Celotex $575,393,618 (2006). Recovered 2026-07-28 via a non-PACER sweep (RECAP/Wayback/cross-docket exhibits); sources in `trust-reports/non-pacer-recovery/`. Every figure was re-verified against the source PDF (OCFB + Celotex visually — OCR corrupts both).
+
 Display pattern the user asked for:
-`$14,556,634,586 (documented, 10 trusts) + ~$9.44B (estimated) = $24,000,000,000`
+`$19,810,476,508 (documented, 14 trusts) + ~$4.19B (estimated) = $24,000,000,000`
+The modal should disclose that 4 of the 14 documented figures are dated 2006–2014.
 
 ## 3. Remaining-assets floor (for the "How calculated" modal)
 
@@ -65,15 +70,15 @@ Five FY2025 reports are located on their dockets but the courts' document images
 CM/ECF "could not be accessed from the database" (verified in a logged-in browser;
 court-side failure, expected to be transient):
 
-- Armstrong — D. Del. 00-04471 Doc 11008
-- Pittsburgh Corning — W.D. Pa. 00-22876 Doc 10965
-- USG — D. Del. 01-02094 Doc 12858 (FY2024; FY2025 not yet filed)
-- Owens Corning/Fibreboard — D. Del. 00-3837 Doc 21263
-- Celotex — M.D. Fla. flmb 90-10016 Docs 14438/14439
+- Armstrong — D. Del. 00-04471 Doc 11008 · **partially covered**: historical cumulativePaid merged (see §2)
+- Pittsburgh Corning — W.D. Pa. 00-22876 Doc 10965 · **no data found anywhere** — circulating ~$1.29B/~$3.14B figures are marketing-only; PACER is the sole route
+- USG — D. Del. 01-02094 Doc 12858 (FY2024; FY2025 not yet filed) · **partially covered** (historical)
+- Owens Corning/Fibreboard — D. Del. 00-3837 Doc 21263 · **partially covered** (historical); OC 4.3% / FB 3.5% payment percentages eff. 2026-06-30 now on file
+- Celotex — M.D. Fla. flmb 90-10016 Docs 14438/14439 · **partially covered** (historical)
 
 These are queued in `pacer-pull-queue.json` (status `blocked`) with full doc references.
-When they land, Armstrong + PCC + Celotex + OC/FB should each add a filed
-`cumulativePaid` (and move ~$2.9B of remaining-assets from secondary to filed).
+When the FY2025 images are restored, each pull replaces a historical floor with a current
+filed figure (and PCC adds its first documented figure at all).
 
 ## 6. Source rules still in force
 

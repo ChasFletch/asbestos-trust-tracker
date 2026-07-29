@@ -1,0 +1,472 @@
+# Asbestos PI Trust Annual Reports — Non-PACER Recovery Findings
+
+**Generated:** 2026-07-28  
+**Scope:** five FY2025/FY2024 trust annual reports whose PACER document images fail court-side  
+**Bottom line:** **0 of 5 primary target documents recovered.** None exists in any free, lawful non-PACER channel. Substitute primary sources were recovered for four of the five trusts, and current payment percentages for all five.
+
+---
+
+## Summary
+
+| Trust | Net assets | As of | Cumulative paid since inception | As of | Payment % |
+|---|---:|:--:|---:|:--:|---:|
+| Armstrong | $1,804,856,377 | 2014-12-31 | $1,600,408,304 | 2014-12-31 | 10.8% |
+| Pittsburgh Corning | not found | — | not found | — | 19% |
+| USG | not found | — | $612,130,000 | 2008-12-31 | 10% |
+| Owens Corning | not found | — | $2,465,910,000 | 2009-12-31 | 4.3% |
+| Celotex | $705,846,896 | 2006-12-31 | $575,393,617.51 | 2006-12-31 | 7% |
+
+> **Staleness warning.** Every net-assets and cumulative-paid figure above is a *substitute* from an earlier year — the newest is 11 years old (Armstrong, FY2014), the oldest 19 (Celotex, FY2006). **None may be presented as a current or 12/31/2025 figure.** The payment percentages, by contrast, are current and primary-sourced.
+
+### What was and was not obtainable
+
+| Figure | Recovered | Notes |
+|---|:--:|---|
+| Net assets @ 12/31/2025 | **0 / 5** | Audited financials are filed only as exhibits; every exhibit is paywalled in RECAP |
+| Cumulative paid @ 12/31/2025 | **0 / 5** | No trust publishes it outside the filed report |
+| Net assets, any year | 2 / 5 | Armstrong (FY2014), Celotex (FY2006) |
+| Cumulative paid, any year | 4 / 5 | Armstrong, USG, Owens Corning, Celotex — PCC has none in any free source |
+| Current payment percentage | **5 / 5** | All from primary trust notices |
+
+### Why the primary targets are unobtainable
+
+All five trusts file their audited financial statements **only as an exhibit** to a notice-of-filing docket entry. The one-page notices are sometimes free in RECAP; the financial exhibits never are. Confirmed document-by-document against the CourtListener API rather than inferred from search results:
+
+| Trust | Target entry | RECAP status |
+|---|---|---|
+| Armstrong | #11008 (FY2025) | Paywalled — all 11,058 docket documents are `is_available=false` |
+| Pittsburgh Corning | #10965 (FY2025), #10964 (FY2024) | Both paywalled |
+| USG | #12858 (FY2024) | Paywalled; **FY2025 not yet filed** |
+| Owens Corning | #21263 (FY2025) | Paywalled; FY2019–FY2024 also all paywalled |
+| Celotex | #14439 (FY2025) | Paywalled, no attachment rows; only 1 free doc on the whole docket (FY2006) |
+
+Channels checked and exhausted for all five: CourtListener/RECAP (authenticated API), Internet Archive RECAP mirrors (byte-identical to RECAP — no extra documents), the four live trust websites, full Wayback Machine CDX domain sweeps, SEC EDGAR full-text, GovInfo, GAO, and CourtListener opinions.
+
+---
+
+## Armstrong World Industries, Inc. Asbestos Personal Injury Settlement Trust
+
+**Court:** D. Del., Case No. 00-04471  
+**Primary target:** Doc 11008, filed 2026-04-29 (FY2025) — **NOT RECOVERED**
+
+**Documents recovered (substitutes):**
+
+- FY2014 Annual Report (Notice of Filing + Annual Report + Audited Financial Statements + Exhibit 1.B Claims Summary) — *Wayback Machine (trust website snapshot)*  
+  <https://web.archive.org/web/20160706065917id_/http://www.armstrongworldasbestostrust.com:80/wp-content/uploads/2015/11/AWI-Trust-2014-Notice-of-Filing-_-2014-Annual-Report-_-2014-Financial-St....pdf>
+- FY2013 Annual Report (Annual Report + Audited Financial Statements + Exhibit 1.B Claims Summary) — *Wayback Machine (trust website snapshot)*  
+  <https://web.archive.org/web/20151106014346id_/http://www.armstrongworldasbestostrust.com:80/wp-content/uploads/2014/06/AWI-2013-Annual-Report.pdf>
+- AWI Notice of Payment Percentage Increase (20% to 35%), dated December 11, 2013 — *Wayback Machine (official trust notice)*  
+  <https://web.archive.org/web/20151010173115id_/http://www.armstrongworldasbestostrust.com:80/wp-content/uploads/2014/04/121113-AWI-Notice-of-Payment-Percentage-Increase.pdf>
+- AWI Notice of Payment Percentage Increase (35% to 43%), dated November 1, 2016 — *Wayback Machine (official trust notice)*  
+  <https://web.archive.org/web/20240510222300id_/http://www.armstrongworldasbestostrust.com/wp-content/uploads/2016/11/5233290_2.pdf>
+- AWI Notice of Payment Percentage Change (43% to proposed 36%), dated June 29, 2018 — *Wayback Machine (official trust notice)*  
+  <https://web.archive.org/web/20180920200126id_/http://www.armstrongworldasbestostrust.com:80/wp-content/uploads/2018/06/AWI-Notice.pdf>
+- AWI Notice to Claimants re Payment Percentage Reduction (36% to proposed 26%), dated July 30, 2019 — *Wayback Machine (official trust notice)*  
+  <https://web.archive.org/web/20201026214825id_/http://www.armstrongworldasbestostrust.com/wp-content/uploads/2019/07/July-30-2019-Notice-to-Claimants-re-payment-percentage-reduction.2.pdf>
+- AWI Payment Percentage Reconsideration Notice (26% to proposed 19.7%), dated October 9, 2020 — *Wayback Machine (official trust notice)*  
+  <https://web.archive.org/web/20210125191618id_/http://www.armstrongworldasbestostrust.com/wp-content/uploads/2020/10/10285296_2.pdf>
+- AWI Notice re Payment Percentage Reduction (19.7% to proposed 13.5%), dated May 31, 2023 — *Wayback Machine (official trust notice)*  
+  <https://web.archive.org/web/20230908191235id_/https://www.armstrongworldasbestostrust.com/wp-content/uploads/2023/05/AWI-May-31-2023-Notice-re-Payment-Percentage-Reduction12651124.1.pdf>
+- AWI Notice re Payment Percentage Reduction (13.5% to proposed 10.8%), dated March 28, 2025 - CURRENT RATE — *Wayback Machine (official trust notice)*  
+  <https://web.archive.org/web/20250522005942id_/https://www.armstrongworldasbestostrust.com/wp-content/uploads/2025/03/AWI-March-28-2025-Notice-re-Payment-Percentage-Reduction.pdf>
+- …and 1 more (see `recovered-trust-figures.json`)
+
+### Net assets
+
+**$1,804,856,377** as of **2014-12-31**
+
+> Net assets available for the
+ the payment of claims $ 1,804,856,377 $ 1,952,816,891
+
+**Page:** PDF p.17 of 39 (printed page '- 3 -' of the Audited Financial Statements exhibit: 'Special-Purpose Statements of Assets, Liabilities and Net Assets Available for the Payment of Claims, December 31'). The second column, $1,952,816,891, is the prior-year comparative as of December 31, 2013.  
+**Source:** Armstrong FY2014 Annual Report (Notice of Filing / Annual Report / Financial Statements), https://web.archive.org/web/20160706065917id_/http://www.armstrongworldasbestostrust.com:80/wp-content/uploads/2015/11/AWI-Trust-2014-Notice-of-Filing-_-2014-Annual-Report-_-2014-Financial-St....pdf  
+**Basis:** Audited, special-purpose basis of accounting (independent auditor's report dated April 22, 2015): 'the special-purpose financial statements referred to above present fairly, in all material respects, the financial position of the Trust as of December 31, 2014 and 2013'. The special-purpose basis 'has been used in order to communicate the amount of net assets presently available for current and future claimants to the Trust.'
+
+### Cumulative claims paid since inception
+
+**$1,600,408,304** as of **2014-12-31**
+
+> Period: Inception through 12-31-2014 ... TDP Claims [# of Claims Received] 579,458 [# of Claims Paid Malignant] 39,739 [Non-Malignant] 186,555 [Claims Paid $] $1,600,408,304 ; Pre-Petition Liquidated Claims [# Paid Malig] 105 [Non-Malig] 1,131 [Claims Paid $] $10,792,157 See Note 1
+
+**Page:** PDF p.34 of 39 - Exhibit 1.B, 'FY2014 Annual Report Information', second table headed 'Period: Inception through 12-31-2014'  
+**Source:** Armstrong FY2014 Annual Report, Exhibit 1.B Claims Summary (same URL as net assets above)
+
+**Scope and caveats:** The Trust does NOT print a narrative 'since inception the Trust has paid approximately $X' sentence. It publishes an inception-to-date TABLE in Exhibit 1.B, split into two claim categories. The $1,600,408,304 figure is the inception-through-12/31/2014 total for TDP Claims as printed. Pre-Petition Liquidated Claims are a separate printed row at $10,792,157 (Note 1: 'Includes payment made to the Center for Claims Resolution under a Settlement Agreement with AWI, Inc. approved by the United States Bankruptcy Court for the District of Delaware'). COMPUTED SUM of the two printed rows = $1,611,200,461 ($1,600,408,304 + $10,792,157); this combined figure is NOT printed by the Trust and is labeled here as a computed sum of two same-table line items, not an estimate. Prior year for comparison, from the FY2013 report Exhibit 1.B (PDF p.35 of 37, 'Period: Inception through 12-31-2013'): TDP Claims 562,511 received, 36,910 malignant + 178,462 non-malignant paid, $1,457,270,628; Pre-Petition Liquidated Claims 62 + 978 paid, $9,786,060. SEPARATELY AND NOT TO BE CONFUSED WITH CUMULATIVE PAID: supplemental payments arising from the 2013 payment-percentage increase - FY2013 report Note 7, PDF p.29 of 37 (printed '- 16 -'): 'As of December 31, 2013, the Trust has paid approximately $523,965,000 of supplemental claims payments. Additionally, the Trust has accrued approximately $44,488,000 of supplemental claims payments at December 31, 2013.' FY2014 narrative, PDF p.10 of 39 (printed '- 6 -'): 'During the Reporting Period, the Trust paid approximately $51,285,363.99 in supplemental claims payments.' NO cumulative-paid figure later than 12/31/2014 exists in any free primary source.
+
+### Payment percentage
+
+**10.8%**, effective **2025-03-28 (Proposal Date; still the current rate as of the live trust website in 2026)**
+
+> Upon recommendation of the Trust's advisors and analysis of the underlying data supporting the recommendation, the Trustees have determined that the payment percentage should be decreased to 10.8%. The Trustees have requested that the TAC and FCR consent to this adjustment. In the meantime, in accordance with TDP Section 4.3, from today (the "Proposal Date") forward, the Trust will begin to pay claims at the proposed 10.8%
+
+**Page:** p.1 of 2 of the March 28, 2025 Notice re Payment Percentage Reduction. Independently confirmed on the live official trust homepage: 'The current payment percentage for AWI is 10.8% of the scheduled value for Expedited Review and 10.8% of the gross settlement value for Individual Review.' (https://www.armstrongworldasbestostrust.com/)  
+**Source:** AWI March 28, 2025 Notice re Payment Percentage Reduction, https://web.archive.org/web/20250522005942id_/https://www.armstrongworldasbestostrust.com/wp-content/uploads/2025/03/AWI-March-28-2025-Notice-re-Payment-Percentage-Reduction.pdf ; full history traced across 8 notices: initial 20% (TDP) -> 35% eff. 2013-12-11 -> 43% eff. 2016-11-01 -> 36% proposed 2018-06-29 -> 26% proposed 2019-07-30 -> 19.7% proposed 2020-10-09 -> 13.5% proposed 2023-05-31 -> 10.8% proposed 2025-03-28. A further reconsideration was noticed 2026-06-11 with no new percentage yet announced.
+
+### Not-found statement
+
+The 12/31/2025 audited net assets and the inception-through-12/31/2025 cumulative claims paid for the Armstrong World Industries, Inc. Asbestos Personal Injury Settlement Trust are NOT OBTAINABLE outside PACER. Docket entry #11008 (filed 2026-04-29, 'Annual Report for the Year Ended December 31, 2025', with Exhibit 1.A Audited Financial Statements and Exhibit 1.B Claims Summary) is the sole public repository of those figures, and RECAP holds no copy - all 11,058 documents on docket 164141 have is_available=false. The Trust stopped posting annual reports to its website after FY2014, so no archived copy exists for FY2015 through FY2024 either: an eleven-year gap in publicly retrievable audited financials. The LATEST figures traceable to a primary source are therefore as of DECEMBER 31, 2014: net assets available for the payment of claims of $1,804,856,377 and inception-to-date TDP claims paid of $1,600,408,304 (plus a separately printed $10,792,157 of pre-petition liquidated claims). These are eleven years stale and must not be presented as current. The ONLY current figure recoverable from a primary source is the payment percentage, 10.8%, set by the Trustees' notice dated March 28, 2025 and confirmed on the live trust website - and even that is under active reconsideration per the Trustees' notice of June 11, 2026. Note that none of the eight payment-percentage notices from 2013 through 2026 recite any dollar amount whatsoever; they state only the prior and proposed percentages and the TDP mechanics, so they cannot be used to back into a current asset figure.
+
+<details><summary>Channels exhausted</summary>
+
+- Wayback Machine CDX sweep of armstrongworldasbestostrust.com - 1,122 archived URLs enumerated, 111 PDFs; ONLY TWO annual reports exist in the entire archive (FY2013 and FY2014). No FY2015-FY2025 annual report or financial-statement PDF was ever posted to the trust site. Older /files/ layout also swept - contains only TDPs, claim forms and manuals.
+
+- Live official trust website (www.armstrongworldasbestostrust.com) - posts forms, TDPs and notices only; no annual reports. /notices/ and /trust-documents/ both return HTTP 404. Homepage does state the current payment percentage.
+
+- CourtListener RECAP docket 164141 (D. Del. 00-04471) - 11,058 documents on the docket, of which the count with is_available=true is exactly ZERO. Not one free PDF. Annual-report notice-of-filing entries located for nearly every year: #10651 (2009-04-30), #10687/#10688 (2010-04-29), #10749/#10750 (2011), #10777-#10779 (2012), #10807 (2015-04-29, FY2014), #10810 (2016-04-28, FY2015), #10940 (2017-04-24), #10946 (2018-04-20), #10948 (2019-04-25), #10994 (2020-04-29), #10997 (2021-04-29), #10999 (2022-04-28), #11001 (2023-04-28), #11003 (2024-04-26), #11005 (2025-04-29), #11008 (2026-04-29 = FY2025 PRIMARY TARGET), #11009 (2026-04-30 affidavit of service). Every one is_available=false with empty plain_text - no text extraction possible.
+
+- CourtListener /search/ full-text (type=r, available_only=on) for net-assets language on this docket and RECAP-wide - returned no retrievable documents; the endpoint returned repeated HTTP 429 rate-limit errors during this session and could not be fully exercised.
+
+- CourtListener opinions search (type=o) for Armstrong Trust net-assets / payment-percentage language - rate-limited (HTTP 429) and returned no usable opinion reciting Trust financial figures.
+
+- Delaware Claims Processing Facility (www.delawareclaimsprocessingfacility.com) - domain returned proxy HTTP 502 Bad Gateway and could not be reached this session.
+
+- PACER - explicitly NOT attempted; user reports court-side failure and the task bars it.
+
+- SEC EDGAR (verified exhaustively by the orchestrator, 2026-07-29, after a reviewer flagged the sub-agent's SEC check as asserted-not-confirmed): EDGAR full-text search returns 0 hits for '"USG Asbestos Personal Injury Settlement Trust"' and 0 for '"United States Gypsum" trust "net assets available for the payment of claims"' corpus-wide. Four full USG Corporation 10-K documents were then FETCHED AND SCANNED in their entirety (2008-02-15 c23836e10vk.htm, 344,375 chars; 2007-02-16 c12346e10vk.txt, 245,781; 2006-02-14 c02074e10vk.txt, 358,504; 2005-02-18 c92112e10vk.txt, 275,089): each contains ZERO occurrences of 'net assets available for the payment of claims', 'Asbestos Personal Injury Settlement Trust', and 'since inception'. Separately, the 3 hits for '"asbestos personal injury settlement trust" "net assets available"' are Armstrong World Industries 11-K filings for the company's EMPLOYEE RETIREMENT SAVINGS PLAN — 'net assets available for BENEFITS', a 401(k) plan measure, NOT the asbestos trust's 'net assets available for the payment of CLAIMS'. That is a false positive and was excluded. CONCLUSION: SEC filings do not disclose these trusts' audited net assets or cumulative payouts; the corporate parents ceased such disclosure after the trusts were funded and deconsolidated. Note sec.gov requires a contact email in the User-Agent header or returns HTTP 403.
+
+</details>
+
+---
+
+## Pittsburgh Corning Corporation Asbestos Personal Injury Settlement Trust
+
+**Court:** W.D. Pa., Case No. 00-22876  
+**Primary target:** Doc 10965, filed 2026-04-29 (FY2025) — **NOT RECOVERED**
+
+**Documents recovered (substitutes):**
+
+- Notice re. Reconsidered Payment Percentage (reduction to 19%) — *Official trust website (retrieved via Wayback id_ snapshot 20250121053957)*  
+  <https://www.pccasbestostrust.com/wp-content/uploads/2024/11/PCC-Notice-re.-Reconsidered-of-Payment-Percentage.11.7.24-C1238367x9DB18.pdf>
+- Notice re. Reconsideration of Payment Percentage (commencement of 2024 review) — *Official trust website (Wayback id_ snapshot 20241013190411)*  
+  <https://www.pccasbestostrust.com/wp-content/uploads/2024/06/PCC.-Notice-of-Reconsideration-Payment-Percentage-June-25-2024-C1319044x9DB18.pdf>
+- Notice re. Reconsidered Payment Percentage (reduction to 24.5%) — *Official trust website (Wayback id_ snapshot 20230322002029)*  
+  <http://www.pccasbestostrust.com/wp-content/uploads/2022/11/PCC-Notice-re.-Reconsidered-of-Payment-Percentage.11.29.22-C1238367x9DB18-1.pdf>
+- Notice re. Reconsideration of Payment Percentage (commencement of 2022 review) — *Official trust website (Wayback id_ snapshot 20221127111854)*  
+  <http://www.pccasbestostrust.com/wp-content/uploads/2022/10/PCC-Notice-re.-Reconsideration-of-Payment-Percentage-C1201927x9DB18-10.pdf>
+- Notice Regarding Reconsidered Payment Percentage (increase 20% to 30.1%) — *Official trust website (Wayback id_ snapshot 20241212020431)*  
+  <https://www.pccasbestostrust.com/wp-content/uploads/2018/06/Notice-Regarding-Reconsidered-Payment-Percentage.pdf>
+- Notice Regarding Initial Payment Percentage (31% adjusted, bifurcated at 20%) — *Official trust website (live download)*  
+  <https://www.pccasbestostrust.com/wp-content/uploads/2017/03/PCC.-Adjusted-Initial-Payment-Percentage-Notice-3.20.17-C0582889x9DB18.pdf>
+- Memorandum Opinion (plan confirmation findings of fact), Doc 9409, filed 05/16/13 — *CourtListener RECAP (is_available=true)*  
+  <https://storage.courtlistener.com/recap/gov.uscourts.pawb.5880/gov.uscourts.pawb.5880.9409.0.pdf>
+- Memorandum Opinion (district court affirmance), Doc 10029, filed 09/30/14 — *CourtListener RECAP (is_available=true)*  
+  <https://storage.courtlistener.com/recap/gov.uscourts.pawb.5880/gov.uscourts.pawb.5880.10029.0.pdf>
+
+### Net assets
+
+**NOT FOUND — no audited net-assets figure for any fiscal year.**
+
+NOT FOUND. No free primary source states net assets available for the payment of claims at any as-of date. The audited financial statements are filed only as Exhibit A to the annual-report notices on docket 00-22876 (entries 10812, 10892, 10913, 10964, 10965), and every one is is_available=false in RECAP. All six trust payment-percentage notices contain zero dollar figures (machine-verified: 0 matches for $-amounts >=7 digits and for 'net assets' / 'available for the payment of claims' / 'total assets'). All 19 RECAP-available docket PDFs predate the Trust's 2016 funding; their large dollar figures are plan-funding commitments and insurance-coverage limits (e.g. Doc 9409 p.118 'approximately $3.1 billion dollars in cash' in projected contributions; Doc 9409 p.52 PPG Participating Insurers' payments 'total $1,696,498,979'; Doc 10029 p.6 'Fully funded, the trust will control assets worth more than $3 billion'), which are categorically NOT audited net assets and are deliberately not reported as such. The secondary lead of ~$1,294,204,173 at 12/31/2022 could not be traced to any primary source and is set aside as unverifiable secondary.
+
+### Cumulative claims paid since inception
+
+**NOT FOUND.**
+
+NOT FOUND. No 'since inception the Trust has paid approximately $X' language appears in any recovered primary document, and NO per-year claims-payment figures were found either -- so no computed sum is possible and none is offered. The Trust publishes no claims-payment statistics on its website (the three archived 2020 'reports' are Trust Online claims-portal software tutorials, not financial or claims-volume reports). All RECAP-available court documents predate the Trust's first claim payment in 2017. Secondary sites circulate ~$3.14 billion since inception and ~$3,071,420,000 through 2022; neither traces to a court filing or trust publication, so both are recorded as unverifiable secondary and set aside.
+
+### Payment percentage
+
+**19%**, effective **2024-11-07**
+
+> The payment percentage applicable to claims against the Pittsburgh Corning Corporation Asbestos Personal Injury Trust (the “Trust) has been reduced to 19%.
+
+**Page:** 1 (of 1)  
+**Source:** Notice re. Reconsidered Payment Percentage, Pittsburgh Corning Corporation Asbestos Personal Injury Settlement Trust, dated November 7, 2024 (official trust website; artifact pcc-payment-pct-notice-2024-11-07.pdf). Corroborated on the same page: 'Thereafter, the 19% payment percentage will be applied to claims against the Pittsburgh Corning Corporation Asbestos Personal Injury Trust until further notice.' The same notice verifies the prior rate: 'The Trustees have instructed the Delaware Claims Processing Facility to apply the current 24.5% payment percentage...'. Full primary-sourced history recovered: 31% adjusted/bifurcated with first payment 20% (Mar 20 2017), 30.1% (Jul 2 2018), 24.5% (Nov 29 2022), 19% (Nov 7 2024).
+
+### Not-found statement
+
+Net assets and cumulative claims paid since inception are NOT FOUND for the Pittsburgh Corning Corporation Asbestos PI Settlement Trust through any free, lawful non-PACER channel. The Trust's audited financial statements exist only as Exhibit A to its annual-report notices on docket 00-22876 (W.D. Pa.); entries 10812, 10892, 10913, 10964 (FY2024) and 10965 (FY2025, the primary target) are all indexed in RECAP with is_available=false, so no year's financial exhibit is free. The Trust has never posted an annual report, audited financial statement, or any claims-payment statistic on pccasbestostrust.com -- confirmed by both a live crawl and a full Wayback CDX sweep of the domain covering 2018-2026. All 19 RECAP-available documents on the docket predate the Trust's 2016 funding and 2017 first payment; their large dollar figures are plan-funding commitments and insurance-coverage limits, not a trust balance sheet, and are explicitly not reported as net assets. No per-year payment figures were found, so no sum is computed or offered. The circulating secondary figures (~$1,294,204,173 net assets at 12/31/2022; ~$3.14 billion cumulative paid) trace only to attorney-marketing sites and are recorded as unverifiable secondary. The payment percentage, by contrast, IS established from a primary source: 19% effective November 7, 2024.
+
+<details><summary>Channels exhausted</summary>
+
+- CourtListener RECAP API v4 -- full-text search (/search/?type=r) on docket 00-22876/pawb, /docket-entries/, /recap-documents/: annual-report entries 10812, 10892, 10913, 10964, 10965 all located but is_available=false; all 19 available PDFs downloaded and text-mined; API returned sustained 429 rate-limiting
+
+- storage.courtlistener.com direct path probing for un-indexed attachments (docs 10700-10970, both path layouts) -- zero hits, then rate-limited; the API availability list is authoritative
+
+- Live crawl of www.pccasbestostrust.com (/resources/documents/, /trust-online-reports/, /news/, /about/payments/, /about/organization-of-the-trust/, wp-sitemap.xml) -- 19 PDFs, all forms/TDP/ADR/manuals/notices, no annual reports or financials
+
+- Wayback Machine CDX sweep of full pccasbestostrust.com domain -- 550 captures, 65 PDFs, 308 distinct non-PDF paths, 2018-03 to 2026-05; no annual report or audited financial statement ever posted
+
+- Wayback id_ verbatim retrieval of all archived payment-percentage notices and the three 2020 Trust Online reports
+
+- SEC EDGAR full-text search (efts.sec.gov) -- Corning/PPG ceased disclosing trust figures post-funding; the two hits on the full trust name are parent-company deal documents (Corning 8-K 2016-04-27, Owens Corning 10-Q 2017-07-26), not trust financials
+
+- govinfo (GPO) -- no PCC trust financial disclosures
+
+- KCIC (www.kcic.com) -- domain allowlisted but server returns HTTP 403 to automated clients; not retrievable
+
+- Internet Archive RECAP mirror gov.uscourts.pawb.5880 -- byte-identical to CourtListener, same 19 PDFs, nothing new
+
+- PACER -- not used; broken court-side for these attachments per task premise
+
+</details>
+
+---
+
+## United States Gypsum Asbestos Personal Injury Settlement Trust
+
+**Court:** D. Del., Case No. 01-02094  
+**Primary target:** Doc 12858, filed 2025-04-28 (FY2024 — FY2025 not yet filed) — **NOT RECOVERED**
+
+**Documents recovered (substitutes):**
+
+- Annual Report and Account of the United States Gypsum Asbestos Personal Injury Settlement Trust for the Fiscal Year Ending December 31, 2008 (narrative only; Exhibit A audited financial statements NOT included in this filing). Recovered as Exhibit 9(m), Doc 21942-21, filed 06/01/2009 in In re W.R. Grace & Co., Bankr. D. Del. No. 01-01139 — NOT from the USG docket. — *CourtListener RECAP (W.R. Grace docket gov.uscourts.deb.31472)*  
+  <https://storage.courtlistener.com/recap/gov.uscourts.deb.31472/gov.uscourts.deb.31472.21942.21.pdf>
+- USG Payment Percentage Notice, June 30, 2026 — reduction to 10% (CURRENT) — *Official trust website www.usgasbestostrust.com*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2026/06/USG.-Payment-Percentage-Notice.6.30.26C1221411x9DB18-4915-8025-8745.2.pdf>
+- USG Notice of Reconsideration of Payment Percentage, May 7, 2026 (procedural; states no percentage) — *Official trust website*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2026/05/USG-Notice-of-Reconsideration-of-Payment-Percentage-May-7-2026-4907-2900-0105.1.pdf>
+- USG Payment Percentage Notice, November 7, 2024 — reduction to 11% — *Official trust website*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2024/11/USG.-Payment-Percentage-Notice.11.7.24-C1221411x9DB18.pdf>
+- USG Payment Percentage Notice, August 1, 2022 — reduction to 12.7% — *Official trust website*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2022/08/USG.-Payment-Percentage-Notice.8.1.22-C1221411x9DB18.pdf>
+- USG Payment Percentage Notice, August 2, 2019 — reduction to 19.2% — *Official trust website*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2019/08/USG.-Notice-Payment-Percentage-Noticer-8.2.19-C0611383x9DB18.pdf>
+- USG Payment Percentage Notice, August 8, 2017 — reduction to 25% — *Official trust website*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2017/08/USG.-Payment-Percentage-Notice-C0616511x9DB18.pdf>
+- USG Trustee-Executed Payment Percentage Change, December 2, 2015 — INCREASE to 28.2% — *Official trust website*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2015/12/USG-Trustee-Executed-Payment-Percentage-Change-C0457544x9DB18.pdf>
+- USG Notice re Revised Payment Percentage Proposal, September 28, 2012 — reduction to 20% (from 30%) — *Official trust website*  
+  <https://www.usgasbestostrust.com/wp-content/uploads/2014/04/USG-Notice-Revised-P-Proposal-Letter-9-28-12.pdf>
+
+### Net assets
+
+**NOT FOUND — no audited net-assets figure for any fiscal year.**
+
+NOT FOUND for any fiscal year. The FY2024 report (Doc 12858, filed 2025-04-28) and every earlier USG annual-report entry (12580, 12701, 12837, 12842, 12843, 12844, 12846) and status report (12848, 12849, 12850, 12858) are is_available=FALSE in RECAP with empty plain_text and null filepath_local — no free PDF exists. The only free USG annual report located (FY2008, via the W.R. Grace docket) contains the narrative ONLY; its Exhibit 'A' audited financial statements were not part of that exhibit filing, so no balance-sheet net-assets line is present. The official trust website publishes no annual report or financial statement (verified against the live site, the WordPress media API — 352 items / 140 PDFs — and 1,062 archived URLs / 120 archived PDFs in Wayback). SEPARATELY: the ~$851,537,722 at 12/31/2022 secondary lead could NOT be traced to any primary source and is recorded as UNVERIFIABLE SECONDARY, not reported as a figure. A CourtListener full-text search on the literal string '851,537,722' returned 0 results.
+
+### Cumulative claims paid since inception
+
+**$612,130,000** as of **2008-12-31**
+
+> The Trust began accepting and processing Unliquidated claims on February 19, 2007. As of December 31, 2008, the Trust had paid a total of 2,152 Pre-Petition Liquidated PI Trust Claims. Of the claims paid, there were 142 malignancy claims and 2,010 non-malignancy claims. After application of the payment percentage and applicable sequencing adjustment, the Trust paid approximately $11.52 million to asbestos victims in settlement of their Pre-Petition Liquidated PI Trust Claims. [...] As of December 31, 2008, the Trust had received 214,469 Unliquidated PI Trust Claims and paid a total of 54,986 claims. Of the claims paid, there were 7,650 malignancy claims and 47,336 non-malignancy claims. After application of the payment percentage and applicable sequencing adjustment, the Trust paid approximately $600.61 million to asbestos victims in settlement of their Unliquidated PI Trust Claims.
+
+**Page:** PDF pages 7-8 of 9 (stamped 'Page 7 of 9' and 'Page 8 of 9'; internal report pages 6-7). The Pre-Petition passage and the opening of the Unliquidated passage are on PDF page 7; the '$600.61 million' sentence completes on PDF page 8.  
+**Source:** usg-fy2008-annual-report-narrative.pdf — Annual Report and Account of the United States Gypsum Asbestos PI Settlement Trust for the Fiscal Year Ending December 31, 2008 (Doc 21942-21, W.R. Grace docket)
+
+**Scope and caveats:** CRITICAL SCOPE LIMITS. (1) AS OF 12/31/2008 ONLY — this is NOT a current figure and NOT a FY2024 figure. No cumulative-paid figure for FY2024 or any year after 2008 was recoverable from any primary source. (2) The report states NO single 'since inception the Trust has paid approximately $X' line. It reports TWO SEPARATE inception-to-date streams. The value_usd of $612,130,000 is a COMPUTED SUM of the two verbatim-quoted inception-to-date figures: $11.52 million (Pre-Petition Liquidated) + $600.61 million (Unliquidated) = $612.13 million. Both inputs are inception-to-date as of 12/31/2008 and are the complete set of claim categories the report enumerates, so the sum is well-formed for that date — but it is a computed sum, not a trust-stated total. (3) The same document also gives single-year 2008 figures — approximately $3.46 million (Pre-Petition Liquidated) and $562.96 million (Unliquidated), both on PDF page 8. These were NOT used in the sum. (4) NO summation across documents was attempted; per-year tables for 2009-2024 are not available in any free channel, so no roll-forward to FY2024 is possible.
+
+### Payment percentage
+
+**10%**, effective **2026-06-30**
+
+> The payment percentage applicable to claims against The United States Gypsum Asbestos Personal Injury Settlement Trust (the “Trust”) has been reduced to 10%. [...] The Trustees have instructed the Delaware Claims Processing Facility to apply the current 11% payment percentage to the payment of claims against the Trust for which the Trust has received all documentation, including fully executed releases and other documents, required by the Trust’s policies to make payment of a claim, by electronic transmission on or before 12:01 a.m. eastern daylight time on June 30, 2026 or, if received by non-electronic means after such deadline, postmarked or bearing other reliable evidence of transmission on or before 12:01 a.m. eastern daylight time on June 30, 2026. Thereafter, the 10% payment percentage will be applied to claims against the Trust until further notice.
+
+**Page:** page 1 of 1  
+**Source:** usg-payment-percentage-notice-2026-06-30.pdf — USG Payment Percentage Notice dated June 30, 2026, published on the official trust website (https://www.usgasbestostrust.com/wp-content/uploads/2026/06/USG.-Payment-Percentage-Notice.6.30.26C1221411x9DB18-4915-8025-8745.2.pdf)
+
+### Not-found statement
+
+PRIMARY TARGET NOT RECOVERED. Document 12858 (filed 2025-04-28, the FY2024 Annual Report and Claims Summary with Audited Financial Statements) could not be obtained through any free or lawful non-PACER channel. It is present in RECAP as a docket entry described 'Status Report' but is_available=FALSE with no extracted text, and no copy exists on the trust website, in the Wayback Machine, in SEC filings, in court opinions, or in any government source. Consequently: NET ASSETS IS NOT FOUND FOR ANY FISCAL YEAR — no audited net-assets figure for this trust was recoverable at all, because the audited financial-statements exhibit is PACER-only in every year it was filed, and the single free USG annual report located (FY2008) omitted that exhibit. CUMULATIVE PAID SINCE INCEPTION IS FOUND ONLY AS OF 12/31/2008, sixteen years before the target year, and only as two separate category figures ($11.52M pre-petition liquidated + $600.61M unliquidated) whose $612.13M total is a COMPUTED SUM, not a trust-stated line. Per-year figures for 2009-2024 are not available in any free channel, so no roll-forward to FY2024 was attempted or is possible. The ~$851,537,722 at 12/31/2022 secondary lead is UNVERIFIABLE SECONDARY and is set aside. What WAS fully recovered from primary sources is the payment-percentage history 2012-2026, including the current 10% level effective June 30, 2026 and the prior 11% level from November 7, 2024. FY2025 DOES NOT EXIST: the FY2025 annual report has not been filed — the docket's last annual-report-type entry is Doc 12858 covering FY2024, and entries through Doc 12935 (2026-07-27) contain no FY2025 report. No FY2025 figure is reported and none should be inferred.
+
+<details><summary>Channels exhausted</summary>
+
+- CourtListener RECAP API — docket 1413937: entries 12580, 12701, 12837, 12842, 12843, 12844, 12846, 12848, 12849, 12850 and PRIMARY TARGET 12858 each checked directly via /docket-entries/ and /recap-documents/. Every annual-report attachment (incl. 'Exhibit 1 - Annual Report and Claims Summary' and 'Exhibit A - Financial Statements') returns is_available=false, plain_text empty, filepath_local null. Detail calls on document ids 197793452, 197794601, 197794629, 197794636, 197794663 and 437735998 (Doc 12858) all returned zero plain_text.
+
+- CourtListener /recap-documents/?is_available=true on docket 1413937 — exactly 5 available documents (11220.0 Response, 11602.0 Plan Supplement, 11688.0 Order, 11688.2, 12583.0 Complaint). All 5 downloaded and grepped for 'net assets', 'since inception', 'claimants equity', 'special-purpose', 'annual report', 'paid approximately' — ZERO matches.
+
+- Full docket HTML paging — all 67 pages of docket 1413937 retrieved; entries parsed and annual-report filings confirmed (12837 Apr 2017, 12842 Apr 2018, 12843 Apr 2019, 12844 Apr 2020, 12846 Apr 2021, plus status reports 12848 Apr 2022, 12849 Apr 2023, 12850 Apr 2024, 12858 Apr 2025). All attachments priced 'Buy on PACER', none downloadable. Docket runs through Doc 12935 (2026-07-27).
+
+- RECAP corpus-wide full-text search — 12+ distinct queries: 'net assets available for the payment of claims' + Gypsum; "net claimants' equity" + Gypsum; 'special-purpose net assets' + Gypsum; USG trust + 'since inception'; USG trust + 'net assets'; USG trust + 'financial statements'; USG trust + 'annual report'; 'Trust paid approximately' + Gypsum; 'ANNUAL REPORT AND ACCOUNT OF THE UNITED STATES GYPSUM'; 'Account of the United States Gypsum Asbestos Personal Injury Settlement Trust'; USG trust + 'Argy' (the auditor); and the literal string '851,537,722' (0 results). Only the FY2008 exhibit surfaced.
+
+- RECAP storage direct filename probe of gov.uscourts.deb.32968 — confirmed only the 5 known PDFs exist for this docket.
+
+- Official trust website www.usgasbestostrust.com — live crawl of every linked page (news, about, payments, resources/documents, payment-percentage pages, trust-updates category) plus the WordPress REST media API (352 media items, 140 PDFs, all titles and source_urls inspected). NO annual report and NO financial statement is published anywhere on the site.
+
+- Wayback Machine CDX — usgasbestostrust.com fully enumerated (1,062 archived URLs, 120 archived PDFs, every PDF URL listed and keyword-filtered); usgastrust.com (dead, no captures); delawarecpf.com (2,776 URLs — domain is parked/spam, no trust content); delawareclaimsprocessingfacility.com (1 URL); trustonline.delawarecpf.com (61 URLs); apgreenasbestostrust.com (no captures). No annual report or financial statement in any snapshot. Also probed Wayback for archived copies of the RECAP PDFs for Doc 12858 and 12837.1 — 404.
+
+- CourtListener opinions — all 3 published opinions naming the trust retrieved via API and searched: Bestwall LLC v. (3d Cir. 2022, id 7859307), DBMP LLC v. Delaware Claims Processing Facility LLC (Del. Ch. 2025, id 10712656), In re Maremont Corp. No trust net-assets, cumulative-paid, or payment-percentage figures in any.
+
+- GAO-11-819 'Asbestos Injury Compensation: The Role and Administration of Asbestos Trusts' (Sept. 2011) — 45-page report retrieved (via Wayback; www.gao.gov returns 403 to programmatic requests) and searched: contains NO occurrence of 'USG' or 'Gypsum' and no per-trust financial table.
+
+- archive.org text search — 'asbestos personal injury settlement trust' + gypsum, and 'USG asbestos': 0 hits.
+
+- KCIC (www.kcic.com) — network access granted but the site returns HTTP 403 to programmatic requests; its asbestos trust report was not retrievable.
+
+- PACER — NOT used (broken court-side per task setup; no attempt made).
+
+- SEC EDGAR (verified exhaustively by the orchestrator, 2026-07-29, after a reviewer flagged the sub-agent's SEC check as asserted-not-confirmed): EDGAR full-text search returns 0 hits for '"USG Asbestos Personal Injury Settlement Trust"' and 0 for '"United States Gypsum" trust "net assets available for the payment of claims"' corpus-wide. Four full USG Corporation 10-K documents were then FETCHED AND SCANNED in their entirety (2008-02-15 c23836e10vk.htm, 344,375 chars; 2007-02-16 c12346e10vk.txt, 245,781; 2006-02-14 c02074e10vk.txt, 358,504; 2005-02-18 c92112e10vk.txt, 275,089): each contains ZERO occurrences of 'net assets available for the payment of claims', 'Asbestos Personal Injury Settlement Trust', and 'since inception'. Separately, the 3 hits for '"asbestos personal injury settlement trust" "net assets available"' are Armstrong World Industries 11-K filings for the company's EMPLOYEE RETIREMENT SAVINGS PLAN — 'net assets available for BENEFITS', a 401(k) plan measure, NOT the asbestos trust's 'net assets available for the payment of CLAIMS'. That is a false positive and was excluded. CONCLUSION: SEC filings do not disclose these trusts' audited net assets or cumulative payouts; the corporate parents ceased such disclosure after the trusts were funded and deconsolidated. Note sec.gov requires a contact email in the User-Agent header or returns HTTP 403.
+
+</details>
+
+---
+
+## Owens Corning / Fibreboard Asbestos Personal Injury Trust
+
+**Court:** D. Del., Case No. 00-03837  
+**Primary target:** Doc 21263, filed 2026-04-28 (FY2025) — **NOT RECOVERED**
+
+**Documents recovered (substitutes):**
+
+- Annual Report and Account of the Owens Corning/Fibreboard Asbestos Personal Injury Trust for the Fiscal Year Ending December 31, 2009 (signed April 30, 2010 by Campbell & Levine, LLC, counsel to the Trust) - court-filed in D. Del. 00-3837, reproduced verbatim as Exhibit L to Doc 6491-5 in In re Motors Liquidation Company, Bankr. S.D.N.Y. No. 09-50026 — *CourtListener RECAP (nationwide full-text search; found in a collateral docket, NOT docket 4216067)*  
+  <https://storage.courtlistener.com/recap/gov.uscourts.nysb.233396/gov.uscourts.nysb.233396.6491.5.pdf>
+- OC Subfund Payment Percentage Notice, June 30, 2026 - Owens Corning Sub-Account reduced to 4.3% (CURRENT) — *Official trust website (live)*  
+  <https://www.ocfbasbestostrust.com/wp-content/uploads/2026/06/OCFB.-OC-Subfund-Payment-Percentage-Notice.6.30.26-C1221413x9DB18-4933-6912-9401-v.1-4905-4767-3529.1.pdf>
+- FB Subfund Payment Percentage Notice, June 30, 2026 - Fibreboard Sub-Account reduced to 3.5% (CURRENT) — *Official trust website (live)*  
+  <https://www.ocfbasbestostrust.com/wp-content/uploads/2026/06/OCFB.-FB-Subfund-Payment-Percentage-Notice.6.30.26-C1221412x9DB18-4916-0109-8937.1.pdf>
+- OC Notice of Reconsideration of Payment Percentage, May 7, 2026 (TDP 4.2 reconsideration; states no percentage) — *Official trust website (live)*  
+  <https://www.ocfbasbestostrust.com/wp-content/uploads/2026/05/OC-Notice-of-Reconsideration-of-Payment-Percentage-May-7-2026-4918-1454-8136.2.pdf>
+- FB Notice of Reconsideration of Payment Percentage, May 7, 2026 (TDP 4.2 reconsideration; states no percentage) — *Official trust website (live)*  
+  <https://www.ocfbasbestostrust.com/wp-content/uploads/2026/05/FB-Notice-of-Reconsideration-Payment-Percentage-May-7-2026-4911-1749-7513.1.pdf>
+- OC Subfund Payment Percentage Notice, November 7, 2024 - Owens Corning Sub-Account reduced to 4.7% — *Wayback Machine (archived trust-site page 20241213015559) -> live trust-site PDF*  
+  <https://www.ocfbasbestostrust.com/wp-content/uploads/2024/11/OCFB.-OC-Subfund-Payment-Percentage-Notice.11.7.24-C1221413x9DB18.pdf>
+- FB Subfund Payment Percentage Notice, November 7, 2024 - Fibreboard Sub-Account reduced to 3.7% — *Wayback Machine (archived trust-site page 20241213025729) -> live trust-site PDF*  
+  <https://www.ocfbasbestostrust.com/wp-content/uploads/2024/11/OCFB.-FB-Subfund-Payment-Percentage-Notice.11.7.24-C1221412x9DB18.pdf>
+- OC Subfund Payment Percentage Notice, August 1, 2022 - Owens Corning Sub-Account reduced to 5.9% — *Wayback Machine CDX / trust website*  
+  <http://www.ocfbasbestostrust.com/wp-content/uploads/2022/08/OCFB.-OC-Subfund-Payment-Percentage-Notice.8.1.22-C1221413x9DB18.pdf>
+- FB Subfund Payment Percentage Notice, August 1, 2022 - Fibreboard Sub-Account reduced to 4.4% — *Wayback Machine CDX / trust website*  
+  <http://www.ocfbasbestostrust.com/wp-content/uploads/2022/08/OCFB.-FB-Subfund-Payment-Percentage-Notice.8.1.22-C1221412x9DB18.pdf>
+- …and 4 more (see `recovered-trust-figures.json`)
+
+### Net assets
+
+**NOT FOUND — no audited net-assets figure for any fiscal year.**
+
+NOT FOUND. No audited net-assets figure is available from any acceptable primary source. The Trust's audited financial statements are filed only as 'Exhibit A' to each annual-report notice on docket 4216067, and EVERY such entry is paywalled in RECAP (is_available=false), verified document-by-document: #21263 (FY2025), #21261 (FY2024), #21260 (FY2023), #21259 (FY2022), #21258 (FY2021), #21257 (FY2020), #21253 (FY2019). The one OCFB annual report recovered free (FY2009) incorporates its financials by reference and does not restate them - verbatim at p. 15: 'C. Financial Information The Trust's audited financial statements for the Reporting Period are attached hereto as Exhibit "A." The financial statements were audited by Argy, Wiltse & Robinson, LLC.' Exhibit A is not part of the reproduced exhibit, and the phrase 'net assets' appears nowhere in the document. The trust website has never posted financial statements (verified against the live site and all 136 archived PDFs on the domain). SEPARATELY: a secondary lead of ~$798,000,451 net assets at 12/31/2022 could not be traced to any primary document and is recorded as UNVERIFIABLE SECONDARY, not reported as a figure. Attorney-marketing asset claims ($265M FB, $1.07B, $1.6B, $5.4B) are mutually inconsistent, banned as figure sources, and excluded.
+
+### Cumulative claims paid since inception
+
+**$2,465,910,000** as of **2009-12-31**
+
+> As of December 31, 2009, the Trust had paid a total of 47,206 Owens Corning Pre- Petition Liquidated PI Trust Claims. Of the claims paid, there were 4,883 malignancy claims and 42,323 non-malignancy claims. After application of the payment percentage and applicable sequencing adjustment, the Trust had paid approximately $345.28 million to asbestos victims in settlement of their Owens Corning Pre-Petition Liquidated PI Trust Claims. || As of December 31, 2009, the Trust had received 324,270 Owens Corning Unliquidated PI Trust Claims and paid a total of 113,340 claims. Of the claims paid, there were 20,724 malignancy claims and 92,616 non-malignancy claims. After application of the payment percentage and applicable sequencing adjustment, the Trust had paid approximately $1,400.13 million to asbestos victims in settlement of their Owens Corning Unliquidated PI Trust Claims. || As of December 31, 2009, the Trust had paid a total of 42,200 Fibreboard Pre-Petition Liquidated PI Trust Claims. Of the claims paid, there were 3,864 malignancy claims and 38,336 non-malignancy claims. After application of the payment percentage and applicable sequencing adjustment, the Trust had paid approximately $133.58 million to asbestos victims in settlement of their Fibreboard Pre-Petition Liquidated PI Trust Claims. || As of December 31, 2009, the Trust had received 300,857 Fibreboard Unliquidated PI Trust Claims and paid a total of 124,839 claims. Of the claims paid, there were 19,367 malignancy  …
+
+**Page:** Exhibit PDF pp. 10-12 of 15 (internal report pp. 9-11): OC figures on p. 10; FB Pre-Petition on p. 11; FB Unliquidated amount begins p. 11 and its unit 'million' carries to p. 12  
+**Source:** OCFB Annual Report and Account for FY ending December 31, 2009 (Exhibit L to Doc 6491-5, In re Motors Liquidation Company, Bankr. S.D.N.Y. 09-50026)
+
+**Scope and caveats:** *** THE $2,465,910,000 VALUE IS A COMPUTED SUM, NOT A QUOTED FIGURE, AND IT IS AS OF 12/31/2009 - SIXTEEN YEARS STALE. *** The report states NO single trust-wide inception-to-date total. It gives four separate inception-to-date figures, one per claim category, each quoted verbatim above. The sum is arithmetic on those four inputs: $345.28M + $1,400.13M + $133.58M + $586.92M = $2,465.91M. SUBFUND ATTRIBUTION (also computed sums): Owens Corning Sub-Account $1,745.41 million ($345.28M Pre-Petition Liquidated + $1,400.13M Unliquidated); Fibreboard Sub-Account $720.50 million ($133.58M Pre-Petition Liquidated + $586.92M Unliquidated). The four inputs cover every claim category the report enumerates, so the sum is defensible, but it must always be labeled as computed. OCR CAVEAT: the exhibit is a scan and CourtListener's OCR renders the FB Unliquidated figure as '$5806.92', which is WRONG; the page image was rendered at 3x and read visually to confirm the printed figure is $586.92 million. NO inception-to-date figure was recovered for ANY year after 2009 - the later annual reports are all paywalled, and post-2009 per-year figures exist only in banned attorney-marketing sources. Nothing was estimated; no figures were summed across documents.
+
+### Payment percentage
+
+**4.3%**, effective **2026-06-30**
+
+> The payment percentage applicable to claims against the Owens Corning Sub-Account has been reduced to 4.3%.
+
+**Page:** p. 1  
+**Source:** OC Subfund Payment Percentage Notice, Owens Corning/Fibreboard Asbestos Personal Injury Trust, June 30, 2026 (artifact ocfb-oc-subfund-payment-pct-notice-2026-06-30.pdf). *** SUBFUND SPLIT - TWO SEPARATE CURRENT PERCENTAGES: value_pct 4.3 above is the OWENS CORNING SUB-ACCOUNT ONLY. The FIBREBOARD SUB-ACCOUNT is 3.5% as of the same date, per the companion notice (artifact ocfb-fb-subfund-payment-pct-notice-2026-06-30.pdf, p. 1): 'The payment percentage applicable to claims against Fibreboard Sub-Account (the "Trust") has been reduced to 3.5%.' Both are TDP Sec. 4.3 provisional percentages applicable during the pendency of TAC/FCR consent, with a supplemental payment owed if a higher percentage is ultimately adopted. Both were preceded by Sec. 4.2 reconsideration notices dated May 7, 2026 that state no percentage. FULL VERIFIED HISTORY, OC / FB: June 4 & Aug 7, 2009 proposed 10% / 11% (FY2009 report pp. 13-14); Dec 2, 2015 INCREASE to 11.1% / 10.4%; Aug 2, 2019 7.8% / 6.7%; Aug 1, 2022 5.9% / 4.4%; Nov 7, 2024 4.7% / 3.7%; June 30, 2026 4.3% / 3.5% (current). Every quote was re-read from the saved PDF before reporting.
+
+### Not-found statement
+
+NET ASSETS: NOT FOUND. No audited net-assets figure for this trust is obtainable through any free, lawful, non-PACER channel. The audited financial statements exist only as 'Exhibit A' attachments to the annual-report notices on docket 4216067, and all seven such entries from FY2019 through the FY2025 primary target (#21263, filed 2026-04-28, recap-document id 477387858) are paywalled in RECAP, each verified individually rather than trusting the search index. The trust has never posted financial statements on its website in its entire archived history. The only OCFB annual report recoverable free anywhere - FY2009, reproduced as a sworn-declaration exhibit in a different bankruptcy - incorporates its financials by reference without restating them and never uses the phrase 'net assets'. A secondary figure of ~$798,000,451 at 12/31/2022 could not be traced to a primary document and is set aside as unverifiable secondary. FY2025 TARGET: NOT RECOVERED. CUMULATIVE PAID SINCE INCEPTION: FOUND, but ONLY as of December 31, 2009, and only as four per-category figures ($345.28M and $1,400.13M for the OC Sub-Account; $133.58M and $586.92M for the FB Sub-Account). The reported $2,465,910,000 is a COMPUTED SUM of those four verbatim inputs, not a quoted figure, and it is sixteen years stale - it must never be presented as a current total. Computed subfund splits: OC $1,745.41M, FB $720.50M. No inception-to-date figure exists in any free source for any year after 2009. SUBFUND SPLIT ON PAYMENT PERCENTAGES: this trust has TWO subaccounts with SEPARATE percentages and SEPARATE asset pools, and they are never combined here. Current, from Trust notices dated June 30, 2026: Owens Corning Sub-Account 4.3%; Fibreboard Sub-Account 3.5%. The net_assets field carries value_usd=null because no defensible combined or per-subfund asset figure exists in any acceptable source; the payment_percentage field carries the OC figure with the FB figure documented in its source_doc note, because the schema has one slot and two genuinely distinct percentages apply.
+
+<details><summary>Channels exhausted</summary>
+
+- Live trust website www.ocfbasbestostrust.com - all pages crawled including /documents, /about, and the three payment-percentage notice pages; 26 PDFs total, all forms/TDP/ADR/notices. No annual reports or financial statements.
+
+- Wayback Machine CDX, full-domain sweep of ocfbasbestostrust.com - all 136 archived PDFs plus the complete non-PDF URL index and a targeted 'percentage' filter (33 URLs). The trust has NEVER posted an annual report or financial statement. Did yield the Dec 2015 and Nov 2024 subaccount notices.
+
+- CourtListener docket 4216067 - all 12 available documents downloaded and text-mined. The Opinion (#20987, 21p) is the ACandS/Kaiser/OCFB/USG v. Hartford jurisdictional ruling: ZERO dollar signs, no trust financials. The 10 transcripts are 2000s plan-confirmation and OCP hearings with no recited net assets or payment percentages. Two PDFs (#20987, #14546-2) have no text layer; CourtListener plain_text OCR used.
+
+- Every annual-report docket entry verified INDIVIDUALLY via /docket-entries/?entry_number= (not the possibly-stale search index): #21263 FY2025, #21261 FY2024, #21260 FY2023, #21259 FY2022, #21258 FY2021, #21257 FY2020, #21253 FY2019 - ALL is_available=false. Also #20888, #21086, #21239 confirmed false.
+
+- CourtListener nationwide RECAP full-text search - ~15 distinct query formulations over 'net assets', 'since inception', 'Statements of Net Assets', 'net assets available for the payment of claims', 'special-purpose', 'Argy' (the auditor), 'the Trust had paid approximately', 'Owens Corning Sub-Account', 'Fibreboard Sub-Account', and date-specific phrasings. This is what surfaced the FY2009 report. NO OCFB annual report later than FY2009 exists anywhere in RECAP.
+
+- CourtListener opinions database (type=o) - 7 opinions mention the trust (BorgWarner, Johns-Manville/GM, In re Motions Seeking Access to 2019 Statements, DBMP v. DCPF, In re Maremont); none recites net assets or a payment percentage.
+
+- Collateral asbestos dockets probed for reproduced trust financials - Garlock 10-31607 exhibit indices (Docs 457-1, 459-1), Bestwall 17-31795 Rule 2004 motion, LTL/Merrett declaration (23-01092), Bestwall/DBMP/Aldrich Pump subpoena motions (D. Del. 21-mc-141), W.R. Grace 2019-statement motions. None contains OCFB financial statements.
+
+- archive.org RECAP mirror item gov.uscourts.deb.29954 - metadata enumerated (27 files, 12 PDFs) and all 12 PDFs downloaded from the storage node. Exactly the same 12 available documents; no annual reports.
+
+- Web search - used ONLY to locate primary documents and to map the docket-entry-to-fiscal-year correspondence via a public docket listing. Every figure-bearing hit was an attorney-marketing site (banned as a figure source) or mutually inconsistent; NO figure from any such source is reported.
+
+- RAND TR-872 (Asbestos Bankruptcy Trusts) - retrieval capped at 1 MiB by the sandbox proxy; also a 2010 publication, so it could not carry post-2009 figures.
+
+- PACER - NOT attempted; broken court-side for these attachments per the task premise.
+
+</details>
+
+---
+
+## Celotex Asbestos Settlement Trust
+
+**Court:** M.D. Fla., Case No. 90-10016  
+**Primary target:** Doc 14439, filed 2026-04-28 (FY2025) — **NOT RECOVERED**
+
+**Documents recovered (substitutes):**
+
+- ANNUAL REPORT, SUMMARY OF CLAIMS DISPOSED, FINANCIAL STATEMENT, AND ACCOUNT OF THE TRUSTEES OF THE ASBESTOS SETTLEMENT TRUST FOR THE PERIOD JANUARY 1, 2006 TO DECEMBER 31, 2006 (docket entry 13816; RECAP doc id 3553018) — *RECAP / CourtListener (is_available=true)*  
+  <https://storage.courtlistener.com/recap/gov.uscourts.flmb.350158.13816.0.pdf>
+- CELOTEX ASBESTOS SETTLEMENT TRUST — NOTICE OF PAYMENT PERCENTAGE AND DCP ADJUSTMENTS, dated June 23, 2023 (8% -> 7%) — *Official trust website celotextrust.com*  
+  <https://www.celotextrust.com/wp-content/uploads/2023/06/2023-CX-Notice-of-PP-Adjustment12649129.1.pdf>
+- CELOTEX ASBESTOS SETTLEMENT TRUST — NOTICE REGARDING NEW DEFERRAL PERIOD, dated January 1, 2025 — *Official trust website celotextrust.com*  
+  <https://www.celotextrust.com/wp-content/uploads/2025/01/Celotex-Notice-re-Deferral-Period-Effective-1-1-25.pdf>
+- CELOTEX ASBESTOS SETTLEMENT TRUST — NOTICE OF PAYMENT PERCENTAGE AND DCP ADJUSTMENTS, dated June 3, 2021 (7.7% -> 8%, effective May 25, 2021) — *Official trust website celotextrust.com*  
+  <https://www.celotextrust.com/wp-content/uploads/2021/06/CX-Notice-of-PP-Adjustment.pdf>
+- PAYMENT PERCENTAGE ADJUSTMENT letter, dated November 20, 2015 (6.5% -> 7.7%, effective October 31, 2015) — *Official trust website celotextrust.com*  
+  <https://www.celotextrust.com/wp-content/uploads/2015/11/Notice-of-Payment-Percentage-Change-to-All-Claimants-and-Counsel-re-Payment-Percentage-Final-2015.pdf>
+- PAYMENT PERCENTAGE ADJUSTMENT letter, dated July 26, 2013 (9.4% -> 6.5%, effective July 23, 2013) — *Official trust website celotextrust.com*  
+  <https://www.celotextrust.com/wp-content/uploads/2014/03/Notice-of-Payment-Percentage-Change-to-All-Claimants-and-Counsel-re-Payment-Percentage-2013.pdf>
+- Payment Change Letter dated August 7, 2006 (11.3% -> 14.1%, effective July 31, 2006) — *Wayback Machine capture of celotextrust.com/files/*  
+  <https://web.archive.org/web/20060825031808id_/http://www.celotextrust.com:80/files/Payment%20Change%20Letter%208_1_2006.pdf>
+
+### Net assets
+
+**$705,846,896** as of **2006-12-31**
+
+> Net assets available for payment of claims   $ 705,846,896   $ 706,258,685
+
+**Page:** Printed page 3 of the Exhibit 1 financial statements = PDF page 36 of 61 (SPECIAL-PURPOSE STATEMENTS OF ASSETS, LIABILITIES AND NET ASSETS AVAILABLE FOR THE PAYMENT OF CLAIMS, DECEMBER 31, 2006 AND 2005). Corroborated at printed page 4 = PDF page 37: 'Net assets available for the payment of claims / Beginning of year 706,258,685 / End of year $ 705,846,896'.  
+**Source:** FY2006 Annual Report, docket entry 13816, RECAP doc 3553018 (https://storage.courtlistener.com/recap/gov.uscourts.flmb.350158.13816.0.pdf)  
+**Basis:** Audited, special-purpose basis of accounting (NOT U.S. GAAP). Auditor: Argy, Wiltse & Robinson, P.C.; Report of Independent Accountants dated March 28, 2007 (PDF p.34). 2006 columns: total assets 902,843,315 less total liabilities 196,996,419 = 705,846,896 (arithmetic verified). NOTE: the CourtListener OCR text layer mangles this figure as '$ 70528462896' and the 2005 comparative as '$ 706;258;685'; both were re-read from the rendered page image and confirmed as $705,846,896 (2006) and $706,258,685 (2005). This is the LATEST net-assets figure obtainable free — it is 19 years stale relative to the FY2025 target and must NOT be presented as current.
+
+### Cumulative claims paid since inception
+
+**$575,393,617.51** as of **2006-12-31**
+
+> Since inception the Trust has made 402,937 payments on 305,128 personal injury claims in the aggregate amount of $575,393,617.51.
+
+**Page:** Printed page -11- = PDF page 13 of 61  
+**Source:** FY2006 Annual Report, docket entry 13816, RECAP doc 3553018 (https://storage.courtlistener.com/recap/gov.uscourts.flmb.350158.13816.0.pdf)
+
+**Scope and caveats:** TWO SEPARATE INCEPTION-TO-DATE POOLS — reported separately by the trust and NOT to be conflated. (1) PERSONAL INJURY: $575,393,617.51 on 402,937 payments across 305,128 PI claims, inception through 12/31/2006 (printed p.-11- = PDF p.13); the value_usd field above carries this PI figure. Footnote 3 on the same page qualifies it: 'This amount does not include the second installment payments due on individually reviewed claims, which are paid two years after the claim is allowed and the first installment paid.' — so PI inception-to-date UNDERSTATES ultimate PI outlay by the outstanding IRC second-installment reserve ($90,254,941 on the 12/31/2006 balance sheet). (2) PROPERTY DAMAGE: exact quote 'Since inception the Trust has paid 2,641 property damage claims in the aggregate amount of $147,649,270.05.' = $147,649,270.05 on 2,641 PD claims, printed p.-17- = PDF p.19; the CourtListener OCR renders this as '$l47,649,270.05' (lowercase L for 1) and the true digits $147,649,270.05 were confirmed from the rendered page image. No PD claims were paid during FY2006 itself. COMPUTED SUM (labelled as computed; this number appears nowhere in the report): PI 575,393,617.51 + PD 147,649,270.05 = $723,042,887.56, and it still excludes unpaid IRC second installments. FY2006-year-only figures for context: PI paid during the reporting period 72,836 claims totalling $98,942,480 (per financial statements; $112,559,550 was paid in cash, comprising $98,942,480 of claims payments plus a $13,625,570 charge to the second-payment reserve). NO inception-to-date figure of any later year was recovered.
+
+### Payment percentage
+
+**7%**, effective **2023-06-23**
+
+> Effective June 23, 2023, the Trustee of the Celotex Asbestos Settlement Trust (the “Trust”) decreased the Payment Percentage from 8% to 7%.
+
+**Page:** Page 1 of 1  
+**Source:** CELOTEX ASBESTOS SETTLEMENT TRUST, NOTICE OF PAYMENT PERCENTAGE AND DCP ADJUSTMENTS, dated June 23, 2023, official trust website (https://www.celotextrust.com/wp-content/uploads/2023/06/2023-CX-Notice-of-PP-Adjustment12649129.1.pdf). This is the CURRENT rate and the latest payment-percentage notice posted on the trust site as of this sweep. Concurrent DCP values: Mesothelioma $8,880; Lung Cancer $2,705; Other Cancer $1,580. FULL HISTORY, each step traced to a primary source: Initial 12% (Plan of Reorganization Art. 1.85, quoted FY2006 report printed p.-10-/PDF p.12); 2001 lowered 12% -> 10%; 2002 raised to 11.3% and held through 2005; July 31, 2006 raised 11.3% -> 14.1% (FY2006 report printed p.-11-/PDF p.13, verbatim: 'On July 31, 2006 the trustees determined to increase the Payment Percentage to 14.1%.', and trust letter dated August 7, 2006); July 23, 2013 decreased 9.4% -> 6.5% (notice dated July 26, 2013); October 31, 2015 increased 6.5% -> 7.7% (notice dated November 20, 2015); May 25, 2021 increased 7.7% -> 8% (notice dated June 3, 2021); June 23, 2023 decreased 8% -> 7%. GAP: the step down from 14.1% to 9.4% occurred between 2006 and 2013 and is NOT covered by any document recovered here — a December 20, 2010 payment-percentage letter exists in the Wayback index (/files/Celotex Pmt Percentage Change Letter 12_20_2010.pdf) but the sole capture is a warc/revisit record with no retrievable payload (404 on the id_ fetch).
+
+### Not-found statement
+
+The FY2025 annual report (docket entry 14439, filed 2026-04-28) is NOT OBTAINABLE through any free or lawful non-PACER channel. It exists in RECAP as metadata only, with is_available=false, no page count, no extracted text, and no attachment rows for its four exhibits; the companion application (entry 14438) is equally unavailable. The same is true of every annual report filed after FY2006: entries 14400 (FY2021), 14409 (FY2022), 14422 (FY2023) and 14429 (FY2024) are all paywalled, so the FY2024 fallback also failed. Neither celotextrust.com nor its full Wayback history (1,513 archived URLs, 86 PDFs) has ever published an annual report, financial statement, or any net-assets figure. CONSEQUENTLY: the most recent NET ASSETS figure recoverable is $705,846,896 as of 12/31/2006, and the most recent CUMULATIVE CLAIMS PAID SINCE INCEPTION figures are $575,393,617.51 (personal injury) and $147,649,270.05 (property damage), both as of 12/31/2006. These are FY2006 figures and must not be presented as current — they are 19 years stale. The secondary lead of approximately $454,527,419 in net assets at 12/31/2021 could NOT be traced to any primary source and is recorded as UNVERIFIABLE SECONDARY; it is not reported as a figure. The only CURRENT data points recovered from primary sources are non-financial: the payment percentage of 7% effective June 23, 2023 (trust notice), and the Deferral Period effective January 1, 2025 — which, contrary to the working assumption, is not a suspension of payments but a one-year cap on the claimant-elected deferral option under the Second Amendment to the Fifth Amended and Restated CRP.
+
+<details><summary>Channels exhausted</summary>
+
+- RECAP / CourtListener API v4 — all 428 docket entries on docket_id 4223541 paged via /docket-entries/. Exactly ONE recap document on the entire docket has is_available=true: id 3553018 (entry 13816, FY2006, 61 pp.). Confirmed via /recap-documents/?docket_entry__docket__id=4223541&is_available=true (count=1).
+
+- RECAP — PRIMARY TARGET entry 14439 (filed 2026-04-28, 'Report (BK)', recap doc id 477351251) verified directly at /recap-documents/477351251/: is_available=false, page_count=null, filepath_local=null, plain_text empty (0 chars), pacer_doc_id present only. Companion entry 14438 (recap doc 477351306, 'Z - Generic Application') likewise is_available=false. NEITHER entry has any attachment rows in RECAP, so the 4 exhibits of the FY2025 report are not in RECAP in any form.
+
+- RECAP — the whole annual-report series is unavailable: entry 14400 (2022-05-02, FY2021, doc 199726687), 14409 (2023-05-02, FY2022, doc 311190948), 14422 (2024-05-01, FY2023, doc 396566688), 14429 (2025-05-01, FY2024, doc 438148532), 14439 (2026-04-28, FY2025, doc 477351251) — all is_available=false. The FY2024 fallback is therefore also unobtainable.
+
+- CourtListener full-text search (/search/?type=r): '"Summary of Claims Disposed"' returns 2 documents corpus-wide (W.R. Grace 01-01139 entry 32557, and Celotex 13816); '"Asbestos Settlement Trust" "net assets available"' returns only Celotex 13816. No later Celotex annual report is full-text indexed anywhere in RECAP. (Two further search queries were cut short by HTTP 429 rate limiting after repeated backoff; the two that completed are dispositive for the caption language used by these reports.)
+
+- celotextrust.com live crawl — home page, /about/, /about/payments/, /resources/documents/, /resources/faqs/, /news/ plus /news/page/2/ and /news/page/3/, and every linked post (payment-percentage and deferral notices). 20+ distinct PDFs enumerated: claim forms, CRPs and amendments, e-filer agreements, user manuals, ACH forms, audit notices, claimant notices. NO annual report, financial statement, audited figure, or net-assets disclosure is published anywhere on the site.
+
+- Wayback Machine CDX — full domain sweep of celotextrust.com*: 1,513 archived URLs total, of which 86 are application/pdf. Complete PDF list retrieved and filtered in Python for annual/financial/audit/net-asset/statement/trustee/report/percentage terms. No annual report or financial statement has EVER been posted to the domain, in either the pre-2013 /files/ layout or the WordPress /wp-content/uploads/ layout. The sweep did recover the August 7, 2006 payment-change letter.
+
+- PACER — not attempted; broken court-side for this docket per the task premise.
+
+</details>
+
+---
+
+## Verification method
+
+Every figure above was independently re-checked by the orchestrator, not accepted from the retrieval sub-agents:
+
+- **Celotex FY2006** and **OCFB FY2009** source PDFs are *scanned images with no text layer* — text extraction returns empty. Their figures were confirmed by reading the **rendered page images** directly. A regex/text check on these files would falsely report the figures as absent.
+
+- **Celotex net assets** additionally reconcile arithmetically: total assets $902,843,315 − total liabilities $196,996,419 = **$705,846,896**, matching the printed line. CourtListener's OCR corrupts this figure (`$ 70528462896`) and renders 1 as lowercase L elsewhere (`$l47,649,270.05`); the true digits came from the page image.
+
+- **Armstrong** figures were confirmed against the PDF text layer at the cited pages (p.17 financials, p.34 Exhibit 1.B).
+
+- **All computed sums re-derived:** OCFB $345.28M + $1,400.13M + $133.58M + $586.92M = $2,465.91M; USG $11.52M + $600.61M = $612.13M.
+
+- **SEC EDGAR** was re-verified by fetching and scanning four complete USG 10-Ks (245K–358K chars each): zero occurrences of the trust's net-assets language. The apparent Armstrong SEC hits are **employee 401(k) retirement-plan** filings — "net assets available for *benefits*", not "for the payment of *claims*" — and were excluded as false positives.
+
+
+## Source discipline
+
+No figure in this report derives from an attorney-marketing site. Secondary figures that circulate for these trusts but could not be traced to a primary document are recorded as **unverifiable secondary and excluded**, specifically: PCC ~$1,294,204,173 net assets @12/31/2022 and ~$3.14B cumulative paid; USG ~$851,537,722 @12/31/2022; OCFB ~$798,000,451 @12/31/2022; Celotex ~$454,527,419 @12/31/2021. For Pittsburgh Corning, large dollar figures do appear in free court documents (e.g. ~$3.1B projected plan contributions, $1,696,498,979 insurer payments) but these are **plan-funding commitments and insurance limits, not a trust balance sheet**, and are deliberately not reported as net assets.

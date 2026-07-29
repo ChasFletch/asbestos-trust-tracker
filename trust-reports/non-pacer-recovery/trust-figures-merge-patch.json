@@ -1,0 +1,112 @@
+{
+  "schema": "trust-figures-merge-patch/v1",
+  "generated": "2026-07-28",
+  "warning": "PROPOSED changes only \u2014 review before applying. Net-assets substitutes are OLDER than several values already on file and must not overwrite them. No recovered figure is a 12/31/2025 figure.",
+  "patch": [
+    {
+      "trustId": "armstrong",
+      "name": "Armstrong World Industries Asbestos PI Trust",
+      "current": {
+        "netAssets": 700346779,
+        "assetsAsOf": "2022-12-31",
+        "confidence": "secondary",
+        "cumulativePaid": null,
+        "paymentPercentage": 10.8
+      },
+      "recommended": {
+        "cumulativePaid": 1600408304,
+        "cumulativePaidAsOf": "2014-12-31",
+        "cumulativePaidSource": "Armstrong FY2014 Annual Report, Exhibit 1.B Claims Summary (same URL as net assets above)"
+      },
+      "rationale": [
+        "DO NOT OVERWRITE net assets: recovered filed figure is 2014-12-31, OLDER than the 2022-12-31 value on file. Keep existing; record the filed figure as a historical data point only.",
+        "cumulativePaid currently null; add $1,600,408,304 as of 2014-12-31 \u2014 but note this is a HISTORICAL figure, NOT a 12/31/2025 total. Do not add it to the aggregate 'documented' pool as if current.",
+        "Payment percentage 10.8% matches file \u2014 now primary-sourced (confidence upgrade only)."
+      ]
+    },
+    {
+      "trustId": "pcc",
+      "name": "Pittsburgh Corning Asbestos PI Settlement Trust",
+      "current": {
+        "netAssets": 1294204173,
+        "assetsAsOf": "2022-12-31",
+        "confidence": "secondary",
+        "cumulativePaid": null,
+        "paymentPercentage": 19.0
+      },
+      "recommended": {},
+      "rationale": [
+        "Net assets not found \u2014 leave existing value and 'secondary' confidence untouched.",
+        "cumulativePaid not found \u2014 leave null.",
+        "Payment percentage 19% matches file \u2014 now primary-sourced (confidence upgrade only)."
+      ]
+    },
+    {
+      "trustId": "usg",
+      "name": "United States Gypsum (USG) Asbestos Trust",
+      "current": {
+        "netAssets": 851537722,
+        "assetsAsOf": "2022-12-31",
+        "confidence": "secondary",
+        "cumulativePaid": null,
+        "paymentPercentage": 10.0
+      },
+      "recommended": {
+        "cumulativePaid": 612130000,
+        "cumulativePaidAsOf": "2008-12-31",
+        "cumulativePaidSource": "usg-fy2008-annual-report-narrative.pdf \u2014 Annual Report and Account of the United States Gypsum Asbestos PI Settlement Trust for the Fiscal Year Ending December 31, 2008 (Doc 21942-21, W.R. Grace docket)"
+      },
+      "rationale": [
+        "Net assets not found \u2014 leave existing value and 'secondary' confidence untouched.",
+        "cumulativePaid currently null; add $612,130,000 as of 2008-12-31 \u2014 but note this is a HISTORICAL figure, NOT a 12/31/2025 total. Do not add it to the aggregate 'documented' pool as if current.",
+        "Payment percentage 10% matches file \u2014 now primary-sourced (confidence upgrade only)."
+      ]
+    },
+    {
+      "trustId": "ocfb",
+      "name": "Owens Corning/Fibreboard Asbestos PI Trust",
+      "current": {
+        "netAssets": 798000451,
+        "assetsAsOf": "2022-12-31",
+        "confidence": "secondary",
+        "cumulativePaid": null,
+        "paymentPercentage": null
+      },
+      "recommended": {
+        "cumulativePaid": 2465910000,
+        "cumulativePaidAsOf": "2009-12-31",
+        "cumulativePaidSource": "OCFB Annual Report and Account for FY ending December 31, 2009 (Exhibit L to Doc 6491-5, In re Motors Liquidation Company, Bankr. S.D.N.Y. 09-50026)",
+        "paymentPercentage": 4.3,
+        "paymentPercentageAsOf": "2026-06-30"
+      },
+      "rationale": [
+        "Net assets not found \u2014 leave existing value and 'secondary' confidence untouched.",
+        "cumulativePaid currently null; add $2,465,910,000 as of 2009-12-31 \u2014 but note this is a HISTORICAL figure, NOT a 12/31/2025 total. Do not add it to the aggregate 'documented' pool as if current.",
+        "Payment percentage on file is None; primary notice gives 4.3% effective 2026-06-30 \u2014 CURRENT and safe to update.",
+        "SUBFUND SPLIT: OC Sub-Account 4.3% and FB Sub-Account 3.5% (both eff. 2026-06-30) are SEPARATE pools with separate percentages. The single paymentPercentage field cannot represent both \u2014 recommend storing OC 4.3 with a note, or extending the schema to hold both."
+      ]
+    },
+    {
+      "trustId": "celotex",
+      "name": "Celotex Asbestos Settlement Trust",
+      "current": {
+        "netAssets": 454527419,
+        "assetsAsOf": "2021-12-31",
+        "confidence": "secondary",
+        "cumulativePaid": null,
+        "paymentPercentage": 7.0
+      },
+      "recommended": {
+        "cumulativePaid": 575393617.51,
+        "cumulativePaidAsOf": "2006-12-31",
+        "cumulativePaidSource": "FY2006 Annual Report, docket entry 13816, RECAP doc 3553018 (https://storage.courtlistener.com/recap/gov.uscourts.flmb.350158.13816.0.pdf)"
+      },
+      "rationale": [
+        "DO NOT OVERWRITE net assets: recovered filed figure is 2006-12-31, OLDER than the 2021-12-31 value on file. Keep existing; record the filed figure as a historical data point only.",
+        "cumulativePaid currently null; add $575,393,617.51 as of 2006-12-31 \u2014 but note this is a HISTORICAL figure, NOT a 12/31/2025 total. Do not add it to the aggregate 'documented' pool as if current.",
+        "Payment percentage 7% matches file \u2014 now primary-sourced (confidence upgrade only).",
+        "Celotex cumulative paid comprises TWO separate pools: PI $575,393,617.51 and PD $147,649,270.05 (both @12/31/2006). The value proposed is the PI figure only; a combined $723,042,887.56 is a computed sum that appears nowhere in the report."
+      ]
+    }
+  ]
+}

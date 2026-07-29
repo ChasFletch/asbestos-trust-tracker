@@ -32,6 +32,7 @@ interface TrustRow {
   cumulativePaidAsOf?: string | null;
   cumulativePaidSource?: string | null;
   cumulativePaidSourceUrl?: string | null;
+  established?: number | null;
 }
 
 function slugify(name: string) {
@@ -156,6 +157,7 @@ export default function Trusts() {
         cumulativePaidAsOf: (jt as any).cumulativePaidAsOf ?? null,
         cumulativePaidSource: (jt as any).cumulativePaidSource ?? null,
         cumulativePaidSourceUrl: (jt as any).cumulativePaidSourceUrl ?? null,
+        established: (jt as any).established ?? null,
       };
     });
   }, [jsonData, dbMap]);
@@ -304,10 +306,11 @@ export default function Trusts() {
       ) : (
         <div className="rounded border border-border/50 overflow-hidden overflow-x-auto">
           {/* Table header */}
-          <div className="grid grid-cols-[2.5fr_1fr_1.2fr_1fr_0.5fr] gap-4 px-4 py-3 bg-card/80 border-b border-border/50 text-xs min-w-[580px]">
+          <div className="grid grid-cols-[2.5fr_1fr_1.2fr_0.7fr_1fr_0.5fr] gap-4 px-4 py-3 bg-card/80 border-b border-border/50 text-xs min-w-[660px]">
             <SortHeader label="Trust Name" sortKey="name" current={sortKey} dir={sortDir} onSort={handleSort} />
             <SortHeader label="Payment %" sortKey="paymentPercentage" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="The fraction of an approved claim's scheduled value that the trust actually pays. A 10% payment percentage means a claimant with a $100,000 scheduled value receives $10,000. Percentages are reduced when a trust's assets are insufficient to pay claims in full, and may be raised or lowered over time." />
             <SortHeader label="Net Assets" sortKey="netAssets" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="The trust's total assets minus its liabilities, as reported in the most recent available annual report or quarterly filing. This is the remaining pool of money available to pay future claims. As-of dates vary — see the date shown under each figure." />
+            <SortHeader label="Est." sortKey="established" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="Year the trust was established (i.e., when the bankruptcy plan of reorganization was confirmed and the trust became operational)." />
             <SortHeader label="Status" sortKey="status" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="Active: the trust is accepting and paying claims. Deferral: payments are temporarily suspended (e.g. Celotex, pending litigation). Closed: the trust has been depleted and is no longer paying claims (e.g. Rapid-American)." />
             <SortHeader label="Source" sortKey="confidence" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="Source confidence classification. (a) Filed court document — drawn directly from a U.S. bankruptcy court filing. (b) Secondary source citing primary — a trust website or report that cites a filed document. (c) Estimate or inference — derived from available data. See the Methodology page for full details." />
           </div>
@@ -320,7 +323,7 @@ export default function Trusts() {
               <div key={trust.id} className="border-b border-border/30 last:border-0">
                 {/* Main row */}
                 <div
-                  className="grid grid-cols-[2.5fr_1fr_1.2fr_1fr_0.5fr] gap-4 px-4 py-3 hover:bg-card/60 transition-colors cursor-pointer items-center min-w-[580px]"
+                  className="grid grid-cols-[2.5fr_1fr_1.2fr_0.7fr_1fr_0.5fr] gap-4 px-4 py-3 hover:bg-card/60 transition-colors cursor-pointer items-center min-w-[660px]"
                   onClick={() => toggleExpand(trust.id)}
                 >
                   <div className="flex items-center gap-2 min-w-0">
@@ -370,6 +373,9 @@ export default function Trusts() {
                     {trust.assetsAsOf && (
                       <div className="text-xs text-muted-foreground/40">{trust.assetsAsOf}</div>
                     )}
+                  </div>
+                  <div className="text-sm font-mono text-foreground">
+                    {(trust as any).established ?? <span className="text-muted-foreground/40 text-xs">—</span>}
                   </div>
                   <div className="flex items-center gap-1.5">
                     <StatusBadge status={trust.status} />

@@ -2,6 +2,8 @@ import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
 import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus, ExternalLink, ChevronRight, Download, ArrowUpRight, FileText } from "lucide-react";
 import { Link } from "wouter";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence";
 type SortDir = "asc" | "desc";
@@ -71,17 +73,31 @@ function formatAssets(n: number | null): string {
 }
 
 function SortHeader({
-  label, sortKey, current, dir, onSort,
-}: { label: string; sortKey: SortKey; current: SortKey; dir: SortDir; onSort: (k: SortKey) => void }) {
+  label, sortKey, current, dir, onSort, tooltip,
+}: { label: string; sortKey: SortKey; current: SortKey; dir: SortDir; onSort: (k: SortKey) => void; tooltip?: string }) {
   const active = current === sortKey;
   return (
-    <button
-      onClick={() => onSort(sortKey)}
-      className="flex items-center gap-1 text-xs uppercase tracking-wider font-semibold text-muted-foreground hover:text-foreground transition-colors"
-    >
-      {label}
-      {active ? (dir === "asc" ? <ChevronUp size={12} /> : <ChevronDown size={12} />) : <ChevronsUpDown size={12} className="opacity-40" />}
-    </button>
+    <div className="flex items-center gap-1">
+      <button
+        onClick={() => onSort(sortKey)}
+        className="flex items-center gap-1 text-xs uppercase tracking-wider font-semibold text-muted-foreground hover:text-foreground transition-colors"
+      >
+        {label}
+        {active ? (dir === "asc" ? <ChevronUp size={12} /> : <ChevronDown size={12} />) : <ChevronsUpDown size={12} className="opacity-40" />}
+      </button>
+      {tooltip && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button className="text-muted-foreground/40 hover:text-muted-foreground transition-colors" onClick={e => e.stopPropagation()}>
+              <Info size={11} />
+            </button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom" className="max-w-xs text-xs leading-relaxed">
+            {tooltip}
+          </TooltipContent>
+        </Tooltip>
+      )}
+    </div>
   );
 }
 
@@ -288,10 +304,10 @@ export default function Trusts() {
           {/* Table header */}
           <div className="grid grid-cols-[2.5fr_1fr_1.2fr_1fr_0.5fr] gap-4 px-4 py-3 bg-card/80 border-b border-border/50 text-xs min-w-[580px]">
             <SortHeader label="Trust Name" sortKey="name" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <SortHeader label="Payment %" sortKey="paymentPercentage" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <SortHeader label="Net Assets" sortKey="netAssets" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <SortHeader label="Status" sortKey="status" current={sortKey} dir={sortDir} onSort={handleSort} />
-            <SortHeader label="Source" sortKey="confidence" current={sortKey} dir={sortDir} onSort={handleSort} />
+            <SortHeader label="Payment %" sortKey="paymentPercentage" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="The fraction of an approved claim's scheduled value that the trust actually pays. A 10% payment percentage means a claimant with a $100,000 scheduled value receives $10,000. Percentages are reduced when a trust's assets are insufficient to pay claims in full, and may be raised or lowered over time." />
+            <SortHeader label="Net Assets" sortKey="netAssets" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="The trust's total assets minus its liabilities, as reported in the most recent available annual report or quarterly filing. This is the remaining pool of money available to pay future claims. As-of dates vary — see the date shown under each figure." />
+            <SortHeader label="Status" sortKey="status" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="Active: the trust is accepting and paying claims. Deferral: payments are temporarily suspended (e.g. Celotex, pending litigation). Closed: the trust has been depleted and is no longer paying claims (e.g. Rapid-American)." />
+            <SortHeader label="Source" sortKey="confidence" current={sortKey} dir={sortDir} onSort={handleSort} tooltip="Source confidence classification. (a) Filed court document — drawn directly from a U.S. bankruptcy court filing. (b) Secondary source citing primary — a trust website or report that cites a filed document. (c) Estimate or inference — derived from available data. See the Methodology page for full details." />
           </div>
 
           {/* Rows */}

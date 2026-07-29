@@ -5,7 +5,7 @@ import { Link } from "wouter";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
 
-type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence";
+type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence" | "established";
 type SortDir = "asc" | "desc";
 
 // Unified trust shape merging JSON + DB data
@@ -185,6 +185,7 @@ export default function Trusts() {
       else if (sortKey === "netAssets") { av = a.netAssets ?? -1; bv = b.netAssets ?? -1; }
       else if (sortKey === "status") { av = a.status; bv = b.status; }
       else if (sortKey === "confidence") { av = a.confidence; bv = b.confidence; }
+      else if (sortKey === "established") { av = a.established ?? 9999; bv = b.established ?? 9999; }
       if (av < bv) return sortDir === "asc" ? -1 : 1;
       if (av > bv) return sortDir === "asc" ? 1 : -1;
       return 0;

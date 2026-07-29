@@ -40,6 +40,11 @@ lifted directly into `Methodology.tsx` (which still needs updating per earlier c
 Suggest also adding a Corrections-page entry: "Cumulative payouts figure revised from
 $24,000,000,000 (placeholder) to $29,981,797,653 (bottom-up build), 2026-07-29."
 
+**Convention going forward:** every figure change on the site gets one line in
+**`docs/figure-provenance-changelog.md`** (newest first, with source tier + commit hash)
+before or with the commit that changes it. Manus: please append when the site picks up
+new JSON figures; Kimi appends when the JSON itself changes.
+
 ---
 
 ## 1. Per-trust `cumulativePaid` fields (original task)

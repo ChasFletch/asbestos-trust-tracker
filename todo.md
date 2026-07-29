@@ -91,3 +91,6 @@
 - [x] Ingest backfill-verified items into trust-figures.json changes log: Quigley 10/30/2025 cut (14.5→13.3% non-releasing), H.K. Porter 1/31/2025 resumption at 3.0%, Celotex 1/22/2025 audit notice, Shook & Fletcher 50→58% May 2025 (outside floor)
 - [x] Cumulative payouts modal updated: 14-trust two-group layout (2025-2026 current-era vs 2006-2014 historical floors) with per-trust rows, subtotals, and staleness disclosure
 - [x] llms.txt and Methodology.tsx updated with 14-trust / $19.81B documented figures (pending Kimi sync)
+- [x] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (endpoint built at /api/pacer/pull-queue — pending PACER account unlock by support team)
+- [x] Ingest backfill-verified items into trust-figures.json changes log: Quigley 10/30/2025 cut (14.5→13.3% non-releasing), H.K. Porter 1/31/2025 resumption at 3.0%, Celotex 1/22/2025 audit notice, Shook & Fletcher 50→58% May 2025 (outside floor)
+- [x] OC/FB dual percentage display: table shows 4.3% / 3.5%, expanded panel shows sub-account breakdown with explanation

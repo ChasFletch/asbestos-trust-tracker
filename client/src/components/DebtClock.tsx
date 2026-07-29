@@ -275,9 +275,12 @@ interface DebtClockBillboardProps {
   paidOutEstimatedRemainder?: number;
   trustsWithCumulativePaidFiled?: number;
   documentedTrusts?: Array<{ name: string; cumulativePaid: number; cumulativePaidAsOf: string | null }>;
+  paidOutBottomUpFiled?: number;
+  paidOutBottomUpSecondary?: number;
+  paidOutBottomUpResidual?: number;
 }
 
-export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 6327731757, paidOutEstimatedRemainder = 17672268243, trustsWithCumulativePaidFiled = 3, documentedTrusts = [] }: DebtClockBillboardProps) {
+export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 19810476508, paidOutEstimatedRemainder = 4189523492, trustsWithCumulativePaidFiled = 14, documentedTrusts = [], paidOutBottomUpFiled = 19810476508, paidOutBottomUpSecondary = 6671321145, paidOutBottomUpResidual = 3500000000 }: DebtClockBillboardProps) {
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
@@ -560,27 +563,46 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                             <td colSpan={3} style={{ ...subtotalLabelStyle, fontSize: "0.62rem" }}>documented total — {trustsWithCumulativePaidFiled} filed trusts</td>
                           </tr>
 
-                          {/* Estimated remainder */}
+                          {/* Tier 2: Secondary-citing-filed */}
                           <tr>
-                            <td colSpan={4} style={{ ...sectionHeaderStyle, paddingTop: "8px" }}>
-                              Estimated remainder ({42 - trustsWithCumulativePaidFiled} trusts — no filed inception-to-date figures)
+                            <td colSpan={4} style={{ ...sectionHeaderStyle, paddingTop: "8px", color: "rgba(251,191,36,0.55)" }}>
+                              Secondary-citing-filed — 5 trusts (PCC, B&W, Celotex growth, OC/FB growth, G-I Holdings)
                             </td>
                           </tr>
                           <tr style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
                             <td style={{ padding: "3px 6px 3px 0", fontFamily: "'Courier New', monospace", color: "rgba(255,178,72,0.6)", whiteSpace: "nowrap", fontSize: "0.66rem" }}>
-                              + ${paidOutEstimatedRemainder.toLocaleString()}
+                              + ${paidOutBottomUpSecondary.toLocaleString()}
                             </td>
-                            <td colSpan={2} style={{ padding: "3px 4px", color: "rgba(240,236,224,0.55)", fontSize: "0.65rem" }}>
-                              GAO-11-819 floor + secondary sources
+                            <td colSpan={2} style={{ padding: "3px 4px", color: "rgba(240,236,224,0.50)", fontSize: "0.65rem" }}>
+                              Secondary sources citing filed documents
                             </td>
                             <td style={{ padding: "3px 0 3px 4px", textAlign: "right" }}>
-                              <span style={{ fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em", background: "rgba(251,191,36,0.15)", color: "#fcd34d", border: "1px solid rgba(251,191,36,0.3)" }}>c</span>
+                              <span style={{ fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em", background: "rgba(251,191,36,0.15)", color: "#fcd34d", border: "1px solid rgba(251,191,36,0.3)" }}>b</span>
                             </td>
                           </tr>
+
+                          {/* Tier 3: Estimated residual */}
+                          <tr>
+                            <td colSpan={4} style={{ ...sectionHeaderStyle, paddingTop: "8px" }}>
+                              Estimated residual — ~25 trusts with no public cumulative figure
+                            </td>
+                          </tr>
+                          <tr style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
+                            <td style={{ padding: "3px 6px 3px 0", fontFamily: "'Courier New', monospace", color: "rgba(255,178,72,0.45)", whiteSpace: "nowrap", fontSize: "0.66rem" }}>
+                              + ~${paidOutBottomUpResidual.toLocaleString()}
+                            </td>
+                            <td colSpan={2} style={{ padding: "3px 4px", color: "rgba(240,236,224,0.40)", fontSize: "0.65rem" }}>
+                              ACandS, ASARCO, Bondex, CE, Eagle-Picher, Quigley, T&N, Garlock, Paddock, Rapid-American, and others
+                            </td>
+                            <td style={{ padding: "3px 0 3px 4px", textAlign: "right" }}>
+                              <span style={{ fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em", background: "rgba(156,163,175,0.15)", color: "#d1d5db", border: "1px solid rgba(156,163,175,0.3)" }}>c</span>
+                            </td>
+                          </tr>
+
                           {/* Grand total */}
                           <tr style={{ borderTop: "1px solid rgba(255,178,72,0.30)" }}>
                             <td colSpan={4} style={{ padding: "6px 0 2px", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.72rem", fontWeight: 700 }}>
-                              = ${(paidOutDocumented + paidOutEstimatedRemainder).toLocaleString()} &nbsp;<span style={{ color: "rgba(240,236,224,0.45)", fontFamily: "serif", fontWeight: 400, fontSize: "0.65rem" }}>est. total</span>
+                              = ${(paidOutBottomUpFiled + paidOutBottomUpSecondary + paidOutBottomUpResidual).toLocaleString()} &nbsp;<span style={{ color: "rgba(240,236,224,0.45)", fontFamily: "serif", fontWeight: 400, fontSize: "0.65rem" }}>bottom-up est.</span>
                             </td>
                           </tr>
                         </>);
@@ -588,7 +610,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                    </tbody>
                  </table>
                  <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-                  ${paidOutDocumented.toLocaleString()} documented from {trustsWithCumulativePaidFiled} filed annual reports. 4 of these are historical figures (as of 2006–2014) and represent floors — actual payouts to date are higher. The remaining ~${(paidOutEstimatedRemainder / 1e9).toFixed(1)}B covers {42 - trustsWithCumulativePaidFiled} trusts without filed inception-to-date figures, anchored to the GAO-11-819 floor. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
+                  Bottom-up estimate: ${paidOutBottomUpFiled.toLocaleString()} filed (14 trusts) + ${paidOutBottomUpSecondary.toLocaleString()} secondary-citing-filed (5 trusts) + ~${(paidOutBottomUpResidual / 1e9).toFixed(1)}B estimated residual (~25 trusts). The old $24B round figure was a top-down estimate anchored on 2011 data; this bottom-up rebuild produces ${((paidOutBottomUpFiled + paidOutBottomUpSecondary + paidOutBottomUpResidual) / 1e9).toFixed(1)}B. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
                  </div>
                    <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
                      onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}

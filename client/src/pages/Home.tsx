@@ -107,10 +107,13 @@ export default function Home() {
   const remaining = agg?.remainingLow ?? 17041946126;
   const remainingLow = agg?.remainingLow ?? 17041946126;
   const remainingHigh = agg?.remainingHigh ?? 22500000000;
-  const paidOut = agg?.paidOut ?? 24000000000;
-  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 6327731757;
-  const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 17672268243;
-  const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 3;
+  const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 29981797653;
+  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 19810476508;
+  const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 4189523492;
+  const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 14;
+  const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 19810476508;
+  const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 6671321145;
+  const paidOutBottomUpResidual = (agg as any)?.paidOutBottomUpResidual ?? 3500000000;
 
   const lastUpdated = figures?.asOf ?? "2026-07-27";
   const topTrusts = figures?.topTrusts ?? [];
@@ -204,6 +207,9 @@ export default function Home() {
                paidOutEstimatedRemainder={paidOutEstimatedRemainder}
                trustsWithCumulativePaidFiled={trustsWithCumulativePaidFiled}
                documentedTrusts={documentedTrusts}
+               paidOutBottomUpFiled={paidOutBottomUpFiled}
+               paidOutBottomUpSecondary={paidOutBottomUpSecondary}
+               paidOutBottomUpResidual={paidOutBottomUpResidual}
              />
             )}
             <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 text-xs font-mono text-muted-foreground/50 mt-1">

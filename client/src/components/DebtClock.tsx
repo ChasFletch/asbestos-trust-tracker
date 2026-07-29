@@ -231,28 +231,23 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
           </button>
           {showTooltip && (
             <div style={{
-              position: "absolute", bottom: "calc(100% + 8px)",
-              right: compact ? "0" : "50%",
-              transform: compact ? "none" : "translateX(50%)",
-              width: "min(340px, 90vw)",
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "min(400px, 92vw)",
+              maxHeight: "85vh",
+              overflowY: "auto",
               background: "oklch(0.13 0.02 200 / 0.97)",
               border: "1px solid rgba(255,178,72,0.25)",
-              borderRadius: "6px",
+              borderRadius: "8px",
               padding: "1rem 1.1rem",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.7)",
-              zIndex: 50,
+              boxShadow: "0 16px 48px rgba(0,0,0,0.85)",
+              zIndex: 9999,
               backdropFilter: "blur(6px)",
             }}>
               {tooltip}
-              <div style={{
-                position: "absolute", bottom: "-6px",
-                right: compact ? "16px" : "50%",
-                width: "10px", height: "10px",
-                background: "oklch(0.13 0.02 200 / 0.97)",
-                borderRight: "1px solid rgba(255,178,72,0.25)",
-                borderBottom: "1px solid rgba(255,178,72,0.25)",
-                transform: compact ? "rotate(45deg)" : "translateX(50%) rotate(45deg)",
-              }} />
+
             </div>
           )}
         </div>

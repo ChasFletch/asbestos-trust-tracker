@@ -43,7 +43,8 @@
       "cumulativePaid": 904019504,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "NARCO Trust Annual Report & Financial Statements FY2025 (W.D. Pa. 02-20198, Doc 8521, filed 4/16/2026) - $775,354,754 paid on 41,834 TDP Annual Contribution claims + $128,664,750 on Pre-Established claims liquidated by Honeywell, inception-to-date through 12/31/2025",
-      "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=02-20198+8521&type=r&order_by=score+desc"
+      "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=02-20198+8521&type=r&order_by=score+desc",
+      "established": 2013
     },
     {
       "name": "DII Industries (Halliburton/Harbison-Walker)",
@@ -57,7 +58,8 @@
       "cumulativePaid": 2349041458,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Bottom-up sum of 21 filed documents, Bankr. W.D. Pa. 03-35592-CMB (Mid-Valley/Halliburton): FY2005-FY2007 audited financial statements (Docs 2601, 2686, 2697 - 'Asbestos claims payments' cash-flow lines; FY2005 = $0) + FY2008-FY2013 Exhibit B 'Claims Disposed Of' tables (Docs 2754-2, 2764-2, 2812-2, 2836-2, 2855-2, 2913-1) + FY2014-FY2025 Exhibit B tables (file-stamped PDFs free at diiasbestostrust.org). Cash basis throughout; FY2009 excludes supplemental payments on pre-2009 claims (filed footnote). PACER pulls 2026-07-28, $9.90 total fees.",
-      "cumulativePaidSourceUrl": "/manus-storage/dii-2007-exhibit-b_a99433e2.pdf"
+      "cumulativePaidSourceUrl": "/manus-storage/dii-2007-exhibit-b_a99433e2.pdf",
+      "established": 2004
     },
     {
       "name": "Manville Personal Injury Settlement Trust",
@@ -71,7 +73,8 @@
       "cumulativePaid": 5329722253,
       "cumulativePaidAsOf": "2026-03-31",
       "cumulativePaidSource": "Manville PI Settlement Trust, Financial Statements for period ending 3/31/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4479, filed 4/27/2026) - cumulative payments on 1,036,966 liquidated claims since consummation 11/28/1988",
-      "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=manville+4479&type=r&order_by=score+desc"
+      "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=manville+4479&type=r&order_by=score+desc",
+      "established": 1988
     },
     {
       "name": "Western Asbestos Settlement Trust",
@@ -84,7 +87,8 @@
       "cumulativePaid": 2238037573,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Western Asbestos Settlement Trust 22nd Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. N.D. Cal. 13-31914, Doc 1944, filed 4/28/2026; file-stamped PDF posted free at wastrust.com) - total claims paid since inception $2,238,037,573 covering trust-processed, pre-petition, and increase payments",
-      "cumulativePaidSourceUrl": "https://wastrust.com"
+      "cumulativePaidSourceUrl": "https://wastrust.com",
+      "established": 2004
     },
     {
       "name": "Thorpe Insulation Company Asbestos Settlement Trust",
@@ -97,7 +101,8 @@
       "cumulativePaid": 433982311,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Thorpe Insulation Settlement Trust 16th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. C.D. Cal. 2:07-bk-20016-BB, Doc 242, filed 4/28/2026; file-stamped PDF posted free at tistrust.com) - total claims paid since inception $433,982,311 covering trust-processed, pre-petition, and increase payments",
-      "cumulativePaidSourceUrl": "https://tistrust.com"
+      "cumulativePaidSourceUrl": "https://tistrust.com",
+      "established": 2010
     },
     {
       "name": "Plant Asbestos Settlement Trust",
@@ -110,7 +115,8 @@
       "cumulativePaid": 191680841,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Plant Asbestos Settlement Trust 14th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. N.D. Cal. 09-31347, Doc 3050, filed 4/28/2026; file-stamped PDF posted free at pastrust.com) - total claims paid since inception $191,680,841 covering trust-processed, pre-petition, and increase payments",
-      "cumulativePaidSourceUrl": "https://pastrust.com"
+      "cumulativePaidSourceUrl": "https://pastrust.com",
+      "established": 2009
     },
     {
       "name": "J.T. Thorpe Settlement Trust (CA)",
@@ -123,7 +129,8 @@
       "cumulativePaid": 189960646,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "J.T. Thorpe Settlement Trust 20th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. C.D. Cal. 2:02-bk-14216-BB, Doc 1901, filed 4/28/2026; file-stamped PDF posted free at jttstrust.com) - total claims paid since inception $189,960,646 covering trust-processed, pre-petition, and increase payments",
-      "cumulativePaidSourceUrl": "https://jttstrust.com"
+      "cumulativePaidSourceUrl": "https://jttstrust.com",
+      "established": 2007
     },
     {
       "name": "Maremont Asbestos PI Trust",
@@ -136,7 +143,8 @@
       "note": "Total assets $53.32M; 166 claims paid totaling $2.09M in 2025; 28.4% under TDP 4.3 reconsideration (notice 4/7/2026)",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2014
     },
     {
       "name": "API, Inc. Asbestos Settlement Trust",
@@ -150,7 +158,8 @@
       "cumulativePaid": 93990000,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "API, Inc. Asbestos Settlement Trust FY2025 Annual Report of the Trustee (Bankr. D. Minn. 05-30073-GFK, filed 4/29/2026) - cumulative claims paid to date $93.99M through 12/31/2025",
-      "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=05-30073+API+asbestos&type=r&order_by=score+desc"
+      "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=05-30073+API+asbestos&type=r&order_by=score+desc",
+      "established": 2011
     },
     {
       "name": "W.R. Grace Asbestos PI Trust",
@@ -164,7 +173,8 @@
       "cumulativePaid": 2690000000,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "WRG Asbestos PI Trust FY2025 Annual Report narrative, Bankr. D. Del. 01-01139 Doc 33347-1 (filed 4/29/2026): 'the Trust paid approximately $2.69 billion to asbestos victims in settlement of their Unliquidated PI Trust Claims since the date of inception of the Trust' as of 12/31/2025. Approximation per the filed narrative; no exact cumulative dollar exhibit filed.",
-      "cumulativePaidSourceUrl": "/manus-storage/wrg-fy2025-ar-exhibit1-narrative_de9b5dcb.pdf"
+      "cumulativePaidSourceUrl": "/manus-storage/wrg-fy2025-ar-exhibit1-narrative_de9b5dcb.pdf",
+      "established": 2014
     },
     {
       "name": "Pittsburgh Corning Asbestos PI Settlement Trust",
@@ -177,7 +187,8 @@
       "note": "% cut 24.5->19% Nov 2024 (pending TAC/FCR consent process); FY2025 report filed ~Apr 2026 (W.D. Pa. 00-22876), PACER-only",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2016
     },
     {
       "name": "United States Gypsum (USG) Asbestos Trust",
@@ -191,7 +202,8 @@
       "cumulativePaid": 612130000,
       "cumulativePaidAsOf": "2008-12-31",
       "cumulativePaidSource": "COMPUTED SUM of two verbatim inception-to-date figures in FY2008 Annual Report ('approximately $11.52 million' Pre-Petition Liquidated + 'approximately $600.61 million' Unliquidated, both as of 12/31/2008), Doc 21942-21, Bankr. D. Del. 01-01139 (W.R. Grace docket). HISTORICAL - 17 years stale. FY2024 report (01-02094 Doc 12858) blocked by CM/ECF image failure; FY2025 not yet filed",
-      "cumulativePaidSourceUrl": "/manus-storage/grace-21942-21_48bb13a9.pdf"
+      "cumulativePaidSourceUrl": "/manus-storage/grace-21942-21_48bb13a9.pdf",
+      "established": 2006
     },
     {
       "name": "Owens Corning/Fibreboard Asbestos PI Trust",
@@ -207,7 +219,8 @@
       "cumulativePaidSource": "COMPUTED SUM of four verbatim per-category inception-to-date figures in FY2009 Annual Report (OC $345.28M Pre-Petition + $1,400.13M Unliquidated; FB $133.58M Pre-Petition + $586.92M Unliquidated, all as of 12/31/2009), Exhibit L to Doc 6491-5, Bankr. S.D.N.Y. 09-50026 (Motors Liquidation docket). HISTORICAL - 16 years stale. FY2025 report (00-3837 Doc 21263) blocked by CM/ECF image failure",
       "paymentPercentageFB": 3.5,
       "paymentPercentageFBNote": "FB Sub-Account, eff. 2026-06-30 (same notice as OC cut)",
-      "cumulativePaidSourceUrl": "/manus-storage/ocfb-fy2009-annual-report-nysb-6491-5_b1acd491.pdf"
+      "cumulativePaidSourceUrl": "/manus-storage/ocfb-fy2009-annual-report-nysb-6491-5_b1acd491.pdf",
+      "established": 2006
     },
     {
       "name": "ASARCO Asbestos PI Settlement Trust",
@@ -219,7 +232,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2009
     },
     {
       "name": "Armstrong World Industries Asbestos PI Trust",
@@ -233,7 +247,8 @@
       "cumulativePaid": 1600408304,
       "cumulativePaidAsOf": "2014-12-31",
       "cumulativePaidSource": "FY2014 Annual Report, Claim Report exhibit (579,458 claims paid, inception through 12-31-2014); filed Bankr. D. Del. 00-04471; trust-reports/non-pacer-recovery/armstrong-fy2014-annual-report.pdf",
-      "cumulativePaidSourceUrl": "/manus-storage/armstrong-fy2014-annual-report_5d452b0c.pdf"
+      "cumulativePaidSourceUrl": "/manus-storage/armstrong-fy2014-annual-report_5d452b0c.pdf",
+      "established": 2006
     },
     {
       "name": "Bondex (Specialty Products Holding Corp.) Trust",
@@ -245,7 +260,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2013
     },
     {
       "name": "Flintkote Asbestos Trust",
@@ -258,7 +274,8 @@
       "note": "FY2025 report pulled from PACER 7/28/2026 (04-11300 Doc 9503, $4.00 fees incl. docket queries): audited NCE $520,161,996 at 12/31/2025; FY2025 claims paid $37,848,794 (13,460 claims). No inception-to-date cumulative line in filing - cumulativePaid gap flagged; per-year Exhibit 1.B tables summable across ~18 years if wanted",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2012
     },
     {
       "name": "Paddock Enterprises (Owens-Illinois) Asbestos Trust",
@@ -271,7 +288,8 @@
       "note": "Current balance not publicly posted (DCPF-administered); FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 20-10028 Doc 1707, 4/29/2025)",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2020
     },
     {
       "name": "Quigley Company Asbestos PI Trust",
@@ -284,7 +302,8 @@
       "note": "Non-Releasing subfund 13.3% (cut from 14.5% eff. 10/30/2025 per official notice); Releasing subfund 3.3%",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2013
     },
     {
       "name": "Federal-Mogul (T&N Subfund) Asbestos PI Trust",
@@ -297,7 +316,8 @@
       "note": "CORRECTION: prior DB entry carried 12.2%, which was the FMP subfund rate; T&N subfund is 2.9% per official trust notice 6/30/2026 (down from 5.9% in 2022); FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 01-10578 Doc 582593677, 4/29/2025)",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2007
     },
     {
       "name": "Celotex Asbestos Settlement Trust",
@@ -311,7 +331,8 @@
       "cumulativePaid": 575393618,
       "cumulativePaidAsOf": "2006-12-31",
       "cumulativePaidSource": "FY2006 Annual Report, Bankr. M.D. Fla. 90-10016 Doc 13816 (RECAP): 'Since inception the Trust has made 402,937 payments on 305,128 personal injury claims in the aggregate amount of $575,393,617.51' (rounded to integer). PI pool only - excludes PD pool ($147,649,270.05 separately reported) and IRC second installments. HISTORICAL - 19 years stale. FY2025 report (Doc 14439) blocked by CM/ECF image failure",
-      "cumulativePaidSourceUrl": "/manus-storage/celotex-fy2006-doc13816-annual-report_020585e8.pdf"
+      "cumulativePaidSourceUrl": "/manus-storage/celotex-fy2006-doc13816-annual-report_020585e8.pdf",
+      "established": 1996
     },
     {
       "name": "Combustion Engineering 524(g) Asbestos PI Trust",
@@ -324,7 +345,8 @@
       "note": "18.5->29.5->15.3%; cut April 2026",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2006
     },
     {
       "name": "Fuller-Austin Asbestos Settlement Trust",
@@ -337,7 +359,8 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "note": "No live official trust website located and no Wayback captures of report PDFs (verified 2026-07-27); a '~$310M paid since establishment' figure circulates on law-firm sites citing a 2022 report but is class-(c) and unusable - cumulativePaid stays null pending PACER"
+      "note": "No live official trust website located and no Wayback captures of report PDFs (verified 2026-07-27); a '~$310M paid since establishment' figure circulates on law-firm sites citing a 2022 report but is class-(c) and unusable - cumulativePaid stays null pending PACER",
+      "established": 1998
     },
     {
       "name": "Kaiser Asbestos PI Trust",
@@ -350,7 +373,8 @@
       "note": "18.1->10.6% (cut Feb 2025). Trust website (kaiserasbestostrust.com) posts no annual reports (resources + notices pages verified 2026-07-27) - filed reports are PACER-only; cumulativePaid stays null",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2006
     },
     {
       "name": "Babcock & Wilcox Asbestos PI Settlement Trust",
@@ -363,7 +387,8 @@
       "note": "FY2025 report pulled from PACER 7/28/2026 (00-10992 Doc 7890, $4.30 fees incl. docket query): audited NCE $295,318,243 at 12/31/2025; FY2025 paid ~$19.89M on 18,555 claims. No inception-to-date cumulative line in filing - cumulativePaid gap flagged (corpus secondary ~$1.94B YE2024 remains non-filed). 4.7->4.3% eff. 6/30/2026 (trust letter; pending TAC/FCR consent)",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2006
     },
     {
       "name": "G-I Holdings (GAF) Asbestos PI Settlement Trust",
@@ -375,7 +400,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2009
     },
     {
       "name": "Eagle-Picher Industries PI Settlement Trust",
@@ -387,7 +413,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 1996
     },
     {
       "name": "Yarway Asbestos PI Trust",
@@ -399,7 +426,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2013
     },
     {
       "name": "A.P. Green (APG) Asbestos Trust",
@@ -411,7 +439,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2010
     },
     {
       "name": "NGC Bodily Injury Trust (National Gypsum)",
@@ -423,7 +452,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 1993
     },
     {
       "name": "Congoleum Plan Trust",
@@ -436,7 +466,8 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "note": "FY2025 annual report (filed D.N.J. 3:09-cv-04371-JAP, Doc 863, free at congoleumtrust.com) reviewed 2026-07-27: reports per-year claim counts only (971 claims paid in 2025) - no cumulative or per-year dollar line in the narrative; cumulativePaid stays null"
+      "note": "FY2025 annual report (filed D.N.J. 3:09-cv-04371-JAP, Doc 863, free at congoleumtrust.com) reviewed 2026-07-27: reports per-year claim counts only (971 claims paid in 2025) - no cumulative or per-year dollar line in the narrative; cumulativePaid stays null",
+      "established": 2010
     },
     {
       "name": "Motors Liquidation Co. (GM) Asbestos PI Trust",
@@ -450,7 +481,8 @@
       "cumulativePaid": 136200000,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "MLC Asbestos PI Trust FY2025 Annual Report and Account, Summary of Claims, Bankr. S.D.N.Y. 09-50026 Doc 14861-1 (filed 4/30/2026): 'The Trust paid approximately $136.2 million to asbestos victims in settlement of their Unliquidated Claims since the date of inception of the Trust' as of 12/31/2025. Approximation per the filed narrative; no exact cumulative dollar exhibit filed.",
-      "cumulativePaidSourceUrl": "/manus-storage/mlc-fy2025-ar-main_353a1a96.pdf"
+      "cumulativePaidSourceUrl": "/manus-storage/mlc-fy2025-ar-main_353a1a96.pdf",
+      "established": 2011
     },
     {
       "name": "ACandS Asbestos Settlement Trust",
@@ -463,7 +495,8 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "note": "Trust website (acandsasbestostrust.com) posts only the FY2013 annual report (verified 2026-07-27) - 13 years stale and contains no cumulative-paid line; cumulativePaid stays null"
+      "note": "Trust website (acandsasbestostrust.com) posts only the FY2013 annual report (verified 2026-07-27) - 13 years stale and contains no cumulative-paid line; cumulativePaid stays null",
+      "established": 2002
     },
     {
       "name": "J.T. Thorpe Company Successor Trust (TX)",
@@ -475,7 +508,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2007
     },
     {
       "name": "Kaiser Gypsum Asbestos PI Trust",
@@ -487,7 +521,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2016
     },
     {
       "name": "Porter Hayden Bodily Injury Trust",
@@ -499,7 +534,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2005
     },
     {
       "name": "Raytech (Raymark) Trust",
@@ -511,7 +547,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 1998
     },
     {
       "name": "Keene Creditors Trust",
@@ -523,7 +560,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 1996
     },
     {
       "name": "H.K. Porter Asbestos Trust",
@@ -536,7 +574,8 @@
       "note": "3.0% maintained per Dec 2024 court-approved ACRP amendment; resumed offers 1/31/2025",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2003
     },
     {
       "name": "Christy Refractories Asbestos PI Trust",
@@ -548,7 +587,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2008
     },
     {
       "name": "A-Best Products Asbestos Trust",
@@ -560,7 +600,8 @@
       "confidence": "secondary",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2004
     },
     {
       "name": "Rapid-American Asbestos PI Trust",
@@ -573,7 +614,8 @@
       "note": "Stopped accepting claims 6/6/2025, depleted; liquidating trust established Nov 2022; excluded from floor sum",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
-      "cumulativePaidSource": null
+      "cumulativePaidSource": null,
+      "established": 2013
     }
   ],
   "changes": [
@@ -1009,7 +1051,7 @@
         "description": "Cumulative payment figures from secondary compilations that cite the trusts' own filed annual reports (class-b); each flagged with confidence and not yet verified against the filed document. Used only where no filed figure is in hand.",
         "components": [
           {
-            "component": "Pittsburgh Corning Asbestos PI Settlement Trust — cumulative paid since inception",
+            "component": "Pittsburgh Corning Asbestos PI Settlement Trust \u2014 cumulative paid since inception",
             "amount": 3071420000,
             "asOf": "2022-12-31",
             "confidence": "high",
@@ -1017,28 +1059,28 @@
             "note": "Trust effective 2017; not yet verified against filed document (PACER queue)."
           },
           {
-            "component": "Babcock & Wilcox Asbestos PI Settlement Trust — cumulative paid since inception",
+            "component": "Babcock & Wilcox Asbestos PI Settlement Trust \u2014 cumulative paid since inception",
             "amount": 1940000000,
             "asOf": "2024-12-31",
             "confidence": "medium-high",
             "source": "Secondary citing trust's YE2024 report: '$1.94B+ paid since inception, ~403k claims paid'. Corpus: followup_dim02. Floor figure ('+' in source); FY2025 filed payments of $19,890,000 (Exhibit 1) are additional to this floor."
           },
           {
-            "component": "Celotex Asbestos Settlement Trust — post-2006 growth not captured by filed figure",
+            "component": "Celotex Asbestos Settlement Trust \u2014 post-2006 growth not captured by filed figure",
             "amount": 783146017,
             "asOf": "2021-12-31",
             "confidence": "medium-high",
             "source": "Derived: $1,358,539,635 cumulative through 2021 (asbestosclaims.law citing annual financial report; corpus dim08, Medium-High) less documented filed figure $575,393,618 @2006-12-31."
           },
           {
-            "component": "Owens Corning/Fibreboard — post-2009 growth not captured by filed figure",
+            "component": "Owens Corning/Fibreboard \u2014 post-2009 growth not captured by filed figure",
             "amount": 534090000,
             "asOf": "2022-12-31",
             "confidence": "medium",
             "source": "Derived: ~$3.0B cumulative paid (rounded, asbestosclaims.law trust database, 2022; corpus dim12) less documented filed figure $2,465,910,000 @2009-12-31. Rounded source; +/- $50M."
           },
           {
-            "component": "G-I Holdings (GAF) Asbestos PI Settlement Trust — cumulative paid since establishment",
+            "component": "G-I Holdings (GAF) Asbestos PI Settlement Trust \u2014 cumulative paid since establishment",
             "amount": 342665128,
             "asOf": "2022-12-31",
             "confidence": "high",
@@ -1057,7 +1099,7 @@
     },
     "methodology": "Bottom-up sum replacing the round $24,000,000,000 point estimate. Tier 1: filed inception-to-date figures (14 trusts, as-of dates 2006-2026). Tier 2: secondary compilations citing filed annual reports (5 components), used only where no filed figure exists, each labeled. Tier 3: explicit allowance for ~25 trusts with no public cumulative figure, with stated range ($2.5-5B). The total is non-round because every component is a traceable number; it leans conservative because several Tier 1/2 as-of dates are stale (payments since those dates are only partly captured) and the B&W figure is a stated floor.",
     "crossChecks": [
-      "GAO-11-819 (2011): ~$17.5B paid on 3.3M claims, 1988-2010 — frozen 2011 baseline; consistent with this total after ~15 further years of payouts.",
+      "GAO-11-819 (2011): ~$17.5B paid on 3.3M claims, 1988-2010 \u2014 frozen 2011 baseline; consistent with this total after ~15 further years of payouts.",
       "Bates White/Mealey's (via corpus dim12): $14.0B paid 2006-2011 alone.",
       "RAND TR872: ~$3.3B trust outlays in 2008.",
       "Research corpus final report (dim12): 'cumulative payments by 2026 are plausibly $30B+'."

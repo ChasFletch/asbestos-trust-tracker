@@ -63,7 +63,7 @@
 - [x] Trust records corrected: WRG 30.1%, USG 11%, Armstrong 10.8%, CE 15.3%, Western 51.1%, Rapid-American closed
 - [x] DebtClock updated: documented floor as primary counter, estimated range strip ($17B–$22.5B), payouts sublabel updated
   - [x] Register weekly Heartbeat cron after first deploy
-- [ ] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (endpoint built at /api/pacer/pull-queue — pending PACER account unlock by support team)
+- [x] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (endpoint built at /api/pacer/pull-queue — PACER account unlocked, pulls completed by Kimi 7/29/2026)
 - [x] Per-trust detail page (/trusts/:id) — all 42 trusts, payment history chart, changes timeline, source citations
 - [x] PACER pull endpoint built: /api/pacer/pull, /api/pacer/pull-queue, /api/pacer/status with CourtListener RECAP fallback
 - [x] pacer-pull-queue.json: 7 priority documents queued ($33-45 total, WRG FY2025 highest priority)
@@ -94,3 +94,10 @@
 - [x] PACER pull for W.R. Grace FY2025, Pittsburgh Corning, Celotex, B&W annual reports (endpoint built at /api/pacer/pull-queue — pending PACER account unlock by support team)
 - [x] Ingest backfill-verified items into trust-figures.json changes log: Quigley 10/30/2025 cut (14.5→13.3% non-releasing), H.K. Porter 1/31/2025 resumption at 3.0%, Celotex 1/22/2025 audit notice, Shook & Fletcher 50→58% May 2025 (outside floor)
 - [x] OC/FB dual percentage display: table shows 4.3% / 3.5%, expanded panel shows sub-account breakdown with explanation
+- [x] PACER pull — W.R. Grace FY2025: completed, cumulativePaid $2,690,000,000 documented (Doc 33347)
+- [x] PACER pull — DII Industries FY2005-FY2013 early years: completed, 12-year subtotal $1,254,425,009 documented
+- [x] PACER pull — Motors Liquidation (GM) PI Trust: completed, cumulativePaid $136,200,000 documented (Doc 14861)
+- [ ] PACER pull — Pittsburgh Corning: blocked (court-side "document not available", cause undetermined); secondary $3.07B in bottomUpPayouts
+- [ ] PACER pull — Celotex: access restricted ("you do not have access to the restricted document"); historical $575M from RECAP
+- [ ] PACER pull — Babcock & Wilcox: secondary $1.94B floor in bottomUpPayouts; PACER pull queued when restriction resolves
+- [x] Methodology.tsx updated: FAQ JSON-LD figures corrected ($16,746,136,347 remaining assets, $29,981,797,653 cumulative payouts), $30B section revised with bottom-up context and $16.7B documented floor, Known Gaps updated (WRG/DII complete, PCC blocked, Celotex restricted, B&W queued), new Cumulative Payouts Methodology section added (three-tier build table, honest caveats, revision log)

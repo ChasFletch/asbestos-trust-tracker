@@ -12,11 +12,11 @@ export default function Methodology() {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How much money is left in asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "As of July 2026, the documented remaining assets of the U.S. asbestos bankruptcy trust system total $17,041,946,126 based on primary-sourced figures from 42 trusts. The full system estimate including modeled figures is $17.0B–$22.5B. Source: AsbestosTrusts.org." } },
-        { "@type": "Question", "name": "Is the $30 billion asbestos trust fund figure accurate?", "acceptedAnswer": { "@type": "Answer", "text": "No. The '$30 billion' figure is not sourced to any filed court document. It originates from defense-side advocacy literature (RAND Institute for Civil Justice, 2012). The documented floor from primary sources is $17.0B as of 2026, with a full system estimate of $17.0B–$22.5B." } },
+        { "@type": "Question", "name": "How much money is left in asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "As of July 2026, the documented remaining assets floor of the U.S. asbestos bankruptcy trust system is $16,746,136,347, based on filed figures from 42 trusts. This is a floor, not a ceiling — trusts with no retrievable filed figure are excluded. Source: AsbestosTrusts.org." } },
+        { "@type": "Question", "name": "Is the $30 billion asbestos trust fund figure accurate?", "acceptedAnswer": { "@type": "Answer", "text": "The '$30 billion available in asbestos trust funds' figure that circulates on law firm sites refers to total capitalization since 1988, not remaining assets. Remaining assets as of 2026 are approximately $16.7B (documented floor). Separately, our bottom-up estimate of cumulative payouts since 1988 is $29,981,797,653 — which is also approximately $30B. This is a coincidence of scale: the two figures measure completely different things." } },
         { "@type": "Question", "name": "How many asbestos trust funds exist in the United States?", "acceptedAnswer": { "@type": "Answer", "text": "AsbestosTrusts.org documents 42 U.S. asbestos bankruptcy trusts established under §524(g) of the Bankruptcy Code. As of June 2025, 41 are active and 1 (Rapid-American) has been depleted and closed." } },
         { "@type": "Question", "name": "What is a payment percentage in an asbestos trust?", "acceptedAnswer": { "@type": "Answer", "text": "A payment percentage is the fraction of the scheduled value of an approved asbestos claim that the trust actually pays. Payment percentages range from 4.3% (Babcock & Wilcox) to 100% (NARCO) as of 2026." } },
-        { "@type": "Question", "name": "How much has been paid out from asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "The derived estimate for cumulative payouts since 1988 is $26,629,722,253. The hard floor is $17.5 billion, documented by the GAO through 2010 (GAO-11-819). The Manville Trust alone has paid $5,329,722,253 on 1,036,966 claims as of Q1 2026." } },
+        { "@type": "Question", "name": "How much has been paid out from asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "The bottom-up estimate for cumulative payouts since 1988 is $29,981,797,653 — built from 14 filed annual reports ($19,810,476,508), 5 secondary-citing-filed components ($6,671,321,145), and a labeled residual allowance of ~$3.5B for ~25 trusts with no public figures. The old $24B round figure was a top-down placeholder anchored on 2011 GAO data; the bottom-up rebuild produces ~$30B. Source: AsbestosTrusts.org." } },
         { "@type": "Question", "name": "Which asbestos trust fund has the most money?", "acceptedAnswer": { "@type": "Answer", "text": "As of 2026, the W.R. Grace Asbestos PI Trust has the largest documented net assets at approximately $1.995 billion. The NARCO Asbestos Trust has $1.260 billion (filed, December 2025), and Pittsburgh Corning has $1.294 billion." } },
         { "@type": "Question", "name": "What is the source classification system used by AsbestosTrusts.org?", "acceptedAnswer": { "@type": "Answer", "text": "AsbestosTrusts.org uses three tiers: (a) Filed Court Document — drawn directly from a U.S. bankruptcy court filing; (b) Secondary Source Citing Primary — a secondary source that explicitly cites a primary filing; (c) Estimate or Inference — derived from available data or actuarial projections." } }
       ]
@@ -119,8 +119,11 @@ export default function Methodology() {
           <p className="text-muted-foreground mb-3">
             The GAO report also found that $17.5 billion had already been paid out on 3.3 million claims through 2010. The "$30 billion" figure appears to have entered circulation as a rough subtraction that was then cited, recited, and eventually detached from its source entirely.
           </p>
+          <p className="text-muted-foreground mb-3">
+            There is an additional layer of confusion: our bottom-up estimate of <em>cumulative payouts</em> since 1988 is $29,981,797,653 — which is also approximately $30 billion. This is a coincidence of scale. The two figures measure completely different things: total capitalization (what went in) versus total claims paid (what went out). Neither is the current remaining balance.
+          </p>
           <p className="text-muted-foreground">
-            Our best current estimate of remaining assets — based on primary and secondary sources for all major trusts — is <strong className="text-foreground">$17–20 billion</strong>, with the midpoint around $18.6 billion. This figure will be updated as new annual reports are filed each spring.
+            Our documented floor for remaining assets — based on filed figures for all trusts with retrievable annual reports — is <strong className="text-foreground">$16,746,136,347</strong>. This is a floor, not a ceiling: trusts with no public filing are excluded from this sum. This figure is updated as new annual reports are filed each spring.
           </p>
         </section>
 
@@ -134,7 +137,7 @@ export default function Methodology() {
           </p>
           <div className="space-y-2">
             {[
-              { gap: "PACER-only documents", detail: "Annual reports for W.R. Grace (FY2025), Pittsburgh Corning (FY2024), Celotex (FY2024), and Babcock & Wilcox (FY2024) are filed with bankruptcy courts but not yet available in the free RECAP archive. These figures are currently classified (b) or (c) pending direct retrieval." },
+              { gap: "PACER-only documents", detail: "W.R. Grace (FY2025) and DII Industries (FY2025) have been pulled and documented. Pittsburgh Corning is blocked (court-side access issue, cause undetermined). Celotex documents are restricted ('You do not have access to the restricted document'). Babcock & Wilcox (FY2024) is queued for the next PACER session." },
               { gap: "Smaller trusts", detail: "Approximately 40 trusts with smaller asset bases have no publicly available financial data. These trusts collectively represent an estimated 5–10% of total system assets." },
               { gap: "Delticus / Bendix", detail: "The Delticus trust (Honeywell / Bendix) is administered by Third Point / Delticus and does not publish public financial statements. Its $1.6B figure is from a 2021 secondary source." },
               { gap: "Pre-1995 Manville data", detail: "Manville Trust payment percentage history prior to 1995 (the 100% era, 1988–1994) is not documented in current public filings." },
@@ -144,6 +147,106 @@ export default function Methodology() {
                 <p className="text-xs text-muted-foreground">{g.detail}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Cumulative Payouts Methodology */}
+        <section>
+          <h2 className="font-display font-bold uppercase tracking-wider text-base mb-4 text-foreground">
+            Cumulative Payouts Methodology
+          </h2>
+          <p className="text-muted-foreground mb-3">
+            The cumulative payouts clock displays <strong className="text-foreground">$29,981,797,653</strong> — a bottom-up estimate of total claims paid by all U.S. asbestos bankruptcy trusts since 1988. This figure replaced a round $24 billion placeholder in July 2026. The methodology is documented in full at <code className="text-xs bg-muted px-1 py-0.5 rounded">docs/methodology-cumulative-payouts.md</code> in the project repository.
+          </p>
+
+          <h3 className="font-semibold text-foreground text-sm mb-3 mt-5">Why the Number Changed from $24B to ~$30B</h3>
+          <p className="text-muted-foreground mb-3">
+            The $24B was a top-down placeholder anchored on 2011 GAO data. Three independent anchors all pointed higher:
+          </p>
+          <ul className="list-disc list-inside space-y-1 text-muted-foreground pl-2 mb-4 text-xs">
+            <li>GAO-11-819's "$17.5 billion paid" was frozen at December 31, 2010 — it says nothing about the last 15+ years of payments.</li>
+            <li>Bates White / Mealey's tables document $14.0 billion paid in 2006–2011 <em>alone</em> — six years.</li>
+            <li>The research corpus's own assessment: cumulative payments by 2026 are "plausibly $30B+" (RAND documented ~$3.3B of trust outlays in 2008 alone).</li>
+          </ul>
+
+          <h3 className="font-semibold text-foreground text-sm mb-3">Three-Tier Build</h3>
+          <div className="space-y-3 mb-4">
+            {[
+              {
+                tier: "Tier 1 — Filed figures",
+                amount: "$19,810,476,508",
+                count: "14 trusts",
+                confidence: "a",
+                color: "oklch(0.72 0.18 150)",
+                detail: "Inception-to-date claims payments read directly from filed annual reports or court documents. As-of dates range 2006–2026. The four historical figures (Owens Corning/Fibreboard 2009, Armstrong 2014, USG 2008, Celotex 2006) are floors — those trusts kept paying after their last publicly retrievable report.",
+              },
+              {
+                tier: "Tier 2 — Secondary citing filed",
+                amount: "$6,671,321,145",
+                count: "5 components",
+                confidence: "b",
+                color: "oklch(0.72 0.18 45)",
+                detail: "Used only where no filed figure is in hand. Each comes from a secondary compilation that cites the trust's own filed annual report. Components: Pittsburgh Corning $3,071,420,000 (2022); Babcock & Wilcox $1,940,000,000 floor (2024); Celotex post-2006 growth $783,146,017 (2021); OC/FB post-2009 growth $534,090,000 (2022); G-I Holdings (GAF) $342,665,128 (2022). Every Tier 2 figure graduates to Tier 1 when its PACER pull lands.",
+              },
+              {
+                tier: "Tier 3 — Estimated residual",
+                amount: "~$3,500,000,000",
+                count: "~25 trusts",
+                confidence: "c",
+                color: "oklch(0.65 0.18 20)",
+                detail: "~25 active trusts publish no inception-to-date payment figure anywhere publicly accessible (ACandS, A.P. Green, ASARCO, Bondex, Combustion Engineering, Eagle-Picher, Federal-Mogul/T&N, Fuller-Austin, Garlock GST, Kaiser, Paddock, Quigley, Rapid-American, Yarway, and others). The allowance is derived from system payout run-rates (~$1.5–2B/yr documented by Bates White and RAND) net of itemized components. Range: $2.5–5B.",
+              },
+            ].map((t) => (
+              <div key={t.tier} className="flex gap-3 p-3 rounded border border-border/40 bg-card/30">
+                <div
+                  className="shrink-0 w-7 h-7 rounded flex items-center justify-center font-mono font-bold text-xs"
+                  style={{ background: `${t.color}20`, color: t.color, border: `1px solid ${t.color}40` }}
+                >
+                  ({t.confidence})
+                </div>
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-baseline gap-2 mb-1">
+                    <span className="font-semibold text-foreground text-xs">{t.tier}</span>
+                    <span className="font-mono text-foreground text-xs">{t.amount}</span>
+                    <span className="text-muted-foreground/60 text-xs">({t.count})</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{t.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="font-semibold text-foreground text-sm mb-2">Honest Caveats</h3>
+          <ol className="list-decimal list-inside space-y-1 text-muted-foreground pl-2 mb-4 text-xs">
+            <li><strong className="text-foreground">Floor-leaning estimate.</strong> Several Tier 1/2 as-of dates are stale; payments after those dates are only partly captured. Babcock &amp; Wilcox is a stated floor.</li>
+            <li><strong className="text-foreground">The residual is an allowance, not a measurement.</strong> We publish the range ($2.5–5B), not false precision.</li>
+            <li><strong className="text-foreground">Tier 2 figures graduate to Tier 1</strong> as PACER pulls land — see the queue in the project repository.</li>
+            <li><strong className="text-foreground">No class-c marketing-site figures.</strong> Nothing from mesothelioma.com, asbestosclaims.law, or similar sites is used anywhere in this build.</li>
+          </ol>
+
+          <h3 className="font-semibold text-foreground text-sm mb-2">Revision Log</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs border-collapse">
+              <thead>
+                <tr className="border-b border-border/40">
+                  <th className="text-left py-2 pr-4 text-muted-foreground font-medium">Date</th>
+                  <th className="text-left py-2 pr-4 text-muted-foreground font-medium">Figure</th>
+                  <th className="text-left py-2 text-muted-foreground font-medium">Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-border/20">
+                  <td className="py-2 pr-4 text-muted-foreground">pre-2026-07-29</td>
+                  <td className="py-2 pr-4 font-mono text-muted-foreground">$24,000,000,000</td>
+                  <td className="py-2 text-muted-foreground">Round placeholder point estimate (top-down, GAO-anchored)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 text-muted-foreground">2026-07-29</td>
+                  <td className="py-2 pr-4 font-mono text-foreground">$29,981,797,653</td>
+                  <td className="py-2 text-muted-foreground">Bottom-up build (commit <code className="bg-muted px-1 rounded">2b2ecf1</code>): 14 filed + 5 secondary-citing-filed + labeled residual</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 

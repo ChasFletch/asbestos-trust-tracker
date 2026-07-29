@@ -1,7 +1,41 @@
-# HANDOFF — cumulativePaid data work (2026-07-28, commits through 6287e72)
+# HANDOFF — cumulativePaid data work (2026-07-29, bottom-up update; earlier notes 2026-07-28)
 
 For Manus (site update). Everything below is already in `client/src/data/trust-figures.json`
 and `pacer-pull-queue.json`; this note explains what changed and what the site should do with it.
+
+## 0. NEW 2026-07-29 — bottom-up payout total replaces the round $24B clock figure
+
+The clock's cumulative-payouts number should switch from `aggregate.cumulativePayoutsPoint`
+(24,000,000,000 — a round estimate) to **`aggregate.cumulativePayoutsBottomUp` = 29,981,797,653**,
+derived in the new top-level `bottomUpPayouts` section. `cumulativePayoutsPoint` stays in the
+JSON as a legacy reference only — do not display it as the headline.
+
+`aggregate.displayHints.cumulativePayoutsFigure` = `"cumulativePayoutsBottomUp"` marks the switch.
+
+Three tiers (itemized in `bottomUpPayouts.tiers`, every component carries source + as-of):
+
+| Tier | Amount | What it is |
+|---|---|---|
+| `filed` | $19,810,476,508 | 14 trusts, inception-to-date figures read from filed reports (class-a). As-of dates 2006–2026 — the 4 historical ones (OCFB 2009, Armstrong 2014, USG 2008, Celotex 2006) are floors. |
+| `secondaryCitingFiled` | $6,671,321,145 | 5 components from secondary compilations that cite the trusts' own filed annual reports (class-b): Pittsburgh Corning $3,071,420,000 (2022), B&W $1.94B floor (2024), Celotex post-2006 growth $783,146,017 (2021), OC/FB post-2009 growth $534,090,000 (2022), G-I Holdings $342,665,128 (2022). Each labeled with confidence; none verified against the filed document yet. |
+| `estimatedResidual` | $3,500,000,000 (range $2.5–5B) | ~25 trusts with no public cumulative figure (ACandS, ASARCO, Bondex, Combustion Engineering, Eagle-Picher, Quigley, T&N, Garlock GST, Paddock, Rapid-American, etc.). Basis string in JSON. |
+| **Total** | **$29,981,797,653** | |
+
+Modal breakdown should read approximately:
+- **$19,810,476,508** — 14 trusts — filed annual reports/quarterly filings (2006–2026 as-of dates)
+- **+ $6,671,321,145** — 5 components — secondary sources citing filed reports (labeled, unverified)
+- **+ ~$3,500,000,000** — ~25 trusts — estimated (no public figure; range $2.5–5B)
+- **= $29,981,797,653** — bottom-up estimate
+
+Cross-checks (in JSON): GAO-11-819's $17.5B was frozen at 2010; Bates White documented $14.0B
+paid in 2006–2011 alone; the research corpus assesses 2026 cumulative as "plausibly $30B+".
+This total is consistent with all three; the old $24B was likely LOW.
+
+Also fixed this round: Armstrong's per-trust `cumulativePaid` field (it was null while the
+aggregate already counted it — aggregate math unchanged; re-verified from filed FY2014 AR:
+579,458 claims, $1,600,408,304, inception through 12-31-2014).
+
+---
 
 ## 1. Per-trust `cumulativePaid` fields (original task)
 

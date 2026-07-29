@@ -35,6 +35,11 @@ Also fixed this round: Armstrong's per-trust `cumulativePaid` field (it was null
 aggregate already counted it — aggregate math unchanged; re-verified from filed FY2014 AR:
 579,458 claims, $1,600,408,304, inception through 12-31-2014).
 
+Memorialized in **`docs/methodology-cumulative-payouts.md`** — written so its text can be
+lifted directly into `Methodology.tsx` (which still needs updating per earlier checkpoints).
+Suggest also adding a Corrections-page entry: "Cumulative payouts figure revised from
+$24,000,000,000 (placeholder) to $29,981,797,653 (bottom-up build), 2026-07-29."
+
 ---
 
 ## 1. Per-trust `cumulativePaid` fields (original task)

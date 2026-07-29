@@ -69,6 +69,7 @@ function mergeTrust(jsonTrust: any, dbTrust?: any, history?: any[]) {
     website: dbTrust?.website ?? null,
     // ── Financials: JSON is authoritative ──
     paymentPct: jsonTrust.paymentPercentage ?? null,
+    paymentPctFB: (jsonTrust as any).paymentPercentageFB ?? null,
     paymentPctEffective: dbTrust?.paymentPctEffective ?? null,
     netAssets: jsonTrust.netAssets ?? null,
     netAssetsAsOf: jsonTrust.assetsAsOf ?? null,

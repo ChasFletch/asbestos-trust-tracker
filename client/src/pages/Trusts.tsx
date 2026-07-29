@@ -16,6 +16,7 @@ interface TrustRow {
   assetsBasis: string | null;
   paymentPercentage: number | null;
   status: string;
+  paymentPercentageFB?: number | null;
   confidence: string; // "filed" | "secondary" | "estimate"
   note: string | null;
   // DB-only extras (may be null for JSON-only trusts)
@@ -123,6 +124,7 @@ export default function Trusts() {
         assetsBasis: jt.assetsBasis,
         paymentPercentage: jt.paymentPercentage,
         status: jt.status,
+        paymentPercentageFB: (jt as any).paymentPercentageFB ?? null,
         confidence: jt.confidence,
         note: jt.note,
         administrator: db?.administrator ?? null,
@@ -329,7 +331,14 @@ export default function Trusts() {
                   </div>
                   <div className="text-sm font-mono">
                     {trust.paymentPercentage !== null ? (
-                      <span className="text-foreground">{trust.paymentPercentage}%</span>
+                      trust.paymentPercentageFB != null ? (
+                        <span className="text-foreground">
+                          {trust.paymentPercentage}%
+                          <span className="text-muted-foreground/60 text-xs"> / {trust.paymentPercentageFB}%</span>
+                        </span>
+                      ) : (
+                        <span className="text-foreground">{trust.paymentPercentage}%</span>
+                      )
                     ) : (
                       <span className="text-muted-foreground/40 text-xs">MSV/N/A</span>
                     )}
@@ -370,6 +379,16 @@ export default function Trusts() {
                           </div>
                         )}
                         {trust.note && <div className="mt-2 text-muted-foreground/70 leading-relaxed">{trust.note}</div>}
+                        {trust.paymentPercentageFB != null && (
+                          <div className="mt-2 p-2 rounded bg-amber-50/50 border border-amber-200/40 text-xs space-y-1">
+                            <div className="font-semibold text-amber-800/80 uppercase tracking-wider text-[10px]">Dual Sub-Account Payment Percentages</div>
+                            <div className="flex gap-4">
+                              <div><span className="text-muted-foreground">OC Sub-Account: </span><span className="font-mono font-bold">{trust.paymentPercentage}%</span></div>
+                              <div><span className="text-muted-foreground">FB Sub-Account: </span><span className="font-mono font-bold">{trust.paymentPercentageFB}%</span></div>
+                            </div>
+                            <div className="text-muted-foreground/60 italic">Owens Corning and Fibreboard claimants are paid from separate sub-accounts at different rates. Both effective 2026-06-30.</div>
+                          </div>
+                        )}
                       </div>
 
                       {/* Cumulative paid source citation */}

@@ -51,7 +51,9 @@ function StatusBadge({ status }: { status: string }) {
   if (status === "active_deferral") return (
     <span className="text-xs px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-200 font-medium">deferral</span>
   );
-  return null;
+  return (
+    <span className="text-xs px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium">active</span>
+  );
 }
 
 function DirectionIcon({ direction }: { direction?: string | null }) {

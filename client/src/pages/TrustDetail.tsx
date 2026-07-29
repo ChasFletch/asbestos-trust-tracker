@@ -1,5 +1,7 @@
 import { useParams, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { useState } from "react";
+import { SourceDocModal } from "@/components/SourceDocModal";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
@@ -67,6 +69,7 @@ function changeTypeLabel(type: string) {
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function TrustDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const [sourceModal, setSourceModal] = useState<{ url: string; title: string; citation: string | null } | null>(null);
 
   // Fetch from JSON (primary — all 42 trusts, financials)
   const { data: jsonTrust, isLoading: jsonLoading } = trpc.trustFigures.bySlug.useQuery(
@@ -161,6 +164,7 @@ export default function TrustDetail() {
       : "bg-amber-100 text-amber-700 border-amber-200";
 
   return (
+    <>
     <div className="max-w-4xl mx-auto px-4 py-10">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
@@ -231,15 +235,13 @@ export default function TrustDetail() {
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <FileText size={12} />Cumulative Paid
             {(trust as any).cumulativePaidSourceUrl && (
-              <a
-                href={(trust as any).cumulativePaidSourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-auto inline-flex items-center gap-0.5 text-primary hover:underline text-[10px] font-medium"
-                title="View source document"
+              <button
+                onClick={() => setSourceModal({ url: (trust as any).cumulativePaidSourceUrl, title: trust.name + " — Source Document", citation: (trust as any).cumulativePaidSource ?? null })}
+                className="ml-auto inline-flex items-center gap-0.5 text-primary hover:underline text-[10px] font-medium cursor-pointer"
+                title="Preview source document"
               >
                 source <ExternalLink size={9} />
-              </a>
+              </button>
             )}
           </div>
           <div className="text-xl font-mono font-bold text-foreground">{fmt$(trust.cumulativePaid)}</div>
@@ -354,5 +356,14 @@ export default function TrustDetail() {
         </Link>
       </div>
     </div>
+  {sourceModal && (
+    <SourceDocModal
+      url={sourceModal.url}
+      title={sourceModal.title}
+      citation={sourceModal.citation}
+      onClose={() => setSourceModal(null)}
+    />
+  )}
+  </>
   );
 }

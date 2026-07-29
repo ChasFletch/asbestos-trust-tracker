@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, Cell, ResponsiveContainer } from "recharts";
+import { SourceDocModal } from "@/components/SourceDocModal";
 
 type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence" | "established";
 type SortDir = "asc" | "desc";
@@ -111,6 +112,7 @@ export default function Trusts() {
   const { data: dbTrusts } = trpc.trusts.list.useQuery();
 
   const [sortKey, setSortKey] = useState<SortKey>("netAssets");
+  const [sourceModal, setSourceModal] = useState<{ url: string; title: string; citation: string | null } | null>(null);
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [filterStatus, setFilterStatus] = useState("active");
   const [filterConf, setFilterConf] = useState("all");
@@ -211,6 +213,7 @@ export default function Trusts() {
   const totalAssets = merged.reduce((s, t) => s + (t.netAssets ?? 0), 0);
 
   return (
+    <>
     <div className="container py-10">
       {/* Header */}
       <div className="mb-6 flex flex-col md:flex-row md:items-end gap-4">
@@ -500,14 +503,12 @@ export default function Trusts() {
                               <div className="text-muted-foreground/60 leading-relaxed">
                                 <span className="italic">{trust.cumulativePaidSource.split(" - ")[0]}</span>
                                 {trust.cumulativePaidSourceUrl && (
-                                  <a
-                                    href={trust.cumulativePaidSourceUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="ml-2 inline-flex items-center gap-1 text-primary hover:underline font-medium not-italic"
+                                  <button
+                                    onClick={(e) => { e.stopPropagation(); setSourceModal({ url: trust.cumulativePaidSourceUrl!, title: trust.shortName + " — Source Document", citation: trust.cumulativePaidSource ?? null }); }}
+                                    className="ml-2 inline-flex items-center gap-1 text-primary hover:underline font-medium not-italic cursor-pointer"
                                   >
                                     View source <ExternalLink size={10} />
-                                  </a>
+                                  </button>
                                 )}
                               </div>
                             )}
@@ -554,10 +555,19 @@ export default function Trusts() {
           <Link href="/methodology" className="text-primary hover:underline no-underline">methodology page</Link>.
           Data updated weekly from trust websites and court filings.
         </span>
-        {jsonData?.asOf && (
-          <span className="shrink-0">Data as of {jsonData.asOf}</span>
-        )}
-      </div>
+      {jsonData?.asOf && (
+        <span className="shrink-0">Data as of {jsonData.asOf}</span>
+      )}
     </div>
+  </div>
+  {sourceModal && (
+    <SourceDocModal
+      url={sourceModal.url}
+      title={sourceModal.title}
+      citation={sourceModal.citation}
+      onClose={() => setSourceModal(null)}
+    />
+  )}
+  </>
   );
 }

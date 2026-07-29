@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, ChevronsUpDown, TrendingDown, TrendingUp, Minus
 import { Link } from "wouter";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, Cell, ResponsiveContainer } from "recharts";
 
 type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence" | "established";
 type SortDir = "asc" | "desc";
@@ -298,6 +299,67 @@ export default function Trusts() {
       </div>
 
       {/* Table */}
+      {/* Formation timeline chart */}
+      {!isLoading && merged.length > 0 && (() => {
+        const yearCounts: Record<number, number> = {};
+        merged.forEach(t => { if (t.established) yearCounts[t.established] = (yearCounts[t.established] || 0) + 1; });
+        const minYear = Math.min(...Object.keys(yearCounts).map(Number));
+        const maxYear = Math.max(...Object.keys(yearCounts).map(Number));
+        const chartData = [];
+        for (let y = minYear; y <= maxYear; y++) {
+          chartData.push({ year: y, count: yearCounts[y] || 0 });
+        }
+        const peak = Math.max(...chartData.map(d => d.count));
+        return (
+          <div className="mb-5 rounded border border-border/50 bg-card/40 px-4 pt-4 pb-2">
+            <div className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-3">
+              Trust Formation by Year
+              <span className="ml-2 font-normal normal-case text-muted-foreground/50">
+                — {merged.length} trusts, {minYear}–{maxYear}
+              </span>
+            </div>
+            <ResponsiveContainer width="100%" height={80}>
+              <BarChart data={chartData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
+                <XAxis
+                  dataKey="year"
+                  tick={{ fontSize: 10, fill: "oklch(0.55 0 0)" }}
+                  tickLine={false}
+                  axisLine={false}
+                  interval={3}
+                />
+                <YAxis hide domain={[0, peak + 1]} />
+                <RechartsTooltip
+                  cursor={{ fill: "oklch(0.92 0 0 / 0.3)" }}
+                  content={({ active, payload }) => {
+                    if (!active || !payload?.length) return null;
+                    const { year, count } = payload[0].payload;
+                    if (!count) return null;
+                    const names = merged.filter(t => t.established === year).map(t => t.shortName).join(", ");
+                    return (
+                      <div className="rounded border border-border/60 bg-card px-3 py-2 text-xs shadow-md max-w-[260px]">
+                        <div className="font-semibold text-foreground mb-1">{year} — {count} trust{count > 1 ? "s" : ""}</div>
+                        <div className="text-muted-foreground leading-relaxed">{names}</div>
+                      </div>
+                    );
+                  }}
+                />
+                <Bar dataKey="count" radius={[2, 2, 0, 0]}>
+                  {chartData.map((entry) => (
+                    <Cell
+                      key={entry.year}
+                      fill={entry.count === peak
+                        ? "oklch(0.55 0.15 25)"
+                        : entry.count > 0
+                          ? "oklch(0.65 0.08 25)"
+                          : "transparent"}
+                    />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        );
+      })()}
       {isLoading ? (
         <div className="space-y-2">
           {Array.from({ length: 10 }).map((_, i) => (

@@ -211,6 +211,9 @@ export const appRouter = router({
           cumulativePaid: (t.cumulativePaid ?? null) as number | null,
           cumulativePaidAsOf: (t.cumulativePaidAsOf ?? null) as string | null,
           cumulativePaidSource: (t.cumulativePaidSource ?? null) as string | null,
+          cumulativePaidSourceUrl: (t.cumulativePaidSourceUrl ?? null) as string | null,
+          established: (t.established ?? null) as number | null,
+          paymentPercentageFB: (t.paymentPercentageFB ?? null) as number | null,
         }));
         return {
           asOf: (data.asOf ?? null) as string | null,

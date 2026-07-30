@@ -147,6 +147,7 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
 
   // Aging-LED-board effect: a random digit briefly dips, every few seconds
   const [flickerIdx, setFlickerIdx] = useState(-1);
+  const [hovered, setHovered] = useState(false);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let t1: number, t2: number, live = true;
@@ -175,9 +176,12 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
           background: "linear-gradient(180deg, #0a0a0a 0%, #030303 60%, #000 100%)",
           border: compact ? "5px solid #23262a" : "7px solid #1f2225",
           borderRadius: "5px",
-          boxShadow:
-            "inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), " +
-            "0 1px 0 rgba(255,255,255,0.10), 0 10px 34px rgba(0,0,0,0.8)",
+          boxShadow: hovered
+            ? "inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), " +
+              "0 1px 0 rgba(255,255,255,0.14), 0 14px 44px rgba(0,0,0,0.9), " +
+              "0 0 28px rgba(255,178,72,0.18), 0 0 60px rgba(255,178,72,0.08)"
+            : "inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), " +
+              "0 1px 0 rgba(255,255,255,0.10), 0 10px 34px rgba(0,0,0,0.8)",
           padding: compact ? "11px 14px 9px" : "18px 22px 14px",
           display: "flex",
           alignItems: "center",
@@ -186,8 +190,13 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
           justifyContent: "center",
           overflow: "hidden",
           maxWidth: "100%",
+          cursor: "default",
+          transform: hovered ? "translateY(-2px)" : "translateY(0)",
+          transition: "box-shadow 200ms ease-out, transform 200ms ease-out",
         }}
         aria-label={`${label}: ${formatted}`}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         {/* glass sheen across the panel face */}
         <div style={{

@@ -149,6 +149,20 @@ function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 3
   const [flickerIdx, setFlickerIdx] = useState(-1);
   const [hovered, setHovered] = useState(false);
   const [showPanelTooltip, setShowPanelTooltip] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  // Close panel tooltip on outside tap (mobile)
+  useEffect(() => {
+    if (!showPanelTooltip) return;
+    const handler = (e: MouseEvent | TouchEvent) => {
+      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+        setShowPanelTooltip(false);
+        setHovered(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler);
+    return () => { document.removeEventListener("mousedown", handler); document.removeEventListener("touchstart", handler); };
+  }, [showPanelTooltip]);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let t1: number, t2: number, live = true;
@@ -172,6 +186,9 @@ function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 3
       width: "100%",
     }}>
       <div
+        ref={panelRef}
+        role={panelTooltip ? "button" : undefined}
+        tabIndex={panelTooltip ? 0 : undefined}
         style={{
           position: "relative",
           background: "linear-gradient(180deg, #0a0a0a 0%, #030303 60%, #000 100%)",
@@ -189,14 +206,17 @@ function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 3
           justifyContent: "center",
           overflow: "hidden",
           maxWidth: "100%",
-          cursor: "default",
+          cursor: panelTooltip ? "pointer" : "default",
           transform: hovered ? "translateY(-2px)" : "translateY(0)",
           transition: "box-shadow 200ms ease-out, transform 200ms ease-out",
         }}
         className={hovered ? "dc-glow-pulse" : undefined}
-        aria-label={`${label}: ${formatted}`}
+        aria-label={`${label}: ${formatted}${panelTooltip ? " — tap for details" : ""}`}
+        aria-expanded={panelTooltip ? showPanelTooltip : undefined}
         onMouseEnter={() => { setHovered(true); if (panelTooltip) setShowPanelTooltip(true); }}
         onMouseLeave={() => { setHovered(false); setShowPanelTooltip(false); }}
+        onClick={() => { if (panelTooltip) { setShowPanelTooltip(v => !v); setHovered(v => !v); } }}
+        onKeyDown={e => { if (panelTooltip && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setShowPanelTooltip(v => !v); setHovered(v => !v); } }}
       >
         {showPanelTooltip && panelTooltip && (
           <div className="dc-panel-tooltip">{panelTooltip}</div>
@@ -419,7 +439,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
             background: oklch(0.13 0.02 200 / 0.97); border: 1px solid rgba(255,178,72,0.25);
             border-radius: 6px; padding: 10px 14px; width: max-content; max-width: min(340px, 90vw);
             color: rgba(240,236,224,0.88); font-family: Georgia, serif; font-size: 0.72rem;
-            line-height: 1.55; text-align: left; pointer-events: none; z-index: 100;
+            line-height: 1.55; text-align: left; pointer-events: auto; z-index: 100;
             box-shadow: 0 8px 28px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,178,72,0.10);
             animation: dcTooltipIn 160ms cubic-bezier(0.23,1,0.32,1) both;
           }

@@ -104,8 +104,8 @@ function useViewportWidth() {
 // ---------------------------------------------------------------------------
 // LedPanel — recessed bezel, amber digits, engraved serif label
 // ---------------------------------------------------------------------------
-function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = false }: {
-  value: number; label: string; sublabel?: string; tooltip?: React.ReactNode; digitSize?: number; compact?: boolean;
+function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 38, compact = false }: {
+  value: number; label: string; sublabel?: string; tooltip?: React.ReactNode; panelTooltip?: React.ReactNode; digitSize?: number; compact?: boolean;
 }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -148,6 +148,7 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
   // Aging-LED-board effect: a random digit briefly dips, every few seconds
   const [flickerIdx, setFlickerIdx] = useState(-1);
   const [hovered, setHovered] = useState(false);
+  const [showPanelTooltip, setShowPanelTooltip] = useState(false);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let t1: number, t2: number, live = true;
@@ -177,9 +178,7 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
           border: compact ? "5px solid #23262a" : "7px solid #1f2225",
           borderRadius: "5px",
           boxShadow: hovered
-            ? "inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), " +
-              "0 1px 0 rgba(255,255,255,0.14), 0 14px 44px rgba(0,0,0,0.9), " +
-              "0 0 28px rgba(255,178,72,0.18), 0 0 60px rgba(255,178,72,0.08)"
+            ? undefined  // handled by dc-glow-pulse CSS animation
             : "inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), " +
               "0 1px 0 rgba(255,255,255,0.10), 0 10px 34px rgba(0,0,0,0.8)",
           padding: compact ? "11px 14px 9px" : "18px 22px 14px",
@@ -194,10 +193,14 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
           transform: hovered ? "translateY(-2px)" : "translateY(0)",
           transition: "box-shadow 200ms ease-out, transform 200ms ease-out",
         }}
+        className={hovered ? "dc-glow-pulse" : undefined}
         aria-label={`${label}: ${formatted}`}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={() => { setHovered(true); if (panelTooltip) setShowPanelTooltip(true); }}
+        onMouseLeave={() => { setHovered(false); setShowPanelTooltip(false); }}
       >
+        {showPanelTooltip && panelTooltip && (
+          <div className="dc-panel-tooltip">{panelTooltip}</div>
+        )}
         {/* glass sheen across the panel face */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
@@ -406,8 +409,27 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
           .dc-sweep { animation: dcSweep 58s ease-in-out infinite; }
           .dc-mote  { animation: dcMote linear infinite; }
           .dc-smoke { animation: dcSmoke linear infinite; }
+          @keyframes dcGlowPulse {
+            0%,100% { box-shadow: inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), 0 1px 0 rgba(255,255,255,0.14), 0 14px 44px rgba(0,0,0,0.9), 0 0 22px rgba(255,178,72,0.14), 0 0 48px rgba(255,178,72,0.06); }
+            50%      { box-shadow: inset 0 5px 18px rgba(0,0,0,0.95), inset 0 -1px 3px rgba(255,255,255,0.05), 0 1px 0 rgba(255,255,255,0.14), 0 14px 44px rgba(0,0,0,0.9), 0 0 36px rgba(255,178,72,0.30), 0 0 80px rgba(255,178,72,0.14); }
+          }
+          .dc-glow-pulse { animation: dcGlowPulse 2s ease-in-out infinite; }
+          .dc-panel-tooltip {
+            position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+            background: oklch(0.13 0.02 200 / 0.97); border: 1px solid rgba(255,178,72,0.25);
+            border-radius: 6px; padding: 10px 14px; width: max-content; max-width: min(340px, 90vw);
+            color: rgba(240,236,224,0.88); font-family: Georgia, serif; font-size: 0.72rem;
+            line-height: 1.55; text-align: left; pointer-events: none; z-index: 100;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,178,72,0.10);
+            animation: dcTooltipIn 160ms cubic-bezier(0.23,1,0.32,1) both;
+          }
+          .dc-panel-tooltip::after {
+            content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            border: 6px solid transparent; border-top-color: rgba(255,178,72,0.25);
+          }
+          @keyframes dcTooltipIn { from { opacity: 0; transform: translateX(-50%) translateY(4px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
           @media (prefers-reduced-motion: reduce) {
-            .dc-kb,.dc-spill,.dc-sweep,.dc-mote,.dc-smoke { animation: none !important; }
+            .dc-kb,.dc-spill,.dc-sweep,.dc-mote,.dc-smoke,.dc-glow-pulse { animation: none !important; }
           }
         `}</style>
 
@@ -514,6 +536,10 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
             label="Documented Remaining Assets"
             sublabel="Primary-sourced figures only — see methodology"
             tooltip={remainingTooltip}
+            panelTooltip={
+              <><strong style={{display:"block",color:"#f4d07a",marginBottom:"0.35rem",fontSize:"0.75rem",letterSpacing:"0.05em",textTransform:"uppercase"}}>Documented Remaining Assets</strong>
+              The sum of net assets reported in the most recent annual report or financial statement filed by each of the 42 active U.S. asbestos bankruptcy trusts. Figures are drawn directly from primary court documents — not modeled or estimated. The as-of dates vary by trust; see the Trust Data page for per-trust detail. This is a documented floor, not a complete system total: trusts that have not yet filed public financials are excluded.</>
+            }
             digitSize={primarySize}
           />
           {formattedDate && (
@@ -568,6 +594,10 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                value={payouts}
                label="Cumulative Payouts Since 1988"
                sublabel="Derived estimate — see methodology"
+               panelTooltip={
+                 <><strong style={{display:"block",color:"#f4d07a",marginBottom:"0.35rem",fontSize:"0.75rem",letterSpacing:"0.05em",textTransform:"uppercase"}}>Cumulative Payouts Since 1988</strong>
+                 The total amount paid to asbestos victims by all U.S. §524(g) trusts from inception through the most recent filed reports. Built bottom-up from three tiers: <em>Tier 1</em> — $19.81B filed directly in court documents (14 trusts); <em>Tier 2</em> — $6.67B from secondary sources citing filed figures (5 trusts); <em>Tier 3</em> — ~$3.5B estimated residual for the remaining ~25 trusts with no public cumulative figure. The old "$24B" figure was a 2011-era top-down estimate; this figure reflects a 2025–2026 bottom-up rebuild.</>
+               }
               tooltip={
                <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
                  <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>

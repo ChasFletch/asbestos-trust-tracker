@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 // Backdrop is a high-res engraved plate served as a static asset.
+// Portrait-cropped variant for narrow screens (face is tall, crops by height).
 const BILL_BG = "/debtclock-bg.jpg";
-// 828px mobile variant (~136 KB vs 618 KB) — served to 1x displays via image-set
-const BILL_BG_MOBILE = "/manus-storage/debtclock-bg-mobile_a1e8e1ad.jpg";
+const BILL_BG_MOBILE = "/debtclock-bg-mobile.jpg";
 
 // ---------------------------------------------------------------------------
 // Seven-segment LED digit renderer
@@ -334,6 +334,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
   const isTablet = vw >= 640 && vw < 900;
   const primarySize = isMobile ? 24 : isTablet ? 44 : 68;
   const secondarySize = isMobile ? 20 : isTablet ? 30 : 42;
+  const billBg = isMobile || isTablet ? BILL_BG_MOBILE : BILL_BG;
 
   // Format lastUpdated for display
   const formattedDate = lastUpdated
@@ -458,7 +459,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
         {/* the engraved plate — drifting almost imperceptibly */}
         <div className="dc-kb" style={{
           position: "absolute", inset: "-4%",
-          backgroundImage: `image-set(url("${BILL_BG_MOBILE}") 1x, url("${BILL_BG}") 2x)`,
+          backgroundImage: `url("${billBg}")`,
           backgroundSize: "cover",
           backgroundPosition: "center 62%",
           opacity: 0.96,

@@ -4,6 +4,14 @@ Design decisions for the trust fund clock billboard (`client/src/components/Debt
 newest first. Records *what* changed and the exact values, so any element can be
 tuned or reverted without archaeology.
 
+## 2026-07-30 — Responsive backdrop variant
+
+- `client/public/debtclock-bg-mobile.jpg` — 828×929 center-weighted portrait
+  crop of the main plate (~317 KB vs ~547 KB). Full height retained because
+  narrow faces are tall and `background-size: cover` crops by height there.
+- `DebtClockBillboard` selects `BILL_BG_MOBILE` when `vw < 900`
+  (mobile + tablet), `BILL_BG` otherwise.
+
 ## 2026-07-30 — Engraved backdrop relight + motion (commit `7ec74ba`)
 
 **Backdrop artwork**

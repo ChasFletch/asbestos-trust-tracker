@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-// Backdrop lives in ./debtclock-bg.ts as a data-URI export (no asset files needed).
-import { BILL_BG } from "./debtclock-bg";
+// Backdrop is a high-res engraved plate served as a static asset.
+const BILL_BG = "/debtclock-bg.jpg";
 
 // ---------------------------------------------------------------------------
 // Seven-segment LED digit renderer
@@ -24,7 +24,7 @@ const SEG_OFF = "oklch(0.19 0.03 65)";
 const LED_GLOW =
   "drop-shadow(0 0 5px rgba(255,178,72,0.65)) drop-shadow(0 0 16px rgba(255,150,40,0.30))";
 
-function SevenSegDigit({ char, size = 38 }: { char: string; size?: number }) {
+function SevenSegDigit({ char, size = 38, dim = false }: { char: string; size?: number; dim?: boolean }) {
   const segs = SEGMENTS[char];
   if (!segs) {
     const w = char === "," ? size * 0.26 : char === "$" ? size * 0.52 : size * 0.26;
@@ -42,6 +42,8 @@ function SevenSegDigit({ char, size = 38 }: { char: string; size?: number }) {
         paddingBottom: char === "," ? "3px" : "0",
         flexShrink: 0,
         filter: LED_GLOW,
+        opacity: dim ? 0.25 : 1,
+        transition: "opacity 70ms",
       }}>
         {char}
       </span>
@@ -57,7 +59,7 @@ function SevenSegDigit({ char, size = 38 }: { char: string; size?: number }) {
     `L${x0 + T / 2},${y0 + H / 2 - G} L${x0},${y0 + H / 2 - G - T / 2} L${x0},${y0 + G + T / 2} Z`;
   return (
     <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H}
-      style={{ display: "inline-block", verticalAlign: "middle", flexShrink: 0, filter: LED_GLOW }}
+      style={{ display: "inline-block", verticalAlign: "middle", flexShrink: 0, filter: LED_GLOW, opacity: dim ? 0.25 : 1, transition: "opacity 70ms" }}
       aria-hidden="true">
       <path d={horiz(0)}             fill={a ? SEG_ON : SEG_OFF} />
       <path d={vert(W - T, 0)}       fill={b ? SEG_ON : SEG_OFF} />
@@ -143,6 +145,23 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
   const formatted = "$" + Math.round(displayed).toLocaleString("en-US");
   const chars = formatted.split("");
 
+  // Aging-LED-board effect: a random digit briefly dips, every few seconds
+  const [flickerIdx, setFlickerIdx] = useState(-1);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let t1: number, t2: number, live = true;
+    const loop = () => {
+      t1 = window.setTimeout(() => {
+        if (!live) return;
+        setFlickerIdx(1 + Math.floor(Math.random() * (chars.length - 1)));
+        t2 = window.setTimeout(() => { if (live) setFlickerIdx(-1); }, 90 + Math.random() * 160);
+        loop();
+      }, 2600 + Math.random() * 5200);
+    };
+    loop();
+    return () => { live = false; clearTimeout(t1); clearTimeout(t2); };
+  }, [chars.length]);
+
   return (
     <div style={{
       display: "flex", flexDirection: "column",
@@ -177,7 +196,7 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
             "linear-gradient(115deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.015) 28%, transparent 45%)",
         }} />
         {chars.map((ch, i) => (
-          <SevenSegDigit key={i} char={ch} size={digitSize} />
+          <SevenSegDigit key={i} char={ch} size={digitSize} dim={i === flickerIdx} />
         ))}
       </div>
       <div style={{
@@ -188,7 +207,7 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
           : "clamp(0.95rem, 2.5vw, 1.85rem)",
         textTransform: "uppercase", letterSpacing: "0.07em",
         textAlign: compact ? "right" : "center",
-        textShadow: "0 2px 5px rgba(0,0,0,0.85), 0 0 22px rgba(0,0,0,0.5)",
+        textShadow: "0 1px 2px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.85), 0 0 22px rgba(0,0,0,0.55)",
         lineHeight: 1.2,
       }}>
         {label}
@@ -200,7 +219,7 @@ function LedPanel({ value, label, sublabel, tooltip, digitSize = 38, compact = f
           fontSize: compact ? "clamp(0.58rem, 1vw, 0.75rem)" : "clamp(0.68rem, 1.25vw, 0.9rem)",
           fontStyle: "italic",
           textAlign: compact ? "right" : "center",
-          textShadow: "0 1px 3px rgba(0,0,0,0.6)", marginTop: "-0.3rem",
+          textShadow: "0 1px 2px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.6)", marginTop: "-0.3rem",
         }}>
           {sublabel}
         </div>
@@ -279,8 +298,8 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
-  const primarySize = isMobile ? 19 : isTablet ? 33 : 50;
-  const secondarySize = isMobile ? 17 : isTablet ? 23 : 30;
+  const primarySize = isMobile ? 24 : isTablet ? 44 : 68;
+  const secondarySize = isMobile ? 20 : isTablet ? 30 : 42;
 
   // Format lastUpdated for display
   const formattedDate = lastUpdated
@@ -355,7 +374,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
         "0 26px 80px rgba(0,0,0,0.9), 0 8px 24px rgba(0,0,0,0.7), " +
         "inset 0 1px 1px rgba(255,255,255,0.28), inset 0 -1px 2px rgba(0,0,0,0.8)",
     }}>
-      {/* face: engraved asbestos banknote */}
+      {/* face: engraved industrial plate */}
       <div style={{
         position: "relative",
         borderRadius: "5px",
@@ -367,32 +386,103 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
           : "clamp(2.1rem, 4.5vw, 3.4rem) clamp(1.6rem, 4vw, 3rem) clamp(1.6rem, 3.5vw, 2.6rem)",
         boxShadow: "inset 0 0 70px rgba(0,0,0,0.6)",
       }}>
-        {/* the bill */}
-        <div style={{
-          position: "absolute", inset: 0,
+        <style>{`
+          @keyframes dcKb    { 0% { transform: scale(1.02) translate(0,0); } 100% { transform: scale(1.08) translate(-0.7%,-0.9%); } }
+          @keyframes dcSpill { 0%,100% { opacity: .6; } 50% { opacity: 1; } }
+          @keyframes dcSweep { 0% { transform: translateX(-160%) skewX(-14deg); } 42%,100% { transform: translateX(430%) skewX(-14deg); } }
+          @keyframes dcMote  { 0% { transform: translate(0,0); opacity: 0; } 15% { opacity: .55; } 80% { opacity: .3; } 100% { transform: translate(26px,-90px); opacity: 0; } }
+          @keyframes dcSmoke { 0% { transform: translate(0,0) scale(1); opacity: 0; } 20% { opacity: .8; } 100% { transform: translate(30px,-64px) scale(1.4); opacity: 0; } }
+          .dc-kb    { animation: dcKb 130s ease-in-out infinite alternate; }
+          .dc-spill { animation: dcSpill 11s ease-in-out infinite; }
+          .dc-sweep { animation: dcSweep 58s ease-in-out infinite; }
+          .dc-mote  { animation: dcMote linear infinite; }
+          .dc-smoke { animation: dcSmoke linear infinite; }
+          @media (prefers-reduced-motion: reduce) {
+            .dc-kb,.dc-spill,.dc-sweep,.dc-mote,.dc-smoke { animation: none !important; }
+          }
+        `}</style>
+
+        {/* the engraved plate — drifting almost imperceptibly */}
+        <div className="dc-kb" style={{
+          position: "absolute", inset: "-4%",
           backgroundImage: `url("${BILL_BG}")`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.92,
+          backgroundPosition: "center 62%",
+          opacity: 0.96,
           pointerEvents: "none",
         }} />
         {/* teal glaze + center-readable scrim */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           background:
-            "linear-gradient(180deg, rgba(6,34,29,0.55) 0%, rgba(7,38,32,0.30) 30%, rgba(5,28,24,0.42) 62%, rgba(3,18,15,0.68) 100%)",
+            "linear-gradient(180deg, rgba(6,34,29,0.44) 0%, rgba(7,38,32,0.20) 30%, rgba(5,28,24,0.28) 62%, rgba(4,22,18,0.55) 84%, rgba(3,18,15,0.72) 100%)",
         }} />
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           background:
-            "radial-gradient(ellipse 72% 62% at 50% 42%, rgba(4,20,17,0.34) 0%, transparent 68%)",
+            "radial-gradient(ellipse 72% 62% at 50% 42%, rgba(4,20,17,0.26) 0%, transparent 68%)",
         }} />
-        {/* glass glare sweep */}
+        {/* shadow pooled behind the text zones, artwork left visible elsewhere */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background:
+            "radial-gradient(ellipse 62% 17% at 50% 15%, rgba(3,16,13,0.52) 0%, transparent 72%)",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background:
+            "radial-gradient(ellipse 56% 22% at 50% 53%, rgba(3,16,13,0.42) 0%, transparent 70%)",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background:
+            "radial-gradient(ellipse 34% 16% at 73% 79%, rgba(3,16,13,0.40) 0%, transparent 72%)",
+        }} />
+        {/* amber light spilling from the digit panels onto the engraving */}
+        <div className="dc-spill" style={{
+          position: "absolute", inset: 0, pointerEvents: "none", mixBlendMode: "screen",
+          background:
+            "radial-gradient(ellipse 48% 26% at 50% 33%, rgba(255,178,72,0.13) 0%, rgba(255,150,40,0.05) 45%, transparent 70%)",
+        }} />
+        <div className="dc-spill" style={{
+          position: "absolute", inset: 0, pointerEvents: "none", mixBlendMode: "screen", animationDelay: "-5.5s",
+          background:
+            "radial-gradient(ellipse 32% 20% at 74% 74%, rgba(255,178,72,0.10) 0%, transparent 68%)",
+        }} />
+        {/* faint amber rim on the inner frame edge */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          boxShadow: "inset 0 0 46px rgba(255,160,60,0.07)",
+        }} />
+        {/* glass glare (static) + slow moving sheen sweep */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           background:
             "linear-gradient(112deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.025) 24%, transparent 42%)",
         }} />
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <div className="dc-sweep" style={{
+            position: "absolute", top: "-10%", bottom: "-10%", left: 0, width: "34%",
+            background:
+              "linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.05) 42%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.05) 58%, transparent 100%)",
+          }} />
+        </div>
+        {/* dust motes drifting through the panel light */}
+        {[[31, 44, 38, 0], [44, 60, 47, -13], [55, 40, 52, -29], [63, 66, 41, -7], [70, 50, 56, -35], [48, 72, 44, -21]].map(([l, t, d, del], i) => (
+          <div key={i} className="dc-mote" style={{
+            position: "absolute", left: `${l}%`, top: `${t}%`, width: 3, height: 3,
+            borderRadius: "50%", background: "rgba(255,222,164,0.55)", filter: "blur(0.6px)",
+            animationDuration: `${d}s`, animationDelay: `${del}s`, pointerEvents: "none",
+          }} />
+        ))}
+        {/* smoke drifting off the stacks in the engraving (left third) */}
+        {[[16, 24, 52, 0], [23, 20, 66, -31]].map(([l, t, d, del], i) => (
+          <div key={i} className="dc-smoke" style={{
+            position: "absolute", left: `${l}%`, top: `${t}%`, width: 96, height: 42,
+            borderRadius: "50%", background: "rgba(160,205,185,0.10)", filter: "blur(14px)",
+            animationDuration: `${d}s`, animationDelay: `${del}s`, pointerEvents: "none",
+          }} />
+        ))}
 
         <div style={{ position: "relative", zIndex: 1 }}>
           {/* Title */}
@@ -403,7 +493,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
             color: "#f6f3ea", fontWeight: 900,
             fontSize: "clamp(1.15rem, 4vw, 2.75rem)",
             textTransform: "uppercase", letterSpacing: "0.05em",
-            textShadow: "0 3px 10px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6)",
+            textShadow: "0 2px 4px rgba(0,0,0,0.95), 0 3px 12px rgba(0,0,0,0.9), 0 0 34px rgba(0,0,0,0.65)",
             lineHeight: 1.1,
           }}>
             U.S. Asbestos Trust Fund System:

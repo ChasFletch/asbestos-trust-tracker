@@ -1,6 +1,6 @@
 {
   "schema": "asbestos-trust-figures/v1",
-  "asOf": "2026-07-29",
+  "asOf": "2026-08-01",
   "aggregate": {
     "remainingAssetsPoint": 16746136347,
     "remainingAssetsLow": 16746136347,
@@ -80,13 +80,13 @@
       "name": "Western Asbestos Settlement Trust",
       "netAssets": 355761441,
       "assetsAsOf": "2025-12-31",
-      "assetsBasis": "net claimants' equity (filed)",
+      "assetsBasis": "net claimants' equity, FY2025 annual report (Twenty-Second Annual Report and Accounting), N.D. Cal. 13-31914 Doc# 1944, filed 04/28/2026",
       "paymentPercentage": 51.1,
       "status": "active",
       "confidence": "filed",
       "cumulativePaid": 2238037573,
       "cumulativePaidAsOf": "2025-12-31",
-      "cumulativePaidSource": "Western Asbestos Settlement Trust 22nd Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. N.D. Cal. 13-31914, Doc 1944, filed 4/28/2026; file-stamped PDF posted free at wastrust.com) - total claims paid since inception $2,238,037,573 covering trust-processed, pre-petition, and increase payments",
+      "cumulativePaidSource": "Western Asbestos Settlement Trust 22nd Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, N.D. Cal. 13-31914 Doc# 1944, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://wastrust.com",
       "established": 2004
     },
@@ -94,13 +94,13 @@
       "name": "Thorpe Insulation Company Asbestos Settlement Trust",
       "netAssets": 338761788,
       "assetsAsOf": "2025-12-31",
-      "assetsBasis": "net claimants' equity (filed)",
+      "assetsBasis": "net claimants' equity, FY2025 annual report (Sixteenth Annual Report and Accounting), C.D. Cal. 07-20016 Doc# 242, filed 04/28/2026",
       "paymentPercentage": 58.6,
       "status": "active",
       "confidence": "filed",
       "cumulativePaid": 433982311,
       "cumulativePaidAsOf": "2025-12-31",
-      "cumulativePaidSource": "Thorpe Insulation Settlement Trust 16th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. C.D. Cal. 2:07-bk-20016-BB, Doc 242, filed 4/28/2026; file-stamped PDF posted free at tistrust.com) - total claims paid since inception $433,982,311 covering trust-processed, pre-petition, and increase payments",
+      "cumulativePaidSource": "Thorpe Insulation Settlement Trust 16th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, C.D. Cal. 07-20016 Doc# 242, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://tistrust.com",
       "established": 2010
     },
@@ -108,13 +108,13 @@
       "name": "Plant Asbestos Settlement Trust",
       "netAssets": 148824786,
       "assetsAsOf": "2025-12-31",
-      "assetsBasis": "net claimants' equity (filed)",
+      "assetsBasis": "net claimants' equity, FY2025 annual report (Fourteenth Annual Report and Accounting), N.D. Cal. 09-31347 Doc# 3050, filed 04/28/2026",
       "paymentPercentage": 20,
       "status": "active",
       "confidence": "filed",
       "cumulativePaid": 191680841,
       "cumulativePaidAsOf": "2025-12-31",
-      "cumulativePaidSource": "Plant Asbestos Settlement Trust 14th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. N.D. Cal. 09-31347, Doc 3050, filed 4/28/2026; file-stamped PDF posted free at pastrust.com) - total claims paid since inception $191,680,841 covering trust-processed, pre-petition, and increase payments",
+      "cumulativePaidSource": "Plant Asbestos Settlement Trust 14th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, N.D. Cal. 09-31347 Doc# 3050, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://pastrust.com",
       "established": 2009
     },
@@ -122,13 +122,13 @@
       "name": "J.T. Thorpe Settlement Trust (CA)",
       "netAssets": 116383926,
       "assetsAsOf": "2025-12-31",
-      "assetsBasis": "net claimants' equity (filed)",
-      "paymentPercentage": null,
+      "assetsBasis": "net claimants' equity, FY2025 annual report (Twentieth Annual Report and Accounting), C.D. Cal. 02-14216 Doc# 1901, filed 04/28/2026",
+      "paymentPercentage": 50,
       "status": "active",
       "confidence": "filed",
       "cumulativePaid": 189960646,
       "cumulativePaidAsOf": "2025-12-31",
-      "cumulativePaidSource": "J.T. Thorpe Settlement Trust 20th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025 (Bankr. C.D. Cal. 2:02-bk-14216-BB, Doc 1901, filed 4/28/2026; file-stamped PDF posted free at jttstrust.com) - total claims paid since inception $189,960,646 covering trust-processed, pre-petition, and increase payments",
+      "cumulativePaidSource": "J.T. Thorpe Settlement Trust 20th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, C.D. Cal. 02-14216 Doc# 1901, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://jttstrust.com",
       "established": 2007
     },
@@ -911,6 +911,30 @@
       "trust": "aggregate",
       "detail": "Added bottomUpPayouts: $29,981,797,653 total = $19,810,476,508 filed (14 trusts) + $6,671,321,145 secondary-citing-filed (5 components) + ~$3.5B estimated residual (~25 undocumented trusts). Armstrong cumulativePaid restored ($1,600,408,304 @2014-12-31, filed FY2014 AR). Round $24B point superseded as clock figure; retained as legacy reference.",
       "source": "trust-figures.json bottomUpPayouts; armstrong-fy2014-annual-report.pdf p33"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "Western Asbestos Settlement Trust",
+      "note": "Enhanced basis description with exact docket citation (N.D. Cal. 13-31914 Doc# 1944) for FY2025 annual report filed 04/28/2026"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "Plant Asbestos Settlement Trust",
+      "note": "Enhanced basis description with exact docket citation (N.D. Cal. 09-31347 Doc# 3050) for FY2025 annual report filed 04/28/2026"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "Thorpe Insulation Company Asbestos Settlement Trust",
+      "note": "Enhanced basis description with exact docket citation (C.D. Cal. 07-20016 Doc# 242) for FY2025 annual report filed 04/28/2026"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "J.T. Thorpe Settlement Trust (CA)",
+      "note": "Enhanced basis description with exact docket citation (C.D. Cal. 02-14216 Doc# 1901) for FY2025 annual report filed 04/28/2026; payment percentage corrected to 50% (reviewed 02/21/2025, unchanged)"
     }
   ],
   "sources": [

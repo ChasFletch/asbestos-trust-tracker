@@ -87,8 +87,9 @@
       "cumulativePaid": 2238037573,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Western Asbestos Settlement Trust 22nd Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, N.D. Cal. 13-31914 Doc# 1944, filed 04/28/2026",
-      "cumulativePaidSourceUrl": "https://wastrust.com",
-      "established": 2004
+      "cumulativePaidSourceUrl": "https://www.wastrust.com/wp-content/uploads/2026/05/1944-WAST-Annual-Report-2025-v3-For-Filing.pdf",
+      "established": 2004,
+      "assetsBasisUrl": "https://www.wastrust.com/wp-content/uploads/2026/05/1944-WAST-Annual-Report-2025-v3-For-Filing.pdf"
     },
     {
       "name": "Thorpe Insulation Company Asbestos Settlement Trust",
@@ -101,8 +102,9 @@
       "cumulativePaid": 433982311,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Thorpe Insulation Settlement Trust 16th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, C.D. Cal. 07-20016 Doc# 242, filed 04/28/2026",
-      "cumulativePaidSourceUrl": "https://tistrust.com",
-      "established": 2010
+      "cumulativePaidSourceUrl": "https://www.tistrust.com/wp-content/uploads/2026/05/242-TIST-Annual-Report-2025-v3-For-Filing.pdf",
+      "established": 2010,
+      "assetsBasisUrl": "https://www.tistrust.com/wp-content/uploads/2026/05/242-TIST-Annual-Report-2025-v3-For-Filing.pdf"
     },
     {
       "name": "Plant Asbestos Settlement Trust",
@@ -115,8 +117,9 @@
       "cumulativePaid": 191680841,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Plant Asbestos Settlement Trust 14th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, N.D. Cal. 09-31347 Doc# 3050, filed 04/28/2026",
-      "cumulativePaidSourceUrl": "https://pastrust.com",
-      "established": 2009
+      "cumulativePaidSourceUrl": "https://www.pastrust.com/wp-content/uploads/2026/05/3050-PAST-Annual-Report-2025-v3-For-FIling.pdf",
+      "established": 2009,
+      "assetsBasisUrl": "https://www.pastrust.com/wp-content/uploads/2026/05/3050-PAST-Annual-Report-2025-v3-For-FIling.pdf"
     },
     {
       "name": "J.T. Thorpe Settlement Trust (CA)",
@@ -129,8 +132,9 @@
       "cumulativePaid": 189960646,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "J.T. Thorpe Settlement Trust 20th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, C.D. Cal. 02-14216 Doc# 1901, filed 04/28/2026",
-      "cumulativePaidSourceUrl": "https://jttstrust.com",
-      "established": 2007
+      "cumulativePaidSourceUrl": "https://www.jttstrust.com/wp-content/uploads/2026/05/1901-JTTS-Annual-Report-2025-v3-For-Filing.pdf",
+      "established": 2007,
+      "assetsBasisUrl": "https://www.jttstrust.com/wp-content/uploads/2026/05/1901-JTTS-Annual-Report-2025-v3-For-Filing.pdf"
     },
     {
       "name": "Maremont Asbestos PI Trust",

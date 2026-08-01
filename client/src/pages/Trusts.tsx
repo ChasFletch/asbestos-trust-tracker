@@ -18,6 +18,7 @@ interface TrustRow {
   netAssets: number | null;
   assetsAsOf: string | null;
   assetsBasis: string | null;
+  assetsBasisUrl?: string | null;
   paymentPercentage: number | null;
   status: string;
   paymentPercentageFB?: number | null;
@@ -145,6 +146,7 @@ export default function Trusts() {
         netAssets: jt.netAssets,
         assetsAsOf: jt.assetsAsOf,
         assetsBasis: jt.assetsBasis,
+        assetsBasisUrl: (jt as any).assetsBasisUrl ?? null,
         paymentPercentage: jt.paymentPercentage,
         status: jt.status,
         paymentPercentageFB: (jt as any).paymentPercentageFB ?? null,
@@ -459,7 +461,21 @@ export default function Trusts() {
                       {/* Details */}
                       <div className="space-y-2 text-xs">
                         <div className="font-semibold text-foreground/70 uppercase tracking-wider mb-2">Trust Details</div>
-                        {trust.assetsBasis && <div><span className="text-muted-foreground">Assets basis: </span><span className="italic">{trust.assetsBasis}</span></div>}
+                        {trust.assetsBasis && (
+                          <div>
+                            <span className="text-muted-foreground">Assets basis: </span>
+                            {trust.assetsBasisUrl ? (
+                              <button
+                                onClick={(e) => { e.stopPropagation(); setSourceModal({ url: trust.assetsBasisUrl!, title: `${trust.name} — Source Document`, citation: trust.assetsBasis }); }}
+                                className="italic text-amber-600/80 hover:text-amber-600 underline-offset-2 hover:underline transition-colors"
+                              >
+                                {trust.assetsBasis} ↗
+                              </button>
+                            ) : (
+                              <span className="italic">{trust.assetsBasis}</span>
+                            )}
+                          </div>
+                        )}
                         {trust.court && <div><span className="text-muted-foreground">Court: </span><span className="font-mono">{trust.court} {trust.docket}</span></div>}
                         {trust.administrator && <div><span className="text-muted-foreground">Administrator: </span>{trust.administrator}</div>}
                         {trust.website && (

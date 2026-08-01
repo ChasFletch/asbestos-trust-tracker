@@ -104,10 +104,11 @@ export default function TrustDetail() {
         court: dbTrust?.court ?? null,
         docket: dbTrust?.docket ?? null,
         website: dbTrust?.website ?? null,
-        cumulativePaid: dbTrust?.cumulativePaid ?? null,
-        cumulativePaidAsOf: (dbTrust as any)?.cumulativePaidAsOf ?? null,
-        cumulativePaidSource: (dbTrust as any)?.cumulativePaidSource ?? null,
-        cumulativePaidSourceUrl: (dbTrust as any)?.cumulativePaidSourceUrl ?? null,
+        cumulativePaid: (jsonTrust as any)?.cumulativePaid ?? dbTrust?.cumulativePaid ?? null,
+        cumulativePaidAsOf: (jsonTrust as any)?.cumulativePaidAsOf ?? (dbTrust as any)?.cumulativePaidAsOf ?? null,
+        cumulativePaidSource: (jsonTrust as any)?.cumulativePaidSource ?? (dbTrust as any)?.cumulativePaidSource ?? null,
+        cumulativePaidSourceUrl: (jsonTrust as any)?.cumulativePaidSourceUrl ?? (dbTrust as any)?.cumulativePaidSourceUrl ?? null,
+        assetsBasisUrl: (jsonTrust as any)?.assetsBasisUrl ?? null,
         cumulativeClaims: dbTrust?.cumulativeClaims ?? null,
         reportingFrequency: dbTrust?.reportingFrequency ?? null,
         direction: dbTrust?.direction ?? null,
@@ -206,7 +207,18 @@ export default function TrustDetail() {
           </div>
           <div className="text-xl font-mono font-bold text-foreground">{fmt$(trust.netAssets)}</div>
           {trust.assetsAsOf && <div className="text-xs text-muted-foreground/60 mt-0.5">as of {trust.assetsAsOf}</div>}
-          {trust.assetsBasis && <div className="text-xs text-muted-foreground/50 mt-0.5 italic">{trust.assetsBasis}</div>}
+          {trust.assetsBasis && (
+            (trust as any).assetsBasisUrl ? (
+              <button
+                onClick={() => setSourceModal({ url: (trust as any).assetsBasisUrl, title: `${trust.name} — Source Document`, citation: trust.assetsBasis })}
+                className="text-xs text-amber-600/70 hover:text-amber-600 mt-0.5 italic text-left underline-offset-2 hover:underline transition-colors block"
+              >
+                {trust.assetsBasis} ↗
+              </button>
+            ) : (
+              <div className="text-xs text-muted-foreground/50 mt-0.5 italic">{trust.assetsBasis}</div>
+            )
+          )}
         </div>
 
         <div className="bg-card border border-border/50 rounded-lg p-4">
@@ -309,7 +321,16 @@ export default function TrustDetail() {
             {trust.netAssetsCitation && (
               <div>
                 <dt className="text-muted-foreground mb-1">Asset Source</dt>
-                <dd className="text-foreground text-xs leading-relaxed">{trust.netAssetsCitation}</dd>
+                <dd className="text-foreground text-xs leading-relaxed">
+                  {(trust as any).assetsBasisUrl ? (
+                    <button
+                      onClick={() => setSourceModal({ url: (trust as any).assetsBasisUrl, title: `${trust.name} — Source Document`, citation: trust.netAssetsCitation })}
+                      className="text-amber-600/80 hover:text-amber-600 italic underline-offset-2 hover:underline transition-colors text-left"
+                    >
+                      {trust.netAssetsCitation} ↗
+                    </button>
+                  ) : trust.netAssetsCitation}
+                </dd>
               </div>
             )}
             {trust.note && (

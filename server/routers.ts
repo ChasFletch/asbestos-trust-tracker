@@ -66,11 +66,12 @@ function mergeTrust(jsonTrust: any, dbTrust?: any, history?: any[]) {
     administrator: dbTrust?.administrator ?? null,
     court: dbTrust?.court ?? null,
     docket: dbTrust?.docket ?? null,
-    website: dbTrust?.website ?? null,
+    website: dbTrust?.website ?? (jsonTrust as any).website ?? null,
     // ── Financials: JSON is authoritative ──
     paymentPct: jsonTrust.paymentPercentage ?? null,
     paymentPctFB: (jsonTrust as any).paymentPercentageFB ?? null,
     paymentPctEffective: dbTrust?.paymentPctEffective ?? null,
+    paymentPctSourceUrl: (jsonTrust as any).paymentPercentageSourceUrl ?? null,
     netAssets: jsonTrust.netAssets ?? null,
     netAssetsAsOf: jsonTrust.assetsAsOf ?? null,
     netAssetsSource: jsonTrust.confidence === "filed" ? "a" : jsonTrust.confidence === "secondary" ? "b" : "c",

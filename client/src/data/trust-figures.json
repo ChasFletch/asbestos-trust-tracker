@@ -184,7 +184,7 @@
       "name": "Pittsburgh Corning Asbestos PI Settlement Trust",
       "netAssets": 1294204173,
       "assetsAsOf": "2022-12-31",
-      "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
+      "assetsBasis": "assets per FY2022 annual report (secondary compilation); trust website: pccasbestostrust.com",
       "paymentPercentage": 19,
       "status": "active",
       "confidence": "filed",
@@ -192,7 +192,10 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2016
+      "established": 2016,
+      "website": "https://www.pccasbestostrust.com",
+      "paymentPercentageSource": "pccasbestostrust.com \u2014 homepage current payment percentage statement: \"The current payment percentage for PCC is 19% of the scheduled value for Expedited Review and 19% of the gross settlement value for Individual Review.\"",
+      "paymentPercentageSourceUrl": "https://www.pccasbestostrust.com"
     },
     {
       "name": "United States Gypsum (USG) Asbestos Trust",

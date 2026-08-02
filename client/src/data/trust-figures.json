@@ -275,7 +275,89 @@
       "docket": "00-22876",
       "paymentPctEffective": "2024-11-07",
       "direction": "down",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "scheduledValues": {
+        "source": "PCC TDP \u00a75.3(c), As Filed (WAF-bypass verified 2026-08-02 by Cleo)",
+        "rateSource": "pccasbestostrust.com homepage (19% stated for both ER and IR; TDP \u00a75.5 rate field is a placeholder \u2014 never use PDF for rate)",
+        "rateNote": "Level I (Other Asbestos Disease) pays full $400 Cash Discount Payment per \u00a74.3 \u2014 exempt from Payment Percentage. Do NOT multiply by 19%.",
+        "tdpCaveat": "Posted PDF is As Filed version. \u00a75.5 Secondary Exposure Claims was amended 2025-11-14. Scheduled values in \u00a75.3(c) are unaffected; do not cite \u00a75.5 text from this PDF.",
+        "levels": [
+          {
+            "level": "VIII",
+            "disease": "Mesothelioma",
+            "scheduledValue": 175000,
+            "maxValue": 500000,
+            "atCurrentPct": 33250,
+            "maxAtCurrentPct": 95000,
+            "erEligible": true
+          },
+          {
+            "level": "VII",
+            "disease": "Lung Cancer 1",
+            "scheduledValue": 47500,
+            "maxValue": 100000,
+            "atCurrentPct": 9025,
+            "maxAtCurrentPct": 19000,
+            "erEligible": true
+          },
+          {
+            "level": "VI",
+            "disease": "Lung Cancer 2",
+            "scheduledValue": null,
+            "maxValue": 50000,
+            "atCurrentPct": null,
+            "maxAtCurrentPct": 9500,
+            "erEligible": false,
+            "note": "IR only \u2014 no ER scheduled value"
+          },
+          {
+            "level": "V",
+            "disease": "Other Cancer",
+            "scheduledValue": 27500,
+            "maxValue": 100000,
+            "atCurrentPct": 5225,
+            "maxAtCurrentPct": 19000,
+            "erEligible": true
+          },
+          {
+            "level": "IV",
+            "disease": "Severe Asbestosis",
+            "scheduledValue": 47500,
+            "maxValue": 100000,
+            "atCurrentPct": 9025,
+            "maxAtCurrentPct": 19000,
+            "erEligible": true
+          },
+          {
+            "level": "III",
+            "disease": "Pleural Disease (Asbestosis)",
+            "scheduledValue": 11750,
+            "maxValue": 22500,
+            "atCurrentPct": 2232.5,
+            "maxAtCurrentPct": 4275,
+            "erEligible": true
+          },
+          {
+            "level": "II",
+            "disease": "Pleural Disease (Other)",
+            "scheduledValue": 5500,
+            "maxValue": 10000,
+            "atCurrentPct": 1045,
+            "maxAtCurrentPct": 1900,
+            "erEligible": true
+          },
+          {
+            "level": "I",
+            "disease": "Other Asbestos Disease",
+            "scheduledValue": 400,
+            "maxValue": null,
+            "atCurrentPct": 400,
+            "maxAtCurrentPct": null,
+            "erEligible": true,
+            "note": "Cash Discount Payment per \u00a74.3 \u2014 exempt from Payment Percentage; pays full $400"
+          }
+        ]
+      }
     },
     {
       "name": "United States Gypsum (USG) Asbestos Trust",

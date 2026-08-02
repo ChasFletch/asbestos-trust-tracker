@@ -98,12 +98,13 @@ export default function TrustDetail() {
         confidence: jsonTrust.confidence,
         note: jsonTrust.note,
         changes: jsonTrust.changes,
-        company: dbTrust?.company ?? null,
-        established: dbTrust?.established ?? null,
-        administrator: dbTrust?.administrator ?? null,
-        court: dbTrust?.court ?? null,
-        docket: dbTrust?.docket ?? null,
-        website: dbTrust?.website ?? null,
+        company: (jsonTrust as any)?.company ?? dbTrust?.company ?? null,
+        established: (jsonTrust as any)?.established ?? dbTrust?.established ?? null,
+        administrator: (jsonTrust as any)?.administrator ?? dbTrust?.administrator ?? null,
+        court: (jsonTrust as any)?.court ?? dbTrust?.court ?? null,
+        docket: (jsonTrust as any)?.docket ?? dbTrust?.docket ?? null,
+        website: dbTrust?.website ?? (jsonTrust as any)?.website ?? null,
+        scheduledValues: (jsonTrust as any)?.scheduledValues ?? null,
         cumulativePaid: (jsonTrust as any)?.cumulativePaid ?? dbTrust?.cumulativePaid ?? null,
         cumulativePaidAsOf: (jsonTrust as any)?.cumulativePaidAsOf ?? (dbTrust as any)?.cumulativePaidAsOf ?? null,
         cumulativePaidSource: (jsonTrust as any)?.cumulativePaidSource ?? (dbTrust as any)?.cumulativePaidSource ?? null,
@@ -112,7 +113,7 @@ export default function TrustDetail() {
         cumulativeClaims: dbTrust?.cumulativeClaims ?? null,
         reportingFrequency: dbTrust?.reportingFrequency ?? null,
         direction: dbTrust?.direction ?? null,
-        netAssetsCitation: dbTrust?.netAssetsCitation ?? null,
+        netAssetsCitation: jsonTrust.assetsBasis ?? dbTrust?.netAssetsCitation ?? null,
         paymentHistory: dbTrust?.paymentHistory ?? [],
       }
     : null;
@@ -295,6 +296,75 @@ export default function TrustDetail() {
         </div>
       )}
 
+      {/* Scheduled Values Table — shown only for trusts with TDP data */}
+      {(trust as any).scheduledValues && (() => {
+        const sv = (trust as any).scheduledValues;
+        const pct = trust.paymentPercentage;
+        return (
+          <div className="bg-card border border-border/50 rounded-lg p-5 mb-6">
+            <div className="flex items-start justify-between gap-4 mb-3 flex-wrap">
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  Scheduled Values &amp; Payouts
+                </h2>
+                <p className="text-xs text-muted-foreground/70 mt-0.5">
+                  TDP §5.3(c) at current {pct}% payment percentage
+                </p>
+              </div>
+              <span className="text-xs text-muted-foreground/50 italic">{sv.source}</span>
+            </div>
+            <div className="mb-3 px-3 py-2 bg-amber-500/10 border border-amber-500/20 rounded text-xs text-amber-700 dark:text-amber-400">
+              <strong>Note:</strong> {sv.rateNote}
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-border/50">
+                    <th className="text-left py-2 pr-3 text-muted-foreground font-medium">Lvl</th>
+                    <th className="text-left py-2 pr-3 text-muted-foreground font-medium">Disease</th>
+                    <th className="text-right py-2 pr-3 text-muted-foreground font-medium">ER Scheduled</th>
+                    <th className="text-right py-2 pr-3 text-muted-foreground font-medium">At {pct}%</th>
+                    <th className="text-right py-2 pr-3 text-muted-foreground font-medium">Max Value</th>
+                    <th className="text-right py-2 text-muted-foreground font-medium">Max at {pct}%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sv.levels.map((row: any) => (
+                    <tr key={row.level} className="border-b border-border/30 hover:bg-muted/30 transition-colors">
+                      <td className="py-2 pr-3 font-mono text-muted-foreground">{row.level}</td>
+                      <td className="py-2 pr-3 text-foreground">
+                        {row.disease}
+                        {row.note && <span className="ml-1 text-amber-600/70 cursor-help" title={row.note}>*</span>}
+                      </td>
+                      <td className="py-2 pr-3 text-right font-mono">
+                        {row.scheduledValue != null
+                          ? `$${row.scheduledValue.toLocaleString()}`
+                          : <span className="text-muted-foreground/40 italic">IR only</span>}
+                      </td>
+                      <td className="py-2 pr-3 text-right font-mono text-emerald-600 dark:text-emerald-400 font-semibold">
+                        {row.atCurrentPct != null
+                          ? `$${row.atCurrentPct.toLocaleString()}`
+                          : <span className="text-muted-foreground/40">—</span>}
+                      </td>
+                      <td className="py-2 pr-3 text-right font-mono text-muted-foreground">
+                        {row.maxValue != null ? `$${row.maxValue.toLocaleString()}` : <span className="text-muted-foreground/40">—</span>}
+                      </td>
+                      <td className="py-2 text-right font-mono text-muted-foreground">
+                        {row.maxAtCurrentPct != null ? `$${row.maxAtCurrentPct.toLocaleString()}` : <span className="text-muted-foreground/40">—</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {sv.tdpCaveat && (
+              <p className="mt-3 text-xs text-muted-foreground/50 italic border-t border-border/30 pt-2">
+                ⚠ {sv.tdpCaveat}
+              </p>
+            )}
+          </div>
+        );
+      })()}
       {/* Two-column: metadata + changes */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div className="bg-card border border-border/50 rounded-lg p-5">

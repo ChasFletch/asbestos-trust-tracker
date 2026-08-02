@@ -257,11 +257,11 @@ export default function Home() {
                   <span className="text-xs font-mono text-muted-foreground/60 uppercase tracking-wider">
                     {item.category?.replace("_", " ")}
                   </span>
-                  {item.publishedAt && (
-                    <span className="text-xs text-muted-foreground/40">
-                      · {new Date(item.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                    </span>
-                  )}
+                 {item.publishedAt && (
+                   <span className="text-xs text-muted-foreground/40">
+                      · {new Date(item.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+                   </span>
+                 )}
                 </div>
                 <p className="text-sm font-medium text-foreground leading-snug">{item.title}</p>
                 {item.summary && (

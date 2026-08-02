@@ -110,12 +110,12 @@ export default function News() {
                     <span className="text-xs font-mono text-muted-foreground/60 uppercase tracking-wider">
                       {item.category?.replace(/_/g, " ")}
                     </span>
-                    {item.publishedAt && (
-                      <span className="text-xs text-muted-foreground/40">
-                        {new Date(item.publishedAt).toLocaleDateString("en-US", {
-                          month: "long", day: "numeric", year: "numeric",
+                   {item.publishedAt && (
+                     <span className="text-xs text-muted-foreground/40">
+                       {new Date(item.publishedAt).toLocaleDateString("en-US", {
+                          month: "long", day: "numeric", year: "numeric", timeZone: "UTC",
                         })}
-                      </span>
+                     </span>
                     )}
                     {item.isDraft && (
                       <span className="text-xs px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">

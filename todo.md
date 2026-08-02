@@ -127,3 +127,4 @@
 - [x] QA fix: paymentPercentageSource render path added to TrustDetail (source attribution, effective date, rateSource fallback)
 - [x] QA fix: legacy confidence field hierarchy documented — per-field confidences take priority, legacy is fallback only
 - [x] QA fix: unicode escape sequences in source attribution replaced with actual characters
+- [x] Remove unverified §5.5 Secondary Exposure Claims caveat from PCC scheduledValues (amendment verified for OC/Fibreboard, USG, W.R. Grace — NOT PCC)

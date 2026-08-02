@@ -277,7 +277,7 @@
       "cumulativePaidSource": null,
       "established": 2016,
       "website": "https://www.pccasbestostrust.com",
-      "paymentPercentageSource": "pccasbestostrust.com \u2014 homepage current payment percentage statement: \"The current payment percentage for PCC is 19% of the scheduled value for Expedited Review and 19% of the gross settlement value for Individual Review.\"",
+      "paymentPercentageSource": "pccasbestostrust.com — homepage current payment percentage statement: \"The current payment percentage for PCC is 19% of the scheduled value for Expedited Review and 19% of the gross settlement value for Individual Review.\"",
       "paymentPercentageSourceUrl": "https://www.pccasbestostrust.com",
       "company": "Pittsburgh Corning Corporation",
       "administrator": "DCPF",
@@ -287,10 +287,9 @@
       "direction": "down",
       "reportingFrequency": "annual",
       "scheduledValues": {
-        "source": "PCC TDP \u00a75.3(c), As Filed (WAF-bypass verified 2026-08-02 by Cleo)",
-        "rateSource": "pccasbestostrust.com homepage (19% stated for both ER and IR; TDP \u00a74.2 rate field is a placeholder \u2014 never use PDF for rate)",
-        "rateNote": "Level I (Other Asbestos Disease) pays full $400 Cash Discount Payment per \u00a74.3 \u2014 exempt from Payment Percentage. Do NOT multiply by 19%.",
-        "tdpCaveat": "Posted PDF is As Filed version. \u00a75.5 Secondary Exposure Claims was amended 2025-11-14. Scheduled values in \u00a75.3(c) are unaffected; do not cite \u00a75.5 text from this PDF.",
+        "source": "PCC TDP §5.3(c), As Filed (WAF-bypass verified 2026-08-02 by Cleo)",
+        "rateSource": "pccasbestostrust.com homepage (19% stated for both ER and IR; TDP §4.2 rate field is a placeholder — never use PDF for rate)",
+        "rateNote": "Level I (Other Asbestos Disease) pays full $400 Cash Discount Payment per §4.3 — exempt from Payment Percentage. Do NOT multiply by 19%.",
         "levels": [
           {
             "level": "VIII",
@@ -318,7 +317,7 @@
             "atCurrentPct": null,
             "maxAtCurrentPct": 9500,
             "erEligible": false,
-            "note": "IR only \u2014 no ER scheduled value"
+            "note": "IR only — no ER scheduled value"
           },
           {
             "level": "V",
@@ -364,7 +363,7 @@
             "atCurrentPct": 400,
             "maxAtCurrentPct": null,
             "erEligible": true,
-            "note": "Cash Discount Payment per \u00a74.3 \u2014 exempt from Payment Percentage; pays full $400"
+            "note": "Cash Discount Payment per §4.3 — exempt from Payment Percentage; pays full $400"
           }
         ]
       }
@@ -1473,7 +1472,7 @@
         "description": "Cumulative payment figures from secondary compilations that cite the trusts' own filed annual reports (class-b); each flagged with confidence and not yet verified against the filed document. Used only where no filed figure is in hand.",
         "components": [
           {
-            "component": "Pittsburgh Corning Asbestos PI Settlement Trust \u2014 cumulative paid since inception",
+            "component": "Pittsburgh Corning Asbestos PI Settlement Trust — cumulative paid since inception",
             "amount": 3071420000,
             "asOf": "2022-12-31",
             "confidence": "high",
@@ -1481,28 +1480,28 @@
             "note": "Trust effective 2017; not yet verified against filed document (PACER queue)."
           },
           {
-            "component": "Babcock & Wilcox Asbestos PI Settlement Trust \u2014 cumulative paid since inception",
+            "component": "Babcock & Wilcox Asbestos PI Settlement Trust — cumulative paid since inception",
             "amount": 1940000000,
             "asOf": "2024-12-31",
             "confidence": "medium-high",
             "source": "Secondary citing trust's YE2024 report: '$1.94B+ paid since inception, ~403k claims paid'. Corpus: followup_dim02. Floor figure ('+' in source); FY2025 filed payments of $19,890,000 (Exhibit 1) are additional to this floor."
           },
           {
-            "component": "Celotex Asbestos Settlement Trust \u2014 post-2006 growth not captured by filed figure",
+            "component": "Celotex Asbestos Settlement Trust — post-2006 growth not captured by filed figure",
             "amount": 783146017,
             "asOf": "2021-12-31",
             "confidence": "medium-high",
             "source": "Derived: $1,358,539,635 cumulative through 2021 (asbestosclaims.law citing annual financial report; corpus dim08, Medium-High) less documented filed figure $575,393,618 @2006-12-31."
           },
           {
-            "component": "Owens Corning/Fibreboard \u2014 post-2009 growth not captured by filed figure",
+            "component": "Owens Corning/Fibreboard — post-2009 growth not captured by filed figure",
             "amount": 534090000,
             "asOf": "2022-12-31",
             "confidence": "medium",
             "source": "Derived: ~$3.0B cumulative paid (rounded, asbestosclaims.law trust database, 2022; corpus dim12) less documented filed figure $2,465,910,000 @2009-12-31. Rounded source; +/- $50M."
           },
           {
-            "component": "G-I Holdings (GAF) Asbestos PI Settlement Trust \u2014 cumulative paid since establishment",
+            "component": "G-I Holdings (GAF) Asbestos PI Settlement Trust — cumulative paid since establishment",
             "amount": 342665128,
             "asOf": "2022-12-31",
             "confidence": "high",
@@ -1521,7 +1520,7 @@
     },
     "methodology": "Bottom-up sum replacing the round $24,000,000,000 point estimate. Tier 1: filed inception-to-date figures (14 trusts, as-of dates 2006-2026). Tier 2: secondary compilations citing filed annual reports (5 components), used only where no filed figure exists, each labeled. Tier 3: explicit allowance for ~25 trusts with no public cumulative figure, with stated range ($2.5-5B). The total is non-round because every component is a traceable number; it leans conservative because several Tier 1/2 as-of dates are stale (payments since those dates are only partly captured) and the B&W figure is a stated floor.",
     "crossChecks": [
-      "GAO-11-819 (2011): ~$17.5B paid on 3.3M claims, 1988-2010 \u2014 frozen 2011 baseline; consistent with this total after ~15 further years of payouts.",
+      "GAO-11-819 (2011): ~$17.5B paid on 3.3M claims, 1988-2010 — frozen 2011 baseline; consistent with this total after ~15 further years of payouts.",
       "Bates White/Mealey's (via corpus dim12): $14.0B paid 2006-2011 alone.",
       "RAND TR872: ~$3.3B trust outlays in 2008.",
       "Research corpus final report (dim12): 'cumulative payments by 2026 are plausibly $30B+'."

@@ -487,16 +487,29 @@ export default function Trusts() {
                           </div>
                         )}
                         {trust.note && <div className="mt-2 text-muted-foreground/70 leading-relaxed">{trust.note}</div>}
-                        {trust.paymentPercentageFB != null && (
-                          <div className="mt-2 p-2 rounded bg-amber-50/50 border border-amber-200/40 text-xs space-y-1">
-                            <div className="font-semibold text-amber-800/80 uppercase tracking-wider text-[10px]">Dual Sub-Account Payment Percentages</div>
-                            <div className="flex gap-4">
-                              <div><span className="text-muted-foreground">OC Sub-Account: </span><span className="font-mono font-bold">{trust.paymentPercentage}%</span></div>
-                              <div><span className="text-muted-foreground">FB Sub-Account: </span><span className="font-mono font-bold">{trust.paymentPercentageFB}%</span></div>
+                       {trust.paymentPercentageFB != null && (
+                         <div className="mt-2 p-2 rounded bg-amber-50/50 border border-amber-200/40 text-xs space-y-1">
+                           <div className="font-semibold text-amber-800/80 uppercase tracking-wider text-[10px]">Dual Sub-Account Payment Percentages</div>
+                           <div className="flex gap-4">
+                              {trust.name.includes('Federal-Mogul') ? (
+                                <>
+                                  <div><span className="text-muted-foreground">T&amp;N Subfund: </span><span className="font-mono font-bold">{trust.paymentPercentage}%</span></div>
+                                  <div><span className="text-muted-foreground">FMP Subfund: </span><span className="font-mono font-bold">{trust.paymentPercentageFB}%</span></div>
+                                </>
+                              ) : (
+                                <>
+                                  <div><span className="text-muted-foreground">OC Sub-Account: </span><span className="font-mono font-bold">{trust.paymentPercentage}%</span></div>
+                                  <div><span className="text-muted-foreground">FB Sub-Account: </span><span className="font-mono font-bold">{trust.paymentPercentageFB}%</span></div>
+                                </>
+                              )}
+                           </div>
+                            <div className="text-muted-foreground/60 italic">
+                              {trust.name.includes('Federal-Mogul')
+                                ? 'T&N and FMP are separate subfunds with different scheduled values and payment rates. Source: federalmogulasbestostrust.com'
+                                : 'Owens Corning and Fibreboard claimants are paid from separate sub-accounts at different rates. Both effective 2026-06-30.'}
                             </div>
-                            <div className="text-muted-foreground/60 italic">Owens Corning and Fibreboard claimants are paid from separate sub-accounts at different rates. Both effective 2026-06-30.</div>
-                          </div>
-                        )}
+                         </div>
+                       )}
                       </div>
 
                       {/* Cumulative paid source citation */}

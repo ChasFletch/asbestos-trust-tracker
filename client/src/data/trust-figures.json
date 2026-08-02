@@ -44,7 +44,15 @@
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "NARCO Trust Annual Report & Financial Statements FY2025 (W.D. Pa. 02-20198, Doc 8521, filed 4/16/2026) - $775,354,754 paid on 41,834 TDP Annual Contribution claims + $128,664,750 on Pre-Established claims liquidated by Honeywell, inception-to-date through 12/31/2025",
       "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=02-20198+8521&type=r&order_by=score+desc",
-      "established": 2013
+      "established": 2013,
+      "company": "North American Refractories Company",
+      "administrator": "DCPF",
+      "court": "Bankr. W.D. Pa.",
+      "docket": "02-20198",
+      "website": "https://www.narcotrust.com",
+      "paymentPctEffective": "2013-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "DII Industries (Halliburton/Harbison-Walker)",
@@ -59,7 +67,14 @@
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "Bottom-up sum of 21 filed documents, Bankr. W.D. Pa. 03-35592-CMB (Mid-Valley/Halliburton): FY2005-FY2007 audited financial statements (Docs 2601, 2686, 2697 - 'Asbestos claims payments' cash-flow lines; FY2005 = $0) + FY2008-FY2013 Exhibit B 'Claims Disposed Of' tables (Docs 2754-2, 2764-2, 2812-2, 2836-2, 2855-2, 2913-1) + FY2014-FY2025 Exhibit B tables (file-stamped PDFs free at diiasbestostrust.org). Cash basis throughout; FY2009 excludes supplemental payments on pre-2009 claims (filed footnote). PACER pulls 2026-07-28, $9.90 total fees.",
       "cumulativePaidSourceUrl": "/manus-storage/dii-2007-exhibit-b_a99433e2.pdf",
-      "established": 2004
+      "established": 2004,
+      "company": "DII Industries / Halliburton / Harbison-Walker Refractories",
+      "administrator": "DCPF",
+      "court": "Bankr. W.D. Pa.",
+      "docket": "03-35592",
+      "website": "https://www.diiasbestostrust.org",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Manville Personal Injury Settlement Trust",
@@ -74,7 +89,15 @@
       "cumulativePaidAsOf": "2026-03-31",
       "cumulativePaidSource": "Manville PI Settlement Trust, Financial Statements for period ending 3/31/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4479, filed 4/27/2026) - cumulative payments on 1,036,966 liquidated claims since consummation 11/28/1988",
       "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=manville+4479&type=r&order_by=score+desc",
-      "established": 1988
+      "established": 1988,
+      "company": "Johns-Manville Corporation",
+      "administrator": "Manville Trust (self-administered)",
+      "court": "S.D.N.Y.",
+      "docket": "82-11656",
+      "website": "https://mantrust.claimsres.com",
+      "paymentPctEffective": "2021-02-01",
+      "direction": "stable",
+      "reportingFrequency": "quarterly"
     },
     {
       "name": "Western Asbestos Settlement Trust",
@@ -89,7 +112,15 @@
       "cumulativePaidSource": "Western Asbestos Settlement Trust 22nd Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, N.D. Cal. 13-31914 Doc# 1944, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://www.wastrust.com/wp-content/uploads/2026/05/1944-WAST-Annual-Report-2025-v3-For-Filing.pdf",
       "established": 2004,
-      "assetsBasisUrl": "https://www.wastrust.com/wp-content/uploads/2026/05/1944-WAST-Annual-Report-2025-v3-For-Filing.pdf"
+      "assetsBasisUrl": "https://www.wastrust.com/wp-content/uploads/2026/05/1944-WAST-Annual-Report-2025-v3-For-Filing.pdf",
+      "company": "Western Asbestos Company / Western MacArthur",
+      "administrator": "CPF",
+      "court": "Bankr. N.D. Cal.",
+      "docket": "02-46284",
+      "website": "https://www.wastrust.com",
+      "paymentPctEffective": "2004-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Thorpe Insulation Company Asbestos Settlement Trust",
@@ -104,7 +135,14 @@
       "cumulativePaidSource": "Thorpe Insulation Settlement Trust 16th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, C.D. Cal. 07-20016 Doc# 242, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://www.tistrust.com/wp-content/uploads/2026/05/242-TIST-Annual-Report-2025-v3-For-Filing.pdf",
       "established": 2010,
-      "assetsBasisUrl": "https://www.tistrust.com/wp-content/uploads/2026/05/242-TIST-Annual-Report-2025-v3-For-Filing.pdf"
+      "assetsBasisUrl": "https://www.tistrust.com/wp-content/uploads/2026/05/242-TIST-Annual-Report-2025-v3-For-Filing.pdf",
+      "company": "Thorpe Insulation Company",
+      "administrator": "CPF",
+      "court": "Bankr. C.D. Cal.",
+      "docket": "07-19271",
+      "website": "https://www.tistrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Plant Asbestos Settlement Trust",
@@ -119,7 +157,14 @@
       "cumulativePaidSource": "Plant Asbestos Settlement Trust 14th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, N.D. Cal. 09-31347 Doc# 3050, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://www.pastrust.com/wp-content/uploads/2026/05/3050-PAST-Annual-Report-2025-v3-For-FIling.pdf",
       "established": 2009,
-      "assetsBasisUrl": "https://www.pastrust.com/wp-content/uploads/2026/05/3050-PAST-Annual-Report-2025-v3-For-FIling.pdf"
+      "assetsBasisUrl": "https://www.pastrust.com/wp-content/uploads/2026/05/3050-PAST-Annual-Report-2025-v3-For-FIling.pdf",
+      "company": "Plant Insulation Company",
+      "administrator": "CPF",
+      "court": "Bankr. N.D. Cal.",
+      "docket": "95-46678",
+      "website": "https://www.pastrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "J.T. Thorpe Settlement Trust (CA)",
@@ -134,7 +179,14 @@
       "cumulativePaidSource": "J.T. Thorpe Settlement Trust 20th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, C.D. Cal. 02-14216 Doc# 1901, filed 04/28/2026",
       "cumulativePaidSourceUrl": "https://www.jttstrust.com/wp-content/uploads/2026/05/1901-JTTS-Annual-Report-2025-v3-For-Filing.pdf",
       "established": 2007,
-      "assetsBasisUrl": "https://www.jttstrust.com/wp-content/uploads/2026/05/1901-JTTS-Annual-Report-2025-v3-For-Filing.pdf"
+      "assetsBasisUrl": "https://www.jttstrust.com/wp-content/uploads/2026/05/1901-JTTS-Annual-Report-2025-v3-For-Filing.pdf",
+      "company": "J.T. Thorpe Company (California)",
+      "administrator": "CPF",
+      "court": "Bankr. C.D. Cal.",
+      "docket": "02-14538",
+      "website": "https://www.jttstrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Maremont Asbestos PI Trust",
@@ -148,7 +200,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2014
+      "established": 2014,
+      "company": "Maremont Corporation",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "16-10266",
+      "website": "https://www.maremontasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "API, Inc. Asbestos Settlement Trust",
@@ -163,7 +222,13 @@
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "API, Inc. Asbestos Settlement Trust FY2025 Annual Report of the Trustee (Bankr. D. Minn. 05-30073-GFK, filed 4/29/2026) - cumulative claims paid to date $93.99M through 12/31/2025",
       "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=05-30073+API+asbestos&type=r&order_by=score+desc",
-      "established": 2011
+      "established": 2011,
+      "company": "API, Inc.",
+      "administrator": "DCPF",
+      "court": "Bankr. D. Minn.",
+      "docket": "05-30073",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "W.R. Grace Asbestos PI Trust",
@@ -178,7 +243,15 @@
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "WRG Asbestos PI Trust FY2025 Annual Report narrative, Bankr. D. Del. 01-01139 Doc 33347-1 (filed 4/29/2026): 'the Trust paid approximately $2.69 billion to asbestos victims in settlement of their Unliquidated PI Trust Claims since the date of inception of the Trust' as of 12/31/2025. Approximation per the filed narrative; no exact cumulative dollar exhibit filed.",
       "cumulativePaidSourceUrl": "/manus-storage/wrg-fy2025-ar-exhibit1-narrative_de9b5dcb.pdf",
-      "established": 2014
+      "established": 2014,
+      "company": "W.R. Grace & Co.",
+      "administrator": "DCPF",
+      "court": "Bankr. D. Del.",
+      "docket": "01-01139",
+      "website": "https://www.wrgasbestospitrust.com",
+      "paymentPctEffective": "2014-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Pittsburgh Corning Asbestos PI Settlement Trust",
@@ -195,7 +268,14 @@
       "established": 2016,
       "website": "https://www.pccasbestostrust.com",
       "paymentPercentageSource": "pccasbestostrust.com \u2014 homepage current payment percentage statement: \"The current payment percentage for PCC is 19% of the scheduled value for Expedited Review and 19% of the gross settlement value for Individual Review.\"",
-      "paymentPercentageSourceUrl": "https://www.pccasbestostrust.com"
+      "paymentPercentageSourceUrl": "https://www.pccasbestostrust.com",
+      "company": "Pittsburgh Corning Corporation",
+      "administrator": "DCPF",
+      "court": "Bankr. W.D. Pa.",
+      "docket": "00-22876",
+      "paymentPctEffective": "2024-11-07",
+      "direction": "down",
+      "reportingFrequency": "annual"
     },
     {
       "name": "United States Gypsum (USG) Asbestos Trust",
@@ -210,7 +290,15 @@
       "cumulativePaidAsOf": "2008-12-31",
       "cumulativePaidSource": "COMPUTED SUM of two verbatim inception-to-date figures in FY2008 Annual Report ('approximately $11.52 million' Pre-Petition Liquidated + 'approximately $600.61 million' Unliquidated, both as of 12/31/2008), Doc 21942-21, Bankr. D. Del. 01-01139 (W.R. Grace docket). HISTORICAL - 17 years stale. FY2024 report (01-02094 Doc 12858) blocked by CM/ECF image failure; FY2025 not yet filed",
       "cumulativePaidSourceUrl": "/manus-storage/grace-21942-21_48bb13a9.pdf",
-      "established": 2006
+      "established": 2006,
+      "company": "USG Corporation",
+      "administrator": "DCPF",
+      "court": "Bankr. D. Del.",
+      "docket": "01-02094",
+      "website": "https://www.usgasbestostrust.com",
+      "paymentPctEffective": "2006-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Owens Corning/Fibreboard Asbestos PI Trust",
@@ -227,7 +315,15 @@
       "paymentPercentageFB": 3.5,
       "paymentPercentageFBNote": "FB Sub-Account, eff. 2026-06-30 (same notice as OC cut)",
       "cumulativePaidSourceUrl": "/manus-storage/ocfb-fy2009-annual-report-nysb-6491-5_b1acd491.pdf",
-      "established": 2006
+      "established": 2006,
+      "company": "Owens Corning / Fibreboard Corporation",
+      "administrator": "DCPF",
+      "court": "Bankr. N.D. Ohio",
+      "docket": "00-03837",
+      "website": "https://www.ocfasbestostrust.com",
+      "paymentPctEffective": "2022-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "ASARCO Asbestos PI Settlement Trust",
@@ -240,7 +336,15 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2009
+      "established": 2009,
+      "company": "ASARCO LLC",
+      "administrator": "Verus LLC",
+      "court": "Bankr. S.D. Tex.",
+      "docket": "05-21207",
+      "website": "https://www.asarcotrust.com",
+      "paymentPctEffective": "2009-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Armstrong World Industries Asbestos PI Trust",
@@ -255,7 +359,15 @@
       "cumulativePaidAsOf": "2014-12-31",
       "cumulativePaidSource": "FY2014 Annual Report, Claim Report exhibit (579,458 claims paid, inception through 12-31-2014); filed Bankr. D. Del. 00-04471; trust-reports/non-pacer-recovery/armstrong-fy2014-annual-report.pdf",
       "cumulativePaidSourceUrl": "/manus-storage/armstrong-fy2014-annual-report_5d452b0c.pdf",
-      "established": 2006
+      "established": 2006,
+      "company": "Armstrong World Industries",
+      "administrator": "DCPF",
+      "court": "Bankr. D. Del.",
+      "docket": "00-04469",
+      "website": "https://www.armstrongworldasbestostrust.com",
+      "paymentPctEffective": "2006-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Bondex (Specialty Products Holding Corp.) Trust",
@@ -268,7 +380,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2013
+      "established": 2013,
+      "company": "Bondex International / Specialty Products Holding Corp.",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "10-11779",
+      "website": "https://www.bondexasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Flintkote Asbestos Trust",
@@ -282,7 +401,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2012
+      "established": 2012,
+      "company": "Flintkote Company",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "04-11300",
+      "website": "https://www.flintkoteasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Paddock Enterprises (Owens-Illinois) Asbestos Trust",
@@ -296,7 +422,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2020
+      "established": 2020,
+      "company": "Paddock Enterprises LLC (Owens-Illinois subsidiary)",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "20-10028",
+      "website": "https://www.oiasbestospersonalinjurytrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Quigley Company Asbestos PI Trust",
@@ -310,7 +443,15 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2013
+      "established": 2013,
+      "company": "Quigley Company Inc. (Pfizer subsidiary)",
+      "administrator": "Verus LLC",
+      "court": "Bankr. S.D.N.Y.",
+      "docket": "04-15739",
+      "website": "https://www.quigleyasbestostrust.com",
+      "paymentPctEffective": "2013-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Federal-Mogul Asbestos PI Trust",
@@ -326,7 +467,15 @@
       "cumulativePaidSource": null,
       "established": 2007,
       "shortName": "Federal-Mogul (T&N / FMP)",
-      "paymentPercentageFB": 12.2
+      "paymentPercentageFB": 12.2,
+      "company": "Federal-Mogul Corporation",
+      "administrator": "DCPF",
+      "court": "Bankr. D. Del.",
+      "docket": "01-10578",
+      "website": "https://www.federalmogulasbestostrust.com",
+      "paymentPctEffective": "2020-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Celotex Asbestos Settlement Trust",
@@ -341,7 +490,15 @@
       "cumulativePaidAsOf": "2006-12-31",
       "cumulativePaidSource": "FY2006 Annual Report, Bankr. M.D. Fla. 90-10016 Doc 13816 (RECAP): 'Since inception the Trust has made 402,937 payments on 305,128 personal injury claims in the aggregate amount of $575,393,617.51' (rounded to integer). PI pool only - excludes PD pool ($147,649,270.05 separately reported) and IRC second installments. HISTORICAL - 19 years stale. FY2025 report (Doc 14439) blocked by CM/ECF image failure",
       "cumulativePaidSourceUrl": "/manus-storage/celotex-fy2006-doc13816-annual-report_020585e8.pdf",
-      "established": 1996
+      "established": 1996,
+      "company": "Celotex Corporation",
+      "administrator": "DCPF",
+      "court": "Bankr. M.D. Fla.",
+      "docket": "8:90-bk-10016",
+      "website": "https://www.celotextrust.com",
+      "paymentPctEffective": "2023-06-23",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Combustion Engineering 524(g) Asbestos PI Trust",
@@ -355,7 +512,15 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2006
+      "established": 2006,
+      "company": "Combustion Engineering Inc.",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "03-10495",
+      "website": "https://www.cetrust.com",
+      "paymentPctEffective": "2020-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Fuller-Austin Asbestos Settlement Trust",
@@ -369,7 +534,13 @@
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
       "note": "No live official trust website located and no Wayback captures of report PDFs (verified 2026-07-27); a '~$310M paid since establishment' figure circulates on law-firm sites citing a 2022 report but is class-(c) and unusable - cumulativePaid stays null pending PACER",
-      "established": 1998
+      "established": 1998,
+      "company": "Fuller-Austin Insulation Company",
+      "administrator": "CPF",
+      "court": "Bankr. C.D. Cal.",
+      "docket": "98-22217",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Kaiser Asbestos PI Trust",
@@ -383,7 +554,15 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2006
+      "established": 2006,
+      "company": "Kaiser Aluminum & Chemical Corporation",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "02-10429",
+      "website": "https://www.kaiserasbestostrust.com",
+      "paymentPctEffective": "2006-01-01",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Babcock & Wilcox Asbestos PI Settlement Trust",
@@ -397,7 +576,15 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2006
+      "established": 2006,
+      "company": "Babcock & Wilcox Enterprises",
+      "administrator": "DCPF",
+      "court": "Bankr. E.D. La.",
+      "docket": "2:00-bk-10992",
+      "website": "https://www.bwasbestostrust.com",
+      "paymentPctEffective": "2026-06-30",
+      "direction": "down",
+      "reportingFrequency": "annual"
     },
     {
       "name": "G-I Holdings (GAF) Asbestos PI Settlement Trust",
@@ -410,7 +597,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2009
+      "established": 2009,
+      "company": "G-I Holdings Corp. (GAF Corporation)",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D.N.J.",
+      "docket": "01-30135",
+      "website": "https://www.giasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Eagle-Picher Industries PI Settlement Trust",
@@ -423,7 +617,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 1996
+      "established": 1996,
+      "company": "Eagle-Picher Industries Inc.",
+      "administrator": "Verus LLC",
+      "court": "Bankr. S.D. Ohio",
+      "docket": "91-00100",
+      "website": "https://www.eaglepicherasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Yarway Asbestos PI Trust",
@@ -436,7 +637,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2013
+      "established": 2013,
+      "company": "Yarway Corporation",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "13-11025",
+      "website": "https://www.yarwayasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "A.P. Green (APG) Asbestos Trust",
@@ -449,7 +657,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2010
+      "established": 2010,
+      "company": "APG Industries",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "05-10220",
+      "paymentPctEffective": "2026-06-01",
+      "direction": "up",
+      "reportingFrequency": "annual"
     },
     {
       "name": "NGC Bodily Injury Trust (National Gypsum)",
@@ -462,7 +677,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 1993
+      "established": 1993,
+      "company": "National Gypsum Company",
+      "administrator": "Verus LLC",
+      "court": "Bankr. N.D. Tex.",
+      "docket": "90-37213",
+      "website": "https://www.ngcasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Congoleum Plan Trust",
@@ -476,7 +698,14 @@
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
       "note": "FY2025 annual report (filed D.N.J. 3:09-cv-04371-JAP, Doc 863, free at congoleumtrust.com) reviewed 2026-07-27: reports per-year claim counts only (971 claims paid in 2025) - no cumulative or per-year dollar line in the narrative; cumulativePaid stays null",
-      "established": 2010
+      "established": 2010,
+      "company": "Congoleum Corporation",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D.N.J.",
+      "docket": "03-51524",
+      "website": "https://www.congoleumplantrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Motors Liquidation Co. (GM) Asbestos PI Trust",
@@ -491,7 +720,13 @@
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "MLC Asbestos PI Trust FY2025 Annual Report and Account, Summary of Claims, Bankr. S.D.N.Y. 09-50026 Doc 14861-1 (filed 4/30/2026): 'The Trust paid approximately $136.2 million to asbestos victims in settlement of their Unliquidated Claims since the date of inception of the Trust' as of 12/31/2025. Approximation per the filed narrative; no exact cumulative dollar exhibit filed.",
       "cumulativePaidSourceUrl": "/manus-storage/mlc-fy2025-ar-main_353a1a96.pdf",
-      "established": 2011
+      "established": 2011,
+      "company": "Motors Liquidation Company (General Motors)",
+      "administrator": "Verus LLC",
+      "court": "Bankr. S.D.N.Y.",
+      "docket": "09-50026",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "ACandS Asbestos Settlement Trust",
@@ -505,7 +740,13 @@
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
       "note": "Trust website (acandsasbestostrust.com) posts only the FY2013 annual report (verified 2026-07-27) - 13 years stale and contains no cumulative-paid line; cumulativePaid stays null",
-      "established": 2002
+      "established": 2002,
+      "company": "ACandS Inc.",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Del.",
+      "docket": "02-12687",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "J.T. Thorpe Company Successor Trust (TX)",
@@ -518,7 +759,13 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2007
+      "established": 2007,
+      "company": "J.T. Thorpe Company (Texas)",
+      "administrator": "Verus LLC",
+      "court": "Bankr. S.D. Tex.",
+      "docket": "02-40018",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Kaiser Gypsum Asbestos PI Trust",
@@ -531,7 +778,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2016
+      "established": 2016,
+      "company": "Kaiser Gypsum Company Inc.",
+      "administrator": "Verus LLC",
+      "court": "Bankr. W.D.N.C.",
+      "docket": "16-31602",
+      "website": "https://www.kaisergypsumasbestostrust.com",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Porter Hayden Bodily Injury Trust",
@@ -544,7 +798,13 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2005
+      "established": 2005,
+      "company": "Porter Hayden Company",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Md.",
+      "docket": "02-54152",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Raytech (Raymark) Trust",
@@ -557,7 +817,13 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 1998
+      "established": 1998,
+      "company": "Raytech Corporation (Raymark Industries)",
+      "administrator": "Verus LLC",
+      "court": "Bankr. D. Conn.",
+      "docket": "89-20419",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Keene Creditors Trust",
@@ -570,7 +836,13 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 1996
+      "established": 1996,
+      "company": "Keene Corporation",
+      "administrator": "Verus LLC",
+      "court": "Bankr. S.D.N.Y.",
+      "docket": "93-46090",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "H.K. Porter Asbestos Trust",
@@ -584,7 +856,14 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2003
+      "established": 2003,
+      "company": "H.K. Porter Company Inc.",
+      "administrator": "Verus LLC",
+      "court": "Bankr. W.D. Pa.",
+      "docket": "91-21071",
+      "website": "https://www.hkporterasbestostrust.org",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Christy Refractories Asbestos PI Trust",
@@ -597,7 +876,13 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2008
+      "established": 2008,
+      "company": "Christy Refractories Company LLC",
+      "administrator": "Verus LLC",
+      "court": "Bankr. E.D. Mo.",
+      "docket": "08-41019",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "A-Best Products Asbestos Trust",
@@ -610,7 +895,13 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2004
+      "established": 2004,
+      "company": "A-Best Products Company Inc.",
+      "administrator": "Verus LLC",
+      "court": "Bankr. W.D. Pa.",
+      "docket": "02-20388",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     },
     {
       "name": "Rapid-American Asbestos PI Trust",
@@ -624,7 +915,13 @@
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
-      "established": 2013
+      "established": 2013,
+      "company": "Rapid-American Corporation",
+      "administrator": "Verus LLC",
+      "court": "Bankr. S.D.N.Y.",
+      "docket": "13-10687",
+      "direction": "stable",
+      "reportingFrequency": "annual"
     }
   ],
   "changes": [

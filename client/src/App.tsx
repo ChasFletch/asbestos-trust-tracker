@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { SiteNav } from "./components/SiteNav";
 import { SiteFooter } from "./components/SiteFooter";
+import { Head } from "./components/Head";
 import Home from "./pages/Home";
 import Trusts from "./pages/Trusts";
 import TrustDetail from "./pages/TrustDetail";
@@ -40,6 +41,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+          <Head />
           <div className="min-h-screen flex flex-col bg-background text-foreground">
             <SiteNav />
             <main className="flex-1">

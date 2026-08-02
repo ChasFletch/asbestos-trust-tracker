@@ -109,6 +109,9 @@ export default function TrustDetail() {
         cumulativePaidAsOf: (jsonTrust as any)?.cumulativePaidAsOf ?? (dbTrust as any)?.cumulativePaidAsOf ?? null,
         cumulativePaidSource: (jsonTrust as any)?.cumulativePaidSource ?? (dbTrust as any)?.cumulativePaidSource ?? null,
         cumulativePaidSourceUrl: (jsonTrust as any)?.cumulativePaidSourceUrl ?? (dbTrust as any)?.cumulativePaidSourceUrl ?? null,
+        cumulativePaidSourceUrlType: (jsonTrust as any)?.cumulativePaidSourceUrlType ?? null,
+        netAssetsConfidence: (jsonTrust as any)?.netAssetsConfidence ?? null,
+        paymentPctConfidence: (jsonTrust as any)?.paymentPctConfidence ?? null,
         assetsBasisUrl: (jsonTrust as any)?.assetsBasisUrl ?? null,
         cumulativeClaims: dbTrust?.cumulativeClaims ?? null,
         reportingFrequency: dbTrust?.reportingFrequency ?? null,
@@ -204,7 +207,10 @@ export default function TrustDetail() {
         <div className="bg-card border border-border/50 rounded-lg p-4">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <DollarSign size={12} />Net Assets
-            {trust.confidence && <span className="ml-auto"><ConfidenceBadge confidence={trust.confidence} /></span>}
+            {(trust as any).netAssetsConfidence
+              ? <span className="ml-auto"><ConfidenceBadge confidence={(trust as any).netAssetsConfidence} /></span>
+              : trust.confidence && <span className="ml-auto"><ConfidenceBadge confidence={trust.confidence} /></span>
+            }
           </div>
           <div className="text-xl font-mono font-bold text-foreground">{fmt$(trust.netAssets)}</div>
           {trust.assetsAsOf && <div className="text-xs text-muted-foreground/60 mt-0.5">as of {trust.assetsAsOf}</div>}
@@ -225,6 +231,9 @@ export default function TrustDetail() {
         <div className="bg-card border border-border/50 rounded-lg p-4">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <Activity size={12} />Payment %
+            {(trust as any).paymentPctConfidence && (
+              <span className="ml-auto"><ConfidenceBadge confidence={(trust as any).paymentPctConfidence} /></span>
+            )}
           </div>
           <div className="text-xl font-mono font-bold text-foreground">
             {trust.paymentPercentage !== null ? `${trust.paymentPercentage}%` : "MSV / N/A"}
@@ -248,13 +257,25 @@ export default function TrustDetail() {
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <FileText size={12} />Cumulative Paid
             {(trust as any).cumulativePaidSourceUrl && (
-              <button
-                onClick={() => setSourceModal({ url: (trust as any).cumulativePaidSourceUrl, title: trust.name + " — Source Document", citation: (trust as any).cumulativePaidSource ?? null })}
-                className="ml-auto inline-flex items-center gap-0.5 text-primary hover:underline text-[10px] font-medium cursor-pointer"
-                title="Preview source document"
-              >
-                source <ExternalLink size={9} />
-              </button>
+              (trust as any).cumulativePaidSourceUrlType === "courtlistener-search" ? (
+                <a
+                  href={(trust as any).cumulativePaidSourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-auto inline-flex items-center gap-0.5 text-amber-600 hover:underline text-[10px] font-medium"
+                  title="CourtListener docket search — opens search results page, not a direct document link"
+                >
+                  search docket <ExternalLink size={9} />
+                </a>
+              ) : (
+                <button
+                  onClick={() => setSourceModal({ url: (trust as any).cumulativePaidSourceUrl, title: trust.name + " — Source Document", citation: (trust as any).cumulativePaidSource ?? null })}
+                  className="ml-auto inline-flex items-center gap-0.5 text-primary hover:underline text-[10px] font-medium cursor-pointer"
+                  title="Preview source document"
+                >
+                  source <ExternalLink size={9} />
+                </button>
+              )
             )}
           </div>
           <div className="text-xl font-mono font-bold text-foreground">{fmt$(trust.cumulativePaid)}</div>

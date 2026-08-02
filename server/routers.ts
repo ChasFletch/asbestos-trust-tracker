@@ -214,6 +214,7 @@ export const appRouter = router({
           cumulativePaidAsOf: (t.cumulativePaidAsOf ?? null) as string | null,
           cumulativePaidSource: (t.cumulativePaidSource ?? null) as string | null,
           cumulativePaidSourceUrl: (t.cumulativePaidSourceUrl ?? null) as string | null,
+          cumulativePaidSourceUrlType: (t.cumulativePaidSourceUrlType ?? null) as string | null,
           established: (t.established ?? null) as number | null,
           paymentPercentageFB: (t.paymentPercentageFB ?? null) as number | null,
           assetsBasisUrl: (t.assetsBasisUrl ?? null) as string | null,
@@ -261,6 +262,9 @@ export const appRouter = router({
           cumulativePaidAsOf: (trust.cumulativePaidAsOf ?? null) as string | null,
           cumulativePaidSource: (trust.cumulativePaidSource ?? null) as string | null,
           cumulativePaidSourceUrl: (trust.cumulativePaidSourceUrl ?? null) as string | null,
+          cumulativePaidSourceUrlType: (trust.cumulativePaidSourceUrlType ?? null) as string | null,
+          netAssetsConfidence: (trust.netAssetsConfidence ?? null) as string | null,
+          paymentPctConfidence: (trust.paymentPctConfidence ?? null) as string | null,
           assetsBasisUrl: (trust.assetsBasisUrl ?? null) as string | null,
           changes: changes.map((c: any) => ({
               date: c.date as string,

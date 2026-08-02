@@ -35,6 +35,7 @@ interface TrustRow {
   cumulativePaidAsOf?: string | null;
   cumulativePaidSource?: string | null;
   cumulativePaidSourceUrl?: string | null;
+  cumulativePaidSourceUrlType?: string | null;
   established?: number | null;
 }
 
@@ -162,6 +163,7 @@ export default function Trusts() {
         cumulativePaidAsOf: (jt as any).cumulativePaidAsOf ?? null,
         cumulativePaidSource: (jt as any).cumulativePaidSource ?? null,
         cumulativePaidSourceUrl: (jt as any).cumulativePaidSourceUrl ?? null,
+        cumulativePaidSourceUrlType: (jt as any).cumulativePaidSourceUrlType ?? null,
         established: (jt as any).established ?? null,
       };
     });
@@ -531,13 +533,26 @@ export default function Trusts() {
                             {trust.cumulativePaidSource && (
                               <div className="text-muted-foreground/60 leading-relaxed">
                                 <span className="italic">{trust.cumulativePaidSource.split(" - ")[0]}</span>
-                                {trust.cumulativePaidSourceUrl && (
-                                  <button
-                                    onClick={(e) => { e.stopPropagation(); setSourceModal({ url: trust.cumulativePaidSourceUrl!, title: trust.shortName + " — Source Document", citation: trust.cumulativePaidSource ?? null }); }}
-                                    className="ml-2 inline-flex items-center gap-1 text-primary hover:underline font-medium not-italic cursor-pointer"
-                                  >
-                                    View source <ExternalLink size={10} />
-                                  </button>
+                               {trust.cumulativePaidSourceUrl && (
+                                  trust.cumulativePaidSourceUrlType === "courtlistener-search" ? (
+                                    <a
+                                      href={trust.cumulativePaidSourceUrl!}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      onClick={(e) => e.stopPropagation()}
+                                      className="ml-2 inline-flex items-center gap-1 text-amber-600 hover:underline font-medium not-italic cursor-pointer"
+                                      title="CourtListener docket search — opens search results page, not a direct document link"
+                                    >
+                                      Search docket <ExternalLink size={10} />
+                                    </a>
+                                  ) : (
+                                    <button
+                                      onClick={(e) => { e.stopPropagation(); setSourceModal({ url: trust.cumulativePaidSourceUrl!, title: trust.shortName + " — Source Document", citation: trust.cumulativePaidSource ?? null }); }}
+                                      className="ml-2 inline-flex items-center gap-1 text-primary hover:underline font-medium not-italic cursor-pointer"
+                                    >
+                                      View source <ExternalLink size={10} />
+                                    </button>
+                                  )
                                 )}
                               </div>
                             )}

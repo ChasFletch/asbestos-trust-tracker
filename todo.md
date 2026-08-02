@@ -101,3 +101,25 @@
 - [ ] PACER pull — Celotex: access restricted ("you do not have access to the restricted document"); historical $575M from RECAP
 - [ ] PACER pull — Babcock & Wilcox: secondary $1.94B floor in bottomUpPayouts; PACER pull queued when restriction resolves
 - [x] Methodology.tsx updated: FAQ JSON-LD figures corrected ($16,746,136,347 remaining assets, $29,981,797,653 cumulative payouts), $30B section revised with bottom-up context and $16.7B documented floor, Known Gaps updated (WRG/DII complete, PCC blocked, Celotex restricted, B&W queued), new Cumulative Payouts Methodology section added (three-tier build table, honest caveats, revision log)
+- [x] Data fix: rateSource §5.5 → §4.2 for PCC trust (correct TDP section citation)
+- [x] Data fix: CourtListener search URL labels added (NARCO, Manville, API cumulativePaidSourceUrlType)
+- [x] Data fix: PCC per-field confidence (netAssetsConfidence: secondary/2022, paymentPctConfidence: filed/2024)
+- [ ] SSR: client/index.html — replace static SEO tags with <!--app-head--> placeholder
+- [ ] SSR: client/src/entry-client.tsx — hydrateRoot + HydrationBoundary
+- [ ] SSR: client/src/entry-server.tsx — renderToString + prefetch
+- [ ] SSR: client/src/ssr/prefetch.ts — route prefetch map for all public routes
+- [ ] SSR: client/src/components/Head.tsx — client-side title sync on navigation
+- [ ] SSR: server/_core/ssrCaller.ts — in-process tRPC caller for SSR
+- [ ] SSR: server/_core/vite.ts — SSR-aware dev + prod wiring
+- [ ] SSR: vite.config.ssr.ts — SSR build config
+- [ ] SSR: package.json build script — three-artifact build
+- [ ] SSR: CANONICAL_ORIGIN and SITE_NAME env vars
+- [ ] SSR: App.tsx — add Head component for client-side title sync
+
+- [x] Fix rateSource §5.5 → §4.2 for PCC trust
+- [x] Add cumulativePaidSourceUrlType labels for NARCO, Manville, API (CourtListener search URLs)
+- [x] Add per-field confidence for PCC (netAssetsConfidence: secondary, paymentPctConfidence: filed)
+- [x] SSR: entry-client.tsx, entry-server.tsx, ssr/prefetch.ts, Head.tsx
+- [x] SSR: ssrCaller.ts, vite.ts SSR wiring, vite.config.ssr.ts, build script update
+- [x] SSR: ThemeContext localStorage SSR guard
+- [x] SSR: All public routes return correct title, og:title, canonical, HTTP status

@@ -1,4 +1,8 @@
 export const COOKIE_NAME = "app_session_id";
+/** Site identity constants — keep in sync with SITE_NAME env var and Head.tsx */
+export const SITE_NAME = "AsbestosTrusts.org";
+export const SITE_TITLE = "AsbestosTrusts.org — Asbestos Trust Fund Tracker";
+export const SITE_DESC = "Live tracker of U.S. asbestos bankruptcy trust funds — $17B+ remaining assets, payment percentages, and primary-sourced data.";
 export const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
 export const AXIOS_TIMEOUT_MS = 30_000;
 export const UNAUTHED_ERR_MSG = 'Please login (10001)';

@@ -104,17 +104,17 @@
 - [x] Data fix: rateSource §5.5 → §4.2 for PCC trust (correct TDP section citation)
 - [x] Data fix: CourtListener search URL labels added (NARCO, Manville, API cumulativePaidSourceUrlType)
 - [x] Data fix: PCC per-field confidence (netAssetsConfidence: secondary/2022, paymentPctConfidence: filed/2024)
-- [ ] SSR: client/index.html — replace static SEO tags with <!--app-head--> placeholder
-- [ ] SSR: client/src/entry-client.tsx — hydrateRoot + HydrationBoundary
-- [ ] SSR: client/src/entry-server.tsx — renderToString + prefetch
-- [ ] SSR: client/src/ssr/prefetch.ts — route prefetch map for all public routes
-- [ ] SSR: client/src/components/Head.tsx — client-side title sync on navigation
-- [ ] SSR: server/_core/ssrCaller.ts — in-process tRPC caller for SSR
-- [ ] SSR: server/_core/vite.ts — SSR-aware dev + prod wiring
-- [ ] SSR: vite.config.ssr.ts — SSR build config
-- [ ] SSR: package.json build script — three-artifact build
-- [ ] SSR: CANONICAL_ORIGIN and SITE_NAME env vars
-- [ ] SSR: App.tsx — add Head component for client-side title sync
+- [x] SSR: client/index.html — replace static SEO tags with <!--app-head--> placeholder
+- [x] SSR: client/src/entry-client.tsx — hydrateRoot + HydrationBoundary
+- [x] SSR: client/src/entry-server.tsx — renderToString + prefetch
+- [x] SSR: client/src/ssr/prefetch.ts — route prefetch map for all public routes
+- [x] SSR: client/src/components/Head.tsx — client-side title sync on navigation
+- [x] SSR: server/_core/ssrCaller.ts — in-process tRPC caller for SSR
+- [x] SSR: server/_core/vite.ts — SSR-aware dev + prod wiring
+- [x] SSR: vite.config.ssr.ts — SSR build config
+- [x] SSR: package.json build script — three-artifact build
+- [x] SSR: CANONICAL_ORIGIN and SITE_NAME env vars
+- [x] SSR: App.tsx — add Head component for client-side title sync
 
 - [x] Fix rateSource §5.5 → §4.2 for PCC trust
 - [x] Add cumulativePaidSourceUrlType labels for NARCO, Manville, API (CourtListener search URLs)

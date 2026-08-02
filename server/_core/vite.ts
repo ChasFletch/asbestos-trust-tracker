@@ -10,7 +10,8 @@ import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import type { HeadMeta } from "../../client/src/ssr/prefetch";
 
-const CANONICAL_ORIGIN = process.env.CANONICAL_ORIGIN ?? "https://asbestostrusts.org";
+import { ENV } from "./env";
+const CANONICAL_ORIGIN = ENV.canonicalOrigin;
 const OG_LOCALE = "en_US";
 
 const escapeHtml = (s: string) =>

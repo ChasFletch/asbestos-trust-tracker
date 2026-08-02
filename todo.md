@@ -123,3 +123,7 @@
 - [x] SSR: ssrCaller.ts, vite.ts SSR wiring, vite.config.ssr.ts, build script update
 - [x] SSR: ThemeContext localStorage SSR guard
 - [x] SSR: All public routes return correct title, og:title, canonical, HTTP status
+- [x] QA fix: scheduledValues added to trustFigures.bySlug projection — table now renders on detail page
+- [x] QA fix: paymentPercentageSource render path added to TrustDetail (source attribution, effective date, rateSource fallback)
+- [x] QA fix: legacy confidence field hierarchy documented — per-field confidences take priority, legacy is fallback only
+- [x] QA fix: unicode escape sequences in source attribution replaced with actual characters

@@ -114,8 +114,13 @@ export default function TrustDetail() {
         paymentPctConfidence: (jsonTrust as any)?.paymentPctConfidence ?? null,
         assetsBasisUrl: (jsonTrust as any)?.assetsBasisUrl ?? null,
         cumulativeClaims: dbTrust?.cumulativeClaims ?? null,
-        reportingFrequency: dbTrust?.reportingFrequency ?? null,
-        direction: dbTrust?.direction ?? null,
+        reportingFrequency: (jsonTrust as any)?.reportingFrequency ?? dbTrust?.reportingFrequency ?? null,
+        direction: (jsonTrust as any)?.direction ?? dbTrust?.direction ?? null,
+        paymentPercentageSource: (jsonTrust as any)?.paymentPercentageSource ?? null,
+        paymentPercentageSourceUrl: (jsonTrust as any)?.paymentPercentageSourceUrl ?? null,
+        paymentPctEffective: (jsonTrust as any)?.paymentPctEffective ?? null,
+        rateSource: (jsonTrust as any)?.rateSource ?? null,
+        tdpCaveat: (jsonTrust as any)?.tdpCaveat ?? null,
         netAssetsCitation: jsonTrust.assetsBasis ?? dbTrust?.netAssetsCitation ?? null,
         paymentHistory: dbTrust?.paymentHistory ?? [],
       }
@@ -240,6 +245,23 @@ export default function TrustDetail() {
           </div>
           {trust.paymentPercentage !== null && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">of scheduled value</div>
+          )}
+          {(trust as any).paymentPctEffective && (
+            <div className="text-xs text-muted-foreground/60 mt-0.5">effective {(trust as any).paymentPctEffective}</div>
+          )}
+          {(trust as any).paymentPercentageSource && (
+            <div className="text-xs text-muted-foreground/50 mt-1.5 leading-relaxed border-t border-border/30 pt-1.5">
+              {(trust as any).paymentPercentageSourceUrl ? (
+                <a href={(trust as any).paymentPercentageSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">
+                  {(trust as any).paymentPercentageSource.length > 90 ? (trust as any).paymentPercentageSource.slice(0, 87) + "…" : (trust as any).paymentPercentageSource} ↗
+                </a>
+              ) : (
+                <span className="italic">{(trust as any).paymentPercentageSource}</span>
+              )}
+            </div>
+          )}
+          {(trust as any).rateSource && !(trust as any).paymentPercentageSource && (
+            <div className="text-xs text-amber-700/70 mt-1.5 italic border-t border-border/30 pt-1.5">{(trust as any).rateSource}</div>
           )}
         </div>
 

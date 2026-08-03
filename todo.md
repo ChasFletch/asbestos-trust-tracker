@@ -132,3 +132,5 @@
 - [x] Remove debug logging from entry-server.tsx
 - [x] Clean up test-ssr-query.mjs
 - [x] Add Google Search Console verification file (googled0a8bbe6c3fe6bf7.html)
+- [x] Generate sitemap.xml with all 42 trust detail URLs, reports, static pages (54 URLs total)
+- [x] robots.txt already includes Sitemap directive pointing to sitemap.xml

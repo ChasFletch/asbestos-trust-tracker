@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "wouter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ArrowLeft, ExternalLink, Calendar, FileText, Home, BookOpen, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ExternalLink, Calendar, FileText, Home, BookOpen } from "lucide-react";
 import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
 
 interface ReportMeta {
   id: string;
@@ -167,11 +168,8 @@ export default function ReportDetail() {
             View raw on GitHub <ExternalLink size={10} />
           </a>
         )}
-        {/* Reviewed by badge */}
-        <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400">
-          <ShieldCheck size={14} className="shrink-0" />
-          <span>Reviewed by Paul Danziger and Rod De Llano · Danziger &amp; De Llano, LLP</span>
-        </div>
+        {/* Reviewed by badge — opens credentials modal */}
+        <ReviewerCredentialsModal variant="report" />
       </div>
 
       {/* Markdown body */}

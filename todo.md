@@ -150,3 +150,5 @@
 - [x] Add visible "Reviewed by Paul Danziger and Rod De Llano" badge on report detail pages
 - [x] Add breadcrumb navigation on all trust detail pages (Home → Trust Data → {shortName})
 - [x] Add breadcrumb navigation on all report detail pages (Home → Reports → {title})
+- [x] Add clickable credentials modal to "Reviewed by" badge (opens modal with Paul Danziger and Rod De Llano professional credentials)
+- [x] Add PACER unavailability indicator on trust detail pages where documents are blocked (PCC, Celotex, USG, Armstrong, OC/FB — triggered by PACER-only/CM/ECF keywords in note field; B&W correctly excluded since its pull succeeded)

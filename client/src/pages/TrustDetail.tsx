@@ -1,7 +1,8 @@
 import { useParams, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { SourceDocModal } from "@/components/SourceDocModal";
+import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
 import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
@@ -12,7 +13,7 @@ import {
 import {
   ExternalLink, TrendingDown, TrendingUp, Minus, AlertTriangle,
   Calendar, DollarSign, FileText, Activity,
-  Home, Database, ShieldCheck, ArrowLeft,
+  Home, Database, ArrowLeft, Info,
 } from "lucide-react";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -223,22 +224,31 @@ export default function TrustDetail() {
             <ExternalLink size={10} />
           </a>
         )}
-        {/* Reviewed by badge */}
-        <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-          <ShieldCheck size={14} className="text-emerald-600 shrink-0" />
-          <span>
-            Reviewed by{" "}
-            <a href="https://dandell.com/lawyers/paul-danziger/" target="_blank" rel="noopener noreferrer"
-              className="font-medium text-foreground hover:text-primary transition-colors">Paul Danziger</a>
-            {" "}and{" "}
-            <a href="https://dandell.com/lawyers/rod-de-llano/" target="_blank" rel="noopener noreferrer"
-              className="font-medium text-foreground hover:text-primary transition-colors">Rod De Llano</a>
-            {" "}&middot;{" "}
-            <a href="https://dandell.com" target="_blank" rel="noopener noreferrer"
-              className="hover:text-primary transition-colors">Danziger &amp; De Llano, LLP</a>
-          </span>
-        </div>
+        {/* Reviewed by badge — opens credentials modal */}
+        <ReviewerCredentialsModal variant="trust" />
       </div>
+
+      {/* PACER Document Unavailability Indicator */}
+      {trust.note && /PACER-only|CM\/ECF.*fail|blocked/i.test(trust.note) && (
+        <div className="mb-6 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50/60 p-4">
+          <Info size={16} className="text-amber-600 shrink-0 mt-0.5" />
+          <div className="text-sm">
+            <p className="font-medium text-amber-800 mb-1">Court Document Temporarily Unavailable</p>
+            <p className="text-amber-700/80 text-xs leading-relaxed">
+              The most recent annual report for this trust is filed with the court but cannot currently be retrieved
+              from PACER (Public Access to Court Electronic Records) due to a CM/ECF system error. Some figures shown
+              may rely on older filings or secondary sources until the document becomes accessible. We retry periodically.
+            </p>
+            {trust.cumulativePaidSource && /blocked|CM\/ECF/i.test(trust.cumulativePaidSource) && (
+              <p className="text-amber-700/60 text-[11px] mt-2 italic">
+                Source note: {trust.cumulativePaidSource.length > 180
+                  ? trust.cumulativePaidSource.slice(0, 177) + "…"
+                  : trust.cumulativePaidSource}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Key metrics grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">

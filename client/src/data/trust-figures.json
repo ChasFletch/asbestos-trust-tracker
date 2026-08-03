@@ -1,6 +1,6 @@
 {
   "schema": "asbestos-trust-figures/v1",
-  "asOf": "2026-08-01",
+  "asOf": "2026-08-03",
   "aggregate": {
     "remainingAssetsPoint": 16746136347,
     "remainingAssetsLow": 16746136347,
@@ -45,7 +45,7 @@
       "cumulativePaidSource": "NARCO Trust Annual Report & Financial Statements FY2025 (W.D. Pa. 02-20198, Doc 8521, filed 4/16/2026) - $775,354,754 paid on 41,834 TDP Annual Contribution claims + $128,664,750 on Pre-Established claims liquidated by Honeywell, inception-to-date through 12/31/2025",
       "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=02-20198+8521&type=r&order_by=score+desc",
       "cumulativePaidSourceUrlType": "courtlistener-search",
-      "cumulativePaidSourceUrlNote": "CourtListener search for W.D. Pa. 02-20198 Doc 8521 — returns docket entries; use to locate the filed annual report",
+      "cumulativePaidSourceUrlNote": "CourtListener search for W.D. Pa. 02-20198 Doc 8521 \u2014 returns docket entries; use to locate the filed annual report",
       "established": 2013,
       "company": "North American Refractories Company",
       "administrator": "DCPF",
@@ -92,7 +92,7 @@
       "cumulativePaidSource": "Manville PI Settlement Trust, Financial Statements for period ending 3/31/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4479, filed 4/27/2026) - cumulative payments on 1,036,966 liquidated claims since consummation 11/28/1988",
       "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=manville+4479&type=r&order_by=score+desc",
       "cumulativePaidSourceUrlType": "courtlistener-search",
-      "cumulativePaidSourceUrlNote": "CourtListener search for S.D.N.Y. Doc 4479 — returns docket entries; use to locate the filed quarterly report",
+      "cumulativePaidSourceUrlNote": "CourtListener search for S.D.N.Y. Doc 4479 \u2014 returns docket entries; use to locate the filed quarterly report",
       "established": 1988,
       "company": "Johns-Manville Corporation",
       "administrator": "Manville Trust (self-administered)",
@@ -227,7 +227,7 @@
       "cumulativePaidSource": "API, Inc. Asbestos Settlement Trust FY2025 Annual Report of the Trustee (Bankr. D. Minn. 05-30073-GFK, filed 4/29/2026) - cumulative claims paid to date $93.99M through 12/31/2025",
       "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=05-30073+API+asbestos&type=r&order_by=score+desc",
       "cumulativePaidSourceUrlType": "courtlistener-search",
-      "cumulativePaidSourceUrlNote": "CourtListener search for D. Minn. 05-30073 — returns docket entries; use to locate the filed annual report",
+      "cumulativePaidSourceUrlNote": "CourtListener search for D. Minn. 05-30073 \u2014 returns docket entries; use to locate the filed annual report",
       "established": 2011,
       "company": "API, Inc.",
       "administrator": "DCPF",
@@ -277,7 +277,7 @@
       "cumulativePaidSource": null,
       "established": 2016,
       "website": "https://www.pccasbestostrust.com",
-      "paymentPercentageSource": "pccasbestostrust.com — homepage current payment percentage statement: \"The current payment percentage for PCC is 19% of the scheduled value for Expedited Review and 19% of the gross settlement value for Individual Review.\"",
+      "paymentPercentageSource": "pccasbestostrust.com \u2014 homepage current payment percentage statement: \"The current payment percentage for PCC is 19% of the scheduled value for Expedited Review and 19% of the gross settlement value for Individual Review.\"",
       "paymentPercentageSourceUrl": "https://www.pccasbestostrust.com",
       "company": "Pittsburgh Corning Corporation",
       "administrator": "DCPF",
@@ -287,9 +287,9 @@
       "direction": "down",
       "reportingFrequency": "annual",
       "scheduledValues": {
-        "source": "PCC TDP §5.3(c), As Filed (WAF-bypass verified 2026-08-02 by Cleo)",
-        "rateSource": "pccasbestostrust.com homepage (19% stated for both ER and IR; TDP §4.2 rate field is a placeholder — never use PDF for rate)",
-        "rateNote": "Level I (Other Asbestos Disease) pays full $400 Cash Discount Payment per §4.3 — exempt from Payment Percentage. Do NOT multiply by 19%.",
+        "source": "PCC TDP \u00a75.3(c), As Filed (WAF-bypass verified 2026-08-02 by Cleo)",
+        "rateSource": "pccasbestostrust.com homepage (19% stated for both ER and IR; TDP \u00a74.2 rate field is a placeholder \u2014 never use PDF for rate)",
+        "rateNote": "Level I (Other Asbestos Disease) pays full $400 Cash Discount Payment per \u00a74.3 \u2014 exempt from Payment Percentage. Do NOT multiply by 19%.",
         "levels": [
           {
             "level": "VIII",
@@ -317,7 +317,7 @@
             "atCurrentPct": null,
             "maxAtCurrentPct": 9500,
             "erEligible": false,
-            "note": "IR only — no ER scheduled value"
+            "note": "IR only \u2014 no ER scheduled value"
           },
           {
             "level": "V",
@@ -363,7 +363,7 @@
             "atCurrentPct": 400,
             "maxAtCurrentPct": null,
             "erEligible": true,
-            "note": "Cash Discount Payment per §4.3 — exempt from Payment Percentage; pays full $400"
+            "note": "Cash Discount Payment per \u00a74.3 \u2014 exempt from Payment Percentage; pays full $400"
           }
         ]
       }
@@ -1017,6 +1017,94 @@
   ],
   "changes": [
     {
+      "date": "2026-08-03",
+      "type": "future_trust",
+      "trust": "Uniroyal Legacy Unit",
+      "detail": "Legacy unit of defunct tire maker Uniroyal filed for Chapter 11 protection in New Jersey on 7/31/2026 to address 35,000 asbestos injury claims. Prepackaged plan proposed; trust not yet established.",
+      "source": "Law360 bankruptcy reporting, 7/31/2026",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "governance",
+      "trust": "system-wide",
+      "detail": "Delaware Supreme Court ruled 7/31/2026 that Johnson & Johnson, Dow Chemical and other asbestos defendants cannot use an equitable bill of discovery to stop bankruptcy trusts from deleting decades of asbestos claims records. Reverses Chancery Court ruling.",
+      "source": "Law360, Del. Supreme Court ruling 7/31/2026",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "Babcock & Wilcox",
+      "detail": "Payment percentage remains 4.3% as of 8/3/2026 (trust website). TAC/FCR consent for the 6/30/2026 reconsideration still pending; no true-up announced.",
+      "source": "bwasbestostrust.com",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "United States Gypsum (USG)",
+      "detail": "Payment percentage remains 10.0% as of 8/3/2026 (trust website). Reconsideration notice issued 5/7/2026; no further cut implemented since 6/30/2026 reduction from 11.0%.",
+      "source": "usgasbestostrust.com",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "Maremont",
+      "detail": "Payment percentage remains 28.4% as of 8/3/2026. TDP Section 4.3 reconsideration announced 4/7/2026 still pending; no outcome or change implemented.",
+      "source": "maremont.mfrclaims.com",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "Celotex",
+      "detail": "Deferral Period remains in effect as of 8/3/2026. Payment percentage remains 7%. Trust website indicates no substantive changes since deferral began 1/1/2025.",
+      "source": "celotextrust.com (via search index)",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "Georgia-Pacific / Bestwall",
+      "detail": "No new Chapter 11 filing for GP itself as of 8/3/2026. Bestwall remains in Chapter 11. U.S. Supreme Court denied certiorari 6/1/2026 on the Texas Two-Step challenge; Fourth Circuit ruling allowing Bestwall to stay in Chapter 11 stands.",
+      "source": "Law360, SCOTUS docket 6/1/2026",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "Cross-Trust Audit Program",
+      "detail": "No public denials or clawbacks reported as of 8/3/2026. Program launched 12/10/2025 across DCPF-administered trusts; first audit results not yet publicly disclosed.",
+      "source": "trust website monitoring",
+      "confidence": "secondary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "Trane / Aldrich Pump",
+      "detail": "No new updates on August 2026 estimation hearing as of 8/3/2026. The $545M settlement framework (2021) remains the operative plan; hearing schedule not located in public sources.",
+      "source": "public docket monitoring",
+      "confidence": "secondary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "DBMP / CertainTeed",
+      "detail": "No new updates on 2026 estimation trial as of 8/3/2026. Trial status not located in public sources; may require PACER pull for current docket.",
+      "source": "public docket monitoring",
+      "confidence": "secondary"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "verification",
+      "trust": "TDP Section 5.5 Amendments",
+      "detail": "No evidence of Section 5.5-style eligibility-tightening amendments spreading beyond DCPF-administered trusts as of 8/3/2026. Original amendments effective 11/14/2025 across DCPF trusts remain in place.",
+      "source": "trust website monitoring",
+      "confidence": "secondary"
+    },
+    {
       "date": "2026-07-28",
       "type": "data_addition",
       "trust": "Armstrong, Owens Corning/Fibreboard, USG, Celotex (non-PACER recovery sweep)",
@@ -1472,7 +1560,7 @@
         "description": "Cumulative payment figures from secondary compilations that cite the trusts' own filed annual reports (class-b); each flagged with confidence and not yet verified against the filed document. Used only where no filed figure is in hand.",
         "components": [
           {
-            "component": "Pittsburgh Corning Asbestos PI Settlement Trust — cumulative paid since inception",
+            "component": "Pittsburgh Corning Asbestos PI Settlement Trust \u2014 cumulative paid since inception",
             "amount": 3071420000,
             "asOf": "2022-12-31",
             "confidence": "high",
@@ -1480,28 +1568,28 @@
             "note": "Trust effective 2017; not yet verified against filed document (PACER queue)."
           },
           {
-            "component": "Babcock & Wilcox Asbestos PI Settlement Trust — cumulative paid since inception",
+            "component": "Babcock & Wilcox Asbestos PI Settlement Trust \u2014 cumulative paid since inception",
             "amount": 1940000000,
             "asOf": "2024-12-31",
             "confidence": "medium-high",
             "source": "Secondary citing trust's YE2024 report: '$1.94B+ paid since inception, ~403k claims paid'. Corpus: followup_dim02. Floor figure ('+' in source); FY2025 filed payments of $19,890,000 (Exhibit 1) are additional to this floor."
           },
           {
-            "component": "Celotex Asbestos Settlement Trust — post-2006 growth not captured by filed figure",
+            "component": "Celotex Asbestos Settlement Trust \u2014 post-2006 growth not captured by filed figure",
             "amount": 783146017,
             "asOf": "2021-12-31",
             "confidence": "medium-high",
             "source": "Derived: $1,358,539,635 cumulative through 2021 (asbestosclaims.law citing annual financial report; corpus dim08, Medium-High) less documented filed figure $575,393,618 @2006-12-31."
           },
           {
-            "component": "Owens Corning/Fibreboard — post-2009 growth not captured by filed figure",
+            "component": "Owens Corning/Fibreboard \u2014 post-2009 growth not captured by filed figure",
             "amount": 534090000,
             "asOf": "2022-12-31",
             "confidence": "medium",
             "source": "Derived: ~$3.0B cumulative paid (rounded, asbestosclaims.law trust database, 2022; corpus dim12) less documented filed figure $2,465,910,000 @2009-12-31. Rounded source; +/- $50M."
           },
           {
-            "component": "G-I Holdings (GAF) Asbestos PI Settlement Trust — cumulative paid since establishment",
+            "component": "G-I Holdings (GAF) Asbestos PI Settlement Trust \u2014 cumulative paid since establishment",
             "amount": 342665128,
             "asOf": "2022-12-31",
             "confidence": "high",
@@ -1520,7 +1608,7 @@
     },
     "methodology": "Bottom-up sum replacing the round $24,000,000,000 point estimate. Tier 1: filed inception-to-date figures (14 trusts, as-of dates 2006-2026). Tier 2: secondary compilations citing filed annual reports (5 components), used only where no filed figure exists, each labeled. Tier 3: explicit allowance for ~25 trusts with no public cumulative figure, with stated range ($2.5-5B). The total is non-round because every component is a traceable number; it leans conservative because several Tier 1/2 as-of dates are stale (payments since those dates are only partly captured) and the B&W figure is a stated floor.",
     "crossChecks": [
-      "GAO-11-819 (2011): ~$17.5B paid on 3.3M claims, 1988-2010 — frozen 2011 baseline; consistent with this total after ~15 further years of payouts.",
+      "GAO-11-819 (2011): ~$17.5B paid on 3.3M claims, 1988-2010 \u2014 frozen 2011 baseline; consistent with this total after ~15 further years of payouts.",
       "Bates White/Mealey's (via corpus dim12): $14.0B paid 2006-2011 alone.",
       "RAND TR872: ~$3.3B trust outlays in 2008.",
       "Research corpus final report (dim12): 'cumulative payments by 2026 are plausibly $30B+'."

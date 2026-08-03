@@ -134,3 +134,15 @@
 - [x] Add Google Search Console verification file (googled0a8bbe6c3fe6bf7.html)
 - [x] Generate sitemap.xml with all 42 trust detail URLs, reports, static pages (54 URLs total)
 - [x] robots.txt already includes Sitemap directive pointing to sitemap.xml
+- [ ] Expand global JSON-LD @graph with full LegalService entity for Danziger & De Llano, LLP
+- [ ] Add Person entities for Paul Danziger and Rod De Llano with credentials and sameAs
+- [ ] Add jsonLd field to HeadMeta for per-page structured data injection via SSR
+- [ ] Add Article schema on trust detail pages with author attribution
+- [ ] Add Article schema on report pages with author attribution
+- [ ] Move FAQPage schema from Methodology useEffect into SSR head
+- [x] Expand global @graph with LegalService (Danziger & De Llano, LLP) and Person entities (Paul Danziger, Rod De Llano)
+- [x] Add per-page Article schema on trust detail pages with author attribution to principals
+- [x] Add ScholarlyArticle schema on report pages with author attribution
+- [x] Add TechArticle schema on methodology page with author attribution
+- [x] Move FAQPage schema from client-side useEffect to SSR (crawler-visible without JS)
+- [x] Add jsonLd field to HeadMeta type for per-page structured data injection

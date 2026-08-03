@@ -19,6 +19,7 @@ export type HeadMeta = {
   locale?: string;
   noindex?: boolean;
   notFound?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
 type RO = inferRouterOutputs<AppRouter>;
@@ -102,6 +103,25 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       description: `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
       ogType: "article",
       canonicalPath: `/trusts/${slug}`,
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": `${jsonTrust.name} — Trust Fund Data`,
+        "description": `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
+        "url": `https://asbestostrusts.org/trusts/${slug}`,
+        "mainEntityOfPage": `https://asbestostrusts.org/trusts/${slug}`,
+        "author": [
+          { "@id": "https://asbestostrusts.org/#paul-danziger" },
+          { "@id": "https://asbestostrusts.org/#rod-de-llano" }
+        ],
+        "publisher": { "@id": "https://asbestostrusts.org/#org" },
+        "isPartOf": { "@id": "https://asbestostrusts.org/#dataset" },
+        "about": {
+          "@type": "GovernmentService",
+          "name": jsonTrust.name,
+          "description": "U.S. asbestos bankruptcy trust fund established under Section 524(g)"
+        }
+      },
     };
   }
 
@@ -145,6 +165,21 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       ogType: "article",
       canonicalPath: `/reports/${id}`,
       publishedTime: report.date,
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": report.title,
+        "description": report.summary ?? DESC,
+        "url": `https://asbestostrusts.org/reports/${id}`,
+        "mainEntityOfPage": `https://asbestostrusts.org/reports/${id}`,
+        "datePublished": report.date,
+        "author": [
+          { "@id": "https://asbestostrusts.org/#paul-danziger" },
+          { "@id": "https://asbestostrusts.org/#rod-de-llano" }
+        ],
+        "publisher": { "@id": "https://asbestostrusts.org/#org" },
+        "about": "U.S. asbestos bankruptcy trust funds"
+      },
     };
   }
 
@@ -154,6 +189,33 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       title: `Methodology · ${SITE_NAME}`,
       description: "How AsbestosTrusts.org collects, classifies, and cites trust fund data — source hierarchy, confidence levels, and update cadence.",
       canonicalPath: "/methodology",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Methodology — AsbestosTrusts.org",
+          "description": "How AsbestosTrusts.org collects, classifies, and cites trust fund data — source hierarchy, confidence levels, and update cadence.",
+          "url": "https://asbestostrusts.org/methodology",
+          "author": [
+            { "@id": "https://asbestostrusts.org/#paul-danziger" },
+            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
+          ],
+          "publisher": { "@id": "https://asbestostrusts.org/#org" }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "How much money is left in asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "As of July 2026, the documented remaining assets floor of the U.S. asbestos bankruptcy trust system is $16,746,136,347, based on filed figures from 42 trusts. This is a floor, not a ceiling — trusts with no retrievable filed figure are excluded. Source: AsbestosTrusts.org." } },
+            { "@type": "Question", "name": "Is the $30 billion asbestos trust fund figure accurate?", "acceptedAnswer": { "@type": "Answer", "text": "The '$30 billion available in asbestos trust funds' figure that circulates on law firm sites refers to total capitalization since 1988, not remaining assets. Remaining assets as of 2026 are approximately $16.7B (documented floor). Separately, our bottom-up estimate of cumulative payouts since 1988 is $29,981,797,653 — which is also approximately $30B. This is a coincidence of scale: the two figures measure completely different things." } },
+            { "@type": "Question", "name": "How many asbestos trust funds exist in the United States?", "acceptedAnswer": { "@type": "Answer", "text": "AsbestosTrusts.org documents 42 U.S. asbestos bankruptcy trusts established under §524(g) of the Bankruptcy Code. As of June 2025, 41 are active and 1 (Rapid-American) has been depleted and closed." } },
+            { "@type": "Question", "name": "What is a payment percentage in an asbestos trust?", "acceptedAnswer": { "@type": "Answer", "text": "A payment percentage is the fraction of the scheduled value of an approved asbestos claim that the trust actually pays. Payment percentages range from 4.3% (Babcock & Wilcox) to 100% (NARCO) as of 2026." } },
+            { "@type": "Question", "name": "How much has been paid out from asbestos trust funds?", "acceptedAnswer": { "@type": "Answer", "text": "The bottom-up estimate for cumulative payouts since 1988 is $29,981,797,653 — built from 14 filed annual reports ($19,810,476,508), 5 secondary-citing-filed components ($6,671,321,145), and a labeled residual allowance of ~$3.5B for ~25 trusts with no public figures. Source: AsbestosTrusts.org." } },
+            { "@type": "Question", "name": "Which asbestos trust fund has the most money?", "acceptedAnswer": { "@type": "Answer", "text": "As of 2026, the W.R. Grace Asbestos PI Trust has the largest documented net assets at approximately $1.995 billion. The NARCO Asbestos Trust has $1.260 billion (filed, December 2025), and Pittsburgh Corning has $1.294 billion." } },
+            { "@type": "Question", "name": "What is the source classification system used by AsbestosTrusts.org?", "acceptedAnswer": { "@type": "Answer", "text": "AsbestosTrusts.org uses three tiers: (a) Filed Court Document — drawn directly from a U.S. bankruptcy court filing; (b) Secondary Source Citing Primary — a secondary source that explicitly cites a primary filing; (c) Estimate or Inference — derived from available data or actuarial projections." } }
+          ]
+        }
+      ],
     };
   }
   if (clean === "/about") {

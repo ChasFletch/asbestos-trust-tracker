@@ -14,41 +14,29 @@
           "name": "U.S. Asbestos Bankruptcy Trust Fund Database",
           "description": "A comprehensive, primary-sourced database of all active U.S. asbestos bankruptcy trust funds, including net asset balances, payment percentages, payment history, administrator information, and court docket references. Updated weekly.",
           "url": "https://asbestostrusts.org/trusts",
-          "creator": {
-            "@type": "Organization",
-            "@id": "https://asbestostrusts.org/#org",
-            "name": "AsbestosTrusts.org",
-            "url": "https://asbestostrusts.org",
-            "funder": {
-              "@type": "LegalService",
-              "name": "Danziger & De Llano",
-              "url": "https://danzigerlaw.com"
-            }
-          },
+          "creator": { "@id": "https://asbestostrusts.org/#org" },
+          "maintainer": { "@id": "https://asbestostrusts.org/#org" },
+          "funder": { "@id": "https://asbestostrusts.org/#firm" },
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "temporalCoverage": "1988/..",
           "spatialCoverage": "United States",
-          "keywords": ["asbestos", "bankruptcy trust", "mesothelioma", "trust fund", "payment percentage", "asbestos litigation"],
+          "keywords": ["asbestos", "bankruptcy trust", "mesothelioma", "trust fund", "payment percentage", "asbestos litigation", "524(g) trust"],
+          "measurementTechnique": "Primary-source extraction from U.S. bankruptcy court filings, trust annual reports, and TDP documents",
           "distribution": {
             "@type": "DataDownload",
             "encodingFormat": "text/csv",
             "contentUrl": "https://asbestostrusts.org/api/export/trusts.csv"
           },
-          "isPartOf": {
-            "@type": "WebSite",
-            "name": "AsbestosTrusts.org",
-            "url": "https://asbestostrusts.org"
-          }
+          "isPartOf": { "@id": "https://asbestostrusts.org/#website" }
         },
         {
           "@type": "WebSite",
           "@id": "https://asbestostrusts.org/#website",
           "name": "AsbestosTrusts.org",
           "url": "https://asbestostrusts.org",
-          "description": "Independent public research platform tracking the real-time state of U.S. asbestos bankruptcy trust funds.",
-          "publisher": {
-            "@id": "https://asbestostrusts.org/#org"
-          },
+          "description": "Independent public research platform tracking the real-time state of U.S. asbestos bankruptcy trust funds. Primary-sourced from court filings.",
+          "publisher": { "@id": "https://asbestostrusts.org/#org" },
+          "sponsor": { "@id": "https://asbestostrusts.org/#firm" },
           "potentialAction": {
             "@type": "SearchAction",
             "target": "https://asbestostrusts.org/trusts?q={search_term_string}",
@@ -60,20 +48,131 @@
           "@id": "https://asbestostrusts.org/#org",
           "name": "AsbestosTrusts.org",
           "url": "https://asbestostrusts.org",
+          "description": "Independent asbestos trust fund research organization publishing primary-sourced data from U.S. bankruptcy court filings.",
           "sameAs": [
             "https://asbestosatlas.org",
             "https://wikimesothelioma.com"
           ],
-          "funder": {
-            "@type": "LegalService",
-            "name": "Danziger & De Llano",
-            "url": "https://danzigerlaw.com",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Houston",
-              "addressRegion": "TX",
-              "addressCountry": "US"
+          "foundingDate": "2025",
+          "founder": [
+            { "@id": "https://asbestostrusts.org/#paul-danziger" },
+            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
+          ],
+          "funder": { "@id": "https://asbestostrusts.org/#firm" },
+          "parentOrganization": { "@id": "https://asbestostrusts.org/#firm" },
+          "knowsAbout": [
+            "Asbestos bankruptcy trusts",
+            "Section 524(g) trusts",
+            "Mesothelioma litigation",
+            "Trust Distribution Procedures",
+            "Asbestos personal injury claims"
+          ]
+        },
+        {
+          "@type": "LegalService",
+          "@id": "https://asbestostrusts.org/#firm",
+          "name": "Danziger & De Llano, LLP",
+          "alternateName": ["Danziger & De Llano", "DanDeLl", "Dandell"],
+          "url": "https://dandell.com",
+          "sameAs": [
+            "https://www.linkedin.com/company/danziger-and-dellano",
+            "https://dandell.com",
+            "https://mesotheliomaattorney.com"
+          ],
+          "description": "Houston-based mesothelioma and asbestos litigation law firm founded in 1993. Over 30 years of experience representing asbestos exposure victims nationwide. Recovered over $2 billion for mesothelioma clients.",
+          "foundingDate": "1993",
+          "founder": [
+            { "@id": "https://asbestostrusts.org/#paul-danziger" },
+            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2200 Ross Ave, Suite 4900W",
+            "addressLocality": "Houston",
+            "addressRegion": "TX",
+            "postalCode": "77002",
+            "addressCountry": "US"
+          },
+          "areaServed": "US",
+          "priceRange": "Free consultation",
+          "knowsAbout": [
+            "Mesothelioma litigation",
+            "Asbestos exposure claims",
+            "Asbestos bankruptcy trust claims",
+            "Veterans asbestos exposure",
+            "Occupational asbestos disease"
+          ],
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "license",
+            "name": "Texas State Bar"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://asbestostrusts.org/#paul-danziger",
+          "name": "Paul Danziger",
+          "jobTitle": "Founding Partner",
+          "description": "Founding partner of Danziger & De Llano, LLP with over 30 years of experience in mesothelioma and asbestos litigation. Has recovered over $2 billion for asbestos exposure victims.",
+          "url": "https://dandell.com/lawyers/paul-danziger/",
+          "sameAs": [
+            "https://www.linkedin.com/in/paul-danziger",
+            "https://dandell.com/lawyers/paul-danziger/",
+            "https://mesotheliomaattorney.com/our-attorneys/paul-danziger/",
+            "https://www.avvo.com/attorneys/77002-tx-paul-danziger-49019.html"
+          ],
+          "worksFor": { "@id": "https://asbestostrusts.org/#firm" },
+          "affiliation": { "@id": "https://asbestostrusts.org/#org" },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Texas Tech University"
+          },
+          "knowsAbout": [
+            "Mesothelioma litigation",
+            "Asbestos trust fund claims",
+            "Asbestos bankruptcy proceedings",
+            "Veterans asbestos exposure",
+            "Occupational disease litigation"
+          ],
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "license",
+            "name": "Texas State Bar"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://asbestostrusts.org/#rod-de-llano",
+          "name": "Rod De Llano",
+          "jobTitle": "Founding Partner",
+          "description": "Co-founder of Danziger & De Llano, LLP. Princeton University graduate with over 25 years of experience representing mesothelioma and asbestos exposure victims nationwide.",
+          "url": "https://dandell.com/lawyers/rod-de-llano/",
+          "sameAs": [
+            "https://dandell.com/lawyers/rod-de-llano/",
+            "https://mesotheliomaattorney.com/attorneys/rod-de-llano/"
+          ],
+          "worksFor": { "@id": "https://asbestostrusts.org/#firm" },
+          "affiliation": { "@id": "https://asbestostrusts.org/#org" },
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "Princeton University"
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "University of Texas School of Law"
             }
+          ],
+          "knowsAbout": [
+            "Mesothelioma litigation",
+            "Asbestos trust fund claims",
+            "Asbestos personal injury law",
+            "Toxic tort litigation"
+          ],
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "license",
+            "name": "Texas State Bar"
           }
         }
       ]

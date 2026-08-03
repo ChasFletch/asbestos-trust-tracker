@@ -65,6 +65,12 @@ function buildHeadTags(head: HeadMeta, siteName: string): string {
   if (head.notFound || head.noindex) {
     tags.push(`<meta name="robots" content="noindex, follow" />`);
   }
+  if (head.jsonLd) {
+    const items = Array.isArray(head.jsonLd) && !("@context" in head.jsonLd) ? head.jsonLd : [head.jsonLd];
+    for (const item of items) {
+      tags.push(`<script type="application/ld+json">${JSON.stringify(item)}</script>`);
+    }
+  }
   return tags.join("\n");
 }
 

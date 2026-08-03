@@ -3,11 +3,16 @@ import { trpc } from "@/lib/trpc";
 import { useState } from "react";
 import { SourceDocModal } from "@/components/SourceDocModal";
 import {
+  Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
+  BreadcrumbPage, BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
 import {
-  ArrowLeft, ExternalLink, TrendingDown, TrendingUp, Minus, AlertTriangle,
+  ExternalLink, TrendingDown, TrendingUp, Minus, AlertTriangle,
   Calendar, DollarSign, FileText, Activity,
+  Home, Database, ShieldCheck, ArrowLeft,
 } from "lucide-react";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -176,15 +181,28 @@ export default function TrustDetail() {
   return (
     <>
     <div className="max-w-4xl mx-auto px-4 py-10">
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-        <Link href="/trusts" className="hover:text-foreground transition-colors flex items-center gap-1">
-          <ArrowLeft size={14} />
-          Trust Data
-        </Link>
-        <span>/</span>
-        <span className="text-foreground font-medium">{trust.shortName}</span>
-      </div>
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/"><Home size={14} className="inline -mt-0.5" /> Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/trusts"><Database size={14} className="inline -mt-0.5" /> Trust Data</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{trust.shortName}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
 
       {/* Header */}
       <div className="mb-8">
@@ -205,6 +223,21 @@ export default function TrustDetail() {
             <ExternalLink size={10} />
           </a>
         )}
+        {/* Reviewed by badge */}
+        <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
+          <ShieldCheck size={14} className="text-emerald-600 shrink-0" />
+          <span>
+            Reviewed by{" "}
+            <a href="https://dandell.com/lawyers/paul-danziger/" target="_blank" rel="noopener noreferrer"
+              className="font-medium text-foreground hover:text-primary transition-colors">Paul Danziger</a>
+            {" "}and{" "}
+            <a href="https://dandell.com/lawyers/rod-de-llano/" target="_blank" rel="noopener noreferrer"
+              className="font-medium text-foreground hover:text-primary transition-colors">Rod De Llano</a>
+            {" "}&middot;{" "}
+            <a href="https://dandell.com" target="_blank" rel="noopener noreferrer"
+              className="hover:text-primary transition-colors">Danziger &amp; De Llano, LLP</a>
+          </span>
+        </div>
       </div>
 
       {/* Key metrics grid */}

@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "wouter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ArrowLeft, ExternalLink, Calendar, FileText } from "lucide-react";
+import { ArrowLeft, ExternalLink, Calendar, FileText, Home, BookOpen, ShieldCheck } from "lucide-react";
+import {
+  Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
+  BreadcrumbPage, BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface ReportMeta {
   id: string;
@@ -105,14 +109,28 @@ export default function ReportDetail() {
 
   return (
     <div className="container py-8 max-w-3xl">
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-6">
-        <Link href="/reports" className="hover:text-foreground transition-colors flex items-center gap-1">
-          <ArrowLeft size={12} /> Reports
-        </Link>
-        <span>/</span>
-        <span className="font-mono text-primary/70">{id}</span>
-      </div>
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/"><Home size={14} className="inline -mt-0.5" /> Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/reports"><BookOpen size={14} className="inline -mt-0.5" /> Reports</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{meta?.title ?? id}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
 
       {/* Header */}
       <div className="mb-8 pb-6 border-b border-border/40">
@@ -149,6 +167,11 @@ export default function ReportDetail() {
             View raw on GitHub <ExternalLink size={10} />
           </a>
         )}
+        {/* Reviewed by badge */}
+        <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400">
+          <ShieldCheck size={14} className="shrink-0" />
+          <span>Reviewed by Paul Danziger and Rod De Llano · Danziger &amp; De Llano, LLP</span>
+        </div>
       </div>
 
       {/* Markdown body */}

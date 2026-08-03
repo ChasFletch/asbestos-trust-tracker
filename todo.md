@@ -131,3 +131,4 @@
 - [x] Fix hydration mismatch: add timeZone:"UTC" to all date formatting in Home.tsx and News.tsx
 - [x] Remove debug logging from entry-server.tsx
 - [x] Clean up test-ssr-query.mjs
+- [x] Add Google Search Console verification file (googled0a8bbe6c3fe6bf7.html)

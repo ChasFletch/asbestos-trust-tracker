@@ -115,7 +115,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           { "@id": "https://asbestostrusts.org/#rod-de-llano" }
         ],
         "publisher": { "@id": "https://asbestostrusts.org/#org" },
-        "isPartOf": { "@id": "https://asbestostrusts.org/#dataset" },
+        "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
         "about": {
           "@type": "GovernmentService",
           "name": jsonTrust.name,

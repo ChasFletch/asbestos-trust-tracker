@@ -103,25 +103,36 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       description: `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
       ogType: "article",
       canonicalPath: `/trusts/${slug}`,
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": `${jsonTrust.name} — Trust Fund Data`,
-        "description": `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
-        "url": `https://asbestostrusts.org/trusts/${slug}`,
-        "mainEntityOfPage": `https://asbestostrusts.org/trusts/${slug}`,
-        "author": [
-          { "@id": "https://asbestostrusts.org/#paul-danziger" },
-          { "@id": "https://asbestostrusts.org/#rod-de-llano" }
-        ],
-        "publisher": { "@id": "https://asbestostrusts.org/#org" },
-        "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
-        "about": {
-          "@type": "GovernmentService",
-          "name": jsonTrust.name,
-          "description": "U.S. asbestos bankruptcy trust fund established under Section 524(g)"
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": `${jsonTrust.name} — Trust Fund Data`,
+          "description": `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
+          "url": `https://asbestostrusts.org/trusts/${slug}`,
+          "mainEntityOfPage": `https://asbestostrusts.org/trusts/${slug}`,
+          "author": [
+            { "@id": "https://asbestostrusts.org/#paul-danziger" },
+            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
+          ],
+          "publisher": { "@id": "https://asbestostrusts.org/#org" },
+          "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
+          "about": {
+            "@type": "GovernmentService",
+            "name": jsonTrust.name,
+            "description": "U.S. asbestos bankruptcy trust fund established under Section 524(g)"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Trust Data", "item": "https://asbestostrusts.org/trusts" },
+            { "@type": "ListItem", "position": 3, "name": jsonTrust.shortName ?? jsonTrust.name, "item": `https://asbestostrusts.org/trusts/${slug}` }
+          ]
         }
-      },
+      ],
     };
   }
 
@@ -165,21 +176,32 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       ogType: "article",
       canonicalPath: `/reports/${id}`,
       publishedTime: report.date,
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "ScholarlyArticle",
-        "headline": report.title,
-        "description": report.summary ?? DESC,
-        "url": `https://asbestostrusts.org/reports/${id}`,
-        "mainEntityOfPage": `https://asbestostrusts.org/reports/${id}`,
-        "datePublished": report.date,
-        "author": [
-          { "@id": "https://asbestostrusts.org/#paul-danziger" },
-          { "@id": "https://asbestostrusts.org/#rod-de-llano" }
-        ],
-        "publisher": { "@id": "https://asbestostrusts.org/#org" },
-        "about": "U.S. asbestos bankruptcy trust funds"
-      },
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "ScholarlyArticle",
+          "headline": report.title,
+          "description": report.summary ?? DESC,
+          "url": `https://asbestostrusts.org/reports/${id}`,
+          "mainEntityOfPage": `https://asbestostrusts.org/reports/${id}`,
+          "datePublished": report.date,
+          "author": [
+            { "@id": "https://asbestostrusts.org/#paul-danziger" },
+            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
+          ],
+          "publisher": { "@id": "https://asbestostrusts.org/#org" },
+          "about": "U.S. asbestos bankruptcy trust funds"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Reports", "item": "https://asbestostrusts.org/reports" },
+            { "@type": "ListItem", "position": 3, "name": report.title, "item": `https://asbestostrusts.org/reports/${id}` }
+          ]
+        }
+      ],
     };
   }
 

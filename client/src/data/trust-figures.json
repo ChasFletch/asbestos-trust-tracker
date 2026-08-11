@@ -742,9 +742,9 @@
       "netAssets": 208079047,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": null,
+      "paymentPercentage": 6.0,
       "status": "active",
-      "confidence": "secondary",
+      "confidence": "filed",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
@@ -755,7 +755,18 @@
       "docket": "05-10220",
       "paymentPctEffective": "2026-06-01",
       "direction": "up",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPercentageSource": "APG Asbestos Trust payment percentage notice",
+      "paymentPctConfidence": "filed",
+      "note": "Raised from 5.3% to 6.0% effective June 2026 (trust notice). One of the few trusts to increase its payment percentage in 2025-2026.",
+      "changes": [
+        {
+          "date": "2026-06-01",
+          "type": "payment_change",
+          "detail": "Payment percentage raised from 5.3% to 6.0%",
+          "source": "APG Asbestos Trust payment percentage notice"
+        }
+      ]
     },
     {
       "name": "NGC Bodily Injury Trust (National Gypsum)",

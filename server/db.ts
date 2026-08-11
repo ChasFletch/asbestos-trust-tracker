@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, or, like } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { aggregateSnapshots, InsertUser, newsItems, paymentHistory, trusts, users } from "../drizzle/schema";
 import { ENV } from "./_core/env";
@@ -113,6 +113,24 @@ export async function getVisibleNews(limit = 20, category?: string) {
   if (category) conditions.push(eq(newsItems.category, category as any));
   return db.select().from(newsItems)
     .where(conditions.length === 1 ? conditions[0] : and(...conditions))
+    .orderBy(desc(newsItems.publishedAt))
+    .limit(limit);
+}
+
+export async function getNewsByTrust(trustId: string, trustName: string, limit = 5) {
+  const db = await getDb();
+  if (!db) return [];
+  // Match by trustId or by trust name appearing in the title/summary
+  const nameWords = trustName.replace(/\(.*?\)/g, "").trim().split(/\s+/).filter(w => w.length > 3);
+  const conditions = [
+    eq(newsItems.isVisible, true),
+    or(
+      eq(newsItems.trustId, trustId),
+      ...nameWords.slice(0, 3).map(w => like(newsItems.title, `%${w}%`))
+    )!,
+  ];
+  return db.select().from(newsItems)
+    .where(and(...conditions))
     .orderBy(desc(newsItems.publishedAt))
     .limit(limit);
 }

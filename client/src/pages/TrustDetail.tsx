@@ -13,7 +13,7 @@ import {
 import {
   ExternalLink, TrendingDown, TrendingUp, Minus, AlertTriangle,
   Calendar, DollarSign, FileText, Activity,
-  Home, Database, ArrowLeft, Info,
+  Home, Database, ArrowLeft, Info, Newspaper,
 } from "lucide-react";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -72,6 +72,57 @@ function changeTypeLabel(type: string) {
   );
 }
 
+// ── Related News ─────────────────────────────────────────────────────────────
+function RelatedNews({ trustName, slug }: { trustName: string; slug: string }) {
+  const { data: news, isLoading } = trpc.news.byTrust.useQuery(
+    { trustId: slug, trustName, limit: 5 },
+    { enabled: !!slug && !!trustName }
+  );
+
+  if (isLoading || !news || news.length === 0) return null;
+
+  return (
+    <div className="bg-card border border-border/50 rounded-lg p-5 mb-6">
+      <div className="flex items-center gap-2 mb-3">
+        <Newspaper size={14} className="text-muted-foreground" />
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          Related News
+        </h2>
+      </div>
+      <div className="space-y-3">
+        {news.map((item: any) => (
+          <div key={item.id} className="flex items-start gap-3 group">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-2 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <div className="text-sm text-foreground group-hover:text-primary transition-colors leading-snug">
+                {item.url ? (
+                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    {item.title}
+                  </a>
+                ) : (
+                  item.title
+                )}
+              </div>
+              <div className="flex items-center gap-2 mt-0.5">
+                {item.publishedAt && (
+                  <span className="text-xs text-muted-foreground/60">
+                    {new Date(item.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+                  </span>
+                )}
+                {item.category && (
+                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-medium">
+                    {item.category.replace(/_/g, " ")}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function TrustDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -99,6 +150,7 @@ export default function TrustDetail() {
         netAssets: jsonTrust.netAssets,
         assetsAsOf: jsonTrust.assetsAsOf,
         assetsBasis: jsonTrust.assetsBasis,
+        dataAsOf: (jsonTrust as any)?.dataAsOf ?? null,
         paymentPercentage: jsonTrust.paymentPercentage,
         status: jsonTrust.status,
         confidence: jsonTrust.confidence,
@@ -290,7 +342,15 @@ export default function TrustDetail() {
             <div className="text-xs text-muted-foreground/60 mt-0.5">of scheduled value</div>
           )}
           {(trust as any).paymentPctEffective && (
-            <div className="text-xs text-muted-foreground/60 mt-0.5">effective {(trust as any).paymentPctEffective}</div>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground/60 mt-0.5">
+              <Calendar size={10} className="shrink-0" />
+              <span>effective {new Date((trust as any).paymentPctEffective + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</span>
+            </div>
+          )}
+          {(trust as any).dataAsOf && (
+            <div className="text-[10px] text-muted-foreground/40 mt-1">
+              Last verified: {new Date((trust as any).dataAsOf + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+            </div>
           )}
           {(trust as any).paymentPercentageSource && (
             <div className="text-xs text-muted-foreground/50 mt-1.5 leading-relaxed border-t border-border/30 pt-1.5">
@@ -522,6 +582,10 @@ export default function TrustDetail() {
           </div>
         )}
       </div>
+
+      {/* Footer nav */}
+      {/* Related News */}
+      <RelatedNews trustName={trust.name} slug={slug ?? ""} />
 
       {/* Footer nav */}
       <div className="flex items-center justify-between pt-4 border-t border-border/30">

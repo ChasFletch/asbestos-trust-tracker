@@ -1,6 +1,7 @@
 import { trpc } from "@/lib/trpc";
 import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
+import { LegalTermText } from "@/components/LegalTermTooltip";
 
 interface NewsDraft {
   filename: string;
@@ -130,7 +131,9 @@ export default function News() {
                   </div>
                   <h3 className="text-sm font-semibold text-foreground leading-snug mb-1">{item.title}</h3>
                   {item.summary && (
-                    <p className="text-xs text-muted-foreground leading-relaxed">{item.summary}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      <LegalTermText text={item.summary} />
+                    </p>
                   )}
                   {item.url && (
                     <a

@@ -11,6 +11,7 @@ import {
   getAllPaymentHistory,
   getAllTrusts,
   getVisibleNews,
+  getNewsByTrust,
   markTrustStale,
   updateAggregate,
   updateTrust,
@@ -253,6 +254,7 @@ export const appRouter = router({
             netAssets: (trust.netAssets ?? null) as number | null,
             assetsAsOf: (trust.assetsAsOf ?? null) as string | null,
             assetsBasis: (trust.assetsBasis ?? null) as string | null,
+            dataAsOf: (data.asOf ?? null) as string | null,
           paymentPercentage: (trust.paymentPercentage ?? null) as number | null,
           status: (trust.status ?? 'active') as string,
           confidence: (trust.confidence ?? 'c') as string,
@@ -322,6 +324,15 @@ export const appRouter = router({
       }).optional())
       .query(async ({ input }) => {
         return getVisibleNews(input?.limit ?? 20, input?.category);
+      }),
+    byTrust: publicProcedure
+      .input(z.object({
+        trustId: z.string(),
+        trustName: z.string(),
+        limit: z.number().min(1).max(10).default(5),
+      }))
+      .query(async ({ input }) => {
+        return getNewsByTrust(input.trustId, input.trustName, input.limit);
       }),
   }),
 

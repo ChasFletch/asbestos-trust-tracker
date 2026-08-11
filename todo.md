@@ -152,3 +152,8 @@
 - [x] Add breadcrumb navigation on all report detail pages (Home → Reports → {title})
 - [x] Add clickable credentials modal to "Reviewed by" badge (opens modal with Paul Danziger and Rod De Llano professional credentials)
 - [x] Add PACER unavailability indicator on trust detail pages where documents are blocked (PCC, Celotex, USG, Armstrong, OC/FB — triggered by PACER-only/CM/ECF keywords in note field; B&W correctly excluded since its pull succeeded)
+- [x] Add PACER unavailability indicator on trust detail pages where documents are blocked (PCC, Celotex, USG, Armstrong, OC/FB — triggered by PACER-only/CM/ECF keywords in note field; B&W correctly excluded since its pull succeeded)
+- [ ] Add "Last Updated" timestamp next to payment percentage on trust detail pages
+- [x] Add "Last Updated" timestamp next to payment percentage on trust detail pages
+- [x] Add "Related News" section on trust detail pages showing recent articles for that trust
+- [x] Add hover tooltip for legal terms (e.g. "524(g) filing") in news posts

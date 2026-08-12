@@ -215,6 +215,9 @@ export default function Trusts() {
   const activeTrusts = merged.filter(t => t.status !== "closed");
   const filedCount = merged.filter(t => t.confidence === "filed").length;
   const totalAssets = merged.reduce((s, t) => s + (t.netAssets ?? 0), 0);
+  const deferralCount = merged.filter(t => t.status === "active_deferral").length;
+  const closedCount = merged.filter(t => t.status === "closed").length;
+  const activeCount = merged.length - closedCount;
 
   return (
     <>
@@ -243,14 +246,16 @@ export default function Trusts() {
       </div>
 
       {/* Summary stats */}
-      <div className="grid grid-cols-3 gap-3 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
         {[
-          { label: "Active Trusts", value: activeTrusts.length.toString() },
+          { label: "Active Trusts", value: activeCount.toString(), accent: "text-emerald-600" },
+          { label: "Deferral", value: deferralCount.toString(), accent: "text-amber-600" },
+          { label: "Closed", value: closedCount.toString(), accent: "text-red-600" },
           { label: "Filed-Source Records", value: filedCount.toString() },
           { label: "Documented Assets", value: totalAssets >= 1e9 ? `$${(totalAssets / 1e9).toFixed(2)}B` : `$${(totalAssets / 1e6).toFixed(0)}M` },
-        ].map(({ label, value }) => (
+        ].map(({ label, value, accent }) => (
           <div key={label} className="rounded border border-border/40 bg-card/40 px-4 py-3 text-center">
-            <div className="text-lg font-mono font-bold text-foreground">{value}</div>
+            <div className={`text-lg font-mono font-bold ${accent ?? "text-foreground"}`}>{value}</div>
             <div className="text-xs text-muted-foreground mt-0.5">{label}</div>
           </div>
         ))}

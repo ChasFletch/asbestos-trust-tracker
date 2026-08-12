@@ -30,7 +30,6 @@ function Router() {
   <Route path="/corrections" component={Corrections} />
           <Route path="/reports" component={Reports} />
           <Route path="/reports/:id" component={ReportDetail} />
-      <Route path="/embed" component={EmbedLanding} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -76,4 +75,3 @@ function App() {
 }
 
 export default App;
-import EmbedLanding from "./pages/EmbedLanding";

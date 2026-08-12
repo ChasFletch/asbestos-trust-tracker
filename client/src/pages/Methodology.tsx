@@ -151,19 +151,19 @@ export default function Methodology() {
             {[
               {
                 tier: "Tier 1 — Filed figures",
-                amount: "$19,810,476,508",
-                count: "14 trusts",
+                amount: "$15,132,028,204",
+                count: "11 trusts",
                 confidence: "a",
                 color: "oklch(0.72 0.18 150)",
-                detail: "Inception-to-date claims payments read directly from filed annual reports or court documents. As-of dates range 2006–2026. The four historical figures (Owens Corning/Fibreboard 2009, Armstrong 2014, USG 2008, Celotex 2006) are floors — those trusts kept paying after their last publicly retrievable report.",
+                detail: "Inception-to-date claims payments read directly from filed annual reports or court documents. As-of dates range 2006–2026. The one historical figure still in this tier (Celotex 2006) is a floor — that trust kept paying after its last publicly retrievable report. On 2026-08-12, Owens Corning/Fibreboard, Armstrong, and USG were re-tiered to Tier 2 after a provenance audit found their asset records rested on secondary compilations; their payout figures moved with them pending filed FY2025 reports.",
               },
               {
                 tier: "Tier 2 — Secondary citing filed",
-                amount: "$6,671,321,145",
-                count: "5 components",
+                amount: "$11,349,769,449",
+                count: "8 components",
                 confidence: "b",
                 color: "oklch(0.72 0.18 45)",
-                detail: "Used only where no filed figure is in hand. Each comes from a secondary compilation that cites the trust's own filed annual report. Components: Pittsburgh Corning $3,071,420,000 (2022); Babcock & Wilcox $1,940,000,000 floor (2024); Celotex post-2006 growth $783,146,017 (2021); OC/FB post-2009 growth $534,090,000 (2022); G-I Holdings (GAF) $342,665,128 (2022). Every Tier 2 figure graduates to Tier 1 when its PACER pull lands.",
+                detail: "Used only where no filed figure is in hand. Each comes from a secondary compilation that cites the trust's own filed annual report, or was re-tiered here by the 2026-08-12 provenance audit. Components: Owens Corning/Fibreboard $2,465,910,000 (2009, re-tiered); Armstrong $1,600,408,304 (2014, re-tiered); USG $612,130,000 (2008, re-tiered); Pittsburgh Corning $3,071,420,000 (2022); Babcock & Wilcox $1,940,000,000 floor (2024); Celotex post-2006 growth $783,146,017 (2021); OC/FB post-2009 growth $534,090,000 (2022); G-I Holdings (GAF) $342,665,128 (2022). Every Tier 2 figure graduates to Tier 1 when its PACER pull lands.",
               },
               {
                 tier: "Tier 3 — Estimated residual",

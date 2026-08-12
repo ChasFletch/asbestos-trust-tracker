@@ -106,15 +106,15 @@ export default function Home() {
   const { data: allTrustFigures } = trpc.trustFigures.allTrusts.useQuery();
   const [showEmbedModal, setShowEmbedModal] = useState(false);
 
-  const remaining = agg?.remainingLow ?? 17041946126;
-  const remainingLow = agg?.remainingLow ?? 17041946126;
-  const remainingHigh = agg?.remainingHigh ?? 22500000000;
+  const remaining = agg?.remainingLow ?? 15967208224;
+  const remainingLow = agg?.remainingLow ?? 15967208224;
+  const remainingHigh = agg?.remainingHigh ?? 21721071877;
   const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 29981797653;
-  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 19810476508;
-  const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 4189523492;
+  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 15132028204;
+  const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 8867971796;
   const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 14;
-  const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 19810476508;
-  const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 6671321145;
+  const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 15132028204;
+  const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 11349769449;
   const paidOutBottomUpResidual = (agg as any)?.paidOutBottomUpResidual ?? 3500000000;
 
   const lastUpdated = figures?.asOf ?? "2026-07-27";

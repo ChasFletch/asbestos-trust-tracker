@@ -328,7 +328,7 @@ interface DebtClockBillboardProps {
   paidOutBottomUpResidual?: number;
 }
 
-export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 19810476508, paidOutEstimatedRemainder = 4189523492, trustsWithCumulativePaidFiled = 14, documentedTrusts = [], paidOutBottomUpFiled = 19810476508, paidOutBottomUpSecondary = 6671321145, paidOutBottomUpResidual = 3500000000 }: DebtClockBillboardProps) {
+export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 15132028204, paidOutEstimatedRemainder = 8867971796, trustsWithCumulativePaidFiled = 11, documentedTrusts = [], paidOutBottomUpFiled = 15132028204, paidOutBottomUpSecondary = 11349769449, paidOutBottomUpResidual = 3500000000 }: DebtClockBillboardProps) {
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
@@ -386,7 +386,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
         </tbody>
       </table>
       <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-        Documented floor: $16.75B (13 filed-asset trusts). Full system estimate $16.7B–$22.5B includes modeled figures for trusts without filed balances.
+        Documented floor: $15.97B (40 trusts with sourced balances). Full system estimate $15.97B–$21.7B includes modeled figures for trusts without filed balances.
       </div>
       <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
         onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}
@@ -619,7 +619,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                sublabel="Derived estimate — see methodology"
                panelTooltip={
                  <><strong style={{display:"block",color:"#f4d07a",marginBottom:"0.35rem",fontSize:"0.75rem",letterSpacing:"0.05em",textTransform:"uppercase"}}>Cumulative Payouts Since 1988</strong>
-                 The total amount paid to asbestos victims by all U.S. §524(g) trusts from inception through the most recent filed reports. Built bottom-up from three tiers: <em>Tier 1</em> — $19.81B filed directly in court documents (14 trusts); <em>Tier 2</em> — $6.67B from secondary sources citing filed figures (5 trusts); <em>Tier 3</em> — ~$3.5B estimated residual for the remaining ~25 trusts with no public cumulative figure. The old "$24B" figure was a 2011-era top-down estimate; this figure reflects a 2025–2026 bottom-up rebuild.</>
+                 The total amount paid to asbestos victims by all U.S. §524(g) trusts from inception through the most recent filed reports. Built bottom-up from three tiers: <em>Tier 1</em> — $15.13B filed directly in court documents (11 trusts); <em>Tier 2</em> — $11.35B from secondary sources citing filed figures (8 components); <em>Tier 3</em> — ~$3.5B estimated residual for the remaining ~25 trusts with no public cumulative figure. The old "$24B" figure was a 2011-era top-down estimate; this figure reflects a 2025–2026 bottom-up rebuild.</>
                }
               tooltip={
                <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
@@ -757,7 +757,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                    </tbody>
                  </table>
                  <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-                  Bottom-up estimate: ${paidOutBottomUpFiled.toLocaleString()} filed (14 trusts) + ${paidOutBottomUpSecondary.toLocaleString()} secondary-citing-filed (5 trusts) + ~${(paidOutBottomUpResidual / 1e9).toFixed(1)}B estimated residual (~25 trusts). The old $24B round figure was a top-down estimate anchored on 2011 data; this bottom-up rebuild produces ${((paidOutBottomUpFiled + paidOutBottomUpSecondary + paidOutBottomUpResidual) / 1e9).toFixed(1)}B. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
+                  Bottom-up estimate: ${paidOutBottomUpFiled.toLocaleString()} filed (11 trusts) + ${paidOutBottomUpSecondary.toLocaleString()} secondary-citing-filed (8 components) + ~${(paidOutBottomUpResidual / 1e9).toFixed(1)}B estimated residual (~25 trusts). The old $24B round figure was a top-down estimate anchored on 2011 data; this bottom-up rebuild produces ${((paidOutBottomUpFiled + paidOutBottomUpSecondary + paidOutBottomUpResidual) / 1e9).toFixed(1)}B. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
                  </div>
                    <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
                      onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}

@@ -368,6 +368,38 @@ export default function TrustDetail() {
           )}
         </div>
 
+        {Array.isArray((trust as any).subAccounts) && (trust as any).subAccounts.length > 0 && (
+          <div className="bg-card border border-border/50 rounded-lg p-4 col-span-2 sm:col-span-4">
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-2">
+              <Activity size={12} />Sub-Account Payment Percentages
+              <span className="ml-auto text-[10px] italic text-muted-foreground/60">separate asset pools — never combined or averaged</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {(trust as any).subAccounts.map((sa: any) => (
+                <div key={sa.name} className="border border-border/30 rounded p-2.5">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="text-xs font-medium text-foreground">{sa.name}</span>
+                    <span className="text-sm font-mono font-bold text-foreground">
+                      {sa.value !== null && sa.value !== undefined ? `${sa.value}%` : "not set"}
+                    </span>
+                  </div>
+                  {sa.effective && (
+                    <div className="text-[11px] text-muted-foreground/60 mt-0.5">effective {sa.effective}</div>
+                  )}
+                  {sa.note && (
+                    <div className="text-[11px] text-muted-foreground/50 mt-1 italic leading-relaxed">{sa.note}</div>
+                  )}
+                  {sa.url && (
+                    <a href={sa.url} target="_blank" rel="noopener noreferrer" className="text-[11px] text-amber-600/70 hover:text-amber-600 underline decoration-dotted mt-1 inline-block transition-colors">
+                      source notice ↗
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="bg-card border border-border/50 rounded-lg p-4">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <Calendar size={12} />Established

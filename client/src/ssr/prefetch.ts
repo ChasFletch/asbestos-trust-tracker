@@ -20,6 +20,7 @@ export type HeadMeta = {
   noindex?: boolean;
   notFound?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  keywords?: string;
 };
 
 type RO = inferRouterOutputs<AppRouter>;
@@ -64,6 +65,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       description: DESC,
       ogType: "website",
       canonicalPath: "/",
+      keywords: "asbestos trust fund, payment percentage, mesothelioma compensation, bankruptcy trust, trust fund assets, asbestos claims, trust fund payout",
     };
   }
 

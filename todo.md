@@ -163,3 +163,6 @@
 - [x] Embeddable clock widget: "Powered by AsbestosTrusts.org" attribution bar with dofollow backlink
 - [x] Embeddable clock widget: embed code modal with size selector, live preview, and copy-to-clipboard button
 - [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock
+- [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock
+- [ ] Dedicated /embed landing page with widget examples on different website types
+- [x] Dedicated /embed landing page with widget examples on different website types

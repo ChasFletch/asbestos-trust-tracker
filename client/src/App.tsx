@@ -30,6 +30,7 @@ function Router() {
   <Route path="/corrections" component={Corrections} />
           <Route path="/reports" component={Reports} />
           <Route path="/reports/:id" component={ReportDetail} />
+      <Route path="/embed" component={EmbedLanding} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -38,7 +39,7 @@ function Router() {
 
 function App() {
   const [location] = useLocation();
-  const isEmbed = location.startsWith("/embed");
+  const isEmbed = location.startsWith("/embed/clock");
 
   if (isEmbed) {
     return (
@@ -75,3 +76,4 @@ function App() {
 }
 
 export default App;
+import EmbedLanding from "./pages/EmbedLanding";

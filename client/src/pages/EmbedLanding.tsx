@@ -1,11 +1,19 @@
 import { useState } from "react";
-import { Code2, Check, Copy, Globe, Scale, Heart, Newspaper } from "lucide-react";
+import { Code2, Check, Copy, Globe, Scale, Heart, Newspaper, Share2, Tag } from "lucide-react";
 import { EmbedCodeModal } from "@/components/EmbedCodeModal";
+
+const SHARE_URL = "https://asbestostrusts.org/embed";
+const SHARE_TITLE = "Free Embeddable Asbestos Trust Fund Clock — live data from filed court documents";
+const SHARE_TEXT = "Add a live U.S. Asbestos Trust Fund Clock to your website — free, one line of code, data sourced from filed court documents. No API key needed.";
 
 const EMBED_BASE = "https://asbestostrusts.org/embed/clock";
 
-function getEmbedCode(variant: string) {
-  const src = variant === "full" ? EMBED_BASE : `${EMBED_BASE}?variant=${variant}`;
+function getEmbedCode(variant: string, ref?: string) {
+  const params: string[] = [];
+  if (variant !== "full") params.push(`variant=${variant}`);
+  if (ref) params.push(`ref=${encodeURIComponent(ref)}`);
+  const query = params.length > 0 ? `?${params.join("&")}` : "";
+  const src = `${EMBED_BASE}${query}`;
   const maxW = variant === "compact" ? "520px" : "960px";
   const height = variant === "compact" ? "680" : "620";
   return `<iframe src="${src}" width="100%" height="${height}" frameborder="0" style="border:none;border-radius:8px;max-width:${maxW};" title="U.S. Asbestos Trust Fund Clock — AsbestosTrusts.org" loading="lazy"></iframe>`;
@@ -61,6 +69,7 @@ function MockupFrame({ title, icon: Icon, type, children }: {
 export default function EmbedLanding() {
   const [showModal, setShowModal] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState<"full" | "compact">("full");
+  const [refTag, setRefTag] = useState("");
 
   return (
     <div className="min-h-screen">
@@ -278,13 +287,27 @@ export default function EmbedLanding() {
             </button>
           </div>
 
+          {/* Tracking tag */}
+          <div className="mb-6 max-w-sm mx-auto">
+            <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 flex items-center justify-center gap-1">
+              <Tag size={10} /> Your domain <span className="font-normal text-muted-foreground/60">(optional tracking)</span>
+            </label>
+            <input
+              type="text"
+              value={refTag}
+              onChange={e => setRefTag(e.target.value.replace(/[^a-zA-Z0-9._-]/g, ""))}
+              placeholder="e.g. your-domain.com"
+              className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm text-foreground text-center placeholder:text-muted-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary/30"
+            />
+          </div>
+
           {/* Code block */}
           <div className="bg-muted/50 border border-border rounded-xl p-5">
             <pre className="text-xs font-mono text-foreground/80 whitespace-pre-wrap break-all leading-relaxed mb-4">
-              {getEmbedCode(selectedVariant)}
+              {getEmbedCode(selectedVariant, refTag.trim() || undefined)}
             </pre>
             <div className="flex items-center justify-between">
-              <CopyButton code={getEmbedCode(selectedVariant)} />
+              <CopyButton code={getEmbedCode(selectedVariant, refTag.trim() || undefined)} />
               <span className="text-xs text-muted-foreground/60">
                 {selectedVariant === "full" ? "Max width: 960px · Height: 620px" : "Max width: 520px · Height: 680px"}
               </span>
@@ -380,6 +403,40 @@ export default function EmbedLanding() {
           >
             <Code2 size={16} /> Get Embed Code
           </button>
+
+          {/* Social sharing */}
+          <div className="mt-10 pt-8 border-t border-border/50">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Share2 size={14} className="text-muted-foreground" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Share this widget
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SHARE_URL)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-background hover:bg-muted/50 transition-colors text-sm font-medium text-foreground"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-[#0A66C2]">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Share on LinkedIn
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-background hover:bg-muted/50 transition-colors text-sm font-medium text-foreground"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                Share on X
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

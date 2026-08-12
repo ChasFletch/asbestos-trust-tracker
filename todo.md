@@ -166,3 +166,7 @@
 - [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock
 - [ ] Dedicated /embed landing page with widget examples on different website types
 - [x] Dedicated /embed landing page with widget examples on different website types
+- [x] Dedicated /embed landing page with widget examples on different website types
+- [ ] Embed widget: tracking parameter input in embed code generator
+- [x] Embed widget: tracking parameter input in embed code generator
+- [x] Embed widget: LinkedIn and Twitter share buttons on embed landing page

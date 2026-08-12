@@ -82,6 +82,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       description: "Primary-sourced data on all active U.S. asbestos bankruptcy trust funds — net assets, payment percentages, cumulative payouts, and court docket references.",
       ogType: "website",
       canonicalPath: "/trusts",
+      keywords: "asbestos trust fund data, payment percentage table, trust fund net assets, bankruptcy trust list, asbestos claims database",
     };
   }
 
@@ -105,6 +106,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       description: `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
       ogType: "article",
       canonicalPath: `/trusts/${slug}`,
+      keywords: `${jsonTrust.shortName ?? jsonTrust.name}, asbestos trust fund, payment percentage, scheduled value, trust distribution procedure`,
       jsonLd: [
         {
           "@context": "https://schema.org",
@@ -147,6 +149,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       description: "Latest updates on U.S. asbestos trust fund payment changes, annual reports, and court filings.",
       ogType: "website",
       canonicalPath: "/news",
+      keywords: "asbestos trust news, payment percentage change, trust fund update, bankruptcy court filing, annual report",
     };
   }
 
@@ -159,6 +162,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       description: "In-depth research reports on U.S. asbestos trust fund assets, payment trends, and litigation data.",
       ogType: "website",
       canonicalPath: "/reports",
+      keywords: "asbestos trust research, trust fund analysis, payment trend report, litigation data, mesothelioma compensation research",
     };
   }
 
@@ -213,6 +217,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       title: `Methodology · ${SITE_NAME}`,
       description: "How AsbestosTrusts.org collects, classifies, and cites trust fund data — source hierarchy, confidence levels, and update cadence.",
       canonicalPath: "/methodology",
+      keywords: "asbestos trust methodology, data sourcing, court filing verification, trust fund research method, source classification",
       jsonLd: [
         {
           "@context": "https://schema.org",
@@ -247,6 +252,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       title: `About · ${SITE_NAME}`,
       description: "About AsbestosTrusts.org — an independent public research platform tracking U.S. asbestos bankruptcy trust funds.",
       canonicalPath: "/about",
+      keywords: "AsbestosTrusts.org, Danziger De Llano, asbestos trust research, independent legal research, Paul Danziger, Rod De Llano",
     };
   }
   if (clean === "/corrections") {
@@ -254,6 +260,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       title: `Corrections · ${SITE_NAME}`,
       description: "Corrections and updates to AsbestosTrusts.org data. We publish corrections promptly and transparently.",
       canonicalPath: "/corrections",
+      keywords: "data corrections, asbestos trust updates, transparency, error reporting",
     };
   }
 

@@ -435,6 +435,13 @@ export default function EmbedLanding() {
                 </svg>
                 Share on X
               </a>
+              <a
+                href={`mailto:?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-background hover:bg-muted/50 transition-colors text-sm font-medium text-foreground"
+              >
+                <Mail size={16} className="text-muted-foreground" />
+                Email to Webmaster
+              </a>
             </div>
           </div>
         </div>
@@ -444,3 +451,19 @@ export default function EmbedLanding() {
     </div>
   );
 }
+import { Mail } from "lucide-react";
+const EMAIL_SUBJECT = "Free Asbestos Trust Fund Clock Widget for Our Website";
+const EMAIL_BODY = `Hi,
+
+I found a free embeddable widget that displays live U.S. asbestos bankruptcy trust fund data — sourced from filed court documents and updated weekly.
+
+It's one line of code to add to our site, no API key needed, and it includes animated counters showing documented remaining assets and cumulative payouts since 1988.
+
+You can preview it and get the embed code here:
+${SHARE_URL}
+
+The data comes from AsbestosTrusts.org, an independent research platform backed by Danziger & De Llano, LLP. Every figure traces to a filed document.
+
+Let me know if you'd like me to add it to the site.
+
+Thanks`;

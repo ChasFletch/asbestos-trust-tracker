@@ -175,6 +175,16 @@
 # Full findings and verbatim sourcing: ../CONTRIB-2026-08-03-provenance-and-missing-trusts.md
 # Surfaced while verifying podcast EP37 against primary sources.
 
+## Source Transparency Publication (2026-08-12)
+- [x] Upload verified primary-source PDFs to web storage and associate each with the correct trust record
+- [x] Add source-document links to relevant trust detail pages with concise primary-source labels
+- [x] Expand the primary-source inventory to all 105 retained verified PDFs; exclude only six duplicate binary variants and six research-only court files for entities without trust records
+- [x] Audit every mapped trust source panel for complete artifact coverage and accurate trust-slug association
+- [x] Add and pass regression tests verifying every applicable uploaded PDF has a secure, site-hosted link and readable detail-page label
+- [x] Visually verify all 24 mapped trust detail pages render their Primary Source Documents panel
+- [x] Publish the August 2026 trust verification findings as a research report
+- [x] Publish a Bestwall Supreme Court certiorari-denial news item with docket citation
+
 ### Methodology page
 - [ ] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [ ] Publish the propagation chain: Bates White 2012–13 → Brickman 2019 (correctly dated) → law-firm SEO 2014–2026 (date stripped) → news sites. Per dim12: "Every link after 2013 cites upstream authority the upstream authority does not contain."

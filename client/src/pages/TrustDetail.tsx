@@ -3,6 +3,7 @@ import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
 import { SourceDocModal } from "@/components/SourceDocModal";
 import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
+import { primarySourceDocumentsBySlug } from "@/data/primarySourceDocuments";
 import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
@@ -22,6 +23,10 @@ function fmt$(n: number | null | undefined) {
   if (n >= 1e9) return `$${(n / 1e9).toFixed(2)}B`;
   if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
   return `$${n.toLocaleString()}`;
+}
+
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 function ConfidenceBadge({ confidence }: { confidence: string }) {
@@ -230,6 +235,7 @@ export default function TrustDetail() {
       : trust.status === "closed"
       ? "bg-gray-200 text-gray-700 border-gray-300"
       : "bg-amber-100 text-amber-700 border-amber-200";
+  const primarySourceDocuments = primarySourceDocumentsBySlug[slugify(trust.name)] ?? [];
 
   return (
     <>
@@ -472,6 +478,54 @@ export default function TrustDetail() {
             </LineChart>
           </ResponsiveContainer>
         </div>
+      )}
+
+      {/* Primary Source Documents */}
+      {primarySourceDocuments.length > 0 && (
+        <section className="bg-card border border-border/50 rounded-lg p-5 mb-6" aria-labelledby="primary-source-documents">
+          <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+            <div>
+              <div className="flex items-center gap-2">
+                <FileText size={15} className="text-primary" />
+                <h2 id="primary-source-documents" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  Primary Source Documents
+                </h2>
+              </div>
+              <p className="text-xs text-muted-foreground/70 mt-1 leading-relaxed">
+                Verified trust notices, annual reports, and trust distribution procedures used in this record. Select a document to preview it on this page.
+              </p>
+            </div>
+            <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
+              Primary sources
+            </span>
+          </div>
+          <div className="divide-y divide-border/40 border border-border/40 rounded-md overflow-hidden">
+            {primarySourceDocuments.map((document) => (
+              <button
+                key={document.url}
+                onClick={() => setSourceModal({
+                  url: document.url,
+                  title: `${trust.name} — ${document.title}`,
+                  citation: document.citation,
+                })}
+                className="w-full text-left px-3.5 py-3 flex items-center gap-3 hover:bg-muted/45 transition-colors group"
+              >
+                <FileText size={15} className="text-primary/70 shrink-0" />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                    {document.title}
+                  </span>
+                  <span className="block text-[11px] text-muted-foreground mt-0.5">
+                    {document.documentType}{document.dateLabel ? ` · ${document.dateLabel}` : ""}
+                  </span>
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary shrink-0">
+                  Preview <ExternalLink size={11} />
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {/* Scheduled Values Table — shown only for trusts with TDP data */}

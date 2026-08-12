@@ -2,6 +2,21 @@
   "schema": "asbestos-trust-reports/v1",
   "reports": [
     {
+      "id": "ATR-2026-VERIFY",
+      "title": "Primary-Source Verification Update — August 2026",
+      "date": "2026-08-12",
+      "asOf": "2026-08-12",
+      "path": "reports/2026-08-primary-source-verification-update.md",
+      "summary": "An August 2026 verification pass expands the tracker to 52 documented records, refreshes four FY2025 net-asset figures, resolves payment-percentage and trust-identity errors, and publishes 93 applicable primary-source PDFs across 24 trust detail pages.",
+      "highlights": [
+        "52 documented records: 51 active trusts and 1 closed trust",
+        "Four FY2025 annual reports refresh ASARCO, Combustion Engineering, Kaiser Gypsum, and Congoleum asset figures",
+        "93 applicable verified source PDFs now available directly on 24 trust detail pages",
+        "Separate sub-account documentation preserved for Owens Corning/Fibreboard and Federal-Mogul",
+        "Paddock plan-funding commitment removed from net assets; Kaiser Gypsum distinguished from Kaiser Aluminum"
+      ]
+    },
+    {
       "id": "ATR-2026-Q3",
       "title": "State of the Asbestos Trust System — Q3 2026",
       "date": "2026-07-28",

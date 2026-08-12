@@ -18,6 +18,7 @@ interface TrustRow {
   netAssets: number | null;
   assetsAsOf: string | null;
   assetsBasis: string | null;
+  assetsAvailability?: string | null;
   assetsBasisUrl?: string | null;
   paymentPercentage: number | null;
   status: string;
@@ -147,6 +148,7 @@ export default function Trusts() {
         netAssets: jt.netAssets,
         assetsAsOf: jt.assetsAsOf,
         assetsBasis: jt.assetsBasis,
+        assetsAvailability: (jt as any).assetsAvailability ?? null,
         assetsBasisUrl: (jt as any).assetsBasisUrl ?? null,
         paymentPercentage: jt.paymentPercentage,
         status: jt.status,
@@ -443,7 +445,7 @@ export default function Trusts() {
                   </div>
                   <div className="text-sm font-mono">
                     <span className={trust.netAssets ? "text-foreground" : "text-muted-foreground/40"}>
-                      {formatAssets(trust.netAssets)}
+                      {trust.assetsAvailability === "unpublished" ? "not published" : formatAssets(trust.netAssets)}
                     </span>
                     {trust.assetsAsOf && (
                       <div className="text-xs text-muted-foreground/40">{trust.assetsAsOf}</div>

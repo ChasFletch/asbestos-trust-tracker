@@ -153,23 +153,24 @@
 - [x] Add clickable credentials modal to "Reviewed by" badge (opens modal with Paul Danziger and Rod De Llano professional credentials)
 - [x] Add PACER unavailability indicator on trust detail pages where documents are blocked (PCC, Celotex, USG, Armstrong, OC/FB — triggered by PACER-only/CM/ECF keywords in note field; B&W correctly excluded since its pull succeeded)
 - [x] Add PACER unavailability indicator on trust detail pages where documents are blocked (PCC, Celotex, USG, Armstrong, OC/FB — triggered by PACER-only/CM/ECF keywords in note field; B&W correctly excluded since its pull succeeded)
-- [ ] Add "Last Updated" timestamp next to payment percentage on trust detail pages
+- [x] Add "Last Updated" timestamp next to payment percentage on trust detail pages
 - [x] Add "Last Updated" timestamp next to payment percentage on trust detail pages
 - [x] Add "Related News" section on trust detail pages showing recent articles for that trust
 - [x] Add hover tooltip for legal terms (e.g. "524(g) filing") in news posts
 - [x] Add hover tooltip for legal terms (e.g. "524(g) filing") in news posts
-- [ ] Embeddable clock widget: standalone /embed/clock route with compact and full-width variants
+- [x] Embeddable clock widget: standalone /embed/clock route with compact and full-width variants
 - [x] Embeddable clock widget: standalone /embed/clock route with compact and full-width variants
 - [x] Embeddable clock widget: "Powered by AsbestosTrusts.org" attribution bar with dofollow backlink
 - [x] Embeddable clock widget: embed code modal with size selector, live preview, and copy-to-clipboard button
 - [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock
 - [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock
-- [ ] Dedicated /embed landing page with widget examples on different website types
+- [ ] [Cancelled] Dedicated /embed landing page with widget examples on different website types — intentionally removed after visual review in favor of the simpler homepage embed modal; no standalone landing page is planned
 - [x] Dedicated /embed landing page with widget examples on different website types
 - [x] Dedicated /embed landing page with widget examples on different website types
-- [ ] Embed widget: tracking parameter input in embed code generator
+- [x] Embed widget: tracking parameter input in embed code generator
 - [x] Embed widget: tracking parameter input in embed code generator
 - [x] Embed widget: LinkedIn and Twitter share buttons on embed landing page
+- [x] Final embed acquisition flow: maintain the homepage "Embed this clock" modal as the sole supported embed-code experience
 
 ## Phase 12: Provenance + missing-trust gaps (filed 2026-08-03 by claude-home)
 # Full findings and verbatim sourcing: ../CONTRIB-2026-08-03-provenance-and-missing-trusts.md
@@ -186,17 +187,17 @@
 - [x] Publish a Bestwall Supreme Court certiorari-denial news item with docket citation
 
 ### Methodology page
-- [ ] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
-- [ ] Publish the propagation chain: Bates White 2012–13 → Brickman 2019 (correctly dated) → law-firm SEO 2014–2026 (date stripped) → news sites. Per dim12: "Every link after 2013 cites upstream authority the upstream authority does not contain."
-- [ ] State how our own aggregate is derived ("summed net-asset figures from trust annual reports filed in bankruptcy court, as of the dates shown"). dim12 flags a circulating "$17 billion remaining" garbled variant; our ~$16.75B is bottom-up and methodologically different, but needs to say so to avoid being read as the same zombie number.
-- [ ] Add the U.S. Chamber ILR benchmark — *Dubious Distribution* (Mar 2018), ~$25B remaining as of 2016 out of ~$40B contributed 2004–2016. Independent check we currently omit.
+- [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
+- [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.
+- [x] State how our own aggregate is derived: a simple sum of the latest located net-asset figures, as of the dates shown. The public methodology now labels it a documented floor and distinguishes it from circulating historic “$17B” variants.
+- [x] Add the U.S. Chamber ILR benchmark — *Dubious Distribution* (Mar 2018), nearly $25B assets and more than $2B deferred funding at year-end 2016, labeled as a historical advocacy-source benchmark rather than current tracker data.
 
 ### Dataset — three trusts in the corpus but absent from trusts.csv
-- [ ] Add ARTRA 524(g) Asbestos Trust — $18,048,181 (2022), 0.5–0.6%, administrator Verus. Has both figures; straightforwardly addable.
-- [ ] Add Shook & Fletcher — 58% confirmed, raised May 2025. NOTE: no balance published (CRMC-administered trusts generally do not post annual reports).
-- [ ] Model a `balance_unpublished` state (or null-assets row carrying the reason in `confidence`). A trust with a confirmed, dated payment percentage but no filed balance is currently excluded silently, which makes the published payment-% range look narrower than it is — Shook & Fletcher at 58% sits inside a range we cannot presently show.
-- [ ] Consider a historical/primary-source record for T-H Agriculture & Nutrition (THAN) — see verbatim House Report 112-687 text in the contribution note.
+- [x] Add ARTRA 524(g) Asbestos Trust — official April 2025 notice verifies 0.70% payment percentage; proposed 2022 net-assets figure remains intentionally unpublished until a court-filed source is located.
+- [x] Add Shook & Fletcher — 58% confirmed, raised May 2025. NOTE: no balance published (CRMC-administered trusts generally do not post annual reports).
+- [x] Model an explicit unpublished-balance state for ARTRA and Shook & Fletcher; trust list and detail pages now distinguish “not published” from an unknown or zero balance.
+- [x] Consider a historical/primary-source record for T-H Agriculture & Nutrition (THAN) — see verbatim House Report 112-687 text in the contribution note.
 
 ### Content — verified primary-source material ready to use
-- [ ] Methodology/oversight: add the U.S. Trustee Program quote, verbatim, CHRG-115hhrg27890 (House Judiciary, 115th Cong., 2017), Director Clifford J. White III — "there is no independent policeman. There is no watchdog for that…"
-- [ ] Methodology/oversight: add GAO-11-819 audit practices stated precisely (2 of 11 reviewed samples + 1 more ran an external audit sending x-rays to an independent doctor), plus the unused line "none indicated that these audits had identified cases of fraud."
+- [x] Methodology/oversight: add the U.S. Trustee Program quote, verbatim, CHRG-115hhrg27890 (House Judiciary, 115th Cong., 2017), Director Clifford J. White III — "there is no independent policeman. There is no watchdog for that…"
+- [x] Methodology/oversight: add GAO-11-819 audit practices stated precisely (2 of 11 reviewed samples + 1 more ran an external audit sending x-rays to an independent doctor), plus the unused line "none indicated that these audits had identified cases of fraud."

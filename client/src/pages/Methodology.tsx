@@ -76,31 +76,40 @@ export default function Methodology() {
           <ol className="list-decimal list-inside space-y-2 text-muted-foreground pl-2">
             <li>For each trust, we use the most recently available net asset figure, regardless of its as-of date.</li>
             <li>Figures classified (a) are used as reported. Figures classified (b) are used as reported with a ±5% uncertainty band. Figures classified (c) are excluded from the point estimate and contribute only to the reported range.</li>
-            <li>The displayed figure is the midpoint of the low and high range estimates. The range is shown below the clock.</li>
+            <li>The displayed figure is the <strong className="text-foreground">documented floor</strong>: the exact sum of the latest located asset figure for each included trust. The broader range shown below the clock is a separately labeled estimate, not a midpoint calculation.</li>
             <li>The aggregate is <strong className="text-foreground">not inflation-adjusted</strong> and does not account for future claim liabilities or actuarial projections.</li>
             <li>Trusts with no available net asset figure are excluded from the aggregate but are listed in the database with their known payment percentage data.</li>
           </ol>
           <div className="mt-4 p-3 rounded border border-primary/20 bg-primary/5 text-xs text-muted-foreground">
-            <strong className="text-foreground">Current aggregate as-of note:</strong> The figures in our database have mixed as-of dates ranging from 2021 to 2026. The Manville Trust figure is current as of March 31, 2026 (Q1 2026 quarterly filing). Most other figures are from FY2023 or FY2024 annual reports. The aggregate is therefore a <em>floor estimate</em> — actual current balances may differ.
+            <strong className="text-foreground">Current aggregate as-of note:</strong> As of August 12, 2026, the documented asset floor is <strong className="text-foreground">$15,967,208,224</strong> across 40 records with a located asset figure. The underlying dates are mixed, largely spanning 2021–2026. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection.
           </div>
         </section>
 
-        {/* The $30B Problem */}
+        {/* Historical Benchmark and $30B Problem */}
         <section>
           <h2 className="font-display font-bold uppercase tracking-wider text-base mb-4 text-foreground">
-            The "$30 Billion" Citation Problem
+            Historical Benchmarks and the "$30 Billion" Claim
           </h2>
           <p className="text-muted-foreground mb-3">
-            The "$30 billion available in asbestos trust funds" figure that appears across law firm websites, Wikipedia, and news articles traces to a single source: the U.S. Government Accountability Office report <em>Asbestos Injury Compensation: The Role and Administration of Asbestos Trusts</em> (GAO-11-819, September 2011). That report found that 60 trusts had been established with approximately $37 billion in <strong className="text-foreground">total capitalization</strong> since 1988 — not $30 billion, and not a current balance.
+            No primary source reviewed by this project states that <strong className="text-foreground">$30 billion is currently available</strong> in asbestos trusts. The phrase blends historical figures that measure different things and carry different as-of dates. The <a className="text-primary underline underline-offset-2" href="https://www.gao.gov/products/gao-11-819" target="_blank" rel="noopener noreferrer">Government Accountability Office (GAO-11-819)</a> reported in 2011 that 60 trusts had been established with approximately $37 billion in total assets and that available payment data showed about $17.5 billion paid through 2010. Those are historical system-wide observations, not a 2026 balance.
           </p>
           <p className="text-muted-foreground mb-3">
-            The GAO report also found that $17.5 billion had already been paid out on 3.3 million claims through 2010. The "$30 billion" figure appears to have entered circulation as a rough subtraction that was then cited, recited, and eventually detached from its source entirely.
+            The closest documented origin is a <a className="text-primary underline underline-offset-2" href="https://docs.house.gov/meetings/JU/JU05/20130313/100449/HHRG-113-JU05-Wstate-ScarcellaM-20130313.pdf" target="_blank" rel="noopener noreferrer">2013 House Judiciary witness statement</a> that cites the 2012 Bates White / Mealey&apos;s overview. It described more than $18 billion in confirmed trust assets plus $11–12 billion in <em>proposed</em> trust assets pending confirmation. Combining those measures produces roughly $30 billion, but it is a 2012–2013 snapshot that included projected funding for unconfirmed reorganizations—not money currently available to claimants.
+          </p>
+          <div className="mb-3 rounded border border-border/40 bg-card/30 p-3 text-xs text-muted-foreground">
+            <div className="mb-1 font-semibold text-foreground">What the documented propagation record shows</div>
+            <p>
+              A 2011 House hearing recorded a witness&apos;s attribution of “north of $30 billion available” to RAND. The 2013 Bates White statement describes the more specific $18B-confirmed-plus-$11–12B-pending construction. A <a className="text-primary underline underline-offset-2" href="http://cardozolawreview.com/wp-content/uploads/2019/07/6.Brickman.40.5.5.pdf" target="_blank" rel="noopener noreferrer">2019 Brickman article</a> then cited the 2013 Mealey&apos;s overview while restating more than $30B in remaining assets. Modern marketing pages commonly strip the dates and underlying measure. These are conflicting historical assertions, not evidence of a current audited balance.
+            </p>
+          </div>
+          <p className="text-muted-foreground mb-3">
+            A later <a className="text-primary underline underline-offset-2" href="https://www.mesothelioma-lawyerblog.com/wp-content/uploads/sites/199/2017/05/Bates-White-Artile_Reorganized-Mess.pdf" target="_blank" rel="noopener noreferrer">Bates White / Mealey&apos;s commentary</a> reported roughly $18.6 billion in confirmed trust assets at year-end 2013, plus $160 million in deferred funding, while noting that several 2014 confirmations were expected to add funding. The <a className="text-primary underline underline-offset-2" href="https://instituteforlegalreform.com/wp-content/uploads/2020/10/Dubious_Distribution_Asbestos_Paper_Web.pdf" target="_blank" rel="noopener noreferrer">U.S. Chamber Institute for Legal Reform&apos;s 2018 report</a>, an advocacy publication, described nearly $25 billion in assets and more than $2 billion in deferred funding at year-end 2016. These are useful dated benchmarks, but neither is a current balance nor a substitute for a trust-by-trust filed-source review.
           </p>
           <p className="text-muted-foreground mb-3">
-            There is an additional layer of confusion: our bottom-up estimate of <em>cumulative payouts</em> since 1988 is $29,981,797,653 — which is also approximately $30 billion. This is a coincidence of scale. The two figures measure completely different things: total capitalization (what went in) versus total claims paid (what went out). Neither is the current remaining balance.
+            The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $29,981,797,653 measures payments made, not assets remaining.
           </p>
           <p className="text-muted-foreground">
-            Our documented floor for remaining assets — based on filed figures for all trusts with retrievable annual reports — is <strong className="text-foreground">$16,746,136,347</strong>. This is a floor, not a ceiling: trusts with no public filing are excluded from this sum. This figure is updated as new annual reports are filed each spring.
+            Our documented floor for remaining assets is <strong className="text-foreground">$15,967,208,224</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
           </p>
         </section>
 
@@ -114,8 +123,8 @@ export default function Methodology() {
           </p>
           <div className="space-y-2">
             {[
-              { gap: "PACER-only documents", detail: "W.R. Grace (FY2025) and DII Industries (FY2025) have been pulled and documented. Pittsburgh Corning is blocked (court-side access issue, cause undetermined). Celotex documents are restricted ('You do not have access to the restricted document'). Babcock & Wilcox (FY2024) is queued for the next PACER session." },
-              { gap: "Smaller trusts", detail: "Approximately 40 trusts with smaller asset bases have no publicly available financial data. These trusts collectively represent an estimated 5–10% of total system assets." },
+              { gap: "PACER-only or unavailable documents", detail: "W.R. Grace and DII Industries filings have been pulled and documented. Pittsburgh Corning's relevant filings currently return a court-side 'document not available' response. Celotex annual-report documents return an account-access restriction. Babcock & Wilcox FY2025 was retrieved, but its historical $1.94B payout floor remains secondary pending additional filed support." },
+              { gap: "Unpublished or unretrieved balances", detail: "Some active trusts publish a current payment percentage but no retrievable current balance. These records remain visible and are labeled 'not published' rather than silently treated as zero. They are excluded from the documented-assets floor." },
               { gap: "Delticus / Bendix", detail: "The Delticus trust (Honeywell / Bendix) is administered by Third Point / Delticus and does not publish public financial statements. Its $1.6B figure is from a 2021 secondary source." },
               { gap: "Pre-1995 Manville data", detail: "Manville Trust payment percentage history prior to 1995 (the 100% era, 1988–1994) is not documented in current public filings." },
             ].map((g) => (
@@ -125,6 +134,22 @@ export default function Methodology() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Oversight and audit context */}
+        <section>
+          <h2 className="font-display font-bold uppercase tracking-wider text-base mb-4 text-foreground">
+            Oversight and Audit Context
+          </h2>
+          <p className="text-muted-foreground mb-3">
+            <a className="text-primary underline underline-offset-2" href="https://www.gao.gov/products/gao-11-819" target="_blank" rel="noopener noreferrer">GAO&apos;s 2011 review</a> found that the 44 trust agreements it examined required annual financial reports to the bankruptcy court, while each trust retained discretion over what additional claim and payment information it released publicly. That is why this tracker distinguishes a filed report, a trust-posted notice, a secondary compilation, and a gap rather than treating each as interchangeable.
+          </p>
+          <p className="text-muted-foreground">
+            GAO&apos;s discussion of audit practices is deliberately limited: officials at 2 of the 11 trusts interviewed described random or targeted claim samples, and one described an external audit that sent a sample of X-rays to an independent doctor. Officials who discussed audits did not report that those audits had identified fraud. Those findings describe a small interview sample; they are not a system-wide fraud rate or a basis to infer that every trust uses the same process.
+          </p>
+          <p className="text-muted-foreground mt-3">
+            In a <a className="text-primary underline underline-offset-2" href="https://www.govinfo.gov/content/pkg/CHRG-115hhrg27890/html/CHRG-115hhrg27890.htm" target="_blank" rel="noopener noreferrer">2017 House Judiciary hearing record</a>, then-U.S. Trustee Program Director Clifford J. White III said that, for post-confirmation asbestos trusts, “there is no independent policeman. There is no watchdog.” We present that as his oversight observation in its hearing context—not as a quantified finding about any particular trust or claim.
+          </p>
         </section>
 
         {/* Cumulative Payouts Methodology */}
@@ -239,7 +264,7 @@ export default function Methodology() {
             {[
               { freq: "Weekly", what: "Payment percentage change notices from all trust websites. Manville Trust quarterly financial data (when available)." },
               { freq: "April–June (Annual)", what: "Annual report figures for all DCPF-administered trusts (Armstrong, B&W, Celotex, Federal Mogul, Flintkote, NARCO, OC/Fibreboard, PCC, USG, W.R. Grace) and Verus LLC trusts." },
-              { freq: "On detection", what: "Any court filing, press release, or trust website update detected by our automated monitoring pipeline." },
+              { freq: "On detection", what: "Any court filing, trust notice, or other source update identified through the tracker’s research and verification process." },
             ].map((u) => (
               <div key={u.freq} className="p-3 rounded border border-border/40 bg-card/30">
                 <div className="font-semibold text-primary text-xs mb-1 uppercase tracking-wider">{u.freq}</div>

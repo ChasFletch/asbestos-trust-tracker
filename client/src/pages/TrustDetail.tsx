@@ -318,8 +318,13 @@ export default function TrustDetail() {
               : trust.confidence && <span className="ml-auto"><ConfidenceBadge confidence={trust.confidence} /></span>
             }
           </div>
-          <div className="text-xl font-mono font-bold text-foreground">{fmt$(trust.netAssets)}</div>
+          <div className="text-xl font-mono font-bold text-foreground">
+            {(trust as any).assetsAvailability === "unpublished" ? "Not published" : fmt$(trust.netAssets)}
+          </div>
           {trust.assetsAsOf && <div className="text-xs text-muted-foreground/60 mt-0.5">as of {trust.assetsAsOf}</div>}
+          {(trust as any).assetsAvailability === "unpublished" && (
+            <div className="text-xs text-muted-foreground/60 mt-0.5">balance not publicly reported</div>
+          )}
           {trust.assetsBasis && (
             (trust as any).assetsBasisUrl ? (
               <button

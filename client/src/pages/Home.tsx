@@ -1,8 +1,9 @@
 import { DebtClockBillboard } from "@/components/DebtClock";
 import { trpc } from "@/lib/trpc";
-import { ArrowRight, BookOpen, Clock, Database, Info, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, Code2, Database, Info, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
+import { EmbedCodeModal } from "@/components/EmbedCodeModal";
 
 // ── Count-up hook ────────────────────────────────────────────────────────────
 function useCountUp(target: number, duration = 1000, enabled = false) {
@@ -103,6 +104,7 @@ export default function Home() {
   const { data: news } = trpc.news.list.useQuery({ limit: 3 });
   const { data: figures } = trpc.trustFigures.summary.useQuery();
   const { data: allTrustFigures } = trpc.trustFigures.allTrusts.useQuery();
+  const [showEmbedModal, setShowEmbedModal] = useState(false);
 
   const remaining = agg?.remainingLow ?? 17041946126;
   const remainingLow = agg?.remainingLow ?? 17041946126;
@@ -149,6 +151,7 @@ export default function Home() {
   ] as const;
 
   return (
+    <>
     <div>
       {/* ── Hero Clock ──────────────────────────────────────────────────────── */}
       <section
@@ -216,9 +219,17 @@ export default function Home() {
               <span>
                 {tf.length > 0 ? `${activeTrusts.length} active trusts tracked` : "41 active trusts tracked"}
               </span>
-              <Link href="/methodology" className="hover:text-primary transition-colors no-underline">
-                How is this calculated? →
-              </Link>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => setShowEmbedModal(true)}
+                  className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer bg-transparent border-none p-0 font-mono text-xs text-muted-foreground/50"
+                >
+                  <Code2 size={11} /> Embed this clock
+                </button>
+                <Link href="/methodology" className="hover:text-primary transition-colors no-underline">
+                  How is this calculated? →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -292,6 +303,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+    <EmbedCodeModal open={showEmbedModal} onOpenChange={setShowEmbedModal} />
     </div>
+    </>
   );
 }

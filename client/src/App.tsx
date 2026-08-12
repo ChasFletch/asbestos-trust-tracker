@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { SiteNav } from "./components/SiteNav";
@@ -16,6 +16,7 @@ import About from "./pages/About";
 import Corrections from "./pages/Corrections";
 import Reports from "./pages/Reports";
 import ReportDetail from "./pages/ReportDetail";
+import EmbedClock from "./pages/EmbedClock";
 
 function Router() {
   return (
@@ -36,6 +37,24 @@ function Router() {
 }
 
 function App() {
+  const [location] = useLocation();
+  const isEmbed = location.startsWith("/embed");
+
+  if (isEmbed) {
+    return (
+      <ErrorBoundary>
+        <ThemeProvider defaultTheme="light">
+          <TooltipProvider>
+            <Switch>
+              <Route path="/embed/clock" component={EmbedClock} />
+              <Route component={NotFound} />
+            </Switch>
+          </TooltipProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
+    );
+  }
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">

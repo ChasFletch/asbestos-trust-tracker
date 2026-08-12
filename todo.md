@@ -157,3 +157,9 @@
 - [x] Add "Last Updated" timestamp next to payment percentage on trust detail pages
 - [x] Add "Related News" section on trust detail pages showing recent articles for that trust
 - [x] Add hover tooltip for legal terms (e.g. "524(g) filing") in news posts
+- [x] Add hover tooltip for legal terms (e.g. "524(g) filing") in news posts
+- [ ] Embeddable clock widget: standalone /embed/clock route with compact and full-width variants
+- [x] Embeddable clock widget: standalone /embed/clock route with compact and full-width variants
+- [x] Embeddable clock widget: "Powered by AsbestosTrusts.org" attribution bar with dofollow backlink
+- [x] Embeddable clock widget: embed code modal with size selector, live preview, and copy-to-clipboard button
+- [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock

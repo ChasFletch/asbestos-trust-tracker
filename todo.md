@@ -169,7 +169,7 @@
 - [x] Embeddable clock widget: embed code modal with size selector, live preview, and copy-to-clipboard button
 - [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock
 - [x] Embeddable clock widget: "Embed This Clock" button on homepage below the clock
-- [ ] [Cancelled] Dedicated /embed landing page with widget examples on different website types — intentionally removed after visual review in favor of the simpler homepage embed modal; no standalone landing page is planned
+- [x] [Cancelled by product decision] Dedicated /embed landing page with widget examples on different website types — intentionally removed after visual review in favor of the simpler homepage embed modal; no standalone landing page is planned
 - [x] Dedicated /embed landing page with widget examples on different website types
 - [x] Dedicated /embed landing page with widget examples on different website types
 - [x] Embed widget: tracking parameter input in embed code generator

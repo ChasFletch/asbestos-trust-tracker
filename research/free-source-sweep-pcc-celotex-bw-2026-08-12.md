@@ -34,3 +34,9 @@ B&W’s public documents page confirms that the trust exposes procedures, notice
 [3] [Celotex public documents](https://www.celotextrust.com/resources/documents/)
 
 [4] [B&W public documents](https://www.bwasbestostrust.com/?page_id=185) and [Babcock & Wilcox Enterprises 2024 Form 10-K](https://www.sec.gov/Archives/edgar/data/1630805/000163080525000007/bw-20241231.htm)
+
+## Final Wayback CDX follow-up
+
+A direct Wayback CDX inventory recovered additional archived official PDF paths for all three trust websites. Two initially promising files—PCC’s **Payment Extract Report (2020)** and B&W’s **Payment Extract Report (2020)**—were retrieved and read. They are not trust accounting reports. Instead, each is a user tutorial describing how an individual law firm can export its own claim-payment data from the Trust Online portal. Neither contains a trust-wide paid-to-date total, annual aggregate payout, or cumulative-distribution figure.
+
+The inventories also exposed historical payment-percentage notices, claim forms, TDP materials, and portal guides, but no public annual-report archive capable of validating the remaining cumulative-payout gaps. These records may support payment-rate history or procedure notes; they do not support promotion of the existing PCC, Celotex, or B&W cumulative values to a primary-source classification.

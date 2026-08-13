@@ -100,6 +100,7 @@
 - [x] [Externally unavailable] PACER pull — Pittsburgh Corning: entries 10913, 10920, and 10921 confirmed unavailable through Buy on PACER; owner submitted no-cost CourtListener community requests. Retain the secondary $3.07B qualification pending a donated source document.
 - [ ] PACER pull — Celotex: access restricted ("you do not have access to the restricted document"); historical $575M from RECAP
 - [ ] PACER pull — Babcock & Wilcox: secondary $1.94B floor in bottomUpPayouts; PACER pull queued when restriction resolves
+- [x] Manual PACER guide — provide no-charge lookup steps, target records, and purchase safeguards for Celotex and Babcock & Wilcox
 - [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Babcock & Wilcox: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary support for the $1.94B payout floor located

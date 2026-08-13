@@ -57,6 +57,7 @@ export const primarySourcePdfUrls = {
   "armstrong-fy2013-annual-report.pdf": "/manus-storage/armstrong-fy2013-annual-report_e25b7815.pdf",
   "armstrong-fy2014-annual-report.pdf": "/manus-storage/armstrong-fy2014-annual-report_cfc880cc.pdf",
   "asarco-fy2025-annual-report.pdf": "/manus-storage/asarco-fy2025-annual-report_8040fede.pdf",
+  "babcock-wilcox-fy2023-annual-report-doc7876.pdf": "/manus-storage/babcock-wilcox-fy2023-annual-report-doc7876_2e0c8d40.pdf",
   "awi-2013-12-11-pp-increase.pdf": "/manus-storage/awi-2013-12-11-pp-increase_f9b5ee88.pdf",
   "awi-2016-11-5233290_2.pdf": "/manus-storage/awi-2016-11-5233290_2_609c9030.pdf",
   "awi-2018-06-notice.pdf": "/manus-storage/awi-2018-06-notice_349331cb.pdf",

@@ -1,6 +1,6 @@
 # AsbestosTrusts.org — LLM Crawler Guide
 # https://asbestostrusts.org/llms.txt
-# Last updated: 2026-08-12
+# Last updated: 2026-08-13
 
 ## About This Site
 
@@ -21,12 +21,13 @@ Editorial independence is maintained: no figures are adjusted based on litigatio
 - Trust fund database (human-readable): https://asbestostrusts.org/trusts
 - News & updates: https://asbestostrusts.org/news
 
-## Canonical Figures (as of 2026-08-12)
+## Canonical Figures (as of 2026-08-13)
 
 - Documented remaining-assets floor: $15,967,208,224 across 40 records with a located asset figure
 - Full system estimate range: $16.0B – $21.7B
-- Cumulative payouts since 1988 (bottom-up estimate): $29,981,797,653
-  - $15.13B filed or official figures, $11.35B secondary-citing-filed figures, and a ~$3.5B labeled residual allowance
+- Cumulative payouts since 1988 (bottom-up estimate): $30,020,097,653
+  - $17.11B filed or official figures, $9.41B secondary-citing-filed figures, and a ~$3.5B labeled residual allowance
+  - Babcock & Wilcox’s approximately $1.9783B cumulative payment figure is now filed/source-linked through December 31, 2023 (E.D. La. 00-10992 Doc 7876-1).
   - Historical federal benchmark: GAO-11-819 reported about $17.5B paid through 2010; it is not a current payout or balance figure
 - Tracked records: 53, including active, deferral, and closed trust records
 

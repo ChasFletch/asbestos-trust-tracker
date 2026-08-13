@@ -38,6 +38,9 @@ export const sourceFilesByTrust: Record<string, SourceFileName[]> = {
   "asarco-asbestos-pi-settlement-trust": [
     "asarco-fy2025-annual-report.pdf",
   ],
+  "babcock-wilcox-asbestos-pi-settlement-trust": [
+    "babcock-wilcox-fy2023-annual-report-doc7876.pdf",
+  ],
   "combustion-engineering-524-g-asbestos-pi-trust": [
     "ce-fy2025-annual-report.pdf",
   ],

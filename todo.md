@@ -100,6 +100,9 @@
 - [ ] PACER pull — Pittsburgh Corning: blocked (court-side "document not available", cause undetermined); secondary $3.07B in bottomUpPayouts
 - [ ] PACER pull — Celotex: access restricted ("you do not have access to the restricted document"); historical $575M from RECAP
 - [ ] PACER pull — Babcock & Wilcox: secondary $1.94B floor in bottomUpPayouts; PACER pull queued when restriction resolves
+- [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
+- [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
+- [x] Free-source sweep — Babcock & Wilcox: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary support for the $1.94B payout floor located
 - [x] Methodology.tsx updated: FAQ JSON-LD figures corrected ($16,746,136,347 remaining assets, $29,981,797,653 cumulative payouts), $30B section revised with bottom-up context and $16.7B documented floor, Known Gaps updated (WRG/DII complete, PCC blocked, Celotex restricted, B&W queued), new Cumulative Payouts Methodology section added (three-tier build table, honest caveats, revision log)
 - [x] Data fix: rateSource §5.5 → §4.2 for PCC trust (correct TDP section citation)
 - [x] Data fix: CourtListener search URL labels added (NARCO, Manville, API cumulativePaidSourceUrlType)

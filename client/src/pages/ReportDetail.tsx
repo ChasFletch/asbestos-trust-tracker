@@ -7,7 +7,8 @@ import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
+import { ArticleAuthorshipReviewBox } from "@/components/ArticleAuthorshipReviewBox";
+import { DESIGNATED_LEGAL_REVIEWERS, RESEARCH_DESK } from "@/data/researchDeskPeople";
 
 interface ReportMeta {
   id: string;
@@ -168,8 +169,6 @@ export default function ReportDetail() {
             View raw on GitHub <ExternalLink size={10} />
           </a>
         )}
-        {/* Reviewed by badge — opens credentials modal */}
-        <ReviewerCredentialsModal variant="report" />
       </div>
 
       {/* Markdown body */}
@@ -189,6 +188,14 @@ export default function ReportDetail() {
           {markdown}
         </ReactMarkdown>
       </div>
+
+      <ArticleAuthorshipReviewBox
+        author={RESEARCH_DESK}
+        legalReviewers={DESIGNATED_LEGAL_REVIEWERS.map((person) => ({ person }))}
+        publishedAt={meta?.date}
+        materiallyUpdatedAt={meta?.date}
+        sourceCutoffAt={meta?.asOf}
+      />
 
       {/* Footer nav */}
       <div className="mt-10 pt-6 border-t border-border/30 flex items-center justify-between">

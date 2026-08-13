@@ -115,10 +115,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           "description": `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
           "url": `https://asbestostrusts.org/trusts/${slug}`,
           "mainEntityOfPage": `https://asbestostrusts.org/trusts/${slug}`,
-          "author": [
-            { "@id": "https://asbestostrusts.org/#paul-danziger" },
-            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
-          ],
+          "author": { "@id": "https://asbestostrusts.org/#org" },
           "publisher": { "@id": "https://asbestostrusts.org/#org" },
           "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
           "about": {
@@ -191,10 +188,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           "url": `https://asbestostrusts.org/reports/${id}`,
           "mainEntityOfPage": `https://asbestostrusts.org/reports/${id}`,
           "datePublished": report.date,
-          "author": [
-            { "@id": "https://asbestostrusts.org/#paul-danziger" },
-            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
-          ],
+          "author": { "@id": "https://asbestostrusts.org/#research-desk" },
           "publisher": { "@id": "https://asbestostrusts.org/#org" },
           "about": "U.S. asbestos bankruptcy trust funds"
         },
@@ -225,10 +219,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           "headline": "Methodology — AsbestosTrusts.org",
           "description": "How AsbestosTrusts.org collects, classifies, and cites trust fund data — source hierarchy, confidence levels, and update cadence.",
           "url": "https://asbestostrusts.org/methodology",
-          "author": [
-            { "@id": "https://asbestostrusts.org/#paul-danziger" },
-            { "@id": "https://asbestostrusts.org/#rod-de-llano" }
-          ],
+          "author": { "@id": "https://asbestostrusts.org/#research-desk" },
           "publisher": { "@id": "https://asbestostrusts.org/#org" }
         },
         {

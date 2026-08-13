@@ -104,6 +104,7 @@
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Babcock & Wilcox: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary support for the $1.94B payout floor located
 - [x] Deeper no-cost archive/mirror follow-up: official report pages, document libraries, CourtListener/RECAP, and public corporate filings reviewed; no qualifying primary cumulative-payout document recovered
+- [ ] CourtListener community request — submit no-cost requests for PCC annual-report entries 10913, 10920, and 10921 after user approval
 - [x] Methodology.tsx updated: FAQ JSON-LD figures corrected ($16,746,136,347 remaining assets, $29,981,797,653 cumulative payouts), $30B section revised with bottom-up context and $16.7B documented floor, Known Gaps updated (WRG/DII complete, PCC blocked, Celotex restricted, B&W queued), new Cumulative Payouts Methodology section added (three-tier build table, honest caveats, revision log)
 - [x] Data fix: rateSource §5.5 → §4.2 for PCC trust (correct TDP section citation)
 - [x] Data fix: CourtListener search URL labels added (NARCO, Manville, API cumulativePaidSourceUrlType)
@@ -189,6 +190,13 @@
 - [x] Visually verify all 24 mapped trust detail pages render their Primary Source Documents panel
 - [x] Publish the August 2026 trust verification findings as a research report
 - [x] Publish a Bestwall Supreme Court certiorari-denial news item with docket citation
+
+## Danziger & De Llano EEAT Roadmap (2026-08-13)
+- [x] Prepare a prioritized authority-building roadmap for using AsbestosTrusts.org to demonstrate Danziger & De Llano’s legal research expertise, experience, authority, and trustworthiness
+- [x] Draft ready-to-publish Danziger & De Llano Research Desk editorial standards and reviewer profile criteria
+- [x] Create a reusable article-template author and reviewer bio-box specification with accessible React integration guidance
+- [x] Verify Paul Danziger and Rod De Llano profiles across firm, Wikidata, and project-managed sources; apply the verified author/reviewer attribution model to site articles
+- [x] Correct the Paul Danziger Wikidata audit after the initial lookup missed the existing entity
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

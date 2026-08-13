@@ -113,6 +113,8 @@
 - [x] Capture text-verifiable server-rendered evidence for B&W’s cumulative-payment card and source controls
 - [x] Capture text-verifiable server-rendered evidence for the homepage $30,020,097,653 payout total
 - [x] Extract visible rendered-DOM text for B&W’s “Cumulative Paid” card, 2023-12-31 as-of label, and Annual Report preview control
+- [ ] Add a source-linked B&W cumulative-payment calculation explainer beneath the Cumulative Paid card
+- [ ] Add standardized source-age labels for historical cumulative-payment figures on trust detail pages
 - [x] Manual PACER guide — provide no-charge lookup steps, target records, and purchase safeguards for Celotex and Babcock & Wilcox
 - [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located

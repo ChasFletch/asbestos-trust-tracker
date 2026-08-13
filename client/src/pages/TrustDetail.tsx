@@ -29,6 +29,24 @@ function slugify(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
+function historicalSourceAge(asOf: string | null | undefined, referenceDate: string | null | undefined) {
+  if (!asOf || !referenceDate) return null;
+  const source = new Date(`${asOf}T00:00:00Z`);
+  const reference = new Date(`${referenceDate}T00:00:00Z`);
+  if (Number.isNaN(source.getTime()) || Number.isNaN(reference.getTime()) || source > reference) return null;
+
+  let months = (reference.getUTCFullYear() - source.getUTCFullYear()) * 12 + reference.getUTCMonth() - source.getUTCMonth();
+  if (reference.getUTCDate() < source.getUTCDate()) months -= 1;
+  if (months < 18) return null;
+
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+  const age = years > 0
+    ? `${years} year${years === 1 ? "" : "s"}${remainingMonths ? `, ${remainingMonths} month${remainingMonths === 1 ? "" : "s"}` : ""}`
+    : `${remainingMonths} months`;
+  return `Historical source — ${age} old; payments may have continued after this report.`;
+}
+
 function ConfidenceBadge({ confidence }: { confidence: string }) {
   const label = confidence === "filed" ? "a" : confidence === "secondary" ? "b" : "c";
   const cls =
@@ -171,6 +189,7 @@ export default function TrustDetail() {
         cumulativePaid: (jsonTrust as any)?.cumulativePaid ?? dbTrust?.cumulativePaid ?? null,
         cumulativePaidAsOf: (jsonTrust as any)?.cumulativePaidAsOf ?? (dbTrust as any)?.cumulativePaidAsOf ?? null,
         cumulativePaidSource: (jsonTrust as any)?.cumulativePaidSource ?? (dbTrust as any)?.cumulativePaidSource ?? null,
+        cumulativePaidCalculation: (jsonTrust as any)?.cumulativePaidCalculation ?? null,
         cumulativePaidSourceUrl: (jsonTrust as any)?.cumulativePaidSourceUrl ?? (dbTrust as any)?.cumulativePaidSourceUrl ?? null,
         cumulativePaidSourceUrlType: (jsonTrust as any)?.cumulativePaidSourceUrlType ?? null,
         netAssetsConfidence: (jsonTrust as any)?.netAssetsConfidence ?? null,
@@ -236,6 +255,7 @@ export default function TrustDetail() {
       ? "bg-gray-200 text-gray-700 border-gray-300"
       : "bg-amber-100 text-amber-700 border-amber-200";
   const primarySourceDocuments = primarySourceDocumentsBySlug[slugify(trust.name)] ?? [];
+  const cumulativePaidSourceAge = historicalSourceAge(trust.cumulativePaidAsOf, trust.dataAsOf);
 
   return (
     <>
@@ -450,10 +470,21 @@ export default function TrustDetail() {
           {(trust as any).cumulativePaidAsOf && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">as of {(trust as any).cumulativePaidAsOf}</div>
           )}
+          {cumulativePaidSourceAge && (
+            <div className="text-[10px] leading-relaxed text-amber-700/80 mt-1.5 border-t border-amber-200/60 pt-1.5">
+              {cumulativePaidSourceAge}
+            </div>
+          )}
           {trust.cumulativeClaims && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">{trust.cumulativeClaims.toLocaleString()} claims</div>
           )}
         </div>
+        {(trust as any).cumulativePaidCalculation && (
+          <div className="col-span-2 sm:col-span-4 -mt-1 rounded-lg border border-amber-200/70 bg-amber-50/50 px-4 py-3 text-xs leading-relaxed text-amber-950/80">
+            <span className="font-semibold text-amber-900">How this figure was calculated:</span>{" "}
+            {(trust as any).cumulativePaidCalculation}
+          </div>
+        )}
       </div>
 
       {/* Payment % History Chart */}

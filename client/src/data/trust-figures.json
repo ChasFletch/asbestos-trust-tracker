@@ -745,6 +745,7 @@
    "cumulativePaid": 1978300000,
    "cumulativePaidAsOf": "2023-12-31",
    "cumulativePaidSource": "Babcock & Wilcox Company Asbestos PI Trust Annual Report and Account FY2023, E.D. La. 00-10992 Doc 7876-1, filed 4/29/2024: approximately $1.916B paid on unliquidated PI claims plus approximately $62.3M on pre-petition liquidated PI claims, both inception-to-date through 12/31/2023; combined calculation approximately $1.9783B.",
+   "cumulativePaidCalculation": "$1.916B paid on unliquidated PI claims + $62.3M paid on pre-petition liquidated PI claims = approximately $1.9783B. Both reported amounts are inception-to-date through 12/31/2023.",
    "cumulativePaidSourceUrl": "/manus-storage/babcock-wilcox-fy2023-annual-report-doc7876_2e0c8d40.pdf",
    "established": 2006,
    "company": "Babcock & Wilcox Enterprises",

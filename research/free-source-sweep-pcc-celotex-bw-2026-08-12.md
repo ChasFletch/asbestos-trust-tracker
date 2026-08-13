@@ -16,3 +16,21 @@ This follow-up tested whether free official trust resources, CourtListener/RECAP
 ## Conclusion
 
 The free-source sweep confirmed current operational information for each trust but **did not locate a public primary document that resolves any of the three cumulative-payout gaps**. No trust figure, source-confidence label, or payout total was changed. Future attempts should continue to prefer freely posted trust annual reports, CourtListener/RECAP uploads, official court repositories, or archives before considering any paid PACER retrieval.
+
+## Deeper archival follow-up
+
+The extended search produced useful context but no qualifying replacement document. PCC’s public reporting page describes claim-inventory reports available only through its Trust Online login; the public page itself does not provide a trust-wide accounting report.[1] CourtListener provides Pittsburgh Corning’s docket metadata through April 29, 2026, but labels the documents relevant to the historical case as PACER-only or unavailable.[2]
+
+Celotex’s public documents page similarly provides procedures, claim forms, and notices but no annual financial report. A law-firm marketing page describes an alleged 2021 annual report and cumulative payment number, but it neither provides the report itself nor qualifies as a source the tracker can cite.[3] The claim was therefore not used.
+
+B&W’s public documents page confirms that the trust exposes procedures, notices, and filing forms, while its parent company’s SEC filing is a corporate report rather than an accounting of the separate asbestos trust.[4] Neither publishes a supportable total for the $1.94B historical payout floor.
+
+### References
+
+[1] [PCC Trust Online Reports](https://www.pccasbestostrust.com/trust-online-reports/)
+
+[2] [Pittsburgh Corning Corporation, CourtListener Docket 00-22876](https://www.courtlistener.com/docket/4528605/pittsburgh-corning-corporation/)
+
+[3] [Celotex public documents](https://www.celotextrust.com/resources/documents/)
+
+[4] [B&W public documents](https://www.bwasbestostrust.com/?page_id=185) and [Babcock & Wilcox Enterprises 2024 Form 10-K](https://www.sec.gov/Archives/edgar/data/1630805/000163080525000007/bw-20241231.htm)

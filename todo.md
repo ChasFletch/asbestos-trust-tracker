@@ -116,6 +116,8 @@
 - [x] Add a source-linked B&W cumulative-payment calculation explainer beneath the Cumulative Paid card
 - [x] Add standardized source-age labels for historical cumulative-payment figures on trust detail pages
 - [x] Verify the historical source-age label on a valid representative historical trust detail route after the initial test URL returned not found
+- [x] Add a historical-floor badge and “documented minimum” explanation to older cumulative-payout modal rows
+- [x] Replace stale "$24B" and pre-promotion tier summary copy in the cumulative-payout modal with dynamic current figures
 - [x] Manual PACER guide — provide no-charge lookup steps, target records, and purchase safeguards for Celotex and Babcock & Wilcox
 - [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located

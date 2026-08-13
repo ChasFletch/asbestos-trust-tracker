@@ -97,14 +97,15 @@
 - [x] PACER pull — W.R. Grace FY2025: completed, cumulativePaid $2,690,000,000 documented (Doc 33347)
 - [x] PACER pull — DII Industries FY2005-FY2013 early years: completed, 12-year subtotal $1,254,425,009 documented
 - [x] PACER pull — Motors Liquidation (GM) PI Trust: completed, cumulativePaid $136,200,000 documented (Doc 14861)
-- [ ] PACER pull — Pittsburgh Corning: blocked (court-side "document not available", cause undetermined); secondary $3.07B in bottomUpPayouts
+- [x] [Externally unavailable] PACER pull — Pittsburgh Corning: entries 10913, 10920, and 10921 confirmed unavailable through Buy on PACER; owner submitted no-cost CourtListener community requests. Retain the secondary $3.07B qualification pending a donated source document.
 - [ ] PACER pull — Celotex: access restricted ("you do not have access to the restricted document"); historical $575M from RECAP
 - [ ] PACER pull — Babcock & Wilcox: secondary $1.94B floor in bottomUpPayouts; PACER pull queued when restriction resolves
 - [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Babcock & Wilcox: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary support for the $1.94B payout floor located
 - [x] Deeper no-cost archive/mirror follow-up: official report pages, document libraries, CourtListener/RECAP, and public corporate filings reviewed; no qualifying primary cumulative-payout document recovered
-- [ ] CourtListener community request — submit no-cost requests for PCC annual-report entries 10913, 10920, and 10921 after user approval
+- [x] CourtListener community request — owner manually submitted no-cost requests for PCC annual-report entries 10913, 10920, and 10921 after approval
+- [x] CourtListener community request — entries 10913, 10920, and 10921 submitted manually through the owner’s signed-in session
 - [x] CourtListener community request packet — document exact PCC annual-report entries, filing dates, and request language for no-cost submission after owner sign-in
 - [x] CourtListener access repair — verified stable direct docket and sign-in paths after the prior navigation returned “Page not found”
 - [x] Methodology.tsx updated: FAQ JSON-LD figures corrected ($16,746,136,347 remaining assets, $29,981,797,653 cumulative payouts), $30B section revised with bottom-up context and $16.7B documented floor, Known Gaps updated (WRG/DII complete, PCC blocked, Celotex restricted, B&W queued), new Cumulative Payouts Methodology section added (three-tier build table, honest caveats, revision log)

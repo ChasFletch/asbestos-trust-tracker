@@ -63,3 +63,7 @@ The prior “Page not found” issue came from an expiring or malformed navigati
 | CourtListener sign-in / registration | <https://www.courtlistener.com/sign-in/> |
 
 After sign-in, open the public docket above and navigate to the annual-report entries listed in the request packet. The “🙏” request control is displayed beside PACER-only documents.
+
+### Submission and availability status — August 13, 2026
+
+The site owner manually submitted the no-cost CourtListener community requests for entries **10913**, **10920**, and **10921**. The owner also tested each entry’s **Buy on PACER** path; none of the three documents was available for purchase or retrieval. This confirms the documents are presently unavailable through both the community-request path (pending a future donation) and the direct PACER purchase path. The tracker therefore retains its existing qualified secondary PCC payout figure and makes no source-confidence upgrade.

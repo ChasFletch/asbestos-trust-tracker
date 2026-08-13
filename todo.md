@@ -201,6 +201,9 @@
 - [x] Reconcile Rod de Llano education against the current official Danziger & De Llano profile: the official page itself contains conflicting University of Texas and Northwestern law-school statements, so education remains excluded from AsbestosTrusts.org pending firm correction
 - [x] Add the confirmed University of Texas School of Law education line (December 1991) to Rod de Llano’s Research Desk profile
 
+## Report Archive Reliability (2026-08-13)
+- [x] Fix report detail routes returning “Report not found” for reports listed in reports/index.json
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

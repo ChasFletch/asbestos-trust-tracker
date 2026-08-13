@@ -154,6 +154,7 @@ export async function fetchReportsIndex(): Promise<unknown> {
 interface ReportEntry { id: string; path: string; title?: string; date?: string; asOf?: string; }
 const reportMarkdownCache = new Map<string, { content: string; ts: number }>();
 const REPORT_MD_TTL = 60 * 60 * 1000;
+const isSafeReportId = (id: string) => /^[A-Z0-9-]{3,64}$/.test(id);
 
 async function fetchReportMarkdown(reportId: string): Promise<string | null> {
   const cached = reportMarkdownCache.get(reportId);
@@ -247,7 +248,7 @@ export function registerDataRoutes(app: Express) {
   app.get("/api/reports/:id/markdown", async (req, res) => {
     try {
       const { id } = req.params;
-      if (!/^ATR-\d{4}-Q[1-4]$/.test(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
+      if (!isSafeReportId(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
       const content = await fetchReportMarkdown(id);
       if (!content) { res.status(404).json({ error: "Report not found" }); return; }
       res.set("Cache-Control", "public, max-age=3600");
@@ -260,7 +261,7 @@ export function registerDataRoutes(app: Express) {
   app.get("/api/reports/:id/pdf", async (req, res) => {
     try {
       const { id } = req.params;
-      if (!/^ATR-\d{4}-Q[1-4]$/.test(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
+      if (!isSafeReportId(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
       const content = await fetchReportMarkdown(id);
       if (!content) { res.status(404).json({ error: "Report not found" }); return; }
       const bodyHtml = await marked.parse(content);

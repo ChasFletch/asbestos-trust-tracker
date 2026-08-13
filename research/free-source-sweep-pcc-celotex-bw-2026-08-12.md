@@ -40,3 +40,15 @@ B&W’s public documents page confirms that the trust exposes procedures, notice
 A direct Wayback CDX inventory recovered additional archived official PDF paths for all three trust websites. Two initially promising files—PCC’s **Payment Extract Report (2020)** and B&W’s **Payment Extract Report (2020)**—were retrieved and read. They are not trust accounting reports. Instead, each is a user tutorial describing how an individual law firm can export its own claim-payment data from the Trust Online portal. Neither contains a trust-wide paid-to-date total, annual aggregate payout, or cumulative-distribution figure.
 
 The inventories also exposed historical payment-percentage notices, claim forms, TDP materials, and portal guides, but no public annual-report archive capable of validating the remaining cumulative-payout gaps. These records may support payment-rate history or procedure notes; they do not support promotion of the existing PCC, Celotex, or B&W cumulative values to a primary-source classification.
+
+## Prepared CourtListener community-request packet — PCC
+
+The Pittsburgh Corning CourtListener docket exposes the following no-cost community-request targets. Each entry has a visible “🙏” request control, but CourtListener requires a signed-in user to submit a public request. No request was posted while the owner was unavailable to complete sign-in.
+
+| Docket entry | Filed | CourtListener description | Why it matters |
+|---|---:|---|---|
+| **10913** | April 23, 2019 | Notice Regarding Filing of Annual Report and Account; attachments include the Annual Report and Account and Audited Financial Statements | Highest-priority historic accounting record; may contain a direct cumulative-payout disclosure or audited statement supporting one. |
+| **10920** | April 29, 2020 | Notice Regarding Filing of Annual Report; attachments include the Annual Report | May extend or corroborate the 2019 accounting record. |
+| **10921** | April 29, 2021 | Notice Regarding Filing of Annual Report; attachment identifies the 2020 Annual Report | Latest contiguous annual-report lead in the public docket sequence. |
+
+**Request text:** “Please add the Annual Report and Account (including any audited financial-statement exhibit) for this Pittsburgh Corning Asbestos Personal Injury Settlement Trust filing to RECAP if available. It is needed for public research on trust-wide historical payouts and source verification.”

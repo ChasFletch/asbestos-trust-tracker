@@ -199,6 +199,7 @@
 - [x] Verify Paul Danziger and Rod De Llano profiles across firm, Wikidata, and project-managed sources; apply the verified author/reviewer attribution model to site articles
 - [x] Correct the Paul Danziger Wikidata audit after the initial lookup missed the existing entity
 - [x] Reconcile Rod de Llano education against the current official Danziger & De Llano profile: the official page itself contains conflicting University of Texas and Northwestern law-school statements, so education remains excluded from AsbestosTrusts.org pending firm correction
+- [x] Add the confirmed University of Texas School of Law education line (December 1991) to Rod de Llano’s Research Desk profile
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

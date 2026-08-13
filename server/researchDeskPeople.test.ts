@@ -20,7 +20,10 @@ describe("Research Desk attorney identities", () => {
     expect(RESEARCH_DESK.role).toBe("Research and editorial team");
   });
 
-  it("does not repeat the unresolved Rod de Llano educational claim", () => {
-    expect(ROD_DE_LLANO.credentials.join(" ")).not.toMatch(/Princeton|Northwestern|University of Texas School of Law/i);
+  it("uses Rod de Llano’s firm-confirmed University of Texas School of Law credential", () => {
+    expect(ROD_DE_LLANO.credentials).toContain(
+      "University of Texas School of Law, December 1991",
+    );
+    expect(ROD_DE_LLANO.credentials.join(" ")).not.toMatch(/Northwestern/i);
   });
 });

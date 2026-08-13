@@ -45,7 +45,11 @@ export const ROD_DE_LLANO: ResearchDeskProfile = {
   role: "Designated Legal Reviewer",
   organization: "Danziger & De Llano, LLP",
   bio: "Founding Partner of Danziger & De Llano, LLP. His public firm profile describes work in asbestos and mesothelioma, personal injury, product liability, and insurance disputes.",
-  credentials: ["Eligible to practice in Texas", "Texas Bar No. 00786666"],
+  credentials: [
+    "Eligible to practice in Texas",
+    "Texas Bar No. 00786666",
+    "University of Texas School of Law, December 1991",
+  ],
   practiceAreas: ["Asbestos and mesothelioma", "Personal injury", "Product liability"],
   profileUrl: "https://dandell.com/lawyers/rod-de-llano/",
   wikidataUrl: "https://www.wikidata.org/wiki/Q139044724",

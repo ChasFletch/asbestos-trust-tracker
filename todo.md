@@ -106,6 +106,8 @@
 - [x] Verify B&W cumulative-payout source links and bottom-up aggregate rendering after the filed-source promotion
 - [ ] Replace the pre-promotion cumulative-payout methodology string in trust-figures.json rather than relying on a parallel current-summary field
 - [ ] Visually verify the published B&W trust detail source panel and homepage bottom-up payout UI after the filed-source promotion
+- [ ] Fix the B&W trust detail card rendering “Cumulative Paid —” despite the newly filed cumulative-payment record
+- [ ] Repair invalid trust-figures.json syntax introduced in the B&W methodology reconciliation and re-verify the GitHub raw-data feed
 - [x] Manual PACER guide — provide no-charge lookup steps, target records, and purchase safeguards for Celotex and Babcock & Wilcox
 - [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located

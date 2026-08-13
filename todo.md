@@ -99,7 +99,13 @@
 - [x] PACER pull — Motors Liquidation (GM) PI Trust: completed, cumulativePaid $136,200,000 documented (Doc 14861)
 - [x] [Externally unavailable] PACER pull — Pittsburgh Corning: entries 10913, 10920, and 10921 confirmed unavailable through Buy on PACER; owner submitted no-cost CourtListener community requests. Retain the secondary $3.07B qualification pending a donated source document.
 - [x] [Externally restricted] PACER pull — Celotex Doc. 14439 (FY2025 Annual Report, Summary of Claims Disposed, Financial Statement, and Trustee Account; filed 2026-04-28) confirmed present on docket but inaccessible to the owner’s PACER account. Retain the historical FY2006 $575M personal-injury figure with clear scope and staleness labeling.
-- [ ] PACER pull — Babcock & Wilcox: secondary $1.94B floor in bottomUpPayouts; PACER pull queued when restriction resolves
+- [x] PACER pull — Babcock & Wilcox: owner supplied filed Doc. 7876 / Exhibit 1 (FY2023 Annual Report and Account), which provides a primary cumulative-payment calculation of approximately $1.9783B as of 2023-12-31.
+- [x] Analyze owner-supplied Babcock & Wilcox docket PDF and identify the highest-probability annual-report entries for a primary cumulative-payout record
+- [x] Promote the filed B&W FY2023 cumulative-payment calculation ($1.9783B) from the secondary payout tier to a source-linked filed figure and reconcile aggregate counts/totals
+- [x] Reconcile stale trust-figures methodology text and unresolved-gap language after B&W’s filed-source promotion
+- [x] Verify B&W cumulative-payout source links and bottom-up aggregate rendering after the filed-source promotion
+- [ ] Replace the pre-promotion cumulative-payout methodology string in trust-figures.json rather than relying on a parallel current-summary field
+- [ ] Visually verify the published B&W trust detail source panel and homepage bottom-up payout UI after the filed-source promotion
 - [x] Manual PACER guide — provide no-charge lookup steps, target records, and purchase safeguards for Celotex and Babcock & Wilcox
 - [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located

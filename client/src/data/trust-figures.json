@@ -1,6 +1,6 @@
 {
  "schema": "asbestos-trust-figures/v1.1",
- "asOf": "2026-08-12",
+ "asOf": "2026-08-13",
  "aggregate": {
   "remainingAssetsPoint": 15967208224,
   "remainingAssetsLow": 15967208224,
@@ -9,25 +9,26 @@
   "cumulativePayoutsLow": 17500000000,
   "trustsWithFigures": 40,
   "activeTrustsEstimated": 60,
-  "cumulativePayoutsDocumented": 15132028204,
-  "cumulativePayoutsEstimatedRemainder": 8867971796,
-  "trustsWithCumulativePaidFiled": 11,
-  "cumulativePayoutsBottomUp": 29981797653,
-  "cumulativePayoutsBottomUpFiled": 15132028204,
-  "cumulativePayoutsBottomUpSecondary": 11349769449,
+  "cumulativePayoutsDocumented": 17110328204,
+  "cumulativePayoutsEstimatedRemainder": 6889671796,
+  "trustsWithCumulativePaidFiled": 12,
+  "cumulativePayoutsBottomUp": 30020097653,
+  "cumulativePayoutsBottomUpFiled": 17110328204,
+  "cumulativePayoutsBottomUpSecondary": 9409769449,
   "cumulativePayoutsBottomUpResidual": 3500000000,
-  "cumulativePayoutsBottomUpAsOf": "2026-08-12",
+  "cumulativePayoutsBottomUpAsOf": "2026-08-13",
   "displayHints": {
    "cumulativePayoutsFigure": "cumulativePayoutsBottomUp",
-   "cumulativePayoutsHeadline": 29981797653,
-   "cumulativePayoutsLabel": "paid to claimants (bottom-up: $15.13B filed + $11.35B secondary-citing-filed + ~$3.5B estimated for ~25 undocumented trusts)",
+   "cumulativePayoutsHeadline": 30020097653,
+   "cumulativePayoutsLabel": "paid to claimants (bottom-up: $17.11B filed + $9.41B secondary-citing-filed + ~$3.5B estimated for ~25 undocumented trusts)",
    "legacyPoint": "cumulativePayoutsPoint = 24000000000 (round estimate, superseded 2026-07-29)"
   }
  },
  "methodology": {
   "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 13 from filed annual reports/quarterly filings (FY2025 annual reports or Q1 2026 quarterly) totaling $6,741,377,085, plus 28 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $10,004,759,262. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
   "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
-  "cumulativePayoutsPoint": "Bottom-up decomposition. DOCUMENTED FLOOR: $19,810,476,508 paid inception-to-date by the 14 trusts with cumulative figures in filed reports (10 current-era, 4 historical) - Manville $5,329,722,253 through 3/31/2026 (Q1 2026 quarterly report, Bankr. S.D.N.Y. Doc 4479), DII Industries $2,349,041,458 inception-to-date through 12/31/2025 (bottom-up sum of 21 filed annual-report documents, Bankr. W.D. Pa. 03-35592-CMB; FY2005-FY2013 pulled from PACER 2026-07-28), W.R. Grace ~$2,690,000,000 through 12/31/2025 ('approximately $2.69 billion since inception' per FY2025 annual report narrative, Bankr. D. Del. 01-01139 Doc 33347-1, filed 4/29/2026; no exact cumulative dollar exhibit exists), Western $2,238,037,573 through 12/31/2025 (22nd Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 13-31914 Doc 1944), NARCO $904,019,504 through 12/31/2025 (FY2025 annual report, W.D. Pa. 02-20198 Doc 8521), Thorpe Insulation $433,982,311 through 12/31/2025 (16th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:07-bk-20016-BB Doc 242), Plant $191,680,841 through 12/31/2025 (14th Annual Report, Claim Report Exhibit F, Bankr. N.D. Cal. 09-31347 Doc 3050), J.T. Thorpe (CA) $189,960,646 through 12/31/2025 (20th Annual Report, Claim Report Exhibit F, Bankr. C.D. Cal. 2:02-bk-14216-BB Doc 1901), API $93,990,000 through 12/31/2025 (FY2025 annual report, Bankr. D. Minn. 05-30073-GFK), MLC ~$136,200,000 through 12/31/2025 ('approximately $136.2 million since inception' per FY2025 annual report claims summary, Bankr. S.D.N.Y. 09-50026 Doc 14861-1). HISTORICAL FILED FIGURES (as-of 2006-2014; floors since payouts continued after those dates; recovered 2026-07-28 via non-PACER sweep, see trust-reports/non-pacer-recovery/): Owens Corning/Fibreboard $2,465,910,000 through 12/31/2009 (computed sum of four verbatim per-category figures, FY2009 AR, Exhibit L to Doc 6491-5 Bankr. S.D.N.Y. 09-50026), Armstrong $1,600,408,304 through 12/31/2014 (FY2014 AR Exhibit 1.B, Wayback copy of trust-posted PDF), USG $612,130,000 through 12/31/2008 (computed sum of two verbatim figures, FY2008 AR, Doc 21942-21 Bankr. D. Del. 01-01139), Celotex $575,393,618 through 12/31/2006 (PI pool, FY2006 AR, Bankr. M.D. Fla. 90-10016 Doc 13816). ESTIMATED REMAINDER: ~$4.19B for all other trusts, anchored on GAO-11-819 (Sept 2011) documenting $17.5B paid on 3.3M claims 1988-2010 (hard floor = cumulativePayoutsLow) plus the prior ~$6.5B 2011-2025 extrapolation from a documented 8-trust subset paying ~$591.9M (2022) and ~$561.2M (2024). The largest documented-but-unretrieved gaps (USG, PCC, Armstrong, OC/FB, WRG, B&W, Celotex) publish cumulative figures in filed annual reports sequestered on PACER - see pacer-pull-queue.json; each pull converts estimate into documented. NOTE: DII Industries publishes no inception-to-date cumulative exhibit, so its annual reports were summed bottom-up across all 21 years of trust operation (FY2005-FY2025): FY2014-FY2025 from file-stamped PDFs free at diiasbestostrust.org ($1,254,425,009) and FY2005-FY2013 from PACER ($1,094,616,449 across 9 documents pulled 2026-07-28 for $9.90; FY2005 audited statements show $0 claims paid - the trust spent its first year setting up, and claims payments began in 2006). DII's documented total $2,349,041,458 is now part of the documented floor.",
+  "cumulativePayoutsPoint": "Current bottom-up decomposition as of 2026-08-13: $30,020,097,653 total. The filed/source-linked tier is $17,110,328,204 across 12 trust figures, including Babcock & Wilcox at approximately $1,978,300,000 through 2023-12-31. That B&W amount is calculated from the two inception-to-date payment statements in its FY2023 Annual Report and Account (E.D. La. 00-10992 Doc 7876-1): approximately $1.916B for unliquidated PI claims plus approximately $62.3M for pre-petition liquidated PI claims. The qualified secondary-citing-filed tier is $9,409,769,449 across 7 components. The remaining approximately $3.5B is a labeled residual allowance for trusts without a public cumulative-payment figure. Historic source dates are not homogenized: older filed figures remain floors where payments continued after their as-of date. Pittsburgh Corning remains secondary pending an accessible filed report; Celotex retains its filed FY2006 PI-pool figure plus a qualified post-2006 secondary-growth component because its FY2025 report is account-restricted."
+  "cumulativePayoutsCurrent": "As of 2026-08-13, the tracker’s current bottom-up payout estimate is $30,020,097,653: $17,110,328,204 across 12 filed/source-linked trust figures, $9,409,769,449 across 7 qualified secondary-citing-filed components, and a labeled ~$3.5B residual allowance. Babcock & Wilcox is included in the filed tier at approximately $1,978,300,000 through 12/31/2023, calculated from the two inception-to-date payment amounts in E.D. La. 00-10992 Doc 7876-1. This current record supersedes the earlier B&W secondary-floor treatment in the historical payout methodology narrative above.",
   "viralFiguresDebunked": "'$30B remaining' traces to GAO-11-819's ~$36.8B TOTAL CAPITALIZATION of 60 trusts as of 2011 (initial funding + returns), not a current balance. GAO analyzed reports for only 47 of 60 trusts."
  },
  "trusts": [
@@ -740,10 +741,11 @@
    "paymentPercentage": 4.3,
    "status": "active",
    "confidence": "filed",
-   "note": "FY2025 report pulled from PACER 7/28/2026 (00-10992 Doc 7890, $4.30 fees incl. docket query): audited NCE $295,318,243 at 12/31/2025; FY2025 paid ~$19.89M on 18,555 claims. No inception-to-date cumulative line in filing - cumulativePaid gap flagged (corpus secondary ~$1.94B YE2024 remains non-filed). 4.7->4.3% eff. 6/30/2026 (trust letter; pending TAC/FCR consent)",
-   "cumulativePaid": null,
-   "cumulativePaidAsOf": null,
-   "cumulativePaidSource": null,
+   "note": "FY2025 report pulled from PACER 7/28/2026 (00-10992 Doc 7890, $4.30 fees incl. docket query): audited NCE $295,318,243 at 12/31/2025; FY2025 paid ~$19.89M on 18,555 claims. Filed FY2023 annual report and account (Doc 7876-1) directly supports an approximately $1.9783B inception-to-date cumulative payment figure as of 12/31/2023. 4.7->4.3% eff. 6/30/2026 (trust letter; pending TAC/FCR consent)",
+   "cumulativePaid": 1978300000,
+   "cumulativePaidAsOf": "2023-12-31",
+   "cumulativePaidSource": "Babcock & Wilcox Company Asbestos PI Trust Annual Report and Account FY2023, E.D. La. 00-10992 Doc 7876-1, filed 4/29/2024: approximately $1.916B paid on unliquidated PI claims plus approximately $62.3M on pre-petition liquidated PI claims, both inception-to-date through 12/31/2023; combined calculation approximately $1.9783B.",
+   "cumulativePaidSourceUrl": "/manus-storage/babcock-wilcox-fy2023-annual-report-doc7876_2e0c8d40.pdf",
    "established": 2006,
    "company": "Babcock & Wilcox Enterprises",
    "administrator": "DCPF",
@@ -1691,6 +1693,13 @@
    "type": "merge_patch",
    "trust": "(multiple)",
    "note": "Applied trust-figures-merge-patch-v2.json: netAssets ASARCO Asbestos PI Settlement Trust: 735865455 -> 625807675 @ 2025-12-31; netAssets Combustion Engineering 524(g) Asbestos PI Trust: 445898474 -> 385240071 @ 2025-12-31; netAssets Kaiser Gypsum Asbestos PI Trust: 49993178 -> 63680663 @ 2025-12-31; netAssets Congoleum Plan Trust: 159982645 -> 148083220 @ 2025-12-31; paymentPercentage Eagle-Picher Industries PI Settlement Trust: None -> 35; paymentPercentage Yarway Asbestos PI Trust: None -> 27.5; paymentPercentage A.P. Green (APG) Asbestos Trust: None -> 6; paymentPercentage Fuller-Austin Asbestos Settlement Trust: None -> 45; paymentPercentage G-I Holdings (GAF) Asbestos PI Settlement Trust: None -> 5; paymentPercentage Kaiser Gypsum Asbestos PI Trust: None -> 62; paymentPercentage Congoleum Plan Trust: None -> 8.67; paymentPercentage NGC Bodily Injury Trust (National Gypsum): None -> 45; paymentPercentage ACandS Asbestos Settlement Trust: None -> 2.89; paymentPercentage Christy Refractories Asbestos PI Trust: None -> 55; paymentPercentage A-Best Products Asbestos Trust: None -> 18; paymentPercentage Paddock Enterprises (Owens-Illinois) Asbestos Trust: 50 -> 100; subAccounts added for Federal-Mogul Asbestos PI Trust (4 sub-accounts); paymentPercentage ASARCO Asbestos PI Settlement Trust: None -> 35; confidence Pittsburgh Corning Asbestos PI Settlement Trust: filed -> secondary; confidence United States Gypsum (USG) Asbestos Trust: filed -> secondary; confidence Owens Corning/Fibreboard Asbestos PI Trust: filed -> secondary; confidence Armstrong World Industries Asbestos PI Trust: filed -> secondary; confidence Federal-Mogul Asbestos PI Trust: filed -> secondary; confidence H.K. Porter Asbestos Trust: filed -> secondary; removal Paddock Enterprises (Owens-Illinois) Asbestos Trust: netAssets 610000000 -> null; re-filed as initialFunding; addition: A & I Corporation Asbestos Bodily Injury Trust (pct=None, conf=secondary); addition: Burns and Roe Personal Injury Settlement Trust (pct=None, conf=secondary); addition: C.E. Thurston & Sons Asbestos Trust (pct=None, conf=secondary); addition: Duro Dyne Asbestos Personal Injury Trust (pct=None, conf=secondary); addition: Leslie Controls, Inc. Asbestos Personal Injury Trust (pct=6.25, conf=secondary); addition: ABB Lummus Global Inc. 524(g) Asbestos PI Trust (pct=9.5, conf=filed); addition: Shook & Fletcher Asbestos Settlement Trust (pct=58, conf=secondary); addition: Brauer 524(g) Asbestos Trust (Brauer Supply Company) (pct=None, conf=secondary); addition: T H Agriculture & Nutrition, L.L.C. Asbestos Personal Injury Trust (THAN) (pct=15, conf=filed); addition: United States Mineral Products Company Asbestos PI Settlement Trust (pct=32, conf=secondary)"
+  },
+  {
+   "date": "2026-08-13",
+   "type": "annual_report",
+   "trust": "Babcock & Wilcox Asbestos PI Settlement Trust",
+   "detail": "Owner-supplied E.D. La. 00-10992 Doc 7876 and Exhibit 1 (filed 4/29/2024) directly state approximately $1.916B paid on unliquidated PI claims plus approximately $62.3M on pre-petition liquidated PI claims, both inception-to-date through 12/31/2023. The combined approximately $1.9783B figure is now filed/source-linked; prior $1.94B secondary floor removed from Tier 2.",
+   "source": "Babcock & Wilcox FY2023 Annual Report and Account, Doc 7876-1"
   }
  ],
  "sources": [
@@ -1733,11 +1742,11 @@
  ],
  "bottomUpPayouts": {
   "asOf": "2026-08-12",
-  "headlineTotal": 29981797653,
+  "headlineTotal": 30020097653,
   "tiers": {
    "filed": {
-    "amount": 15132028204,
-    "trustCount": 11,
+    "amount": 17110328204,
+    "trustCount": 12,
     "description": "Inception-to-date claims payments read directly from filed annual reports, quarterly statements, or court documents (class-a).",
     "components": [
      {
@@ -1769,6 +1778,12 @@
       "amount": 904019504,
       "asOf": "2025-12-31",
       "source": "NARCO Trust Annual Report & Financial Statements FY2025 (W.D. Pa. 02-20198, Doc 8521, filed 4/16/2026) - $775,354,754 paid on 41,834 TDP Annual Contribution claims + $128,664,750 on Pre-Established claims liquidated by Honeywell, inception-to-date through 12/31/2025"
+     },
+     {
+      "trust": "Babcock & Wilcox Asbestos PI Settlement Trust",
+      "amount": 1978300000,
+      "asOf": "2023-12-31",
+      "source": "Babcock & Wilcox Company Asbestos PI Trust Annual Report and Account FY2023, E.D. La. 00-10992 Doc 7876-1, filed 4/29/2024: approximately $1.916B paid on unliquidated PI claims plus approximately $62.3M on pre-petition liquidated PI claims, both inception-to-date through 12/31/2023; combined calculation approximately $1.9783B."
      },
      {
       "trust": "Celotex Asbestos Settlement Trust",
@@ -1809,7 +1824,7 @@
     ]
    },
    "secondaryCitingFiled": {
-    "amount": 11349769449,
+   "amount": 9409769449,
     "description": "Cumulative payment figures from secondary compilations that cite the trusts' own filed annual reports (class-b); each flagged with confidence and not yet verified against the filed document. Used only where no filed figure is in hand.",
     "components": [
      {
@@ -1819,13 +1834,6 @@
       "confidence": "high",
       "source": "asbestosclaims.law trust database citing FY2022 annual report (296,494 claims paid); corroborated by ELSM 2024 figures (~$3.14B cumulative). Corpus: followup_dim01",
       "note": "Trust effective 2017; not yet verified against filed document (PACER queue)."
-     },
-     {
-      "component": "Babcock & Wilcox Asbestos PI Settlement Trust — cumulative paid since inception",
-      "amount": 1940000000,
-      "asOf": "2024-12-31",
-      "confidence": "medium-high",
-      "source": "Secondary citing trust's YE2024 report: '$1.94B+ paid since inception, ~403k claims paid'. Corpus: followup_dim02. Floor figure ('+' in source); FY2025 filed payments of $19,890,000 (Exhibit 1) are additional to this floor."
      },
      {
       "component": "Celotex Asbestos Settlement Trust — post-2006 growth not captured by filed figure",

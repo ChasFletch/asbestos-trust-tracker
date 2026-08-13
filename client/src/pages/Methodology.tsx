@@ -106,7 +106,7 @@ export default function Methodology() {
             A later <a className="text-primary underline underline-offset-2" href="https://www.mesothelioma-lawyerblog.com/wp-content/uploads/sites/199/2017/05/Bates-White-Artile_Reorganized-Mess.pdf" target="_blank" rel="noopener noreferrer">Bates White / Mealey&apos;s commentary</a> reported roughly $18.6 billion in confirmed trust assets at year-end 2013, plus $160 million in deferred funding, while noting that several 2014 confirmations were expected to add funding. The <a className="text-primary underline underline-offset-2" href="https://instituteforlegalreform.com/wp-content/uploads/2020/10/Dubious_Distribution_Asbestos_Paper_Web.pdf" target="_blank" rel="noopener noreferrer">U.S. Chamber Institute for Legal Reform&apos;s 2018 report</a>, an advocacy publication, described nearly $25 billion in assets and more than $2 billion in deferred funding at year-end 2016. These are useful dated benchmarks, but neither is a current balance nor a substitute for a trust-by-trust filed-source review.
           </p>
           <p className="text-muted-foreground mb-3">
-            The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $29,981,797,653 measures payments made, not assets remaining.
+            The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $30,020,097,653 measures payments made, not assets remaining.
           </p>
           <p className="text-muted-foreground">
             Our documented floor for remaining assets is <strong className="text-foreground">$15,967,208,224</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
@@ -123,7 +123,7 @@ export default function Methodology() {
           </p>
           <div className="space-y-2">
             {[
-              { gap: "PACER-only or unavailable documents", detail: "W.R. Grace and DII Industries filings have been pulled and documented. Pittsburgh Corning's relevant filings currently return a court-side 'document not available' response. Celotex annual-report documents return an account-access restriction. Babcock & Wilcox FY2025 was retrieved, but its historical $1.94B payout floor remains secondary pending additional filed support." },
+              { gap: "PACER-only or unavailable documents", detail: "W.R. Grace, DII Industries, and Babcock & Wilcox filings have been pulled and documented. Pittsburgh Corning's relevant filings currently return a court-side 'document not available' response. Celotex FY2025 annual-report documents return an account-access restriction." },
               { gap: "Unpublished or unretrieved balances", detail: "Some active trusts publish a current payment percentage but no retrievable current balance. These records remain visible and are labeled 'not published' rather than silently treated as zero. They are excluded from the documented-assets floor." },
               { gap: "Delticus / Bendix", detail: "The Delticus trust (Honeywell / Bendix) is administered by Third Point / Delticus and does not publish public financial statements. Its $1.6B figure is from a 2021 secondary source." },
               { gap: "Pre-1995 Manville data", detail: "Manville Trust payment percentage history prior to 1995 (the 100% era, 1988–1994) is not documented in current public filings." },
@@ -158,7 +158,7 @@ export default function Methodology() {
             Cumulative Payouts Methodology
           </h2>
           <p className="text-muted-foreground mb-3">
-            The cumulative payouts clock displays <strong className="text-foreground">$29,981,797,653</strong> — a bottom-up estimate of total claims paid by all U.S. asbestos bankruptcy trusts since 1988. This figure replaced a round $24 billion placeholder in July 2026. The methodology is documented in full at <code className="text-xs bg-muted px-1 py-0.5 rounded">docs/methodology-cumulative-payouts.md</code> in the project repository.
+            The cumulative payouts clock displays <strong className="text-foreground">$30,020,097,653</strong> — a bottom-up estimate of total claims paid by all U.S. asbestos bankruptcy trusts since 1988. This figure replaced a round $24 billion placeholder in July 2026. The methodology is documented in full at <code className="text-xs bg-muted px-1 py-0.5 rounded">docs/methodology-cumulative-payouts.md</code> in the project repository.
           </p>
 
           <h3 className="font-semibold text-foreground text-sm mb-3 mt-5">Why the Number Changed from $24B to ~$30B</h3>
@@ -176,19 +176,19 @@ export default function Methodology() {
             {[
               {
                 tier: "Tier 1 — Filed figures",
-                amount: "$15,132,028,204",
-                count: "11 trusts",
+                amount: "$17,110,328,204",
+                count: "12 trusts",
                 confidence: "a",
                 color: "oklch(0.72 0.18 150)",
-                detail: "Inception-to-date claims payments read directly from filed annual reports or court documents. As-of dates range 2006–2026. The one historical figure still in this tier (Celotex 2006) is a floor — that trust kept paying after its last publicly retrievable report. On 2026-08-12, Owens Corning/Fibreboard, Armstrong, and USG were re-tiered to Tier 2 after a provenance audit found their asset records rested on secondary compilations; their payout figures moved with them pending filed FY2025 reports.",
+                detail: "Inception-to-date claims payments read directly from filed annual reports or court documents. As-of dates range 2006–2026. Babcock & Wilcox joined this tier on 2026-08-13: its FY2023 filed Annual Report and Account supports an approximately $1.9783B combined cumulative-payment figure. The historical Celotex 2006 figure remains a floor because that trust kept paying after its last publicly retrievable report. Owens Corning/Fibreboard, Armstrong, and USG remain in Tier 2 pending direct retrieval of their cited reports.",
               },
               {
                 tier: "Tier 2 — Secondary citing filed",
-                amount: "$11,349,769,449",
-                count: "8 components",
+                amount: "$9,409,769,449",
+                count: "7 components",
                 confidence: "b",
                 color: "oklch(0.72 0.18 45)",
-                detail: "Used only where no filed figure is in hand. Each comes from a secondary compilation that cites the trust's own filed annual report, or was re-tiered here by the 2026-08-12 provenance audit. Components: Owens Corning/Fibreboard $2,465,910,000 (2009, re-tiered); Armstrong $1,600,408,304 (2014, re-tiered); USG $612,130,000 (2008, re-tiered); Pittsburgh Corning $3,071,420,000 (2022); Babcock & Wilcox $1,940,000,000 floor (2024); Celotex post-2006 growth $783,146,017 (2021); OC/FB post-2009 growth $534,090,000 (2022); G-I Holdings (GAF) $342,665,128 (2022). Every Tier 2 figure graduates to Tier 1 when its PACER pull lands.",
+                detail: "Used only where no filed figure is in hand. Each comes from a secondary compilation that cites the trust's own filed annual report, or was re-tiered here by the 2026-08-12 provenance audit. Components: Owens Corning/Fibreboard $2,465,910,000 (2009, re-tiered); Armstrong $1,600,408,304 (2014, re-tiered); USG $612,130,000 (2008, re-tiered); Pittsburgh Corning $3,071,420,000 (2022); Celotex post-2006 growth $783,146,017 (2021); OC/FB post-2009 growth $534,090,000 (2022); and G-I Holdings (GAF) $342,665,128 (2022). Every Tier 2 figure graduates to Tier 1 when a direct filing is retrieved.",
               },
               {
                 tier: "Tier 3 — Estimated residual",
@@ -246,6 +246,11 @@ export default function Methodology() {
                   <td className="py-2 pr-4 text-muted-foreground">2026-07-29</td>
                   <td className="py-2 pr-4 font-mono text-foreground">$29,981,797,653</td>
                   <td className="py-2 text-muted-foreground">Bottom-up build (commit <code className="bg-muted px-1 rounded">2b2ecf1</code>): 14 filed + 5 secondary-citing-filed + labeled residual</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 text-muted-foreground">2026-08-13</td>
+                  <td className="py-2 pr-4 font-mono text-foreground">$30,020,097,653</td>
+                  <td className="py-2 text-muted-foreground">Babcock &amp; Wilcox FY2023 filed Annual Report and Account (E.D. La. 00-10992 Doc 7876-1) promoted approximately $1.9783B from Tier 2 to Tier 1, replacing the prior $1.94B secondary floor.</td>
                 </tr>
               </tbody>
             </table>

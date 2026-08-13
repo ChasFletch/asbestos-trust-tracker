@@ -19,7 +19,7 @@ Rod De Llano has a public [Wikidata item (Q139044724)](https://www.wikidata.org/
 
 ## Material discrepancy: Rod De Llano law school
 
-The Dandell profile says that Rod De Llano graduated from **Northwestern University School of Law** in 1993. The Texas Bar public directory instead lists **University of Texas**, with a law-school graduation date of December 1991. The current Wikidata item also lists the University of Texas School of Law.
+The current Dandell profile contains **two conflicting law-school statements on the same page**. Its “About Me” narrative says that Rod De Llano graduated with honors from the **University of Texas School of Law**, while the visible “Education” section lists **Northwestern University School of Law (J.D. 1993)**. The Texas Bar public directory instead lists **University of Texas**, with a law-school graduation date of December 1991. The current Wikidata item also lists the University of Texas School of Law.
 
 Because the sources conflict, **do not publish any law-school claim for Rod De Llano in AsbestosTrusts.org author/reviewer cards or JSON-LD until Danziger & De Llano confirms the correct fact and updates the controlling public biography as appropriate.** The public Research Desk profile can accurately use his role, Texas Bar status, firm affiliation, and practice areas without referring to education.
 

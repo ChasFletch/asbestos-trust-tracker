@@ -67,3 +67,9 @@ After sign-in, open the public docket above and navigate to the annual-report en
 ### Submission and availability status — August 13, 2026
 
 The site owner manually submitted the no-cost CourtListener community requests for entries **10913**, **10920**, and **10921**. The owner also tested each entry’s **Buy on PACER** path; none of the three documents was available for purchase or retrieval. This confirms the documents are presently unavailable through both the community-request path (pending a future donation) and the direct PACER purchase path. The tracker therefore retains its existing qualified secondary PCC payout figure and makes no source-confidence upgrade.
+
+### Celotex FY2025 access confirmation — August 13, 2026
+
+The owner manually located **Doc. 14439** in *In re The Celotex Corporation*, Bankr. M.D. Fla. No. 8:90-bk-10016. The docket describes it as: **“Annual Report, Summary of Claims Disposed, Financial Statement, and Account of the Trustee of the Asbestos Settlement Trust for the Period January 1, 2025 to December 31, 2025,”** filed **April 28, 2026** by Jeffrey W. Warren on behalf of the Asbestos Settlement Trust, with four listed exhibits. When the owner opened the entry, PACER returned: **“You do not have access to this document.”**
+
+This confirms the current FY2025 accounting filing exists but is account-restricted. It does not change the tracker’s historical FY2006 personal-injury cumulative-payment figure or justify an upgrade in source confidence. The docket title and access outcome are retained so the entry can be revisited if the restriction changes.

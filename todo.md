@@ -104,10 +104,15 @@
 - [x] Promote the filed B&W FY2023 cumulative-payment calculation ($1.9783B) from the secondary payout tier to a source-linked filed figure and reconcile aggregate counts/totals
 - [x] Reconcile stale trust-figures methodology text and unresolved-gap language after B&W’s filed-source promotion
 - [x] Verify B&W cumulative-payout source links and bottom-up aggregate rendering after the filed-source promotion
-- [ ] Replace the pre-promotion cumulative-payout methodology string in trust-figures.json rather than relying on a parallel current-summary field
-- [ ] Visually verify the published B&W trust detail source panel and homepage bottom-up payout UI after the filed-source promotion
-- [ ] Fix the B&W trust detail card rendering “Cumulative Paid —” despite the newly filed cumulative-payment record
-- [ ] Repair invalid trust-figures.json syntax introduced in the B&W methodology reconciliation and re-verify the GitHub raw-data feed
+- [x] Replace the pre-promotion cumulative-payout methodology string in trust-figures.json rather than relying on a parallel current-summary field
+- [x] Visually verify the published B&W trust detail source panel and homepage bottom-up payout UI after the filed-source promotion
+- [x] Fix the B&W trust detail card rendering “Cumulative Paid —” despite the newly filed cumulative-payment record
+- [x] Repair invalid trust-figures.json syntax introduced in the B&W methodology reconciliation and re-verify the GitHub raw-data feed
+- [x] Explicitly document the post-fix B&W Cumulative Paid card, as-of date, and source-panel results from the rendered page
+- [x] Explicitly document the post-fix homepage cumulative-payout counter and tier-total result from the rendered page
+- [x] Capture text-verifiable server-rendered evidence for B&W’s cumulative-payment card and source controls
+- [x] Capture text-verifiable server-rendered evidence for the homepage $30,020,097,653 payout total
+- [x] Extract visible rendered-DOM text for B&W’s “Cumulative Paid” card, 2023-12-31 as-of label, and Annual Report preview control
 - [x] Manual PACER guide — provide no-charge lookup steps, target records, and purchase safeguards for Celotex and Babcock & Wilcox
 - [x] Free-source sweep — Pittsburgh Corning: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located
 - [x] Free-source sweep — Celotex: searched official trust resources, CourtListener/RECAP, Internet Archive, and public court repositories; no accessible primary cumulative-payout filing located

@@ -52,3 +52,14 @@ The Pittsburgh Corning CourtListener docket exposes the following no-cost commun
 | **10921** | April 29, 2021 | Notice Regarding Filing of Annual Report; attachment identifies the 2020 Annual Report | Latest contiguous annual-report lead in the public docket sequence. |
 
 **Request text:** “Please add the Annual Report and Account (including any audited financial-statement exhibit) for this Pittsburgh Corning Asbestos Personal Injury Settlement Trust filing to RECAP if available. It is needed for public research on trust-wide historical payouts and source verification.”
+
+### Stable access links verified August 13, 2026
+
+The prior “Page not found” issue came from an expiring or malformed navigation path, not from the underlying public docket. The stable URLs below load successfully without a session:
+
+| Purpose | Stable URL |
+|---|---|
+| PCC public docket | <https://www.courtlistener.com/docket/4528605/pittsburgh-corning-corporation/> |
+| CourtListener sign-in / registration | <https://www.courtlistener.com/sign-in/> |
+
+After sign-in, open the public docket above and navigate to the annual-report entries listed in the request packet. The “🙏” request control is displayed beside PACER-only documents.

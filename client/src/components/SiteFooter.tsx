@@ -16,6 +16,7 @@ export function SiteFooter() {
             <ul className="space-y-1 text-xs">
               <li><a href="/trusts" className="hover:text-foreground transition-colors no-underline">Trust Data Table</a></li>
               <li><a href="/methodology" className="hover:text-foreground transition-colors no-underline">Methodology</a></li>
+              <li><a href="/provenance" className="hover:text-foreground transition-colors no-underline">Figure History</a></li>
               <li><a href="/news" className="hover:text-foreground transition-colors no-underline">News &amp; Updates</a></li>
               <li><a href="/about" className="hover:text-foreground transition-colors no-underline">About This Project</a></li>
             </ul>
@@ -57,4 +58,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

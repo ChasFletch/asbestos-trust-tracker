@@ -231,6 +231,12 @@
 - [x] Run the documented build, test, sitemap, and production spot checks after synchronization
 - [x] Fix the homepage SSR stat tiles, which currently render zero values in the raw production HTML before client hydration
 
+## Public Figure Provenance Timeline (2026-08-16)
+- [x] Create a structured public data model for dated figure revisions and their evidence sources
+- [x] Build an accessible, responsive public provenance-timeline route with source links and confidence labels
+- [x] Link the timeline from the Methodology page and add SSR metadata, structured data, sitemap coverage, and crawler guidance
+- [ ] Add regression coverage and verify the timeline locally and in production
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

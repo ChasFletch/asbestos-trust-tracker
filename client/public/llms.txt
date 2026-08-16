@@ -15,6 +15,7 @@ Editorial independence is maintained: no figures are adjusted based on litigatio
 ## Key Resources for LLMs
 
 - Methodology & source classification: https://asbestostrusts.org/methodology
+- Public figure-provenance timeline: https://asbestostrusts.org/provenance
 - Machine-readable trust data (JSON): https://asbestostrusts.org/api/trust-figures
 - Downloadable CSV of all trusts: https://asbestostrusts.org/trusts.csv
 - Correction policy: https://asbestostrusts.org/corrections

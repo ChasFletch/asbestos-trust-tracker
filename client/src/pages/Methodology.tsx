@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+
 export default function Methodology() {
 
 
@@ -247,7 +248,16 @@ export default function Methodology() {
             <li><strong className="text-foreground">No class-c marketing-site figures.</strong> Nothing from mesothelioma.com, asbestosclaims.law, or similar sites is used anywhere in this build.</li>
           </ol>
 
-          <h3 className="font-semibold text-foreground text-sm mb-2">Revision Log</h3>
+          <div className="mt-6 mb-4 rounded border border-primary/25 bg-primary/5 p-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h3 className="font-semibold text-foreground text-sm">Follow every figure change</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">The public figure-provenance timeline shows the prior and revised figure, the reason for each revision, the source class, and direct record links.</p>
+              </div>
+              <Link href="/provenance" className="inline-flex shrink-0 items-center justify-center rounded border border-primary/35 bg-background px-3 py-2 text-xs font-semibold text-primary no-underline transition-colors hover:bg-primary hover:text-primary-foreground">Open figure history →</Link>
+            </div>
+          </div>
+          <h3 className="font-semibold text-foreground text-sm mb-2">Recent Revision Log</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
               <thead>

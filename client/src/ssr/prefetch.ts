@@ -239,6 +239,35 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       ],
     };
   }
+  if (clean === "/provenance") {
+    return {
+      title: `Figure Provenance Timeline · ${SITE_NAME}`,
+      description: "A public, source-linked history of major AsbestosTrusts.org asset and cumulative-payout figure revisions, including evidence classifications and change rationales.",
+      canonicalPath: "/provenance",
+      keywords: "asbestos trust figure history, data provenance, trust fund payout revisions, asset floor methodology, source verification timeline",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Figure Provenance Timeline",
+          "description": "A public, source-linked history of major AsbestosTrusts.org asset and cumulative-payout figure revisions, including evidence classifications and change rationales.",
+          "url": "https://asbestostrusts.org/provenance",
+          "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
+          "publisher": { "@id": "https://asbestostrusts.org/#org" },
+          "about": "Provenance and revisions for U.S. asbestos bankruptcy trust fund figures"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Methodology", "item": "https://asbestostrusts.org/methodology" },
+            { "@type": "ListItem", "position": 3, "name": "Figure Provenance Timeline", "item": "https://asbestostrusts.org/provenance" }
+          ]
+        }
+      ]
+    };
+  }
   if (clean === "/about") {
     return {
       title: `About · ${SITE_NAME}`,

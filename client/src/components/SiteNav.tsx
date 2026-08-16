@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/news", label: "News" },
   { href: "/reports", label: "Reports" },
   { href: "/methodology", label: "Methodology" },
+  { href: "/provenance", label: "Figure History" },
   { href: "/about", label: "About" },
 ];
 

@@ -561,7 +561,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
             tooltip={remainingTooltip}
             panelTooltip={
               <><strong style={{display:"block",color:"#f4d07a",marginBottom:"0.35rem",fontSize:"0.75rem",letterSpacing:"0.05em",textTransform:"uppercase"}}>Documented Remaining Assets</strong>
-              The sum of net assets reported in the most recent annual report or financial statement filed by each of the 42 active U.S. asbestos bankruptcy trusts. Figures are drawn directly from primary court documents — not modeled or estimated. The as-of dates vary by trust; see the Trust Data page for per-trust detail. This is a documented floor, not a complete system total: trusts that have not yet filed public financials are excluded.</>
+              The sum of net assets reported in the most recent annual report or financial statement located for each of the 42 U.S. asbestos bankruptcy trust records with documented figures (of 55 tracked). Figures are drawn directly from primary court documents or secondary compilations that cite them — not modeled or estimated. The as-of dates vary by trust; see the Trust Data page for per-trust detail. This is a documented floor, not a complete system total: trusts that have not yet filed public financials are excluded.</>
             }
             digitSize={primarySize}
           />

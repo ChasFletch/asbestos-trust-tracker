@@ -106,23 +106,24 @@ export default function Home() {
   const { data: allTrustFigures } = trpc.trustFigures.allTrusts.useQuery();
   const [showEmbedModal, setShowEmbedModal] = useState(false);
 
-  const remaining = agg?.remainingLow ?? 15967208224;
-  const remainingLow = agg?.remainingLow ?? 15967208224;
-  const remainingHigh = agg?.remainingHigh ?? 21721071877;
-  const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 29981797653;
-  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 15132028204;
+  const remaining = agg?.remainingLow ?? 15987271944;
+  const remainingLow = agg?.remainingLow ?? 15987271944;
+  const remainingHigh = agg?.remainingHigh ?? 21742138783;
+  const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 30020097653;
+  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 17110328204;
   const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 8867971796;
-  const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 14;
-  const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 15132028204;
-  const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 11349769449;
+  const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 12;
+  const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 17110328204;
+  const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 9409769449;
   const paidOutBottomUpResidual = (agg as any)?.paidOutBottomUpResidual ?? 3500000000;
 
-  const lastUpdated = figures?.asOf ?? "2026-07-27";
+  const lastUpdated = figures?.asOf ?? "2026-08-16";
   const topTrusts = figures?.topTrusts ?? [];
 
-  // Derive stats from trust-figures.json (primary source, all 42 trusts)
+  // Derive stats from trust-figures.json (primary source, all 55 trust records)
   const tf = allTrustFigures?.trusts ?? [];
   const activeTrusts = tf.filter((t: { status: string }) => t.status === "active" || t.status === "active_deferral");
+  const trustsWithFigures = tf.filter((t: { netAssets: number | null; status: string }) => t.netAssets != null && t.status !== "closed");
 
   // Documented trusts with per-trust cumulativePaid for the modal breakdown
   const documentedTrusts = tf
@@ -138,15 +139,15 @@ export default function Home() {
   });
 
   const stats = [
-    { label: "Active Trusts Tracked",         target: tf.length > 0 ? activeTrusts.length     : 41, icon: Database   },
-    { label: "Court-Filed Sources",            target: tf.length > 0 ? filedTrusts.length      : 10, icon: ShieldCheck },
-    { label: "Current-Year Data",              target: tf.length > 0 ? recentDataTrusts.length : 10, icon: Clock      },
+    { label: "Active Trusts Tracked",         target: tf.length > 0 ? activeTrusts.length     : 54, icon: Database   },
+    { label: "Court-Filed Sources",            target: tf.length > 0 ? filedTrusts.length      : 22, icon: ShieldCheck },
+    { label: "Current-Year Data",              target: tf.length > 0 ? recentDataTrusts.length : 18, icon: Clock      },
     {
       label: "Trusts With Documented Assets",
-      target: tf.length > 0 ? tf.length : 42,
+      target: tf.length > 0 ? trustsWithFigures.length : 42,
       icon: BookOpen,
       tooltip:
-        "Approximately 60 asbestos trusts are active in the U.S. (GAO-11-819; industry sources 2026). This site tracks the 42 trusts for which publicly documented asset figures are available.",
+        "Approximately 60 asbestos trusts are active in the U.S. (GAO-11-819; industry sources 2026). This site tracks 55 identified trust records, 42 of which have publicly documented asset figures.",
     },
   ] as const;
 

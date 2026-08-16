@@ -1,13 +1,13 @@
 {
  "schema": "asbestos-trust-figures/v1.1",
- "asOf": "2026-08-13",
+ "asOf": "2026-08-16",
  "aggregate": {
-  "remainingAssetsPoint": 15967208224,
-  "remainingAssetsLow": 15967208224,
-  "remainingAssetsHigh": 21721071877,
+  "remainingAssetsPoint": 15987271944,
+  "remainingAssetsLow": 15987271944,
+  "remainingAssetsHigh": 21742138783,
   "cumulativePayoutsPoint": 24000000000,
   "cumulativePayoutsLow": 17500000000,
-  "trustsWithFigures": 40,
+  "trustsWithFigures": 42,
   "activeTrustsEstimated": 60,
   "cumulativePayoutsDocumented": 17110328204,
   "cumulativePayoutsEstimatedRemainder": 6889671796,
@@ -22,14 +22,15 @@
    "cumulativePayoutsHeadline": 30020097653,
    "cumulativePayoutsLabel": "paid to claimants (bottom-up: $17.11B filed + $9.41B secondary-citing-filed + ~$3.5B estimated for ~25 undocumented trusts)",
    "legacyPoint": "cumulativePayoutsPoint = 24000000000 (round estimate, superseded 2026-07-29)"
-  }
+  },
+  "remainingAssetsPointMethodology": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,172,267,761, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher."
  },
  "methodology": {
-  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 41 active trusts: 13 from filed annual reports/quarterly filings (FY2025 annual reports or Q1 2026 quarterly) totaling $6,741,377,085, plus 28 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $10,004,759,262. This is a DOCUMENTED FLOOR, not a census: ~20 active trusts publish no retrievable figure and several secondary figures are dated 2021-2022, so the true current balance is higher.",
+  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,172,267,761, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher.",
   "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
   "cumulativePayoutsPoint": "Current bottom-up decomposition as of 2026-08-13: $30,020,097,653 total. The filed/source-linked tier is $17,110,328,204 across 12 trust figures, including Babcock & Wilcox at approximately $1,978,300,000 through 2023-12-31. That B&W amount is calculated from the two inception-to-date payment statements in its FY2023 Annual Report and Account (E.D. La. 00-10992 Doc 7876-1): approximately $1.916B for unliquidated PI claims plus approximately $62.3M for pre-petition liquidated PI claims. The qualified secondary-citing-filed tier is $9,409,769,449 across 7 components. The remaining approximately $3.5B is a labeled residual allowance for trusts without a public cumulative-payment figure. Historic source dates are not homogenized: older filed figures remain floors where payments continued after their as-of date. Pittsburgh Corning remains secondary pending an accessible filed report; Celotex retains its filed FY2006 PI-pool figure plus a qualified post-2006 secondary-growth component because its FY2025 report is account-restricted.",
   "cumulativePayoutsCurrent": "As of 2026-08-13, the tracker’s current bottom-up payout estimate is $30,020,097,653: $17,110,328,204 across 12 filed/source-linked trust figures, $9,409,769,449 across 7 qualified secondary-citing-filed components, and a labeled ~$3.5B residual allowance. Babcock & Wilcox is included in the filed tier at approximately $1,978,300,000 through 12/31/2023, calculated from the two inception-to-date payment amounts in E.D. La. 00-10992 Doc 7876-1. This current record supersedes the earlier B&W secondary-floor treatment in the historical payout methodology narrative above.",
-  "viralFiguresDebunked": "'$30B remaining' traces to GAO-11-819's ~$36.8B TOTAL CAPITALIZATION of 60 trusts as of 2011 (initial funding + returns), not a current balance. GAO analyzed reports for only 47 of 60 trusts."
+  "viralFiguresDebunked": "'$30B available/remaining' traces to Bates White/Mealey's consulting commentaries (Scarcella & Kelso, 2012-2013), which summed ~$18B in confirmed trust assets plus ~$11-12B in proposed/pending bankruptcy funding - a 2012-13 snapshot that included trusts not yet in existence. Brickman (2019) cited it correctly dated 'as of 2013'; law-firm marketing pages then stripped the date. GAO-11-819's separate ~$36.8B figure is TOTAL CAPITALIZATION of 60 trusts since 1988, not a current balance. RAND MG-1104 separately reports ~$30B in trust assets as of year-end 2008 - real, but not the origin of the circulating 'available/remaining' claim."
  },
  "trusts": [
   {
@@ -1281,6 +1282,50 @@
    "sourceUrl": "https://web.archive.org/web/20260208163647id_/https://www.usmineraltrust.com/assets/uploadedFiles/52425ec6-8db4-490d-902e-a643e4b50707.pdf",
    "sourceType": "official_trust_website",
    "added": "2026-08-12"
+  },
+  {
+   "name": "Hercules Chemical Co. Asbestos Settlement Trust",
+   "netAssets": 4018899,
+   "assetsAsOf": "2022-12-31",
+   "assetsBasis": "assets per FY2022 annual report (secondary compilation, research corpus dim08)",
+   "paymentPercentage": 2.0,
+   "status": "active",
+   "confidence": "secondary",
+   "cumulativePaid": null,
+   "cumulativePaidAsOf": null,
+   "cumulativePaidSource": null,
+   "established": null,
+   "company": "Hercules Chemical Co.",
+   "administrator": "Verus Claims Services",
+   "court": null,
+   "docket": null,
+   "direction": "stable",
+   "reportingFrequency": "annual",
+   "paymentPctEffective": "2022-10-17",
+   "note": "2.0% effective 10/17/2022 per trust site (research corpus dim08; hercules.mfrclaims.com).",
+   "added": "2026-08-16"
+  },
+  {
+   "name": "United Gilsonite (UGL) Asbestos PI Trust",
+   "netAssets": 16044821,
+   "assetsAsOf": "2022-12-31",
+   "assetsBasis": "assets per FY2022 annual report (secondary compilation, research corpus dim08)",
+   "paymentPercentage": 3.35,
+   "status": "active",
+   "confidence": "secondary",
+   "cumulativePaid": null,
+   "cumulativePaidAsOf": null,
+   "cumulativePaidSource": null,
+   "established": null,
+   "company": "United Gilsonite Laboratories",
+   "administrator": "Verus LLC",
+   "court": null,
+   "docket": null,
+   "direction": "stable",
+   "reportingFrequency": "annual",
+   "paymentPctEffective": "2024-04-11",
+   "note": "3.35% effective 2024-04-11 for standard claims; 11% for released claims (research corpus dim08; ugltrust.com).",
+   "added": "2026-08-16"
   }
  ],
  "changes": [
@@ -1701,6 +1746,12 @@
    "trust": "Babcock & Wilcox Asbestos PI Settlement Trust",
    "detail": "Owner-supplied E.D. La. 00-10992 Doc 7876 and Exhibit 1 (filed 4/29/2024) directly state approximately $1.916B paid on unliquidated PI claims plus approximately $62.3M on pre-petition liquidated PI claims, both inception-to-date through 12/31/2023. The combined approximately $1.9783B figure is now filed/source-linked; prior $1.94B secondary floor removed from Tier 2.",
    "source": "Babcock & Wilcox FY2023 Annual Report and Account, Doc 7876-1"
+  },
+  {
+   "date": "2026-08-16",
+   "type": "addition",
+   "trust": "(multiple)",
+   "note": "Added Hercules Chemical ($4,018,899 @2022, 2.0% eff. 2022-10-17, Verus) and United Gilsonite UGL ($16,044,821 @2022, 3.35% eff. 2024-04-11, Verus) — research corpus followup_dim08. Aggregate floor $15,967,208,224 -> $15,987,271,944; high $21,721,071,877 -> $21,742,138,783. '$30B' origin attribution corrected (Bates White/Mealey's 2012-13, not GAO/RAND); per-claimant statistics void documented (RAND TR-872 p. xvii; Garlock 504 B.R. 71, 96; Ableman Mealey's 30:19)."
   }
  ],
  "sources": [
@@ -1825,7 +1876,7 @@
     ]
    },
    "secondaryCitingFiled": {
-   "amount": 9409769449,
+    "amount": 9409769449,
     "description": "Cumulative payment figures from secondary compilations that cite the trusts' own filed annual reports (class-b); each flagged with confidence and not yet verified against the filed document. Used only where no filed figure is in hand.",
     "components": [
      {

@@ -42,214 +42,333 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Trust detail pages (42 trusts) -->
+  <!-- Trust detail pages (55 trusts) -->
   <url>
     <loc>https://asbestostrusts.org/trusts/narco-asbestos-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/dii-industries-halliburton-harbison-walker</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/manville-personal-injury-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/western-asbestos-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/thorpe-insulation-company-asbestos-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/plant-asbestos-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/j-t-thorpe-settlement-trust-ca</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/maremont-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/api-inc-asbestos-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/w-r-grace-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/pittsburgh-corning-asbestos-pi-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/united-states-gypsum-usg-asbestos-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/owens-corning-fibreboard-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/asarco-asbestos-pi-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/armstrong-world-industries-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/bondex-specialty-products-holding-corp-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/flintkote-asbestos-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/paddock-enterprises-owens-illinois-asbestos-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/quigley-company-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/federal-mogul-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/celotex-asbestos-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/combustion-engineering-524-g-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/fuller-austin-asbestos-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/kaiser-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/babcock-wilcox-asbestos-pi-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/g-i-holdings-gaf-asbestos-pi-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/eagle-picher-industries-pi-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/yarway-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/a-p-green-apg-asbestos-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/ngc-bodily-injury-trust-national-gypsum</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/congoleum-plan-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/motors-liquidation-co-gm-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/acands-asbestos-settlement-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/j-t-thorpe-company-successor-trust-tx</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/kaiser-gypsum-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/porter-hayden-bodily-injury-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/raytech-raymark-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/keene-creditors-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/h-k-porter-asbestos-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/christy-refractories-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/a-best-products-asbestos-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/artra-524-g-asbestos-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://asbestostrusts.org/trusts/rapid-american-asbestos-pi-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/a-i-corporation-asbestos-bodily-injury-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/burns-and-roe-personal-injury-settlement-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/c-e-thurston-sons-asbestos-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/duro-dyne-asbestos-personal-injury-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/leslie-controls-inc-asbestos-personal-injury-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/abb-lummus-global-inc-524-g-asbestos-pi-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/shook-fletcher-asbestos-settlement-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/brauer-524-g-asbestos-trust-brauer-supply-company</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/t-h-agriculture-nutrition-l-l-c-asbestos-personal-injury-trust-than</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/united-states-mineral-products-company-asbestos-pi-settlement-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/hercules-chemical-co-asbestos-settlement-trust</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://asbestostrusts.org/trusts/united-gilsonite-ugl-asbestos-pi-trust</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

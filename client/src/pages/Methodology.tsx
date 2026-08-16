@@ -81,7 +81,7 @@ export default function Methodology() {
             <li>Trusts with no available net asset figure are excluded from the aggregate but are listed in the database with their known payment percentage data.</li>
           </ol>
           <div className="mt-4 p-3 rounded border border-primary/20 bg-primary/5 text-xs text-muted-foreground">
-            <strong className="text-foreground">Current aggregate as-of note:</strong> As of August 12, 2026, the documented asset floor is <strong className="text-foreground">$15,967,208,224</strong> across 40 records with a located asset figure. The underlying dates are mixed, largely spanning 2021–2026. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection.
+            <strong className="text-foreground">Current aggregate as-of note:</strong> As of August 16, 2026, the documented asset floor is <strong className="text-foreground">$15,987,271,944</strong> across 42 records with a located asset figure. The underlying dates are mixed, largely spanning 2021–2026. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection.
           </div>
         </section>
 
@@ -109,7 +109,28 @@ export default function Methodology() {
             The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $30,020,097,653 measures payments made, not assets remaining.
           </p>
           <p className="text-muted-foreground">
-            Our documented floor for remaining assets is <strong className="text-foreground">$15,967,208,224</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
+            Our documented floor for remaining assets is <strong className="text-foreground">$15,987,271,944</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
+          </p>
+        </section>
+
+        {/* Per-Claimant Statistics */}
+        <section>
+          <h2 className="font-display font-bold uppercase tracking-wider text-base mb-4 text-foreground">
+            Per-Claimant Statistics: A Measured Void
+          </h2>
+          <p className="text-muted-foreground mb-3">
+            Two questions dominate claimant-side search traffic — how many trusts does a typical claimant file with, and how much does a claimant recover in total — and <strong className="text-foreground">no public dataset can answer either</strong>. Trusts see only their own claimants; no federal body collects cross-trust per-claimant filings. RAND states the limitation directly: "It is not possible to use trust-level data to determine the number of trusts providing payments to the same individual or the amount the trusts together pay to an individual claimant." (RAND TR-872, 2010, p. xvii)
+          </p>
+          <p className="text-muted-foreground mb-3">
+            The only measured figures in existence come from adversarial proceedings, and each measures something slightly different:
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground pl-2 mb-3 text-xs">
+            <li><strong className="text-foreground">22 trusts alleged; about $600,000 in trust recoveries</strong> — the Garlock estimation ruling's "typical claimant," based on 2010-era data presented by the debtor's own expert and adopted in a contested proceeding (<em>In re Garlock Sealing Technologies</em>, 504 B.R. 71, 96 (Bankr. W.D.N.C. 2014), Findings of Fact ¶¶101–102). Payment percentages at many trusts have since been reduced, so these figures likely overstate today's recoveries.</li>
+            <li><strong className="text-foreground">18 trust claim forms actually filed</strong> — a study of 1,844 Crane Co. mesothelioma cases (2007–2011) matched to Garlock discovery data (Ableman, Kelso &amp; Scarcella, 30:19 Mealey's Litig. Rep.: Asbestos 1, Nov. 4, 2015; verified against the authors' reprint). The closest measurement to "claims filed," from a two-defendant subset.</li>
+            <li><strong className="text-foreground">~13 trusts qualified for</strong> — a 2024 study of Philadelphia mesothelioma dockets (U.S. Chamber ILR, March 2024). A different quantity (eligibility, not filings), no dollar figure, and defense-side sponsorship.</li>
+          </ul>
+          <p className="text-muted-foreground mb-3">
+            Every measured figure is defense- or debtor-side in origin; no neutral or plaintiffs'-side measurement exists. The marketing figures that circulate instead — a "$41,000 average payout" (a RAND per-claim median at one trust, misdescribed) and "$300,000–$400,000 total recoveries" (no identifiable source) — should not be cited. There is also no referee: the U.S. Trustee Program's director testified in 2017 that for post-confirmation asbestos trusts "there is no independent policeman. There is no watchdog for that." (CHRG-115hhrg27890) GAO-11-819 found that where trusts did audit claims, "none indicated that these audits had identified cases of fraud."
           </p>
         </section>
 
@@ -251,6 +272,11 @@ export default function Methodology() {
                   <td className="py-2 pr-4 text-muted-foreground">2026-08-13</td>
                   <td className="py-2 pr-4 font-mono text-foreground">$30,020,097,653</td>
                   <td className="py-2 text-muted-foreground">Babcock &amp; Wilcox FY2023 filed Annual Report and Account (E.D. La. 00-10992 Doc 7876-1) promoted approximately $1.9783B from Tier 2 to Tier 1, replacing the prior $1.94B secondary floor.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 text-muted-foreground">2026-08-16</td>
+                  <td className="py-2 pr-4 font-mono text-foreground">(floor)</td>
+                  <td className="py-2 text-muted-foreground">Remaining-assets floor $15,967,208,224 → $15,987,271,944: Hercules Chemical and United Gilsonite (UGL) added from verified research-corpus records (dataset now 55 records, 42 with located figures). Per-claimant statistics section added (RAND TR-872 p. xvii; Garlock; Ableman).</td>
                 </tr>
               </tbody>
             </table>

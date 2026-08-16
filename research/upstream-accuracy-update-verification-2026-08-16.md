@@ -37,3 +37,7 @@ Semantic inspection confirmed the FAQPage JSON-LD carries the current asset-floo
 The first production-HTML check showed the homepage statistics as zero before hydration. This was a presentation defect in the count-up component, not an aggregate-data defect: the component hid its initialized target whenever its Intersection Observer had not yet run.
 
 The local correction initializes the count-up display with its target and renders that value in server HTML; once a tile enters view, the existing effect resets it to zero and performs the count-up animation. A local SSR check now exposes **54** active trusts, **22** court-filed sources, **18** current-year records, and **42** records with documented assets. The typecheck and seven Vitest files, totaling **16 tests**, passed after the correction. Development screenshots confirm the synchronized homepage, methodology page, and both new trust-detail pages render as expected.
+
+## Final production confirmation
+
+After publication propagated, the live server-rendered homepage exposed all four nonzero statistics: **54 / 22 / 18 / 42**. A final production verifier also passed the homepage asset floor and payout values, the methodology per-claimant heading and August 16 revision entry, and the FAQPage JSON-LD checks for the current figures and per-claimant question.

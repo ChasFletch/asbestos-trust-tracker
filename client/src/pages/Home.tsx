@@ -7,7 +7,9 @@ import { EmbedCodeModal } from "@/components/EmbedCodeModal";
 
 // ── Count-up hook ────────────────────────────────────────────────────────────
 function useCountUp(target: number, duration = 1000, enabled = false) {
-  const [value, setValue] = useState(0);
+  // Start at the real value so SSR and the first client render match. Once the
+  // tile enters view, the effect resets it to zero and plays the count-up.
+  const [value, setValue] = useState(target);
   const rafRef = useRef<number | null>(null);
   useEffect(() => {
     if (!enabled || target === 0) return;
@@ -92,7 +94,7 @@ function AnimatedStat({
         )}
       </div>
       <div className="font-display font-bold text-2xl text-foreground tabular-nums">
-        {inView ? displayed : 0}
+        {displayed}
       </div>
     </div>
   );

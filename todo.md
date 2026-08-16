@@ -226,9 +226,10 @@
 - [x] Fix report detail routes returning “Report not found” for reports listed in reports/index.json
 
 ## Upstream Accuracy Update Verification (2026-08-13)
-- [ ] Synchronize the upstream 81154ec/b2fe7c7/b8c7f1d accuracy update and inspect its HANDOFF.md
-- [ ] Verify the merged 55-record data set, $15,987,271,944 floor, and $30,020,097,653 payout figure
+- [x] Synchronize the upstream 81154ec/b2fe7c7/b8c7f1d accuracy update and inspect its HANDOFF.md
+- [x] Verify the merged 55-record data set, $15,987,271,944 floor, and $30,020,097,653 payout figure
 - [ ] Run the documented build, test, sitemap, and production spot checks after synchronization
+- [ ] Fix the homepage SSR stat tiles, which currently render zero values in the raw production HTML before client hydration
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

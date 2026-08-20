@@ -249,8 +249,8 @@
 - [x] Review the supplied adapter and map its shared core to the Express/SSR response lifecycle
 - [x] Add an Express-compatible VerifiedDR crawler-tracking integration that runs after responses and keeps the token server-side
 - [x] Configure the `VERIFIEDDR_CRAWLER_TOKEN` as a project secret and add regression tests for crawler-only reporting
-- [ ] Publish and verify a live GPTBot-formatted request reaches the application without affecting normal visitors
-- [ ] Confirm the VerifiedDR source-registration request and crawler-event payload are accepted by the live endpoint
+- [x] Publish and verify a live GPTBot-formatted request reaches the application without affecting normal visitors
+- [x] Confirm the VerifiedDR source-registration request and crawler-event payload are accepted by the live endpoint
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

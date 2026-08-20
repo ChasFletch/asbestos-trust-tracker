@@ -237,6 +237,14 @@
 - [x] Link the timeline from the Methodology page and add SSR metadata, structured data, sitemap coverage, and crawler guidance
 - [x] Add regression coverage and verify the timeline locally and in production
 
+## VerifiedDR Website Ownership (2026-08-16)
+- [x] Add the requested `_verifieddr` TXT record for asbestostrusts.org through the authoritative DNS provider (completed manually by the owner)
+- [x] Confirm the TXT record resolves publicly and report verification readiness
+- [x] Confirm whether Manus-managed custom-domain controls expose DNS TXT-record management for this domain
+- [x] Open the AsbestosTrusts.org project’s domain controls rather than the unrelated AsbestosAtlas.org DNS zone (not required after owner completed the record)
+- [x] Confirm from Manus documentation that `Settings → Domains → Manage → Add record` supports TXT records for Manus-registered domains
+- [x] Confirm the currently opened DNS zone is asbestosatlas.org and make no changes there
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

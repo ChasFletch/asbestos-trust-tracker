@@ -58,10 +58,31 @@ export default function About() {
           <ul className="space-y-2 list-disc list-inside">
             <li>We do not provide legal advice or help individuals file claims.</li>
             <li>We do not rank, recommend, or evaluate law firms.</li>
-            <li>We do not publish advertising or sponsored content.</li>
+            <li>We do not publish sponsored legal or medical content; any external promotional relationship is explicitly disclosed and kept outside our research and trust data.</li>
             <li>We do not link to or name other law firms in our news feed or content.</li>
           </ul>
         </div>
+
+        <aside className="rounded border border-amber-700/20 bg-amber-50/50 p-5" aria-labelledby="external-tool-disclosure">
+          <h2 id="external-tool-disclosure" className="font-display font-bold uppercase tracking-wider text-sm text-foreground mb-3">
+            External Tool Disclosure
+          </h2>
+          <p className="mb-3">
+            <a
+              href="https://climbx.so/"
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              ClimbX
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>{" "}
+            is an X-content research and drafting tool. This external link is included as part of a disclosed promotional exchange. It is not a legal, medical, or asbestos-information resource, and AsbestosTrusts.org does not endorse its services.
+          </p>
+          <p className="text-xs text-muted-foreground/75">
+            This disclosure is separate from the tracker’s primary-source research, trust records, reports, and news coverage.
+          </p>
+        </aside>
 
         <div>
           <h2 className="font-display font-bold uppercase tracking-wider text-sm text-foreground mb-3">Schema &amp; Citation</h2>

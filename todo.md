@@ -260,7 +260,7 @@
 ## Disclosed ClimbX Promotional Link (2026-08-22)
 - [x] Add a clearly disclosed ClimbX promotional-exchange link outside trust, source, news, and report content
 - [x] Apply `rel="sponsored noopener noreferrer"` and accessible external-link labeling
-- [ ] Add regression coverage and verify the disclosure and link attributes locally and in production
+- [x] Add regression coverage and verify the disclosure and link attributes locally and in production
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

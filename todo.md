@@ -252,6 +252,12 @@
 - [x] Publish and verify a live GPTBot-formatted request reaches the application without affecting normal visitors
 - [x] Confirm the VerifiedDR source-registration request and crawler-event payload are accepted by the live endpoint
 
+## Custom Domain Availability Investigation (2026-08-20)
+- [x] Check current public reachability and custom-domain assignment for asbestostrusts.org and www.asbestostrusts.org (both return HTTP 503; Manus preview remains HTTP 200)
+- [x] Restore the custom-domain routing if it was removed from the project configuration (completed by the owner in the authorized Manus account)
+- [x] Verify public recovery and document the outcome
+- [x] Owner action required: restore the removed custom-domain assignments in the authorized Manus project account
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

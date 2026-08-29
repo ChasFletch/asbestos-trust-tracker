@@ -4,6 +4,7 @@ import type { inferRouterOutputs } from "@trpc/server";
 import { trpc } from "@/lib/trpc";
 import { SITE_NAME, SITE_TITLE, SITE_DESC } from "@shared/const";
 import type { AppRouter } from "../../../server/routers";
+import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
 
 export type HeadMeta = {
   title: string;
@@ -147,6 +148,45 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       ogType: "website",
       canonicalPath: "/news",
       keywords: "asbestos trust news, payment percentage change, trust fund update, bankruptcy court filing, annual report",
+    };
+  }
+
+  // ── News detail (/news/:slug) ───────────────────────────────────────────
+  const newsBriefMatch = clean.match(/^\/news\/([^/]+)$/);
+  if (newsBriefMatch) {
+    const slug = newsBriefMatch[1];
+    const brief = NEWS_BRIEFS_BY_SLUG[slug];
+    if (!brief) return { title: SITE, description: DESC, notFound: true };
+    return {
+      title: `${brief.title} · ${SITE_NAME}`,
+      description: brief.summary,
+      ogType: "article",
+      canonicalPath: `/news/${slug}`,
+      publishedTime: brief.date,
+      keywords: "Manville Trust, Manville Q2 2026, asbestos trust annual report, asbestos claim payments, bankruptcy trust filing",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "headline": brief.title,
+          "description": brief.summary,
+          "url": `https://asbestostrusts.org/news/${slug}`,
+          "mainEntityOfPage": `https://asbestostrusts.org/news/${slug}`,
+          "datePublished": brief.date,
+          "author": { "@id": "https://asbestostrusts.org/#research-desk" },
+          "publisher": { "@id": "https://asbestostrusts.org/#org" },
+          "about": "Manville Personal Injury Settlement Trust Q2 2026 filing"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
+            { "@type": "ListItem", "position": 2, "name": "News", "item": "https://asbestostrusts.org/news" },
+            { "@type": "ListItem", "position": 3, "name": brief.title, "item": `https://asbestostrusts.org/news/${slug}` }
+          ]
+        }
+      ],
     };
   }
 

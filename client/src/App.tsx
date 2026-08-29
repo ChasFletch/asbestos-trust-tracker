@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Trusts from "./pages/Trusts";
 import TrustDetail from "./pages/TrustDetail";
 import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
 import Methodology from "./pages/Methodology";
 import About from "./pages/About";
 import Corrections from "./pages/Corrections";
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/trusts" component={Trusts} />
           <Route path="/trusts/:slug" component={TrustDetail} />
+      <Route path="/news/:slug" component={NewsDetail} />
       <Route path="/news" component={News} />
       <Route path="/methodology" component={Methodology} />
       <Route path="/provenance" component={FigureProvenance} />

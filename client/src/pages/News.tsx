@@ -2,6 +2,8 @@ import { trpc } from "@/lib/trpc";
 import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
 import { LegalTermText } from "@/components/LegalTermTooltip";
+import { Link } from "wouter";
+import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
 
 interface NewsDraft {
   filename: string;
@@ -51,6 +53,7 @@ export default function News() {
     publishedAt: new Date(d.date).getTime(),
     url: d.url ?? null,
     trustId: null,
+    slug: d.filename.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/\.md$/, ""),
     isDraft: true as const,
   }));
   const dbItems = (news ?? []).map((n) => ({ ...n, isDraft: false as const }));
@@ -134,6 +137,9 @@ export default function News() {
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       <LegalTermText text={item.summary} />
                     </p>
+                  )}
+                  {item.isDraft && item.slug && NEWS_BRIEFS_BY_SLUG[item.slug] && (
+                    <Link href={`/news/${item.slug}`} className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2 mr-4">Read detailed brief</Link>
                   )}
                   {item.url && (
                     <a

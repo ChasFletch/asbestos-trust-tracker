@@ -268,6 +268,12 @@
 - [x] Confirm the published August 29 Owens-Illinois update appears in the live feed after its client data request completes
 - [x] Prevent news-draft metadata lines from rendering as the visible card summary
 
+## Manville Q2 2026 News Brief (2026-08-29)
+- [x] Build a reader-accessible article route so detailed source-linked news briefs are not limited to feed-card summaries
+- [x] Draft a detailed source-linked news brief covering the verified Manville Q2 2026 filing
+- [x] Include a clear distinction between the quarter-end asset/claim figures and the tracker’s cumulative-payout methodology
+- [ ] Add regression coverage and verify the brief’s live news-card presentation
+
 ## ClimbX Link-Exchange Assessment (2026-08-20)
 - [x] Research ClimbX’s subject matter, audience, ownership, content quality, and authority signals
 - [x] Evaluate the proposed reciprocal link for relevance, transparency, and search-quality risk

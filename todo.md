@@ -263,7 +263,7 @@
 - [x] Update the affected trust records, aggregate calculations, source links, and dated change history
 - [x] Publish supported litigation and monitoring-coverage updates without treating coverage gaps as no-change findings
 - [x] Document the official-news-feed monitoring requirement and its external dependency: `trust_monitor.py` is not present in this web project, so the next run must add official news/feed URLs and report untested sites separately rather than treating them as no change
-- [ ] Add regression coverage and verify the updated data, sources, news, and monitoring behavior in production
+- [x] Add regression coverage and verify the updated data, sources, news, and monitoring behavior in production
 - [x] Correct Manville’s rendered claim count to the verified Q2 2026 Exhibit III total of 1,041,171
 - [x] Confirm the published August 29 Owens-Illinois update appears in the live feed after its client data request completes
 - [x] Prevent news-draft metadata lines from rendering as the visible card summary

@@ -32,6 +32,43 @@ interface NewsDraft {
   url?: string;
 }
 
+export function parseNewsDraft(fileName: string, text: string): NewsDraft {
+  const lines = text.split("\n");
+  let title = fileName
+    .replace(/^\d{4}-\d{2}-\d{2}-/, "")
+    .replace(/\.md$/, "")
+    .replace(/-/g, " ");
+  let date = fileName.substring(0, 10);
+  let category = "system_update";
+  let url: string | undefined;
+  let bodyStart = 0;
+
+  for (let i = 0; i < Math.min(lines.length, 15); i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      if (bodyStart > 0) {
+        bodyStart = i + 1;
+        break;
+      }
+      continue;
+    }
+    if (line.startsWith("# ")) title = line.slice(2).trim();
+    else if (line.startsWith("date:")) date = line.slice(5).trim().replace(/^["']|["']$/g, "");
+    else if (line.startsWith("category:")) category = line.slice(9).trim().replace(/^["']|["']$/g, "");
+    else if (line.startsWith("url:")) url = line.slice(4).trim().replace(/^["']|["']$/g, "");
+    bodyStart = i + 1;
+  }
+
+  const summary = (lines.slice(bodyStart).join("\n").trim().split(/\n\n/)[0] ?? "")
+    .replace(/^#+\s*/gm, "")
+    .replace(/\*\*/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .trim()
+    .slice(0, 400);
+
+  return { filename: fileName, date, title, summary, category, url };
+}
+
 // ── Trust figures ────────────────────────────────────────────────────────────
 export async function fetchTrustFigures(): Promise<unknown> {
   const now = Date.now();
@@ -87,33 +124,7 @@ async function fetchNewsDrafts(): Promise<NewsDraft[]> {
           const r = await fetch(f.download_url, { signal: AbortSignal.timeout(5000) });
           if (!r.ok) return null;
           const text = await r.text();
-          const lines = text.split("\n");
-          // Defaults from filename
-          let title = f.name
-            .replace(/^\d{4}-\d{2}-\d{2}-/, "")
-            .replace(/\.md$/, "")
-            .replace(/-/g, " ");
-          let date = f.name.substring(0, 10);
-          let category = "system_update";
-          let url: string | undefined;
-          let bodyStart = 0;
-          // Parse simple frontmatter (lines before first blank line or first heading)
-          for (let i = 0; i < Math.min(lines.length, 15); i++) {
-            const l = lines[i].trim();
-            if (l.startsWith("# ")) { title = l.slice(2).trim(); bodyStart = i + 1; }
-            else if (l.startsWith("date:")) date = l.slice(5).trim().replace(/^["']|["']$/g, "");
-            else if (l.startsWith("category:")) category = l.slice(9).trim().replace(/^["']|["']$/g, "");
-            else if (l.startsWith("url:")) url = l.slice(4).trim().replace(/^["']|["']$/g, "");
-          }
-          // Summary = first non-empty paragraph after frontmatter (strip markdown)
-          const body = lines.slice(bodyStart).join("\n").trim();
-          const summary = (body.split(/\n\n/)[0] ?? "")
-            .replace(/^#+\s*/gm, "")
-            .replace(/\*\*/g, "")
-            .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-            .trim()
-            .slice(0, 400);
-          return { filename: f.name, date, title, summary, category, url };
+          return parseNewsDraft(f.name, text);
         } catch {
           return null;
         }

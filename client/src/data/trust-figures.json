@@ -91,6 +91,7 @@
    "note": "5.1% since Feb 2021. Q2 2026 filing reports $5,343,613,806 in cumulative Trust liquidated claims on 1,041,171 claims; this series is a liquidated-value convention, not a pure cash-paid total, and the filing separately reports unpaid claims.",
    "cumulativePaid": 5343613806,
    "cumulativePaidAsOf": "2026-06-30",
+   "cumulativeClaims": 1041171,
    "cumulativePaidSource": "Manville PI Settlement Trust, Financial Statements for period ending 6/30/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4480, filed 7/27/2026) - $5,343,613,806 Total Trust Liquidated Claims on 1,041,171 claims since consummation 11/28/1988. This is liquidated value; the filing separately reports unpaid claims.",
    "cumulativePaidSourceUrl": "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf",
    "cumulativePaidSourceUrlType": "primary-pdf",

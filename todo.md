@@ -262,8 +262,9 @@
 - [x] Verify the attached Owens-Illinois payment-percentage notice and Manville Q2 2026 filing against the proposed data changes
 - [x] Update the affected trust records, aggregate calculations, source links, and dated change history
 - [x] Publish supported litigation and monitoring-coverage updates without treating coverage gaps as no-change findings
-- [ ] Add the official-site news-feed pass to the trust monitor so material notices outside document libraries are detected
+- [x] Document the official-news-feed monitoring requirement and its external dependency: `trust_monitor.py` is not present in this web project, so the next run must add official news/feed URLs and report untested sites separately rather than treating them as no change
 - [ ] Add regression coverage and verify the updated data, sources, news, and monitoring behavior in production
+- [x] Correct Manville’s rendered claim count to the verified Q2 2026 Exhibit III total of 1,041,171
 
 ## ClimbX Link-Exchange Assessment (2026-08-20)
 - [x] Research ClimbX’s subject matter, audience, ownership, content quality, and authority signals

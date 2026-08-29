@@ -36,6 +36,7 @@ describe("August 29, 2026 primary-source trust update", () => {
       assetsAsOf: "2026-06-30",
       cumulativePaid: 5343613806,
       cumulativePaidAsOf: "2026-06-30",
+      cumulativeClaims: 1041171,
     });
     expect(manville?.cumulativePaidSource).toContain("Total Trust Liquidated Claims");
     expect(manville?.cumulativePaidSource).toContain("unpaid claims");

@@ -122,6 +122,10 @@ export const sourceFilesByTrust: Record<string, SourceFileName[]> = {
     "PADDOCK_Notice_Installment_SOL_2023-12.pdf",
     "PADDOCK_SOL_Notice_2024-08.pdf",
     "PADDOCK_Resolution_SOL_Deadline.pdf",
+    "OI-Trust-Payment-Percentage-Increase-2026-08-19.pdf",
+  ],
+  "manville-personal-injury-settlement-trust": [
+    "Manville-Q2-2026-Financial-Statements-Doc4480.pdf",
   ],
   "pittsburgh-corning-asbestos-pi-settlement-trust": [
     "pcc-recap-doc9409.pdf",
@@ -176,6 +180,7 @@ function inferDateLabel(fileName: string): string | null {
 function inferDocumentType(fileName: string): string {
   const name = fileName.toLowerCase();
   if (name.includes("annual")) return "Annual report";
+  if (name.includes("financial") || name.includes("quarter") || name.includes("-q")) return "Quarterly financial report";
   if (name.includes("tdp")) return "Trust distribution procedure";
   if (name.includes("crp") || name.includes("claims_resolution")) return "Claims resolution procedure";
   if (name.includes("reconsideration")) return "Reconsideration notice";
@@ -192,6 +197,7 @@ function inferDocumentType(fileName: string): string {
 function inferTitle(fileName: string, documentType: string, dateLabel: string | null): string {
   const dateSuffix = dateLabel ? ` — ${dateLabel}` : "";
   if (documentType === "Annual report") return `Annual Report${dateSuffix}`;
+  if (documentType === "Quarterly financial report") return `Quarterly Financial Report${dateSuffix}`;
   if (documentType === "Trust distribution procedure") return `Trust Distribution Procedures${dateSuffix}`;
   if (documentType === "Claims resolution procedure") return `Claims Resolution Procedures${dateSuffix}`;
   if (documentType === "Reconsideration notice") return `Payment Percentage Reconsideration Notice${dateSuffix}`;

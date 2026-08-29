@@ -258,6 +258,13 @@
 - [x] Verify public recovery and document the outcome
 - [x] Owner action required: restore the removed custom-domain assignments in the authorized Manus project account
 
+## August 29 Trust-Monitor Update (2026-08-29)
+- [x] Verify the attached Owens-Illinois payment-percentage notice and Manville Q2 2026 filing against the proposed data changes
+- [x] Update the affected trust records, aggregate calculations, source links, and dated change history
+- [x] Publish supported litigation and monitoring-coverage updates without treating coverage gaps as no-change findings
+- [ ] Add the official-site news-feed pass to the trust monitor so material notices outside document libraries are detected
+- [ ] Add regression coverage and verify the updated data, sources, news, and monitoring behavior in production
+
 ## ClimbX Link-Exchange Assessment (2026-08-20)
 - [x] Research ClimbX’s subject matter, audience, ownership, content quality, and authority signals
 - [x] Evaluate the proposed reciprocal link for relevance, transparency, and search-quality risk

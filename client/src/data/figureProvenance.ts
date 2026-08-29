@@ -18,13 +18,63 @@ export type FigureProvenanceEntry = {
   headline: string;
   explanation: string;
   sources: ProvenanceSource[];
-  commit: string;
+  commit?: string;
 };
 
 const repo = "https://github.com/ChasFletch/asbestos-trust-tracker";
 const changelogUrl = `${repo}/blob/main/docs/figure-provenance-changelog.md`;
 
 export const figureProvenance: FigureProvenanceEntry[] = [
+  {
+    id: "2026-08-29-manville-q2-assets",
+    date: "2026-08-29",
+    category: "assets",
+    figure: "Documented remaining-assets floor",
+    priorValue: "$15,987,271,944",
+    currentValue: "$16,018,528,449",
+    headline: "Manville’s Q2 filing added a current, filed net-equity figure to the asset floor.",
+    explanation:
+      "Manville’s filed June 30, 2026 statement increased its net claimants’ equity component from $539,260,000 to $570,516,505. The exact floor rose by $31,256,505; it remains a mixed-date sum rather than an actuarial estimate or a current census.",
+    sources: [
+      {
+        label: "Manville Q2 2026 financial statements",
+        url: "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf",
+        evidenceClass: "a",
+        detail: "S.D.N.Y. 82-11656, Doc 4480; filed July 27, 2026; page 6 reports $570,516,505 in net claimants’ equity",
+      },
+      {
+        label: "Manville trust detail",
+        url: "/trusts/manville-personal-injury-settlement-trust",
+        evidenceClass: "audit",
+        detail: "Current record, source label, and as-of date",
+      },
+    ],
+  },
+  {
+    id: "2026-08-29-oi-payment-percentage",
+    date: "2026-08-29",
+    category: "methodology",
+    figure: "Owens-Illinois payment percentage",
+    priorValue: "50% notice; erroneous structured 100% field",
+    currentValue: "65%, effective August 19, 2026",
+    headline: "A filed O-I notice corrected the Paddock record and documented a payment-percentage increase.",
+    explanation:
+      "The primary notice states that the Trustees approved an increase from 50% to 65%, effective August 19, 2026, and provides for supplemental payments for claimants previously paid at a lower percentage. The tracker now reflects the notice rather than the prior inconsistent 100% structured value.",
+    sources: [
+      {
+        label: "O-I payment-percentage increase notice",
+        url: "/manus-storage/OI-Trust-Payment-Percentage-Increase-2026-08-19_418b2c7d.pdf",
+        evidenceClass: "a",
+        detail: "Trust-issued notice dated August 19, 2026; 50% to 65% increase and TDP §4.3 supplemental-payment language",
+      },
+      {
+        label: "Paddock trust detail",
+        url: "/trusts/paddock-enterprises-owens-illinois-asbestos-trust",
+        evidenceClass: "audit",
+        detail: "Current payment percentage, effective date, and primary source panel",
+      },
+    ],
+  },
   {
     id: "2026-08-16-provenance-sync",
     date: "2026-08-16",

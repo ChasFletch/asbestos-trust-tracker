@@ -82,7 +82,7 @@ export default function Methodology() {
             <li>Trusts with no available net asset figure are excluded from the aggregate but are listed in the database with their known payment percentage data.</li>
           </ol>
           <div className="mt-4 p-3 rounded border border-primary/20 bg-primary/5 text-xs text-muted-foreground">
-            <strong className="text-foreground">Current aggregate as-of note:</strong> As of August 16, 2026, the documented asset floor is <strong className="text-foreground">$15,987,271,944</strong> across 42 records with a located asset figure. The underlying dates are mixed, largely spanning 2021–2026. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection.
+            <strong className="text-foreground">Current aggregate as-of note:</strong> As of August 29, 2026, the documented asset floor is <strong className="text-foreground">$16,018,528,449</strong> across 42 records with a located asset figure. The underlying dates are mixed, largely spanning 2021–2026. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection.
           </div>
         </section>
 
@@ -107,10 +107,10 @@ export default function Methodology() {
             A later <a className="text-primary underline underline-offset-2" href="https://www.mesothelioma-lawyerblog.com/wp-content/uploads/sites/199/2017/05/Bates-White-Artile_Reorganized-Mess.pdf" target="_blank" rel="noopener noreferrer">Bates White / Mealey&apos;s commentary</a> reported roughly $18.6 billion in confirmed trust assets at year-end 2013, plus $160 million in deferred funding, while noting that several 2014 confirmations were expected to add funding. The <a className="text-primary underline underline-offset-2" href="https://instituteforlegalreform.com/wp-content/uploads/2020/10/Dubious_Distribution_Asbestos_Paper_Web.pdf" target="_blank" rel="noopener noreferrer">U.S. Chamber Institute for Legal Reform&apos;s 2018 report</a>, an advocacy publication, described nearly $25 billion in assets and more than $2 billion in deferred funding at year-end 2016. These are useful dated benchmarks, but neither is a current balance nor a substitute for a trust-by-trust filed-source review.
           </p>
           <p className="text-muted-foreground mb-3">
-            The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $30,020,097,653 measures payments made, not assets remaining.
+            The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $30,033,989,206 measures payments made or liquidated under the source series, not assets remaining.
           </p>
           <p className="text-muted-foreground">
-            Our documented floor for remaining assets is <strong className="text-foreground">$15,987,271,944</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
+            Our documented floor for remaining assets is <strong className="text-foreground">$16,018,528,449</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
           </p>
         </section>
 
@@ -180,7 +180,7 @@ export default function Methodology() {
             Cumulative Payouts Methodology
           </h2>
           <p className="text-muted-foreground mb-3">
-            The cumulative payouts clock displays <strong className="text-foreground">$30,020,097,653</strong> — a bottom-up estimate of total claims paid by all U.S. asbestos bankruptcy trusts since 1988. This figure replaced a round $24 billion placeholder in July 2026. The methodology is documented in full at <code className="text-xs bg-muted px-1 py-0.5 rounded">docs/methodology-cumulative-payouts.md</code> in the project repository.
+            The cumulative payouts clock displays <strong className="text-foreground">$30,033,989,206</strong> — a bottom-up estimate of total claims paid or liquidated by all U.S. asbestos bankruptcy trusts since 1988 under the source series’ disclosed conventions. This figure replaced a round $24 billion placeholder in July 2026. The methodology is documented in full at <code className="text-xs bg-muted px-1 py-0.5 rounded">docs/methodology-cumulative-payouts.md</code> in the project repository.
           </p>
 
           <h3 className="font-semibold text-foreground text-sm mb-3 mt-5">Why the Number Changed from $24B to ~$30B</h3>
@@ -198,7 +198,7 @@ export default function Methodology() {
             {[
               {
                 tier: "Tier 1 — Filed figures",
-                amount: "$17,110,328,204",
+                amount: "$17,124,219,757",
                 count: "12 trusts",
                 confidence: "a",
                 color: "oklch(0.72 0.18 150)",
@@ -287,6 +287,11 @@ export default function Methodology() {
                   <td className="py-2 pr-4 text-muted-foreground">2026-08-16</td>
                   <td className="py-2 pr-4 font-mono text-foreground">(floor)</td>
                   <td className="py-2 text-muted-foreground">Remaining-assets floor $15,967,208,224 → $15,987,271,944: Hercules Chemical and United Gilsonite (UGL) added from verified research-corpus records (dataset now 55 records, 42 with located figures). Per-claimant statistics section added (RAND TR-872 p. xvii; Garlock; Ableman).</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 text-muted-foreground">2026-08-29</td>
+                  <td className="py-2 pr-4 font-mono text-foreground">$16,018,528,449 / $30,033,989,206</td>
+                  <td className="py-2 text-muted-foreground">Manville Q2 2026 filing (S.D.N.Y. Doc 4480) updated net claimants&apos; equity and the series&apos; liquidated-claims component; Owens-Illinois&apos; filed August 19 notice corrected its payment percentage from the erroneous structured 100% value to 65%.</td>
                 </tr>
               </tbody>
             </table>

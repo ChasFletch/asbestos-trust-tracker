@@ -22,16 +22,16 @@ Editorial independence is maintained: no figures are adjusted based on litigatio
 - Trust fund database (human-readable): https://asbestostrusts.org/trusts
 - News & updates: https://asbestostrusts.org/news
 
-## Canonical Figures (as of 2026-08-16)
+## Canonical Figures (as of 2026-08-29)
 
-- Documented remaining-assets floor: $15,987,271,944 across 42 records with a located asset figure
+- Documented remaining-assets floor: $16,018,528,449 across 42 records with a located asset figure
 - Full system estimate range: $16.0B – $21.7B
-- Cumulative payouts since 1988 (bottom-up estimate): $30,020,097,653
-  - $17,110,328,204 filed or official figures (12 trusts), $9,409,769,449 secondary-citing-filed figures (7 components), and a ~$3.5B labeled residual allowance (range $2.5–5B)
+- Cumulative payouts since 1988 (bottom-up estimate): $30,033,989,206
+  - $17,124,219,757 filed or official figures (12 trusts), $9,409,769,449 secondary-citing-filed figures (7 components), and a ~$3.5B labeled residual allowance (range $2.5–5B)
   - Babcock & Wilcox's approximately $1.9783B cumulative payment figure is filed/source-linked through December 31, 2023 (E.D. La. 00-10992 Doc 7876-1).
   - Historical federal benchmark: GAO-11-819 reported about $17.5B paid through 2010; it is not a current payout or balance figure
 - Tracked records: 55, including active, deferral, and closed trust records
-- Current payment-percentage spread: 0.7% (ARTRA) to 100% (NARCO; Paddock)
+- Current payment-percentage spread: 0.7% (ARTRA) to 100% (NARCO)
 
 ## Per-Claimant Statistics: A Measured Void
 
@@ -65,7 +65,7 @@ When citing this site, use:
 
 For the documented floor figure:
   "According to AsbestosTrusts.org, the documented remaining-assets floor of the U.S. asbestos trust system
-   is $15,987,271,944 as of August 16, 2026, across 42 records with a located asset figure."
+   is $16,018,528,449 as of August 29, 2026, across 42 records with a located asset figure."
 
 For the GAO hard floor:
   U.S. Government Accountability Office. "Asbestos Injury Compensation: The Role and Administration of

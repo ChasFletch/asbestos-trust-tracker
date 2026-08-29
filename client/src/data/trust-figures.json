@@ -1,35 +1,35 @@
 {
  "schema": "asbestos-trust-figures/v1.1",
- "asOf": "2026-08-16",
+ "asOf": "2026-08-29",
  "aggregate": {
-  "remainingAssetsPoint": 15987271944,
-  "remainingAssetsLow": 15987271944,
+  "remainingAssetsPoint": 16018528449,
+  "remainingAssetsLow": 16018528449,
   "remainingAssetsHigh": 21742138783,
   "cumulativePayoutsPoint": 24000000000,
   "cumulativePayoutsLow": 17500000000,
   "trustsWithFigures": 42,
   "activeTrustsEstimated": 60,
-  "cumulativePayoutsDocumented": 17110328204,
-  "cumulativePayoutsEstimatedRemainder": 6889671796,
+  "cumulativePayoutsDocumented": 17124219757,
+  "cumulativePayoutsEstimatedRemainder": 6875780243,
   "trustsWithCumulativePaidFiled": 12,
-  "cumulativePayoutsBottomUp": 30020097653,
-  "cumulativePayoutsBottomUpFiled": 17110328204,
+  "cumulativePayoutsBottomUp": 30033989206,
+  "cumulativePayoutsBottomUpFiled": 17124219757,
   "cumulativePayoutsBottomUpSecondary": 9409769449,
   "cumulativePayoutsBottomUpResidual": 3500000000,
-  "cumulativePayoutsBottomUpAsOf": "2026-08-13",
+  "cumulativePayoutsBottomUpAsOf": "2026-08-29",
   "displayHints": {
    "cumulativePayoutsFigure": "cumulativePayoutsBottomUp",
-   "cumulativePayoutsHeadline": 30020097653,
-   "cumulativePayoutsLabel": "paid to claimants (bottom-up: $17.11B filed + $9.41B secondary-citing-filed + ~$3.5B estimated for ~25 undocumented trusts)",
+   "cumulativePayoutsHeadline": 30033989206,
+   "cumulativePayoutsLabel": "paid to claimants (bottom-up: $17.12B filed + $9.41B secondary-citing-filed + ~$3.5B estimated for ~25 undocumented trusts)",
    "legacyPoint": "cumulativePayoutsPoint = 24000000000 (round estimate, superseded 2026-07-29)"
   },
-  "remainingAssetsPointMethodology": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,172,267,761, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher."
+  "remainingAssetsPointMethodology": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,203,524,266, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher."
  },
  "methodology": {
-  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,172,267,761, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher.",
+  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,203,524,266, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher.",
   "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
-  "cumulativePayoutsPoint": "Current bottom-up decomposition as of 2026-08-13: $30,020,097,653 total. The filed/source-linked tier is $17,110,328,204 across 12 trust figures, including Babcock & Wilcox at approximately $1,978,300,000 through 2023-12-31. That B&W amount is calculated from the two inception-to-date payment statements in its FY2023 Annual Report and Account (E.D. La. 00-10992 Doc 7876-1): approximately $1.916B for unliquidated PI claims plus approximately $62.3M for pre-petition liquidated PI claims. The qualified secondary-citing-filed tier is $9,409,769,449 across 7 components. The remaining approximately $3.5B is a labeled residual allowance for trusts without a public cumulative-payment figure. Historic source dates are not homogenized: older filed figures remain floors where payments continued after their as-of date. Pittsburgh Corning remains secondary pending an accessible filed report; Celotex retains its filed FY2006 PI-pool figure plus a qualified post-2006 secondary-growth component because its FY2025 report is account-restricted.",
-  "cumulativePayoutsCurrent": "As of 2026-08-13, the tracker’s current bottom-up payout estimate is $30,020,097,653: $17,110,328,204 across 12 filed/source-linked trust figures, $9,409,769,449 across 7 qualified secondary-citing-filed components, and a labeled ~$3.5B residual allowance. Babcock & Wilcox is included in the filed tier at approximately $1,978,300,000 through 12/31/2023, calculated from the two inception-to-date payment amounts in E.D. La. 00-10992 Doc 7876-1. This current record supersedes the earlier B&W secondary-floor treatment in the historical payout methodology narrative above.",
+  "cumulativePayoutsPoint": "Current bottom-up decomposition as of 2026-08-29: $30,033,989,206 total. The filed/source-linked tier is $17,124,219,757 across 12 trust figures, including Babcock & Wilcox at approximately $1,978,300,000 through 2023-12-31. The Manville component uses the quarterly report’s cumulative-liquidated-claims series and explicitly retains that source convention. The qualified secondary-citing-filed tier is $9,409,769,449 across 7 components. The remaining approximately $3.5B is a labeled residual allowance for trusts without a public cumulative-payment figure. Historic source dates are not homogenized: older filed figures remain floors where payments continued after their as-of date. Pittsburgh Corning remains secondary pending an accessible filed report; Celotex retains its filed FY2006 PI-pool figure plus a qualified post-2006 secondary-growth component because its FY2025 report is account-restricted.",
+  "cumulativePayoutsCurrent": "As of 2026-08-29, the tracker’s current bottom-up payout estimate is $30,033,989,206: $17,124,219,757 across 12 filed/source-linked trust figures, $9,409,769,449 across 7 qualified secondary-citing-filed components, and a labeled ~$3.5B residual allowance. The Manville component retains the tracker’s existing liquidated-value convention, while the Q2 2026 filing separately reports unpaid claims. Babcock & Wilcox is included in the filed tier at approximately $1,978,300,000 through 12/31/2023, calculated from the two inception-to-date payment amounts in its FY2023 Annual Report and Account (E.D. La. 00-10992 Doc 7876-1). This current record supersedes the earlier B&W secondary-floor treatment in the historical payout methodology narrative above.",
   "viralFiguresDebunked": "'$30B available/remaining' traces to Bates White/Mealey's consulting commentaries (Scarcella & Kelso, 2012-2013), which summed ~$18B in confirmed trust assets plus ~$11-12B in proposed/pending bankruptcy funding - a 2012-13 snapshot that included trusts not yet in existence. Brickman (2019) cited it correctly dated 'as of 2013'; law-firm marketing pages then stripped the date. GAO-11-819's separate ~$36.8B figure is TOTAL CAPITALIZATION of 60 trusts since 1988, not a current balance. RAND MG-1104 separately reports ~$30B in trust assets as of year-end 2008 - real, but not the origin of the circulating 'available/remaining' claim."
  },
  "trusts": [
@@ -82,19 +82,20 @@
   },
   {
    "name": "Manville Personal Injury Settlement Trust",
-   "netAssets": 539260000,
-   "assetsAsOf": "2026-03-31",
-   "assetsBasis": "net claimants' equity (Q1 2026 filing)",
+   "netAssets": 570516505,
+   "assetsAsOf": "2026-06-30",
+   "assetsBasis": "net claimants' equity (Q2 2026 filing, Bankr. S.D.N.Y. Doc 4480, filed 2026-07-27)",
    "paymentPercentage": 5.1,
    "status": "active",
    "confidence": "filed",
-   "note": "5.1% since Feb 2021; cumulative $5.33B paid on 1.04M claims",
-   "cumulativePaid": 5329722253,
-   "cumulativePaidAsOf": "2026-03-31",
-   "cumulativePaidSource": "Manville PI Settlement Trust, Financial Statements for period ending 3/31/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4479, filed 4/27/2026) - cumulative payments on 1,036,966 liquidated claims since consummation 11/28/1988",
-   "cumulativePaidSourceUrl": "https://www.courtlistener.com/?q=manville+4479&type=r&order_by=score+desc",
-   "cumulativePaidSourceUrlType": "courtlistener-search",
-   "cumulativePaidSourceUrlNote": "CourtListener search for S.D.N.Y. Doc 4479 — returns docket entries; use to locate the filed quarterly report",
+   "note": "5.1% since Feb 2021. Q2 2026 filing reports $5,343,613,806 in cumulative Trust liquidated claims on 1,041,171 claims; this series is a liquidated-value convention, not a pure cash-paid total, and the filing separately reports unpaid claims.",
+   "cumulativePaid": 5343613806,
+   "cumulativePaidAsOf": "2026-06-30",
+   "cumulativePaidSource": "Manville PI Settlement Trust, Financial Statements for period ending 6/30/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4480, filed 7/27/2026) - $5,343,613,806 Total Trust Liquidated Claims on 1,041,171 claims since consummation 11/28/1988. This is liquidated value; the filing separately reports unpaid claims.",
+   "cumulativePaidSourceUrl": "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf",
+   "cumulativePaidSourceUrlType": "primary-pdf",
+   "cumulativePaidSourceUrlNote": "Filed Manville Q2 2026 report, S.D.N.Y. Doc 4480; net claimants' equity is on page 6 and the cumulative-liquidated-claims total is in Exhibit III.",
+   "assetsBasisUrl": "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf",
    "established": 1988,
    "company": "Johns-Manville Corporation",
    "administrator": "Manville Trust (self-administered)",
@@ -511,10 +512,14 @@
    "netAssets": null,
    "assetsAsOf": null,
    "assetsBasis": "initial funding (cash + consideration)",
-   "paymentPercentage": 100,
+   "paymentPercentage": 65,
    "status": "active",
-   "confidence": "not_found",
-   "note": "Current balance not publicly posted (DCPF-administered); FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 20-10028 Doc 1707, 4/29/2025) | 50% first installment of liquidated value, per notice effective 2023-12-15; balance pending a Payment Percentage review",
+   "confidence": "filed",
+   "paymentPctConfidence": "filed",
+   "paymentPctAsOf": "2026-08-19",
+   "paymentPercentageSource": "Owens-Illinois Asbestos Personal Injury Trust, Notice re: O-I Payment Percentage Increase (2026-08-19): ‘The Trustees have approved, effective August 19, 2026, an increase in the payment percentage from 50 to 65%.’",
+   "paymentPercentageSourceUrl": "https://www.oiasbestospersonalinjurytrust.com/wp-content/uploads/2026/08/O-I-Trust-Notice-re-Increase-Payment-Percentage.8.19.26-4905-3046-9064.1.pdf",
+   "note": "Current balance not publicly posted (DCPF-administered); FY2025 report not confirmed docketed as of 2026-07-27 (FY2024: 20-10028 Doc 1707, filed 2025-04-29). The trust increased its payment percentage from 50% to 65% effective 2026-08-19, with supplemental payments for claimants paid at a lower percentage under TDP §4.3.",
    "cumulativePaid": null,
    "cumulativePaidAsOf": null,
    "cumulativePaidSource": null,
@@ -524,9 +529,9 @@
    "court": "Bankr. D. Del.",
    "docket": "20-10028",
    "website": "https://www.oiasbestospersonalinjurytrust.com",
-   "direction": "stable",
+   "direction": "up",
    "reportingFrequency": "annual",
-   "paymentPctEffective": "2023-12-01 (TDP First Amended); 100% since inception",
+   "paymentPctEffective": "2026-08-19",
    "initialFunding": 610000000,
    "initialFundingAsOf": "2022-01-01",
    "initialFundingBasis": "COMPUTED SUM of plan-funding components: $601.5M cash + $8.5M note"
@@ -1330,6 +1335,24 @@
  ],
  "changes": [
   {
+   "date": "2026-08-29",
+   "type": "payment_percentage_change",
+   "trust": "Paddock Enterprises (Owens-Illinois) Asbestos Trust",
+   "detail": "The Owens-Illinois Asbestos Personal Injury Trust increased its payment percentage from 50% to 65%, effective 2026-08-19. The official notice states that claimants paid at a lower percentage will receive supplemental payments under TDP §4.3. This corrects the prior structured 100% value, which did not match the earlier 50% notice or the current primary source.",
+   "source": "Owens-Illinois Asbestos Personal Injury Trust, Notice re: O-I Payment Percentage Increase, 2026-08-19",
+   "sourceUrl": "https://www.oiasbestospersonalinjurytrust.com/wp-content/uploads/2026/08/O-I-Trust-Notice-re-Increase-Payment-Percentage.8.19.26-4905-3046-9064.1.pdf",
+   "confidence": "filed"
+  },
+  {
+   "date": "2026-08-29",
+   "type": "financial_report",
+   "trust": "Manville Personal Injury Settlement Trust",
+   "detail": "Q2 2026 financial statements (S.D.N.Y. Doc 4480, filed 2026-07-27) report net claimants’ equity of $570,516,505 as of 2026-06-30 and $5,343,613,806 in cumulative Trust liquidated claims on 1,041,171 claims. The payment percentage remains 5.1%. The cumulative series retains its existing liquidated-value convention; the filing separately reports unpaid claims.",
+   "source": "Manville Personal Injury Settlement Trust, Financial Statements and Report for period ending 2026-06-30, Exhibit III, S.D.N.Y. Doc 4480",
+   "sourceUrl": "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf",
+   "confidence": "filed"
+  },
+  {
    "date": "2026-08-03",
    "type": "future_trust",
    "trust": "Uniroyal Legacy Unit",
@@ -1793,19 +1816,19 @@
   }
  ],
  "bottomUpPayouts": {
-  "asOf": "2026-08-12",
-  "headlineTotal": 30020097653,
+  "asOf": "2026-08-29",
+  "headlineTotal": 30033989206,
   "tiers": {
    "filed": {
-    "amount": 17110328204,
+    "amount": 17124219757,
     "trustCount": 12,
     "description": "Inception-to-date claims payments read directly from filed annual reports, quarterly statements, or court documents (class-a).",
     "components": [
      {
       "trust": "Manville Personal Injury Settlement Trust",
-      "amount": 5329722253,
-      "asOf": "2026-03-31",
-      "source": "Manville PI Settlement Trust, Financial Statements for period ending 3/31/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4479, filed 4/27/2026) - cumulative payments on 1,036,966 liquidated claims since consummation 11/28/1988"
+      "amount": 5343613806,
+      "asOf": "2026-06-30",
+      "source": "Manville PI Settlement Trust, Financial Statements for period ending 6/30/2026, Exhibit III (Bankr. S.D.N.Y. Doc 4480, filed 7/27/2026) - $5,343,613,806 Total Trust Liquidated Claims on 1,041,171 claims since consummation 11/28/1988; this is liquidated value and the filing separately reports unpaid claims."
      },
      {
       "trust": "W.R. Grace Asbestos PI Trust",

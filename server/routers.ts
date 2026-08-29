@@ -150,11 +150,11 @@ export const appRouter = router({
     current: publicProcedure.query(async () => {
       const { asOf, aggregate: agg } = await loadJsonTrusts();
       return {
-        remainingLow: agg.remainingAssetsPoint ?? 15987271944,
+        remainingLow: agg.remainingAssetsPoint ?? 16018528449,
         remainingHigh: agg.remainingAssetsHigh ?? 21742138783,
-        remainingLabel: `$${(agg.remainingAssetsPoint ?? 15987271944).toLocaleString()} documented floor`,
-        paidOut: agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30020097653,
-        paidOutLabel: `$${(agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30020097653).toLocaleString()} paid to claimants (bottom-up estimate)`,
+        remainingLabel: `$${(agg.remainingAssetsPoint ?? 16018528449).toLocaleString()} documented floor`,
+        paidOut: agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206,
+        paidOutLabel: `$${(agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206).toLocaleString()} paid to claimants (bottom-up estimate)`,
         totalActiveTrusts: agg.activeTrustsEstimated ?? 60,
         paidOutDocumented: agg.cumulativePayoutsDocumented ?? 0,
         paidOutEstimatedRemainder: agg.cumulativePayoutsEstimatedRemainder ?? 0,

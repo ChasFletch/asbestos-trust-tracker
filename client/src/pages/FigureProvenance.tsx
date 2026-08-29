@@ -150,14 +150,18 @@ export default function FigureProvenance() {
                   <div className="mt-5 border-t border-border/45 pt-4">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                       <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground">Source trail for {entry.figure}</h4>
-                      <a
-                        href={provenanceCommitUrl(entry.commit)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono text-xs text-primary underline underline-offset-2"
-                      >
-                        Commit {entry.commit}
-                      </a>
+                      {entry.commit ? (
+                        <a
+                          href={provenanceCommitUrl(entry.commit)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-mono text-xs text-primary underline underline-offset-2"
+                        >
+                          Commit {entry.commit}
+                        </a>
+                      ) : (
+                        <span className="font-mono text-xs text-muted-foreground">Filed source update</span>
+                      )}
                     </div>
                     <ul className="space-y-2">
                       {entry.sources.map((source) => {

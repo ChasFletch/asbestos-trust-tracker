@@ -1,6 +1,8 @@
 /** Generated from verified artifact uploads on 2026-08-12. */
 export const primarySourcePdfUrls = {
   "ABEST_Notice_Reduce_Payment_Percentage_2020.pdf": "/manus-storage/ABEST_Notice_Reduce_Payment_Percentage_2020_c764c08b.pdf",
+  "OI-Trust-Payment-Percentage-Increase-2026-08-19.pdf": "/manus-storage/OI-Trust-Payment-Percentage-Increase-2026-08-19_418b2c7d.pdf",
+  "Manville-Q2-2026-Financial-Statements-Doc4480.pdf": "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf",
   "ACS_May2026_Notice_Payment_Percentage_Reduction.pdf": "/manus-storage/ACS_May2026_Notice_Payment_Percentage_Reduction_fab2ce09.pdf",
   "ACS_Sep2025_Notice_Payment_Percentage_Reduction.pdf": "/manus-storage/ACS_Sep2025_Notice_Payment_Percentage_Reduction_2e8d47bf.pdf",
   "BESTWALL_ca4_241493_20250801.pdf": "/manus-storage/BESTWALL_ca4_241493_20250801_a8df5932.pdf",

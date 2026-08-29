@@ -272,7 +272,7 @@
 - [x] Build a reader-accessible article route so detailed source-linked news briefs are not limited to feed-card summaries
 - [x] Draft a detailed source-linked news brief covering the verified Manville Q2 2026 filing
 - [x] Include a clear distinction between the quarter-end asset/claim figures and the tracker’s cumulative-payout methodology
-- [ ] Add regression coverage and verify the brief’s live news-card presentation
+- [x] Add regression coverage and verify the brief’s live news-card presentation
 
 ## ClimbX Link-Exchange Assessment (2026-08-20)
 - [x] Research ClimbX’s subject matter, audience, ownership, content quality, and authority signals

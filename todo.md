@@ -289,6 +289,11 @@
 - [x] Apply `rel="sponsored noopener noreferrer"` and accessible external-link labeling
 - [x] Add regression coverage and verify the disclosure and link attributes locally and in production
 
+## Unpublished Linkos Bio Disclosure (2026-08-30)
+- [x] Add the requested neutral Linkos Bio promotional-exchange disclosure after the ClimbX paragraph in About
+- [x] Add focused assertions for the exact Linkos Bio URL, sponsored relation, disclosure language, accessibility label, and exclusion from trust/report detail pages
+- [x] Run TypeScript, the focused disclosure test, and the production build without publishing or deploying
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

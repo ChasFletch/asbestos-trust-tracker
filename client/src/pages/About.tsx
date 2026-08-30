@@ -79,6 +79,18 @@ export default function About() {
             </a>{" "}
             is an X-content research and drafting tool. This external link is included as part of a disclosed promotional exchange. It is not a legal, medical, or asbestos-information resource, and AsbestosTrusts.org does not endorse its services.
           </p>
+          <p className="mb-3">
+            <a
+              href="https://linkos.bio/?utm_source=asbestostrusts.org&utm_medium=referral&utm_campaign=link_exchange"
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Linkos Bio
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>{" "}
+            is a link-in-bio platform for creators and small publishers. This external link is included as part of a disclosed promotional exchange. It is not a legal, medical, or asbestos-information resource, and AsbestosTrusts.org does not endorse its services.
+          </p>
           <p className="text-xs text-muted-foreground/75">
             This disclosure is separate from the tracker’s primary-source research, trust records, reports, and news coverage.
           </p>

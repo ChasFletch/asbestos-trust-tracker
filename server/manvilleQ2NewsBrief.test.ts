@@ -30,5 +30,6 @@ describe("Manville Q2 2026 detailed news brief", () => {
     expect(detailPage).toContain("manville-personal-injury-settlement-trust");
     expect(detailPage).toContain("manville-q2-2026-financial-statements");
     expect(detailPage).toContain("href={`/news/${detailedBrief.slug}`}");
+    expect(detailPage).toContain("isLoading && !detailedBrief");
   });
 });

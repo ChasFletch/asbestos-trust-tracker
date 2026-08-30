@@ -106,7 +106,7 @@ function RelatedNews({ trustName, slug }: { trustName: string; slug: string }) {
     ? NEWS_BRIEFS_BY_SLUG["manville-q2-2026-financial-statements"]
     : undefined;
 
-  if (isLoading || (!detailedBrief && (!news || news.length === 0))) return null;
+  if ((isLoading && !detailedBrief) || (!detailedBrief && (!news || news.length === 0))) return null;
 
   return (
     <div className="bg-card border border-border/50 rounded-lg p-5 mb-6">

@@ -277,6 +277,7 @@
 ## Manville Brief Cross-Link (2026-08-29)
 - [x] Add the detailed Manville Q2 2026 article to the Manville trust-detail related-news section
 - [ ] Add regression coverage and verify the trust-detail-to-brief link locally and in production
+- [x] Ensure the static Manville detailed-brief link renders before the dynamic related-news query settles
 
 ## ClimbX Link-Exchange Assessment (2026-08-20)
 - [x] Research ClimbX’s subject matter, audience, ownership, content quality, and authority signals

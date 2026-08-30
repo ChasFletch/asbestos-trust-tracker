@@ -24,4 +24,11 @@ describe("Manville Q2 2026 detailed news brief", () => {
     expect(draft).toContain("1,041,171");
     expect(draft).toContain("full source-linked brief");
   });
+
+  it("is surfaced from the Manville trust-detail related-news section", () => {
+    const detailPage = readFileSync("client/src/pages/TrustDetail.tsx", "utf8");
+    expect(detailPage).toContain("manville-personal-injury-settlement-trust");
+    expect(detailPage).toContain("manville-q2-2026-financial-statements");
+    expect(detailPage).toContain("href={`/news/${detailedBrief.slug}`}");
+  });
 });

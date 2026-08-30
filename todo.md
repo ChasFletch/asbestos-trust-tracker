@@ -274,6 +274,10 @@
 - [x] Include a clear distinction between the quarter-end asset/claim figures and the tracker’s cumulative-payout methodology
 - [x] Add regression coverage and verify the brief’s live news-card presentation
 
+## Manville Brief Cross-Link (2026-08-29)
+- [x] Add the detailed Manville Q2 2026 article to the Manville trust-detail related-news section
+- [ ] Add regression coverage and verify the trust-detail-to-brief link locally and in production
+
 ## ClimbX Link-Exchange Assessment (2026-08-20)
 - [x] Research ClimbX’s subject matter, audience, ownership, content quality, and authority signals
 - [x] Evaluate the proposed reciprocal link for relevance, transparency, and search-quality risk

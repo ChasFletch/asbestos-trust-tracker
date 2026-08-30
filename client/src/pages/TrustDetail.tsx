@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { SourceDocModal } from "@/components/SourceDocModal";
 import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
 import { primarySourceDocumentsBySlug } from "@/data/primarySourceDocuments";
+import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
 import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
@@ -101,8 +102,11 @@ function RelatedNews({ trustName, slug }: { trustName: string; slug: string }) {
     { trustId: slug, trustName, limit: 5 },
     { enabled: !!slug && !!trustName }
   );
+  const detailedBrief = slug === "manville-personal-injury-settlement-trust"
+    ? NEWS_BRIEFS_BY_SLUG["manville-q2-2026-financial-statements"]
+    : undefined;
 
-  if (isLoading || !news || news.length === 0) return null;
+  if (isLoading || (!detailedBrief && (!news || news.length === 0))) return null;
 
   return (
     <div className="bg-card border border-border/50 rounded-lg p-5 mb-6">
@@ -113,7 +117,24 @@ function RelatedNews({ trustName, slug }: { trustName: string; slug: string }) {
         </h2>
       </div>
       <div className="space-y-3">
-        {news.map((item: any) => (
+        {detailedBrief && (
+          <div className="flex items-start gap-3 group rounded-md border border-primary/15 bg-primary/[0.035] p-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <Link href={`/news/${detailedBrief.slug}`} className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-snug hover:underline">
+                {detailedBrief.title}
+              </Link>
+              <p className="text-xs text-muted-foreground leading-relaxed mt-1">{detailedBrief.summary}</p>
+              <div className="flex items-center gap-2 mt-1.5">
+                <span className="text-xs text-muted-foreground/60">
+                  {new Date(`${detailedBrief.date}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+                </span>
+                <span className="text-[10px] uppercase tracking-wider text-primary/70 font-medium">Filed quarterly report</span>
+              </div>
+            </div>
+          </div>
+        )}
+        {(news ?? []).map((item: any) => (
           <div key={item.id} className="flex items-start gap-3 group">
             <div className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-2 shrink-0" />
             <div className="flex-1 min-w-0">

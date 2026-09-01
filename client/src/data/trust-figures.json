@@ -1,13 +1,13 @@
 {
  "schema": "asbestos-trust-figures/v1.1",
- "asOf": "2026-08-29",
+ "asOf": "2026-09-01",
  "aggregate": {
-  "remainingAssetsPoint": 16018528449,
-  "remainingAssetsLow": 16018528449,
-  "remainingAssetsHigh": 21742138783,
+  "remainingAssetsPoint": 16033489279,
+  "remainingAssetsLow": 16033489279,
+  "remainingAssetsHigh": 21757099613,
   "cumulativePayoutsPoint": 24000000000,
   "cumulativePayoutsLow": 17500000000,
-  "trustsWithFigures": 42,
+  "trustsWithFigures": 43,
   "activeTrustsEstimated": 60,
   "cumulativePayoutsDocumented": 17124219757,
   "cumulativePayoutsEstimatedRemainder": 6875780243,
@@ -23,10 +23,10 @@
    "cumulativePayoutsLabel": "paid to claimants (bottom-up: $17.12B filed + $9.41B secondary-citing-filed + ~$3.5B estimated for ~25 undocumented trusts)",
    "legacyPoint": "cumulativePayoutsPoint = 24000000000 (round estimate, superseded 2026-07-29)"
   },
-  "remainingAssetsPointMethodology": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,203,524,266, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher."
+  "remainingAssetsPointMethodology": "Exact arithmetic sum of the latest located figure for each of 43 active trust records: 19 from filed annual reports/quarterly filings totaling $8,218,485,096, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher."
  },
  "methodology": {
-  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 42 active trust records: 18 from filed annual reports/quarterly filings totaling $8,203,524,266, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher.",
+  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 43 active trust records: 19 from filed annual reports/quarterly filings totaling $8,218,485,096, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher.",
   "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
   "cumulativePayoutsPoint": "Current bottom-up decomposition as of 2026-08-29: $30,033,989,206 total. The filed/source-linked tier is $17,124,219,757 across 12 trust figures, including Babcock & Wilcox at approximately $1,978,300,000 through 2023-12-31. The Manville component uses the quarterly report’s cumulative-liquidated-claims series and explicitly retains that source convention. The qualified secondary-citing-filed tier is $9,409,769,449 across 7 components. The remaining approximately $3.5B is a labeled residual allowance for trusts without a public cumulative-payment figure. Historic source dates are not homogenized: older filed figures remain floors where payments continued after their as-of date. Pittsburgh Corning remains secondary pending an accessible filed report; Celotex retains its filed FY2006 PI-pool figure plus a qualified post-2006 secondary-growth component because its FY2025 report is account-restricted.",
   "cumulativePayoutsCurrent": "As of 2026-08-29, the tracker’s current bottom-up payout estimate is $30,033,989,206: $17,124,219,757 across 12 filed/source-linked trust figures, $9,409,769,449 across 7 qualified secondary-citing-filed components, and a labeled ~$3.5B residual allowance. The Manville component retains the tracker’s existing liquidated-value convention, while the Q2 2026 filing separately reports unpaid claims. Babcock & Wilcox is included in the filed tier at approximately $1,978,300,000 through 12/31/2023, calculated from the two inception-to-date payment amounts in its FY2023 Annual Report and Account (E.D. La. 00-10992 Doc 7876-1). This current record supersedes the earlier B&W secondary-floor treatment in the historical payout methodology narrative above.",
@@ -1219,15 +1219,16 @@
   },
   {
    "name": "ABB Lummus Global Inc. 524(g) Asbestos PI Trust",
-   "netAssets": null,
-   "assetsAsOf": null,
+   "netAssets": 14960830,
+   "assetsAsOf": "2025-12-31",
+   "assetsBasis": "net assets available for the payment of claims, audited special-purpose statements, FY2025 annual report, Bankr. D. Del. 06-10401 (MFW) Doc 529, filed 04/28/2026",
    "paymentPercentage": 9.5,
    "paymentPctAsOf": "2025-12-31",
    "status": "active",
    "confidence": "filed",
-   "note": "ADD to the tracked dataset with FY2025 primary-source net assets ($14,960,830, as of 2025-12-31) and 9.5% payment percentage. Spreadsheet's 14.7% is superseded.",
+   "note": "FY2025 filed annual report: net assets available for the payment of claims $14,960,830 as of 2025-12-31 (2024 comparative $14,872,836); 9.5% payment percentage confirmed for 2025 (older 14.7% secondary figure superseded). 985 claims paid in 2025 per filed claims summary.",
    "evidence": "Court-filed FY2025 annual report (Bankr. D. Del., Case No. 06-10401 (MFW), Doc 529, filed 04/28/26) reports audited \"Net Assets Available For The Payment of Claims $ 14,960,830\" as of December 31, 2025 (p.15, Exhibit A; 2024 comparative $14,872,836). The report states \"The Payment Percentage for 202",
-   "sourceUrl": "https://web.archive.org/web/20260606071713id_/https://abblummustrust.org/assets/uploadedFiles/04e9a249-cf90-4bfd-a2cb-21a0016473ad.pdf",
+   "sourceUrl": "https://abblummustrust.org/assets/uploadedFiles/04e9a249-cf90-4bfd-a2cb-21a0016473ad.pdf",
    "sourceType": "court_filed_document",
    "added": "2026-08-12"
   },
@@ -1776,6 +1777,12 @@
    "type": "addition",
    "trust": "(multiple)",
    "note": "Added Hercules Chemical ($4,018,899 @2022, 2.0% eff. 2022-10-17, Verus) and United Gilsonite UGL ($16,044,821 @2022, 3.35% eff. 2024-04-11, Verus) — research corpus followup_dim08. Aggregate floor $15,967,208,224 -> $15,987,271,944; high $21,721,071,877 -> $21,742,138,783. '$30B' origin attribution corrected (Bates White/Mealey's 2012-13, not GAO/RAND); per-claimant statistics void documented (RAND TR-872 p. xvii; Garlock 504 B.R. 71, 96; Ableman Mealey's 30:19)."
+  },
+  {
+   "date": "2026-09-01",
+   "type": "annual_report",
+   "trust": "ABB Lummus Global Inc. 524(g) Asbestos PI Trust",
+   "note": "Completed the 2026-08-12 intended addition: netAssets $14,960,830 as of 2025-12-31 verified against the filed FY2025 annual report (Bankr. D. Del. 06-10401-MFW Doc 529, filed 04/28/2026, Exhibit A audited special-purpose statements); 9.5% payment percentage confirmed for 2025. Record already carried confidence=filed; no (b)->(a) upgrades this cycle. Aggregate floor $16,018,528,449 -> $16,033,489,279; high $21,742,138,783 -> $21,757,099,613. Source URL switched from Wayback capture to the live trust-site PDF (verified retrievable)."
   }
  ],
  "sources": [

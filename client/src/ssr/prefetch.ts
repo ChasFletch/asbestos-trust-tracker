@@ -5,6 +5,7 @@ import { trpc } from "@/lib/trpc";
 import { SITE_NAME, SITE_TITLE, SITE_DESC } from "@shared/const";
 import type { AppRouter } from "../../../server/routers";
 import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
+import { getRelatedReportIdsForTrust } from "@/data/reportRelations";
 
 export type HeadMeta = {
   title: string;
@@ -112,15 +113,20 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
   const trustMatch = clean.match(/^\/trusts\/([^/]+)$/);
   if (trustMatch) {
     const slug = trustMatch[1];
-    const [jsonTrust, dbTrust] = await Promise.all([
+    const reportIds = getRelatedReportIdsForTrust(slug);
+    const [jsonTrust, dbTrust, reports] = await Promise.all([
       p.trustFiguresBySlug(slug),
       p.trustsBySlug(slug),
+      reportIds.length > 0 ? p.reportsIndex() : Promise.resolve(null),
     ]);
     if (!jsonTrust) {
       return { title: SITE, description: DESC, notFound: true };
     }
     await seed(qc, getQueryKey(trpc.trustFigures.bySlug, { slug }, "query"), jsonTrust);
     await seed(qc, getQueryKey(trpc.trusts.bySlug, { slug }, "query"), dbTrust);
+    if (reports) {
+      await seed(qc, getQueryKey(trpc.trustFiguresExtra.reportsIndex, undefined, "query"), reports);
+    }
     const pct = jsonTrust.paymentPercentage !== null ? ` · ${jsonTrust.paymentPercentage}% payment` : "";
     const assets = jsonTrust.netAssets ? ` · $${(jsonTrust.netAssets / 1e9).toFixed(2)}B assets` : "";
     return {

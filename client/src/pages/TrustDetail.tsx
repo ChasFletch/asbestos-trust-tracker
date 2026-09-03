@@ -5,6 +5,7 @@ import { SourceDocModal } from "@/components/SourceDocModal";
 import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
 import { primarySourceDocumentsBySlug } from "@/data/primarySourceDocuments";
 import { getNewsBriefsForTrust } from "@/data/newsBriefs";
+import { getRelatedReportIdsForTrust } from "@/data/reportRelations";
 import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
@@ -130,6 +131,74 @@ function RelatedArticles({ slug }: { slug: string }) {
                   Read article <span aria-hidden="true">→</span>
                 </Link>
               </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Related Research Reports ─────────────────────────────────────────────────
+type ReportSummary = {
+  id: string;
+  title: string;
+  date: string;
+  asOf: string | null;
+  summary: string | null;
+};
+
+function RelatedResearchReports({ slug }: { slug: string }) {
+  const reportIds = getRelatedReportIdsForTrust(slug);
+  const { data } = trpc.trustFiguresExtra.reportsIndex.useQuery(undefined, {
+    enabled: reportIds.length > 0,
+  });
+
+  if (reportIds.length === 0) return null;
+
+  const reportsById = new Map((data?.reports ?? []).map((report: ReportSummary) => [report.id, report]));
+  const relatedReports = reportIds
+    .map((reportId) => reportsById.get(reportId))
+    .filter((report): report is ReportSummary => Boolean(report))
+    .slice(0, 3);
+
+  if (relatedReports.length === 0) return null;
+
+  return (
+    <section className="bg-card border border-border/50 rounded-lg p-5 mb-6" aria-labelledby="related-reports-heading">
+      <div className="flex items-start gap-2 mb-4">
+        <FileText size={15} className="text-muted-foreground mt-0.5 shrink-0" />
+        <div>
+          <h2 id="related-reports-heading" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            Related Research Reports
+          </h2>
+          <p className="text-xs text-muted-foreground/70 mt-1 leading-relaxed">
+            Report editions with direct, substantive coverage of this trust’s documented figures, payment history, or case status.
+          </p>
+        </div>
+      </div>
+      <div className="divide-y divide-border/40 rounded-md border border-border/40 overflow-hidden">
+        {relatedReports.map((report) => (
+          <article key={report.id} className="px-3.5 py-3.5 bg-background/20 hover:bg-muted/35 transition-colors">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-primary/20 bg-primary/10 text-primary/80">
+                    {report.id}
+                  </span>
+                  <span className="text-[11px] text-muted-foreground/60">
+                    Published {new Date(`${report.date}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+                  </span>
+                  {report.asOf && <span className="text-[11px] text-muted-foreground/50">Data as of {report.asOf}</span>}
+                </div>
+                <Link href={`/reports/${report.id}`} className="block text-sm font-medium text-foreground hover:text-primary hover:underline leading-snug">
+                  {report.title}
+                </Link>
+                {report.summary && <p className="text-xs text-muted-foreground leading-relaxed mt-1.5">{report.summary}</p>}
+              </div>
+              <Link href={`/reports/${report.id}`} className="shrink-0 text-xs font-medium text-primary hover:underline mt-0.5">
+                Read report <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </article>
         ))}
@@ -696,6 +765,8 @@ export default function TrustDetail() {
           </div>
         )}
       </div>
+
+      <RelatedResearchReports slug={slug ?? ""} />
 
       {/* Related articles are intentionally limited to explicit, reviewed trust links. */}
       <RelatedArticles slug={slug ?? ""} />

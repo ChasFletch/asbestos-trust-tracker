@@ -125,13 +125,19 @@ function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 3
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showTooltip, handleClickOutside]);
 
-  const [displayed, setDisplayed] = useState(0);
-  const prevRef = useRef(0);
+  // Render the actual value during SSR and the client's first render so crawlers
+  // receive a real, citeable number and hydration remains deterministic. The
+  // effect below then resets and plays the existing count-up after hydration.
+  const [displayed, setDisplayed] = useState(value);
+  const prevRef = useRef(value);
+  const hasHydratedRef = useRef(false);
 
   useEffect(() => {
-    const start = prevRef.current;
     const end = value;
+    const start = hasHydratedRef.current ? prevRef.current : 0;
+    hasHydratedRef.current = true;
     if (start === end) return;
+    setDisplayed(start);
     const duration = 1400;
     const startTime = performance.now();
     const tick = (now: number) => {
@@ -223,6 +229,7 @@ function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 3
         {showPanelTooltip && panelTooltip && (
           <div className="dc-panel-tooltip">{panelTooltip}</div>
         )}
+        <span className="sr-only">{formatted}</span>
         {/* glass sheen across the panel face */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",

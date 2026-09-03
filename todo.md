@@ -294,6 +294,17 @@
 - [x] Add focused assertions for the exact Linkos Bio URL, sponsored relation, disclosure language, accessibility label, and exclusion from trust/report detail pages
 - [x] Run TypeScript, the focused disclosure test, and the production build without publishing or deploying
 
+## Crawler Visibility and Embed Audit (2026-08-30)
+- [x] Verify crawler-visible homepage and embed-clock figure text, status codes, and route behavior — both clock counters currently server-render as `$0`; `/embed/clock` emits clock markup but returns HTTP 404
+- [x] Verify the CSV distribution URL used by structured data and compare it with the live export route — schema references `/api/export/trusts.csv` while the live CSV is `/trusts.csv`
+- [x] Assess the proposed build-time shared-figure approach against the current SSR implementation before making any code changes — retain runtime JSON-first SSR; correct counter initialization and embed-route prefetch/status instead of introducing a slower build-time snapshot
+
+## Clock SSR and Embed Route Repair (2026-08-30)
+- [x] Render the live clock compensation figures as real server-visible text while retaining post-hydration count-up animation
+- [x] Register `/embed/clock` with SSR prefetch data and a valid public 200 response
+- [x] Correct Dataset schema `contentUrl` to `/trusts.csv` and validate the CSV export response
+- [x] Add crawler-focused tests for raw server-rendered compensation figures, embed status, and CSV schema URL
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

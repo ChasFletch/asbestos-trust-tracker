@@ -70,6 +70,27 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
     };
   }
 
+  // ── Embeddable clock (/embed/clock) ───────────────────────────────────────
+  // The iframe is public and needs the same aggregate snapshot as the homepage
+  // so its initial server HTML contains the live counter values and returns 200.
+  if (clean === "/embed/clock") {
+    const [agg, summary, allTrusts] = await Promise.all([
+      p.aggregateCurrent(),
+      p.trustFiguresSummary(),
+      p.trustFiguresAllTrusts(),
+    ]);
+    await seed(qc, getQueryKey(trpc.aggregate.current, undefined, "query"), agg);
+    await seed(qc, getQueryKey(trpc.trustFigures.summary, undefined, "query"), summary);
+    await seed(qc, getQueryKey(trpc.trustFigures.allTrusts, undefined, "query"), allTrusts);
+    return {
+      title: `Embeddable Asbestos Trust Fund Clock · ${SITE_NAME}`,
+      description: "Live, source-classified U.S. asbestos bankruptcy trust fund figures from AsbestosTrusts.org.",
+      ogType: "website",
+      canonicalPath: "/embed/clock",
+      keywords: "asbestos trust fund clock, asbestos compensation data, bankruptcy trust fund figures",
+    };
+  }
+
   // ── Trust list (/trusts) ─────────────────────────────────────────────────
   if (clean === "/trusts") {
     const [allTrusts, trusts] = await Promise.all([

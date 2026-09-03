@@ -355,7 +355,7 @@
 - [x] Verify the August 19, 2026 payment-percentage notice and the limits on the 65% change before expanding the News card
 - [x] Create a full source-linked Owens-Illinois article and attach it to the existing News card’s Read more destination
 - [x] Include narrowly scoped WikiMesothelioma and Asbestos Atlas references where they add useful context but do not source trust-specific facts
-- [ ] Add canonical metadata, sitemap coverage, regression tests, and live publication verification
+- [x] Add canonical metadata, sitemap coverage, regression tests, and live publication verification
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

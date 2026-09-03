@@ -139,7 +139,7 @@ export default function News() {
                     </p>
                   )}
                   {item.isDraft && item.slug && NEWS_BRIEFS_BY_SLUG[item.slug] && (
-                    <Link href={`/news/${item.slug}`} className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2 mr-4">Read detailed brief</Link>
+                    <Link href={`/news/${item.slug}`} className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2 mr-4" aria-label={`Read more: ${item.title}`}>Read more</Link>
                   )}
                   {item.url && (
                     <a

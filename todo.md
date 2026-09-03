@@ -338,6 +338,12 @@
 - [x] Replace hard character clipping with sentence-safe summary truncation for long news cards
 - [x] Add regression coverage for the Hopeman card and publish a live visual/API verification
 
+## Hopeman Detailed Article and Read-More Pattern
+- [x] Add reusable internal article destinations to the news-card data model and render a “Read more” link only when a full article exists
+- [x] Create a detailed Hopeman Brothers article with canonical URL, breadcrumbs, Article schema, direct docket citations, and a clear not-yet-operational disclosure
+- [x] Link the Hopeman news card to the detailed article without altering its existing source link
+- [ ] Add sitemap and SSR metadata coverage, plus regression and live checks for the article route and card link — article route is crawler-visible; News cards load through the existing client-fetched draft-feed path
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

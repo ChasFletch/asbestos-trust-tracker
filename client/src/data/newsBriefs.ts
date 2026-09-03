@@ -6,6 +6,9 @@ export type NewsBrief = {
   summary: string;
   sourceUrl: string;
   sourceLabel: string;
+  sourceCutoffAt?: string;
+  keywords?: string;
+  about?: string;
   markdown: string;
 };
 
@@ -18,6 +21,9 @@ export const NEWS_BRIEFS: NewsBrief[] = [
     summary: "The Manville Personal Injury Settlement Trust’s Q2 2026 court filing reports $570.5 million in net claimants’ equity and 1,041,171 cumulative liquidated claims through June 30, 2026.",
     sourceUrl: "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf",
     sourceLabel: "Manville Q2 2026 Financial Statements and Report (S.D.N.Y. Doc. 4480)",
+    sourceCutoffAt: "2026-06-30",
+    keywords: "Manville Trust, Manville Q2 2026, asbestos trust annual report, asbestos claim payments, bankruptcy trust filing",
+    about: "Manville Personal Injury Settlement Trust Q2 2026 filing",
     markdown: `The Manville Personal Injury Settlement Trust’s second-quarter 2026 financial statements report **$570,516,505 in net claimants’ equity as of June 30, 2026**, following $539,264,338 at March 31. The report was filed in the Johns-Manville bankruptcy on July 27, 2026 as **S.D.N.Y. Case No. 82 B 11656 (KYP), Doc. 4480**.[1]
 
 ## What the Q2 filing reports
@@ -53,6 +59,65 @@ For Manville, the prior documented component was updated by the **$13,891,553** 
 This brief relies on the filed quarterly report and its exhibits. The report requires the Trustees to submit quarterly financial statements and supplemental information, including the number of Trust claims liquidated and the average amount per Trust claim paid or payable.[1] The source PDF is retained in the site’s primary-source library and may be opened directly below.
 
 [1]: /manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf "Manville Personal Injury Settlement Trust, Financial Statements and Report for the Period Ending June 30, 2026, S.D.N.Y. Doc. 4480, filed July 27, 2026"
+`,
+  },
+  {
+    slug: "hopeman-brothers-plan-confirmed",
+    title: "Hopeman Brothers Plan Confirmed: What the Proposed Asbestos Trust Does—and Does Not—Mean Yet",
+    date: "2026-09-03",
+    category: "court_filing",
+    summary: "The official Hopeman Brothers docket records a confirmed Chapter 11 plan that provides for a newly created asbestos personal-injury trust. Public materials reviewed as of September 3, 2026 do not establish that the plan is effective, the trust is operational, or asbestos claims are being accepted.",
+    sourceUrl: "https://www.veritaglobal.net/hopeman/document/2432428260820000000000005",
+    sourceLabel: "Hopeman Brothers confirmation order and Third Modified Amended Plan (Docket No. 1542)",
+    sourceCutoffAt: "2026-09-03",
+    keywords: "Hopeman Brothers bankruptcy, proposed asbestos trust, asbestos trust effective date, Chapter 11 confirmation order, asbestos claim filing instructions",
+    about: "Hopeman Brothers Chapter 11 plan confirmation and proposed asbestos personal-injury trust",
+    markdown: `The official Hopeman Brothers bankruptcy docket records a confirmation order for the company’s Chapter 11 plan. The confirmed plan provides for a **newly created asbestos personal-injury trust** and a proposed permanent channeling injunction for specified asbestos-related liabilities.[1]
+
+That is a meaningful court development. It is **not**, by itself, public confirmation that a trust is currently operating, that claimants can file with it, or that any payment percentage has been set. This article explains the distinction and identifies the documents readers should watch next.
+
+## What the court confirmed
+
+On August 20, 2026, the official case docket recorded **Docket No. 1542**, the order confirming Hopeman Brothers, Inc.’s amended Chapter 11 plan and approving the related disclosure statement. The order incorporates the Third Modified Amended Plan dated August 17, 2026.[1]
+
+The plan describes a structure under which specified asbestos-related liabilities would be channeled to a newly created asbestos trust. It also contemplates a permanent channeling injunction as part of the proposed reorganization framework.[1]
+
+> **Confirmed:** A bankruptcy court confirmed a plan that provides for an asbestos personal-injury trust.
+>
+> **Not yet established by the public materials reviewed:** That the plan has become effective, that the trust is operational, or that asbestos claims are currently being accepted.
+
+## Why confirmation is not the same as an open trust
+
+In a Chapter 11 case, plan confirmation and plan effectiveness are distinct milestones. A confirmed plan may still contain conditions that must be satisfied before its Effective Date. For a claimant-facing asbestos trust, public implementation materials would ordinarily be expected to identify the operative trust arrangements, claims procedures, and other practical filing information.
+
+As of September 3, 2026, the public Hopeman case materials reviewed do not provide a notice that the plan has reached its Effective Date. They also do not provide a public asbestos-trust portal, asbestos claim form, payment percentage, Trust Distribution Procedure, or claimant filing instructions.[1]
+
+For that reason, AsbestosTrusts.org does not list Hopeman as an operating trust or include it in the tracker’s trust-count, payment-percentage, net-asset, or cumulative-payment figures.
+
+## The current appeal posture
+
+The official docket also records a Fourth Circuit appeal notice. Docket No. 1549, entered September 1, 2026, states that Case No. 26-2188 was opened after Century Indemnity Company and Westchester Fire Insurance Company filed a notice of appeal on August 28, 2026.[2]
+
+The presence of an appeal does not itself determine the ultimate outcome of the plan or proposed trust. It is, however, a material reason to avoid describing the proposed trust as final, funded, or open for claims until the court record and trust-administration materials say so.
+
+## What readers should watch next
+
+| Document or development | Why it matters |
+|---|---|
+| Notice of Effective Date | Confirms that the plan’s stated conditions have been satisfied or waived. |
+| Trust agreement and trustee notice | Identifies the legal trust structure and responsible administrator. |
+| Trust Distribution Procedure or payment-percentage notice | Explains claim valuation, payment mechanics, and any initial payment percentage. |
+| Public claim form or claims portal | Establishes whether and how asbestos claimants may submit claims. |
+| Appellate orders or disposition | Clarifies the status of the appeal reflected in the public docket. |
+
+This article will be updated when an official notice supplies one of those missing implementation facts. It intentionally does not repeat circulating proposed-funding estimates as a current trust balance, because the public materials reviewed do not establish an operational trust balance or payment terms.[1] [2]
+
+## Sources and editorial note
+
+The confirmation order and appeal notice are primary docket materials hosted through the official Hopeman case agent. They are the basis for the confirmed-plan and appeal statements above. This article does not provide legal advice and does not suggest that any claimant should delay or file a claim based on the present status alone.
+
+[1]: https://www.veritaglobal.net/hopeman/document/2432428260820000000000005 "Hopeman Brothers, Inc., Order Confirming the Amended Plan of Reorganization and Third Modified Amended Plan, Docket No. 1542"
+[2]: https://www.veritaglobal.net/hopeman/document/2432428260901000000000001 "Hopeman Brothers, Inc., Fourth Circuit appeal notification, Docket No. 1549"
 `,
   },
 ];

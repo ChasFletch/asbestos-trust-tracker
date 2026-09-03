@@ -184,7 +184,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       ogType: "article",
       canonicalPath: `/news/${slug}`,
       publishedTime: brief.date,
-      keywords: "Manville Trust, Manville Q2 2026, asbestos trust annual report, asbestos claim payments, bankruptcy trust filing",
+      keywords: brief.keywords ?? "asbestos trust news, bankruptcy court filing, asbestos claim update",
       jsonLd: [
         {
           "@context": "https://schema.org",
@@ -196,7 +196,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           "datePublished": brief.date,
           "author": { "@id": "https://asbestostrusts.org/#research-desk" },
           "publisher": { "@id": "https://asbestostrusts.org/#org" },
-          "about": "Manville Personal Injury Settlement Trust Q2 2026 filing"
+          "about": brief.about ?? brief.title
         },
         {
           "@context": "https://schema.org",

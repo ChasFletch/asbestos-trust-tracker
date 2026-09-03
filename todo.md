@@ -361,7 +361,7 @@
 - [x] Verify the Supreme Court certiorari denial, the current Chapter 11 posture, and the limits on any trust-formation claim before expanding the News card
 - [x] Create a full source-linked Bestwall article and attach it to the existing News card’s Read more destination
 - [x] Include narrowly scoped WikiMesothelioma and Asbestos Atlas references where they add useful context but do not source case-specific facts
-- [ ] Add canonical metadata, sitemap coverage, regression tests, and live publication verification
+- [x] Add canonical metadata, sitemap coverage, regression tests, and live publication verification
 - [x] Verify the Bestwall News card’s Read more destination after visually detecting the published article/card mapping gap
 
 ### Methodology page

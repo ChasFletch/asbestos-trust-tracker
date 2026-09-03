@@ -32,6 +32,19 @@ interface NewsDraft {
   url?: string;
 }
 
+const PREFERRED_NEWS_SUMMARY_LENGTH = 400;
+
+function trimSummaryAtSentenceBoundary(text: string, preferredLength = PREFERRED_NEWS_SUMMARY_LENGTH): string {
+  if (text.length <= preferredLength) return text;
+
+  const boundaries = Array.from(text.matchAll(/[.!?](?:\[\d+\])?(?=\s|$)/g));
+  const beforePreferredLength = boundaries.filter((boundary) => (boundary.index ?? 0) < preferredLength).at(-1);
+  const boundary = beforePreferredLength ?? boundaries[0];
+
+  if (!boundary || boundary.index === undefined) return text;
+  return text.slice(0, boundary.index + boundary[0].length).trim();
+}
+
 export function parseNewsDraft(fileName: string, text: string): NewsDraft {
   const lines = text.split("\n");
   let title = fileName
@@ -59,12 +72,12 @@ export function parseNewsDraft(fileName: string, text: string): NewsDraft {
     bodyStart = i + 1;
   }
 
-  const summary = (lines.slice(bodyStart).join("\n").trim().split(/\n\n/)[0] ?? "")
+  const firstParagraph = (lines.slice(bodyStart).join("\n").trim().split(/\n\n/)[0] ?? "")
     .replace(/^#+\s*/gm, "")
     .replace(/\*\*/g, "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .trim()
-    .slice(0, 400);
+    .trim();
+  const summary = trimSummaryAtSentenceBoundary(firstParagraph);
 
   return { filename: fileName, date, title, summary, category, url };
 }

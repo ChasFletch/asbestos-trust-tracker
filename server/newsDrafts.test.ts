@@ -29,6 +29,18 @@ The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment perc
     expect(draft.summary).not.toContain("url:");
   });
 
+  it("ends long card summaries at a complete sentence rather than a fixed character boundary", () => {
+    const firstSentence = `The confirmation order provides for a newly created asbestos personal-injury trust and channels specified liabilities to that trust under its proposed permanent channeling injunction.[1]`;
+    const draft = parseNewsDraft(
+      "2026-09-03-sentence-safe-summary.md",
+      `# Sentence-safe summary\ndate: 2026-09-03\ncategory: system_update\n\n${firstSentence} ${"A later sentence that should not appear in the card summary. ".repeat(15)}`
+    );
+
+    expect(draft.summary.length).toBeLessThanOrEqual(400);
+    expect(draft.summary).toMatch(/\.$/);
+    expect(draft.summary).toContain(firstSentence);
+  });
+
   it("labels Uniroyal hearing dates as official case-agent information without presenting them as filed material", () => {
     const uniroyal = readFileSync(
       resolve(process.cwd(), "client/src/data/news-drafts/2026-09-03-uniroyal-disclosure-hearing-sept-10.md"),
@@ -52,5 +64,16 @@ The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment perc
     expect(hopeman).toContain("trust is open or accepting claims");
     expect(hopeman).toContain("not included in the tracker’s operating-trust figures");
     expect(hopeman).not.toContain("establishing an asbestos personal injury trust");
+  });
+
+  it("renders the Hopeman card summary as a complete first sentence", () => {
+    const hopeman = readFileSync(
+      resolve(process.cwd(), "client/src/data/news-drafts/2026-09-03-hopeman-brothers-plan-confirmed.md"),
+      "utf8"
+    );
+    const draft = parseNewsDraft("2026-09-03-hopeman-brothers-plan-confirmed.md", hopeman);
+
+    expect(draft.summary).toContain("proposed permanent channeling injunction.[1]");
+    expect(draft.summary).not.toContain("Eastern Distri");
   });
 });

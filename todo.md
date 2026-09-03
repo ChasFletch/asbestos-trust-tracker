@@ -334,6 +334,10 @@
 - [x] State clearly that an effective-date notice, operational claims process, and payment terms are not yet publicly established
 - [x] Cite the confirmation order and active appeal notification, then verify the published news card in production
 
+## News-Card Summary Completion
+- [x] Replace hard character clipping with sentence-safe summary truncation for long news cards
+- [ ] Add regression coverage for the Hopeman card and publish a live visual/API verification
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

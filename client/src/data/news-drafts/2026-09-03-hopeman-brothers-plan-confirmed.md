@@ -1,0 +1,1 @@
+__FILE:news-drafts/2026-09-03-hopeman-brothers-plan-confirmed.md__

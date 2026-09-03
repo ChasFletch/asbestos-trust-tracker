@@ -320,10 +320,14 @@
 - [x] Verify the Hopeman and Uniroyal secondary-source developments are correctly classified and determine whether the committed news drafts meet publication standards
 
 ## September Source-Transparency Follow-Up
-- [ ] Add the public ABB Lummus FY2025 annual-report PDF to the site-hosted primary-source library — blocked: trust-site server returns an HTML access page to three server-side retrieval methods; awaiting a browser-downloaded owner copy
+- [x] Confirm the public ABB Lummus FY2025 annual-report PDF is mapped in the site-hosted primary-source library — owner-supplied browser download is byte-identical to existing `LUMMUS_annual_report_2025_404e3513.pdf`
 - [x] Add ABB’s filed $14,960,830 record and the $16,033,489,279 aggregate revision to public Figure History
 - [x] Refine the Uniroyal article’s hearing-date source label to “official case-agent” without changing facts or trust data
 - [x] Add focused regression coverage for the source, provenance, and news refinements
+
+## Hopeman Trust Status Research
+- [x] Determine whether the confirmed Hopeman plan has reached an effective date and whether a separate trust entity is formed or accepting claims — public record confirms plan confirmation but does not establish an effective-date notice, operational trust, or asbestos claim portal; an appeal was opened August 31, 2026
+- [x] Identify article-safe wording that distinguishes plan confirmation from a live, operational asbestos trust
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

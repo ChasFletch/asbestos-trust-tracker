@@ -18,6 +18,8 @@ The ABB Lummus trust-site PDF referenced by the current record is publicly retri
 
 The browser can render the ABB report, but three server-side retrieval paths returned an HTML access page or failed certificate validation instead of PDF bytes. The report was therefore **not** uploaded into the site-hosted preview library. The public Figure History entry keeps the official external PDF URL and docket-specific citation. A browser-downloaded copy supplied by the owner can be uploaded and mapped to the source-preview library later without changing the trust figure.
 
+**Resolution (2026-09-03):** The owner supplied the browser-downloaded PDF. It is a 29-page PDF with the cited $14,960,830 FY2025 net-assets figure. Its SHA-256 hash exactly matches the existing site-hosted `LUMMUS_annual_report_2025_404e3513.pdf` source-library artifact, so no replacement or duplicate mapping is required. The ABB trust detail page was already correctly wired to the verified annual-report preview.
+
 ## Interim conclusion
 
 The September 3 candidate JSON is byte-identical to the current local dataset. The dataset records the Uniroyal development as secondary/future-trust information and does not add either Uniroyal or Hopeman as an operational trust. This treatment is appropriately conservative pending primary-plan and implementation evidence.

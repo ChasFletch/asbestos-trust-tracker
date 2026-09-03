@@ -253,6 +253,74 @@ This article relies on the primary payment-percentage notice retained in the Asb
 [1]: /manus-storage/OI-Trust-Payment-Percentage-Increase-2026-08-19_418b2c7d.pdf "Owens-Illinois Asbestos Personal Injury Trust, Notice re: O-I Payment Percentage Increase, August 19, 2026"
 [2]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
 [3]: https://asbestosatlas.org/ "Asbestos Atlas — U.S. Shipyard Exposure Map"
+    `,
+  },
+  {
+    slug: "bestwall-scotus-cert-denial",
+    title: "Supreme Court Declines Bestwall Appeal: What the June 2026 Denial Means for the Pending Chapter 11 Case",
+    date: "2026-09-03",
+    category: "court_filing",
+    summary: "The Supreme Court denied the asbestos claimants’ Bestwall certiorari petition on June 1, 2026. The denial leaves the Chapter 11 case active, but it does not create, fund, or open an asbestos trust for claims.",
+    sourceUrl: "https://www.supremecourt.gov/docket/docketfiles/html/public/25-1013.html",
+    sourceLabel: "U.S. Supreme Court — Official Committee of Asbestos Claimants of Bestwall LLC v. Bestwall LLC, No. 25-1013",
+    sourceCutoffAt: "2026-09-03",
+    keywords: "Bestwall LLC bankruptcy, Bestwall Supreme Court denial, asbestos trust formation, Section 524(g), Georgia-Pacific Chapter 11",
+    about: "Bestwall LLC Supreme Court certiorari denial and ongoing Chapter 11 case",
+    markdown: `The U.S. Supreme Court **denied the petition for certiorari on June 1, 2026** in *Official Committee of Asbestos Claimants of Bestwall LLC v. Bestwall LLC*, No. 25-1013.[1] The petition asked the Court to review litigation connected to Bestwall LLC’s Chapter 11 case and the Fourth Circuit proceedings below.
+
+The entry is a material legal development, but its practical meaning is narrow: the denial ends that request for Supreme Court review. It does **not** itself confirm a reorganization plan, establish a §524(g) asbestos trust, set a payment percentage, fund a trust, or open a claimant filing process.
+
+## What the Supreme Court docket establishes
+
+The Supreme Court’s public docket identifies the petitioner as the Official Committee of Asbestos Claimants of Bestwall LLC and the respondent as Bestwall LLC. It records that the Court distributed the matter for its May 28, 2026 conference and entered “Petition DENIED” on June 1, 2026.[1]
+
+| Docket item | Confirmed public record |
+|---|---|
+| Case | *Official Committee of Asbestos Claimants of Bestwall LLC v. Bestwall LLC*, No. 25-1013 |
+| Supreme Court action | Petition for certiorari denied |
+| Date of denial | June 1, 2026 |
+| Direct effect | The Supreme Court review request ended; the denial itself does not create a trust or claims program |
+
+The Court’s docket is the controlling source for the denial date and disposition. It should not be read as a finding about a claimant’s eligibility, an individual claim value, or the terms of any future trust.[1]
+
+## Bestwall’s Chapter 11 case remains active
+
+Bestwall’s public case-administration site continues to identify the matter as an active Chapter 11 case in the Western District of North Carolina, Charlotte Division, Case No. 17-31795. The public docket displayed filings through September 3, 2026, showing that the bankruptcy case remains procedurally active.[2]
+
+An active bankruptcy docket is not the same thing as an operating asbestos trust. A claimant-facing trust would require its own governing and implementation materials. As of the source cutoff for this article, the public materials reviewed do not establish a confirmed and effective §524(g) trust, a funded trust balance, a Trust Distribution Procedure, a payment percentage, or a public asbestos-trust claims portal.[1] [2]
+
+> **Confirmed:** The Supreme Court denied the certiorari petition, and Bestwall’s Chapter 11 docket remains active.
+>
+> **Not established by the sources reviewed:** An effective plan, funded operating asbestos trust, payment percentage, trust assets, or an open asbestos-trust claim-submission process.
+
+## Why the distinction matters
+
+An asbestos bankruptcy case can involve several separate milestones: a Chapter 11 filing, a disclosure statement, plan confirmation, an effective date, trust funding, adoption of distribution procedures, and the opening of a claims process. The existence of litigation about a possible future §524(g) channeling injunction does not establish that all of those steps have occurred.
+
+For general background on how already-established asbestos trust funds are structured, readers may consult [WikiMesothelioma’s asbestos trust funds overview][3]. That resource is educational context only; it does not source the Bestwall docket, the Supreme Court result, or the status of any Bestwall trust.
+
+For separate historical research on occupational asbestos exposure in U.S. shipbuilding, readers may consult [Asbestos Atlas][4]. It is a distinct exposure-research resource and does not establish Bestwall’s legal status, trust funding, or claim procedures.
+
+## What to watch next
+
+| Future development | Why it would matter |
+|---|---|
+| Bankruptcy court plan-confirmation order | Could establish whether the court confirms a proposed reorganization plan. |
+| Notice of effective date | Would indicate whether stated conditions to a confirmed plan have been satisfied or waived. |
+| Trust agreement and trustee or administrator notice | Would identify the entity and parties responsible for any claimant-facing trust. |
+| Trust Distribution Procedure or payment-percentage notice | Would supply the payment framework for an operational trust. |
+| Claim form or public claims portal | Would establish whether and how asbestos claimants may submit claims. |
+
+Until those primary materials are available, AsbestosTrusts.org will continue to treat Bestwall as a **watch-list Chapter 11 matter**, not as an operating trust record. The tracker will not add payment, asset, or payout figures merely because a Supreme Court petition was denied or because the bankruptcy docket has continued activity.
+
+## Sources and editorial note
+
+This article is limited to the public Supreme Court and case-administration materials cited below. It does not provide legal advice, determine claim eligibility, or predict the terms or timing of any future Bestwall trust. The article will be updated if future court or trust-administration materials establish an effective plan or claimant-facing procedures.
+
+[1]: https://www.supremecourt.gov/docket/docketfiles/html/public/25-1013.html "U.S. Supreme Court, Docket No. 25-1013 — Official Committee of Asbestos Claimants of Bestwall LLC v. Bestwall LLC"
+[2]: https://bankruptcy.angeiongroup.com/Clients/bw/Dockets "Bestwall LLC public case-administration docket, W.D.N.C. Case No. 17-31795"
+[3]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
+[4]: https://asbestosatlas.org/ "Asbestos Atlas — U.S. Shipyard Exposure Map"
 `,
   },
 ];

@@ -344,6 +344,13 @@
 - [x] Link the Hopeman news card to the detailed article without altering its existing source link
 - [x] Add sitemap and SSR metadata coverage, plus regression and live checks for the article route and card link — article route is crawler-visible; News cards load through the existing client-fetched draft-feed path
 
+## Full-Length News Article Rollout
+- [x] Review all remaining news cards for source depth, public-interest value, and readiness for a detailed article
+- [x] Draft and publish the next detailed article using official sources plus relevant WikiMesothelioma.com and AsbestosAtlas.org references
+- [x] Add the corresponding card destination, canonical metadata, sitemap coverage, and regression checks
+- [x] Deliver a prioritized editorial queue for the remaining cards that require full articles
+- [x] Correct the Uniroyal article slug so the News card resolves its reusable Read more destination
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

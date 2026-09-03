@@ -118,6 +118,78 @@ The confirmation order and appeal notice are primary docket materials hosted thr
 
 [1]: https://www.veritaglobal.net/hopeman/document/2432428260820000000000005 "Hopeman Brothers, Inc., Order Confirming the Amended Plan of Reorganization and Third Modified Amended Plan, Docket No. 1542"
 [2]: https://www.veritaglobal.net/hopeman/document/2432428260901000000000001 "Hopeman Brothers, Inc., Fourth Circuit appeal notification, Docket No. 1549"
+    `,
+  },
+  {
+    slug: "uniroyal-disclosure-hearing-sept-10",
+    title: "Uniroyal’s September 10 Disclosure Statement Hearing: What the Court Date Does—and Does Not—Mean for a Proposed Asbestos Trust",
+    date: "2026-09-03",
+    category: "new_trust",
+    summary: "Uniroyal Holding and Great Hill Corporation’s Chapter 11 disclosure-statement hearing is scheduled for September 10, 2026. The posted calendar confirms a case milestone, not an effective plan, funded asbestos trust, or open trust-claim process.",
+    sourceUrl: "https://omniagentsolutions.com/Uniroyal",
+    sourceLabel: "Omni Agent Solutions — Uniroyal Holding, Inc. case calendar and public case information",
+    sourceCutoffAt: "2026-09-03",
+    keywords: "Uniroyal Holding bankruptcy, Great Hill Chapter 11, disclosure statement hearing, proposed asbestos trust, asbestos trust effective date",
+    about: "Uniroyal Holding and Great Hill Corporation Chapter 11 disclosure statement hearing",
+    markdown: `The Uniroyal Holding, Inc. and Great Hill Corporation Chapter 11 cases have a **disclosure statement approval hearing scheduled for September 10, 2026, at 11:30 a.m. EDT**. The official case-agent calendar also lists September 8 deadlines for general and claims bar dates.[1]
+
+That calendar entry is an important procedural milestone. It does **not** establish that a plan has been confirmed, that any proposed asbestos trust has been funded or become effective, or that a claimant can file an asbestos trust claim today.
+
+## What the posted case calendar confirms
+
+Uniroyal Holding, Inc. and Great Hill Corporation each filed voluntary Chapter 11 petitions on July 31, 2026. The cases are pending in the United States Bankruptcy Court for the District of New Jersey under lead case number 26-18668.[1]
+
+The public case-agent site lists the following upcoming milestones:
+
+| Posted event | Date and time | What it indicates |
+|---|---|---|
+| General bar date | September 8, 2026, 5:00 p.m. EDT | A deadline for certain bankruptcy proofs of claim, as specified by the case notice. |
+| Claims bar date | September 8, 2026, 5:00 p.m. EDT | A second calendar entry for claims-related deadlines in the Chapter 11 case. |
+| Disclosure statement approval hearing | September 10, 2026, 11:30 a.m. EDT | A hearing on whether the court should approve the disclosure statement for plan solicitation. |
+
+The case-agent page also links a plan and disclosure-statement document category and a disclosure-statement notice. Those materials show that the debtors are moving through the Chapter 11 solicitation process; they do not, by themselves, prove that a future asbestos trust is operational.[1]
+
+## Why a disclosure-statement hearing is not an open trust
+
+In Chapter 11, a disclosure statement is the document intended to provide creditors and other voting parties information about a proposed plan before solicitation. Court approval of a disclosure statement is distinct from plan confirmation, and plan confirmation is distinct from an Effective Date and the practical launch of any contemplated trust.
+
+For a proposed asbestos trust, claimant-facing implementation materials would normally need to identify the operative trust agreement, trust distribution procedures, initial payment percentage if applicable, administrator or trustee, and a claim-submission process. The public Uniroyal materials reviewed for this article do not establish those implementation facts.
+
+> **What is confirmed:** The Chapter 11 case has a posted September 10 disclosure-statement hearing and public calendar deadlines.
+>
+> **What is not yet established by the materials reviewed:** Plan confirmation, an effective plan, a funded and operating asbestos trust, a trust payment percentage, or a public asbestos trust claim portal.
+
+For general educational background on how established asbestos trust funds operate after bankruptcy proceedings, readers may consult [WikiMesothelioma’s asbestos trust funds overview][2]. That background does not establish the status of the Uniroyal proceedings and should not be treated as a source for their case-specific dates or terms.
+
+## Treat funding estimates with care
+
+Secondary reporting has described a proposed asbestos-trust funding amount of approximately $31.5 million. AsbestosTrusts.org does **not** include that amount in its trust figures. The plan document itself has not been verified here as a primary source for the reported amount, and a proposed funding figure is not the same as a funded operational trust balance.
+
+This distinction matters because a Chapter 11 case can change materially between solicitation, confirmation, effectiveness, and post-confirmation implementation. Until official plan and trust materials establish the relevant milestones, it would be premature to identify Uniroyal as an operating asbestos trust or to report a payment percentage, current assets, or claimant filing terms.
+
+## Where related research fits
+
+The legal status of the Uniroyal restructuring should be evaluated through the court record and official case administration materials. For a separate, citation-verified resource on historical occupational asbestos exposure in American shipbuilding, researchers can consult [Asbestos Atlas][3]. Its shipyard-exposure dataset is relevant to exposure research generally, not to the legal status or funding of the Uniroyal case.
+
+## What to watch next
+
+| Document or development | Why it matters |
+|---|---|
+| Disclosure statement hearing outcome | Clarifies whether solicitation may proceed. |
+| Plan-confirmation order | Identifies whether the court confirms a reorganization plan. |
+| Effective-date notice | Establishes whether stated plan conditions have been satisfied or waived. |
+| Trust agreement and Trust Distribution Procedure | Supplies the governing structure for any claimant-facing trust. |
+| Payment-percentage or claims-administration notice | Establishes how an operational trust will value and process claims. |
+
+The official case-agent website states that it is provided as a convenience and does not contain the complete official Bankruptcy Court record. Accordingly, this article treats the posted calendar as evidence of the case agent’s public schedule while reserving final legal conclusions for the relevant court orders and controlling plan documents.[1]
+
+## Sources and editorial note
+
+This article distinguishes public case-calendar information from unverified secondary funding estimates. It does not provide legal advice or claim-filing advice. It will be updated if court orders or trust-administration documents establish a confirmed plan, effective date, or claimant-facing trust procedures.
+
+[1]: https://omniagentsolutions.com/Uniroyal "Omni Agent Solutions — Uniroyal Holding, Inc. restructuring website and case calendar"
+[2]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
+[3]: https://asbestosatlas.org/ "Asbestos Atlas — U.S. Shipyard Exposure Map"
 `,
   },
 ];

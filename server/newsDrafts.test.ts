@@ -40,4 +40,17 @@ The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment perc
     expect(uniroyal).toContain("not a substitute for the complete court record");
     expect(uniroyal).not.toContain("filed/case-agent");
   });
+
+  it("keeps the Hopeman confirmation update tied to primary docket sources and out of operational-trust status", () => {
+    const hopeman = readFileSync(
+      resolve(process.cwd(), "client/src/data/news-drafts/2026-09-03-hopeman-brothers-plan-confirmed.md"),
+      "utf8"
+    );
+
+    expect(hopeman).toContain("https://www.veritaglobal.net/hopeman/document/2432428260820000000000005");
+    expect(hopeman).toContain("https://www.veritaglobal.net/hopeman/document/2432428260901000000000001");
+    expect(hopeman).toContain("trust is open or accepting claims");
+    expect(hopeman).toContain("not included in the tracker’s operating-trust figures");
+    expect(hopeman).not.toContain("establishing an asbestos personal injury trust");
+  });
 });

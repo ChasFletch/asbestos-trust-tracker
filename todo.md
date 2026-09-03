@@ -329,6 +329,11 @@
 - [x] Determine whether the confirmed Hopeman plan has reached an effective date and whether a separate trust entity is formed or accepting claims — public record confirms plan confirmation but does not establish an effective-date notice, operational trust, or asbestos claim portal; an appeal was opened August 31, 2026
 - [x] Identify article-safe wording that distinguishes plan confirmation from a live, operational asbestos trust
 
+## Hopeman Confirmation News Update
+- [x] Publish a source-linked news item reporting plan confirmation and the proposed asbestos-trust structure
+- [x] State clearly that an effective-date notice, operational claims process, and payment terms are not yet publicly established
+- [ ] Cite the confirmation order and active appeal notification, then verify the published news card in production
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

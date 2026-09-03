@@ -190,6 +190,69 @@ This article distinguishes public case-calendar information from unverified seco
 [1]: https://omniagentsolutions.com/Uniroyal "Omni Agent Solutions — Uniroyal Holding, Inc. restructuring website and case calendar"
 [2]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
 [3]: https://asbestosatlas.org/ "Asbestos Atlas — U.S. Shipyard Exposure Map"
+    `,
+  },
+  {
+    slug: "owens-illinois-payment-percentage-increase",
+    title: "Owens-Illinois Trust Payment Percentage Rises to 65%: What the August 2026 Notice Says",
+    date: "2026-08-29",
+    category: "payment_percentage",
+    summary: "The Owens-Illinois Asbestos Personal Injury Trust increased its payment percentage from 50% to 65%, effective August 19, 2026. The Trust’s notice also provides for supplemental payments to eligible claimants who previously received a lower percentage.",
+    sourceUrl: "/manus-storage/OI-Trust-Payment-Percentage-Increase-2026-08-19_418b2c7d.pdf",
+    sourceLabel: "Owens-Illinois Asbestos Personal Injury Trust — Notice re: O-I Payment Percentage Increase (Aug. 19, 2026)",
+    sourceCutoffAt: "2026-08-19",
+    keywords: "Owens-Illinois asbestos trust, Paddock Enterprises trust, payment percentage increase, asbestos claim supplemental payment, Trust Distribution Procedures",
+    about: "Owens-Illinois Asbestos Personal Injury Trust payment percentage increase effective August 19, 2026",
+    markdown: `The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment percentage from **50% to 65%**, effective **August 19, 2026**. The Trust’s notice says the Trustees approved the change after a payment-percentage review with the Trust Advisory Committee and the Future Claimants’ Representative.[1]
+
+The notice also addresses claimants who previously received payments at a lower percentage. It states that eligible claimants will receive a **supplemental payment** under §4.3 of the Trust Distribution Procedures. The notice is important because it updates the Trust’s payment framework; it does not announce a new trust balance, a new cumulative-payment figure, or a guaranteed recovery for any individual claimant.[1]
+
+## The reported change
+
+| Trust-issued item | Prior public record | Current notice |
+|---|---:|---:|
+| Payment percentage | 50% | **65%** |
+| Effective date | December 2023 installment notice | **August 19, 2026** |
+| Payment direction | No increase reflected in the prior record | **Increase** |
+| Trust balance | Not publicly posted in the notice | Not newly reported |
+
+AsbestosTrusts.org has updated the Paddock Enterprises (Owens-Illinois) trust record to 65% and identifies the effective date shown in the Trust-issued notice. The update also corrects a former structured-data value of 100%, which did not match the prior 50% notice or the current notice.[1]
+
+## What a payment percentage does—and does not—mean
+
+A payment percentage is a payment-control mechanism used by an asbestos trust. It is applied within the Trust’s governing claims framework; it is not a standalone valuation of a person’s claim and does not replace the Trust Distribution Procedures or the facts needed to evaluate an individual submission. The 65% figure therefore should not be read as a promise that every claimant will receive 65% of a particular figure without reference to the applicable procedures and claim determination.
+
+For general background on how established asbestos trust funds are structured and how payment-percentage frameworks fit into their operations, readers may consult [WikiMesothelioma’s overview of asbestos trust funds][2]. That background resource does not determine the terms, eligibility, or payment outcome of an Owens-Illinois claim; the August 19 Trust notice is the controlling source for this update.[1] [2]
+
+## Supplemental payments described in the notice
+
+The supplemental-payment language matters because it recognizes that some payments may have been made while a lower percentage was in effect. The notice states that the Trust will make supplemental payments under §4.3 of its Trust Distribution Procedures for claimants who received payment at the lower percentage, subject to the procedures that govern that process.[1]
+
+This article intentionally does not attempt to calculate individual supplemental-payment amounts. The notice does not provide an individualized award table, claimant-level eligibility determination, or a universal payment calculation. Those questions depend on the governing procedures and the particulars of a claim.
+
+> **Confirmed by the Trust’s August 19 notice:** The payment percentage increased from 50% to 65%, effective August 19, 2026, and the notice provides for supplemental payments under §4.3 for prior lower-percentage payments.
+>
+> **Not established by that notice:** A new trust balance, a cumulative amount paid, a claimant’s individual award, or universal eligibility for a supplemental payment.
+
+## What the notice does not change in the public tracker
+
+The payment-percentage change does not supply a current net-asset balance. AsbestosTrusts.org continues to distinguish between a verified payment percentage and an unavailable or unpublished balance rather than treating a payment adjustment as evidence of a new balance.
+
+Similarly, the notice does not provide a new inception-to-date payout total. The tracker does not infer one from the percentage change. This distinction is part of the site’s source-by-source methodology: a document is used only for the figure or fact it actually supports.
+
+## Related research and source boundaries
+
+Owens-Illinois is associated with asbestos exposure history that may arise in broader occupational or product research. For a separate, citation-verified resource on historical U.S. shipyard asbestos exposure, researchers may consult [Asbestos Atlas][3]. That resource is offered as background research only; it does not establish the amount, payment percentage, claim status, or eligibility for an Owens-Illinois trust claim.
+
+The controlling source for this article remains the Trust’s payment-percentage notice. Readers seeking the legal and administrative terms for a potential claim should review the Trust’s governing procedures and obtain qualified advice appropriate to their circumstances.
+
+## Source and editorial note
+
+This article relies on the primary payment-percentage notice retained in the AsbestosTrusts.org source library. It reports the notice’s stated percentage, effective date, approval context, and supplemental-payment reference without extrapolating a new balance, payout total, or individual claimant outcome.
+
+[1]: /manus-storage/OI-Trust-Payment-Percentage-Increase-2026-08-19_418b2c7d.pdf "Owens-Illinois Asbestos Personal Injury Trust, Notice re: O-I Payment Percentage Increase, August 19, 2026"
+[2]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
+[3]: https://asbestosatlas.org/ "Asbestos Atlas — U.S. Shipyard Exposure Map"
 `,
   },
 ];

@@ -307,10 +307,10 @@
 
 ## Clock Summary and Crawler Monitoring (2026-09-03)
 - [x] Add a compact, plain-text figure summary beneath the homepage clock with live amounts, source context, and update date
-- [x] Qualify the assets figure as a documented floor across 43 of roughly 60 active trusts and distinguish the 2026-09-01 snapshot from FY2021–2025 underlying figure dates
+- [x] Qualify the assets figure as a documented floor across the current documented-asset coverage and distinguish the live tracker snapshot from the underlying figure-date range
 - [x] Extend the existing scheduled monitor to flag missing server-rendered compensation figures, invalid embed status, and a broken CSV export
 - [x] Add regression coverage for the figure summary and scheduled crawler checks
-- [ ] Register the project-level weekly staleness and crawler-visibility monitor after the updated handler is published
+- [x] Register the enabled project-level weekly staleness and crawler-visibility monitor after the updated handler is published (task UID: MEkbV88b53GWfXaB2EkM97; Mondays 09:00 UTC)
 - [x] Prepare the repaired embed URL, title, description, and attribution for external article-directory submission
 
 ### Methodology page

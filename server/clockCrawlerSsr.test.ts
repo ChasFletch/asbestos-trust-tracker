@@ -4,6 +4,7 @@ import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { DebtClockBillboard } from "../client/src/components/DebtClock";
+import { ClockFigureSummary } from "../client/src/components/ClockFigureSummary";
 
 const projectRoot = resolve(import.meta.dirname, "..");
 const readProjectFile = (relativePath: string) => readFileSync(resolve(projectRoot, relativePath), "utf8");
@@ -39,6 +40,23 @@ describe("clock crawler-visible SSR", () => {
     expect(prefetch).toContain("p.trustFiguresSummary()");
     expect(prefetch).toContain("p.trustFiguresAllTrusts()");
     expect(prefetch).toContain('canonicalPath: "/embed/clock"');
+  });
+
+  it("renders the asset-floor coverage and date range with the textual clock summary", () => {
+    const html = renderToStaticMarkup(
+      React.createElement(ClockFigureSummary, {
+        remaining: 16_033_489_279,
+        payouts: 30_033_989_206,
+        lastUpdated: "2026-09-01",
+        documentedAssetTrusts: 43,
+        estimatedActiveTrusts: 60,
+        assetDataRange: "FY2021–2025",
+      })
+    );
+
+    expect(html).toContain("Documented floor: $16,033,489,279 across 43 of roughly 60 active trusts.");
+    expect(html).toContain("Snapshot refreshed September 1, 2026; underlying asset figures span FY2021–2025.");
+    expect(html).toContain("not a total for the entire U.S. trust system");
   });
 
   it("publishes the working CSV endpoint in Dataset structured data", () => {

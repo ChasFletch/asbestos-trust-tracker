@@ -1,5 +1,6 @@
 import { trpc } from "@/lib/trpc";
 import { DebtClockBillboard } from "@/components/DebtClock";
+import { ClockFigureSummary } from "@/components/ClockFigureSummary";
 import { useSearch } from "wouter";
 
 /**
@@ -17,17 +18,17 @@ export default function EmbedClock() {
   const { data: figures } = trpc.trustFigures.summary.useQuery();
   const { data: allTrustFigures } = trpc.trustFigures.allTrusts.useQuery();
 
-  const remaining = agg?.remainingLow ?? 17041946126;
-  const remainingLow = agg?.remainingLow ?? 17041946126;
+  const remaining = agg?.remainingLow ?? 16033489279;
+  const remainingLow = agg?.remainingLow ?? 16033489279;
   const remainingHigh = agg?.remainingHigh ?? 22500000000;
-  const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 29981797653;
+  const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 30033989206;
   const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 19810476508;
   const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 4189523492;
   const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 14;
   const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 19810476508;
   const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 6671321145;
   const paidOutBottomUpResidual = (agg as any)?.paidOutBottomUpResidual ?? 3500000000;
-  const lastUpdated = figures?.asOf ?? "2026-07-27";
+  const lastUpdated = figures?.asOf ?? "2026-09-01";
   const topTrusts = figures?.topTrusts ?? [];
 
   const tf = allTrustFigures?.trusts ?? [];
@@ -35,6 +36,14 @@ export default function EmbedClock() {
     .filter((t: any) => t.cumulativePaid != null)
     .sort((a: any, b: any) => b.cumulativePaid - a.cumulativePaid)
     .map((t: any) => ({ name: t.name, cumulativePaid: t.cumulativePaid, cumulativePaidAsOf: t.cumulativePaidAsOf ?? null }));
+  const documentedAssetTrusts = tf.filter((t: any) => t.netAssets != null && t.status !== "closed");
+  const assetYears = documentedAssetTrusts
+    .map((t: any) => Number(t.assetsAsOf?.slice(0, 4)))
+    .filter((year: number) => Number.isInteger(year));
+  const assetDataRange = assetYears.length > 0
+    ? `FY${Math.min(...assetYears)}–${Math.max(...assetYears)}`
+    : "FY2021–2025";
+  const estimatedActiveTrusts = (agg as any)?.totalActiveTrusts ?? 60;
 
   const isCompact = variant === "compact";
   const siteUrl = `https://asbestostrusts.org${ref ? `?ref=${encodeURIComponent(ref)}` : ""}`;
@@ -66,6 +75,15 @@ export default function EmbedClock() {
           paidOutBottomUpFiled={paidOutBottomUpFiled}
           paidOutBottomUpSecondary={paidOutBottomUpSecondary}
           paidOutBottomUpResidual={paidOutBottomUpResidual}
+        />
+        <ClockFigureSummary
+          remaining={remaining}
+          payouts={paidOut}
+          lastUpdated={lastUpdated}
+          documentedAssetTrusts={documentedAssetTrusts.length || 43}
+          estimatedActiveTrusts={estimatedActiveTrusts}
+          assetDataRange={assetDataRange}
+          compact
         />
       </div>
 

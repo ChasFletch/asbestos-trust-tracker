@@ -1,4 +1,5 @@
 import { DebtClockBillboard } from "@/components/DebtClock";
+import { ClockFigureSummary } from "@/components/ClockFigureSummary";
 import { trpc } from "@/lib/trpc";
 import { ArrowRight, BookOpen, Clock, Code2, Database, Info, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -139,6 +140,13 @@ export default function Home() {
     const year = parseInt(t.assetsAsOf.substring(0, 4));
     return year >= 2025;
   });
+  const assetYears = trustsWithFigures
+    .map((t: { assetsAsOf: string | null }) => Number(t.assetsAsOf?.slice(0, 4)))
+    .filter((year: number) => Number.isInteger(year));
+  const assetDataRange = assetYears.length > 0
+    ? `FY${Math.min(...assetYears)}–${Math.max(...assetYears)}`
+    : "FY2021–2025";
+  const estimatedActiveTrusts = (agg as any)?.totalActiveTrusts ?? 60;
 
   const stats = [
     { label: "Active Trusts Tracked",         target: tf.length > 0 ? activeTrusts.length     : 54, icon: Database   },
@@ -234,6 +242,14 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+            <ClockFigureSummary
+              remaining={remaining}
+              payouts={paidOut}
+              lastUpdated={lastUpdated}
+              documentedAssetTrusts={trustsWithFigures.length || 43}
+              estimatedActiveTrusts={estimatedActiveTrusts}
+              assetDataRange={assetDataRange}
+            />
           </div>
         </div>
       </section>

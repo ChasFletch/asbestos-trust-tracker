@@ -332,7 +332,7 @@
 ## Hopeman Confirmation News Update
 - [x] Publish a source-linked news item reporting plan confirmation and the proposed asbestos-trust structure
 - [x] State clearly that an effective-date notice, operational claims process, and payment terms are not yet publicly established
-- [ ] Cite the confirmation order and active appeal notification, then verify the published news card in production
+- [x] Cite the confirmation order and active appeal notification, then verify the published news card in production
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

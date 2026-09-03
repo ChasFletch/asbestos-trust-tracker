@@ -250,7 +250,9 @@ export function registerDataRoutes(app: Express) {
   app.get("/api/news-drafts", async (_req, res) => {
     try {
       const drafts = await fetchNewsDrafts();
-      res.set("Cache-Control", "public, max-age=900");
+      // The server retains a 15-minute resilience cache, but browsers and edge
+      // caches must not retain removed or corrected editorial cards.
+      res.set("Cache-Control", "no-store");
       res.json({ drafts });
     } catch {
       res.status(500).json({ error: "Failed to fetch news drafts" });

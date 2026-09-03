@@ -76,4 +76,11 @@ The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment perc
     expect(draft.summary).toContain("proposed permanent channeling injunction.[1]");
     expect(draft.summary).not.toContain("Eastern Distri");
   });
+
+  it("prevents browser and edge caching of the draft feed after editorial corrections", () => {
+    const dataRoutes = readFileSync(resolve(process.cwd(), "server/dataRoutes.ts"), "utf8");
+
+    expect(dataRoutes).toContain('app.get("/api/news-drafts"');
+    expect(dataRoutes).toContain('res.set("Cache-Control", "no-store")');
+  });
 });

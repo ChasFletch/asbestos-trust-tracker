@@ -371,6 +371,7 @@
 - [ ] Add canonical metadata, sitemap coverage, regression tests, and live publication verification
 - [x] Fix the Vi-Jon News card’s missing Read more destination after visual verification
 - [x] Remove the redundant legacy Vi-Jon draft card that duplicates the canonical database-backed News item
+- [x] Prevent stale browser and edge cache responses from retaining the removed legacy Vi-Jon card; the apparent remaining duplicate was cached draft-feed data, not a second database row
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

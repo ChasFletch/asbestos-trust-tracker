@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { parseNewsDraft } from "./dataRoutes";
 
 describe("news draft parser", () => {
@@ -25,5 +27,17 @@ The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment perc
     expect(draft.summary).not.toContain("date:");
     expect(draft.summary).not.toContain("category:");
     expect(draft.summary).not.toContain("url:");
+  });
+
+  it("labels Uniroyal hearing dates as official case-agent information without presenting them as filed material", () => {
+    const uniroyal = readFileSync(
+      resolve(process.cwd(), "client/src/data/news-drafts/2026-09-03-uniroyal-disclosure-hearing-sept-10.md"),
+      "utf8"
+    );
+
+    expect(uniroyal).toContain("official case-agent site");
+    expect(uniroyal).toContain("official case-agent source for hearing dates");
+    expect(uniroyal).toContain("not a substitute for the complete court record");
+    expect(uniroyal).not.toContain("filed/case-agent");
   });
 });

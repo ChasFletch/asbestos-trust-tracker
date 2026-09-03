@@ -47,7 +47,7 @@ describe("August 29, 2026 primary-source trust update", () => {
   });
 
   it("reconciles current aggregate and bottom-up payout totals", () => {
-    expect(trustFigures.asOf).toBe("2026-09-01");
+    expect(trustFigures.asOf).toBe("2026-09-03");
     expect(trustFigures.aggregate.remainingAssetsPoint).toBe(16033489279);
     expect(trustFigures.aggregate.cumulativePayoutsBottomUp).toBe(30033989206);
     expect(trustFigures.aggregate.cumulativePayoutsBottomUpFiled).toBe(17124219757);

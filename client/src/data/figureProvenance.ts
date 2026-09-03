@@ -26,6 +26,32 @@ const changelogUrl = `${repo}/blob/main/docs/figure-provenance-changelog.md`;
 
 export const figureProvenance: FigureProvenanceEntry[] = [
   {
+    id: "2026-09-01-abb-lummus-filed-assets",
+    date: "2026-09-01",
+    category: "assets",
+    figure: "Documented remaining-assets floor",
+    priorValue: "$16,018,528,449 across 42 records",
+    currentValue: "$16,033,489,279 across 43 records",
+    headline: "ABB Lummus’s filed FY2025 annual report completed a previously unquantified trust record.",
+    explanation:
+      "The filed ABB Lummus FY2025 annual report reports $14,960,830 in net assets available for the payment of claims as of December 31, 2025. Adding that primary figure raised the exact documented floor by $14,960,830. The floor remains a mixed-date sum, not a current census of all U.S. asbestos trust assets.",
+    sources: [
+      {
+        label: "ABB Lummus FY2025 annual report",
+        url: "https://abblummustrust.org/assets/uploadedFiles/04e9a249-cf90-4bfd-a2cb-21a0016473ad.pdf",
+        evidenceClass: "a",
+        detail: "Bankr. D. Del. 06-10401 (MFW), Doc 529; filed April 28, 2026; Exhibit A, page 15 reports $14,960,830 in net assets available for claims",
+      },
+      {
+        label: "Trust database",
+        url: "/trusts",
+        evidenceClass: "audit",
+        detail: "Current ABB Lummus record and exact aggregate reconciliation",
+      },
+    ],
+    commit: "7ff0adb",
+  },
+  {
     id: "2026-08-29-manville-q2-assets",
     date: "2026-08-29",
     category: "assets",

@@ -313,6 +313,18 @@
 - [x] Register the enabled project-level weekly staleness and crawler-visibility monitor after the updated handler is published (task UID: MEkbV88b53GWfXaB2EkM97; Mondays 09:00 UTC)
 - [x] Prepare the repaired embed URL, title, description, and attribution for external article-directory submission
 
+## September 2026 Filed-Figure Digest Review
+- [x] Reconcile the ABB Lummus filed figure, aggregate floor, confidence metrics, and dated snapshot against the current tracker
+- [x] Identify publication-ready provenance, source-library, methodology, or news follow-ups without changing trust data until approved
+- [x] Compare the September 3 repository and candidate JSON snapshots for data, aggregate, and change-log differences
+- [x] Verify the Hopeman and Uniroyal secondary-source developments are correctly classified and determine whether the committed news drafts meet publication standards
+
+## September Source-Transparency Follow-Up
+- [ ] Add the public ABB Lummus FY2025 annual-report PDF to the site-hosted primary-source library — blocked: trust-site server returns an HTML access page to three server-side retrieval methods; awaiting a browser-downloaded owner copy
+- [x] Add ABB’s filed $14,960,830 record and the $16,033,489,279 aggregate revision to public Figure History
+- [x] Refine the Uniroyal article’s hearing-date source label to “official case-agent” without changing facts or trust data
+- [x] Add focused regression coverage for the source, provenance, and news refinements
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

@@ -16,6 +16,21 @@ describe("Public figure provenance timeline", () => {
     expect(figureProvenance.every((entry) => entry.sources.every((source) => Boolean(source.url && source.evidenceClass)))).toBe(true);
   });
 
+  it("records ABB Lummus’s filed FY2025 asset figure and the reconciled aggregate revision", () => {
+    const abbEntry = figureProvenance.find((entry) => entry.id === "2026-09-01-abb-lummus-filed-assets");
+
+    expect(abbEntry).toMatchObject({
+      date: "2026-09-01",
+      priorValue: "$16,018,528,449 across 42 records",
+      currentValue: "$16,033,489,279 across 43 records",
+      commit: "7ff0adb",
+    });
+    expect(abbEntry?.sources).toContainEqual(expect.objectContaining({
+      evidenceClass: "a",
+      url: "https://abblummustrust.org/assets/uploadedFiles/04e9a249-cf90-4bfd-a2cb-21a0016473ad.pdf",
+    }));
+  });
+
   it("renders explicit source labels, evidence classes, and category filters", () => {
     expect(pageSource).toContain("Source trail for");
     expect(pageSource).toContain("evidenceMeta");

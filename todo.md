@@ -336,7 +336,7 @@
 
 ## News-Card Summary Completion
 - [x] Replace hard character clipping with sentence-safe summary truncation for long news cards
-- [ ] Add regression coverage for the Hopeman card and publish a live visual/API verification
+- [x] Add regression coverage for the Hopeman card and publish a live visual/API verification
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

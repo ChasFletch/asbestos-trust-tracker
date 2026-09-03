@@ -82,5 +82,6 @@ The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment perc
 
     expect(dataRoutes).toContain('app.get("/api/news-drafts"');
     expect(dataRoutes).toContain('res.set("Cache-Control", "no-store")');
+    expect(dataRoutes).toContain("news-drafts?ref=main&cachebust=${now}");
   });
 });

@@ -112,11 +112,12 @@ async function fetchNewsDrafts(): Promise<NewsDraft[]> {
   try {
     // List the directory via GitHub API (returns 404 if dir doesn't exist yet)
     const listRes = await fetch(
-      `${GITHUB_API_BASE}/contents/client/src/data/news-drafts`,
+      `${GITHUB_API_BASE}/contents/client/src/data/news-drafts?ref=main&cachebust=${now}`,
       {
         headers: {
           Accept: "application/vnd.github.v3+json",
           "User-Agent": "asbestostrusts-server/1.0",
+          "Cache-Control": "no-cache",
         },
         signal: AbortSignal.timeout(8000),
       }

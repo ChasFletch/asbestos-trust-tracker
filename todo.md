@@ -368,10 +368,11 @@
 - [x] Verify the Chapter 11 petition, current case posture, and limits on the requested channeling relief before expanding the News card
 - [x] Create a full source-linked Vi-Jon article and attach it to the existing News card’s Read more destination
 - [x] Include narrowly scoped WikiMesothelioma and Asbestos Atlas references where they add useful context but do not source case-specific facts
-- [ ] Add canonical metadata, sitemap coverage, regression tests, and live publication verification
+- [x] Add canonical metadata, sitemap coverage, regression tests, and live publication verification
 - [x] Fix the Vi-Jon News card’s missing Read more destination after visual verification
 - [x] Remove the redundant legacy Vi-Jon draft card that duplicates the canonical database-backed News item
 - [x] Prevent stale browser and edge cache responses from retaining the removed legacy Vi-Jon card; the apparent remaining duplicate was cached draft-feed data, not a second database row
+- [x] Bypass stale GitHub directory-list caching so a freshly deployed News server does not re-ingest a deleted draft for up to 15 minutes
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

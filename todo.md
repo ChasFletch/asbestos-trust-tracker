@@ -374,6 +374,11 @@
 - [x] Prevent stale browser and edge cache responses from retaining the removed legacy Vi-Jon card; the apparent remaining duplicate was cached draft-feed data, not a second database row
 - [x] Bypass stale GitHub directory-list caching so a freshly deployed News server does not re-ingest a deleted draft for up to 15 minutes
 
+## Trust Detail Related-Article Modules (2026-09-03)
+- [x] Audit existing trust-detail related-news rendering and article metadata to identify eligible trust/article matches
+- [x] Add an accessible related-article module to each eligible trust detail page without presenting unrelated or unsupported content
+- [x] Add regression coverage and verify the related articles are crawler-visible, responsive, and linked to their canonical pages
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

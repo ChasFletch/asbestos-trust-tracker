@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-import { NEWS_BRIEFS_BY_SLUG } from "../client/src/data/newsBriefs";
+import { getNewsBriefsForTrust, NEWS_BRIEFS_BY_SLUG } from "../client/src/data/newsBriefs";
 
 describe("Manville Q2 2026 detailed news brief", () => {
   const brief = NEWS_BRIEFS_BY_SLUG["manville-q2-2026-financial-statements"];
@@ -27,9 +27,11 @@ describe("Manville Q2 2026 detailed news brief", () => {
 
   it("is surfaced from the Manville trust-detail related-news section", () => {
     const detailPage = readFileSync("client/src/pages/TrustDetail.tsx", "utf8");
-    expect(detailPage).toContain("manville-personal-injury-settlement-trust");
-    expect(detailPage).toContain("manville-q2-2026-financial-statements");
-    expect(detailPage).toContain("href={`/news/${detailedBrief.slug}`}");
-    expect(detailPage).toContain("isLoading && !detailedBrief");
+
+    expect(brief.relatedTrustSlugs).toContain("manville-personal-injury-settlement-trust");
+    expect(getNewsBriefsForTrust("manville-personal-injury-settlement-trust")).toContain(brief);
+    expect(detailPage).toContain("getNewsBriefsForTrust(slug)");
+    expect(detailPage).toContain("href={`/news/${article.slug}`}");
+    expect(detailPage).toContain("<RelatedArticles slug={slug ?? \"\"} />");
   });
 });

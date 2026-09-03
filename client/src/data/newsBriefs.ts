@@ -2,6 +2,7 @@ export type NewsBrief = {
   slug: string;
   title: string;
   cardTitles?: string[];
+  relatedTrustSlugs?: string[];
   date: string;
   category: string;
   summary: string;
@@ -25,6 +26,7 @@ export const NEWS_BRIEFS: NewsBrief[] = [
     sourceCutoffAt: "2026-06-30",
     keywords: "Manville Trust, Manville Q2 2026, asbestos trust annual report, asbestos claim payments, bankruptcy trust filing",
     about: "Manville Personal Injury Settlement Trust Q2 2026 filing",
+    relatedTrustSlugs: ["manville-personal-injury-settlement-trust"],
     markdown: `The Manville Personal Injury Settlement Trust’s second-quarter 2026 financial statements report **$570,516,505 in net claimants’ equity as of June 30, 2026**, following $539,264,338 at March 31. The report was filed in the Johns-Manville bankruptcy on July 27, 2026 as **S.D.N.Y. Case No. 82 B 11656 (KYP), Doc. 4480**.[1]
 
 ## What the Q2 filing reports
@@ -204,6 +206,7 @@ This article distinguishes public case-calendar information from unverified seco
     sourceCutoffAt: "2026-08-19",
     keywords: "Owens-Illinois asbestos trust, Paddock Enterprises trust, payment percentage increase, asbestos claim supplemental payment, Trust Distribution Procedures",
     about: "Owens-Illinois Asbestos Personal Injury Trust payment percentage increase effective August 19, 2026",
+    relatedTrustSlugs: ["paddock-enterprises-owens-illinois-asbestos-trust"],
     markdown: `The **Owens-Illinois Asbestos Personal Injury Trust** increased its payment percentage from **50% to 65%**, effective **August 19, 2026**. The Trust’s notice says the Trustees approved the change after a payment-percentage review with the Trust Advisory Committee and the Future Claimants’ Representative.[1]
 
 The notice also addresses claimants who previously received payments at a lower percentage. It states that eligible claimants will receive a **supplemental payment** under §4.3 of the Trust Distribution Procedures. The notice is important because it updates the Trust’s payment framework; it does not announce a new trust balance, a new cumulative-payment figure, or a guaranteed recovery for any individual claimant.[1]
@@ -411,3 +414,13 @@ export const NEWS_BRIEFS_BY_CARD_TITLE = Object.fromEntries(
     (brief.cardTitles ?? []).map((cardTitle) => [cardTitle, brief])
   )
 ) as Record<string, NewsBrief>;
+
+/**
+ * Detailed articles are deliberately related to trust pages only through an
+ * explicit, reviewed trust-slug declaration. Avoiding name matching prevents
+ * a company reference or shared bankruptcy term from surfacing unrelated legal
+ * content on a trust record.
+ */
+export function getNewsBriefsForTrust(trustSlug: string): NewsBrief[] {
+  return NEWS_BRIEFS.filter((brief) => brief.relatedTrustSlugs?.includes(trustSlug));
+}

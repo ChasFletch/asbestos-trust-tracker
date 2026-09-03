@@ -1,10 +1,10 @@
 import { useParams, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { SourceDocModal } from "@/components/SourceDocModal";
 import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
 import { primarySourceDocumentsBySlug } from "@/data/primarySourceDocuments";
-import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
+import { getNewsBriefsForTrust } from "@/data/newsBriefs";
 import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
@@ -96,74 +96,45 @@ function changeTypeLabel(type: string) {
   );
 }
 
-// ── Related News ─────────────────────────────────────────────────────────────
-function RelatedNews({ trustName, slug }: { trustName: string; slug: string }) {
-  const { data: news, isLoading } = trpc.news.byTrust.useQuery(
-    { trustId: slug, trustName, limit: 5 },
-    { enabled: !!slug && !!trustName }
-  );
-  const detailedBrief = slug === "manville-personal-injury-settlement-trust"
-    ? NEWS_BRIEFS_BY_SLUG["manville-q2-2026-financial-statements"]
-    : undefined;
+// ── Related Articles ─────────────────────────────────────────────────────────
+function RelatedArticles({ slug }: { slug: string }) {
+  const detailedArticles = getNewsBriefsForTrust(slug);
 
-  if ((isLoading && !detailedBrief) || (!detailedBrief && (!news || news.length === 0))) return null;
+  if (detailedArticles.length === 0) return null;
 
   return (
-    <div className="bg-card border border-border/50 rounded-lg p-5 mb-6">
+    <section className="bg-card border border-border/50 rounded-lg p-5 mb-6" aria-labelledby="related-articles-heading">
       <div className="flex items-center gap-2 mb-3">
         <Newspaper size={14} className="text-muted-foreground" />
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-          Related News
+        <h2 id="related-articles-heading" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          Related Articles
         </h2>
       </div>
       <div className="space-y-3">
-        {detailedBrief && (
-          <div className="flex items-start gap-3 group rounded-md border border-primary/15 bg-primary/[0.035] p-3">
+        {detailedArticles.map((article) => (
+          <article key={article.slug} className="flex items-start gap-3 group rounded-md border border-primary/15 bg-primary/[0.035] p-3">
             <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
             <div className="flex-1 min-w-0">
-              <Link href={`/news/${detailedBrief.slug}`} className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-snug hover:underline">
-                {detailedBrief.title}
+              <Link href={`/news/${article.slug}`} className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-snug hover:underline">
+                {article.title}
               </Link>
-              <p className="text-xs text-muted-foreground leading-relaxed mt-1">{detailedBrief.summary}</p>
-              <div className="flex items-center gap-2 mt-1.5">
+              <p className="text-xs text-muted-foreground leading-relaxed mt-1">{article.summary}</p>
+              <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                 <span className="text-xs text-muted-foreground/60">
-                  {new Date(`${detailedBrief.date}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+                  {new Date(`${article.date}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
                 </span>
-                <span className="text-[10px] uppercase tracking-wider text-primary/70 font-medium">Filed quarterly report</span>
+                <span className="text-[10px] uppercase tracking-wider text-primary/70 font-medium">
+                  {article.category.replace(/[_-]/g, " ")}
+                </span>
+                <Link href={`/news/${article.slug}`} className="text-xs font-medium text-primary hover:underline">
+                  Read article <span aria-hidden="true">→</span>
+                </Link>
               </div>
             </div>
-          </div>
-        )}
-        {(news ?? []).map((item: any) => (
-          <div key={item.id} className="flex items-start gap-3 group">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-2 shrink-0" />
-            <div className="flex-1 min-w-0">
-              <div className="text-sm text-foreground group-hover:text-primary transition-colors leading-snug">
-                {item.url ? (
-                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    {item.title}
-                  </a>
-                ) : (
-                  item.title
-                )}
-              </div>
-              <div className="flex items-center gap-2 mt-0.5">
-                {item.publishedAt && (
-                  <span className="text-xs text-muted-foreground/60">
-                    {new Date(item.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
-                  </span>
-                )}
-                {item.category && (
-                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground/50 font-medium">
-                    {item.category.replace(/_/g, " ")}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -726,9 +697,8 @@ export default function TrustDetail() {
         )}
       </div>
 
-      {/* Footer nav */}
-      {/* Related News */}
-      <RelatedNews trustName={trust.name} slug={slug ?? ""} />
+      {/* Related articles are intentionally limited to explicit, reviewed trust links. */}
+      <RelatedArticles slug={slug ?? ""} />
 
       {/* Footer nav */}
       <div className="flex items-center justify-between pt-4 border-t border-border/30">

@@ -1,6 +1,7 @@
 export type NewsBrief = {
   slug: string;
   title: string;
+  cardTitles?: string[];
   date: string;
   category: string;
   summary: string;
@@ -256,6 +257,82 @@ This article relies on the primary payment-percentage notice retained in the Asb
     `,
   },
   {
+    slug: "vijon-chapter11-talc-trust",
+    title: "Vi-Jon’s Chapter 11 Talc Settlement Proposal: What the August 2026 Filing Does—and Does Not—Establish",
+    cardTitles: ["Vi-Jon Files Chapter 11 to Channel Talc Claims into 524(g) Trust"],
+    date: "2026-09-03",
+    category: "court_filing",
+    summary: "Vi-Jon, LLC filed Chapter 11 in Delaware on August 2, 2026. Official case materials describe a proposed settlement-trust structure for alleged talc-related claims, subject to Bankruptcy Court approval and other conditions; they do not establish an effective, operating trust or a payment percentage.",
+    sourceUrl: "https://omniagentsolutions.com/Vi-Jon",
+    sourceLabel: "Omni Agent Solutions — Vi-Jon, LLC official restructuring website",
+    sourceCutoffAt: "2026-09-03",
+    keywords: "Vi-Jon Chapter 11, Vi-Jon talc claims, Vi-Jon settlement trust, Delaware bankruptcy 26-11216, talc bankruptcy claims process",
+    about: "Vi-Jon LLC Chapter 11 filing and proposed talc-related settlement trust",
+    markdown: `Vi-Jon, LLC filed a voluntary Chapter 11 petition on **August 2, 2026**, in the U.S. Bankruptcy Court for the District of Delaware, Case No. **26-11216 (MFW)**, before Judge Mary F. Walrath.[1] The public case materials describe a proposed Chapter 11 plan intended to resolve current and future alleged talc-related personal-injury claims through a settlement trust funded by Vi-Jon’s parent-side affiliate, Emprise HPC, LLC.[1] [2]
+
+That proposal is a significant development in the case. It is **not**, however, public confirmation that a court-approved plan is effective, a settlement trust is funded and operating, a payment percentage has been set, or a separate trust claims process is open. This article explains the current public record and the distinctions readers should keep in view.
+
+## What the official materials confirm
+
+Vi-Jon’s official restructuring website states that the debtor entered a Restructuring Support Agreement on July 30, 2026 with Emprise, Emprise HPC, and counsel representing more than 75% of holders of talc-related personal-injury claims. The materials describe a negotiated Chapter 11 plan that would resolve current and future alleged talc-related claims through a settlement trust funded by Emprise HPC, but expressly state that the contemplated plan remains subject to Bankruptcy Court approval and other conditions.[1] [2]
+
+The U.S. Trustee independently identifies Vi-Jon, LLC, Case No. 26-11216 (MFW), as a voluntary Chapter 11 case in the District of Delaware in its August 4 committee-solicitation notice.[3]
+
+| Confirmed public item | What the record says | What it does **not** establish |
+|---|---|---|
+| Chapter 11 filing | Vi-Jon filed August 2, 2026 in Delaware, Case No. 26-11216 (MFW). | That a settlement trust has become effective. |
+| Proposed settlement structure | The RSA contemplates resolving alleged talc-related claims through a settlement trust. | Court approval, effectiveness, or final terms of that proposal. |
+| Proposed plan support | The official FAQ says counsel representing more than 75% of talc-related personal-injury claim holders joined the RSA. | A completed vote, confirmation order, or final distribution procedure. |
+| Affiliate participation | Emprise and multiple affiliates are identified as non-debtors. | That the non-debtors’ proposed contributions are final, unconditional trust assets. |
+
+## Funding described in the proposal
+
+The official FAQ says Emprise HPC agreed, subject to Bankruptcy Court approval, to contribute approximately **$32 million when the plan takes effect**. It describes $25 million of that amount as intended to fund the proposed settlement trust for talc claimants and approximately $7 million as intended for remaining Chapter 11 process costs.[2]
+
+Those are stated components of a proposed, court-supervised restructuring—not a current trust-balance report. AsbestosTrusts.org therefore does not include the proposed $25 million contribution in the active-trust database, the documented asset floor, or any cumulative-payout calculation. A proposed contribution cannot substitute for a filed financial statement of an operational trust.[1] [2]
+
+> **Confirmed:** Vi-Jon is in Chapter 11, and its public case materials describe a proposed settlement trust for alleged talc-related claims.
+>
+> **Not yet established by the materials reviewed:** A confirmed and effective plan, funded operating settlement trust, Trust Distribution Procedure, payment percentage, or separate settlement-trust claim-submission process.
+
+## Claims, the automatic stay, and the posted bankruptcy process
+
+The official FAQ says the Chapter 11 filing does not by itself dismiss pending state-court claims; instead, the automatic stay generally pauses litigation against Vi-Jon unless the Bankruptcy Court orders otherwise.[2] It also says that any future claim-treatment, notice, and submission requirements will be governed by Bankruptcy Court-approved procedures.[2]
+
+The case website currently includes a general Chapter 11 proof-of-claim function and lists a September 26, 2026 general bar date. The FAQ, however, says that no bar date had been set at the time that FAQ was published and instructs claimants to follow later court-approved notices and orders.[1] [2] The appropriate reading is therefore narrow: these materials concern the pending bankruptcy process. They do **not** announce that a proposed talc settlement trust has opened, and they do not provide the terms for a separate trust claim.
+
+Readers with case-specific questions should consult the notices and orders issued in the bankruptcy case and obtain advice from counsel of their choice. This article does not provide legal advice or claim-filing instructions.
+
+## Why a proposed settlement trust is not the same as an operating trust
+
+An operational claimant-facing trust ordinarily requires implementation materials: an effective plan, trust agreement, trustee or administrator notice, governing distribution procedures, a payment percentage if applicable, and claim-submission instructions. The public Vi-Jon materials reviewed for this article do not establish those facts.[1] [2]
+
+For general educational background on established asbestos trust-fund structures, readers may consult [WikiMesothelioma’s asbestos trust funds overview][4]. That resource is not a source for Vi-Jon’s case-specific filings, funding terms, or claim procedures. For distinct, citation-verified background on historical occupational asbestos exposure in U.S. shipbuilding, readers may consult [Asbestos Atlas][5]. It is a separate exposure-research resource and does not establish the status, funding, or legal effect of the Vi-Jon Chapter 11 case.
+
+## What to watch next
+
+| Future document or event | Why it matters |
+|---|---|
+| Bankruptcy Court orders on the plan or disclosure statement | May clarify whether the proposed restructuring can move forward. |
+| Confirmation order and notice of effective date | Would distinguish a proposed plan from an implemented restructuring. |
+| Trust agreement and administrator/trustee notice | Would identify the legal entity and responsible parties for any claimant-facing trust. |
+| Trust Distribution Procedure or payment-percentage notice | Would provide a governing payment framework if a trust becomes operational. |
+| Court-approved claims notices and forms | Would establish any applicable bankruptcy or later trust-submission process. |
+
+Until these materials are available, AsbestosTrusts.org will track Vi-Jon as a **pending Chapter 11 matter with a proposed settlement-trust structure**, not as an operating trust. The site will not assign Vi-Jon a payment percentage, current trust assets, or cumulative payments based on the proposal alone.
+
+## Sources and editorial note
+
+This article relies on the public restructuring website, the official FAQ, and the U.S. Trustee notice cited below. The debtor’s and case agent’s descriptions are treated as case-status materials and are not substituted for court-approved implementation documents. The article will be updated when a court order or trust-administration notice establishes a confirmed plan, effective date, operational trust, or claimant-facing procedures.
+
+[1]: https://omniagentsolutions.com/Vi-Jon "Omni Agent Solutions — Vi-Jon, LLC restructuring website"
+[2]: https://cases.omniagentsolutions.com/content/index?clientid=3792&vid=817070 "Vi-Jon, LLC — Master Q&A: Vi-Jon Chapter 11"
+[3]: https://www.justice.gov/ust/media/1455901/dl?inline "U.S. Trustee, District of Delaware — Vi-Jon, LLC Case No. 26-11216 (MFW), committee-solicitation notice"
+[4]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
+[5]: https://asbestosatlas.org/ "Asbestos Atlas — U.S. Shipyard Exposure Map"
+`,
+  },
+  {
     slug: "bestwall-scotus-cert-denial",
     title: "Supreme Court Declines Bestwall Appeal: What the June 2026 Denial Means for the Pending Chapter 11 Case",
     date: "2026-09-03",
@@ -327,4 +404,10 @@ This article is limited to the public Supreme Court and case-administration mate
 
 export const NEWS_BRIEFS_BY_SLUG = Object.fromEntries(
   NEWS_BRIEFS.map((brief) => [brief.slug, brief])
+) as Record<string, NewsBrief>;
+
+export const NEWS_BRIEFS_BY_CARD_TITLE = Object.fromEntries(
+  NEWS_BRIEFS.flatMap((brief) =>
+    (brief.cardTitles ?? []).map((cardTitle) => [cardTitle, brief])
+  )
 ) as Record<string, NewsBrief>;

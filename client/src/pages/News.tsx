@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
 import { LegalTermText } from "@/components/LegalTermTooltip";
 import { Link } from "wouter";
-import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
+import { NEWS_BRIEFS_BY_CARD_TITLE, NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
 
 interface NewsDraft {
   filename: string;
@@ -103,8 +103,12 @@ export default function News() {
         </div>
       ) : (
         <div className="space-y-3">
-          {allItems.map((item) => (
-            <div
+          {allItems.map((item) => {
+            const linkedBrief = (item.isDraft && item.slug
+              ? NEWS_BRIEFS_BY_SLUG[item.slug]
+              : undefined) ?? NEWS_BRIEFS_BY_CARD_TITLE[item.title];
+
+            return <div
               key={item.id}
               className="p-4 rounded border border-border/50 bg-card/40 hover:border-border transition-colors"
             >
@@ -138,8 +142,8 @@ export default function News() {
                       <LegalTermText text={item.summary} />
                     </p>
                   )}
-                  {item.isDraft && item.slug && NEWS_BRIEFS_BY_SLUG[item.slug] && (
-                    <Link href={`/news/${item.slug}`} className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2 mr-4" aria-label={`Read more: ${item.title}`}>Read more</Link>
+                  {linkedBrief && (
+                    <Link href={`/news/${linkedBrief.slug}`} className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2 mr-4" aria-label={`Read more: ${item.title}`}>Read more</Link>
                   )}
                   {item.url && (
                     <a
@@ -153,8 +157,8 @@ export default function News() {
                   )}
                 </div>
               </div>
-            </div>
-          ))}
+            </div>;
+          })}
         </div>
       )}
 

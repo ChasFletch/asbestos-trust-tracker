@@ -393,6 +393,11 @@
 - [x] Add regression coverage and validate tracker, methodology, FAQ, and live SSR consistency before publication
 - [x] Replace the misleading public `activeTrustsEstimated` data field with separate `activeTrustsTracked` and `trustsHistoricallyEstablishedEstimated` fields
 
+## Automated Cross-Page Figure Consistency (2026-09-04)
+- [x] Audit existing figure and SSR tests to identify every current public crawler-visible figure surface
+- [x] Add one data-derived regression that verifies figures, coverage wording, snapshot date, and historical-total qualification across all public source files
+- [x] Validate the new cross-page guard with full tests, TypeScript, production build, and rendered SSR output
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

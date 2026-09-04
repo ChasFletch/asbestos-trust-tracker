@@ -157,7 +157,7 @@ export const appRouter = router({
         paidOut: agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206,
         paidOutLabel: `$${(agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206).toLocaleString()} paid to claimants (bottom-up estimate)`,
         totalActiveTrusts: activeTrustsTracked || 54,
-        totalTrustsHistoricallyEstablished: agg.activeTrustsEstimated ?? 60,
+        totalTrustsHistoricallyEstablished: agg.trustsHistoricallyEstablishedEstimated ?? 60,
         paidOutDocumented: agg.cumulativePayoutsDocumented ?? 0,
         paidOutEstimatedRemainder: agg.cumulativePayoutsEstimatedRemainder ?? 0,
         trustsWithCumulativePaidFiled: agg.trustsWithCumulativePaidFiled ?? 0,

@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import trustFigures from "../client/src/data/trust-figures.json";
 
 const projectRoot = resolve(import.meta.dirname, "..");
 const readProjectFile = (relativePath: string) => readFileSync(resolve(projectRoot, relativePath), "utf8");
@@ -27,5 +28,12 @@ describe("methodology figure consistency", () => {
     expect(methodology).toContain("historical estimate of trusts established");
     expect(prefetch).toContain("trusts historically established");
     expect(llms).toContain("trusts historically established");
+  });
+
+  it("uses distinct canonical fields for active tracker records and the historical total-established estimate", () => {
+    expect(trustFigures.aggregate.activeTrustsTracked).toBe(54);
+    expect(trustFigures.aggregate.trustsHistoricallyEstablishedEstimated).toBe(60);
+    expect((trustFigures.aggregate as Record<string, unknown>).activeTrustsEstimated).toBeUndefined();
+    expect(trustFigures.trusts.filter((trust) => trust.status === "active" || trust.status === "active_deferral")).toHaveLength(54);
   });
 });

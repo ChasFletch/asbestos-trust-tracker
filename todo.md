@@ -387,6 +387,11 @@
 ## Daily Accomplishment Log (2026-09-03)
 - [x] Prepare a complete Markdown record of today’s tracker repairs, source-backed content additions, SEO/crawler safeguards, and trust-detail discovery modules
 
+## Methodology Figure and Coverage Consistency Correction (2026-09-03)
+- [x] Audit all public source-code and live SSR occurrences of the pre-ABB $16,018,528,449 / 42-record methodology statement and the “roughly 60 active trusts” denominator
+- [x] Update methodology, FAQ, and related crawler-visible content to the verified $16,033,489,279 floor across 43 of 54 active records, while preserving the separate historical approximately-60 total-ever-established context
+- [x] Add regression coverage and validate tracker, methodology, FAQ, and live SSR consistency before publication
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

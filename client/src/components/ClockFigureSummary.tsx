@@ -3,7 +3,7 @@ type ClockFigureSummaryProps = {
   payouts: number;
   lastUpdated: string;
   documentedAssetTrusts: number;
-  estimatedActiveTrusts: number;
+  activeTrustsTracked: number;
   assetDataRange: string;
   compact?: boolean;
 };
@@ -29,11 +29,11 @@ export function ClockFigureSummary({
   payouts,
   lastUpdated,
   documentedAssetTrusts,
-  estimatedActiveTrusts,
+  activeTrustsTracked,
   assetDataRange,
   compact = false,
 }: ClockFigureSummaryProps) {
-  const coverage = `Documented floor: ${currency(remaining)} across ${documentedAssetTrusts} of roughly ${estimatedActiveTrusts} active trusts.`;
+  const coverage = `Documented floor: ${currency(remaining)} across ${documentedAssetTrusts} of ${activeTrustsTracked} active tracker records.`;
   const dateScope = `Snapshot refreshed ${formatAsOfDate(lastUpdated)}; underlying asset figures span ${assetDataRange}.`;
 
   if (compact) {

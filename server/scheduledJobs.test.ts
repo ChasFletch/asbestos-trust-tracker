@@ -6,12 +6,14 @@ const remaining = 16_033_489_279;
 const payouts = 30_033_989_206;
 const expectedRemaining = "$16,033,489,279";
 const expectedPayouts = "$30,033,989,206";
-const expectedCoverage = "Documented floor: $16,033,489,279 across 43 of roughly 60 active trusts.";
+const expectedCoverage = "Documented floor: $16,033,489,279 across 43 of 54 active tracker records.";
 const expectedDateScope = "underlying asset figures span FY2021–2025";
 const trustRows = [
   ...Array.from({ length: 2 }, () => ({ netAssets: 1, assetsAsOf: "2021-12-31", status: "active" })),
   ...Array.from({ length: 23 }, () => ({ netAssets: 1, assetsAsOf: "2022-12-31", status: "active" })),
   ...Array.from({ length: 18 }, () => ({ netAssets: 1, assetsAsOf: "2025-12-31", status: "active" })),
+  ...Array.from({ length: 10 }, () => ({ netAssets: null, assetsAsOf: null, status: "active" })),
+  { netAssets: null, assetsAsOf: null, status: "active_deferral" },
 ];
 
 function healthyFetch(url: string | URL | Request) {
@@ -19,7 +21,7 @@ function healthyFetch(url: string | URL | Request) {
   if (href.includes("/api/trust-figures")) {
     return Promise.resolve(new Response(JSON.stringify({
       asOf: "2026-09-01",
-      aggregate: { remainingAssetsPoint: remaining, cumulativePayoutsBottomUp: payouts, activeTrustsEstimated: 60 },
+      aggregate: { remainingAssetsPoint: remaining, cumulativePayoutsBottomUp: payouts },
       trusts: trustRows,
     }), { status: 200 }));
   }

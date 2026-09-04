@@ -43,7 +43,9 @@ export default function EmbedClock() {
   const assetDataRange = assetYears.length > 0
     ? `FY${Math.min(...assetYears)}–${Math.max(...assetYears)}`
     : "FY2021–2025";
-  const estimatedActiveTrusts = (agg as any)?.totalActiveTrusts ?? 60;
+  const activeTrustsTracked = tf.length > 0
+    ? tf.filter((trust: any) => trust.status === "active" || trust.status === "active_deferral").length
+    : (agg as any)?.totalActiveTrusts ?? 54;
 
   const isCompact = variant === "compact";
   const siteUrl = `https://asbestostrusts.org${ref ? `?ref=${encodeURIComponent(ref)}` : ""}`;
@@ -81,7 +83,7 @@ export default function EmbedClock() {
           payouts={paidOut}
           lastUpdated={lastUpdated}
           documentedAssetTrusts={documentedAssetTrusts.length || 43}
-          estimatedActiveTrusts={estimatedActiveTrusts}
+          activeTrustsTracked={activeTrustsTracked}
           assetDataRange={assetDataRange}
           compact
         />

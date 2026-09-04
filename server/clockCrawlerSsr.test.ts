@@ -18,15 +18,15 @@ describe("clock crawler-visible SSR", () => {
   it("renders live compensation figures as initial server HTML rather than zero placeholders", () => {
     const html = renderToStaticMarkup(
       React.createElement(DebtClockBillboard, {
-        remaining: 16_018_528_449,
+        remaining: 16_033_489_279,
         payouts: 30_033_989_206,
-        lastUpdated: "2026-08-29",
+        lastUpdated: "2026-09-03",
       })
     );
 
-    expect(html).toContain("$16,018,528,449");
+    expect(html).toContain("$16,033,489,279");
     expect(html).toContain("$30,033,989,206");
-    expect(html).toContain('aria-label="Documented Remaining Assets: $16,018,528,449');
+    expect(html).toContain('aria-label="Documented Remaining Assets: $16,033,489,279');
     expect(html).toContain('aria-label="Cumulative Payouts Since 1988: $30,033,989,206');
     expect(html).toContain("Last updated:");
     expect(html).not.toContain('aria-label="Documented Remaining Assets: $0');
@@ -47,15 +47,15 @@ describe("clock crawler-visible SSR", () => {
       React.createElement(ClockFigureSummary, {
         remaining: 16_033_489_279,
         payouts: 30_033_989_206,
-        lastUpdated: "2026-09-01",
+        lastUpdated: "2026-09-03",
         documentedAssetTrusts: 43,
-        estimatedActiveTrusts: 60,
+        activeTrustsTracked: 54,
         assetDataRange: "FY2021–2025",
       })
     );
 
-    expect(html).toContain("Documented floor: $16,033,489,279 across 43 of roughly 60 active trusts.");
-    expect(html).toContain("Snapshot refreshed September 1, 2026; underlying asset figures span FY2021–2025.");
+    expect(html).toContain("Documented floor: $16,033,489,279 across 43 of 54 active tracker records.");
+    expect(html).toContain("Snapshot refreshed September 3, 2026; underlying asset figures span FY2021–2025.");
     expect(html).toContain("not a total for the entire U.S. trust system");
   });
 

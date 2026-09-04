@@ -69,7 +69,8 @@ describe("August 29, 2026 primary-source trust update", () => {
   });
 
   it("keeps crawler-facing canonical figures and the payment-percentage range current", () => {
-    expect(llms).toContain("$16,018,528,449");
+    expect(llms).toContain("$16,033,489,279");
+    expect(llms).toContain("43 of 54 active tracker records");
     expect(llms).toContain("$30,033,989,206");
     expect(llms).toContain("0.7% (ARTRA) to 100% (NARCO)");
     expect(llms).not.toContain("100% (NARCO; Paddock)");

@@ -148,14 +148,16 @@ export const appRouter = router({
   // ── Aggregate (JSON-first) ─────────────────────────────────────────────────
   aggregate: router({
     current: publicProcedure.query(async () => {
-      const { asOf, aggregate: agg } = await loadJsonTrusts();
+      const { asOf, aggregate: agg, trusts } = await loadJsonTrusts();
+      const activeTrustsTracked = trusts.filter((trust) => trust.status === "active" || trust.status === "active_deferral").length;
       return {
         remainingLow: agg.remainingAssetsPoint ?? 16018528449,
         remainingHigh: agg.remainingAssetsHigh ?? 21742138783,
         remainingLabel: `$${(agg.remainingAssetsPoint ?? 16018528449).toLocaleString()} documented floor`,
         paidOut: agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206,
         paidOutLabel: `$${(agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206).toLocaleString()} paid to claimants (bottom-up estimate)`,
-        totalActiveTrusts: agg.activeTrustsEstimated ?? 60,
+        totalActiveTrusts: activeTrustsTracked || 54,
+        totalTrustsHistoricallyEstablished: agg.activeTrustsEstimated ?? 60,
         paidOutDocumented: agg.cumulativePayoutsDocumented ?? 0,
         paidOutEstimatedRemainder: agg.cumulativePayoutsEstimatedRemainder ?? 0,
         trustsWithCumulativePaidFiled: agg.trustsWithCumulativePaidFiled ?? 0,

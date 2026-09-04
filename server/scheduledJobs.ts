@@ -49,7 +49,7 @@ export async function checkCrawlerVisibility(options: {
 
     const source = await sourceResponse.json() as {
       asOf?: string;
-      aggregate?: { remainingAssetsPoint?: number; cumulativePayoutsBottomUp?: number; activeTrustsEstimated?: number };
+      aggregate?: { remainingAssetsPoint?: number; cumulativePayoutsBottomUp?: number };
       trusts?: Array<{ netAssets?: number | null; assetsAsOf?: string | null; status?: string }>;
     };
     const remainingValue = source.aggregate?.remainingAssetsPoint;
@@ -65,8 +65,11 @@ export async function checkCrawlerVisibility(options: {
     if (assetsWithFigures.length === 0 || assetYears.length === 0 || !source.asOf) {
       return { ok: false, expected: null, checks: [{ path: "/api/trust-figures", ok: false, detail: "Missing asset coverage or date-range data" }] };
     }
-    const activeTrustsEstimated = source.aggregate?.activeTrustsEstimated ?? 60;
-    const coverage = `Documented floor: ${formatCurrency(remainingValue)} across ${assetsWithFigures.length} of roughly ${activeTrustsEstimated} active trusts.`;
+    const activeTrustsTracked = (source.trusts ?? []).filter((trust) => trust.status === "active" || trust.status === "active_deferral").length;
+    if (activeTrustsTracked === 0) {
+      return { ok: false, expected: null, checks: [{ path: "/api/trust-figures", ok: false, detail: "Missing active trust coverage data" }] };
+    }
+    const coverage = `Documented floor: ${formatCurrency(remainingValue)} across ${assetsWithFigures.length} of ${activeTrustsTracked} active tracker records.`;
     const dateScope = `underlying asset figures span FY${Math.min(...assetYears)}–${Math.max(...assetYears)}`;
     const expected = { remaining: formatCurrency(remainingValue), payouts: formatCurrency(payoutValue), coverage, dateScope };
     const nonce = `crawler-monitor=${Date.now()}`;

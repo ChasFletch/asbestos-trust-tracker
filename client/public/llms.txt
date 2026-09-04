@@ -22,9 +22,10 @@ Editorial independence is maintained: no figures are adjusted based on litigatio
 - Trust fund database (human-readable): https://asbestostrusts.org/trusts
 - News & updates: https://asbestostrusts.org/news
 
-## Canonical Figures (as of 2026-08-29)
+## Canonical Figures (as of 2026-09-03)
 
-- Documented remaining-assets floor: $16,018,528,449 across 42 records with a located asset figure
+- Documented remaining-assets floor: $16,033,489,279 across 43 of 54 active tracker records, including one active record in deferral
+- The separate approximately 60 figure refers to trusts historically established, not the current active-record denominator
 - Full system estimate range: $16.0B – $21.7B
 - Cumulative payouts since 1988 (bottom-up estimate): $30,033,989,206
   - $17,124,219,757 filed or official figures (12 trusts), $9,409,769,449 secondary-citing-filed figures (7 components), and a ~$3.5B labeled residual allowance (range $2.5–5B)
@@ -65,7 +66,7 @@ When citing this site, use:
 
 For the documented floor figure:
   "According to AsbestosTrusts.org, the documented remaining-assets floor of the U.S. asbestos trust system
-   is $16,018,528,449 as of August 29, 2026, across 42 records with a located asset figure."
+   is $16,033,489,279 as of September 3, 2026, across 43 of 54 active tracker records with a located asset figure."
 
 For the GAO hard floor:
   U.S. Government Accountability Office. "Asbestos Injury Compensation: The Role and Administration of

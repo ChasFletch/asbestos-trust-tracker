@@ -82,7 +82,7 @@ export default function Methodology() {
             <li>Trusts with no available net asset figure are excluded from the aggregate but are listed in the database with their known payment percentage data.</li>
           </ol>
           <div className="mt-4 p-3 rounded border border-primary/20 bg-primary/5 text-xs text-muted-foreground">
-            <strong className="text-foreground">Current aggregate as-of note:</strong> As of August 29, 2026, the documented asset floor is <strong className="text-foreground">$16,018,528,449</strong> across 42 records with a located asset figure. The underlying dates are mixed, largely spanning 2021–2026. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection.
+            <strong className="text-foreground">Current aggregate as-of note:</strong> As of September 3, 2026, the documented asset floor is <strong className="text-foreground">$16,033,489,279</strong> across 43 of the tracker&apos;s 54 active records, including one active record in deferral. The underlying dates are mixed, spanning FY2021–FY2025. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection. The separate approximately 60 figure is a historical estimate of trusts established, not the active-record denominator.
           </div>
         </section>
 
@@ -110,7 +110,7 @@ export default function Methodology() {
             The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $30,033,989,206 measures payments made or liquidated under the source series, not assets remaining.
           </p>
           <p className="text-muted-foreground">
-            Our documented floor for remaining assets is <strong className="text-foreground">$16,018,528,449</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
+            Our documented floor for remaining assets is <strong className="text-foreground">$16,033,489,279</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It covers 43 of the tracker&apos;s 54 active records, not the approximately 60 trusts historically established nationwide. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
           </p>
         </section>
 
@@ -292,6 +292,11 @@ export default function Methodology() {
                   <td className="py-2 pr-4 text-muted-foreground">2026-08-29</td>
                   <td className="py-2 pr-4 font-mono text-foreground">$16,018,528,449 / $30,033,989,206</td>
                   <td className="py-2 text-muted-foreground">Manville Q2 2026 filing (S.D.N.Y. Doc 4480) updated net claimants&apos; equity and the series&apos; liquidated-claims component; Owens-Illinois&apos; filed August 19 notice corrected its payment percentage from the erroneous structured 100% value to 65%.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 text-muted-foreground">2026-09-03</td>
+                  <td className="py-2 pr-4 font-mono text-foreground">$16,033,489,279</td>
+                  <td className="py-2 text-muted-foreground">ABB Lummus FY2025 filed annual report added $14,960,830 to the documented remaining-assets floor, increasing coverage from 42 to 43 active tracker records. The active-record denominator is 54, including one active record in deferral; the separate approximately 60 figure refers to trusts historically established.</td>
                 </tr>
               </tbody>
             </table>

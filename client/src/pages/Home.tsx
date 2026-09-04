@@ -146,7 +146,7 @@ export default function Home() {
   const assetDataRange = assetYears.length > 0
     ? `FY${Math.min(...assetYears)}–${Math.max(...assetYears)}`
     : "FY2021–2025";
-  const estimatedActiveTrusts = (agg as any)?.totalActiveTrusts ?? 60;
+  const activeTrustsTracked = tf.length > 0 ? activeTrusts.length : (agg as any)?.totalActiveTrusts ?? 54;
 
   const stats = [
     { label: "Active Trusts Tracked",         target: tf.length > 0 ? activeTrusts.length     : 54, icon: Database   },
@@ -154,10 +154,10 @@ export default function Home() {
     { label: "Current-Year Data",              target: tf.length > 0 ? recentDataTrusts.length : 18, icon: Clock      },
     {
       label: "Trusts With Documented Assets",
-      target: tf.length > 0 ? trustsWithFigures.length : 42,
+      target: tf.length > 0 ? trustsWithFigures.length : 43,
       icon: BookOpen,
       tooltip:
-        "Approximately 60 asbestos trusts are active in the U.S. (GAO-11-819; industry sources 2026). This site tracks 55 identified trust records, 42 of which have publicly documented asset figures.",
+        "This site tracks 55 identified trust records: 54 are active, including one in active deferral, and one is closed. Forty-three active records have publicly documented asset figures. GAO-11-819’s approximately 60 figure refers to trusts established historically, not the current active count.",
     },
   ] as const;
 
@@ -247,7 +247,7 @@ export default function Home() {
               payouts={paidOut}
               lastUpdated={lastUpdated}
               documentedAssetTrusts={trustsWithFigures.length || 43}
-              estimatedActiveTrusts={estimatedActiveTrusts}
+              activeTrustsTracked={activeTrustsTracked}
               assetDataRange={assetDataRange}
             />
           </div>

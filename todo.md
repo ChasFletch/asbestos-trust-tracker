@@ -384,6 +384,9 @@
 - [x] Add explicit report-to-trust mappings and an accessible related-research-reports module without keyword-based cross-linking
 - [x] Add regression coverage and verify related-report modules are crawler-visible, responsive, and linked to canonical report pages
 
+## Daily Accomplishment Log (2026-09-03)
+- [x] Prepare a complete Markdown record of today’s tracker repairs, source-backed content additions, SEO/crawler safeguards, and trust-detail discovery modules
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

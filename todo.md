@@ -398,6 +398,11 @@
 - [x] Add one data-derived regression that verifies figures, coverage wording, snapshot date, and historical-total qualification across all public source files
 - [x] Validate the new cross-page guard with full tests, TypeScript, production build, and rendered SSR output
 
+## Origin/Main Deployment and Kaiser HTML Verification (2026-09-04)
+- [ ] Synchronize and deploy origin/main commit `14bb326` without overwriting concurrent changes
+- [ ] Verify raw production HTML removes “of scheduled value” and contains the new Kaiser sections
+- [ ] Send a build-complete independent re-verification handoff to RON through an available approved channel
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

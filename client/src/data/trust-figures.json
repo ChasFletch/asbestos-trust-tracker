@@ -967,13 +967,21 @@
    "name": "Kaiser Gypsum Asbestos PI Trust",
    "netAssets": 63680663,
    "assetsAsOf": "2025-12-31",
-   "assetsBasis": "net claimants' equity, audited; Kaiser Gypsum Asbestos PI Trust FY2025 Annual Report, Exhibit A; Bankr. W.D.N.C. 16-31602 Doc 2927 (filed 2026-04-24); auditor CohnReznick LLP",
+   "dataAsOf": "2026-09-05",
+   "assetsBasis": "net claimants' equity, audited; Kaiser Gypsum Asbestos PI Trust FY2025 Annual Report, Exhibit A p.4 (Doc 2927 PDF p.12 of 24); Bankr. W.D.N.C. 16-31602 Doc 2927 (filed 2026-04-23); auditor CohnReznick LLP",
    "paymentPercentage": 62,
+   "hasDiseaseLevelScheduledValueMatrix": false,
+   "paymentPercentageBasisLabel": "not tied to a disease-level scheduled-value matrix",
    "status": "active",
    "confidence": "filed",
    "cumulativePaid": null,
    "cumulativePaidAsOf": null,
    "cumulativePaidSource": null,
+   "cumulativePaidExplanation": {
+    "text": "No inception-to-date cumulative dollar total is disclosed. Doc 2927's narrative and audited Note 6 use different claims-paid disclosures and explain that timing, refunded claims, rounding, and other factors can produce differences, so this tracker does not calculate a substitute.",
+    "source": "Kaiser Gypsum Asbestos PI Trust FY2025 Annual Report, Doc 2927, pp.5 and 23 of 24",
+    "sourceUrl": "/manus-storage/KG_2025_Trust_Annual_Report_ae337ea5.pdf"
+   },
    "established": 2016,
    "company": "Kaiser Gypsum Company Inc.",
    "administrator": "Verus LLC",
@@ -983,7 +991,65 @@
    "direction": "stable",
    "reportingFrequency": "annual",
    "assetsBasisUrl": "https://www.kaisergypsumtrust.org/assets/uploadedFiles/a1e0a334-68b1-4aa1-896d-141665c68f70.pdf",
-   "paymentPctEffective": "2026-05-19"
+   "paymentPctEffective": "2026-05-19",
+   "claimMechanics": {
+    "asOf": "2026-09-05",
+    "source": "Kaiser Gypsum Asbestos PI Trust Distribution Procedures §§5.4(d)–(f) and 5.5(a), printed pp.20–23",
+    "sourceUrl": "/manus-storage/KG_TDP_a13dd0f4.pdf",
+    "insuredSummary": "For Insured Asbestos Claims, the Trust determines the applicable first-exposure-date deductible and applies the then-current Payment Percentage to the amount owed. The TDP's listed insured-claim tiers end on March 31, 1983; claims with later first-exposure dates follow the Uninsured Asbestos Claims provisions.",
+    "deductibleTiers": [
+     {
+      "firstExposure": "On or before December 31, 1975",
+      "deductible": 5000
+     },
+     {
+      "firstExposure": "January 1, 1976–March 31, 1981",
+      "deductible": 50000
+     },
+     {
+      "firstExposure": "April 1, 1981–March 31, 1983",
+      "deductible": 100000
+     }
+    ],
+    "uninsuredSummary": "For Uninsured Asbestos Claims, the Trust determines liquidated value with reference to the Debtors' pre-petition tort-system history and the valuation data in that history. The TDP does not publish a disease-level scheduled-value matrix.",
+    "caveat": "A future TDP amendment could change these mechanics. The retained October 22, 2021 amendment concerns an unrelated service-of-process address."
+   },
+   "claimsActivity": {
+    "asOf": "2025-12-31",
+    "source": "Kaiser Gypsum Asbestos PI Trust FY2025 Annual Report, Doc 2927, p.5 of 24",
+    "sourceUrl": "/manus-storage/KG_2025_Trust_Annual_Report_ae337ea5.pdf",
+    "insuredAddedSinceInception": 783,
+    "statuses": [
+     {
+      "label": "Paid",
+      "count": 158
+     },
+     {
+      "label": "Outstanding offers",
+      "count": 110
+     },
+     {
+      "label": "Under review",
+      "count": 30
+     },
+     {
+      "label": "Determined deficient",
+      "count": 437
+     }
+    ],
+    "unnamedStatusCount": 48,
+    "uninsuredFiled": 0,
+    "caveat": "The report names statuses for 735 of the 783 insured claims. It does not identify a status for the remaining 48, so the listed categories are not an exhaustive breakdown.",
+    "uninsuredNote": "The report states that no Uninsured Asbestos Claims had been filed as of December 31, 2025. It also states that separate uninsured-claim materials were published in early 2024; the report does not establish why the filed count was zero."
+   },
+   "filingWindows": {
+    "asOf": "2026-09-05",
+    "source": "Kaiser Gypsum Asbestos PI Trust Distribution Procedures §5.1(a)(2), printed pp.11–12",
+    "sourceUrl": "/manus-storage/KG_TDP_a13dd0f4.pdf",
+    "uninsuredClaims": "For an Uninsured Asbestos Claim that satisfies the TDP's tolling conditions and was not already barred, the TDP treats the claim as timely if filed within three years after the six-month anniversary of the Initial Claims Filing Date. For an Uninsured Asbestos Claim first diagnosed after the Petition Date, the filing window is three years after diagnosis or three years after the Initial Claims Filing Date, whichever occurs later.",
+    "uninsuredPortionsOfInsuredClaims": "A claim for the uninsured portion of an Insured Asbestos Claim must be filed within three years after the applicable insurer paid the claim—or, if no insurer payment was due, settled it.",
+    "caveat": "These are claim-category-specific TDP rules, not a single universal deadline and not a substitute for any applicable federal, state, or foreign statute of limitation or repose. Claimants should review the TDP and obtain advice about their own filing dates."
+   }
   },
   {
    "name": "Porter Hayden Bodily Injury Trust",

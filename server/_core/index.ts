@@ -47,6 +47,13 @@ async function startServer() {
   registerOAuthRoutes(app);
   // Scheduled job handlers — must be mounted before tRPC and Vite fallthrough
   app.post("/api/scheduled/staleness-check", stalenessCheckHandler);
+  app.post("/api/scheduled/daily-source-detection", dailyDetectionHandler);
+  app.post("/api/scheduled/weekly-source-coverage", weeklyCoverageHandler);
+  app.post("/api/scheduled/weekly-research-digest", weeklyDigestHandler);
+  app.post("/api/scheduled/monthly-research-preparation", monthlyResearchPreparationHandler);
+  app.post("/api/scheduled/quarterly-audit-preparation", quarterlyAuditPreparationHandler);
+  app.post("/api/scheduled/controlled-detection-test", controlledDetectionHandler);
+  app.post("/api/scheduled/research-intake", researchIntakeHandler);
   registerDataRoutes(app);
   registerPacerRoutes(app);
 
@@ -79,5 +86,14 @@ async function startServer() {
 
 startServer().catch(console.error);
 import { stalenessCheckHandler } from "../scheduledJobs";
+import {
+  controlledDetectionHandler,
+  dailyDetectionHandler,
+  monthlyResearchPreparationHandler,
+  quarterlyAuditPreparationHandler,
+  researchIntakeHandler,
+  weeklyCoverageHandler,
+  weeklyDigestHandler,
+} from "../operationsPilot";
 import { registerDataRoutes } from "../dataRoutes";
 import { registerPacerRoutes } from "../pacerRoutes";

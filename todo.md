@@ -419,6 +419,13 @@
 - [x] Define the 30-day pilot metrics, durable monitoring evidence, bounded notification model, and estimated usage limits
 - [ ] Present the revised plan and any remaining standing-permission decisions before configuration
 
+## Approved 30-Day Hybrid Living-Tracker Pilot (2026-09-06)
+- [x] Record the pilot’s start/end dates, America/Chicago cadence, actual primary/backup operational owners, scope limits, no-charge PACER rule, and numerical research-time/usage ceilings
+- [x] Create durable source-registry, candidate-queue, release-record, and monitoring-run records within the existing project workflow
+- [ ] Extend the existing monitoring system for daily source detection, seven-day source-coverage tracking, weekly digest preparation, monthly research preparation, and quarterly audit preparation without an unreviewed publication path
+- [ ] Create the approved recurring schedule and verify a controlled detection test plus the first actual scheduled run
+- [ ] Deliver one activation report, then use the existing project queue for routine findings and a single weekly digest; do not automatically extend the pilot or expand publication authority
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

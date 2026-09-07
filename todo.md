@@ -405,9 +405,9 @@
 
 ## Manville September 3 Notice and Existing Monitor Audit (2026-09-06)
 - [x] Verify the supported Manville payment percentage and effective date against the September 3 primary-source notice and current tracker data
-- [ ] Compare live production output with the canonical data and inspect the existing monitor’s schedule and latest run record
-- [ ] Diagnose any monitoring gap and repair it only within the existing monitor, then provide one consolidated assessment
-- [ ] Prevent the runtime GitHub trust-figure loader from retaining stale raw JSON after a data-only repository update
+- [x] Compare live production output with the canonical data and inspect the existing monitor’s schedule and latest run record
+- [x] Diagnose any monitoring gap and repair it only within the existing monitor, then provide one consolidated assessment
+- [x] Prevent the runtime GitHub trust-figure loader from retaining stale raw JSON after a data-only repository update
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

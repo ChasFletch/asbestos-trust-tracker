@@ -171,7 +171,7 @@ async function ensurePilotAndRegistry() {
       ...record,
       pilotId: LIVING_TRACKER_PILOT_ID,
       factClasses: "payment_percentage,claims_procedure,trust_status,financial_reporting,court_development",
-      retrievalNotes: "Use only lawful public access methods. Record access limitations rather than inferring no change.",
+      retrievalNotes: record.retrievalNotes ?? "Use only lawful public access methods. Record access limitations rather than inferring no change.",
       nextCheckAt: now,
     }).onDuplicateKeyUpdate({
       set: {

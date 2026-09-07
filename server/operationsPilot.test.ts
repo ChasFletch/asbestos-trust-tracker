@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { LIVING_TRACKER_PILOT, pilotIsActive, registrySeedFromTracker, sourceGapCandidateId } from "./operationsPilot";
 import { SOURCE_REGISTRY_OVERRIDES } from "./sourceRegistryOverrides";
+import trustFigures from "../client/src/data/trust-figures.json";
 
 describe("living-tracker pilot policy", () => {
   it("has a bounded Central-time 30-day pilot with no-charge and no-unreviewed-publication safeguards", () => {
@@ -55,5 +56,11 @@ describe("living-tracker pilot policy", () => {
       .toBe("https://www.abestasbestostrust.com/");
     expect(seed.registered.find((entry) => entry.trustSlug === "abb-lummus-global-inc-524-g-asbestos-pi-trust")?.sourceUrl)
       .toBe("https://www.abblummustrust.org/");
+  });
+
+  it("resolves every canonical trust record into a registered source or a reviewed override", () => {
+    const seed = registrySeedFromTracker(trustFigures);
+    expect(seed.sourceGaps).toEqual([]);
+    expect(seed.registered).toHaveLength(trustFigures.trusts.length + 1);
   });
 });

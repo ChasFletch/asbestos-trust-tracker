@@ -23,3 +23,9 @@
 The monitor should attempt a documented public fallback only after a registered source returns an access failure. Fallback success proves only that the source was reachable; a content change continues to create an internal candidate for source review. A fallback must not automatically replace a tracker figure, publish an article, or silently erase the original failure history.
 
 No fallback in this record requires a PACER purchase, paid record, paid data service, or external marketing/secondary source. When a fallback is unavailable or fails, the weekly coverage digest should retain the source as blocked and identify the relevant official court or administrator route for manual, no-charge follow-up.
+
+## Registration Result
+
+On September 7, 2026, the reviewed source registrations were synchronized through a controlled administrative path that writes registry and audit records only. It made no external source request, changed no public tracker fact, and did not authorize publication. The active registry now contains **56 public monitoring sources** and no unresolved source-gap candidates. Twenty-four prior source-gap records were marked verified after reviewed source registration, and **20 duplicate legacy gap rows** created during the identifier-repair transition were retired with a preserved audit disposition.
+
+The registry contains 33 registrations added or replaced in this pass: 24 source-gap resolutions plus the nine source-specific failure replacements above. Each source remains subject to normal scheduled reachability and content-change checks. A newly reachable source is not treated as evidence that a payment percentage, assets figure, trust status, claim process, or litigation fact has changed.

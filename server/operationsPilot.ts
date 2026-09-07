@@ -225,6 +225,20 @@ async function ensurePilotAndRegistry() {
   return { db, seed };
 }
 
+/**
+ * Controlled administrative synchronization used after a reviewed source
+ * registration change. It writes registry and audit-state records only; it
+ * performs no source requests, changes no public trust fact, and cannot
+ * publish an article or tracker update.
+ */
+export async function synchronizeSourceRegistry() {
+  const { seed } = await ensurePilotAndRegistry();
+  return {
+    registeredCount: seed.registered.length,
+    unresolvedSourceGaps: seed.sourceGaps,
+  };
+}
+
 async function createRun(runType: PilotRunType, sourceCount: number, scheduledFor?: Date) {
   const { db } = await ensurePilotAndRegistry();
   const id = `run-${runType}-${nanoid(14)}`;

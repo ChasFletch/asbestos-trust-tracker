@@ -427,11 +427,11 @@
 - [x] Deliver one activation report, then use the existing project queue for routine findings and a single weekly digest; do not automatically extend the pilot or expand publication authority
 
 ## Source Registry Expansion and Access-Failure Remediation (2026-09-06)
-- [ ] Extract and classify all current source-gap records and the nine first-run access failures
-- [ ] Remove duplicate source-gap audit rows created during the identifier-repair transition while preserving one durable record per unique trust gap
-- [ ] Research and verify public primary, administrator, case-agent, court, or government URLs for a bounded first registration cohort
-- [ ] Register only validated sources and document a controlled fallback path for every first-run access failure
-- [ ] Validate the expanded registry and deliver a source-safe coverage and remediation report
+- [x] Extract and classify all current source-gap records and the nine first-run access failures
+- [x] Remove duplicate source-gap audit rows created during the identifier-repair transition while preserving one durable record per unique trust gap
+- [x] Research and verify public primary, administrator, case-agent, court, or government URLs for a bounded first registration cohort
+- [x] Register only validated sources and document a controlled fallback path for every first-run access failure
+- [x] Validate the expanded registry and deliver a source-safe coverage and remediation report
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

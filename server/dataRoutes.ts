@@ -8,10 +8,13 @@ const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 
 const TRUST_FIGURES_RAW_URL = `${GITHUB_RAW_BASE}/client/src/data/trust-figures.json`;
 
+export const trustFiguresSourceUrl = (cacheBuster: number) =>
+  `${TRUST_FIGURES_RAW_URL}?cachebust=${cacheBuster}`;
+
 // ── Cache slots ──────────────────────────────────────────────────────────────
 let cachedFigures: unknown = null;
 let cacheTimestamp = 0;
-const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes; source data is maintained independently on GitHub
 
 let cachedNewsDrafts: Array<NewsDraft> | null = null;
 let newsDraftsCacheTs = 0;
@@ -89,7 +92,7 @@ export async function fetchTrustFigures(): Promise<unknown> {
     return cachedFigures;
   }
   try {
-    const res = await fetch(TRUST_FIGURES_RAW_URL, {
+    const res = await fetch(trustFiguresSourceUrl(now), {
       headers: { "Cache-Control": "no-cache" },
       signal: AbortSignal.timeout(8000),
     });
@@ -210,7 +213,9 @@ export function registerDataRoutes(app: Express) {
         res.status(503).json({ error: "Trust figures temporarily unavailable" });
         return;
       }
-      res.set("Cache-Control", "public, max-age=3600");
+      // The server retains a five-minute resilience cache, but browsers and
+      // edge caches must not keep a prior source revision after a data update.
+      res.set("Cache-Control", "no-store");
       res.json(data);
     } catch {
       res.status(500).json({ error: "Internal error" });
@@ -242,7 +247,7 @@ export function registerDataRoutes(app: Express) {
       ];
       res.set("Content-Type", "text/csv; charset=utf-8");
       res.set("Content-Disposition", 'attachment; filename="asbestos-trusts.csv"');
-      res.set("Cache-Control", "public, max-age=3600");
+      res.set("Cache-Control", "no-store");
       res.send(rows.join("\r\n"));
     } catch {
       res.status(500).json({ error: "Failed to generate CSV" });

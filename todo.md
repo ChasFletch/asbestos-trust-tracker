@@ -433,6 +433,12 @@
 - [x] Register only validated sources and document a controlled fallback path for every first-run access failure
 - [x] Validate the expanded registry and deliver a source-safe coverage and remediation report
 
+## Historical-Source Backlog and Monthly Research Integration (2026-09-07)
+- [x] Inventory unresolved historical payment, assets, and claims-data source gaps with their existing evidence, date ranges, and no-charge retrieval options
+- [x] Rank the backlog using documentary value, current public-data impact, primary-source feasibility, and the approved monthly research-time limit
+- [x] Integrate the ranked worklist into the existing monthly research-preparation run without changing public figures or creating an unreviewed publication path
+- [x] Add regression coverage and validate the durable monthly worklist output
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

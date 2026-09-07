@@ -8,6 +8,7 @@ import { notifyOwner } from "./_core/notification";
 import { sdk } from "./_core/sdk";
 import { operationsCandidates, operationsPilots, operationsRuns, sourceRegistry } from "../drizzle/schema";
 import { SOURCE_REGISTRY_OVERRIDES, type SourceClass } from "./sourceRegistryOverrides";
+import { MONTHLY_HISTORICAL_SOURCE_MINUTES, monthlyHistoricalSourceWorklist } from "./historicalSourceBacklog";
 
 export const LIVING_TRACKER_PILOT_ID = "asbestostrusts-living-tracker-2026-09";
 export const LIVING_TRACKER_PILOT = {
@@ -506,11 +507,26 @@ export async function runResearchPreparation(runType: "monthly_research_prep" | 
   }
   const { db } = await ensurePilotAndRegistry();
   const candidates = await db.select().from(operationsCandidates).where(eq(operationsCandidates.pilotId, LIVING_TRACKER_PILOT_ID));
-  const priority = candidates.filter((candidate) => ["detected", "under_review", "blocked"].includes(candidate.status)).slice(0, 5);
+  const priority = candidates
+    .filter((candidate) => ["detected", "under_review", "blocked"].includes(candidate.status) && candidate.severity !== "routine")
+    .slice(0, 2);
+  const historicalWorklist = runType === "monthly_research_prep"
+    ? monthlyHistoricalSourceWorklist()
+    : [];
   const { id } = await createRun(runType, 0, scheduledFor);
-  const result = { priorityCandidateIds: priority.map((candidate) => candidate.id), count: priority.length, noAutomaticPublication: true };
-  await completeRun({ db, id, status: "success", checkedCount: 0, changedCount: 0, failedCount: 0, candidateCount: priority.length, resultSummary: `${runType === "monthly_research_prep" ? "Monthly research" : "Quarterly audit"} preparation recorded ${priority.length} priority candidate(s).`, result });
-  await notifyOwner({ title: `AsbestosTrusts — ${runType === "monthly_research_prep" ? "Monthly Research" : "Quarterly Audit"} Preparation`, content: `${priority.length} priority candidate(s) are in the existing project queue. This preparation record authorizes no public change by itself.` });
+  const result = {
+    priorityCandidateIds: priority.map((candidate) => candidate.id),
+    historicalWorklist,
+    historicalResearchMinutes: historicalWorklist.reduce((total, item) => total + item.expectedMinutes, 0),
+    historicalResearchCapMinutes: runType === "monthly_research_prep" ? MONTHLY_HISTORICAL_SOURCE_MINUTES : 0,
+    count: priority.length + historicalWorklist.length,
+    noAutomaticPublication: true,
+  };
+  const backlogSummary = historicalWorklist.length
+    ? ` and ${historicalWorklist.length} ranked historical-source item(s)`
+    : "";
+  await completeRun({ db, id, status: "success", checkedCount: 0, changedCount: 0, failedCount: 0, candidateCount: result.count, resultSummary: `${runType === "monthly_research_prep" ? "Monthly research" : "Quarterly audit"} preparation recorded ${priority.length} time-sensitive candidate(s)${backlogSummary}.`, result });
+  await notifyOwner({ title: `AsbestosTrusts — ${runType === "monthly_research_prep" ? "Monthly Research" : "Quarterly Audit"} Preparation`, content: `${priority.length} time-sensitive candidate(s)${backlogSummary} are in the existing project queue. The monthly historical worklist is capped at ${result.historicalResearchMinutes}/${result.historicalResearchCapMinutes} minutes and authorizes no public change by itself.` });
   return result;
 }
 

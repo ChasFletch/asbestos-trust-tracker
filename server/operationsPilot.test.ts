@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { LIVING_TRACKER_PILOT, pilotIsActive, registrySeedFromTracker, sourceGapCandidateId } from "./operationsPilot";
 import { SOURCE_REGISTRY_OVERRIDES } from "./sourceRegistryOverrides";
 import trustFigures from "../client/src/data/trust-figures.json";
+import { MONTHLY_HISTORICAL_SOURCE_MINUTES, monthlyHistoricalSourceWorklist } from "./historicalSourceBacklog";
 
 describe("living-tracker pilot policy", () => {
   it("has a bounded Central-time 30-day pilot with no-charge and no-unreviewed-publication safeguards", () => {
@@ -62,5 +63,18 @@ describe("living-tracker pilot policy", () => {
     const seed = registrySeedFromTracker(trustFigures);
     expect(seed.sourceGaps).toEqual([]);
     expect(seed.registered).toHaveLength(trustFigures.trusts.length + 1);
+  });
+
+  it("uses a ranked, no-charge historical-source worklist that fits the monthly research cap", () => {
+    const worklist = monthlyHistoricalSourceWorklist();
+    expect(worklist.map((item) => item.trustName)).toEqual([
+      "Pittsburgh Corning Corporation Asbestos PI Trust",
+      "Celotex Asbestos Settlement Trust",
+      "Owens Corning/Fibreboard Asbestos PI Trust",
+      "Armstrong World Industries Asbestos PI Trust",
+      "United States Gypsum (USG) Asbestos Trust",
+    ]);
+    expect(worklist.reduce((total, item) => total + item.expectedMinutes, 0)).toBe(MONTHLY_HISTORICAL_SOURCE_MINUTES);
+    expect(worklist.every((item) => /public|no-charge/i.test(item.noChargeResearchPath))).toBe(true);
   });
 });

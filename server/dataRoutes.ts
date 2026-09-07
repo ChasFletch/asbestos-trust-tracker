@@ -14,7 +14,7 @@ export const trustFiguresSourceUrl = (cacheBuster: number) =>
 // ── Cache slots ──────────────────────────────────────────────────────────────
 let cachedFigures: unknown = null;
 let cacheTimestamp = 0;
-const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes; source data is maintained independently on GitHub
+const CACHE_TTL_MS = 60 * 1000; // 1 minute; source data is maintained independently on GitHub
 
 let cachedNewsDrafts: Array<NewsDraft> | null = null;
 let newsDraftsCacheTs = 0;
@@ -213,7 +213,7 @@ export function registerDataRoutes(app: Express) {
         res.status(503).json({ error: "Trust figures temporarily unavailable" });
         return;
       }
-      // The server retains a five-minute resilience cache, but browsers and
+      // The server retains a one-minute resilience cache, but browsers and
       // edge caches must not keep a prior source revision after a data update.
       res.set("Cache-Control", "no-store");
       res.json(data);

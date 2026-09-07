@@ -11,7 +11,7 @@ describe("runtime trust-figure freshness", () => {
     expect(trustFiguresSourceUrl(1_788_750_000_000)).toBe(
       "https://raw.githubusercontent.com/ChasFletch/asbestos-trust-tracker/main/client/src/data/trust-figures.json?cachebust=1788750000000"
     );
-    expect(dataRoutes).toContain("const CACHE_TTL_MS = 5 * 60 * 1000");
+    expect(dataRoutes).toContain("const CACHE_TTL_MS = 60 * 1000");
     expect(dataRoutes).toContain("fetch(trustFiguresSourceUrl(now)");
   });
 

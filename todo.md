@@ -412,12 +412,12 @@
 ## Proactive Living-Tracker Operations Proposal (2026-09-06)
 - [x] Audit existing monitoring, source coverage, editorial workflow, and publication safeguards
 - [x] Propose a phased daily, weekly, monthly, and quarterly operating schedule with source hierarchy, approval gates, and alerting
-- [ ] Present implementation approaches and obtain approval before creating or changing recurring tasks
+- [x] Present implementation approaches and obtain approval before creating or changing recurring tasks
 
 ## Revised Living-Tracker Operating Plan (2026-09-06)
 - [x] Consolidate the requested three-article weekly publishing target, daily source detection, explicit weekly coverage commitment, delegated review ownership, and Central-local cadence
 - [x] Define the 30-day pilot metrics, durable monitoring evidence, bounded notification model, and estimated usage limits
-- [ ] Present the revised plan and any remaining standing-permission decisions before configuration
+- [x] Present the revised plan and any remaining standing-permission decisions before configuration
 
 ## Approved 30-Day Hybrid Living-Tracker Pilot (2026-09-06)
 - [x] Record the pilot’s start/end dates, America/Chicago cadence, actual primary/backup operational owners, scope limits, no-charge PACER rule, and numerical research-time/usage ceilings

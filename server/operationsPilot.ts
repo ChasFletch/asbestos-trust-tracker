@@ -168,7 +168,7 @@ async function ensurePilotAndRegistry() {
     });
   }
   for (const gap of seed.sourceGaps) {
-    const candidateId = `source-gap-${gap.trustSlug}`;
+    const candidateId = sourceGapCandidateId(gap.trustSlug);
     await db.insert(operationsCandidates).values({
       id: candidateId,
       pilotId: LIVING_TRACKER_PILOT_ID,
@@ -253,6 +253,10 @@ function nextCheckForCadence(cadence: "daily" | "weekly", now: Date) {
 
 function fingerprint(text: string) {
   return createHash("sha256").update(text.slice(0, 1_000_000)).digest("hex");
+}
+
+export function sourceGapCandidateId(trustSlug: string) {
+  return `source-gap-${createHash("sha256").update(trustSlug).digest("hex").slice(0, 24)}`;
 }
 
 function chicagoCalendar(now = new Date()) {

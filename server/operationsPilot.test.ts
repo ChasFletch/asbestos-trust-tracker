@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LIVING_TRACKER_PILOT, pilotIsActive, registrySeedFromTracker } from "./operationsPilot";
+import { LIVING_TRACKER_PILOT, pilotIsActive, registrySeedFromTracker, sourceGapCandidateId } from "./operationsPilot";
 
 describe("living-tracker pilot policy", () => {
   it("has a bounded Central-time 30-day pilot with no-charge and no-unreviewed-publication safeguards", () => {
@@ -33,5 +33,11 @@ describe("living-tracker pilot policy", () => {
     expect(seed.registered.find((entry) => entry.trustSlug === "manville-personal-injury-settlement-trust")?.checkCadence).toBe("daily");
     expect(seed.registered.some((entry) => entry.id === "source-manville-official-announcement-feed")).toBe(true);
     expect(seed.sourceGaps).toEqual([{ trustSlug: "no-source-trust", trustName: "No Source Trust" }]);
+  });
+
+  it("uses bounded durable identifiers for source gaps with long trust names", () => {
+    const id = sourceGapCandidateId("t-h-agriculture-nutrition-l-l-c-asbestos-personal-injury-trust-than");
+    expect(id).toMatch(/^source-gap-[a-f0-9]{24}$/);
+    expect(id.length).toBeLessThanOrEqual(64);
   });
 });

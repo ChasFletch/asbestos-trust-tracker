@@ -399,9 +399,14 @@
 - [x] Validate the new cross-page guard with full tests, TypeScript, production build, and rendered SSR output
 
 ## Origin/Main Deployment and Kaiser HTML Verification (2026-09-04)
-- [ ] Synchronize and deploy origin/main commit `14bb326` without overwriting concurrent changes
-- [ ] Verify raw production HTML removes “of scheduled value” and contains the new Kaiser sections
-- [ ] Send a build-complete independent re-verification handoff to RON through an available approved channel
+- [x] Synchronize and deploy origin/main commit `14bb326` without overwriting concurrent changes
+- [x] Verify raw production HTML removes “of scheduled value” and contains the new Kaiser sections
+- [x] Send a build-complete independent re-verification handoff to RON through the intended channel (relayed by the user because this session cannot post to the bus)
+
+## Manville September 3 Notice and Existing Monitor Audit (2026-09-06)
+- [x] Verify the supported Manville payment percentage and effective date against the September 3 primary-source notice and current tracker data
+- [ ] Compare live production output with the canonical data and inspect the existing monitor’s schedule and latest run record
+- [ ] Diagnose any monitoring gap and repair it only within the existing monitor, then provide one consolidated assessment
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

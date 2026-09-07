@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { checkCrawlerVisibility } from "./scheduledJobs";
+import { checkCrawlerVisibility, checkManvillePaymentNotice } from "./scheduledJobs";
 
 const fixtureOrigin = "https://example.test";
 const remaining = 16_033_489_279;
@@ -65,5 +65,53 @@ describe("scheduled crawler visibility monitor", () => {
 
     expect(result.ok).toBe(false);
     expect(result.checks).toContainEqual(expect.objectContaining({ path: "/embed/clock", ok: false, detail: "HTTP 404" }));
+  });
+
+  it("uses the existing weekly monitor to flag a newer official Manville payment notice for source review", async () => {
+    const fetchImpl = ((url: string | URL | Request) => {
+      const href = String(url);
+      if (href.includes("/api/trust-figures")) {
+        return Promise.resolve(new Response(JSON.stringify({
+          trusts: [{
+            name: "Manville Personal Injury Settlement Trust",
+            paymentPctNoticePublishedAt: "2026-09-03",
+          }],
+        }), { status: 200 }));
+      }
+      if (href.includes("claimsres.com/category/manville/feed")) {
+        return Promise.resolve(new Response(`<?xml version="1.0"?><rss><channel><item><title>Manville: Increase in the pro rata payment percentage</title><link>https://www.claimsres.com/newer-manville-notice/</link><pubDate>Mon, 05 Oct 2026 12:00:00 +0000</pubDate></item></channel></rss>`, { status: 200 }));
+      }
+      return Promise.resolve(new Response("Not found", { status: 404 }));
+    }) as typeof fetch;
+
+    const result = await checkManvillePaymentNotice({ canonicalOrigin: fixtureOrigin, fetchImpl });
+
+    expect(result.ok).toBe(false);
+    expect(result.latestNoticeDate).toBe("2026-10-05");
+    expect(result.latestNoticeUrl).toBe("https://www.claimsres.com/newer-manville-notice/");
+    expect(result.detail).toContain("source review required");
+  });
+
+  it("passes the Manville notice check when the reviewed tracker notice date matches the official feed", async () => {
+    const fetchImpl = ((url: string | URL | Request) => {
+      const href = String(url);
+      if (href.includes("/api/trust-figures")) {
+        return Promise.resolve(new Response(JSON.stringify({
+          trusts: [{
+            name: "Manville Personal Injury Settlement Trust",
+            paymentPctNoticePublishedAt: "2026-09-03",
+          }],
+        }), { status: 200 }));
+      }
+      return Promise.resolve(new Response(`<?xml version="1.0"?><rss><channel><item><title><![CDATA[Manville: Increase in the pro rata payment percentage]]></title><link>https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/</link><pubDate>Thu, 03 Sep 2026 14:54:20 +0000</pubDate></item></channel></rss>`, { status: 200 }));
+    }) as typeof fetch;
+
+    const result = await checkManvillePaymentNotice({ canonicalOrigin: fixtureOrigin, fetchImpl });
+
+    expect(result).toMatchObject({
+      ok: true,
+      latestNoticeDate: "2026-09-03",
+      latestNoticeUrl: "https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/",
+    });
   });
 });

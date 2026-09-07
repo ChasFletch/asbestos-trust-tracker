@@ -28,7 +28,7 @@ describe("August 29, 2026 primary-source trust update", () => {
     );
   });
 
-  it("uses Manville's Q2 filed equity and liquidated-claims figures with an explicit convention note", () => {
+  it("uses Manville's Q2 filed equity figures and the later source-verified payment-increase notice", () => {
     const manville = trustByName("Manville Personal Injury Settlement Trust");
 
     expect(manville).toMatchObject({
@@ -37,12 +37,22 @@ describe("August 29, 2026 primary-source trust update", () => {
       cumulativePaid: 5343613806,
       cumulativePaidAsOf: "2026-06-30",
       cumulativeClaims: 1041171,
+      paymentPercentage: 5.6,
+      paymentPctEffective: "2026-09-02",
+      paymentPctAsOf: "2026-09-02",
+      paymentPctNoticePublishedAt: "2026-09-03",
+      paymentPctConfidence: "filed",
+      direction: "up",
     });
     expect(manville?.cumulativePaidSource).toContain("Total Trust Liquidated Claims");
     expect(manville?.cumulativePaidSource).toContain("unpaid claims");
     expect(manville?.assetsBasisUrl).toBe("/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf");
     expect(primarySourceDocumentsBySlug["manville-personal-injury-settlement-trust"]?.map((document) => document.url)).toContain(
       "/manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf"
+    );
+    expect(manville?.paymentPercentageSource).toContain("from 5.1% to 5.6%");
+    expect(manville?.paymentPercentageSourceUrl).toBe(
+      "https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/"
     );
   });
 

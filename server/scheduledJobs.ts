@@ -18,6 +18,13 @@ export type CrawlerVisibilityResult = {
   checks: CrawlerCheck[];
 };
 
+export type PaymentNoticeCheck = {
+  ok: boolean;
+  detail: string;
+  latestNoticeDate?: string;
+  latestNoticeUrl?: string;
+};
+
 const formatCurrency = (value: number) => `$${value.toLocaleString("en-US")}`;
 
 /**
@@ -120,6 +127,71 @@ export async function checkCrawlerVisibility(options: {
 }
 
 /**
+ * Checks the official CRMC Manville announcements feed within the established
+ * weekly monitor. It does not alter tracker data automatically; a newer notice
+ * is surfaced to the owner for source review before any public update.
+ */
+export async function checkManvillePaymentNotice(options: {
+  canonicalOrigin?: string;
+  fetchImpl?: typeof fetch;
+} = {}): Promise<PaymentNoticeCheck> {
+  const canonicalOrigin = (options.canonicalOrigin ?? ENV.canonicalOrigin).replace(/\/$/, "");
+  const fetchImpl = options.fetchImpl ?? fetch;
+  const headers = {
+    "User-Agent": "AsbestosTrusts-Notice-Monitor/1.0 (+https://asbestostrusts.org/methodology)",
+    "Cache-Control": "no-cache",
+  };
+
+  try {
+    const [sourceResponse, feedResponse] = await Promise.all([
+      fetchImpl(`${canonicalOrigin}/api/trust-figures`, { headers, signal: AbortSignal.timeout(15_000) }),
+      fetchImpl("https://www.claimsres.com/category/manville/feed/", { headers, signal: AbortSignal.timeout(15_000) }),
+    ]);
+    if (!sourceResponse.ok) return { ok: false, detail: `Tracker API HTTP ${sourceResponse.status}` };
+    if (!feedResponse.ok) return { ok: false, detail: `Official Manville feed HTTP ${feedResponse.status}` };
+
+    const source = await sourceResponse.json() as {
+      trusts?: Array<{ name?: string; paymentPctNoticePublishedAt?: string }>;
+    };
+    const manville = source.trusts?.find((trust) => trust.name === "Manville Personal Injury Settlement Trust");
+    if (!manville?.paymentPctNoticePublishedAt) {
+      return { ok: false, detail: "Tracker record is missing the reviewed Manville notice publication date" };
+    }
+
+    const feed = await feedResponse.text();
+    const items = Array.from(feed.matchAll(/<item>([\s\S]*?)<\/item>/gi)).map((match) => match[1]);
+    const noticeItem = items.find((item) => /<title><!\[CDATA\[Manville: Increase in the pro rata payment percentage\]\]><\/title>|<title>Manville: Increase in the pro rata payment percentage<\/title>/i.test(item));
+    if (!noticeItem) return { ok: false, detail: "Official Manville payment-increase notice was not found in the announcements feed" };
+
+    const publicationMatch = noticeItem.match(/<pubDate>([^<]+)<\/pubDate>/i);
+    const linkMatch = noticeItem.match(/<link>([^<]+)<\/link>/i);
+    const latestNoticeDate = publicationMatch ? new Date(publicationMatch[1]).toISOString().slice(0, 10) : undefined;
+    const latestNoticeUrl = linkMatch?.[1];
+    if (!latestNoticeDate || Number.isNaN(Date.parse(latestNoticeDate))) {
+      return { ok: false, detail: "Official Manville notice feed contains no parseable publication date", latestNoticeUrl };
+    }
+
+    if (latestNoticeDate > manville.paymentPctNoticePublishedAt) {
+      return {
+        ok: false,
+        detail: `Official Manville payment notice dated ${latestNoticeDate} is newer than the tracker’s reviewed notice date ${manville.paymentPctNoticePublishedAt}; source review required`,
+        latestNoticeDate,
+        latestNoticeUrl,
+      };
+    }
+
+    return {
+      ok: true,
+      detail: `Official Manville payment notice is current through ${manville.paymentPctNoticePublishedAt}`,
+      latestNoticeDate,
+      latestNoticeUrl,
+    };
+  } catch (error) {
+    return { ok: false, detail: error instanceof Error ? error.message : "Unknown Manville notice-monitor failure" };
+  }
+}
+
+/**
  * Weekly staleness check — called by the Heartbeat cron every Monday 09:00 UTC.
  * Marks trust records as stale if their net_assets_as_of date is > 14 months old,
  * or if the payment_pct_effective date is > 13 months old.
@@ -133,6 +205,7 @@ export async function stalenessCheckHandler(req: Request, res: Response) {
     }
 
     const crawlerVisibility = await checkCrawlerVisibility();
+    const manvillePaymentNotice = await checkManvillePaymentNotice();
 
     const db = await getDb();
     if (!db) {
@@ -199,9 +272,13 @@ export async function stalenessCheckHandler(req: Request, res: Response) {
       ? "Crawler visibility check: homepage, embed clock, and CSV export are healthy."
       : `Crawler visibility check FAILED: ${crawlerVisibility.checks.filter((check) => !check.ok).map((check) => `${check.path} (${check.detail})`).join("; ")}.`;
 
+    const manvilleNoticeMessage = manvillePaymentNotice.ok
+      ? `Manville notice check: ${manvillePaymentNotice.detail}.`
+      : `Manville notice check REQUIRES REVIEW: ${manvillePaymentNotice.detail}.`;
+
     await notifyOwner({
       title: "AsbestosTrusts — Weekly Staleness Check",
-      content: `${message}\n\n${crawlerMessage}`,
+      content: `${message}\n\n${crawlerMessage}\n\n${manvilleNoticeMessage}`,
     });
 
     return res.json({
@@ -209,6 +286,7 @@ export async function stalenessCheckHandler(req: Request, res: Response) {
       newlyStale: nowStale,
       alreadyStale,
       crawlerVisibility,
+      manvillePaymentNotice,
       timestamp: now.toISOString(),
     });
   } catch (err: any) {

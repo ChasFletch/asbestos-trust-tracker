@@ -224,7 +224,9 @@ export function registerDataRoutes(app: Express) {
       const jsonTrusts = data?.trusts ?? [];
       const headers = [
         "name", "shortName", "netAssets", "assetsAsOf", "assetsBasis",
-        "paymentPercentage", "status", "confidence", "note",
+        "paymentPercentage", "paymentPctEffective", "paymentPctAsOf",
+        "paymentPctNoticePublishedAt", "paymentPercentageSourceUrl",
+        "status", "confidence", "note",
       ];
       const escape = (v: unknown) => {
         if (v == null) return "";

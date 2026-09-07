@@ -86,10 +86,15 @@
    "netAssets": 570516505,
    "assetsAsOf": "2026-06-30",
    "assetsBasis": "net claimants' equity (Q2 2026 filing, Bankr. S.D.N.Y. Doc 4480, filed 2026-07-27)",
-   "paymentPercentage": 5.1,
+   "paymentPercentage": 5.6,
    "status": "active",
    "confidence": "filed",
-   "note": "5.1% since Feb 2021. Q2 2026 filing reports $5,343,613,806 in cumulative Trust liquidated claims on 1,041,171 claims; this series is a liquidated-value convention, not a pure cash-paid total, and the filing separately reports unpaid claims.",
+   "paymentPctConfidence": "filed",
+   "paymentPctAsOf": "2026-09-02",
+   "paymentPctNoticePublishedAt": "2026-09-03",
+   "paymentPercentageSource": "Claims Resolution Management Corporation, ‘Manville: Increase in the pro rata payment percentage’ (posted 2026-09-03): ‘approved effective immediately, an increase in the pro rata payment percentage from 5.1% to 5.6%.’ The notice states eClaims changes were implemented September 2, 2026.",
+   "paymentPercentageSourceUrl": "https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/",
+   "note": "Payment percentage increased from 5.1% to 5.6%, effective immediately; CRMC states eClaims changes were implemented 2026-09-02 and posted the official notice 2026-09-03. Q2 2026 filing reports $5,343,613,806 in cumulative Trust liquidated claims on 1,041,171 claims; this series is a liquidated-value convention, not a pure cash-paid total, and the filing separately reports unpaid claims.",
    "cumulativePaid": 5343613806,
    "cumulativePaidAsOf": "2026-06-30",
    "cumulativeClaims": 1041171,
@@ -104,8 +109,8 @@
    "court": "S.D.N.Y.",
    "docket": "82-11656",
    "website": "https://mantrust.claimsres.com",
-   "paymentPctEffective": "2021-02-01",
-   "direction": "stable",
+   "paymentPctEffective": "2026-09-02",
+   "direction": "up",
    "reportingFrequency": "quarterly"
   },
   {
@@ -1403,6 +1408,15 @@
   }
  ],
  "changes": [
+  {
+   "date": "2026-09-03",
+   "type": "payment_percentage_change",
+   "trust": "Manville Personal Injury Settlement Trust",
+   "detail": "Claims Resolution Management Corporation posted an official notice stating that the Manville Trust approved an immediate pro rata payment-percentage increase from 5.1% to 5.6%. The notice states that eClaims changes were implemented on 2026-09-02, setting future offers to 5.6% and reissuing outstanding offers at 5.6%; it was posted 2026-09-03.",
+   "source": "Claims Resolution Management Corporation, ‘Manville: Increase in the pro rata payment percentage,’ posted 2026-09-03",
+   "sourceUrl": "https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/",
+   "confidence": "filed"
+  },
   {
    "date": "2026-09-03",
    "type": "future_trust",

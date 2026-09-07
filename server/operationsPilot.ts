@@ -278,7 +278,7 @@ function isFirstFullBusinessWeek(now = new Date()) {
 
 function isQuarterlyAuditWindow(now = new Date()) {
   const { month, day, weekday } = chicagoCalendar(now);
-  return [1, 4, 7, 10].includes(month) && day <= 10 && ["Mon", "Tue", "Wed", "Thu", "Fri"].includes(weekday);
+  return [1, 4, 7, 10].includes(month) && day <= 7 && weekday === "Mon";
 }
 
 export async function runDailySourceDetection(options: {
@@ -450,7 +450,7 @@ export async function runResearchPreparation(runType: "monthly_research_prep" | 
     return recordSkippedRun(runType, "Outside the first full Central-time business week; no monthly research preparation was performed.", scheduledFor);
   }
   if (runType === "quarterly_audit_prep" && !isQuarterlyAuditWindow()) {
-    return recordSkippedRun(runType, "Outside the first ten Central-time business days of a quarter; no quarterly audit preparation was performed.", scheduledFor);
+    return recordSkippedRun(runType, "Outside the first Monday of a quarter in Central time; no quarterly audit preparation was performed.", scheduledFor);
   }
   const { db } = await ensurePilotAndRegistry();
   const candidates = await db.select().from(operationsCandidates).where(eq(operationsCandidates.pilotId, LIVING_TRACKER_PILOT_ID));

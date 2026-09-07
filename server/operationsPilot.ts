@@ -1,12 +1,13 @@
 import { createHash } from "node:crypto";
 import type { Request, Response } from "express";
-import { asc, eq } from "drizzle-orm";
+import { and, asc, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { fetchTrustFigures } from "./dataRoutes";
 import { getDb } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { sdk } from "./_core/sdk";
 import { operationsCandidates, operationsPilots, operationsRuns, sourceRegistry } from "../drizzle/schema";
+import { SOURCE_REGISTRY_OVERRIDES, type SourceClass } from "./sourceRegistryOverrides";
 
 export const LIVING_TRACKER_PILOT_ID = "asbestostrusts-living-tracker-2026-09";
 export const LIVING_TRACKER_PILOT = {
@@ -41,6 +42,7 @@ type TrackerTrust = {
   paymentPctNoticeUrl?: unknown;
   paymentPctNoticePublishedAt?: unknown;
   netAssetsSourceUrl?: unknown;
+  sourceUrl?: unknown;
 };
 
 type TrackerPayload = { trusts?: unknown[] };
@@ -53,7 +55,7 @@ function valueString(value: unknown) {
   return typeof value === "string" && value.trim() ? value.trim() : undefined;
 }
 
-function sourceClassForUrl(url: string): "official_trust" | "administrator" | "case_agent" | "court" | "government" | "primary_document" {
+function sourceClassForUrl(url: string): SourceClass {
   if (/claimsres|verus|eclaim|trustservices/i.test(url)) return "administrator";
   if (/veritaglobal|omniagent|kroll|stretto/i.test(url)) return "case_agent";
   if (/courtlistener|uscourts|ecf|pacer/i.test(url)) return "court";
@@ -64,6 +66,7 @@ function sourceClassForUrl(url: string): "official_trust" | "administrator" | "c
 
 function bestSourceUrl(trust: TrackerTrust) {
   const candidates = [
+    trust.sourceUrl,
     trust.paymentPercentageSourceUrl,
     trust.paymentPctSourceUrl,
     trust.paymentPctNoticeUrl,
@@ -81,9 +84,10 @@ export function registrySeedFromTracker(data: unknown) {
     trustSlug: string;
     trustName: string;
     sourceUrl: string;
-    sourceClass: ReturnType<typeof sourceClassForUrl>;
+    sourceClass: SourceClass;
     checkCadence: "daily" | "weekly";
     priority: number;
+    retrievalNotes?: string;
   }>();
   const sourceGaps: Array<{ trustSlug: string; trustName: string }> = [];
 
@@ -92,7 +96,8 @@ export function registrySeedFromTracker(data: unknown) {
     const trustName = valueString(trust.name);
     if (!trustName) continue;
     const trustSlug = valueString(trust.slug) ?? slugify(trustName);
-    const sourceUrl = bestSourceUrl(trust);
+    const override = SOURCE_REGISTRY_OVERRIDES[trustSlug];
+    const sourceUrl = override?.sourceUrl ?? bestSourceUrl(trust);
     if (!sourceUrl) {
       sourceGaps.push({ trustSlug, trustName });
       continue;
@@ -101,11 +106,12 @@ export function registrySeedFromTracker(data: unknown) {
     registered.set(`${trustSlug}:${sourceUrl}`, {
       id: `source-${trustSlug}-${createHash("sha256").update(sourceUrl).digest("hex").slice(0, 12)}`,
       trustSlug,
-      trustName,
+      trustName: override?.trustName ?? trustName,
       sourceUrl,
-      sourceClass: sourceClassForUrl(sourceUrl),
+      sourceClass: override?.sourceClass ?? sourceClassForUrl(sourceUrl),
       checkCadence: isManville ? "daily" : "weekly",
       priority: isManville ? 1 : 2,
+      retrievalNotes: override?.retrievalNotes,
     });
   }
 
@@ -150,6 +156,16 @@ async function ensurePilotAndRegistry() {
 
   const sourceData = await fetchTrustFigures();
   const seed = registrySeedFromTracker(sourceData);
+  const overriddenSlugs = Object.keys(SOURCE_REGISTRY_OVERRIDES);
+  for (const trustSlug of overriddenSlugs) {
+    await db.update(sourceRegistry).set({
+      isActive: false,
+      retrievalNotes: `Superseded by reviewed 2026-09-07 source registration for ${trustSlug}.`,
+    }).where(and(
+      eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID),
+      eq(sourceRegistry.trustSlug, trustSlug),
+    ));
+  }
   for (const record of seed.registered) {
     await db.insert(sourceRegistry).values({
       ...record,
@@ -163,7 +179,9 @@ async function ensurePilotAndRegistry() {
         sourceClass: record.sourceClass,
         checkCadence: record.checkCadence,
         priority: record.priority,
+        retrievalNotes: record.retrievalNotes ?? "Use only lawful public access methods. Record access limitations rather than inferring no change.",
         isActive: true,
+        nextCheckAt: now,
       },
     });
   }
@@ -183,6 +201,26 @@ async function ensurePilotAndRegistry() {
       disposition: "Initial source-registry gap recorded.",
       reviewedAt: now,
     }).onDuplicateKeyUpdate({ set: { updatedAt: now } });
+  }
+  for (const trustSlug of overriddenSlugs) {
+    const override = SOURCE_REGISTRY_OVERRIDES[trustSlug];
+    const disposition = `Superseded after registering reviewed public ${override.sourceClass} source ${override.sourceUrl}. Reachability and content remain subject to normal source checks.`;
+    await db.update(operationsCandidates).set({
+      status: "rejected",
+      reviewedAt: now,
+      disposition: "Superseded duplicate source-gap record created during the identifier-repair transition.",
+    }).where(and(
+      eq(operationsCandidates.pilotId, LIVING_TRACKER_PILOT_ID),
+      eq(operationsCandidates.id, `source-gap-${trustSlug}`),
+    ));
+    await db.update(operationsCandidates).set({
+      status: "verified",
+      reviewedAt: now,
+      disposition,
+    }).where(and(
+      eq(operationsCandidates.pilotId, LIVING_TRACKER_PILOT_ID),
+      eq(operationsCandidates.id, sourceGapCandidateId(trustSlug)),
+    ));
   }
   return { db, seed };
 }

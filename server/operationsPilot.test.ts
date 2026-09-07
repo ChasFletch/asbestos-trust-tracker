@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { LIVING_TRACKER_PILOT, pilotIsActive, registrySeedFromTracker, sourceGapCandidateId } from "./operationsPilot";
+import { SOURCE_REGISTRY_OVERRIDES } from "./sourceRegistryOverrides";
 
 describe("living-tracker pilot policy", () => {
   it("has a bounded Central-time 30-day pilot with no-charge and no-unreviewed-publication safeguards", () => {
@@ -39,5 +40,20 @@ describe("living-tracker pilot policy", () => {
     const id = sourceGapCandidateId("t-h-agriculture-nutrition-l-l-c-asbestos-personal-injury-trust-than");
     expect(id).toMatch(/^source-gap-[a-f0-9]{24}$/);
     expect(id.length).toBeLessThanOrEqual(64);
+  });
+
+  it("promotes reviewed public source registrations and preserves direct filed-document URLs", () => {
+    const seed = registrySeedFromTracker({
+      trusts: [
+        { name: "A-Best Products Asbestos Trust" },
+        { name: "ABB Lummus Global Inc. 524(g) Asbestos PI Trust", sourceUrl: "https://trust.example/filed-report.pdf" },
+      ],
+    });
+    expect(Object.keys(SOURCE_REGISTRY_OVERRIDES)).toHaveLength(33);
+    expect(seed.sourceGaps).toEqual([]);
+    expect(seed.registered.find((entry) => entry.trustSlug === "a-best-products-asbestos-trust")?.sourceUrl)
+      .toBe("https://www.abestasbestostrust.com/");
+    expect(seed.registered.find((entry) => entry.trustSlug === "abb-lummus-global-inc-524-g-asbestos-pi-trust")?.sourceUrl)
+      .toBe("https://www.abblummustrust.org/");
   });
 });

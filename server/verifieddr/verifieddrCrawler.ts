@@ -44,6 +44,7 @@ export type VerifiedDrReporterOptions = {
   endpoint?: string;
   fetchImpl?: typeof fetch;
   now?: () => Date;
+  timeoutMs?: number;
   onError?: (error: unknown) => void;
 };
 
@@ -90,6 +91,7 @@ export async function reportVerifiedDrCrawlerEvent(
 
   const fetchImpl = options.fetchImpl ?? fetch;
   const endpoint = options.endpoint ?? VERIFIEDDR_CRAWLER_ENDPOINT;
+  const timeoutMs = options.timeoutMs ?? 8_000;
   const url = new URL(request.originalUrl || request.url || "/", options.canonicalOrigin);
   const sourceKey = `${endpoint}|${url.hostname}|server`;
   const headers = {
@@ -113,6 +115,7 @@ export async function reportVerifiedDrCrawlerEvent(
           referrer: referrerPath(request),
         } satisfies VerifiedDrCrawlerEvent,
       ]),
+      signal: AbortSignal.timeout(timeoutMs),
     }).then((result) => requireOk(result, "VerifiedDR crawler ingest")),
   ];
 
@@ -123,6 +126,7 @@ export async function reportVerifiedDrCrawlerEvent(
         method: "PUT",
         headers,
         body: JSON.stringify({ hostname: url.hostname, provider: "server" }),
+        signal: AbortSignal.timeout(timeoutMs),
       })
         .then((result) => requireOk(result, "VerifiedDR crawler source registration"))
         .catch((error) => {

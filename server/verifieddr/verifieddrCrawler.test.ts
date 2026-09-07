@@ -33,9 +33,9 @@ describe("VerifiedDR crawler reporting", () => {
   });
 
   it("reports a crawler with its finished status and registers the source once", async () => {
-    const calls: Array<{ method?: string; body?: string }> = [];
+    const calls: Array<{ method?: string; body?: string; signal?: AbortSignal | null }> = [];
     const fetchImpl = vi.fn(async (_url: string | URL | Request, init?: RequestInit) => {
-      calls.push({ method: init?.method, body: init?.body as string });
+      calls.push({ method: init?.method, body: init?.body as string, signal: init?.signal });
       return new Response("{}", { status: 200 });
     }) as unknown as typeof fetch;
 
@@ -48,6 +48,7 @@ describe("VerifiedDR crawler reporting", () => {
 
     expect(scheduled).toBe(true);
     expect(calls.map((call) => call.method).sort()).toEqual(["POST", "PUT"]);
+    expect(calls.every((call) => call.signal instanceof AbortSignal && !call.signal.aborted)).toBe(true);
     const event = JSON.parse(calls.find((call) => call.method === "POST")?.body ?? "[]")[0];
     expect(event).toMatchObject({
       hostname: "asbestostrusts.org",

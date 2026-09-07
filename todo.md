@@ -451,7 +451,7 @@
 - [x] Add regression, SSR, and responsive visual validation before publication
 
 ## External Verification Endpoint Reliability (2026-09-07)
-- [ ] Investigate the unrelated external VerifiedDR source-registration test timeout without weakening its real credential validation
+- [x] Investigate the unrelated external VerifiedDR source-registration test timeout without weakening its real credential validation
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

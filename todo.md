@@ -422,9 +422,9 @@
 ## Approved 30-Day Hybrid Living-Tracker Pilot (2026-09-06)
 - [x] Record the pilot’s start/end dates, America/Chicago cadence, actual primary/backup operational owners, scope limits, no-charge PACER rule, and numerical research-time/usage ceilings
 - [x] Create durable source-registry, candidate-queue, release-record, and monitoring-run records within the existing project workflow
-- [ ] Extend the existing monitoring system for daily source detection, seven-day source-coverage tracking, weekly digest preparation, monthly research preparation, and quarterly audit preparation without an unreviewed publication path
-- [ ] Create the approved recurring schedule and verify a controlled detection test plus the first actual scheduled run
-- [ ] Deliver one activation report, then use the existing project queue for routine findings and a single weekly digest; do not automatically extend the pilot or expand publication authority
+- [x] Extend the existing monitoring system for daily source detection, seven-day source-coverage tracking, weekly digest preparation, monthly research preparation, and quarterly audit preparation without an unreviewed publication path
+- [x] Create the approved recurring schedule and verify a controlled detection test plus the first actual scheduled run
+- [x] Deliver one activation report, then use the existing project queue for routine findings and a single weekly digest; do not automatically extend the pilot or expand publication authority
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

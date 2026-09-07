@@ -445,6 +445,14 @@
 - [x] Render accessible, responsive per-item recovery cards without exposing non-public operational details or treating leads as verified facts
 - [x] Add regression, SSR, and visual validation before publication
 
+## Recovery Card Source Age and Next Check (2026-09-07)
+- [x] Audit the registry timestamps and status data available for public source-age and next-check presentation
+- [x] Add data-derived source-age and scheduled next-check dates to every public recovery card
+- [x] Add regression, SSR, and responsive visual validation before publication
+
+## External Verification Endpoint Reliability (2026-09-07)
+- [ ] Investigate the unrelated external VerifiedDR source-registration test timeout without weakening its real credential validation
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

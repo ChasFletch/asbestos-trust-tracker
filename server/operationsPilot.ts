@@ -137,6 +137,76 @@ export function pilotIsActive(now = new Date()) {
   return date >= LIVING_TRACKER_PILOT.startDate && date <= LIVING_TRACKER_PILOT.endDate;
 }
 
+function chicagoDateTimeParts(now: Date) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: LIVING_TRACKER_PILOT.timezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+    weekday: "short",
+  }).formatToParts(now);
+  const get = (type: Intl.DateTimeFormatPartTypes) => parts.find((part) => part.type === type)?.value ?? "";
+  return {
+    year: Number(get("year")),
+    month: Number(get("month")),
+    day: Number(get("day")),
+    hour: Number(get("hour")),
+    minute: Number(get("minute")),
+    weekday: get("weekday"),
+  };
+}
+
+function chicagoWallTimeToUtc(year: number, month: number, day: number, hour: number, minute: number) {
+  const wallTime = Date.UTC(year, month - 1, day, hour, minute);
+  let result = new Date(wallTime);
+  for (let index = 0; index < 2; index += 1) {
+    const parts = chicagoDateTimeParts(result);
+    const displayedAsUtc = Date.UTC(parts.year, parts.month - 1, parts.day, parts.hour, parts.minute);
+    result = new Date(wallTime - (displayedAsUtc - result.getTime()));
+  }
+  return result;
+}
+
+function chicagoCalendarDateAfter(parts: ReturnType<typeof chicagoDateTimeParts>, daysToAdd: number) {
+  const date = new Date(Date.UTC(parts.year, parts.month - 1, parts.day + daysToAdd));
+  return { year: date.getUTCFullYear(), month: date.getUTCMonth() + 1, day: date.getUTCDate() };
+}
+
+/**
+ * Returns the next actual pilot monitoring slot, rather than simply adding 24
+ * hours or seven days. This keeps dashboard dates aligned with the registered
+ * 06:30 daily and Sunday 10:00 Central schedules across daylight saving time.
+ */
+export function nextScheduledMonitoringCheck(cadence: "daily" | "weekly", now = new Date()) {
+  const current = chicagoDateTimeParts(now);
+  const slot = cadence === "daily" ? { hour: 6, minute: 30 } : { hour: 10, minute: 0 };
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let daysToAdd = cadence === "daily"
+    ? 0
+    : (7 - weekdays.indexOf(current.weekday)) % 7;
+  let date = chicagoCalendarDateAfter(current, daysToAdd);
+  let candidate = chicagoWallTimeToUtc(date.year, date.month, date.day, slot.hour, slot.minute);
+  if (candidate <= now) {
+    daysToAdd += cadence === "daily" ? 1 : 7;
+    date = chicagoCalendarDateAfter(current, daysToAdd);
+    candidate = chicagoWallTimeToUtc(date.year, date.month, date.day, slot.hour, slot.minute);
+  }
+  return candidate;
+}
+
+export function sourceAccessAgeLabel(lastSuccessfulCheckAt: Date | null | undefined, now = new Date()) {
+  if (!lastSuccessfulCheckAt) return "Awaiting first successful access";
+  const elapsedMs = Math.max(0, now.getTime() - lastSuccessfulCheckAt.getTime());
+  const elapsedHours = Math.floor(elapsedMs / (60 * 60 * 1000));
+  if (elapsedHours < 1) return "Less than 1 hour since successful access";
+  if (elapsedHours < 24) return `${elapsedHours} hour${elapsedHours === 1 ? "" : "s"} since successful access`;
+  const elapsedDays = Math.floor(elapsedHours / 24);
+  return `${elapsedDays} day${elapsedDays === 1 ? "" : "s"} since successful access`;
+}
+
 function safeJson(value: unknown) {
   return JSON.stringify(value, null, 2);
 }

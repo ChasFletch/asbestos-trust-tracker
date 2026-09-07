@@ -13,3 +13,7 @@ The visible language distinguishes source reachability, access attention, and pe
 ## Remaining Technical Verification
 
 The dashboard’s focused regression, TypeScript check, and production build passed before visual review. The final pre-publication pass will additionally confirm the new route’s raw server-rendered body, canonical metadata, JSON-LD, sitemap entry, and production response after deployment.
+
+## Source-Age and Scheduled-Check Metadata
+
+The desktop and 390-pixel mobile renders were rechecked after adding the new monitoring fields. Each recovery card now receives server-derived **Source access age** and **Next scheduled check** values. The scheduled time is rendered in America/Chicago and follows the actual daily or Sunday weekly monitoring slot rather than an arbitrary 24-hour or seven-day offset. The mobile layout retains the established single-column card flow without clipping the page header, status summary, evidence notes, or metadata labels.

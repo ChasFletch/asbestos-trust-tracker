@@ -21,7 +21,7 @@ import {
 import { getDb } from "./db";
 import { sourceRegistry } from "../drizzle/schema";
 import { HISTORICAL_SOURCE_BACKLOG } from "../shared/historicalSourceBacklog";
-import { LIVING_TRACKER_PILOT_ID } from "./operationsPilot";
+import { LIVING_TRACKER_PILOT_ID, nextScheduledMonitoringCheck, sourceAccessAgeLabel } from "./operationsPilot";
 
 // ── JSON-first trust helpers ─────────────────────────────────────────────────
 // trust-figures.json is the single source of truth for financials.
@@ -184,6 +184,7 @@ export const appRouter = router({
   operations: router({
     recoveryDashboard: publicProcedure.query(async () => {
       const db = await getDb();
+      const generatedAt = new Date();
       const trustSlugs = HISTORICAL_SOURCE_BACKLOG.map((item) => item.trustSlug);
       const rows = db
         ? await db.select().from(sourceRegistry).where(and(
@@ -211,13 +212,15 @@ export const appRouter = router({
           retrievalNotes: source?.retrievalNotes ?? null,
           lastCheckedAt: source?.lastCheckedAt ?? null,
           lastSuccessfulCheckAt: source?.lastSuccessfulCheckAt ?? null,
+          sourceAccessAge: sourceAccessAgeLabel(source?.lastSuccessfulCheckAt, generatedAt),
+          nextScheduledCheckAt: source ? nextScheduledMonitoringCheck(source.checkCadence, generatedAt) : null,
           lastStatusCode: source?.lastStatusCode ?? null,
           failureCount: source?.failureCount ?? 0,
         };
       });
 
       return {
-        generatedAt: new Date("2026-09-07T00:00:00Z"),
+        generatedAt,
         pilotEndsOn: "2026-10-05",
         monthlyResearchCapMinutes: 150,
         items,

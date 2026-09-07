@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { HISTORICAL_SOURCE_BACKLOG, monthlyHistoricalSourceWorklist } from "../shared/historicalSourceBacklog";
+import { nextScheduledMonitoringCheck, sourceAccessAgeLabel } from "./operationsPilot";
 
 const root = process.cwd();
 const pageSource = readFileSync(resolve(root, "client/src/pages/SourceRecovery.tsx"), "utf8");
@@ -24,6 +25,18 @@ describe("Public historical-document recovery dashboard", () => {
     expect(pageSource).toContain("Access attention");
     expect(pageSource).toContain("Open monitored public source");
     expect(pageSource).toContain("no-charge research cycle");
+    expect(pageSource).toContain("Source access age");
+    expect(pageSource).toContain("Next scheduled check");
+    expect(pageSource).toContain("America/Chicago");
+    expect(routerSource).toContain("sourceAccessAge");
+    expect(routerSource).toContain("nextScheduledCheckAt");
+  });
+
+  it("derives source-age labels and next monitoring slots on the server", () => {
+    const mondayMorning = new Date("2026-09-07T13:00:00Z"); // 8:00 a.m. CDT
+    expect(sourceAccessAgeLabel(new Date("2026-09-06T13:00:00Z"), mondayMorning)).toBe("1 day since successful access");
+    expect(nextScheduledMonitoringCheck("daily", mondayMorning).toISOString()).toBe("2026-09-08T11:30:00.000Z");
+    expect(nextScheduledMonitoringCheck("weekly", mondayMorning).toISOString()).toBe("2026-09-13T15:00:00.000Z");
   });
 
   it("is publicly queryable, server-rendered, canonicalized, and indexed", () => {

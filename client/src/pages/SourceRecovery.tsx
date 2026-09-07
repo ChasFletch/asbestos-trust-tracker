@@ -39,6 +39,19 @@ function formatDate(value: Date | string | null) {
   return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(value));
 }
 
+function formatScheduledCheck(value: Date | string | null) {
+  if (!value) return "Schedule not yet available";
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "America/Chicago",
+    timeZoneName: "short",
+  }).format(new Date(value));
+}
+
 export default function SourceRecovery() {
   const [filter, setFilter] = useState<RecoveryFilter>("all");
   const { data, isLoading } = trpc.operations.recoveryDashboard.useQuery();
@@ -172,6 +185,8 @@ export default function SourceRecovery() {
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Cadence</dt><dd className="mt-0.5 capitalize text-foreground">{item.checkCadence ?? "Pending registry check"}</dd></div>
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Last check</dt><dd className="mt-0.5 text-foreground">{formatDate(item.lastCheckedAt)}</dd></div>
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Last successful access</dt><dd className="mt-0.5 text-foreground">{formatDate(item.lastSuccessfulCheckAt)}</dd></div>
+                        <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Source access age</dt><dd className="mt-0.5 text-foreground">{item.sourceAccessAge}</dd></div>
+                        <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Next scheduled check</dt><dd className="mt-0.5 text-foreground">{formatScheduledCheck(item.nextScheduledCheckAt)} <span className="text-muted-foreground">(America/Chicago)</span></dd></div>
                         {item.lastStatusCode !== null && <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Latest response</dt><dd className="mt-0.5 text-foreground">HTTP {item.lastStatusCode}</dd></div>}
                       </dl>
                       {item.monitoredSourceUrl && (

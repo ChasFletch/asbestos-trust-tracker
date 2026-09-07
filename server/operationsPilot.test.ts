@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { LIVING_TRACKER_PILOT, pilotIsActive, registrySeedFromTracker, sourceGapCandidateId } from "./operationsPilot";
 import { SOURCE_REGISTRY_OVERRIDES } from "./sourceRegistryOverrides";
 import trustFigures from "../client/src/data/trust-figures.json";
-import { MONTHLY_HISTORICAL_SOURCE_MINUTES, monthlyHistoricalSourceWorklist } from "./historicalSourceBacklog";
+import { MONTHLY_HISTORICAL_SOURCE_MINUTES, monthlyHistoricalSourceWorklist } from "../shared/historicalSourceBacklog";
 
 describe("living-tracker pilot policy", () => {
   it("has a bounded Central-time 30-day pilot with no-charge and no-unreviewed-publication safeguards", () => {

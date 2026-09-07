@@ -1,5 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import { and, eq, inArray } from "drizzle-orm";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
@@ -17,6 +18,10 @@ import {
   updateTrust,
   upsertTrustFromPipeline,
 } from "./db";
+import { getDb } from "./db";
+import { sourceRegistry } from "../drizzle/schema";
+import { HISTORICAL_SOURCE_BACKLOG } from "../shared/historicalSourceBacklog";
+import { LIVING_TRACKER_PILOT_ID } from "./operationsPilot";
 
 // ── JSON-first trust helpers ─────────────────────────────────────────────────
 // trust-figures.json is the single source of truth for financials.
@@ -169,6 +174,59 @@ export const appRouter = router({
         methodology: "Aggregate remaining based on net asset figures from trust annual reports and quarterly filings. Sources classified as (a) filed court document, (b) secondary source citing primary, (c) estimate or inference. See methodology page for full details.",
         asOfNote: `Mixed 2021–${asOf?.substring(0, 4) ?? "2026"} as-of dates across trusts; see trust-figures.json for per-trust sources.`,
         isCurrent: true,
+      };
+    }),
+  }),
+
+  // ── Public historical-source recovery status ─────────────────────────────
+  // The dashboard deliberately exposes research progress, not unverified trust
+  // facts. It reads only the reviewed worklist and public registry metadata.
+  operations: router({
+    recoveryDashboard: publicProcedure.query(async () => {
+      const db = await getDb();
+      const trustSlugs = HISTORICAL_SOURCE_BACKLOG.map((item) => item.trustSlug);
+      const rows = db
+        ? await db.select().from(sourceRegistry).where(and(
+          eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID),
+          inArray(sourceRegistry.trustSlug, trustSlugs),
+          eq(sourceRegistry.isActive, true),
+        ))
+        : [];
+      const sourcesByTrust = new Map(rows.map((row) => [row.trustSlug, row]));
+
+      const items = HISTORICAL_SOURCE_BACKLOG.map((item) => {
+        const source = sourcesByTrust.get(item.trustSlug);
+        const hasAccessIssue = Boolean(source && (source.failureCount > 0 || (source.lastStatusCode !== null && source.lastStatusCode >= 400)));
+        const status = hasAccessIssue
+          ? "access_attention"
+          : source?.lastSuccessfulCheckAt
+            ? "monitored"
+            : "registered";
+        return {
+          ...item,
+          status,
+          monitoredSourceUrl: source?.sourceUrl ?? null,
+          sourceClass: source?.sourceClass ?? null,
+          checkCadence: source?.checkCadence ?? null,
+          retrievalNotes: source?.retrievalNotes ?? null,
+          lastCheckedAt: source?.lastCheckedAt ?? null,
+          lastSuccessfulCheckAt: source?.lastSuccessfulCheckAt ?? null,
+          lastStatusCode: source?.lastStatusCode ?? null,
+          failureCount: source?.failureCount ?? 0,
+        };
+      });
+
+      return {
+        generatedAt: new Date("2026-09-07T00:00:00Z"),
+        pilotEndsOn: "2026-10-05",
+        monthlyResearchCapMinutes: 150,
+        items,
+        summary: {
+          total: items.length,
+          monitored: items.filter((item) => item.status === "monitored").length,
+          accessAttention: items.filter((item) => item.status === "access_attention").length,
+          registered: items.filter((item) => item.status === "registered").length,
+        },
       };
     }),
   }),

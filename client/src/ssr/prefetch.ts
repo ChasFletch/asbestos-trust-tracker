@@ -36,6 +36,7 @@ export type SsrPrefetch = {
   trustsList: () => Promise<RO["trusts"]["list"]>;
   trustsBySlug: (slug: string) => Promise<RO["trusts"]["bySlug"]>;
   reportsIndex: () => Promise<RO["trustFiguresExtra"]["reportsIndex"]>;
+  recoveryDashboard: () => Promise<RO["operations"]["recoveryDashboard"]>;
 };
 
 async function seed(qc: QueryClient, key: unknown, data: unknown) {
@@ -330,6 +331,37 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
             { "@type": "ListItem", "position": 2, "name": "Methodology", "item": "https://asbestostrusts.org/methodology" },
             { "@type": "ListItem", "position": 3, "name": "Figure Provenance Timeline", "item": "https://asbestostrusts.org/provenance" }
+          ]
+        }
+      ]
+    };
+  }
+  if (clean === "/source-recovery") {
+    const dashboard = await p.recoveryDashboard();
+    await seed(qc, getQueryKey(trpc.operations.recoveryDashboard, undefined, "query"), dashboard);
+    return {
+      title: `Historical Source Recovery · ${SITE_NAME}`,
+      description: "Public progress on recovering historical asbestos trust documents, including evidence boundaries, monitored source access, and no-charge research paths.",
+      canonicalPath: "/source-recovery",
+      keywords: "asbestos trust historical documents, trust annual report recovery, asbestos trust source status, court filing research, trust data provenance",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Historical Source Recovery",
+          "description": "Public progress on recovering historical asbestos trust documents, including evidence boundaries, monitored source access, and no-charge research paths.",
+          "url": "https://asbestostrusts.org/source-recovery",
+          "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
+          "publisher": { "@id": "https://asbestostrusts.org/#org" },
+          "about": "Historical source recovery for U.S. asbestos bankruptcy trust data"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Methodology", "item": "https://asbestostrusts.org/methodology" },
+            { "@type": "ListItem", "position": 3, "name": "Historical Source Recovery", "item": "https://asbestostrusts.org/source-recovery" }
           ]
         }
       ]

@@ -8,7 +8,7 @@ import { notifyOwner } from "./_core/notification";
 import { sdk } from "./_core/sdk";
 import { operationsCandidates, operationsPilots, operationsRuns, sourceRegistry } from "../drizzle/schema";
 import { SOURCE_REGISTRY_OVERRIDES, type SourceClass } from "./sourceRegistryOverrides";
-import { MONTHLY_HISTORICAL_SOURCE_MINUTES, monthlyHistoricalSourceWorklist } from "./historicalSourceBacklog";
+import { MONTHLY_HISTORICAL_SOURCE_MINUTES, monthlyHistoricalSourceWorklist } from "../shared/historicalSourceBacklog";
 
 export const LIVING_TRACKER_PILOT_ID = "asbestostrusts-living-tracker-2026-09";
 export const LIVING_TRACKER_PILOT = {

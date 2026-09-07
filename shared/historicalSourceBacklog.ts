@@ -18,7 +18,7 @@ export type HistoricalSourceBacklogItem = {
 export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] = [
   {
     rank: 1,
-    trustSlug: "pittsburgh-corning-corporation-asbestos-pi-trust",
+    trustSlug: "pittsburgh-corning-asbestos-pi-settlement-trust",
     trustName: "Pittsburgh Corning Corporation Asbestos PI Trust",
     focus: "Recover a filed annual report or court account that supports or corrects the qualified 2022 secondary cumulative-payment component.",
     historicalCutoff: "2022 secondary component; filed document remains unavailable",
@@ -73,7 +73,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
   },
   {
     rank: 6,
-    trustSlug: "dii-industries-llc-asbestos-pi-trust",
+    trustSlug: "dii-industries-halliburton-harbison-walker",
     trustName: "DII Industries, LLC Asbestos PI Trust",
     focus: "Seek the missing FY2005–FY2013 annual-report sequence needed to convert the documented FY2014–FY2025 subtotal into an inception-to-date series.",
     historicalCutoff: "Documented per-year subtotal FY2014–FY2025; early years unresolved",
@@ -84,7 +84,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
   },
   {
     rank: 7,
-    trustSlug: "g-i-holdings-inc-asbestos-personal-injury-settlement-trust",
+    trustSlug: "g-i-holdings-gaf-asbestos-pi-settlement-trust",
     trustName: "G-I Holdings Inc. Asbestos Personal Injury Settlement Trust",
     focus: "Locate the filed document underlying the qualified 2022 cumulative-payment component.",
     historicalCutoff: "Qualified secondary-citing-filed component through 2022",
@@ -95,7 +95,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
   },
   {
     rank: 8,
-    trustSlug: "maremont-corporation-asbestos-disease-compensation-trust",
+    trustSlug: "maremont-asbestos-pi-trust",
     trustName: "Maremont Corporation Asbestos Disease Compensation Trust",
     focus: "Determine whether free annual reports before FY2025 support a complete, clearly scoped bottom-up payment series.",
     historicalCutoff: "FY2025 reports per-year payments and inception-to-date claim counts, not cumulative dollars",

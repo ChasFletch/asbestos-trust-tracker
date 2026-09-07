@@ -439,6 +439,12 @@
 - [x] Integrate the ranked worklist into the existing monthly research-preparation run without changing public figures or creating an unreviewed publication path
 - [x] Add regression coverage and validate the durable monthly worklist output
 
+## Public Historical-Document Recovery Dashboard (2026-09-07)
+- [x] Audit the durable recovery backlog and existing public provenance patterns for source-safe dashboard fields
+- [x] Add a crawler-visible recovery-status route, explicit public data model, canonical metadata, navigation, and sitemap coverage
+- [x] Render accessible, responsive per-item recovery cards without exposing non-public operational details or treating leads as verified facts
+- [x] Add regression, SSR, and visual validation before publication
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

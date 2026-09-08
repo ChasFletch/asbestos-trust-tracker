@@ -467,6 +467,13 @@
 - [x] Correct Federal-Mogul’s primary T&N payment-rate metadata and Armstrong’s current-rate provenance from official notices
 - [x] Record source-supported candidate dispositions, retain Celotex for primary-source review, and document the quality-dependent Monday article target status
 
+## Celotex Recovery, Wednesday Editorial Preparation, and Official Notice History (2026-09-08)
+- [x] Create an entity card and audit existing Celotex, Wednesday candidate-queue, payment-notice, and public history-view evidence
+- [x] Search free primary-source channels for the Celotex FY2025 report; no controlling FY2025 report was publicly retrieved, so no public tracker figure changed
+- [x] Build an accessible, crawler-visible official-notice payment-history view with source, effective date, scope, and non-rate-change context
+- [ ] Review Wednesday’s candidate queue after its detection run and draft only source-supported timely briefs or a documented article-target shortfall
+- [ ] Validate technical, editorial, source, and production-release requirements before publication
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

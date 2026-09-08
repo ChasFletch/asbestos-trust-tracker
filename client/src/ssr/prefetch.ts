@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_TITLE, SITE_DESC } from "@shared/const";
 import type { AppRouter } from "../../../server/routers";
 import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
 import { getRelatedReportIdsForTrust } from "@/data/reportRelations";
+import { OFFICIAL_PAYMENT_NOTICES } from "@/data/paymentNoticeHistory";
 
 export type HeadMeta = {
   title: string;
@@ -365,6 +366,36 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           ]
         }
       ]
+    };
+  }
+  if (clean === "/payment-notices") {
+    return {
+      title: `Official Payment-Notice History · ${SITE_NAME}`,
+      description: "A dated, source-linked record of reviewed official asbestos trust payment-percentage notices and current-rate statements.",
+      canonicalPath: "/payment-notices",
+      keywords: "asbestos trust payment notices, payment percentage history, trust rate change, asbestos claim payment rate, official trust notice",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Official Payment-Notice History",
+          "description": "A dated, source-linked record of reviewed official asbestos trust payment-percentage notices and current-rate statements.",
+          "url": "https://asbestostrusts.org/payment-notices",
+          "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
+          "publisher": { "@id": "https://asbestostrusts.org/#org" },
+          "about": "Official asbestos trust payment percentage notices",
+          "numberOfItems": OFFICIAL_PAYMENT_NOTICES.length,
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Trust Data", "item": "https://asbestostrusts.org/trusts" },
+            { "@type": "ListItem", "position": 3, "name": "Official Payment-Notice History", "item": "https://asbestostrusts.org/payment-notices" },
+          ],
+        },
+      ],
     };
   }
   if (clean === "/about") {

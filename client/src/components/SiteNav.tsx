@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/reports", label: "Reports" },
   { href: "/methodology", label: "Methodology" },
   { href: "/provenance", label: "Figure History" },
+  { href: "/payment-notices", label: "Rate Notices" },
   { href: "/source-recovery", label: "Source Recovery" },
   { href: "/about", label: "About" },
 ];

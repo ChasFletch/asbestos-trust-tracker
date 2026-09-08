@@ -458,6 +458,15 @@
 - [x] Research a bounded, verified list of priority new or changed public-source signals without paid sources or unreviewed publication
 - [x] Record candidate findings, editorial/technical check status, and any quality-dependent article shortfall in the existing project queue
 
+## Living-Tracker Pilot Research Cycle — Follow-Up (2026-09-07)
+- [x] Review the latest registry, candidate queue, run records, and weekly source-coverage evidence within the approved pilot window
+- [x] Research the bounded priority set of source-supported signals without paid sources or unreviewed publication
+- [x] Record candidate dispositions, quality-gate status, and any article-target shortfall in the existing project queue
+
+## Monday Source-Signal Reconciliation (2026-09-08)
+- [x] Correct Federal-Mogul’s primary T&N payment-rate metadata and Armstrong’s current-rate provenance from official notices
+- [x] Record source-supported candidate dispositions, retain Celotex for primary-source review, and document the quality-dependent Monday article target status
+
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.
 - [x] Publish the verified propagation record: 2011 House-hearing attribution, 2012–13 Bates White/Mealey's construction, 2019 Brickman restatement, then contemporary marketing pages that strip the date and measure. The published copy frames these as conflicting historical assertions, not as a current audited balance.

@@ -472,7 +472,10 @@
 - [x] Search free primary-source channels for the Celotex FY2025 report; no controlling FY2025 report was publicly retrieved, so no public tracker figure changed
 - [x] Build an accessible, crawler-visible official-notice payment-history view with source, effective date, scope, and non-rate-change context
 - [ ] Review Wednesday’s candidate queue after its detection run and draft only source-supported timely briefs or a documented article-target shortfall
-- [ ] Validate technical, editorial, source, and production-release requirements before publication
+- [x] Validate technical, editorial, source, and production-release requirements before publication
+
+## Monthly Research Cadence Correction (2026-09-08)
+- [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 
 ### Methodology page
 - [x] Add the actual origin of the "$30 billion" figure — Bates White/Mealey's (Scarcella & Kelso, 2012–2013): ~$18B confirmed assets + ~$11–12B *proposed/pending* funding ≈ $30B, a 2012–13 snapshot including trusts not yet in existence. Page currently proves only the negative (GAO said $37B, not $30B) and never names the source.

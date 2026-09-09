@@ -479,6 +479,11 @@
 - [x] Research only qualified official, administrator, case-agent, court, or government signals without paid sources
 - [x] Record quality-gated tracker or article dispositions in the project queue, including a two-article release record and documented third-article shortfall
 
+## Keene Monitoring Fallback Repair (2026-09-09)
+- [x] Inspect the failed Keene source, registry metadata, and queue evidence
+- [x] Verify and register a tested no-charge primary or administrator fallback without changing public trust facts
+- [x] Validate the repaired source path and preserve the access-failure audit trail
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

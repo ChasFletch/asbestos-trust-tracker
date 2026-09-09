@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LIVING_TRACKER_PILOT, pilotIsActive, registrySeedFromTracker, sourceGapCandidateId } from "./operationsPilot";
+import { LIVING_TRACKER_PILOT, monitoringBodyIsUsable, monitoringFetchTarget, pilotIsActive, registrySeedFromTracker, sourceGapCandidateId } from "./operationsPilot";
 import { SOURCE_REGISTRY_OVERRIDES } from "./sourceRegistryOverrides";
 import trustFigures from "../client/src/data/trust-figures.json";
 import { MONTHLY_HISTORICAL_SOURCE_MINUTES, monthlyHistoricalSourceWorklist } from "../shared/historicalSourceBacklog";
@@ -63,6 +63,19 @@ describe("living-tracker pilot policy", () => {
     const seed = registrySeedFromTracker(trustFigures);
     expect(seed.sourceGaps).toEqual([]);
     expect(seed.registered).toHaveLength(trustFigures.trusts.length + 1);
+  });
+
+  it("keeps Keene's official CPF notice as the controlling source while using only its reviewed no-charge monitoring transport", () => {
+    const seed = registrySeedFromTracker({ trusts: [{ name: "Keene Creditors Trust" }] });
+    const keene = seed.registered.find((entry) => entry.trustSlug === "keene-creditors-trust");
+    expect(keene?.sourceUrl).toBe("https://www.cpf-inc.com/keene-trust-payment-percentage2024");
+    const target = monitoringFetchTarget({ trustSlug: keene?.trustSlug ?? null, sourceUrl: keene?.sourceUrl ?? "" });
+    expect(target).toEqual({
+      url: "https://r.jina.ai/https://www.cpf-inc.com/keene-trust-payment-percentage2024",
+      usesTransport: true,
+    });
+    expect(monitoringBodyIsUsable("Title: Keene Trust Payment Percentage\nMarkdown Content:\nThe Trustee approved 1.05%.", true)).toBe(true);
+    expect(monitoringBodyIsUsable("Title: News\nMarkdown Content:", true)).toBe(false);
   });
 
   it("uses a ranked, no-charge historical-source worklist that fits the monthly research cap", () => {

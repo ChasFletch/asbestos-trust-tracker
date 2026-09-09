@@ -5,6 +5,13 @@ export type SourceRegistryOverride = {
   sourceUrl: string;
   sourceClass: SourceClass;
   retrievalNotes: string;
+  /**
+   * Optional no-charge retrieval transport for a public controlling source
+   * whose host cannot complete a monitored runtime request. The sourceUrl
+   * remains the controlling public source; a transport result is detection
+   * evidence only and never establishes a tracker fact by itself.
+   */
+  monitoringUrl?: string;
 };
 
 // Reviewed no-charge public monitoring routes. Registration is not a claim
@@ -24,7 +31,13 @@ export const SOURCE_REGISTRY_OVERRIDES: Record<string, SourceRegistryOverride> =
   "fuller-austin-asbestos-settlement-trust": { trustName: "Fuller-Austin Asbestos Settlement Trust", sourceUrl: "https://www.fulleraustintrust.org/", sourceClass: "official_trust", retrievalNotes: "Official trust portal lead reviewed 2026-09-07; record future access limitations explicitly." },
   "hercules-chemical-co-asbestos-settlement-trust": { trustName: "Hercules Chemical Co. Asbestos Settlement Trust", sourceUrl: "https://hercules.mfrclaims.com/", sourceClass: "administrator", retrievalNotes: "Official administrator-hosted trust portal reviewed 2026-09-07." },
   "j-t-thorpe-company-successor-trust-tx": { trustName: "J.T. Thorpe Company Successor Trust (TX)", sourceUrl: "https://thorpe.mfrclaims.com/", sourceClass: "administrator", retrievalNotes: "Official administrator-hosted trust portal reviewed 2026-09-07." },
-  "keene-creditors-trust": { trustName: "Keene Creditors Trust", sourceUrl: "https://www.cpf-inc.com/trusts/keene-trust", sourceClass: "administrator", retrievalNotes: "Official Claims Processing Facility trust page reviewed 2026-09-07." },
+  "keene-creditors-trust": {
+    trustName: "Keene Creditors Trust",
+    sourceUrl: "https://www.cpf-inc.com/keene-trust-payment-percentage2024",
+    sourceClass: "administrator",
+    monitoringUrl: "https://r.jina.ai/https://www.cpf-inc.com/keene-trust-payment-percentage2024",
+    retrievalNotes: "Official Claims Processing Facility payment-notice page and linked October 28, 2024 notice verified 2026-09-09. The project runtime cannot complete TLS validation for cpf-inc.com; monitoring uses a no-charge reader transport only to observe that official page. Any detected content change requires direct official CPF verification before a tracker or publication decision.",
+  },
   "leslie-controls-inc-asbestos-personal-injury-trust": { trustName: "Leslie Controls Inc. Asbestos PI Trust", sourceUrl: "https://leslie.mfrclaims.com/", sourceClass: "administrator", retrievalNotes: "Official administrator-hosted trust portal reviewed 2026-09-07." },
   "motors-liquidation-co-gm-asbestos-pi-trust": { trustName: "Motors Liquidation Co. (GM) Asbestos PI Trust", sourceUrl: "https://www.claimsres.com/documents/mlc/", sourceClass: "administrator", retrievalNotes: "Official CRMC document repository reviewed 2026-09-07." },
   "porter-hayden-bodily-injury-trust": { trustName: "Porter Hayden Bodily Injury Trust", sourceUrl: "https://www.porterhaydentrust.com/", sourceClass: "official_trust", retrievalNotes: "Official trust portal lead reviewed 2026-09-07; Verus is the documented fallback." },

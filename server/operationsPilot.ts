@@ -48,6 +48,11 @@ type TrackerTrust = {
 
 type TrackerPayload = { trusts?: unknown[] };
 
+type MonitorableSource = {
+  trustSlug: string | null;
+  sourceUrl: string;
+};
+
 function slugify(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
@@ -63,6 +68,27 @@ function sourceClassForUrl(url: string): SourceClass {
   if (/\.gov\//i.test(url)) return "government";
   if (/\.pdf(?:$|[?#])/i.test(url)) return "primary_document";
   return "official_trust";
+}
+
+/**
+ * Most sources are fetched directly. A reviewed exception may use a no-charge
+ * reader transport when the official host cannot complete a runtime TLS or
+ * WAF request. The registry and all candidate records still retain the
+ * controlling official source URL, never the transport address.
+ */
+export function monitoringFetchTarget(source: MonitorableSource) {
+  const override = source.trustSlug ? SOURCE_REGISTRY_OVERRIDES[source.trustSlug] : undefined;
+  if (override?.sourceUrl === source.sourceUrl && override.monitoringUrl) {
+    return { url: override.monitoringUrl, usesTransport: true } as const;
+  }
+  return { url: source.sourceUrl, usesTransport: false } as const;
+}
+
+export function monitoringBodyIsUsable(body: string, usesTransport: boolean) {
+  const trimmed = body.trim();
+  if (!trimmed) return false;
+  if (!usesTransport) return true;
+  return !(/"data"\s*:\s*null/i.test(trimmed) || /AuthenticationRequiredError/i.test(trimmed) || /Markdown Content:\s*$/i.test(trimmed));
 }
 
 function bestSourceUrl(trust: TrackerTrust) {
@@ -445,7 +471,8 @@ export async function runDailySourceDetection(options: {
   for (let index = 0; index < due.length; index += 10) {
     const batch = await Promise.all(due.slice(index, index + 10).map(async (source) => {
     try {
-      const response = await fetch(source.sourceUrl, {
+      const target = monitoringFetchTarget(source);
+      const response = await fetch(target.url, {
         headers: {
           "User-Agent": "AsbestosTrusts-Source-Monitor/1.0 (+https://asbestostrusts.org/methodology)",
           "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,application/pdf;q=0.8,*/*;q=0.7",
@@ -454,16 +481,19 @@ export async function runDailySourceDetection(options: {
         signal: AbortSignal.timeout(8_000),
       });
       const body = await response.text();
-      const contentHash = response.ok ? fingerprint(body) : undefined;
-      const changed = response.ok && Boolean(source.contentHash && contentHash && source.contentHash !== contentHash);
+      const usable = response.ok && monitoringBodyIsUsable(body, target.usesTransport);
+      const contentHash = usable ? fingerprint(body) : undefined;
+      const changed = usable && Boolean(source.contentHash && contentHash && source.contentHash !== contentHash);
       await db.update(sourceRegistry).set({
         lastCheckedAt: now,
-        lastSuccessfulCheckAt: response.ok ? now : source.lastSuccessfulCheckAt,
+        lastSuccessfulCheckAt: usable ? now : source.lastSuccessfulCheckAt,
         nextCheckAt: nextCheckForCadence(source.checkCadence, now),
         lastStatusCode: response.status,
         contentHash: contentHash ?? source.contentHash,
-        failureCount: response.ok ? 0 : source.failureCount + 1,
-        lastError: response.ok ? null : `HTTP ${response.status}`,
+        failureCount: usable ? 0 : source.failureCount + 1,
+        lastError: usable ? null : target.usesTransport && response.ok
+          ? "Monitoring transport returned no usable source text"
+          : `HTTP ${response.status}`,
       }).where(eq(sourceRegistry.id, source.id));
       if (changed) {
         await db.insert(operationsCandidates).values({
@@ -481,7 +511,7 @@ export async function runDailySourceDetection(options: {
           nextAction: "Review the controlling source, record the exact publication/effective/reporting dates and source meaning, then disposition the candidate.",
         });
       }
-      if (!response.ok && source.failureCount === 0) {
+      if (!usable && source.failureCount === 0) {
         await db.insert(operationsCandidates).values({
           id: `candidate-${nanoid(16)}`,
           pilotId: LIVING_TRACKER_PILOT_ID,
@@ -492,12 +522,14 @@ export async function runDailySourceDetection(options: {
           severity: "routine",
           status: "detected",
           observedAt: now,
-          evidence: `Registered source returned HTTP ${response.status}. This records an access/availability outcome and does not support a no-change conclusion.`,
+          evidence: target.usesTransport && response.ok
+            ? "The documented monitoring transport returned no usable official-source text. This records an access/availability outcome and does not support a no-change conclusion."
+            : `Registered source returned HTTP ${response.status}. This records an access/availability outcome and does not support a no-change conclusion.`,
           assignedOwner: LIVING_TRACKER_PILOT.researchOwner,
           nextAction: "Retry within the defined coverage window using any documented lawful retrieval requirements; record a blocker if it remains inaccessible.",
         });
       }
-      return { sourceId: source.id, ok: response.ok, changed, failure: !response.ok };
+      return { sourceId: source.id, ok: usable, changed, failure: !usable };
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unknown source-monitor failure";
       await db.update(sourceRegistry).set({ lastCheckedAt: now, nextCheckAt: nextCheckForCadence(source.checkCadence, now), failureCount: source.failureCount + 1, lastError: message }).where(eq(sourceRegistry.id, source.id));

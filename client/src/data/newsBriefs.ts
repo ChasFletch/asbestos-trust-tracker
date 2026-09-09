@@ -403,6 +403,117 @@ This article is limited to the public Supreme Court and case-administration mate
 [4]: https://asbestosatlas.org/ "Asbestos Atlas — U.S. Shipyard Exposure Map"
 `,
   },
+  {
+    slug: "manville-payment-percentage-increase-september-2026",
+    title: "Manville Trust Raises Its Pro Rata Payment Percentage to 5.6%: What the September Notice Establishes",
+    date: "2026-09-09",
+    category: "payment_change",
+    summary: "A September 3, 2026 Trust-administrator announcement states that Manville’s pro rata payment percentage increased from 5.1% to 5.6%, with e-Claims changes implemented September 2. The notice does not publish a new trust balance or determine an individual claim outcome.",
+    sourceUrl: "https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/",
+    sourceLabel: "Claims Resolution Management Corporation — Manville pro rata payment-percentage announcement (Sept. 3, 2026)",
+    sourceCutoffAt: "2026-09-03",
+    keywords: "Manville Trust, Manville payment percentage, asbestos trust payment increase, Manville 5.6 percent, asbestos trust notice",
+    about: "Manville Personal Injury Settlement Trust payment-percentage increase announced September 3, 2026",
+    relatedTrustSlugs: ["manville-personal-injury-settlement-trust"],
+    markdown: `The Manville Personal Injury Settlement Trust’s administrator announced that the Trust’s **pro rata payment percentage increased from 5.1% to 5.6%**. The announcement is dated **September 3, 2026** and states that e-Claims changes were implemented on **September 2, 2026**.[1]
+
+The announcement reports that the Trustees approved the increase with the concurrence of the Selected Counsel for the Beneficiaries and the Legal Representative of Future Claimants. It also says the updated percentage applies to future offers and that outstanding offers were re-issued at 5.6%.[1]
+
+## What the September announcement says
+
+| Trust-administrator statement | What it supports |
+|---|---|
+| Pro rata payment percentage increased from 5.1% to 5.6% | A current published payment-percentage update for the Manville Trust. |
+| e-Claims changes were implemented September 2, 2026 | The administrator’s stated system-implementation date. |
+| Future offers were set at 5.6% and outstanding offers were re-issued | A described administrative change to offers in the e-Claims system. |
+| Eligible retroactive adjustments are planned for mid-October | The administrator’s stated plan for identified eligible claims; not a claimant-specific eligibility determination. |
+
+## What the notice does not establish
+
+The announcement does **not** publish a new Manville balance-sheet figure, a new inception-to-date payout total, a universal supplemental-payment calculation, or an outcome for any individual claim. A payment percentage is part of the Trust’s payment framework; it is not a standalone value for every claim and does not replace the governing procedures or the facts applicable to a particular submission.[1]
+
+The announcement says that the administrator identified claims by law firm that are eligible for a retroactive supplemental-payment adjustment and plans to issue payments in mid-October. It does not publish claimant-level eligibility decisions, individual amounts, or a complete public list of affected claims.[1]
+
+> **Confirmed by the September 3 announcement:** Manville’s published pro rata payment percentage moved from 5.1% to 5.6%, and the administrator states that e-Claims changes were implemented September 2.
+>
+> **Not established by the announcement:** A new trust-asset figure, cumulative payments, an individual award, or universal eligibility for a supplemental payment.
+
+## Tracker treatment
+
+AsbestosTrusts.org records the 5.6% percentage and the stated implementation date as a payment-percentage update. It does not infer a new net-asset balance or cumulative-payout figure from that notice. Those measures require their own applicable source, such as an identified financial statement or filed report.
+
+For general background on how established asbestos trust payment frameworks operate, readers may consult [WikiMesothelioma’s overview of asbestos trust funds][2]. That resource is background only; the September 3 administrator announcement controls the Manville-specific percentage and implementation statements reported here.
+
+## Source and editorial note
+
+This brief is based on the public announcement hosted by Manville’s administrator. It is general research, not legal advice, and does not evaluate an individual claim or payment entitlement. No article-specific attorney review is recorded for this publication.
+
+[1]: https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/ "Claims Resolution Management Corporation, Manville: Increase in the pro rata payment percentage, posted September 3, 2026"
+[2]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
+`,
+  },
+  {
+    slug: "understanding-2026-asbestos-trust-payment-percentage-notices",
+    title: "Payment-Percentage Notices Are Not All the Same: What Four 2026 Trust Notices Show",
+    date: "2026-09-09",
+    category: "payment_change",
+    summary: "Four official 2026 notices illustrate a key distinction in asbestos trust monitoring: an implemented rate change, an interim rate pending required consent, and a reconsideration notice are different events that should not be reported as the same thing.",
+    sourceUrl: "https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/",
+    sourceLabel: "Official 2026 trust payment-percentage notices, led by the Manville administrator announcement",
+    sourceCutoffAt: "2026-09-03",
+    keywords: "asbestos trust payment percentage, payment percentage notice, Manville 5.6 percent, Babcock Wilcox 4.3 percent, Federal Mogul T and N, Armstrong reconsideration",
+    about: "How to distinguish implemented asbestos trust payment changes, interim percentages, and reconsideration notices",
+    markdown: `A trust website’s payment-percentage notice may report an implemented rate, a temporary rate while a required consent process is pending, or only the start of a reconsideration. Those are materially different events. Treating all three as a completed final rate change can make a tracker less accurate, not more useful.
+
+This explainer compares four public 2026 notices. The notices are controlling for their own trust-specific statements; this article does not use them to estimate individual claim payments, trust assets, or system-wide payouts.
+
+## Four different notice patterns
+
+### Manville — implemented increase
+
+**Source date:** September 3, 2026. The administrator says the pro rata percentage increased from 5.1% to 5.6% and that e-Claims changes were implemented September 2. The careful tracker treatment is to record 5.6% as the published current percentage while retaining the notice date and implementation context.[1]
+
+### Babcock & Wilcox — interim rate while consent is pending
+
+**Source date:** June 30, 2026. The notice reduces the percentage to 4.3%, but also says required consent is pending and that 4.3% applies during that process. The 4.3% notice should therefore retain its pending-consent qualification rather than be presented as an unqualified final determination.[2]
+
+### Federal-Mogul — sub-account-specific interim rate
+
+**Source date:** June 30, 2026. The notice reduces the **T&N Sub-Account** percentage to 2.9% and says that amount applies during the stated consent process. The percentage should be attributed to T&N, not automatically to every Federal-Mogul sub-account.[3]
+
+### Armstrong — reconsideration rather than a new rate
+
+**Source date:** June 11, 2026. The Trustees began a required reconsideration and directed advisors to report on whether an adjustment is appropriate. That supports recording a reconsideration event, not a new payment percentage.[4]
+
+## An implemented rate is not the same as a reconsideration
+
+The Manville announcement is framed as an approved increase and describes e-Claims implementation. That is different from Armstrong’s June notice, which says the Trustees began a reconsideration process and requested an advisory report. Armstrong’s notice does not state that a new percentage was adopted.[1] [4]
+
+That distinction is important for public research. A trust’s decision to review its percentage may lead to a future adjustment, no adjustment, or a later notice with qualifications. It should not be converted into a rate change before a source says that a rate changed.
+
+## Interim percentages and sub-account scope
+
+The Babcock & Wilcox and Federal-Mogul notices both explain that a reduced percentage applies while a consent process is pending. The Babcock & Wilcox notice identifies 4.3% as applicable during the pending process, while the Federal-Mogul notice is expressly limited to the T&N Sub-Account and identifies 2.9% for that sub-account.[2] [3]
+
+Sub-account scope matters. A single corporate or bankruptcy name can cover more than one payment framework. The Federal-Mogul notice should not be used to imply that every Federal-Mogul-related sub-account pays 2.9%.
+
+## What these notices do not provide
+
+None of the four notices supplies a current balance sheet for the respective trust, a new system-wide cumulative-payout total, or an individualized claim result. Payment percentages are part of a trust’s governing payment framework. They are not a promise of a particular result for every claimant and should be read with the applicable distribution procedures and source-specific qualifications.
+
+For general background on asbestos trust structures, readers may consult [WikiMesothelioma’s asbestos trust funds overview][5]. It is a background resource only and does not control the trust-specific rates, effective dates, sub-account scope, or consent language summarized here.
+
+## Source and editorial note
+
+This explainer compares four public trust or administrator notices. It does not provide legal advice, predict future payment-percentage decisions, or evaluate claim eligibility. No article-specific attorney review is recorded for this publication.
+
+[1]: https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/ "Claims Resolution Management Corporation, Manville: Increase in the pro rata payment percentage, posted September 3, 2026"
+[2]: https://www.bwasbestostrust.com/wp-content/uploads/2026/06/BW-Payment-Percentage-Notice.6.30.26-C1221410x9DB18-4901-7726-4057.1-1.pdf "The Babcock & Wilcox Company Asbestos PI Trust, payment-percentage notice, June 30, 2026"
+[3]: https://www.federalmogulasbestostrust.com/wp-content/uploads/2026/06/Notice-of-Payment-Percentage-Change-TN-Subfund-June-18-2026-4923-8029-8166-v.1-1.pdf "T&N Subfund of the Federal-Mogul Asbestos Personal Injury Trust, payment-percentage notice, June 30, 2026"
+[4]: https://www.armstrongworldasbestostrust.com/wp-content/uploads/2026/06/AWI-Notice-of-Payment-Percentage-Reconsideration-6-11-2026.pdf "Armstrong World Industries, Inc. Asbestos Personal Injury Settlement Trust, notice of payment-percentage reconsideration, June 11, 2026"
+[5]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
+`,
+  },
 ];
 
 export const NEWS_BRIEFS_BY_SLUG = Object.fromEntries(

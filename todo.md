@@ -471,8 +471,13 @@
 - [x] Create an entity card and audit existing Celotex, Wednesday candidate-queue, payment-notice, and public history-view evidence
 - [x] Search free primary-source channels for the Celotex FY2025 report; no controlling FY2025 report was publicly retrieved, so no public tracker figure changed
 - [x] Build an accessible, crawler-visible official-notice payment-history view with source, effective date, scope, and non-rate-change context
-- [ ] Review Wednesday’s candidate queue after its detection run and draft only source-supported timely briefs or a documented article-target shortfall
+- [x] Review Wednesday’s candidate queue after its detection run and draft only source-supported timely briefs or a documented article-target shortfall
 - [x] Validate technical, editorial, source, and production-release requirements before publication
+
+## Wednesday Living-Tracker Pilot Cycle (2026-09-09)
+- [x] Review the current registry, candidate queue, run records, and weekly coverage evidence before public-source research
+- [x] Research only qualified official, administrator, case-agent, court, or government signals without paid sources
+- [x] Record quality-gated tracker or article dispositions in the project queue, including a two-article release record and documented third-article shortfall
 
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue

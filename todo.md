@@ -484,6 +484,11 @@
 - [x] Verify and register a tested no-charge primary or administrator fallback without changing public trust facts
 - [x] Validate the repaired source path and preserve the access-failure audit trail
 
+## Living-Tracker Pilot Research Cycle — Current (2026-09-10)
+- [x] Review the current source registry, candidate queue, run records, and weekly coverage evidence before researching
+- [x] Research a bounded current list of qualified official-source signals without paid sources or unreviewed publication
+- [x] Record source-supported dispositions, quality-gate status, and any article-target shortfall in the existing project queue
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

@@ -33,7 +33,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     trustName: "Celotex Asbestos Settlement Trust",
     focus: "Locate a public primary report after the filed 2006 PI-pool figure and reconcile the qualified post-2006 secondary-growth component.",
     historicalCutoff: "Filed PI-pool figure through 2006; qualified secondary growth through 2021",
-    currentEvidence: "The FY2025 court docket entry is known but account-restricted; the public tracker uses clear historical and secondary labels rather than treating the figure as current.",
+    currentEvidence: "Public court-docket indexes corroborate the April 28, 2026 FY2025 annual-report entry and the August 18, 2026 approval order, but neither the report nor the order PDF is publicly retrievable in the no-charge sources reviewed. The tracker therefore retains historical and secondary labels rather than treating any FY2025 figure as current.",
     publicValue: "High; a newer primary report would materially improve the age and confidence of the trust’s payout history.",
     noChargeResearchPath: "Check the official trust site and administrator materials; CourtListener/RECAP; public bankruptcy-docket mirrors; Internet Archive; and free court-record indexes. Do not attempt a paid PACER pull.",
     expectedMinutes: 35,

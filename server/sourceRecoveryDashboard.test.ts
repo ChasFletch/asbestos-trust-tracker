@@ -18,6 +18,13 @@ describe("Public historical-document recovery dashboard", () => {
     expect(HISTORICAL_SOURCE_BACKLOG.every((item) => /public|no-charge/i.test(item.noChargeResearchPath))).toBe(true);
   });
 
+  it("distinguishes corroborated Celotex docket metadata from an unretrieved primary report", () => {
+    const celotex = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "celotex-asbestos-settlement-trust");
+    expect(celotex?.currentEvidence).toContain("Public court-docket indexes corroborate");
+    expect(celotex?.currentEvidence).toContain("neither the report nor the order PDF is publicly retrievable");
+    expect(celotex?.currentEvidence).toContain("rather than treating any FY2025 figure as current");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");

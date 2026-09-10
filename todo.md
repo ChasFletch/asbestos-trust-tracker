@@ -489,6 +489,11 @@
 - [x] Research a bounded current list of qualified official-source signals without paid sources or unreviewed publication
 - [x] Record source-supported dispositions, quality-gate status, and any article-target shortfall in the existing project queue
 
+## Celotex FY2025 Archive and Corroboration Review (2026-09-10)
+- [x] Define the outstanding FY2025 report/approval lead and source-evidence boundary
+- [x] Search no-charge archives, public court indexes, and reliable secondary corroboration without paid records
+- [x] Record corroborated docket metadata and retain the primary-source recovery path; do not update public tracker facts without controlling evidence
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

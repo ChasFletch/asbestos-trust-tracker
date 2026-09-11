@@ -25,6 +25,14 @@ describe("Public historical-document recovery dashboard", () => {
     expect(celotex?.currentEvidence).toContain("rather than treating any FY2025 figure as current");
   });
 
+  it("records Pittsburgh Corning annual-report docket metadata without promoting unavailable attachments to filed evidence", () => {
+    const pcc = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "pittsburgh-corning-asbestos-pi-settlement-trust");
+    expect(pcc?.currentEvidence).toContain("official PCC documents page does not list annual reports");
+    expect(pcc?.currentEvidence).toContain("FY2022 (Doc. 10942)");
+    expect(pcc?.currentEvidence).toContain("FY2023 (Doc. 10943)");
+    expect(pcc?.currentEvidence).toContain("attachments remain unavailable through the reviewed no-charge routes");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");

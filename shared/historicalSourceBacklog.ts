@@ -22,7 +22,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     trustName: "Pittsburgh Corning Corporation Asbestos PI Trust",
     focus: "Recover a filed annual report or court account that supports or corrects the qualified 2022 secondary cumulative-payment component.",
     historicalCutoff: "2022 secondary component; filed document remains unavailable",
-    currentEvidence: "The tracker retains a qualified secondary-citing-filed component pending an accessible primary annual report. Prior public and no-charge court/archive searches did not recover the requested filing.",
+    currentEvidence: "The official PCC documents page does not list annual reports. Public CourtListener docket metadata confirms annual-report-and-account notice entries for fiscal years 2018–2023, including FY2022 (Doc. 10942) and FY2023 (Doc. 10943), but the listed report attachments remain unavailable through the reviewed no-charge routes. The tracker therefore retains its qualified secondary component pending an accessible filed annual report.",
     publicValue: "Highest payout-tier impact; a filed record could upgrade, correct, or remove a material secondary component.",
     noChargeResearchPath: "Check the official trust site and document library; CourtListener/RECAP docket and community-request status; public bankruptcy-docket repositories; Internet Archive captures. Record inaccessible documents rather than purchasing them.",
     expectedMinutes: 35,

@@ -494,6 +494,12 @@
 - [x] Search no-charge archives, public court indexes, and reliable secondary corroboration without paid records
 - [x] Record corroborated docket metadata and retain the primary-source recovery path; do not update public tracker facts without controlling evidence
 
+## Next Historical-Report Recovery Target (2026-09-10)
+- [x] Identify the next ranked recovery target and document its current evidence boundary, public-value rationale, and no-charge retrieval path
+- [x] Search primary, public-court, and archive sources for the target report without paid access
+- [x] Update the target’s public recovery-status card and durable research record, and change tracker data only if controlling evidence is recovered
+- [x] Validate the recovery dashboard and report the source-supported outcome
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

@@ -55,7 +55,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     trustName: "Armstrong World Industries Asbestos PI Trust",
     focus: "Locate a newer publicly accessible annual report or claim account after the filed FY2014 historical cumulative-payment figure.",
     historicalCutoff: "Filed cumulative figure through 2014",
-    currentEvidence: "The FY2014 annual-report figure is source-linked and presented as a historical floor; newer annual-report access has been identified as court-restricted or PACER-only.",
+    currentEvidence: "The official trust documents page does not list an annual report after 2014, and its public WordPress media and search indexes return only the 2013 and 2014 annual-report files. A public docket index identifies FY2025 annual-report Notice of Service Doc. 11008, with Annual Report, Audited Financial Statements, and Claims Summary attachments, but does not provide those attachments through the reviewed no-charge path. The reviewed Internet Archive index also identifies no newer annual-report PDF capture. The tracker therefore retains the FY2014 figure as a historical floor pending an accessible controlling filing.",
     publicValue: "High; a 2014 floor is materially stale and a public later filing would improve payout chronology.",
     noChargeResearchPath: "Search official administrator notices and public document libraries, CourtListener/RECAP, no-charge docket mirrors, and archive captures. Record court-side access limitations without inferring a current value.",
     expectedMinutes: 25,

@@ -42,6 +42,15 @@ describe("Public historical-document recovery dashboard", () => {
     expect(ocfb?.currentEvidence).toContain("filed 2009 amount as a historical floor");
   });
 
+  it("records Armstrong's FY2025 docket metadata without promoting inaccessible attachments to current filed evidence", () => {
+    const armstrong = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "armstrong-world-industries-asbestos-pi-trust");
+    expect(armstrong?.currentEvidence).toContain("only the 2013 and 2014 annual-report files");
+    expect(armstrong?.currentEvidence).toContain("FY2025 annual-report Notice of Service Doc. 11008");
+    expect(armstrong?.currentEvidence).toContain("does not provide those attachments through the reviewed no-charge path");
+    expect(armstrong?.currentEvidence).toContain("no newer annual-report PDF capture");
+    expect(armstrong?.currentEvidence).toContain("FY2014 figure as a historical floor");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");

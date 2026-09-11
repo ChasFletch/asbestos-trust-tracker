@@ -88,7 +88,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     trustName: "G-I Holdings Inc. Asbestos Personal Injury Settlement Trust",
     focus: "Locate the filed document underlying the qualified 2022 cumulative-payment component.",
     historicalCutoff: "Qualified secondary-citing-filed component through 2022",
-    currentEvidence: "The component remains qualified rather than filed because a direct underlying report has not been retained in the public source library.",
+    currentEvidence: "The component remains qualified rather than filed because a direct underlying report has not been retained in the public source library. The official Verus-hosted trust Resources page exposes claim forms, TDP materials, and payment or policy notices, including a December 1, 2022 payment-percentage notice, but no annual report, trustee account, or audited financial statements. Public CourtListener metadata identifies special-purpose financial-statement and auditor-report filings through the years ended 2018 and 2017, but the reviewed entries require paid PACER retrieval and do not supply the underlying report content through no-charge RECAP. The reviewed Internet Archive index likewise surfaced procedures and notices, not a 2022 annual report. The qualified component therefore remains unchanged pending an accessible underlying filing.",
     publicValue: "Medium; upgrading or revising a discrete qualified component improves the bottom-up method’s transparency.",
     noChargeResearchPath: "Search official trust or administrator resources, CourtListener/RECAP, public docket repositories, and archive captures. Maintain the secondary label unless the underlying filing is obtained.",
     expectedMinutes: 30,

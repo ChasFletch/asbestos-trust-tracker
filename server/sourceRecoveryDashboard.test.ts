@@ -60,6 +60,15 @@ describe("Public historical-document recovery dashboard", () => {
     expect(usg?.currentEvidence).toContain("2008 figure as a historical floor");
   });
 
+  it("keeps G-I Holdings' 2022 component qualified when the official library and public docket metadata do not provide the underlying report", () => {
+    const giHoldings = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "g-i-holdings-gaf-asbestos-pi-settlement-trust");
+    expect(giHoldings?.currentEvidence).toContain("December 1, 2022 payment-percentage notice, but no annual report, trustee account, or audited financial statements");
+    expect(giHoldings?.currentEvidence).toContain("special-purpose financial-statement and auditor-report filings through the years ended 2018 and 2017");
+    expect(giHoldings?.currentEvidence).toContain("require paid PACER retrieval and do not supply the underlying report content through no-charge RECAP");
+    expect(giHoldings?.currentEvidence).toContain("procedures and notices, not a 2022 annual report");
+    expect(giHoldings?.currentEvidence).toContain("qualified component therefore remains unchanged");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");

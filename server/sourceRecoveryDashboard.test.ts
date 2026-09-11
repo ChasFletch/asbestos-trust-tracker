@@ -33,6 +33,15 @@ describe("Public historical-document recovery dashboard", () => {
     expect(pcc?.currentEvidence).toContain("attachments remain unavailable through the reviewed no-charge routes");
   });
 
+  it("records the Owens Corning/Fibreboard no-charge report-search limit without promoting secondary annual-report references", () => {
+    const ocfb = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "owens-corning-fibreboard-asbestos-pi-trust");
+    expect(ocfb?.currentEvidence).toContain("no annual-report or trustee-account download");
+    expect(ocfb?.currentEvidence).toContain("Trust Online is login-gated");
+    expect(ocfb?.currentEvidence).toContain("no matching annual-report PDF capture");
+    expect(ocfb?.currentEvidence).toContain("secondary page describes 2022 annual-report activity, but it is not controlling evidence");
+    expect(ocfb?.currentEvidence).toContain("filed 2009 amount as a historical floor");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");

@@ -44,7 +44,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     trustName: "Owens Corning/Fibreboard Asbestos PI Trust",
     focus: "Find a public filed report that advances the 2009 filed cumulative-payment floor or independently verifies the qualified post-2009 secondary-growth component.",
     historicalCutoff: "Filed cumulative figure through 2009; qualified secondary growth through 2022",
-    currentEvidence: "The tracker labels the filed 2009 amount as a historical floor and keeps the later growth component qualified pending a directly accessible filed report.",
+    currentEvidence: "The official trust resource and documents pages provide current payment notices, TDP materials, and claimant resources, but no annual-report or trustee-account download. Trust Online is login-gated, and the public Internet Archive index returned no matching annual-report PDF capture. No direct filed report was located through the reviewed no-charge court-index route. A secondary page describes 2022 annual-report activity, but it is not controlling evidence. The tracker therefore retains the filed 2009 amount as a historical floor and the later growth component as qualified pending an accessible filed report.",
     publicValue: "High; two subaccounts and a large historical payment base make a primary update especially useful for accuracy and presentation.",
     noChargeResearchPath: "Search the official administrator resource pages and trust notices; CourtListener/RECAP and public docket attachments; Internet Archive; and direct public annual-report libraries. Preserve separate OC and FB payment-rate treatment.",
     expectedMinutes: 30,

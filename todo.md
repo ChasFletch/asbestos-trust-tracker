@@ -500,6 +500,12 @@
 - [x] Update the target’s public recovery-status card and durable research record, and change tracker data only if controlling evidence is recovered
 - [x] Validate the recovery dashboard and report the source-supported outcome
 
+## Owens Corning/Fibreboard Historical-Report Recovery (2026-09-10)
+- [x] Identify the existing Owens Corning/Fibreboard evidence boundary, historical component, and no-charge recovery paths
+- [x] Search primary, public-court, and archive sources for controlling filed historical evidence without paid access
+- [x] Update the public recovery card and durable research record; change tracker figures only if controlling evidence is recovered
+- [x] Validate the dashboard and report the source-supported result
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

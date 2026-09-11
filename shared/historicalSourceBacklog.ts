@@ -66,7 +66,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     trustName: "United States Gypsum (USG) Asbestos Trust",
     focus: "Recover a public filed cumulative-payment report after the 2008 historical figure and reconcile it with current payment-percentage notices.",
     historicalCutoff: "Filed cumulative figure through 2008",
-    currentEvidence: "The tracker has a source-linked 2008 figure and a separately current payment-percentage notice; the annual-report history remains court-restricted.",
+    currentEvidence: "The tracker has a source-linked 2008 figure and separately current payment-percentage notices. The official document library and public WordPress media/search indexes expose current procedures and notices but no annual report or trustee account. Public CourtListener docket metadata identifies later Annual Report and Claims Summary filings, including Doc. 12842 (2018), Doc. 12844 (2020), and Doc. 12846 (2021), with financial-statement attachments, but the reviewed attachments are not in RECAP and remain unavailable through no-charge routes. The reviewed Internet Archive index did not surface an annual-report PDF capture. The tracker therefore retains the 2008 figure as a historical floor pending an accessible controlling filing.",
     publicValue: "High; this is the oldest filed floor in the current top-five worklist and should not be implied to be current.",
     noChargeResearchPath: "Search the official trust site, payment notices, CourtListener/RECAP, public docket indexes, and archive snapshots. Treat payment-rate notices as rate evidence only, not as evidence of cumulative payouts.",
     expectedMinutes: 25,

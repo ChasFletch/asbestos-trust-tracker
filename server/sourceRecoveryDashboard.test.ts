@@ -51,6 +51,15 @@ describe("Public historical-document recovery dashboard", () => {
     expect(armstrong?.currentEvidence).toContain("FY2014 figure as a historical floor");
   });
 
+  it("records USG's later annual-report docket metadata without promoting unavailable attachments to filed evidence", () => {
+    const usg = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "united-states-gypsum-usg-asbestos-trust");
+    expect(usg?.currentEvidence).toContain("public WordPress media/search indexes expose current procedures and notices but no annual report or trustee account");
+    expect(usg?.currentEvidence).toContain("Doc. 12842 (2018), Doc. 12844 (2020), and Doc. 12846 (2021)");
+    expect(usg?.currentEvidence).toContain("reviewed attachments are not in RECAP and remain unavailable through no-charge routes");
+    expect(usg?.currentEvidence).toContain("did not surface an annual-report PDF capture");
+    expect(usg?.currentEvidence).toContain("2008 figure as a historical floor");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");

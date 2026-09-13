@@ -215,6 +215,7 @@ export default function SourceRecovery() {
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Last successful access</dt><dd className="mt-0.5 text-foreground">{formatDate(item.lastSuccessfulCheckAt)}</dd></div>
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Source access age</dt><dd className="mt-0.5 text-foreground">{item.sourceAccessAge}</dd></div>
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Next scheduled check</dt><dd className="mt-0.5 text-foreground">{formatScheduledCheck(item.nextScheduledCheckAt)} <span className="text-muted-foreground">(America/Chicago)</span></dd></div>
+                        <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Next archive recheck</dt><dd className="mt-0.5 text-foreground">{formatDate(item.archiveRecheckOn)} <span className="text-muted-foreground">(planned research review)</span></dd></div>
                         {item.lastStatusCode !== null && <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Latest response</dt><dd className="mt-0.5 text-foreground">HTTP {item.lastStatusCode}</dd></div>}
                       </dl>
                       {item.monitoredSourceUrl && (
@@ -234,7 +235,7 @@ export default function SourceRecovery() {
 
       <section className="mt-10 rounded border border-primary/25 bg-primary/5 p-5 md:p-6" aria-labelledby="recovery-disclosure-heading">
         <h2 id="recovery-disclosure-heading" className="font-display text-lg font-bold uppercase tracking-wide text-foreground">How to read this page</h2>
-        <p className="mt-2 max-w-4xl text-sm leading-relaxed text-muted-foreground">The recovery list makes unresolved historical evidence visible. It does not imply that a document exists, that a payment amount is current, or that an unavailable source establishes no change. When a controlling report is recovered, it is reviewed against the public methodology, historical-floor labels, and source hierarchy before a tracker or article update is considered.</p>
+        <p className="mt-2 max-w-4xl text-sm leading-relaxed text-muted-foreground">The recovery list makes unresolved historical evidence visible. Planned archive recheck dates indicate the next research-desk review, not a promise that a document will become available. This page does not imply that a document exists, that a payment amount is current, or that an unavailable source establishes no change. When a controlling report is recovered, it is reviewed against the public methodology, historical-floor labels, and source hierarchy before a tracker or article update is considered.</p>
         <div className="mt-4 flex flex-wrap gap-3 text-sm">
           <Link href="/methodology" className="inline-flex items-center gap-1.5 font-medium text-primary no-underline hover:underline">Read the methodology <ArrowRight size={15} aria-hidden="true" /></Link>
           <Link href="/provenance" className="inline-flex items-center gap-1.5 font-medium text-primary no-underline hover:underline">Open figure history <ArrowRight size={15} aria-hidden="true" /></Link>

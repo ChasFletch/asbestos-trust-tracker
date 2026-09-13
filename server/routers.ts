@@ -222,6 +222,7 @@ export const appRouter = router({
           lastSuccessfulCheckAt: source?.lastSuccessfulCheckAt ?? null,
           sourceAccessAge: sourceAccessAgeLabel(source?.lastSuccessfulCheckAt, generatedAt),
           nextScheduledCheckAt: source ? nextScheduledMonitoringCheck(source.checkCadence, generatedAt) : null,
+          archiveRecheckOn: item.archiveRecheckOn,
           lastStatusCode: source?.lastStatusCode ?? null,
           failureCount: source?.failureCount ?? 0,
         };

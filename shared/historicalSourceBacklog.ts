@@ -8,6 +8,7 @@ export type HistoricalSourceBacklogItem = {
   publicValue: string;
   noChargeResearchPath: string;
   expectedMinutes: number;
+  archiveRecheckOn: string;
 };
 
 /**
@@ -26,6 +27,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     publicValue: "Highest payout-tier impact; a filed record could upgrade, correct, or remove a material secondary component.",
     noChargeResearchPath: "Check the official trust site and document library; CourtListener/RECAP docket and community-request status; public bankruptcy-docket repositories; Internet Archive captures. Record inaccessible documents rather than purchasing them.",
     expectedMinutes: 35,
+    archiveRecheckOn: "2026-09-24",
   },
   {
     rank: 2,
@@ -37,6 +39,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     publicValue: "High; a newer primary report would materially improve the age and confidence of the trust’s payout history.",
     noChargeResearchPath: "Check the official trust site and administrator materials; CourtListener/RECAP; public bankruptcy-docket mirrors; Internet Archive; and free court-record indexes. Do not attempt a paid PACER pull.",
     expectedMinutes: 35,
+    archiveRecheckOn: "2026-09-24",
   },
   {
     rank: 3,
@@ -48,6 +51,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     publicValue: "High; two subaccounts and a large historical payment base make a primary update especially useful for accuracy and presentation.",
     noChargeResearchPath: "Search the official administrator resource pages and trust notices; CourtListener/RECAP and public docket attachments; Internet Archive; and direct public annual-report libraries. Preserve separate OC and FB payment-rate treatment.",
     expectedMinutes: 30,
+    archiveRecheckOn: "2026-09-24",
   },
   {
     rank: 4,
@@ -59,6 +63,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     publicValue: "High; a 2014 floor is materially stale and a public later filing would improve payout chronology.",
     noChargeResearchPath: "Search official administrator notices and public document libraries, CourtListener/RECAP, no-charge docket mirrors, and archive captures. Record court-side access limitations without inferring a current value.",
     expectedMinutes: 25,
+    archiveRecheckOn: "2026-09-24",
   },
   {
     rank: 5,
@@ -70,6 +75,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     publicValue: "High; this is the oldest filed floor in the current top-five worklist and should not be implied to be current.",
     noChargeResearchPath: "Search the official trust site, payment notices, CourtListener/RECAP, public docket indexes, and archive snapshots. Treat payment-rate notices as rate evidence only, not as evidence of cumulative payouts.",
     expectedMinutes: 25,
+    archiveRecheckOn: "2026-09-24",
   },
   {
     rank: 6,
@@ -77,10 +83,11 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     trustName: "DII Industries, LLC Asbestos PI Trust",
     focus: "Seek the missing FY2005–FY2013 annual-report sequence needed to convert the documented FY2014–FY2025 subtotal into an inception-to-date series.",
     historicalCutoff: "Documented per-year subtotal FY2014–FY2025; early years unresolved",
-    currentEvidence: "The current annual-report archive supplies a 12-year cash-basis subtotal but not the early-report sequence needed for a complete cumulative figure.",
+    currentEvidence: "The official annual-report archive begins with FY2014 and supplies a documented 12-year cash-basis subtotal, but not the FY2005–FY2013 sequence needed for a complete cumulative figure. A public Internet Archive index likewise begins with FY2014 annual-report captures, and reviewed public docket indexes identify the bankruptcy case but do not provide the missing report attachments through no-charge routes. The tracker therefore retains the FY2014–FY2025 subtotal as a bounded period result rather than an inception-to-date cumulative-paid figure.",
     publicValue: "Medium-high; a complete no-charge series would add a meaningful bottom-up historical component.",
     noChargeResearchPath: "Review the official report archive, public docket indexes and attachments, Internet Archive snapshots, and free court repositories. Do not sum incomplete years into an inception-to-date field.",
     expectedMinutes: 40,
+    archiveRecheckOn: "2026-09-27",
   },
   {
     rank: 7,
@@ -92,6 +99,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     publicValue: "Medium; upgrading or revising a discrete qualified component improves the bottom-up method’s transparency.",
     noChargeResearchPath: "Search official trust or administrator resources, CourtListener/RECAP, public docket repositories, and archive captures. Maintain the secondary label unless the underlying filing is obtained.",
     expectedMinutes: 30,
+    archiveRecheckOn: "2026-09-24",
   },
   {
     rank: 8,
@@ -103,6 +111,7 @@ export const HISTORICAL_SOURCE_BACKLOG: readonly HistoricalSourceBacklogItem[] =
     publicValue: "Medium; the recovered four-year official series improves historical transparency, but only a complete and reproducible sequence can support a broader bottom-up calculation.",
     noChargeResearchPath: "Continue with the official administrator report archive, public docket indexes and attachments, and Internet Archive captures. Record partial years separately and stop short of an inception-to-date figure unless the complete series is recovered.",
     expectedMinutes: 25,
+    archiveRecheckOn: "2026-09-25",
   },
 ];
 

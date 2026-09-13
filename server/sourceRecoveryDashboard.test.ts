@@ -77,6 +77,13 @@ describe("Public historical-document recovery dashboard", () => {
     expect(maremont?.currentEvidence).toContain("not present the four-year subtotal as a total paid since inception");
   });
 
+  it("records DII's reviewed archive boundary without promoting its 2014–2025 period subtotal to inception-to-date payments", () => {
+    const dii = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "dii-industries-halliburton-harbison-walker");
+    expect(dii?.currentEvidence).toContain("official annual-report archive begins with FY2014");
+    expect(dii?.currentEvidence).toContain("Internet Archive index likewise begins with FY2014");
+    expect(dii?.currentEvidence).toContain("bounded period result rather than an inception-to-date cumulative-paid figure");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");
@@ -86,11 +93,14 @@ describe("Public historical-document recovery dashboard", () => {
     expect(pageSource).toContain("no-charge research cycle");
     expect(pageSource).toContain("Source access age");
     expect(pageSource).toContain("Next scheduled check");
+    expect(pageSource).toContain("Next archive recheck");
+    expect(pageSource).toContain("planned research review");
     expect(pageSource).toContain("America/Chicago");
     expect(pageSource).toContain("Source access repairs");
     expect(pageSource).toContain("Fallback verified");
     expect(routerSource).toContain("sourceAccessAge");
     expect(routerSource).toContain("nextScheduledCheckAt");
+    expect(routerSource).toContain("archiveRecheckOn");
     expect(routerSource).toContain("accessRepairs");
   });
 
@@ -99,6 +109,11 @@ describe("Public historical-document recovery dashboard", () => {
     expect(sourceAccessAgeLabel(new Date("2026-09-06T13:00:00Z"), mondayMorning)).toBe("1 day since successful access");
     expect(nextScheduledMonitoringCheck("daily", mondayMorning).toISOString()).toBe("2026-09-08T11:30:00.000Z");
     expect(nextScheduledMonitoringCheck("weekly", mondayMorning).toISOString()).toBe("2026-09-13T15:00:00.000Z");
+  });
+
+  it("assigns visible, upcoming archive-recheck dates to every ranked recovery target", () => {
+    expect(HISTORICAL_SOURCE_BACKLOG.every((item) => /^2026-09-(24|25|27)$/.test(item.archiveRecheckOn))).toBe(true);
+    expect(HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "dii-industries-halliburton-harbison-walker")?.archiveRecheckOn).toBe("2026-09-27");
   });
 
   it("is publicly queryable, server-rendered, canonicalized, and indexed", () => {

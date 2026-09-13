@@ -535,6 +535,12 @@
 - [x] Update the verified access and recovery statuses without changing tracker figures absent controlling evidence
 - [x] Validate public dashboard and internal queue records before reporting the source-supported outcome
 
+## Archive Recheck Dates and Next Historical-Report Recovery (2026-09-11)
+- [x] Add explicit, data-derived upcoming archive-recheck dates to public source-recovery cards
+- [x] Investigate the next ranked historical-report target through no-charge primary, court, and archive sources
+- [x] Update the relevant recovery card with verified evidence status without changing tracker figures absent controlling evidence
+- [x] Validate responsive, crawler-visible dashboard rendering and publish the verified update
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

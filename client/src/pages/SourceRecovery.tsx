@@ -118,6 +118,34 @@ export default function SourceRecovery() {
         </div>
       </section>
 
+      {data.accessRepairs?.length > 0 && (
+        <section aria-labelledby="access-repairs-heading" className="mb-8 rounded-lg border border-sky-500/25 bg-sky-500/5 p-5 md:p-6">
+          <div className="max-w-3xl">
+            <h2 id="access-repairs-heading" className="font-display text-xl font-bold uppercase tracking-wide text-foreground">Source access repairs</h2>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">These entries show reviewed monitoring-path repairs. A successful transport check means the monitored public source is reachable; it does not establish a new trust fact or replace direct source verification for a future update.</p>
+          </div>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {data.accessRepairs.map((repair) => {
+              const isReachable = repair.status === "monitored";
+              return (
+                <article key={repair.trustSlug} className="rounded border border-border/50 bg-background/45 p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h3 className="text-sm font-semibold text-foreground">{repair.trustName}</h3>
+                    <span className={`rounded-full border px-2 py-0.5 text-[0.68rem] font-semibold ${isReachable ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-800" : "border-sky-500/30 bg-sky-500/10 text-sky-800"}`}>{isReachable ? "Fallback verified" : "Fallback registered"}</span>
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{repair.retrievalNotes}</p>
+                  <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
+                    <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Last successful access</dt><dd className="mt-0.5 text-foreground">{formatDate(repair.lastSuccessfulCheckAt)}</dd></div>
+                    <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Next scheduled check</dt><dd className="mt-0.5 text-foreground">{formatScheduledCheck(repair.nextScheduledCheckAt)}</dd></div>
+                  </dl>
+                  <a href={repair.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary underline underline-offset-2 hover:no-underline">Open controlling public source <ExternalLink size={13} aria-hidden="true" /></a>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       <section aria-labelledby="priority-worklist-heading">
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>

@@ -78,6 +78,26 @@ describe("living-tracker pilot policy", () => {
     expect(monitoringBodyIsUsable("Title: News\nMarkdown Content:", true)).toBe(false);
   });
 
+  it("keeps Bondex's CPF page as the controlling source while using its reviewed no-charge monitoring transport", () => {
+    const seed = registrySeedFromTracker({ trusts: [{ name: "Bondex (Specialty Products Holding Corp.) Trust" }] });
+    const bondex = seed.registered.find((entry) => entry.trustSlug === "bondex-specialty-products-holding-corp-trust");
+    expect(bondex?.sourceUrl).toBe("https://www.cpf-inc.com/trusts/bondex-trust");
+    expect(monitoringFetchTarget({ trustSlug: bondex?.trustSlug ?? null, sourceUrl: bondex?.sourceUrl ?? "" })).toEqual({
+      url: "https://r.jina.ai/https://www.cpf-inc.com/trusts/bondex-trust",
+      usesTransport: true,
+    });
+  });
+
+  it("keeps Maremont's administrator portal as the controlling source while using its reviewed no-charge monitoring transport", () => {
+    const seed = registrySeedFromTracker({ trusts: [{ name: "Maremont Asbestos PI Trust" }] });
+    const maremont = seed.registered.find((entry) => entry.trustSlug === "maremont-asbestos-pi-trust");
+    expect(maremont?.sourceUrl).toBe("https://maremont.mfrclaims.com/");
+    expect(monitoringFetchTarget({ trustSlug: maremont?.trustSlug ?? null, sourceUrl: maremont?.sourceUrl ?? "" })).toEqual({
+      url: "https://r.jina.ai/https://maremont.mfrclaims.com/",
+      usesTransport: true,
+    });
+  });
+
   it("uses a ranked, no-charge historical-source worklist that fits the monthly research cap", () => {
     const worklist = monthlyHistoricalSourceWorklist();
     expect(worklist.map((item) => item.trustName)).toEqual([

@@ -436,6 +436,7 @@ export async function runDailySourceDetection(options: {
   limit?: number;
   runType?: "daily_detection" | "weekly_coverage";
   scanAllSources?: boolean;
+  trustSlugs?: readonly string[];
 } = {}) {
   const { db, seed } = await ensurePilotAndRegistry();
   const now = new Date();
@@ -446,7 +447,9 @@ export async function runDailySourceDetection(options: {
     .where(eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID))
     .orderBy(asc(sourceRegistry.priority), asc(sourceRegistry.nextCheckAt));
   const due = allSources
-    .filter((source) => source.isActive && (options.scanAllSources || !source.nextCheckAt || source.nextCheckAt <= now))
+    .filter((source) => source.isActive
+      && (!options.trustSlugs || (source.trustSlug !== null && options.trustSlugs.includes(source.trustSlug)))
+      && (options.scanAllSources || !source.nextCheckAt || source.nextCheckAt <= now))
     .slice(0, sourceLimit);
   const runId = `run-${runType}-${nanoid(14)}`;
   await db.insert(operationsRuns).values({

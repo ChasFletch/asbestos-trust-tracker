@@ -529,6 +529,12 @@
 - [x] Research only qualified official, administrator, case-agent, court, or government signals without paid sources
 - [x] Record source-supported dispositions, quality-gate status, and any article-target shortfall in the project queue
 
+## Access Fallback and Maremont Historical-Report Recovery (2026-09-11)
+- [x] Identify the next access-only candidate, documented fallback, and Maremont evidence boundary
+- [x] Verify a no-charge monitoring fallback and no-charge Maremont primary, court, or archive sources
+- [x] Update the verified access and recovery statuses without changing tracker figures absent controlling evidence
+- [x] Validate public dashboard and internal queue records before reporting the source-supported outcome
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

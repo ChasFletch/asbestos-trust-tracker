@@ -194,6 +194,14 @@ export const appRouter = router({
         ))
         : [];
       const sourcesByTrust = new Map(rows.map((row) => [row.trustSlug, row]));
+      const accessRepairSlugs = ["bondex-specialty-products-holding-corp-trust", "maremont-asbestos-pi-trust"];
+      const accessRepairRows = db
+        ? await db.select().from(sourceRegistry).where(and(
+          eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID),
+          inArray(sourceRegistry.trustSlug, accessRepairSlugs),
+          eq(sourceRegistry.isActive, true),
+        ))
+        : [];
 
       const items = HISTORICAL_SOURCE_BACKLOG.map((item) => {
         const source = sourcesByTrust.get(item.trustSlug);
@@ -224,6 +232,21 @@ export const appRouter = router({
         pilotEndsOn: "2026-10-05",
         monthlyResearchCapMinutes: 150,
         items,
+        accessRepairs: accessRepairRows.map((source) => {
+          const reachable = Boolean(source.lastSuccessfulCheckAt) && source.failureCount === 0;
+          return {
+            trustSlug: source.trustSlug,
+            trustName: source.trustName,
+            sourceUrl: source.sourceUrl,
+            status: reachable ? "monitored" : "registered",
+            checkCadence: source.checkCadence,
+            lastCheckedAt: source.lastCheckedAt,
+            lastSuccessfulCheckAt: source.lastSuccessfulCheckAt,
+            sourceAccessAge: sourceAccessAgeLabel(source.lastSuccessfulCheckAt, generatedAt),
+            nextScheduledCheckAt: nextScheduledMonitoringCheck(source.checkCadence, generatedAt),
+            retrievalNotes: source.retrievalNotes,
+          };
+        }),
         summary: {
           total: items.length,
           monitored: items.filter((item) => item.status === "monitored").length,

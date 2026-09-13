@@ -69,6 +69,14 @@ describe("Public historical-document recovery dashboard", () => {
     expect(giHoldings?.currentEvidence).toContain("qualified component therefore remains unchanged");
   });
 
+  it("records Maremont's recovered four-year official payment series without promoting the partial subtotal to inception-to-date payments", () => {
+    const maremont = HISTORICAL_SOURCE_BACKLOG.find((item) => item.trustSlug === "maremont-asbestos-pi-trust");
+    expect(maremont?.historicalCutoff).toContain("$11,512,985");
+    expect(maremont?.currentEvidence).toContain("FY2022 (DN 371), FY2023 (DN 372), FY2024 (DN 373), and FY2025 (DN 374)");
+    expect(maremont?.currentEvidence).toContain("annual cash payments totaling $11,512,985");
+    expect(maremont?.currentEvidence).toContain("not present the four-year subtotal as a total paid since inception");
+  });
+
   it("renders bounded recovery language and live registry status rather than unverified trust facts", () => {
     expect(pageSource).toContain("research progress—not new trust facts");
     expect(pageSource).toContain("Access is not substance");
@@ -79,8 +87,11 @@ describe("Public historical-document recovery dashboard", () => {
     expect(pageSource).toContain("Source access age");
     expect(pageSource).toContain("Next scheduled check");
     expect(pageSource).toContain("America/Chicago");
+    expect(pageSource).toContain("Source access repairs");
+    expect(pageSource).toContain("Fallback verified");
     expect(routerSource).toContain("sourceAccessAge");
     expect(routerSource).toContain("nextScheduledCheckAt");
+    expect(routerSource).toContain("accessRepairs");
   });
 
   it("derives source-age labels and next monitoring slots on the server", () => {

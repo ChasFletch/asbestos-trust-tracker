@@ -541,6 +541,11 @@
 - [x] Update the relevant recovery card with verified evidence status without changing tracker figures absent controlling evidence
 - [x] Validate responsive, crawler-visible dashboard rendering and publish the verified update
 
+## Living-Tracker Pilot Research Cycle — Current (2026-09-13)
+- [x] Review the current registry, candidate queue, monitoring runs, and weekly coverage evidence before researching
+- [x] Research only qualified official, administrator, case-agent, court, or government signals without paid sources
+- [x] Record source-supported dispositions, quality-gate status, and any article-target shortfall in the project queue
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

@@ -546,6 +546,11 @@
 - [x] Research only qualified official, administrator, case-agent, court, or government signals without paid sources
 - [x] Record source-supported dispositions, quality-gate status, and any article-target shortfall in the project queue
 
+## Living-Tracker Pilot Research Cycle — September 15, 2026
+- [x] Review the active source registry, current candidate queue, latest monitoring runs, and last weekly coverage result
+- [x] Deduplicate and research the qualified official-source signals without paid sources or PACER access
+- [x] Record source-supported dispositions and the quality-dependent Monday article outcome in the existing project queue
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

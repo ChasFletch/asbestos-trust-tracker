@@ -51,7 +51,7 @@ describe("living-tracker pilot policy", () => {
         { name: "ABB Lummus Global Inc. 524(g) Asbestos PI Trust", sourceUrl: "https://trust.example/filed-report.pdf" },
       ],
     });
-    expect(Object.keys(SOURCE_REGISTRY_OVERRIDES)).toHaveLength(33);
+    expect(Object.keys(SOURCE_REGISTRY_OVERRIDES)).toHaveLength(36);
     expect(seed.sourceGaps).toEqual([]);
     expect(seed.registered.find((entry) => entry.trustSlug === "a-best-products-asbestos-trust")?.sourceUrl)
       .toBe("https://www.abestasbestostrust.com/");
@@ -96,6 +96,36 @@ describe("living-tracker pilot policy", () => {
       url: "https://r.jina.ai/https://maremont.mfrclaims.com/",
       usesTransport: true,
     });
+  });
+
+  it("replaces only failed legacy hosts with verified official trust routes", () => {
+    const seed = registrySeedFromTracker({
+      trusts: [
+        { name: "Quigley Company Asbestos PI Trust" },
+        { name: "W.R. Grace Asbestos PI Trust" },
+        { name: "Yarway Asbestos PI Trust" },
+      ],
+    });
+    expect(seed.registered.find((entry) => entry.trustSlug === "quigley-company-asbestos-pi-trust")?.sourceUrl)
+      .toBe("https://www.quigleytrust.com/");
+    expect(seed.registered.find((entry) => entry.trustSlug === "w-r-grace-asbestos-pi-trust")?.sourceUrl)
+      .toBe("https://www.wrgraceasbestostrust.com/");
+    expect(seed.registered.find((entry) => entry.trustSlug === "yarway-asbestos-pi-trust")?.sourceUrl)
+      .toBe("https://www.yarwaytrust.com/");
+  });
+
+  it("uses verified no-charge reader transports only to observe certificate- or CAPTCHA-limited official sources", () => {
+    const cases = [
+      ["raytech-raymark-trust", "https://www.cpf-inc.com/trusts/raytech-trust/"],
+      ["eagle-picher-industries-pi-settlement-trust", "https://www.cpf-inc.com/trusts/epi-trust/"],
+      ["united-gilsonite-ugl-asbestos-pi-trust", "https://www.ugltrust.com/"],
+    ] as const;
+    for (const [trustSlug, sourceUrl] of cases) {
+      expect(monitoringFetchTarget({ trustSlug, sourceUrl })).toEqual({
+        url: `https://r.jina.ai/${sourceUrl}`,
+        usesTransport: true,
+      });
+    }
   });
 
   it("uses a ranked, no-charge historical-source worklist that fits the monthly research cap", () => {

@@ -551,6 +551,13 @@
 - [x] Deduplicate and research the qualified official-source signals without paid sources or PACER access
 - [x] Record source-supported dispositions and the quality-dependent Monday article outcome in the existing project queue
 
+## Celotex Recovery, Wednesday Candidate Review, and Failed-Source Fallbacks — September 15, 2026
+- [x] Attempt no-charge recovery of Celotex’s FY2025 controlling report through official, public-court, and archive routes
+- [x] Reassess the Wednesday candidate cohort for source-supported, non-duplicative article opportunities
+- [x] Investigate the seven inaccessible or failed source records and document lawful primary or administrator fallback options
+- [x] Apply only verified no-charge source-route and monitoring-transport repairs with regression coverage
+- [x] Record recovery findings, candidate dispositions, and any quality-dependent publication shortfall in the existing project queue
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

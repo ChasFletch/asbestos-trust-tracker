@@ -42,10 +42,22 @@ export const SOURCE_REGISTRY_OVERRIDES: Record<string, SourceRegistryOverride> =
   "motors-liquidation-co-gm-asbestos-pi-trust": { trustName: "Motors Liquidation Co. (GM) Asbestos PI Trust", sourceUrl: "https://www.claimsres.com/documents/mlc/", sourceClass: "administrator", retrievalNotes: "Official CRMC document repository reviewed 2026-09-07." },
   "porter-hayden-bodily-injury-trust": { trustName: "Porter Hayden Bodily Injury Trust", sourceUrl: "https://www.porterhaydentrust.com/", sourceClass: "official_trust", retrievalNotes: "Official trust portal lead reviewed 2026-09-07; Verus is the documented fallback." },
   "rapid-american-asbestos-pi-trust": { trustName: "Rapid-American Asbestos PI Trust", sourceUrl: "https://www.rapidamericanasbestostrust.com/", sourceClass: "official_trust", retrievalNotes: "Official trust portal reviewed 2026-09-07; DCPF is the documented fallback." },
-  "raytech-raymark-trust": { trustName: "Raytech/Raymark Trust", sourceUrl: "https://www.cpf-inc.com/trusts/raytech-trust/", sourceClass: "administrator", retrievalNotes: "Official Claims Processing Facility trust page reviewed 2026-09-07." },
+  "raytech-raymark-trust": {
+    trustName: "Raytech/Raymark Trust",
+    sourceUrl: "https://www.cpf-inc.com/trusts/raytech-trust/",
+    sourceClass: "administrator",
+    monitoringUrl: "https://r.jina.ai/https://www.cpf-inc.com/trusts/raytech-trust/",
+    retrievalNotes: "Official Claims Processing Facility trust page verified through a no-charge reader transport 2026-09-15 after the project runtime could not complete the direct route. The official CPF URL remains controlling; a transport signal requires direct official-source verification before any tracker or publication decision.",
+  },
   "shook-fletcher-asbestos-settlement-trust": { trustName: "Shook & Fletcher Asbestos Settlement Trust", sourceUrl: "https://www.claimsres.com/shook-fletcher/", sourceClass: "administrator", retrievalNotes: "Official CRMC trust page reviewed 2026-09-07." },
   "t-h-agriculture-nutrition-l-l-c-asbestos-personal-injury-trust-than": { trustName: "T-H Agriculture & Nutrition (THAN) Asbestos PI Trust", sourceUrl: "https://www.thanasbestostrust.com/", sourceClass: "official_trust", retrievalNotes: "Official trust portal lead reviewed 2026-09-07; preserve filed-document evidence separately." },
-  "united-gilsonite-ugl-asbestos-pi-trust": { trustName: "United Gilsonite (UGL) Asbestos PI Trust", sourceUrl: "https://www.ugltrust.com/", sourceClass: "official_trust", retrievalNotes: "Official trust portal lead reviewed 2026-09-07; CPF is the documented fallback." },
+  "united-gilsonite-ugl-asbestos-pi-trust": {
+    trustName: "United Gilsonite (UGL) Asbestos PI Trust",
+    sourceUrl: "https://www.ugltrust.com/",
+    sourceClass: "official_trust",
+    monitoringUrl: "https://r.jina.ai/https://www.ugltrust.com/",
+    retrievalNotes: "Official trust portal and current resource library verified 2026-09-15. The project runtime received a transport failure, so monitoring uses a no-charge reader transport only to observe the controlling official site; CPF remains a documented fallback. Any signal requires direct official-source verification before a tracker or publication decision.",
+  },
   "united-states-mineral-products-company-asbestos-pi-settlement-trust": { trustName: "U.S. Mineral Products Company Asbestos PI Settlement Trust", sourceUrl: "https://www.usmineraltrust.com/", sourceClass: "official_trust", retrievalNotes: "Official trust portal lead reviewed 2026-09-07; Verus is the documented fallback." },
   "bondex-specialty-products-holding-corp-trust": {
     trustName: "Bondex (Specialty Products Holding Corp.) Trust",
@@ -55,7 +67,13 @@ export const SOURCE_REGISTRY_OVERRIDES: Record<string, SourceRegistryOverride> =
     retrievalNotes: "Official Claims Processing Facility Bondex page verified 2026-09-11. The project runtime cannot complete direct CPF TLS validation; monitoring uses a no-charge reader transport only to observe that controlling official page. Any detected content change requires direct official CPF verification before a tracker or publication decision.",
   },
   "congoleum-plan-trust": { trustName: "Congoleum Plan Trust", sourceUrl: "https://www.congoleumtrust.com/", sourceClass: "official_trust", retrievalNotes: "Replaces non-resolving congoleumplantrust.com host; evaluate the live site’s TLS behavior separately." },
-  "eagle-picher-industries-pi-settlement-trust": { trustName: "Eagle-Picher Industries PI Settlement Trust", sourceUrl: "https://www.cpf-inc.com/trusts/epi-trust/", sourceClass: "administrator", retrievalNotes: "Replaces non-resolving legacy host with official CPF EPI trust page." },
+  "eagle-picher-industries-pi-settlement-trust": {
+    trustName: "Eagle-Picher Industries PI Settlement Trust",
+    sourceUrl: "https://www.cpf-inc.com/trusts/epi-trust/",
+    sourceClass: "administrator",
+    monitoringUrl: "https://r.jina.ai/https://www.cpf-inc.com/trusts/epi-trust/",
+    retrievalNotes: "Official CPF EPI page verified through a no-charge reader transport 2026-09-15 after direct project-runtime access failed. The CPF page remains controlling; the transport is detection-only and any material signal requires direct official-source verification.",
+  },
   "g-i-holdings-gaf-asbestos-pi-settlement-trust": { trustName: "G-I Holdings (GAF) Asbestos PI Settlement Trust", sourceUrl: "https://www.g-itrust.com/", sourceClass: "official_trust", retrievalNotes: "Replaces non-resolving giasbestostrust.com host with reviewed active trust site." },
   "kaiser-gypsum-asbestos-pi-trust": { trustName: "Kaiser Gypsum Asbestos PI Trust", sourceUrl: "https://www.kaisergypsumtrust.org/", sourceClass: "official_trust", retrievalNotes: "Replaces non-resolving .com host with reviewed official .org trust site." },
   "maremont-asbestos-pi-trust": {
@@ -68,4 +86,7 @@ export const SOURCE_REGISTRY_OVERRIDES: Record<string, SourceRegistryOverride> =
   "narco-asbestos-trust": { trustName: "NARCO Asbestos Trust", sourceUrl: "https://www.narcoasbestostrust.org/", sourceClass: "official_trust", retrievalNotes: "Replaces non-resolving narcotrust.com host; use browser-compatible retrieval only if direct checks meet a WAF." },
   "ngc-bodily-injury-trust-national-gypsum": { trustName: "NGC Bodily Injury Trust", sourceUrl: "https://www.ngcbitrust.org/", sourceClass: "official_trust", retrievalNotes: "Replaces non-resolving ngcasbestostrust.com host; evaluate TLS behavior on the active site." },
   "owens-corning-fibreboard-asbestos-pi-trust": { trustName: "Owens Corning/Fibreboard Asbestos PI Trust", sourceUrl: "https://www.ocfbasbestostrust.com/", sourceClass: "official_trust", retrievalNotes: "Replaces misspelled ocfasbestostrust.com host; use browser-compatible retrieval only if the active site meets a WAF." },
+  "quigley-company-asbestos-pi-trust": { trustName: "Quigley Company Asbestos PI Trust", sourceUrl: "https://www.quigleytrust.com/", sourceClass: "official_trust", retrievalNotes: "Replaces the non-resolving quigleyasbestostrust.com host with the verified official trust site and public resources library, reviewed 2026-09-15." },
+  "w-r-grace-asbestos-pi-trust": { trustName: "W.R. Grace Asbestos PI Trust", sourceUrl: "https://www.wrgraceasbestostrust.com/", sourceClass: "official_trust", retrievalNotes: "Replaces the SSL-failing wrgasbestospitrust.com host with the verified official DCPF-hosted trust site, reviewed 2026-09-15." },
+  "yarway-asbestos-pi-trust": { trustName: "Yarway Asbestos PI Trust", sourceUrl: "https://www.yarwaytrust.com/", sourceClass: "official_trust", retrievalNotes: "Replaces the defunct yarwayasbestostrust.com host with the verified official trust site and public resources library, reviewed 2026-09-15." },
 };

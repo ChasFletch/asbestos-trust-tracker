@@ -514,6 +514,57 @@ This explainer compares four public trust or administrator notices. It does not 
 [5]: https://wikimesothelioma.com/wiki/Asbestos_Trust_Funds "WikiMesothelioma — Asbestos Trust Funds"
 `,
   },
+  {
+    slug: "manville-revised-2025-trustees-accounting",
+    title: "Manville’s Revised 2025 Trustee’s Accounting Reports $56.3M in Annual Claim Payments",
+    date: "2026-09-16",
+    category: "annual_report",
+    summary: "Manville’s public Trustee’s Accounting library now links a revised 2025 account reporting 18,413 claim payments totaling $56.3 million. The report is a 2025 annual accounting and does not replace the tracker’s newer Q2 2026 net-equity figure or its separate cumulative liquidated-claims series.",
+    sourceUrl: "https://mantrust.claimsres.com/wp-content/uploads/2026/09/Trustees-Accounting-2025__final-REVISED.pdf",
+    sourceLabel: "Manville Personal Injury Settlement Trust — revised 2025 Account of Trustees",
+    sourceCutoffAt: "2025-12-31",
+    keywords: "Manville Trust 2025 accounting, Manville claim payments, Manville Trustee accounting, asbestos trust annual report, Manville Trust financial statements",
+    about: "Manville Personal Injury Settlement Trust revised 2025 annual Trustee’s Accounting",
+    relatedTrustSlugs: ["manville-personal-injury-settlement-trust"],
+    markdown: `The Manville Personal Injury Settlement Trust’s public Trustee’s Accounting library now links a **revised 2025 Account of Trustees** for the period ending December 31, 2025.[1] The account reports **18,413 personal-injury claim payments totaling $56,311,218** during 2025.[2]
+
+The public library also links a revised 2024 account. That account reports **13,589 claim payments totaling $49,777,753** for 2024.[1] [3] The year-over-year comparison is therefore **4,824 more reported payments** and **$6,533,465 more reported cash payments** in 2025. These are annual accounting measures, not a statement of a claimant’s individual recovery or a forecast of future payment levels.
+
+## What the revised 2025 accounting reports
+
+| Filed annual-accounting measure | 2025 amount | Scope |
+|---|---:|---|
+| Personal-injury claim payments | **18,413** | Payments reported for January 1–December 31, 2025. |
+| Claim payments made | **$56,311,218** | Cash payments shown in the 2025 cash-flow statement and Exhibit A. |
+| Net claimants’ equity | **$563,345,749** | Year-end 2025 special-purpose accounting measure. |
+| Cash equivalents and investments | **$626,384,413** | Year-end 2025 measure; it is not the same as net claimants’ equity. |
+
+The report describes its financial statements as consolidated **special-purpose** statements and says they are presented for convenience and information purposes.[2] The account separately identifies claim payments, cash equivalents and investments, and net claimants’ equity. Those measures should not be substituted for one another.[2]
+
+## Why the tracker does not replace its newer Manville figure
+
+AsbestosTrusts.org already uses Manville’s **Q2 2026** filed statement for the current trust-record net-claimants’-equity figure of **$570,516,505 as of June 30, 2026**.[4] That more recent quarterly figure remains the applicable tracker balance measure. The newly available 2025 accounting adds a direct public annual source for 2025 claim-payment activity, but it does **not** supersede the later Q2 2026 figure.
+
+The tracker’s separate Manville cumulative field follows the Q2 filing’s **cumulative Trust liquidated claims** convention. That is not a pure cumulative cash-paid total. The $56.3 million reported in this annual account is a one-year cash-payment measure, so it is not added to or substituted for that cumulative liquidated-claims series.[2] [4]
+
+## What the “revised” label establishes—and what it does not
+
+The public library labels the 2024 and 2025 PDFs “REVISED.”[1] The reviewed page and PDFs do not explain the reason for the revision or identify a changed line item. This article therefore reports document availability and the figures shown in the revised files, but does **not** characterize the revision as a correction, infer an earlier error, or alter the tracker’s more current Q2 2026 figure on that basis.
+
+> **Confirmed:** The official Manville library links revised 2024 and 2025 Trustee’s Accounts, and the 2025 account reports 18,413 claim payments totaling $56,311,218.
+>
+> **Not established:** Why the accounts were revised, whether a particular prior figure changed, an individual claim outcome, or a newer trust balance than the filed Q2 2026 figure.
+
+## Source and editorial note
+
+This brief is limited to Manville’s public document library and the linked annual accounts. It does not provide legal advice, determine claim eligibility, or predict payments. No article-specific attorney review is recorded for this publication.
+
+[1]: https://mantrust.claimsres.com/documents/trustees-accounting/ "Manville Trust — Trustee’s Accounting library"
+[2]: https://mantrust.claimsres.com/wp-content/uploads/2026/09/Trustees-Accounting-2025__final-REVISED.pdf "Manville Personal Injury Settlement Trust, Account of Trustees, January 1, 2025 through December 31, 2025"
+[3]: https://mantrust.claimsres.com/wp-content/uploads/2026/09/MPIST-Account-of-Trustees-2024-REVISED.pdf "Manville Personal Injury Settlement Trust, Account of Trustees, January 1, 2024 through December 31, 2024"
+[4]: /manus-storage/Manville-Q2-2026-Financial-Statements-Doc4480_0eacb16f.pdf "Manville Personal Injury Settlement Trust, Financial Statements and Report for the Period Ending June 30, 2026, S.D.N.Y. Doc. 4480, filed July 27, 2026"
+`,
+  },
 ];
 
 export const NEWS_BRIEFS_BY_SLUG = Object.fromEntries(

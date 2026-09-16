@@ -8,6 +8,7 @@ describe("trust detail related-article modules", () => {
     expect(getNewsBriefsForTrust("manville-personal-injury-settlement-trust").map((article) => article.slug)).toEqual([
       "manville-q2-2026-financial-statements",
       "manville-payment-percentage-increase-september-2026",
+      "manville-revised-2025-trustees-accounting",
     ]);
     expect(getNewsBriefsForTrust("paddock-enterprises-owens-illinois-asbestos-trust").map((article) => article.slug)).toEqual([
       "owens-illinois-payment-percentage-increase",

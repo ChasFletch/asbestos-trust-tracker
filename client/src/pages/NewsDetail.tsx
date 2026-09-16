@@ -17,7 +17,7 @@ export default function NewsDetail() {
     return <div className="container py-12 max-w-3xl text-center"><FileText size={40} className="text-muted-foreground/30 mx-auto mb-4" /><h1 className="font-display font-bold text-xl mb-2">News brief not found</h1><p className="text-sm text-muted-foreground mb-6">This source-linked update is unavailable.</p><Link href="/news" className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"><ArrowLeft size={14} /> Back to News</Link></div>;
   }
 
-  const categoryLabel = brief.category === "annual_report" ? "Filed quarterly report" : brief.category.replace(/_/g, " ");
+  const categoryLabel = brief.category === "annual_report" ? "Filed annual report" : brief.category.replace(/_/g, " ");
 
   return <article className="container py-8 max-w-3xl">
     <nav aria-label="Breadcrumb" className="mb-6"><Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink asChild><Link href="/"><Home size={14} className="inline -mt-0.5" /> Home</Link></BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink asChild><Link href="/news"><Newspaper size={14} className="inline -mt-0.5" /> News</Link></BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>{brief.title}</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb></nav>

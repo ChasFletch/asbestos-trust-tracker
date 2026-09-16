@@ -31,4 +31,10 @@ describe("Manville revised 2025 Trustee’s Accounting detailed news brief", () 
     expect(card).toContain("$56,311,218");
     expect(card).toContain("full source-linked brief");
   });
+
+  it("labels the annual accounting accurately in the detailed-news template", () => {
+    const detailTemplate = readFileSync("client/src/pages/NewsDetail.tsx", "utf8");
+    expect(detailTemplate).toContain('brief.category === "annual_report" ? "Filed annual report"');
+    expect(detailTemplate).not.toContain('brief.category === "annual_report" ? "Filed quarterly report"');
+  });
 });

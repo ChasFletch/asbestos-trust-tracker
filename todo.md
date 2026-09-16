@@ -563,6 +563,10 @@
 - [x] Deduplicate and research the five changed official-source candidates without paid sources or PACER access
 - [x] Record source-supported dispositions and the quality-gated publication decision in the existing project queue
 
+## News Detail Category Accuracy — September 16, 2026
+- [x] Correct the annual-report article label so a source-backed annual accounting is not presented as a quarterly report
+- [x] Add focused coverage and republish the corrected label with production verification
+
 ## Monthly Research Cadence Correction (2026-09-08)
 - [x] Restrict the monthly research-preparation schedule from every Tuesday to the approved first Tuesday of each month, preserving the existing bounded handler and project queue
 

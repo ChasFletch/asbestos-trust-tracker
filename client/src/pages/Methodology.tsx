@@ -100,7 +100,10 @@ export default function Methodology() {
             There is an additional layer of confusion: our bottom-up estimate of <em>cumulative payouts</em> since 1988 is $29,981,797,653 — which is also approximately $30 billion. This is a coincidence of scale. The two figures measure completely different things: total capitalization (what went in) versus total claims paid (what went out). Neither is the current remaining balance.
           </p>
           <p className="text-muted-foreground">
-            Our documented floor for remaining assets — based on filed figures for all trusts with retrievable annual reports — is <strong className="text-foreground">$16,746,136,347</strong>. This is a floor, not a ceiling: trusts with no public filing are excluded from this sum. This figure is updated as new annual reports are filed each spring.
+            Our documented floor for remaining assets is <strong className="text-foreground">$16,746,136,347</strong>. That is the sum across the <strong className="text-foreground">42 trusts</strong> in this database — <em>not</em> across the 60 trusts in the GAO count above. The two figures describe different populations: the GAO counted trusts <em>established</em> between 1988 and 2011, while this database tracks the trusts for which we currently hold an asset figure. <strong className="text-foreground">The $16.7 billion floor and the 60-trust count must never be paired</strong>, and neither should be described as a GAO finding about current balances.
+          </p>
+          <p className="text-muted-foreground">
+            The sourcing behind that sum is mixed, and we state the mix rather than the best case. Of the 42 asset figures, <strong className="text-foreground">13</strong> are read from a filed annual report or court document, <strong className="text-foreground">27</strong> rest on secondary compilations of FY2021–FY2022 annual reports, one is initial funding, and one trust is depleted. By dollars, <strong className="text-foreground">$9,394,759,262 — roughly 56% of the floor — rests on secondary compilations rather than on filed figures.</strong> Each trust's basis and as-of date is shown on its own row. This is a floor, not a ceiling, and it is updated as new annual reports are filed each spring.
           </p>
         </section>
 

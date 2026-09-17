@@ -1,8 +1,11 @@
 import { useParams, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { SourceDocModal } from "@/components/SourceDocModal";
 import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
+import { primarySourceDocumentsBySlug } from "@/data/primarySourceDocuments";
+import { getNewsBriefsForTrust } from "@/data/newsBriefs";
+import { getRelatedReportIdsForTrust } from "@/data/reportRelations";
 import {
   Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink,
   BreadcrumbPage, BreadcrumbSeparator,
@@ -12,8 +15,8 @@ import {
 } from "recharts";
 import {
   ExternalLink, TrendingDown, TrendingUp, Minus, AlertTriangle,
-  Calendar, DollarSign, FileText, Activity,
-  Home, Database, ArrowLeft, Info,
+  Calendar, DollarSign, FileText, Activity, Clock3,
+  Home, Database, ArrowLeft, Info, Newspaper, Scale, ListChecks,
 } from "lucide-react";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -22,6 +25,65 @@ function fmt$(n: number | null | undefined) {
   if (n >= 1e9) return `$${(n / 1e9).toFixed(2)}B`;
   if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
   return `$${n.toLocaleString()}`;
+}
+
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+type SourceBackedExplanation = {
+  text: string;
+  source: string;
+  sourceUrl: string;
+};
+
+type ClaimMechanics = {
+  asOf: string;
+  source: string;
+  sourceUrl: string;
+  insuredSummary: string;
+  deductibleTiers: Array<{ firstExposure: string; deductible: number }>;
+  uninsuredSummary: string;
+  caveat: string;
+};
+
+type ClaimsActivity = {
+  asOf: string;
+  source: string;
+  sourceUrl: string;
+  insuredAddedSinceInception: number;
+  statuses: Array<{ label: string; count: number }>;
+  unnamedStatusCount: number;
+  uninsuredFiled: number;
+  caveat: string;
+  uninsuredNote: string;
+};
+
+type FilingWindows = {
+  asOf: string;
+  source: string;
+  sourceUrl: string;
+  uninsuredClaims: string;
+  uninsuredPortionsOfInsuredClaims: string;
+  caveat: string;
+};
+
+function historicalSourceAge(asOf: string | null | undefined, referenceDate: string | null | undefined) {
+  if (!asOf || !referenceDate) return null;
+  const source = new Date(`${asOf}T00:00:00Z`);
+  const reference = new Date(`${referenceDate}T00:00:00Z`);
+  if (Number.isNaN(source.getTime()) || Number.isNaN(reference.getTime()) || source > reference) return null;
+
+  let months = (reference.getUTCFullYear() - source.getUTCFullYear()) * 12 + reference.getUTCMonth() - source.getUTCMonth();
+  if (reference.getUTCDate() < source.getUTCDate()) months -= 1;
+  if (months < 18) return null;
+
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+  const age = years > 0
+    ? `${years} year${years === 1 ? "" : "s"}${remainingMonths ? `, ${remainingMonths} month${remainingMonths === 1 ? "" : "s"}` : ""}`
+    : `${remainingMonths} months`;
+  return `Historical source — ${age} old; payments may have continued after this report.`;
 }
 
 function ConfidenceBadge({ confidence }: { confidence: string }) {
@@ -72,6 +134,116 @@ function changeTypeLabel(type: string) {
   );
 }
 
+// ── Related Articles ─────────────────────────────────────────────────────────
+function RelatedArticles({ slug }: { slug: string }) {
+  const detailedArticles = getNewsBriefsForTrust(slug);
+
+  if (detailedArticles.length === 0) return null;
+
+  return (
+    <section className="bg-card border border-border/50 rounded-lg p-5 mb-6" aria-labelledby="related-articles-heading">
+      <div className="flex items-center gap-2 mb-3">
+        <Newspaper size={14} className="text-muted-foreground" />
+        <h2 id="related-articles-heading" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          Related Articles
+        </h2>
+      </div>
+      <div className="space-y-3">
+        {detailedArticles.map((article) => (
+          <article key={article.slug} className="flex items-start gap-3 group rounded-md border border-primary/15 bg-primary/[0.035] p-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <Link href={`/news/${article.slug}`} className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-snug hover:underline">
+                {article.title}
+              </Link>
+              <p className="text-xs text-muted-foreground leading-relaxed mt-1">{article.summary}</p>
+              <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+                <span className="text-xs text-muted-foreground/60">
+                  {new Date(`${article.date}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+                </span>
+                <span className="text-[10px] uppercase tracking-wider text-primary/70 font-medium">
+                  {article.category.replace(/[_-]/g, " ")}
+                </span>
+                <Link href={`/news/${article.slug}`} className="text-xs font-medium text-primary hover:underline">
+                  Read article <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Related Research Reports ─────────────────────────────────────────────────
+type ReportSummary = {
+  id: string;
+  title: string;
+  date: string;
+  asOf: string | null;
+  summary: string | null;
+};
+
+function RelatedResearchReports({ slug }: { slug: string }) {
+  const reportIds = getRelatedReportIdsForTrust(slug);
+  const { data } = trpc.trustFiguresExtra.reportsIndex.useQuery(undefined, {
+    enabled: reportIds.length > 0,
+  });
+
+  if (reportIds.length === 0) return null;
+
+  const reportsById = new Map((data?.reports ?? []).map((report: ReportSummary) => [report.id, report]));
+  const relatedReports = reportIds
+    .map((reportId) => reportsById.get(reportId))
+    .filter((report): report is ReportSummary => Boolean(report))
+    .slice(0, 3);
+
+  if (relatedReports.length === 0) return null;
+
+  return (
+    <section className="bg-card border border-border/50 rounded-lg p-5 mb-6" aria-labelledby="related-reports-heading">
+      <div className="flex items-start gap-2 mb-4">
+        <FileText size={15} className="text-muted-foreground mt-0.5 shrink-0" />
+        <div>
+          <h2 id="related-reports-heading" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            Related Research Reports
+          </h2>
+          <p className="text-xs text-muted-foreground/70 mt-1 leading-relaxed">
+            Report editions with direct, substantive coverage of this trust’s documented figures, payment history, or case status.
+          </p>
+        </div>
+      </div>
+      <div className="divide-y divide-border/40 rounded-md border border-border/40 overflow-hidden">
+        {relatedReports.map((report) => (
+          <article key={report.id} className="px-3.5 py-3.5 bg-background/20 hover:bg-muted/35 transition-colors">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-primary/20 bg-primary/10 text-primary/80">
+                    {report.id}
+                  </span>
+                  <span className="text-[11px] text-muted-foreground/60">
+                    Published {new Date(`${report.date}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+                  </span>
+                  {report.asOf && <span className="text-[11px] text-muted-foreground/50">Data as of {report.asOf}</span>}
+                </div>
+                <Link href={`/reports/${report.id}`} className="block text-sm font-medium text-foreground hover:text-primary hover:underline leading-snug">
+                  {report.title}
+                </Link>
+                {report.summary && <p className="text-xs text-muted-foreground leading-relaxed mt-1.5">{report.summary}</p>}
+              </div>
+              <Link href={`/reports/${report.id}`} className="shrink-0 text-xs font-medium text-primary hover:underline mt-0.5">
+                Read report <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function TrustDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -99,6 +271,7 @@ export default function TrustDetail() {
         netAssets: jsonTrust.netAssets,
         assetsAsOf: jsonTrust.assetsAsOf,
         assetsBasis: jsonTrust.assetsBasis,
+        dataAsOf: (jsonTrust as any)?.dataAsOf ?? null,
         paymentPercentage: jsonTrust.paymentPercentage,
         status: jsonTrust.status,
         confidence: jsonTrust.confidence,
@@ -111,9 +284,16 @@ export default function TrustDetail() {
         docket: (jsonTrust as any)?.docket ?? dbTrust?.docket ?? null,
         website: dbTrust?.website ?? (jsonTrust as any)?.website ?? null,
         scheduledValues: (jsonTrust as any)?.scheduledValues ?? null,
+        hasDiseaseLevelScheduledValueMatrix: (jsonTrust as any)?.hasDiseaseLevelScheduledValueMatrix ?? null,
+        paymentPercentageBasisLabel: (jsonTrust as any)?.paymentPercentageBasisLabel ?? null,
+        claimMechanics: ((jsonTrust as any)?.claimMechanics ?? null) as ClaimMechanics | null,
+        claimsActivity: ((jsonTrust as any)?.claimsActivity ?? null) as ClaimsActivity | null,
+        filingWindows: ((jsonTrust as any)?.filingWindows ?? null) as FilingWindows | null,
         cumulativePaid: (jsonTrust as any)?.cumulativePaid ?? dbTrust?.cumulativePaid ?? null,
         cumulativePaidAsOf: (jsonTrust as any)?.cumulativePaidAsOf ?? (dbTrust as any)?.cumulativePaidAsOf ?? null,
         cumulativePaidSource: (jsonTrust as any)?.cumulativePaidSource ?? (dbTrust as any)?.cumulativePaidSource ?? null,
+        cumulativePaidCalculation: (jsonTrust as any)?.cumulativePaidCalculation ?? null,
+        cumulativePaidExplanation: ((jsonTrust as any)?.cumulativePaidExplanation ?? null) as SourceBackedExplanation | null,
         cumulativePaidSourceUrl: (jsonTrust as any)?.cumulativePaidSourceUrl ?? (dbTrust as any)?.cumulativePaidSourceUrl ?? null,
         cumulativePaidSourceUrlType: (jsonTrust as any)?.cumulativePaidSourceUrlType ?? null,
         netAssetsConfidence: (jsonTrust as any)?.netAssetsConfidence ?? null,
@@ -178,6 +358,8 @@ export default function TrustDetail() {
       : trust.status === "closed"
       ? "bg-gray-200 text-gray-700 border-gray-300"
       : "bg-amber-100 text-amber-700 border-amber-200";
+  const primarySourceDocuments = primarySourceDocumentsBySlug[slugify(trust.name)] ?? [];
+  const cumulativePaidSourceAge = historicalSourceAge(trust.cumulativePaidAsOf, trust.dataAsOf);
 
   return (
     <>
@@ -260,8 +442,13 @@ export default function TrustDetail() {
               : trust.confidence && <span className="ml-auto"><ConfidenceBadge confidence={trust.confidence} /></span>
             }
           </div>
-          <div className="text-xl font-mono font-bold text-foreground">{fmt$(trust.netAssets)}</div>
+          <div className="text-xl font-mono font-bold text-foreground">
+            {(trust as any).assetsAvailability === "unpublished" ? "Not published" : fmt$(trust.netAssets)}
+          </div>
           {trust.assetsAsOf && <div className="text-xs text-muted-foreground/60 mt-0.5">as of {trust.assetsAsOf}</div>}
+          {(trust as any).assetsAvailability === "unpublished" && (
+            <div className="text-xs text-muted-foreground/60 mt-0.5">balance not publicly reported</div>
+          )}
           {trust.assetsBasis && (
             (trust as any).assetsBasisUrl ? (
               <button
@@ -287,10 +474,22 @@ export default function TrustDetail() {
             {trust.paymentPercentage !== null ? `${trust.paymentPercentage}%` : "MSV / N/A"}
           </div>
           {trust.paymentPercentage !== null && (
-            <div className="text-xs text-muted-foreground/60 mt-0.5">of scheduled value</div>
+            <div className="text-xs text-muted-foreground/60 mt-0.5">
+              {trust.hasDiseaseLevelScheduledValueMatrix === false
+                ? trust.paymentPercentageBasisLabel ?? "claim payment factor"
+                : "of scheduled value"}
+            </div>
           )}
           {(trust as any).paymentPctEffective && (
-            <div className="text-xs text-muted-foreground/60 mt-0.5">effective {(trust as any).paymentPctEffective}</div>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground/60 mt-0.5">
+              <Calendar size={10} className="shrink-0" />
+              <span>effective {new Date((trust as any).paymentPctEffective + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</span>
+            </div>
+          )}
+          {(trust as any).dataAsOf && (
+            <div className="text-[10px] text-muted-foreground/40 mt-1">
+              Last verified: {new Date((trust as any).dataAsOf + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+            </div>
           )}
           {(trust as any).paymentPercentageSource && (
             <div className="text-xs text-muted-foreground/50 mt-1.5 leading-relaxed border-t border-border/30 pt-1.5">
@@ -307,6 +506,38 @@ export default function TrustDetail() {
             <div className="text-xs text-amber-700/70 mt-1.5 italic border-t border-border/30 pt-1.5">{(trust as any).rateSource}</div>
           )}
         </div>
+
+        {Array.isArray((trust as any).subAccounts) && (trust as any).subAccounts.length > 0 && (
+          <div className="bg-card border border-border/50 rounded-lg p-4 col-span-2 sm:col-span-4">
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-2">
+              <Activity size={12} />Sub-Account Payment Percentages
+              <span className="ml-auto text-[10px] italic text-muted-foreground/60">separate asset pools — never combined or averaged</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {(trust as any).subAccounts.map((sa: any) => (
+                <div key={sa.name} className="border border-border/30 rounded p-2.5">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="text-xs font-medium text-foreground">{sa.name}</span>
+                    <span className="text-sm font-mono font-bold text-foreground">
+                      {sa.value !== null && sa.value !== undefined ? `${sa.value}%` : "not set"}
+                    </span>
+                  </div>
+                  {sa.effective && (
+                    <div className="text-[11px] text-muted-foreground/60 mt-0.5">effective {sa.effective}</div>
+                  )}
+                  {sa.note && (
+                    <div className="text-[11px] text-muted-foreground/50 mt-1 italic leading-relaxed">{sa.note}</div>
+                  )}
+                  {sa.url && (
+                    <a href={sa.url} target="_blank" rel="noopener noreferrer" className="text-[11px] text-amber-600/70 hover:text-amber-600 underline decoration-dotted mt-1 inline-block transition-colors">
+                      source notice ↗
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="bg-card border border-border/50 rounded-lg p-4">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
@@ -347,10 +578,36 @@ export default function TrustDetail() {
           {(trust as any).cumulativePaidAsOf && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">as of {(trust as any).cumulativePaidAsOf}</div>
           )}
+          {cumulativePaidSourceAge && (
+            <div className="text-[10px] leading-relaxed text-amber-700/80 mt-1.5 border-t border-amber-200/60 pt-1.5">
+              {cumulativePaidSourceAge}
+            </div>
+          )}
           {trust.cumulativeClaims && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">{trust.cumulativeClaims.toLocaleString()} claims</div>
           )}
+          {trust.cumulativePaid === null && trust.cumulativePaidExplanation && (
+            <button
+              onClick={() => setSourceModal({
+                url: trust.cumulativePaidExplanation!.sourceUrl,
+                title: `${trust.name} — Cumulative Paid Source`,
+                citation: trust.cumulativePaidExplanation!.source,
+              })}
+              className="mt-2 border-t border-border/30 pt-2 text-left text-[11px] leading-relaxed text-muted-foreground/70 hover:text-foreground transition-colors"
+            >
+              {trust.cumulativePaidExplanation.text}
+              <span className="mt-1 block text-primary/80 underline decoration-dotted underline-offset-2">
+                {trust.cumulativePaidExplanation.source} ↗
+              </span>
+            </button>
+          )}
         </div>
+        {(trust as any).cumulativePaidCalculation && (
+          <div className="col-span-2 sm:col-span-4 -mt-1 rounded-lg border border-amber-200/70 bg-amber-50/50 px-4 py-3 text-xs leading-relaxed text-amber-950/80">
+            <span className="font-semibold text-amber-900">How this figure was calculated:</span>{" "}
+            {(trust as any).cumulativePaidCalculation}
+          </div>
+        )}
       </div>
 
       {/* Payment % History Chart */}
@@ -382,7 +639,322 @@ export default function TrustDetail() {
         </div>
       )}
 
-      {/* Scheduled Values Table — shown only for trusts with TDP data */}
+      {/* Primary Source Documents */}
+      {primarySourceDocuments.length > 0 && (
+        <section className="bg-card border border-border/50 rounded-lg p-5 mb-6" aria-labelledby="primary-source-documents">
+          <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+            <div>
+              <div className="flex items-center gap-2">
+                <FileText size={15} className="text-primary" />
+                <h2 id="primary-source-documents" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  Primary Source Documents
+                </h2>
+              </div>
+              <p className="text-xs text-muted-foreground/70 mt-1 leading-relaxed">
+                Verified trust notices, annual reports, and trust distribution procedures used in this record. Select a document to preview it on this page.
+              </p>
+            </div>
+            <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
+              Primary sources
+            </span>
+          </div>
+          <div className="divide-y divide-border/40 border border-border/40 rounded-md overflow-hidden">
+            {primarySourceDocuments.map((document) => (
+              <button
+                key={document.url}
+                onClick={() => setSourceModal({
+                  url: document.url,
+                  title: `${trust.name} — ${document.title}`,
+                  citation: document.citation,
+                })}
+                className="w-full text-left px-3.5 py-3 flex items-center gap-3 hover:bg-muted/45 transition-colors group"
+              >
+                <FileText size={15} className="text-primary/70 shrink-0" />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                    {document.title}
+                  </span>
+                  <span className="block text-[11px] text-muted-foreground mt-0.5">
+                    {document.documentType}{document.dateLabel ? ` · ${document.dateLabel}` : ""}
+                  </span>
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary shrink-0">
+                  Preview <ExternalLink size={11} />
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Trust-specific claim mechanics — rendered only when primary-source data is present. */}
+        {trust.claimMechanics && (
+          <section
+            className="bg-card border border-border/50 rounded-lg p-5 mb-6"
+            aria-labelledby="claim-mechanics-heading"
+          >
+            <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+              <div className="flex items-start gap-2">
+                <Scale size={16} className="text-primary mt-0.5 shrink-0" />
+                <div>
+                  <h2
+                    id="claim-mechanics-heading"
+                    className="text-sm font-semibold uppercase tracking-wider text-muted-foreground"
+                  >
+                    How This Trust Values Claims
+                  </h2>
+                  <p className="text-xs text-muted-foreground/70 mt-1 leading-relaxed">
+                    This trust does not publish a disease-level scheduled-value
+                    matrix. Insured and uninsured claims follow different TDP
+                    methods.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() =>
+                  setSourceModal({
+                    url: trust.claimMechanics!.sourceUrl,
+                    title: `${trust.name} — Trust Distribution Procedures`,
+                    citation: trust.claimMechanics!.source,
+                  })
+                }
+                className="inline-flex items-center gap-1 text-[11px] font-medium text-primary hover:underline"
+              >
+                Review TDP source <ExternalLink size={10} />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <article className="rounded-md border border-border/40 bg-background/25 p-4">
+                <h3 className="text-sm font-semibold text-foreground mb-2">
+                  Insured Asbestos Claims
+                </h3>
+                <p className="text-xs leading-relaxed text-muted-foreground mb-3">
+                  {trust.claimMechanics.insuredSummary}
+                </p>
+                <div className="overflow-x-auto rounded border border-border/40">
+                  <table className="w-full text-xs">
+                    <caption className="sr-only">
+                      Insured-claim deductible tiers by first exposure date
+                    </caption>
+                    <thead>
+                      <tr className="border-b border-border/40 bg-muted/30">
+                        <th
+                          scope="col"
+                          className="text-left py-2 px-3 text-muted-foreground font-medium"
+                        >
+                          First exposure date
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-right py-2 px-3 text-muted-foreground font-medium"
+                        >
+                          Deductible
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {trust.claimMechanics.deductibleTiers.map(tier => (
+                        <tr
+                          key={tier.firstExposure}
+                          className="border-b border-border/30 last:border-0"
+                        >
+                          <td className="py-2.5 px-3 text-foreground">
+                            {tier.firstExposure}
+                          </td>
+                          <td className="py-2.5 px-3 text-right font-mono font-semibold text-foreground">
+                            {fmt$(tier.deductible)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground/60">
+                  The then-current Payment Percentage is applied after the TDP
+                  determines the applicable deductible and other amounts owed.
+                </p>
+              </article>
+
+              <article className="rounded-md border border-border/40 bg-background/25 p-4">
+                <h3 className="text-sm font-semibold text-foreground mb-2">
+                  Uninsured Asbestos Claims
+                </h3>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  {trust.claimMechanics.uninsuredSummary}
+                </p>
+                <div className="mt-3 rounded border border-primary/15 bg-primary/[0.035] px-3 py-2.5">
+                  <p className="text-[11px] font-medium uppercase tracking-wider text-primary/80">
+                    Why the 62% figure is different here
+                  </p>
+                  <p className="text-xs leading-relaxed text-muted-foreground mt-1">
+                    The Payment Percentage is a trust-wide payment factor. It is
+                    not evidence of a disease-level scheduled amount or an
+                    individual claimant’s recovery.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <p className="mt-3 border-t border-border/30 pt-3 text-[11px] leading-relaxed text-muted-foreground/60">
+              {trust.claimMechanics.caveat} Source reviewed{" "}
+              {trust.claimMechanics.asOf}: {trust.claimMechanics.source}.
+            </p>
+          </section>
+        )}
+
+        {trust.claimsActivity && (
+          <section
+            className="bg-card border border-border/50 rounded-lg p-5 mb-6"
+            aria-labelledby="claims-activity-heading"
+          >
+            <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+              <div className="flex items-start gap-2">
+                <ListChecks
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                />
+                <div>
+                  <h2
+                    id="claims-activity-heading"
+                    className="text-sm font-semibold uppercase tracking-wider text-muted-foreground"
+                  >
+                    Claims Activity
+                  </h2>
+                  <p className="text-xs text-muted-foreground/70 mt-1">
+                    As of {trust.claimsActivity.asOf}; counts, not dollar
+                    totals.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() =>
+                  setSourceModal({
+                    url: trust.claimsActivity!.sourceUrl,
+                    title: `${trust.name} — FY2025 Annual Report`,
+                    citation: trust.claimsActivity!.source,
+                  })
+                }
+                className="inline-flex items-center gap-1 text-[11px] font-medium text-primary hover:underline"
+              >
+                Review annual report <ExternalLink size={10} />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div className="rounded-md border border-border/40 bg-background/25 p-4">
+                <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                  Insured claims added to FIFO since inception
+                </p>
+                <p className="mt-1 text-2xl font-mono font-bold text-foreground">
+                  {trust.claimsActivity.insuredAddedSinceInception.toLocaleString()}
+                </p>
+              </div>
+              <div className="rounded-md border border-border/40 bg-background/25 p-4">
+                <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                  Uninsured claims filed
+                </p>
+                <p className="mt-1 text-2xl font-mono font-bold text-foreground">
+                  {trust.claimsActivity.uninsuredFiled.toLocaleString()}
+                </p>
+                <p className="mt-1 text-[11px] text-muted-foreground/60">
+                  As reported at year-end; no cause inferred.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
+              {trust.claimsActivity.statuses.map(status => (
+                <div
+                  key={status.label}
+                  className="rounded-md border border-border/40 bg-muted/20 p-3"
+                >
+                  <p className="text-lg font-mono font-bold text-foreground">
+                    {status.count.toLocaleString()}
+                  </p>
+                  <p className="text-[11px] leading-snug text-muted-foreground">
+                    {status.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-3 rounded-md border border-amber-200/70 bg-amber-50/50 px-3.5 py-3 text-xs leading-relaxed text-amber-950/80">
+              <span className="font-semibold text-amber-900">
+                Non-exhaustive status disclosure:
+              </span>{" "}
+              {trust.claimsActivity.caveat}
+            </div>
+            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+              {trust.claimsActivity.uninsuredNote}
+            </p>
+          </section>
+        )}
+
+        {trust.filingWindows && (
+          <section
+            className="bg-card border border-border/50 rounded-lg p-5 mb-6"
+            aria-labelledby="filing-windows-heading"
+          >
+            <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+              <div className="flex items-start gap-2">
+                <Clock3 size={16} className="text-primary mt-0.5 shrink-0" />
+                <div>
+                  <h2
+                    id="filing-windows-heading"
+                    className="text-sm font-semibold uppercase tracking-wider text-muted-foreground"
+                  >
+                    Filing Windows Depend on Claim Type
+                  </h2>
+                  <p className="text-xs text-muted-foreground/70 mt-1">
+                    The TDP does not set one universal calendar deadline.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() =>
+                  setSourceModal({
+                    url: trust.filingWindows!.sourceUrl,
+                    title: `${trust.name} — Filing-Window Provisions`,
+                    citation: trust.filingWindows!.source,
+                  })
+                }
+                className="inline-flex items-center gap-1 text-[11px] font-medium text-primary hover:underline"
+              >
+                Review TDP §§5.1(a)(2) <ExternalLink size={10} />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <article className="rounded-md border border-border/40 bg-background/25 p-4">
+                <h3 className="text-sm font-semibold text-foreground mb-2">
+                  Uninsured Asbestos Claims
+                </h3>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  {trust.filingWindows.uninsuredClaims}
+                </p>
+              </article>
+              <article className="rounded-md border border-border/40 bg-background/25 p-4">
+                <h3 className="text-sm font-semibold text-foreground mb-2">
+                  Uninsured Portion of an Insured Claim
+                </h3>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  {trust.filingWindows.uninsuredPortionsOfInsuredClaims}
+                </p>
+              </article>
+            </div>
+
+            <div className="mt-3 flex items-start gap-2 rounded-md border border-amber-200/70 bg-amber-50/50 px-3.5 py-3">
+              <Info size={14} className="text-amber-700 mt-0.5 shrink-0" />
+              <p className="text-xs leading-relaxed text-amber-950/80">
+                <span className="font-semibold text-amber-900">Important:</span>{" "}
+                {trust.filingWindows.caveat}
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* Scheduled Values Table — shown only for trusts with TDP data */}
       {(trust as any).scheduledValues && (() => {
         const sv = (trust as any).scheduledValues;
         const pct = trust.paymentPercentage;
@@ -522,6 +1094,11 @@ export default function TrustDetail() {
           </div>
         )}
       </div>
+
+      <RelatedResearchReports slug={slug ?? ""} />
+
+      {/* Related articles are intentionally limited to explicit, reviewed trust links. */}
+      <RelatedArticles slug={slug ?? ""} />
 
       {/* Footer nav */}
       <div className="flex items-center justify-between pt-4 border-t border-border/30">

@@ -1,5 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import { and, eq, inArray } from "drizzle-orm";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
@@ -11,11 +12,16 @@ import {
   getAllPaymentHistory,
   getAllTrusts,
   getVisibleNews,
+  getNewsByTrust,
   markTrustStale,
   updateAggregate,
   updateTrust,
   upsertTrustFromPipeline,
 } from "./db";
+import { getDb } from "./db";
+import { sourceRegistry } from "../drizzle/schema";
+import { HISTORICAL_SOURCE_BACKLOG } from "../shared/historicalSourceBacklog";
+import { LIVING_TRACKER_PILOT_ID, nextScheduledMonitoringCheck, sourceAccessAgeLabel } from "./operationsPilot";
 
 // ── JSON-first trust helpers ─────────────────────────────────────────────────
 // trust-figures.json is the single source of truth for financials.
@@ -81,7 +87,7 @@ function mergeTrust(jsonTrust: any, dbTrust?: any, history?: any[]) {
     cumulativePaidSource: jsonTrust.cumulativePaidSource ?? null,
     cumulativePaidSourceUrl: (jsonTrust as any).cumulativePaidSourceUrl ?? null,
     netAssetsCitationUrl: (jsonTrust as any).assetsBasisUrl ?? null,
-    cumulativeClaims: dbTrust?.cumulativeClaims ?? null,
+    cumulativeClaims: (jsonTrust as any).cumulativeClaims ?? dbTrust?.cumulativeClaims ?? null,
     reportingFrequency: (jsonTrust as any).reportingFrequency ?? dbTrust?.reportingFrequency ?? null,
     status: jsonTrust.status ?? "active",
     direction: (jsonTrust as any).direction ?? dbTrust?.direction ?? null,
@@ -147,14 +153,16 @@ export const appRouter = router({
   // ── Aggregate (JSON-first) ─────────────────────────────────────────────────
   aggregate: router({
     current: publicProcedure.query(async () => {
-      const { asOf, aggregate: agg } = await loadJsonTrusts();
+      const { asOf, aggregate: agg, trusts } = await loadJsonTrusts();
+      const activeTrustsTracked = trusts.filter((trust) => trust.status === "active" || trust.status === "active_deferral").length;
       return {
-        remainingLow: agg.remainingAssetsPoint ?? 17041946126,
-        remainingHigh: agg.remainingAssetsHigh ?? 22500000000,
-        remainingLabel: `$${(agg.remainingAssetsPoint ?? 17041946126).toLocaleString()} documented floor`,
-        paidOut: agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 24000000000,
-        paidOutLabel: `$${(agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 24000000000).toLocaleString()} paid to claimants (bottom-up estimate)`,
-        totalActiveTrusts: agg.activeTrustsEstimated ?? 60,
+        remainingLow: agg.remainingAssetsPoint ?? 16018528449,
+        remainingHigh: agg.remainingAssetsHigh ?? 21742138783,
+        remainingLabel: `$${(agg.remainingAssetsPoint ?? 16018528449).toLocaleString()} documented floor`,
+        paidOut: agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206,
+        paidOutLabel: `$${(agg.cumulativePayoutsBottomUp ?? agg.cumulativePayoutsPoint ?? 30033989206).toLocaleString()} paid to claimants (bottom-up estimate)`,
+        totalActiveTrusts: activeTrustsTracked || 54,
+        totalTrustsHistoricallyEstablished: agg.trustsHistoricallyEstablishedEstimated ?? 60,
         paidOutDocumented: agg.cumulativePayoutsDocumented ?? 0,
         paidOutEstimatedRemainder: agg.cumulativePayoutsEstimatedRemainder ?? 0,
         trustsWithCumulativePaidFiled: agg.trustsWithCumulativePaidFiled ?? 0,
@@ -166,6 +174,86 @@ export const appRouter = router({
         methodology: "Aggregate remaining based on net asset figures from trust annual reports and quarterly filings. Sources classified as (a) filed court document, (b) secondary source citing primary, (c) estimate or inference. See methodology page for full details.",
         asOfNote: `Mixed 2021–${asOf?.substring(0, 4) ?? "2026"} as-of dates across trusts; see trust-figures.json for per-trust sources.`,
         isCurrent: true,
+      };
+    }),
+  }),
+
+  // ── Public historical-source recovery status ─────────────────────────────
+  // The dashboard deliberately exposes research progress, not unverified trust
+  // facts. It reads only the reviewed worklist and public registry metadata.
+  operations: router({
+    recoveryDashboard: publicProcedure.query(async () => {
+      const db = await getDb();
+      const generatedAt = new Date();
+      const trustSlugs = HISTORICAL_SOURCE_BACKLOG.map((item) => item.trustSlug);
+      const rows = db
+        ? await db.select().from(sourceRegistry).where(and(
+          eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID),
+          inArray(sourceRegistry.trustSlug, trustSlugs),
+          eq(sourceRegistry.isActive, true),
+        ))
+        : [];
+      const sourcesByTrust = new Map(rows.map((row) => [row.trustSlug, row]));
+      const accessRepairSlugs = ["bondex-specialty-products-holding-corp-trust", "maremont-asbestos-pi-trust"];
+      const accessRepairRows = db
+        ? await db.select().from(sourceRegistry).where(and(
+          eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID),
+          inArray(sourceRegistry.trustSlug, accessRepairSlugs),
+          eq(sourceRegistry.isActive, true),
+        ))
+        : [];
+
+      const items = HISTORICAL_SOURCE_BACKLOG.map((item) => {
+        const source = sourcesByTrust.get(item.trustSlug);
+        const hasAccessIssue = Boolean(source && (source.failureCount > 0 || (source.lastStatusCode !== null && source.lastStatusCode >= 400)));
+        const status = hasAccessIssue
+          ? "access_attention"
+          : source?.lastSuccessfulCheckAt
+            ? "monitored"
+            : "registered";
+        return {
+          ...item,
+          status,
+          monitoredSourceUrl: source?.sourceUrl ?? null,
+          sourceClass: source?.sourceClass ?? null,
+          checkCadence: source?.checkCadence ?? null,
+          retrievalNotes: source?.retrievalNotes ?? null,
+          lastCheckedAt: source?.lastCheckedAt ?? null,
+          lastSuccessfulCheckAt: source?.lastSuccessfulCheckAt ?? null,
+          sourceAccessAge: sourceAccessAgeLabel(source?.lastSuccessfulCheckAt, generatedAt),
+          nextScheduledCheckAt: source ? nextScheduledMonitoringCheck(source.checkCadence, generatedAt) : null,
+          archiveRecheckOn: item.archiveRecheckOn,
+          lastStatusCode: source?.lastStatusCode ?? null,
+          failureCount: source?.failureCount ?? 0,
+        };
+      });
+
+      return {
+        generatedAt,
+        pilotEndsOn: "2026-10-05",
+        monthlyResearchCapMinutes: 150,
+        items,
+        accessRepairs: accessRepairRows.map((source) => {
+          const reachable = Boolean(source.lastSuccessfulCheckAt) && source.failureCount === 0;
+          return {
+            trustSlug: source.trustSlug,
+            trustName: source.trustName,
+            sourceUrl: source.sourceUrl,
+            status: reachable ? "monitored" : "registered",
+            checkCadence: source.checkCadence,
+            lastCheckedAt: source.lastCheckedAt,
+            lastSuccessfulCheckAt: source.lastSuccessfulCheckAt,
+            sourceAccessAge: sourceAccessAgeLabel(source.lastSuccessfulCheckAt, generatedAt),
+            nextScheduledCheckAt: nextScheduledMonitoringCheck(source.checkCadence, generatedAt),
+            retrievalNotes: source.retrievalNotes,
+          };
+        }),
+        summary: {
+          total: items.length,
+          monitored: items.filter((item) => item.status === "monitored").length,
+          accessAttention: items.filter((item) => item.status === "access_attention").length,
+          registered: items.filter((item) => item.status === "registered").length,
+        },
       };
     }),
   }),
@@ -206,6 +294,7 @@ export const appRouter = router({
           netAssets: (t.netAssets ?? null) as number | null,
           assetsAsOf: (t.assetsAsOf ?? null) as string | null,
           assetsBasis: (t.assetsBasis ?? null) as string | null,
+          assetsAvailability: (t.assetsAvailability ?? null) as string | null,
           paymentPercentage: (t.paymentPercentage ?? null) as number | null,
           status: (t.status ?? 'active') as string,
           confidence: (t.confidence ?? 'c') as string,
@@ -213,8 +302,10 @@ export const appRouter = router({
           cumulativePaid: (t.cumulativePaid ?? null) as number | null,
           cumulativePaidAsOf: (t.cumulativePaidAsOf ?? null) as string | null,
           cumulativePaidSource: (t.cumulativePaidSource ?? null) as string | null,
+          cumulativePaidCalculation: (t.cumulativePaidCalculation ?? null) as string | null,
           cumulativePaidSourceUrl: (t.cumulativePaidSourceUrl ?? null) as string | null,
           cumulativePaidSourceUrlType: (t.cumulativePaidSourceUrlType ?? null) as string | null,
+          cumulativeClaims: (t.cumulativeClaims ?? null) as number | null,
           established: (t.established ?? null) as number | null,
           paymentPercentageFB: (t.paymentPercentageFB ?? null) as number | null,
           assetsBasisUrl: (t.assetsBasisUrl ?? null) as string | null,
@@ -253,6 +344,8 @@ export const appRouter = router({
             netAssets: (trust.netAssets ?? null) as number | null,
             assetsAsOf: (trust.assetsAsOf ?? null) as string | null,
             assetsBasis: (trust.assetsBasis ?? null) as string | null,
+            assetsAvailability: (trust.assetsAvailability ?? null) as string | null,
+            dataAsOf: (trust.dataAsOf ?? data.asOf ?? null) as string | null,
           paymentPercentage: (trust.paymentPercentage ?? null) as number | null,
           status: (trust.status ?? 'active') as string,
           confidence: (trust.confidence ?? 'c') as string,
@@ -261,6 +354,8 @@ export const appRouter = router({
           cumulativePaid: (trust.cumulativePaid ?? null) as number | null,
           cumulativePaidAsOf: (trust.cumulativePaidAsOf ?? null) as string | null,
           cumulativePaidSource: (trust.cumulativePaidSource ?? null) as string | null,
+          cumulativePaidCalculation: (trust.cumulativePaidCalculation ?? null) as string | null,
+          cumulativePaidExplanation: (trust.cumulativePaidExplanation ?? null) as any,
           cumulativePaidSourceUrl: (trust.cumulativePaidSourceUrl ?? null) as string | null,
           cumulativePaidSourceUrlType: (trust.cumulativePaidSourceUrlType ?? null) as string | null,
           netAssetsConfidence: (trust.netAssetsConfidence ?? null) as string | null,
@@ -268,6 +363,11 @@ export const appRouter = router({
           assetsBasisUrl: (trust.assetsBasisUrl ?? null) as string | null,
           // Fields needed by TrustDetail page
           scheduledValues: (trust.scheduledValues ?? null) as any,
+          hasDiseaseLevelScheduledValueMatrix: (trust.hasDiseaseLevelScheduledValueMatrix ?? null) as boolean | null,
+          paymentPercentageBasisLabel: (trust.paymentPercentageBasisLabel ?? null) as string | null,
+          claimMechanics: (trust.claimMechanics ?? null) as any,
+          claimsActivity: (trust.claimsActivity ?? null) as any,
+          filingWindows: (trust.filingWindows ?? null) as any,
           paymentPercentageSource: (trust.paymentPercentageSource ?? null) as string | null,
           paymentPercentageSourceUrl: (trust.paymentPercentageSourceUrl ?? null) as string | null,
           paymentPctEffective: (trust.paymentPctEffective ?? null) as string | null,
@@ -322,6 +422,15 @@ export const appRouter = router({
       }).optional())
       .query(async ({ input }) => {
         return getVisibleNews(input?.limit ?? 20, input?.category);
+      }),
+    byTrust: publicProcedure
+      .input(z.object({
+        trustId: z.string(),
+        trustName: z.string(),
+        limit: z.number().min(1).max(10).default(5),
+      }))
+      .query(async ({ input }) => {
+        return getNewsByTrust(input.trustId, input.trustName, input.limit);
       }),
   }),
 

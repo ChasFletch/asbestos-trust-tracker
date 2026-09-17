@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { SiteNav } from "./components/SiteNav";
@@ -11,11 +11,16 @@ import Home from "./pages/Home";
 import Trusts from "./pages/Trusts";
 import TrustDetail from "./pages/TrustDetail";
 import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
 import Methodology from "./pages/Methodology";
 import About from "./pages/About";
 import Corrections from "./pages/Corrections";
 import Reports from "./pages/Reports";
 import ReportDetail from "./pages/ReportDetail";
+import EmbedClock from "./pages/EmbedClock";
+import FigureProvenance from "./pages/FigureProvenance";
+import SourceRecovery from "./pages/SourceRecovery";
+import PaymentNoticeHistory from "./pages/PaymentNoticeHistory";
 
 function Router() {
   return (
@@ -23,8 +28,12 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/trusts" component={Trusts} />
           <Route path="/trusts/:slug" component={TrustDetail} />
+      <Route path="/news/:slug" component={NewsDetail} />
       <Route path="/news" component={News} />
       <Route path="/methodology" component={Methodology} />
+      <Route path="/provenance" component={FigureProvenance} />
+      <Route path="/source-recovery" component={SourceRecovery} />
+      <Route path="/payment-notices" component={PaymentNoticeHistory} />
       <Route path="/about" component={About} />
   <Route path="/corrections" component={Corrections} />
           <Route path="/reports" component={Reports} />
@@ -36,6 +45,24 @@ function Router() {
 }
 
 function App() {
+  const [location] = useLocation();
+  const isEmbed = location.startsWith("/embed/clock");
+
+  if (isEmbed) {
+    return (
+      <ErrorBoundary>
+        <ThemeProvider defaultTheme="light">
+          <TooltipProvider>
+            <Switch>
+              <Route path="/embed/clock" component={EmbedClock} />
+              <Route component={NotFound} />
+            </Switch>
+          </TooltipProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
+    );
+  }
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">

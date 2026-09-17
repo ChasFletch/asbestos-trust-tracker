@@ -15,5 +15,6 @@ export async function buildSsrPrefetch(req: Request, res: Response): Promise<Ssr
     trustsList: () => caller.trusts.list(),
     trustsBySlug: (slug) => caller.trusts.bySlug({ slug }),
     reportsIndex: () => caller.trustFiguresExtra.reportsIndex(),
+    recoveryDashboard: () => caller.operations.recoveryDashboard(),
   };
 }

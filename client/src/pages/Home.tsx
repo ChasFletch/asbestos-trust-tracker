@@ -1,12 +1,16 @@
 import { DebtClockBillboard } from "@/components/DebtClock";
+import { ClockFigureSummary } from "@/components/ClockFigureSummary";
 import { trpc } from "@/lib/trpc";
-import { ArrowRight, BookOpen, Clock, Database, Info, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, Code2, Database, Info, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
+import { EmbedCodeModal } from "@/components/EmbedCodeModal";
 
 // ── Count-up hook ────────────────────────────────────────────────────────────
 function useCountUp(target: number, duration = 1000, enabled = false) {
-  const [value, setValue] = useState(0);
+  // Start at the real value so SSR and the first client render match. Once the
+  // tile enters view, the effect resets it to zero and plays the count-up.
+  const [value, setValue] = useState(target);
   const rafRef = useRef<number | null>(null);
   useEffect(() => {
     if (!enabled || target === 0) return;
@@ -91,7 +95,7 @@ function AnimatedStat({
         )}
       </div>
       <div className="font-display font-bold text-2xl text-foreground tabular-nums">
-        {inView ? displayed : 0}
+        {displayed}
       </div>
     </div>
   );
@@ -103,24 +107,26 @@ export default function Home() {
   const { data: news } = trpc.news.list.useQuery({ limit: 3 });
   const { data: figures } = trpc.trustFigures.summary.useQuery();
   const { data: allTrustFigures } = trpc.trustFigures.allTrusts.useQuery();
+  const [showEmbedModal, setShowEmbedModal] = useState(false);
 
-  const remaining = agg?.remainingLow ?? 17041946126;
-  const remainingLow = agg?.remainingLow ?? 17041946126;
-  const remainingHigh = agg?.remainingHigh ?? 22500000000;
-  const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 29981797653;
-  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 19810476508;
-  const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 4189523492;
-  const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 14;
-  const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 19810476508;
-  const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 6671321145;
+  const remaining = agg?.remainingLow ?? 15987271944;
+  const remainingLow = agg?.remainingLow ?? 15987271944;
+  const remainingHigh = agg?.remainingHigh ?? 21742138783;
+  const paidOut = (agg as any)?.paidOutBottomUp ?? agg?.paidOut ?? 30020097653;
+  const paidOutDocumented = (agg as any)?.paidOutDocumented ?? 17110328204;
+  const paidOutEstimatedRemainder = (agg as any)?.paidOutEstimatedRemainder ?? 8867971796;
+  const trustsWithCumulativePaidFiled = (agg as any)?.trustsWithCumulativePaidFiled ?? 12;
+  const paidOutBottomUpFiled = (agg as any)?.paidOutBottomUpFiled ?? 17110328204;
+  const paidOutBottomUpSecondary = (agg as any)?.paidOutBottomUpSecondary ?? 9409769449;
   const paidOutBottomUpResidual = (agg as any)?.paidOutBottomUpResidual ?? 3500000000;
 
-  const lastUpdated = figures?.asOf ?? "2026-07-27";
+  const lastUpdated = figures?.asOf ?? "2026-08-16";
   const topTrusts = figures?.topTrusts ?? [];
 
-  // Derive stats from trust-figures.json (primary source, all 42 trusts)
+  // Derive stats from trust-figures.json (primary source, all 55 trust records)
   const tf = allTrustFigures?.trusts ?? [];
   const activeTrusts = tf.filter((t: { status: string }) => t.status === "active" || t.status === "active_deferral");
+  const trustsWithFigures = tf.filter((t: { netAssets: number | null; status: string }) => t.netAssets != null && t.status !== "closed");
 
   // Documented trusts with per-trust cumulativePaid for the modal breakdown
   const documentedTrusts = tf
@@ -134,21 +140,29 @@ export default function Home() {
     const year = parseInt(t.assetsAsOf.substring(0, 4));
     return year >= 2025;
   });
+  const assetYears = trustsWithFigures
+    .map((t: { assetsAsOf: string | null }) => Number(t.assetsAsOf?.slice(0, 4)))
+    .filter((year: number) => Number.isInteger(year));
+  const assetDataRange = assetYears.length > 0
+    ? `FY${Math.min(...assetYears)}–${Math.max(...assetYears)}`
+    : "FY2021–2025";
+  const activeTrustsTracked = tf.length > 0 ? activeTrusts.length : (agg as any)?.totalActiveTrusts ?? 54;
 
   const stats = [
-    { label: "Active Trusts Tracked",         target: tf.length > 0 ? activeTrusts.length     : 41, icon: Database   },
-    { label: "Court-Filed Sources",            target: tf.length > 0 ? filedTrusts.length      : 10, icon: ShieldCheck },
-    { label: "Current-Year Data",              target: tf.length > 0 ? recentDataTrusts.length : 10, icon: Clock      },
+    { label: "Active Trusts Tracked",         target: tf.length > 0 ? activeTrusts.length     : 54, icon: Database   },
+    { label: "Court-Filed Sources",            target: tf.length > 0 ? filedTrusts.length      : 22, icon: ShieldCheck },
+    { label: "Current-Year Data",              target: tf.length > 0 ? recentDataTrusts.length : 18, icon: Clock      },
     {
       label: "Trusts With Documented Assets",
-      target: tf.length > 0 ? tf.length : 42,
+      target: tf.length > 0 ? trustsWithFigures.length : 43,
       icon: BookOpen,
       tooltip:
-        "Approximately 60 asbestos trusts are active in the U.S. (GAO-11-819; industry sources 2026). This site tracks the 42 trusts for which publicly documented asset figures are available.",
+        "This site tracks 55 identified trust records: 54 are active, including one in active deferral, and one is closed. Forty-three active records have publicly documented asset figures. GAO-11-819’s approximately 60 figure refers to trusts established historically, not the current active count.",
     },
   ] as const;
 
   return (
+    <>
     <div>
       {/* ── Hero Clock ──────────────────────────────────────────────────────── */}
       <section
@@ -216,10 +230,26 @@ export default function Home() {
               <span>
                 {tf.length > 0 ? `${activeTrusts.length} active trusts tracked` : "41 active trusts tracked"}
               </span>
-              <Link href="/methodology" className="hover:text-primary transition-colors no-underline">
-                How is this calculated? →
-              </Link>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => setShowEmbedModal(true)}
+                  className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer bg-transparent border-none p-0 font-mono text-xs text-muted-foreground/50"
+                >
+                  <Code2 size={11} /> Embed this clock
+                </button>
+                <Link href="/methodology" className="hover:text-primary transition-colors no-underline">
+                  How is this calculated? →
+                </Link>
+              </div>
             </div>
+            <ClockFigureSummary
+              remaining={remaining}
+              payouts={paidOut}
+              lastUpdated={lastUpdated}
+              documentedAssetTrusts={trustsWithFigures.length || 43}
+              activeTrustsTracked={activeTrustsTracked}
+              assetDataRange={assetDataRange}
+            />
           </div>
         </div>
       </section>
@@ -292,6 +322,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+    <EmbedCodeModal open={showEmbedModal} onOpenChange={setShowEmbedModal} />
     </div>
+    </>
   );
 }

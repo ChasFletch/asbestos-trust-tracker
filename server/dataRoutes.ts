@@ -8,10 +8,13 @@ const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 
 const TRUST_FIGURES_RAW_URL = `${GITHUB_RAW_BASE}/client/src/data/trust-figures.json`;
 
+export const trustFiguresSourceUrl = (cacheBuster: number) =>
+  `${TRUST_FIGURES_RAW_URL}?cachebust=${cacheBuster}`;
+
 // ── Cache slots ──────────────────────────────────────────────────────────────
 let cachedFigures: unknown = null;
 let cacheTimestamp = 0;
-const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
+const CACHE_TTL_MS = 60 * 1000; // 1 minute; source data is maintained independently on GitHub
 
 let cachedNewsDrafts: Array<NewsDraft> | null = null;
 let newsDraftsCacheTs = 0;
@@ -32,6 +35,56 @@ interface NewsDraft {
   url?: string;
 }
 
+const PREFERRED_NEWS_SUMMARY_LENGTH = 400;
+
+function trimSummaryAtSentenceBoundary(text: string, preferredLength = PREFERRED_NEWS_SUMMARY_LENGTH): string {
+  if (text.length <= preferredLength) return text;
+
+  const boundaries = Array.from(text.matchAll(/[.!?](?:\[\d+\])?(?=\s|$)/g));
+  const beforePreferredLength = boundaries.filter((boundary) => (boundary.index ?? 0) < preferredLength).at(-1);
+  const boundary = beforePreferredLength ?? boundaries[0];
+
+  if (!boundary || boundary.index === undefined) return text;
+  return text.slice(0, boundary.index + boundary[0].length).trim();
+}
+
+export function parseNewsDraft(fileName: string, text: string): NewsDraft {
+  const lines = text.split("\n");
+  let title = fileName
+    .replace(/^\d{4}-\d{2}-\d{2}-/, "")
+    .replace(/\.md$/, "")
+    .replace(/-/g, " ");
+  let date = fileName.substring(0, 10);
+  let category = "system_update";
+  let url: string | undefined;
+  let bodyStart = 0;
+
+  for (let i = 0; i < Math.min(lines.length, 15); i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      if (bodyStart > 0) {
+        bodyStart = i + 1;
+        break;
+      }
+      continue;
+    }
+    if (line.startsWith("# ")) title = line.slice(2).trim();
+    else if (line.startsWith("date:")) date = line.slice(5).trim().replace(/^["']|["']$/g, "");
+    else if (line.startsWith("category:")) category = line.slice(9).trim().replace(/^["']|["']$/g, "");
+    else if (line.startsWith("url:")) url = line.slice(4).trim().replace(/^["']|["']$/g, "");
+    bodyStart = i + 1;
+  }
+
+  const firstParagraph = (lines.slice(bodyStart).join("\n").trim().split(/\n\n/)[0] ?? "")
+    .replace(/^#+\s*/gm, "")
+    .replace(/\*\*/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .trim();
+  const summary = trimSummaryAtSentenceBoundary(firstParagraph);
+
+  return { filename: fileName, date, title, summary, category, url };
+}
+
 // ── Trust figures ────────────────────────────────────────────────────────────
 export async function fetchTrustFigures(): Promise<unknown> {
   const now = Date.now();
@@ -39,7 +92,7 @@ export async function fetchTrustFigures(): Promise<unknown> {
     return cachedFigures;
   }
   try {
-    const res = await fetch(TRUST_FIGURES_RAW_URL, {
+    const res = await fetch(trustFiguresSourceUrl(now), {
       headers: { "Cache-Control": "no-cache" },
       signal: AbortSignal.timeout(8000),
     });
@@ -62,11 +115,12 @@ async function fetchNewsDrafts(): Promise<NewsDraft[]> {
   try {
     // List the directory via GitHub API (returns 404 if dir doesn't exist yet)
     const listRes = await fetch(
-      `${GITHUB_API_BASE}/contents/client/src/data/news-drafts`,
+      `${GITHUB_API_BASE}/contents/client/src/data/news-drafts?ref=main&cachebust=${now}`,
       {
         headers: {
           Accept: "application/vnd.github.v3+json",
           "User-Agent": "asbestostrusts-server/1.0",
+          "Cache-Control": "no-cache",
         },
         signal: AbortSignal.timeout(8000),
       }
@@ -87,33 +141,7 @@ async function fetchNewsDrafts(): Promise<NewsDraft[]> {
           const r = await fetch(f.download_url, { signal: AbortSignal.timeout(5000) });
           if (!r.ok) return null;
           const text = await r.text();
-          const lines = text.split("\n");
-          // Defaults from filename
-          let title = f.name
-            .replace(/^\d{4}-\d{2}-\d{2}-/, "")
-            .replace(/\.md$/, "")
-            .replace(/-/g, " ");
-          let date = f.name.substring(0, 10);
-          let category = "system_update";
-          let url: string | undefined;
-          let bodyStart = 0;
-          // Parse simple frontmatter (lines before first blank line or first heading)
-          for (let i = 0; i < Math.min(lines.length, 15); i++) {
-            const l = lines[i].trim();
-            if (l.startsWith("# ")) { title = l.slice(2).trim(); bodyStart = i + 1; }
-            else if (l.startsWith("date:")) date = l.slice(5).trim().replace(/^["']|["']$/g, "");
-            else if (l.startsWith("category:")) category = l.slice(9).trim().replace(/^["']|["']$/g, "");
-            else if (l.startsWith("url:")) url = l.slice(4).trim().replace(/^["']|["']$/g, "");
-          }
-          // Summary = first non-empty paragraph after frontmatter (strip markdown)
-          const body = lines.slice(bodyStart).join("\n").trim();
-          const summary = (body.split(/\n\n/)[0] ?? "")
-            .replace(/^#+\s*/gm, "")
-            .replace(/\*\*/g, "")
-            .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-            .trim()
-            .slice(0, 400);
-          return { filename: f.name, date, title, summary, category, url };
+          return parseNewsDraft(f.name, text);
         } catch {
           return null;
         }
@@ -154,6 +182,7 @@ export async function fetchReportsIndex(): Promise<unknown> {
 interface ReportEntry { id: string; path: string; title?: string; date?: string; asOf?: string; }
 const reportMarkdownCache = new Map<string, { content: string; ts: number }>();
 const REPORT_MD_TTL = 60 * 60 * 1000;
+const isSafeReportId = (id: string) => /^[A-Z0-9-]{3,64}$/.test(id);
 
 async function fetchReportMarkdown(reportId: string): Promise<string | null> {
   const cached = reportMarkdownCache.get(reportId);
@@ -184,7 +213,9 @@ export function registerDataRoutes(app: Express) {
         res.status(503).json({ error: "Trust figures temporarily unavailable" });
         return;
       }
-      res.set("Cache-Control", "public, max-age=3600");
+      // The server retains a one-minute resilience cache, but browsers and
+      // edge caches must not keep a prior source revision after a data update.
+      res.set("Cache-Control", "no-store");
       res.json(data);
     } catch {
       res.status(500).json({ error: "Internal error" });
@@ -198,7 +229,9 @@ export function registerDataRoutes(app: Express) {
       const jsonTrusts = data?.trusts ?? [];
       const headers = [
         "name", "shortName", "netAssets", "assetsAsOf", "assetsBasis",
-        "paymentPercentage", "status", "confidence", "note",
+        "paymentPercentage", "paymentPctEffective", "paymentPctAsOf",
+        "paymentPctNoticePublishedAt", "paymentPercentageSourceUrl",
+        "status", "confidence", "note",
       ];
       const escape = (v: unknown) => {
         if (v == null) return "";
@@ -214,7 +247,7 @@ export function registerDataRoutes(app: Express) {
       ];
       res.set("Content-Type", "text/csv; charset=utf-8");
       res.set("Content-Disposition", 'attachment; filename="asbestos-trusts.csv"');
-      res.set("Cache-Control", "public, max-age=3600");
+      res.set("Cache-Control", "no-store");
       res.send(rows.join("\r\n"));
     } catch {
       res.status(500).json({ error: "Failed to generate CSV" });
@@ -225,7 +258,9 @@ export function registerDataRoutes(app: Express) {
   app.get("/api/news-drafts", async (_req, res) => {
     try {
       const drafts = await fetchNewsDrafts();
-      res.set("Cache-Control", "public, max-age=900");
+      // The server retains a 15-minute resilience cache, but browsers and edge
+      // caches must not retain removed or corrected editorial cards.
+      res.set("Cache-Control", "no-store");
       res.json({ drafts });
     } catch {
       res.status(500).json({ error: "Failed to fetch news drafts" });
@@ -247,7 +282,7 @@ export function registerDataRoutes(app: Express) {
   app.get("/api/reports/:id/markdown", async (req, res) => {
     try {
       const { id } = req.params;
-      if (!/^ATR-\d{4}-Q[1-4]$/.test(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
+      if (!isSafeReportId(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
       const content = await fetchReportMarkdown(id);
       if (!content) { res.status(404).json({ error: "Report not found" }); return; }
       res.set("Cache-Control", "public, max-age=3600");
@@ -260,7 +295,7 @@ export function registerDataRoutes(app: Express) {
   app.get("/api/reports/:id/pdf", async (req, res) => {
     try {
       const { id } = req.params;
-      if (!/^ATR-\d{4}-Q[1-4]$/.test(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
+      if (!isSafeReportId(id)) { res.status(400).json({ error: "Invalid report ID" }); return; }
       const content = await fetchReportMarkdown(id);
       if (!content) { res.status(404).json({ error: "Report not found" }); return; }
       const bodyHtml = await marked.parse(content);

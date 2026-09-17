@@ -65,6 +65,9 @@ function buildHeadTags(head: HeadMeta, siteName: string): string {
   if (head.notFound || head.noindex) {
     tags.push(`<meta name="robots" content="noindex, follow" />`);
   }
+  if (head.keywords) {
+    tags.push(`<meta name="keywords" content="${escapeHtml(head.keywords)}" />`);
+  }
   if (head.jsonLd) {
     const items = Array.isArray(head.jsonLd) && !("@context" in head.jsonLd) ? head.jsonLd : [head.jsonLd];
     for (const item of items) {

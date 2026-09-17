@@ -23,7 +23,7 @@ describe("PACER pull queue", () => {
   it("all queue entries have valid court codes", () => {
     const queuePath = path.join(process.cwd(), "pacer-pull-queue.json");
     const data = JSON.parse(fs.readFileSync(queuePath, "utf-8"));
-    const validCourts = ["deb", "nysb", "wdpa", "mdfl", "ndca", "sdny", "dma"];
+    const validCourts = ["deb", "nysb", "wdpa", "mdfl", "flmb", "ndca", "sdny", "dma", "ncwb", "laeb", "pawb"];
     for (const doc of data.queue) {
       expect(validCourts).toContain(doc.court);
     }

@@ -125,13 +125,19 @@ function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 3
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showTooltip, handleClickOutside]);
 
-  const [displayed, setDisplayed] = useState(0);
-  const prevRef = useRef(0);
+  // Render the actual value during SSR and the client's first render so crawlers
+  // receive a real, citeable number and hydration remains deterministic. The
+  // effect below then resets and plays the existing count-up after hydration.
+  const [displayed, setDisplayed] = useState(value);
+  const prevRef = useRef(value);
+  const hasHydratedRef = useRef(false);
 
   useEffect(() => {
-    const start = prevRef.current;
     const end = value;
+    const start = hasHydratedRef.current ? prevRef.current : 0;
+    hasHydratedRef.current = true;
     if (start === end) return;
+    setDisplayed(start);
     const duration = 1400;
     const startTime = performance.now();
     const tick = (now: number) => {
@@ -223,6 +229,7 @@ function LedPanel({ value, label, sublabel, tooltip, panelTooltip, digitSize = 3
         {showPanelTooltip && panelTooltip && (
           <div className="dc-panel-tooltip">{panelTooltip}</div>
         )}
+        <span className="sr-only">{formatted}</span>
         {/* glass sheen across the panel face */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
@@ -328,7 +335,7 @@ interface DebtClockBillboardProps {
   paidOutBottomUpResidual?: number;
 }
 
-export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 19810476508, paidOutEstimatedRemainder = 4189523492, trustsWithCumulativePaidFiled = 14, documentedTrusts = [], paidOutBottomUpFiled = 19810476508, paidOutBottomUpSecondary = 6671321145, paidOutBottomUpResidual = 3500000000 }: DebtClockBillboardProps) {
+export function DebtClockBillboard({ remaining, payouts, remainingLow, remainingHigh, lastUpdated, topTrusts, paidOutDocumented = 15132028204, paidOutEstimatedRemainder = 8867971796, trustsWithCumulativePaidFiled = 11, documentedTrusts = [], paidOutBottomUpFiled = 15132028204, paidOutBottomUpSecondary = 11349769449, paidOutBottomUpResidual = 3500000000 }: DebtClockBillboardProps) {
   const vw = useViewportWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 900;
@@ -386,7 +393,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
         </tbody>
       </table>
       <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-        Documented floor: $16.75B (13 filed-asset trusts). Full system estimate $16.7B–$22.5B includes modeled figures for trusts without filed balances.
+        Documented floor: $15.97B (40 trusts with sourced balances). Full system estimate $15.97B–$21.7B includes modeled figures for trusts without filed balances.
       </div>
       <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
         onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}
@@ -561,7 +568,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
             tooltip={remainingTooltip}
             panelTooltip={
               <><strong style={{display:"block",color:"#f4d07a",marginBottom:"0.35rem",fontSize:"0.75rem",letterSpacing:"0.05em",textTransform:"uppercase"}}>Documented Remaining Assets</strong>
-              The sum of net assets reported in the most recent annual report or financial statement filed by each of the 42 active U.S. asbestos bankruptcy trusts. Figures are drawn directly from primary court documents — not modeled or estimated. The as-of dates vary by trust; see the Trust Data page for per-trust detail. This is a documented floor, not a complete system total: trusts that have not yet filed public financials are excluded.</>
+              The sum of net assets reported in the most recent annual report or financial statement located for each of the 42 U.S. asbestos bankruptcy trust records with documented figures (of 55 tracked). Figures are drawn directly from primary court documents or secondary compilations that cite them — not modeled or estimated. The as-of dates vary by trust; see the Trust Data page for per-trust detail. This is a documented floor, not a complete system total: trusts that have not yet filed public financials are excluded.</>
             }
             digitSize={primarySize}
           />
@@ -619,12 +626,12 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                sublabel="Derived estimate — see methodology"
                panelTooltip={
                  <><strong style={{display:"block",color:"#f4d07a",marginBottom:"0.35rem",fontSize:"0.75rem",letterSpacing:"0.05em",textTransform:"uppercase"}}>Cumulative Payouts Since 1988</strong>
-                 The total amount paid to asbestos victims by all U.S. §524(g) trusts from inception through the most recent filed reports. Built bottom-up from three tiers: <em>Tier 1</em> — $19.81B filed directly in court documents (14 trusts); <em>Tier 2</em> — $6.67B from secondary sources citing filed figures (5 trusts); <em>Tier 3</em> — ~$3.5B estimated residual for the remaining ~25 trusts with no public cumulative figure. The old "$24B" figure was a 2011-era top-down estimate; this figure reflects a 2025–2026 bottom-up rebuild.</>
+                 The total amount paid to asbestos victims by U.S. §524(g) trusts through the most recent available reports. Built bottom-up from three tiers: <em>Tier 1</em> — ${(paidOutBottomUpFiled / 1e9).toFixed(2)}B filed directly in court documents ({trustsWithCumulativePaidFiled} trusts); <em>Tier 2</em> — ${(paidOutBottomUpSecondary / 1e9).toFixed(2)}B from secondary sources citing filed figures; <em>Tier 3</em> — ~${(paidOutBottomUpResidual / 1e9).toFixed(1)}B estimated residual for trusts with no public cumulative figure. Historical rows are documented floors: subsequent payments may not be captured.</>
                }
               tooltip={
                <div style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif", color: "rgba(240,236,224,0.9)", fontSize: "0.78rem", lineHeight: 1.55 }}>
                  <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem", color: "#f4d07a", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                   How $24B Is Calculated
+                   How ${(payouts / 1e9).toFixed(2)}B Is Calculated
                  </div>
                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.72rem" }}>
                   <tbody>
@@ -648,6 +655,12 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                         });
                         const currentSubtotal = currentTrusts.reduce((s, t) => s + t.cumulativePaid, 0);
                         const historicalSubtotal = historicalTrusts.reduce((s, t) => s + t.cumulativePaid, 0);
+                        const currentYears = currentTrusts
+                          .map(t => Number(t.cumulativePaidAsOf?.substring(0, 4)))
+                          .filter(Number.isFinite);
+                        const currentYearLabel = currentYears.length
+                          ? `${Math.min(...currentYears)}–${Math.max(...currentYears)}`
+                          : "current";
 
                         const rowStyle: React.CSSProperties = { borderBottom: "1px solid rgba(255,178,72,0.07)" };
                         const amtStyle: React.CSSProperties = { padding: "3px 6px 3px 8px", fontFamily: "'Courier New', monospace", color: SEG_ON, whiteSpace: "nowrap", fontSize: "0.66rem" };
@@ -656,11 +669,17 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                         const sectionHeaderStyle: React.CSSProperties = { padding: "6px 0 3px", fontSize: "0.58rem", color: "rgba(240,236,224,0.40)", fontStyle: "italic", letterSpacing: "0.05em", textTransform: "uppercase" };
                         const subtotalStyle: React.CSSProperties = { padding: "3px 6px 3px 0", fontFamily: "'Courier New', monospace", color: SEG_ON, fontSize: "0.66rem", fontWeight: 700 };
                         const subtotalLabelStyle: React.CSSProperties = { padding: "3px 0", color: "rgba(240,236,224,0.40)", fontSize: "0.60rem", fontStyle: "italic" };
+                        const historicalFloorBadgeStyle: React.CSSProperties = {
+                          display: "inline-block", marginLeft: "5px", padding: "1px 4px", borderRadius: "2px",
+                          fontSize: "0.51rem", lineHeight: 1.2, fontWeight: 700, letterSpacing: "0.04em",
+                          textTransform: "uppercase", background: "rgba(251,191,36,0.14)",
+                          color: "#fcd34d", border: "1px solid rgba(251,191,36,0.28)", verticalAlign: "middle",
+                        };
 
                         return (<>
                           {/* Section 1 header */}
                           <tr>
-                            <td colSpan={3} style={sectionHeaderStyle}>Filed figures — 2025–2026 ({currentTrusts.length} trusts)</td>
+                            <td colSpan={3} style={sectionHeaderStyle}>Filed figures — {currentYearLabel} ({currentTrusts.length} trusts)</td>
                             <td style={{ ...sectionHeaderStyle, textAlign: "right" }}>
                               <span style={{ fontSize: "0.58rem", padding: "1px 5px", borderRadius: "2px", fontWeight: 700, letterSpacing: "0.04em", background: "rgba(34,197,94,0.15)", color: "#86efac", border: "1px solid rgba(34,197,94,0.3)" }}>a</span>
                             </td>
@@ -690,8 +709,14 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                                 <td style={{ ...amtStyle, color: "rgba(255,178,72,0.55)" }}>${t.cumulativePaid.toLocaleString()}</td>
                                 <td colSpan={2} style={{ ...nameStyle, color: "rgba(240,236,224,0.50)" }}>
                                   {shortName(t.name)}
+                                  <span
+                                    style={historicalFloorBadgeStyle}
+                                    title={`Documented minimum through ${t.cumulativePaidAsOf ? t.cumulativePaidAsOf.substring(0, 4) : "the report date"}; later payments are not included.`}
+                                  >
+                                    Historical floor
+                                  </span>
                                   <span style={{ marginLeft: "4px", fontSize: "0.58rem", color: "rgba(240,236,224,0.30)" }}>
-                                    (as of {t.cumulativePaidAsOf ? t.cumulativePaidAsOf.substring(0, 4) : ""})
+                                    documented minimum through {t.cumulativePaidAsOf ? t.cumulativePaidAsOf.substring(0, 4) : ""}
                                   </span>
                                 </td>
                                 <td style={{ ...dateStyle, color: "rgba(240,236,224,0.25)" }}>hist.</td>
@@ -713,7 +738,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                           {/* Tier 2: Secondary-citing-filed */}
                           <tr>
                             <td colSpan={4} style={{ ...sectionHeaderStyle, paddingTop: "8px", color: "rgba(251,191,36,0.55)" }}>
-                              Secondary-citing-filed — 5 trusts (PCC, B&W, Celotex growth, OC/FB growth, G-I Holdings)
+                              Secondary-citing-filed figures
                             </td>
                           </tr>
                           <tr style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
@@ -731,7 +756,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                           {/* Tier 3: Estimated residual */}
                           <tr>
                             <td colSpan={4} style={{ ...sectionHeaderStyle, paddingTop: "8px" }}>
-                              Estimated residual — ~25 trusts with no public cumulative figure
+                              Estimated residual — trusts with no public cumulative figure
                             </td>
                           </tr>
                           <tr style={{ borderBottom: "1px solid rgba(255,178,72,0.10)" }}>
@@ -757,7 +782,7 @@ export function DebtClockBillboard({ remaining, payouts, remainingLow, remaining
                    </tbody>
                  </table>
                  <div style={{ marginTop: "0.65rem", fontSize: "0.65rem", color: "rgba(240,236,224,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
-                  Bottom-up estimate: ${paidOutBottomUpFiled.toLocaleString()} filed (14 trusts) + ${paidOutBottomUpSecondary.toLocaleString()} secondary-citing-filed (5 trusts) + ~${(paidOutBottomUpResidual / 1e9).toFixed(1)}B estimated residual (~25 trusts). The old $24B round figure was a top-down estimate anchored on 2011 data; this bottom-up rebuild produces ${((paidOutBottomUpFiled + paidOutBottomUpSecondary + paidOutBottomUpResidual) / 1e9).toFixed(1)}B. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
+                  Bottom-up estimate: ${paidOutBottomUpFiled.toLocaleString()} filed ({trustsWithCumulativePaidFiled} trusts) + ${paidOutBottomUpSecondary.toLocaleString()} secondary-citing-filed + ~${(paidOutBottomUpResidual / 1e9).toFixed(1)}B estimated residual. Historical filed rows are minimum documented amounts through their stated as-of years, not current totals. Source classifications follow the (a)/(b)/(c) system on the Methodology page.
                  </div>
                    <a href="/methodology" style={{ display: "block", marginTop: "0.6rem", fontSize: "0.68rem", color: "rgba(255,178,72,0.8)", textDecoration: "none", borderTop: "1px solid rgba(255,178,72,0.15)", paddingTop: "0.5rem", letterSpacing: "0.03em" }}
                      onMouseEnter={e => (e.currentTarget.style.color = SEG_ON)}

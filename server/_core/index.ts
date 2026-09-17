@@ -8,6 +8,8 @@ import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { ENV } from "./env";
+import { verifiedDrCrawlerTracking } from "../verifieddr/verifieddrCrawler";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -34,10 +36,24 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  app.use(
+    verifiedDrCrawlerTracking({
+      token: ENV.verifiedDrCrawlerToken,
+      canonicalOrigin: ENV.canonicalOrigin,
+      onError: (error) => console.warn("[VerifiedDR] crawler-event forwarding failed:", error),
+    }),
+  );
   registerStorageProxy(app);
   registerOAuthRoutes(app);
   // Scheduled job handlers — must be mounted before tRPC and Vite fallthrough
   app.post("/api/scheduled/staleness-check", stalenessCheckHandler);
+  app.post("/api/scheduled/daily-source-detection", dailyDetectionHandler);
+  app.post("/api/scheduled/weekly-source-coverage", weeklyCoverageHandler);
+  app.post("/api/scheduled/weekly-research-digest", weeklyDigestHandler);
+  app.post("/api/scheduled/monthly-research-preparation", monthlyResearchPreparationHandler);
+  app.post("/api/scheduled/quarterly-audit-preparation", quarterlyAuditPreparationHandler);
+  app.post("/api/scheduled/controlled-detection-test", controlledDetectionHandler);
+  app.post("/api/scheduled/research-intake", researchIntakeHandler);
   registerDataRoutes(app);
   registerPacerRoutes(app);
 
@@ -70,5 +86,14 @@ async function startServer() {
 
 startServer().catch(console.error);
 import { stalenessCheckHandler } from "../scheduledJobs";
+import {
+  controlledDetectionHandler,
+  dailyDetectionHandler,
+  monthlyResearchPreparationHandler,
+  quarterlyAuditPreparationHandler,
+  researchIntakeHandler,
+  weeklyCoverageHandler,
+  weeklyDigestHandler,
+} from "../operationsPilot";
 import { registerDataRoutes } from "../dataRoutes";
 import { registerPacerRoutes } from "../pacerRoutes";

@@ -595,3 +595,9 @@
 ### Content — verified primary-source material ready to use
 - [x] Methodology/oversight: add the U.S. Trustee Program quote, verbatim, CHRG-115hhrg27890 (House Judiciary, 115th Cong., 2017), Director Clifford J. White III — "there is no independent policeman. There is no watchdog for that…"
 - [x] Methodology/oversight: add GAO-11-819 audit practices stated precisely (2 of 11 reviewed samples + 1 more ran an external audit sending x-rays to an independent doctor), plus the unused line "none indicated that these audits had identified cases of fraud."
+
+
+## Living-Tracker Pilot Research Cycle — September 21, 2026
+- [x] Review the active pilot authority, source registry, current candidate queue, recent run records, weekly coverage status, and recent dispositions before researching
+- [x] Deduplicate and research the recurring daily cohort plus a bounded set of distinct September 20 official-source candidates without paid sources or PACER access
+- [x] Record source-supported dispositions, the Eagle-Picher access-only follow-up, and the Sunday no-publication outcome in the existing project queue; leave unreviewed weekly candidates pending

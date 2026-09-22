@@ -601,3 +601,9 @@
 - [x] Review the active pilot authority, source registry, current candidate queue, recent run records, weekly coverage status, and recent dispositions before researching
 - [x] Deduplicate and research the recurring daily cohort plus a bounded set of distinct September 20 official-source candidates without paid sources or PACER access
 - [x] Record source-supported dispositions, the Eagle-Picher access-only follow-up, and the Sunday no-publication outcome in the existing project queue; leave unreviewed weekly candidates pending
+
+
+## Living-Tracker Pilot Research Cycle — September 22, 2026
+- [x] Review the active pilot authority, current source registry, candidate queue, recent run records, weekly coverage status, and recent dispositions before researching
+- [x] Deduplicate and research the five daily candidates plus three distinct, high-impact official-source candidates from the partial September 20 weekly coverage queue without paid sources or PACER access
+- [x] Record source-supported candidate dispositions and the quality-dependent Monday zero-article outcome in the existing project queue; leave unreviewed weekly candidates pending

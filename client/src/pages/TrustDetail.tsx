@@ -497,7 +497,11 @@ export default function TrustDetail() {
               <span>effective {new Date((trust as any).paymentPctEffective + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</span>
             </div>
           )}
-          {(trust as any).dataAsOf && (
+          {(trust as any).paymentPctNoticePublishedAt ? (
+            <div className="text-[10px] text-muted-foreground/40 mt-1">
+              Payment notice dated: {new Date((trust as any).paymentPctNoticePublishedAt + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+            </div>
+          ) : (trust as any).dataAsOf && (
             <div className="text-[10px] text-muted-foreground/40 mt-1">
               Last verified: {new Date((trust as any).dataAsOf + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
             </div>

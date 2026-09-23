@@ -32,9 +32,11 @@ One timely, source-backed article qualified for the Wednesday cycle: **“J.T. T
 
 The Wednesday cohort produced **one qualifying article**, leaving a **two-article quality shortfall** against the three-article weekly target as of this cycle. The shortfall is recorded rather than filled with repeated notices, routine maintenance items, undated material, or a stale procedure document. No article-specific review by Paul Danziger or Rod de Llano is recorded.
 
-## Release checks required before publication
+## Release and verification
 
-The planned release requires focused regression checks, the full project test suite, TypeScript checking, a production build, raw server-rendered HTML review, responsive visual review, and a durable release record. Publication is contingent on those checks. The source record, the upcoming payment-notice history entry, and the CSV implementation-status fields are designed to preserve the distinction between a published rate announcement and completed implementation.
+The tracker update, official payment-notice history record, CSV implementation-status fields, and detailed brief were published on **September 23, 2026** after documented editorial and technical checks. Full validation passed: **35 test files, 128 assertions passed, and one opt-in test skipped**; TypeScript and production client/SSR/server builds also passed. Production raw HTML verified the detailed brief, the related trust record, the seven-record payment-notice history, CSV status fields, and cache-busted sitemap entry. Desktop and mobile review confirmed the announced-versus-implemented qualification remains visible on the trust record, payment-notice history, and article.
+
+The first production review exposed a potentially misleading generic “Last verified” label that displayed the broader dataset snapshot date alongside the newer J.T. Thorpe rate notice. That label was corrected before final release: a trust record with a dated payment notice now displays **“Payment notice dated”** for that source; the generic label remains only where no dated notice record is present. The focused regression suite, TypeScript check, and production build passed again after that correction. The source record, payment-notice history, and CSV fields preserve the distinction between a published rate announcement and completed implementation.
 
 ## References
 

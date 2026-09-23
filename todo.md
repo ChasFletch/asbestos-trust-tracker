@@ -616,4 +616,4 @@
 - [x] Reject Manville, Celotex, Flintkote, Maremont, Babcock & Wilcox, and DII fingerprint candidates as duplicate, routine, or unsupported for a new public fact
 - [x] Prepare one source-led J.T. Thorpe brief, a direct official-notice history record, tracker source fields, and CSV implementation-status fields; do not assert an effective date, completed supplemental payment, individual outcome, new asset figure, or attorney review
 - [x] Record the Wednesday quality shortfall: one qualifying article, two articles short of the three-article weekly target; do not publish filler
-- [ ] Complete full validation, production SSR and responsive review, release record, and publication only if all editorial and technical checks pass
+- [x] Complete full validation, production SSR and responsive review, release record, and publication after all editorial and technical checks passed; correct the dated-notice label found during live review before final release

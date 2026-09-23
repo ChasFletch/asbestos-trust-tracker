@@ -63,6 +63,7 @@ describe("J.T. Thorpe September 2026 payment-percentage release", () => {
     expect(sitemap).toContain("https://asbestostrusts.org/news/jt-thorpe-payment-percentage-review-september-2026");
     expect(detailPage).toContain('paymentPctImplementationStatus === "announced_pending_implementation"');
     expect(detailPage).toContain('trust.paymentPctImplementationStatus !== "announced_pending_implementation"');
+    expect(detailPage).toContain("Payment notice dated:");
     expect(trustList).toContain("announced · implementation pending");
     expect(csvRoute).toContain('"paymentPctImplementationStatus"');
     expect(csvRoute).toContain('"paymentPctImplementationNote"');

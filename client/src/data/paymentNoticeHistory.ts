@@ -20,6 +20,19 @@ export type OfficialPaymentNotice = {
  */
 export const OFFICIAL_PAYMENT_NOTICES: OfficialPaymentNotice[] = [
   {
+    id: "jt-thorpe-2026-09-18",
+    trustName: "J.T. Thorpe Settlement Trust (CA)",
+    trustSlug: "j-t-thorpe-settlement-trust-ca",
+    scope: "Trust-wide payment percentage — announced; implementation pending",
+    noticeKind: "payment_change",
+    priorPercentage: 50,
+    currentPercentage: 53.7,
+    publishedDate: "2026-09-18",
+    sourceLabel: "J.T. Thorpe Settlement Trust — J.T. Thorpe Payment Percentage Review",
+    sourceUrl: "https://www.jttstrust.com",
+    summary: "The Trust states that Trustees increased the rate from 50% to 53.7% of total liquidated claim value. Claims will be paid under the change after necessary claims-system and payment-procedure updates are completed; the notice does not state a completed implementation date.",
+  },
+  {
     id: "manville-2026-09-03",
     trustName: "Manville Personal Injury Settlement Trust",
     trustSlug: "manville-personal-injury-settlement-trust",

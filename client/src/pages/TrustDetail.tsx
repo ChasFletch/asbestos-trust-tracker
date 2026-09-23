@@ -305,6 +305,10 @@ export default function TrustDetail() {
         paymentPercentageSource: (jsonTrust as any)?.paymentPercentageSource ?? null,
         paymentPercentageSourceUrl: (jsonTrust as any)?.paymentPercentageSourceUrl ?? null,
         paymentPctEffective: (jsonTrust as any)?.paymentPctEffective ?? null,
+        paymentPctAsOf: (jsonTrust as any)?.paymentPctAsOf ?? null,
+        paymentPctNoticePublishedAt: (jsonTrust as any)?.paymentPctNoticePublishedAt ?? null,
+        paymentPctImplementationStatus: (jsonTrust as any)?.paymentPctImplementationStatus ?? null,
+        paymentPctImplementationNote: (jsonTrust as any)?.paymentPctImplementationNote ?? null,
         rateSource: (jsonTrust as any)?.rateSource ?? null,
         tdpCaveat: (jsonTrust as any)?.tdpCaveat ?? null,
         netAssetsCitation: jsonTrust.assetsBasis ?? dbTrust?.netAssetsCitation ?? null,
@@ -316,7 +320,7 @@ export default function TrustDetail() {
   const chartData = (() => {
     if (!trust) return [];
     const history = [...(trust.paymentHistory ?? [])];
-    if (trust.paymentPercentage !== null && trust.assetsAsOf) {
+    if (trust.paymentPercentage !== null && trust.assetsAsOf && trust.paymentPctImplementationStatus !== "announced_pending_implementation") {
       const lastDate = history[history.length - 1]?.effective;
       if (!lastDate || lastDate < trust.assetsAsOf) {
         history.push({ effective: trust.assetsAsOf, pct: trust.paymentPercentage, notes: "Current" } as any);
@@ -478,6 +482,13 @@ export default function TrustDetail() {
               {trust.hasDiseaseLevelScheduledValueMatrix === false
                 ? trust.paymentPercentageBasisLabel ?? "claim payment factor"
                 : "of scheduled value"}
+            </div>
+          )}
+          {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (
+            <div className="mt-1.5 rounded border border-amber-200/80 bg-amber-50/60 px-2 py-1.5 text-[11px] leading-relaxed text-amber-950/80">
+              <span className="font-semibold text-amber-900">Announced; implementation pending.</span>{" "}
+              {trust.paymentPctNoticePublishedAt ? `Posted ${new Date(`${trust.paymentPctNoticePublishedAt}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}. ` : ""}
+              {trust.paymentPctImplementationNote}
             </div>
           )}
           {(trust as any).paymentPctEffective && (

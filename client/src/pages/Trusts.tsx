@@ -21,6 +21,12 @@ interface TrustRow {
   assetsAvailability?: string | null;
   assetsBasisUrl?: string | null;
   paymentPercentage: number | null;
+  paymentPctAsOf?: string | null;
+  paymentPctNoticePublishedAt?: string | null;
+  paymentPctImplementationStatus?: string | null;
+  paymentPctImplementationNote?: string | null;
+  paymentPercentageSource?: string | null;
+  paymentPercentageSourceUrl?: string | null;
   status: string;
   paymentPercentageFB?: number | null;
   confidence: string; // "filed" | "secondary" | "estimate"
@@ -151,6 +157,12 @@ export default function Trusts() {
         assetsAvailability: (jt as any).assetsAvailability ?? null,
         assetsBasisUrl: (jt as any).assetsBasisUrl ?? null,
         paymentPercentage: jt.paymentPercentage,
+        paymentPctAsOf: (jt as any).paymentPctAsOf ?? null,
+        paymentPctNoticePublishedAt: (jt as any).paymentPctNoticePublishedAt ?? null,
+        paymentPctImplementationStatus: (jt as any).paymentPctImplementationStatus ?? null,
+        paymentPctImplementationNote: (jt as any).paymentPctImplementationNote ?? null,
+        paymentPercentageSource: (jt as any).paymentPercentageSource ?? null,
+        paymentPercentageSourceUrl: (jt as any).paymentPercentageSourceUrl ?? null,
         status: jt.status,
         paymentPercentageFB: (jt as any).paymentPercentageFB ?? null,
         confidence: jt.confidence,
@@ -442,6 +454,9 @@ export default function Trusts() {
                     ) : (
                       <span className="text-muted-foreground/40 text-xs">MSV/N/A</span>
                     )}
+                    {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (
+                      <div className="mt-0.5 text-[10px] leading-tight text-amber-700/80">announced · implementation pending</div>
+                    )}
                   </div>
                   <div className="text-sm font-mono">
                     <span className={trust.netAssets ? "text-foreground" : "text-muted-foreground/40"}>
@@ -496,6 +511,17 @@ export default function Trusts() {
                           </div>
                         )}
                         {trust.note && <div className="mt-2 text-muted-foreground/70 leading-relaxed">{trust.note}</div>}
+                        {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (
+                          <div className="mt-2 rounded border border-amber-200/70 bg-amber-50/60 p-2 text-xs leading-relaxed text-amber-950/80">
+                            <span className="font-semibold text-amber-900">Announced payment percentage:</span>{" "}
+                            {trust.paymentPctImplementationNote ?? "The source states that implementation remains pending."}
+                            {trust.paymentPercentageSourceUrl && (
+                              <a href={trust.paymentPercentageSourceUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="ml-1 font-medium text-amber-800 underline underline-offset-2 hover:no-underline">
+                                Read official notice <ExternalLink size={10} className="inline" />
+                              </a>
+                            )}
+                          </div>
+                        )}
                        {trust.paymentPercentageFB != null && (
                          <div className="mt-2 p-2 rounded bg-amber-50/50 border border-amber-200/40 text-xs space-y-1">
                            <div className="font-semibold text-amber-800/80 uppercase tracking-wider text-[10px]">Dual Sub-Account Payment Percentages</div>

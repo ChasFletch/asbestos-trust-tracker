@@ -185,9 +185,17 @@
    "netAssets": 116383926,
    "assetsAsOf": "2025-12-31",
    "assetsBasis": "net claimants' equity, FY2025 annual report (Twentieth Annual Report and Accounting), C.D. Cal. 02-14216 Doc# 1901, filed 04/28/2026",
-   "paymentPercentage": 50,
+   "paymentPercentage": 53.7,
+   "paymentPctAsOf": "2026-09-18",
+   "paymentPctNoticePublishedAt": "2026-09-18",
+   "paymentPctImplementationStatus": "announced_pending_implementation",
+   "paymentPctImplementationNote": "The Trust states that claims will be paid at 53.7% after necessary claims-processing-system and payment-procedure updates are completed; no completed implementation date is stated.",
+   "paymentPercentageSource": "J.T. Thorpe Settlement Trust homepage, ‘J.T. Thorpe Payment Percentage Review,’ posted September 18, 2026: Trustees increased the Payment Percentage from 50% to 53.7% of total liquidated claim value, subject to necessary claims-system and payment-procedure updates.",
+   "paymentPercentageSourceUrl": "https://www.jttstrust.com",
+   "paymentPctConfidence": "filed",
    "status": "active",
    "confidence": "filed",
+   "note": "FY2025 net claimants’ equity $116.38M as of 12/31/2025. The official homepage announced a 50% to 53.7% Payment Percentage increase on 9/18/2026; implementation is pending necessary claims-system and payment-procedure updates. The Trust expects eligible previously paid claims to receive additional amounts due by the end of November 2026; this is a stated expectation, not a completed-payment record or an individual outcome.",
    "cumulativePaid": 189960646,
    "cumulativePaidAsOf": "2025-12-31",
    "cumulativePaidSource": "J.T. Thorpe Settlement Trust 20th Annual Report and Accounting FY2025, Claim Report Exhibit F as of 12/31/2025, C.D. Cal. 02-14216 Doc# 1901, filed 04/28/2026",
@@ -199,7 +207,7 @@
    "court": "Bankr. C.D. Cal.",
    "docket": "02-14538",
    "website": "https://www.jttstrust.com",
-   "direction": "stable",
+   "direction": "up",
    "reportingFrequency": "annual"
   },
   {
@@ -1414,6 +1422,15 @@
   }
  ],
  "changes": [
+  {
+   "date": "2026-09-18",
+   "type": "percentage_increase",
+   "trust": "J.T. Thorpe Settlement Trust (CA)",
+   "detail": "The official J.T. Thorpe Settlement Trust homepage announced that the Trustees increased the Payment Percentage from 50% to 53.7% of total liquidated claim value. The Trust states that claims will be paid in accordance with the change after necessary claims-processing-system and payment-procedure updates are completed; it does not state that implementation was complete on September 18. The tracker therefore labels 53.7% as announced with implementation pending and does not treat the notice as a new net-asset, cumulative-payment, or individual-claim figure.",
+   "source": "J.T. Thorpe Settlement Trust, ‘J.T. Thorpe Payment Percentage Review,’ posted 2026-09-18",
+   "sourceUrl": "https://www.jttstrust.com",
+   "confidence": "primary"
+  },
   {
    "date": "2026-09-03",
    "type": "payment_percentage_change",

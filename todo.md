@@ -607,3 +607,13 @@
 - [x] Review the active pilot authority, current source registry, candidate queue, recent run records, weekly coverage status, and recent dispositions before researching
 - [x] Deduplicate and research the five daily candidates plus three distinct, high-impact official-source candidates from the partial September 20 weekly coverage queue without paid sources or PACER access
 - [x] Record source-supported candidate dispositions and the quality-dependent Monday zero-article outcome in the existing project queue; leave unreviewed weekly candidates pending
+
+
+## Living-Tracker Pilot — Wednesday Cycle (September 23, 2026)
+- [x] Review the active pilot authority, run records, source-registry health, candidate queue, recent releases, and partial weekly coverage before source research
+- [x] Deduplicate the September 23 changed-source cohort by trust, source, and newest event; retain the weekly coverage record as partial rather than inferring system-wide no change
+- [x] Verify the J.T. Thorpe Settlement Trust’s September 18 official payment-percentage review and preserve the announced-versus-implemented distinction
+- [x] Reject Manville, Celotex, Flintkote, Maremont, Babcock & Wilcox, and DII fingerprint candidates as duplicate, routine, or unsupported for a new public fact
+- [x] Prepare one source-led J.T. Thorpe brief, a direct official-notice history record, tracker source fields, and CSV implementation-status fields; do not assert an effective date, completed supplemental payment, individual outcome, new asset figure, or attorney review
+- [x] Record the Wednesday quality shortfall: one qualifying article, two articles short of the three-article weekly target; do not publish filler
+- [ ] Complete full validation, production SSR and responsive review, release record, and publication only if all editorial and technical checks pass

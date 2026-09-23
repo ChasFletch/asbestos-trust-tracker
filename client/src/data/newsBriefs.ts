@@ -515,6 +515,57 @@ This explainer compares four public trust or administrator notices. It does not 
 `,
   },
   {
+    slug: "jt-thorpe-payment-percentage-review-september-2026",
+    title: "J.T. Thorpe Trust Announces 53.7% Payment Percentage; Implementation Is Still Pending",
+    date: "2026-09-23",
+    category: "payment_change",
+    summary: "The J.T. Thorpe Settlement Trust posted a September 18 notice announcing a payment-percentage increase from 50% to 53.7% of total liquidated claim value. The notice says claims will be paid under the change after necessary claims-system and payment-procedure updates are completed; it does not state that implementation was complete on September 18.",
+    sourceUrl: "https://www.jttstrust.com",
+    sourceLabel: "J.T. Thorpe Settlement Trust — J.T. Thorpe Payment Percentage Review (posted Sept. 18, 2026)",
+    sourceCutoffAt: "2026-09-23",
+    keywords: "J.T. Thorpe Settlement Trust, 53.7% payment percentage, asbestos trust payment percentage, asbestos claim payment notice, J.T. Thorpe trust notice",
+    about: "J.T. Thorpe Settlement Trust September 2026 payment-percentage notice",
+    relatedTrustSlugs: ["j-t-thorpe-settlement-trust-ca"],
+    markdown: `The **J.T. Thorpe Settlement Trust** posted a payment-percentage notice stating that its Trustees, with the consent of the Trust Advisory Committee and Futures Representative, **increased the Payment Percentage from 50% to 53.7% of total liquidated claim value**.[1]
+
+The September 18, 2026 notice is a substantive public change. It also contains an important implementation limit: the Trust says claims will be paid in accordance with the new percentage **after necessary claims-processing-system and payment-procedure updates are completed**. The notice does not state that those updates were complete on September 18 or provide a completed implementation date.[1]
+
+## What the official notice says
+
+| Officially stated item | What the notice supports |
+|---|---|
+| Prior payment percentage | **50%** of total liquidated claim value. |
+| Announced payment percentage | **53.7%** of total liquidated claim value. |
+| Notice date | **September 18, 2026**. |
+| Operational status | The Trust says necessary claims-system and payment-procedure updates must be completed before claims are paid under the change. |
+| Previously paid claims | The Trust says eligible previously paid claims **should** receive additional amounts due by the end of November 2026. This is a stated expectation, not a completed-payment record. |
+
+The public source is the Trust’s homepage notice. It does not identify a separate effective date, a new net-asset balance, a new cumulative-payment amount, or a claimant-specific award.[1]
+
+## How the tracker records the change
+
+AsbestosTrusts.org now records the **53.7%** figure on the J.T. Thorpe (California) trust record as an **announced rate with implementation pending**. That label is deliberate: the source supports the Trustees’ announced increase, but it expressly conditions payments under the changed rate on later administrative updates.[1]
+
+The tracker does not use the notice to alter J.T. Thorpe’s existing **December 31, 2025** net-claimants’-equity figure or its separately sourced cumulative-payment figure. A payment-percentage notice is evidence about the payment framework; it is not evidence of a new balance-sheet figure or an inception-to-date payout total.
+
+> **Confirmed:** J.T. Thorpe announced an increase from 50% to 53.7% on September 18, 2026, and the official notice states that necessary implementation updates remain to be completed.
+>
+> **Not established by the notice:** A completed implementation date, a completed supplemental-payment program, a new trust balance, a new cumulative payout total, or an individual claimant’s payment.
+
+## Why the implementation qualification matters
+
+A payment percentage is part of a trust’s payment framework. It should not be read as a standalone claim-value promise. The applicable trust procedures, claim-review path, claim value, eligibility determination, and the status of the announced implementation all matter. This article therefore does not calculate an individual payment or predict whether a particular claimant will receive a supplemental amount.
+
+The Trust’s statement about eligible previously paid claims is likewise prospective. It says those claims **should** receive additional amounts due by the end of November 2026; it is not evidence that additional amounts have already been issued.[1]
+
+## Source and editorial note
+
+This brief relies on the J.T. Thorpe Settlement Trust’s official homepage notice. It reports the stated percentage, prior percentage, notice date, and implementation qualification without inferring an unstated effective date, a completed payment event, or an individual result. It is general public research, not legal advice. **No article-specific attorney review is recorded for this publication.**
+
+[1]: https://www.jttstrust.com "J.T. Thorpe Settlement Trust — J.T. Thorpe Payment Percentage Review, posted September 18, 2026"
+`,
+  },
+  {
     slug: "manville-revised-2025-trustees-accounting",
     title: "Manville’s Revised 2025 Trustee’s Accounting Reports $56.3M in Annual Claim Payments",
     date: "2026-09-16",

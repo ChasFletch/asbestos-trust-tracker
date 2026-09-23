@@ -8,7 +8,7 @@ const read = (relativePath: string) => fs.readFileSync(path.join(root, relativeP
 
 describe("official payment-notice history", () => {
   it("keeps every public history entry source-linked, scoped, and limited to reviewed official records", () => {
-    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(6);
+    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(7);
     for (const item of OFFICIAL_PAYMENT_NOTICES) {
       expect(item.sourceUrl).toMatch(/^https:\/\//);
       expect(item.sourceLabel.length).toBeGreaterThan(20);
@@ -17,6 +17,8 @@ describe("official payment-notice history", () => {
       expect(item.trustSlug).not.toHaveLength(0);
     }
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "manville-2026-09-03")).toMatchObject({ priorPercentage: 5.1, currentPercentage: 5.6, effectiveDate: "2026-09-02" });
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "jt-thorpe-2026-09-18")).toMatchObject({ priorPercentage: 50, currentPercentage: 53.7, publishedDate: "2026-09-18" });
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "jt-thorpe-2026-09-18")?.effectiveDate).toBeUndefined();
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "armstrong-2026-06-11")?.effectiveDate).toBeUndefined();
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.scope).toContain("T&N Sub-Account only");
   });

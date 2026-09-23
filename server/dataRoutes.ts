@@ -230,7 +230,7 @@ export function registerDataRoutes(app: Express) {
       const headers = [
         "name", "shortName", "netAssets", "assetsAsOf", "assetsBasis",
         "paymentPercentage", "paymentPctEffective", "paymentPctAsOf",
-        "paymentPctNoticePublishedAt", "paymentPercentageSourceUrl",
+        "paymentPctNoticePublishedAt", "paymentPctImplementationStatus", "paymentPctImplementationNote", "paymentPercentageSourceUrl",
         "status", "confidence", "note",
       ];
       const escape = (v: unknown) => {

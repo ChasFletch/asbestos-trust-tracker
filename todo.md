@@ -617,3 +617,9 @@
 - [x] Prepare one source-led J.T. Thorpe brief, a direct official-notice history record, tracker source fields, and CSV implementation-status fields; do not assert an effective date, completed supplemental payment, individual outcome, new asset figure, or attorney review
 - [x] Record the Wednesday quality shortfall: one qualifying article, two articles short of the three-article weekly target; do not publish filler
 - [x] Complete full validation, production SSR and responsive review, release record, and publication after all editorial and technical checks passed; correct the dated-notice label found during live review before final release
+
+## Living-Tracker Pilot Research Cycle — September 24, 2026
+- [x] Review active pilot authority, current source-registry health, latest daily and weekly run records, candidate queue, and recent releases before research
+- [x] Deduplicate and assess six September 24 official-source fingerprint candidates using only no-charge official materials
+- [x] Record that Manville is duplicate; Celotex, DII, Flintkote, and Babcock & Wilcox are routine maintenance or otherwise unchanged; and Maremont materials are pre-pilot and already reflected in the tracker
+- [x] Record the internal no-publication disposition and preserve Celotex FY2025 primary-report recovery and partial weekly-coverage follow-up as open items

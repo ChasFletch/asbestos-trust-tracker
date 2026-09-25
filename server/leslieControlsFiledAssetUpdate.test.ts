@@ -58,10 +58,14 @@ describe("Leslie Controls FY2025 filed asset update", () => {
     const methodology = readFileSync(resolve(root, "client/src/pages/Methodology.tsx"), "utf8");
     const llms = readFileSync(resolve(root, "client/public/llms.txt"), "utf8");
     const corrections = readFileSync(resolve(root, "client/src/pages/Corrections.tsx"), "utf8");
+    const trustDetail = readFileSync(resolve(root, "client/src/pages/TrustDetail.tsx"), "utf8");
     expect(methodology).toContain("$16,097,458,607");
     expect(methodology).toContain("44 of the tracker&apos;s 54 active records");
     expect(llms).toContain("2026-09-24");
     expect(llms).toContain("$16,097,458,607");
     expect(corrections).toContain("Leslie Controls, Inc. Asbestos Personal Injury Trust");
+    expect(trustDetail).toContain("About Leslie Controls' July 2025 payment-cycle qualification");
+    expect(trustDetail).toContain("The July 14, 2025 notice confirms the 6.25% rate");
+    expect(trustDetail).toContain("does not give a specific calendar effective day");
   });
 });

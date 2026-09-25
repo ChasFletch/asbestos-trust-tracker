@@ -3,6 +3,7 @@ import { trpc } from "@/lib/trpc";
 import { useState } from "react";
 import { SourceDocModal } from "@/components/SourceDocModal";
 import { ReviewerCredentialsModal } from "@/components/ReviewerCredentialsModal";
+import { Tooltip as UiTooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { primarySourceDocumentsBySlug } from "@/data/primarySourceDocuments";
 import { getNewsBriefsForTrust } from "@/data/newsBriefs";
 import { getRelatedReportIdsForTrust } from "@/data/reportRelations";
@@ -67,6 +68,9 @@ type FilingWindows = {
   uninsuredPortionsOfInsuredClaims: string;
   caveat: string;
 };
+
+const LESLIE_CONTROLS_NAME = "Leslie Controls, Inc. Asbestos Personal Injury Trust";
+const LESLIE_PAYMENT_CYCLE_TOOLTIP = "The July 14, 2025 notice confirms the 6.25% rate and says the increase applied with the July 2025 payment cycle. It does not give a specific calendar effective day, so this record shows the notice date rather than inferring one.";
 
 function historicalSourceAge(asOf: string | null | undefined, referenceDate: string | null | undefined) {
   if (!asOf || !referenceDate) return null;
@@ -470,6 +474,22 @@ export default function TrustDetail() {
         <div className="bg-card border border-border/50 rounded-lg p-4">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <Activity size={12} />Payment %
+            {trust.name === LESLIE_CONTROLS_NAME && (
+              <UiTooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="About Leslie Controls' July 2025 payment-cycle qualification"
+                    className="inline-flex size-4 items-center justify-center rounded-full text-muted-foreground/70 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+                  >
+                    <Info size={12} aria-hidden="true" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" sideOffset={6} className="max-w-xs text-xs leading-relaxed">
+                  {LESLIE_PAYMENT_CYCLE_TOOLTIP}
+                </TooltipContent>
+              </UiTooltip>
+            )}
             {(trust as any).paymentPctConfidence && (
               <span className="ml-auto"><ConfidenceBadge confidence={(trust as any).paymentPctConfidence} /></span>
             )}

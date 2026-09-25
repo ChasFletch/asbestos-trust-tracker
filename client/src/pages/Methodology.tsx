@@ -82,7 +82,7 @@ export default function Methodology() {
             <li>Trusts with no available net asset figure are excluded from the aggregate but are listed in the database with their known payment percentage data.</li>
           </ol>
           <div className="mt-4 p-3 rounded border border-primary/20 bg-primary/5 text-xs text-muted-foreground">
-            <strong className="text-foreground">Current aggregate as-of note:</strong> As of September 3, 2026, the documented asset floor is <strong className="text-foreground">$16,033,489,279</strong> across 43 of the tracker&apos;s 54 active records, including one active record in deferral. The underlying dates are mixed, spanning FY2021–FY2025. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection. The separate approximately 60 figure is a historical estimate of trusts established, not the active-record denominator.
+            <strong className="text-foreground">Current aggregate as-of note:</strong> As of September 24, 2026, the documented asset floor is <strong className="text-foreground">$16,097,458,607</strong> across 44 of the tracker&apos;s 54 active records, including one active record in deferral. The underlying dates are mixed, spanning FY2021–FY2025. Trusts whose balance is not publicly reported are retained in the database but excluded from the sum, so this is a <em>documented floor</em>, not a current census or an actuarial projection. The separate approximately 60 figure is a historical estimate of trusts established, not the active-record denominator.
           </div>
         </section>
 
@@ -110,7 +110,7 @@ export default function Methodology() {
             The tracker therefore does not treat "$30 billion available" as a sourceable fact. It is best understood as a stale marketing shorthand that has lost the underlying measure and date. It also must not be confused with this site&apos;s separate bottom-up estimate of <em>cumulative payouts</em> since 1988: $30,033,989,206 measures payments made or liquidated under the source series, not assets remaining.
           </p>
           <p className="text-muted-foreground">
-            Our documented floor for remaining assets is <strong className="text-foreground">$16,033,489,279</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It covers 43 of the tracker&apos;s 54 active records, not the approximately 60 trusts historically established nationwide. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
+            Our documented floor for remaining assets is <strong className="text-foreground">$16,097,458,607</strong>. It is a current-project calculation from the individually cited figures displayed in this database. It covers 44 of the tracker&apos;s 54 active records, not the approximately 60 trusts historically established nationwide. It is a floor, not a ceiling: no-balance records and unavailable or sealed filings are excluded, and the underlying reports have mixed as-of dates.
           </p>
         </section>
 

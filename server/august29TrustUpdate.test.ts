@@ -57,8 +57,8 @@ describe("August 29, 2026 primary-source trust update", () => {
   });
 
   it("reconciles current aggregate and bottom-up payout totals", () => {
-    expect(trustFigures.asOf).toBe("2026-09-03");
-    expect(trustFigures.aggregate.remainingAssetsPoint).toBe(16033489279);
+    expect(trustFigures.asOf).toBe("2026-09-24");
+    expect(trustFigures.aggregate.remainingAssetsPoint).toBe(16097458607);
     expect(trustFigures.aggregate.cumulativePayoutsBottomUp).toBe(30033989206);
     expect(trustFigures.aggregate.cumulativePayoutsBottomUpFiled).toBe(17124219757);
     expect(trustFigures.bottomUpPayouts.headlineTotal).toBe(30033989206);
@@ -79,8 +79,8 @@ describe("August 29, 2026 primary-source trust update", () => {
   });
 
   it("keeps crawler-facing canonical figures and the payment-percentage range current", () => {
-    expect(llms).toContain("$16,033,489,279");
-    expect(llms).toContain("43 of 54 active tracker records");
+    expect(llms).toContain("$16,097,458,607");
+    expect(llms).toContain("44 of 54 active tracker records");
     expect(llms).toContain("$30,033,989,206");
     expect(llms).toContain("0.7% (ARTRA) to 100% (NARCO)");
     expect(llms).not.toContain("100% (NARCO; Paddock)");

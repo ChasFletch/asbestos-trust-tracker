@@ -1,13 +1,13 @@
 {
  "schema": "asbestos-trust-figures/v1.1",
- "asOf": "2026-09-03",
+ "asOf": "2026-09-24",
  "aggregate": {
-  "remainingAssetsPoint": 16033489279,
-  "remainingAssetsLow": 16033489279,
-  "remainingAssetsHigh": 21757099613,
+  "remainingAssetsPoint": 16097458607,
+  "remainingAssetsLow": 16097458607,
+  "remainingAssetsHigh": 21821068941,
   "cumulativePayoutsPoint": 24000000000,
   "cumulativePayoutsLow": 17500000000,
-  "trustsWithFigures": 43,
+  "trustsWithFigures": 44,
   "activeTrustsTracked": 54,
   "trustsHistoricallyEstablishedEstimated": 60,
   "cumulativePayoutsDocumented": 17124219757,
@@ -24,10 +24,10 @@
    "cumulativePayoutsLabel": "paid to claimants (bottom-up: $17.12B filed + $9.41B secondary-citing-filed + ~$3.5B estimated for ~25 undocumented trusts)",
    "legacyPoint": "cumulativePayoutsPoint = 24000000000 (round estimate, superseded 2026-07-29)"
   },
-  "remainingAssetsPointMethodology": "Exact arithmetic sum of the latest located figure for each of 43 active trust records: 19 from filed annual reports/quarterly filings totaling $8,218,485,096, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher."
+  "remainingAssetsPointMethodology": "Exact arithmetic sum of the latest located figure for each of 44 active trust records: 20 from filed annual reports/quarterly filings totaling $8,282,454,424, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher."
  },
  "methodology": {
-  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 43 active trust records: 19 from filed annual reports/quarterly filings totaling $8,218,485,096, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher.",
+  "remainingAssetsPoint": "Exact arithmetic sum of the latest located figure for each of 44 active trust records: 20 from filed annual reports/quarterly filings totaling $8,282,454,424, plus 24 from credible secondary compilations of trust annual reports (mostly FY2021-2022 as-of dates) totaling $7,815,004,183. This is a DOCUMENTED FLOOR, not a census: trusts with no retrievable figure are excluded, and several secondary figures are dated 2021-2022, so the true current balance is higher.",
   "remainingAssetsHigh": "Upper bound consistent with: (a) ILR 'Dubious Distribution' (2018) ~$25B assets + ~$2B deferred obligations at YE2016, (b) >$1.5B of deferred obligations since funded (Honeywell $1.325B Jan 2023, RPM/Bondex, Western completed 2024), (c) net depletion of roughly $0.5B/yr since 2016, (d) PACER-only trusts carried at last-known values. Yields low-to-mid $20Bs; $22.5B is the midpoint estimate.",
   "cumulativePayoutsPoint": "Current bottom-up decomposition as of 2026-08-29: $30,033,989,206 total. The filed/source-linked tier is $17,124,219,757 across 12 trust figures, including Babcock & Wilcox at approximately $1,978,300,000 through 2023-12-31. The Manville component uses the quarterly report’s cumulative-liquidated-claims series and explicitly retains that source convention. The qualified secondary-citing-filed tier is $9,409,769,449 across 7 components. The remaining approximately $3.5B is a labeled residual allowance for trusts without a public cumulative-payment figure. Historic source dates are not homogenized: older filed figures remain floors where payments continued after their as-of date. Pittsburgh Corning remains secondary pending an accessible filed report; Celotex retains its filed FY2006 PI-pool figure plus a qualified post-2006 secondary-growth component because its FY2025 report is account-restricted.",
   "cumulativePayoutsCurrent": "As of 2026-08-29, the tracker’s current bottom-up payout estimate is $30,033,989,206: $17,124,219,757 across 12 filed/source-linked trust figures, $9,409,769,449 across 7 qualified secondary-citing-filed components, and a labeled ~$3.5B residual allowance. The Manville component retains the tracker’s existing liquidated-value convention, while the Q2 2026 filing separately reports unpaid claims. Babcock & Wilcox is included in the filed tier at approximately $1,978,300,000 through 12/31/2023, calculated from the two inception-to-date payment amounts in its FY2023 Annual Report and Account (E.D. La. 00-10992 Doc 7876-1). This current record supersedes the earlier B&W secondary-floor treatment in the historical payout methodology narrative above.",
@@ -1291,16 +1291,23 @@
   },
   {
    "name": "Leslie Controls, Inc. Asbestos Personal Injury Trust",
-   "netAssets": null,
-   "assetsAsOf": null,
+   "netAssets": 63969328,
+   "assetsAsOf": "2025-12-31",
+   "assetsBasis": "net claimants' equity, audited special-purpose statement, FY2025 financial statements, Bankr. D. Del. 10-12199 (CSS) Doc 825, filed 04/20/2026, Statement of Net Claimants' Equity p. 4",
+   "assetsBasisUrl": "https://leslie.mfrclaims.com/assets/documents/resources/LESLIE%20CONTROLS%20TRUST_Annual%20_Report_2025.pdf",
    "paymentPercentage": 6.25,
    "paymentPctAsOf": "2025-07-14",
+   "paymentPctNoticePublishedAt": "2025-07-14",
    "status": "active",
-   "confidence": "secondary",
-   "note": "Track as ACTIVE at 6.25% as of 2025-07-14. Spreadsheet's 5% is superseded; do not overwrite the newer figure. Retrieve the two audited-financials notices (DN 823/824) for net assets.",
-   "evidence": "Official trust site (Wayback capture 2026-02-19) states \"As of 7/14/2025, the Payment Percentage has been set to 6.25%.\" The trust's own notice PDF confirms: \"Effective with the July 2025 payment of claims, the Trust, with the consent of the Asbestos PI Trust Advisory Committee and the Future Claima",
-   "sourceUrl": "https://web.archive.org/web/20260219022316id_/https://leslie.mfrclaims.com/assets/documents/resources/Notice%20regarding%20Payment%20Percentage%20(7-14-25).pdf",
-   "sourceType": "official_trust_website",
+   "confidence": "filed",
+   "netAssetsConfidence": "filed",
+   "paymentPctConfidence": "filed",
+   "paymentPercentageSource": "Leslie Controls, Inc. Asbestos Personal Injury Trust, ‘Notice Regarding Payment Percentage’ (2025-07-14): effective with the July 2025 payment of claims, the percentage increased from 5.0% to 6.25%; the notice describes supplemental payments for prior 5.0% payments as soon as practicable.",
+   "paymentPercentageSourceUrl": "https://leslie.mfrclaims.com/assets/documents/resources/Notice%20regarding%20Payment%20Percentage%20%287-14-25%29.pdf",
+   "note": "FY2025 filed financial statements report $63,969,328 in net claimants' equity as of 12/31/2025 (Doc 825, Statement of Net Claimants' Equity p. 4). Payment percentage is 6.25% under the trust's July 14, 2025 official notice; no exact calendar effective day is stated beyond the July 2025 payment cycle.",
+   "evidence": "Officially posted court-filed FY2025 financial statements, Bankr. D. Del. Case 10-12199 (CSS), Doc 825, filed 2026-04-20. The audited Statement of Net Claimants' Equity reports $63,969,328 as of 2025-12-31. The Trust's own 2025-07-14 notice states that the payment percentage increased from 5.0% to 6.25% effective with the July 2025 payment of claims.",
+   "sourceUrl": "https://leslie.mfrclaims.com/assets/documents/resources/LESLIE%20CONTROLS%20TRUST_Annual%20_Report_2025.pdf",
+   "sourceType": "court_filed_document",
    "added": "2026-08-12"
   },
   {
@@ -1422,6 +1429,15 @@
   }
  ],
  "changes": [
+  {
+   "date": "2026-09-24",
+   "type": "financial_report",
+   "trust": "Leslie Controls, Inc. Asbestos Personal Injury Trust",
+   "detail": "Added $63,969,328 in audited net claimants' equity as of 2025-12-31 from the publicly posted FY2025 special-purpose financial statements (Bankr. D. Del. 10-12199 (CSS), Doc 825, filed 2026-04-20; Statement of Net Claimants' Equity p. 4). The documented remaining-assets floor increased from $16,033,489,279 across 43 records to $16,097,458,607 across 44 records. The 6.25% payment percentage remains unchanged; its July 2025 official notice is now directly linked and states only that the increase applied with the July 2025 payment cycle.",
+   "source": "Leslie Controls, Inc. Asbestos Personal Injury Trust FY2025 Special-Purpose Financial Statements, Bankr. D. Del. 10-12199 (CSS) Doc 825, filed 2026-04-20; Leslie payment-percentage notice dated 2025-07-14",
+   "sourceUrl": "https://leslie.mfrclaims.com/assets/documents/resources/LESLIE%20CONTROLS%20TRUST_Annual%20_Report_2025.pdf",
+   "confidence": "filed"
+  },
   {
    "date": "2026-09-18",
    "type": "percentage_increase",

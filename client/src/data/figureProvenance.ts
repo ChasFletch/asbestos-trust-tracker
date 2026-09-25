@@ -26,6 +26,31 @@ const changelogUrl = `${repo}/blob/main/docs/figure-provenance-changelog.md`;
 
 export const figureProvenance: FigureProvenanceEntry[] = [
   {
+    id: "2026-09-24-leslie-controls-filed-assets",
+    date: "2026-09-24",
+    category: "assets",
+    figure: "Documented remaining-assets floor",
+    priorValue: "$16,033,489,279 across 43 records",
+    currentValue: "$16,097,458,607 across 44 records",
+    headline: "Leslie Controls’ filed FY2025 financial statements completed a previously unquantified trust record.",
+    explanation:
+      "The publicly posted, court-filed FY2025 special-purpose financial statements report $63,969,328 in net claimants’ equity as of December 31, 2025. Adding that filed figure raised the exact documented floor by $63,969,328. The aggregate remains a mixed-date floor, not a current census of all U.S. asbestos trust assets.",
+    sources: [
+      {
+        label: "Leslie Controls FY2025 special-purpose financial statements",
+        url: "https://leslie.mfrclaims.com/assets/documents/resources/LESLIE%20CONTROLS%20TRUST_Annual%20_Report_2025.pdf",
+        evidenceClass: "a",
+        detail: "Bankr. D. Del. 10-12199 (CSS), Doc 825; filed April 20, 2026; Statement of Net Claimants’ Equity, page 4, reports $63,969,328 as of December 31, 2025.",
+      },
+      {
+        label: "Leslie Controls trust detail",
+        url: "/trusts/leslie-controls-inc-asbestos-personal-injury-trust",
+        evidenceClass: "audit",
+        detail: "Current record, direct report link, payment-notice link, and exact aggregate reconciliation.",
+      },
+    ],
+  },
+  {
     id: "2026-09-01-abb-lummus-filed-assets",
     date: "2026-09-01",
     category: "assets",

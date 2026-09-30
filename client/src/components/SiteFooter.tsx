@@ -37,7 +37,7 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href="https://danziger.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors no-underline">
+                <a href="https://dandell.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors no-underline">
                   Danziger &amp; De Llano ↗
                 </a>
               </li>
@@ -47,7 +47,7 @@ export function SiteFooter() {
         <div className="border-t border-border/30 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs">
           <p>
             Research supported by{" "}
-            <a href="https://danziger.com" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors no-underline">
+            <a href="https://dandell.com" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors no-underline">
               Danziger &amp; De Llano
             </a>
             . This site is an independent research publication and does not constitute legal advice.

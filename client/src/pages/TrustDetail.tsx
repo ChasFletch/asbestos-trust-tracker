@@ -310,6 +310,8 @@ export default function TrustDetail() {
         paymentPercentageSourceUrl: (jsonTrust as any)?.paymentPercentageSourceUrl ?? null,
         paymentPctEffective: (jsonTrust as any)?.paymentPctEffective ?? null,
         paymentPctAsOf: (jsonTrust as any)?.paymentPctAsOf ?? null,
+        paymentPctAvailability: (jsonTrust as any)?.paymentPctAvailability ?? null,
+        paymentPctAvailabilityNote: (jsonTrust as any)?.paymentPctAvailabilityNote ?? null,
         paymentPctNoticePublishedAt: (jsonTrust as any)?.paymentPctNoticePublishedAt ?? null,
         paymentPctImplementationStatus: (jsonTrust as any)?.paymentPctImplementationStatus ?? null,
         paymentPctImplementationNote: (jsonTrust as any)?.paymentPctImplementationNote ?? null,
@@ -495,13 +497,23 @@ export default function TrustDetail() {
             )}
           </div>
           <div className="text-xl font-mono font-bold text-foreground">
-            {trust.paymentPercentage !== null ? `${trust.paymentPercentage}%` : "MSV / N/A"}
+            {trust.paymentPercentage !== null
+              ? `${trust.paymentPercentage}%`
+              : trust.paymentPctAvailability === "not_publicly_reported"
+              ? "Not publicly reported"
+              : "MSV / N/A"}
           </div>
           {trust.paymentPercentage !== null && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">
               {trust.hasDiseaseLevelScheduledValueMatrix === false
                 ? trust.paymentPercentageBasisLabel ?? "claim payment factor"
-                : "of scheduled value"}
+              : "of scheduled value"}
+            </div>
+          )}
+          {trust.paymentPercentage === null && trust.paymentPctAvailability === "not_publicly_reported" && (
+            <div className="mt-1.5 rounded border border-amber-200/80 bg-amber-50/60 px-2 py-1.5 text-[11px] leading-relaxed text-amber-950/80">
+              <span className="font-semibold text-amber-900">Current rate unavailable from official public materials.</span>{" "}
+              {trust.paymentPctAvailabilityNote}
             </div>
           )}
           {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (

@@ -43,3 +43,28 @@ A routine C.E. Thurston transparency correction may proceed only after full tech
 9. https://www.pccasbestostrust.com/wp-content/uploads/2025/12/PCC-Resolution-re-Amendment-of-TDP-5.5-Secondary-Exposure-Claims-Fully-Executed-12-2025-4920-7296-0894.1.pdf
 10. https://www.wrgraceasbestostrust.com/please-see-the-notices-below-from-the-wrg-asbestos-pi-trust/
 11. https://www.ugltrust.com/documents/Notice-of-Inflation-Adjustments-to-SV-AV-and-MV-under-UGL-TDP-1-1-2026.pdf
+
+
+## Friday pilot closure — 1:00 p.m. Central review
+
+The October 2 daily detection run completed at approximately 6:33 a.m. Central: **25** registered sources checked, **5** fingerprint-change signals, and **0** access failures. The active registry had no source with a current failure count or without a successful access record. Historic failed rows remain inactive/superseded and were not treated as current coverage failures.
+
+All five signals already received controlling-source dispositions during the same cycle:
+
+| Trust/source | Friday disposition | Public consequence |
+| --- | --- | --- |
+| Manville | Repeats the already released September 3, 2026 payment-percentage notice; no later controlling item found. | None. |
+| Celotex | Official library and reviewed no-charge routes still lack a controlling FY2025 Annual Report and Account attachment. Docket metadata remains non-controlling. | None; recovery remains open. |
+| Maremont | The surfaced January 2026 scheduled-value notice predates the pilot and remains a historical source-enrichment lead. | None; not timely news. |
+| C.E. Thurston | No current rate notice was found. The source-backed, rate-unreported transparency clarification had already been released and verified. | No additional change. |
+| Flintkote | The official site surfaced the established 15% rate and prior notices only; no post-October 1 controlling item was found. | None. |
+
+The latest completed weekly coverage run checked 60 registered sources, found 15 signals, and had no access failures. Its remaining candidates were already closed in the durable internal `release-no-publication-weekly-coverage-20261002` record: ten were repeats, maintenance, or unchanged materials; five were pre-pilot source-enrichment leads. This Friday review found no new candidate beyond that completed disposition, so it creates **no duplicate no-publication release record**.
+
+### Friday editorial posture
+
+No additional timely source-backed article qualifies for the Friday slot. The two substantive court-development packages—DBMP/Herlihy and Miyoshi—remain prepared for the ANCHOR → CLEO → Charles pipeline, with no article-specific review metadata and no publication. The week’s quality-dependent article target is therefore not filled with derivative or stale content. The routine C.E. Thurston transparency correction is a data-quality release, not a substitute article.
+
+### Next pilot boundary
+
+The pilot remains active through **October 5, 2026, America/Chicago**. Continue only the registered daily source checks through that date. At or after the end date, stop substantive pilot research and prepare the single end-of-pilot assessment; do not extend the pilot, schedule, or publication authority automatically.

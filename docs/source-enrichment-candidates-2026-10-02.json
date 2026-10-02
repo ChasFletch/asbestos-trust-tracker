@@ -1,0 +1,135 @@
+{
+  "schema": "asbestostrusts-source-enrichment-candidates-v1",
+  "preparedAt": "2026-10-02",
+  "releaseStatus": "staged_internal_not_public",
+  "scope": "Pre-pilot official notices and procedure documents reviewed for a future source-enrichment release. None is a current tracker update or timely news item.",
+  "items": [
+    {
+      "trust": "NARCO Asbestos Personal Injury Settlement Trust",
+      "sourceUrl": "https://www.narcoasbestostrust.org/wp-content/uploads/2026/05/Deemed-Withdrawn-Notice_SBEP.pdf",
+      "documentTitle": "Notice of Deemed Withdrawn Policy",
+      "noticeDate": "2026-05-27",
+      "effectiveDate": "2026-06-01",
+      "sourceClass": "official_notice",
+      "fieldType": "historical_claim_procedure",
+      "facts": [
+        {
+          "locator": "p. 1, opening paragraph and Section 1",
+          "fact": "Enforcement of the Section 5.3 Deemed Withdrawn Policy resumed for Intake or Review Deficient claims.",
+          "timing": "Required documents and information must be submitted within six months of the Trust's most recent deficiency notification on Trust Online, or June 1, 2026, whichever is later.",
+          "consequence": "The claim will be Deemed Withdrawn if the required action is not timely taken."
+        },
+        {
+          "locator": "p. 1, Section 2",
+          "fact": "The same policy applies to claims on a Definite Statute of Limitations hold.",
+          "timing": "Required material to remove the hold must be submitted within six months of the related Trust Online hold notice, or June 1, 2026, whichever is later.",
+          "consequence": "The claim will be Deemed Withdrawn if the required action is not timely taken."
+        },
+        {
+          "locator": "p. 2, paragraph citing TDP Section 5.3",
+          "fact": "A Deemed Withdrawn claim may be refiled without affecting statute-of-limitations status; subsequent FIFO placement is based on the refiling date."
+        }
+      ],
+      "limitations": [
+        "The notice's claim-specific deficiency and hold-notification fields are not populated; do not calculate individual deadlines.",
+        "Do not infer a current claim status, payment percentage, asset value, payout, or queue position."
+      ],
+      "proposedUse": "Historical procedure card or source note only"
+    },
+    {
+      "trust": "Maremont Asbestos Personal Injury Trust",
+      "sourceUrl": "https://maremont.mfrclaims.com/assets/documents/resources/Notice%20of%20Inflation%20Adjustments%20to%20SV%20under%20Maremont%20TDP%20updated%201-9-2026.pdf",
+      "documentTitle": "Notice of Inflation Adjustments to SV under Maremont TDP",
+      "noticeDate": "2026-01-09 (from official filename; printed notice date not independently located)",
+      "effectiveDate": "2026-01-01",
+      "sourceClass": "official_notice",
+      "fieldType": "historical_scheduled_values",
+      "statedAdjustment": "1% per annum under TDP Section 5.3(a)(3)",
+      "values": [
+        {"diseaseLevel": "Mesothelioma 2 (Level V)", "scheduledValue": 12972, "locator": "p. 1, Scheduled Disease / Scheduled Value table"},
+        {"diseaseLevel": "Mesothelioma (Level IV)", "scheduledValue": 119543, "locator": "p. 1, Scheduled Disease / Scheduled Value table"},
+        {"diseaseLevel": "Lung Cancer (Level III)", "scheduledValue": 27233, "locator": "p. 1, Scheduled Disease / Scheduled Value table"},
+        {"diseaseLevel": "Other Cancer (Level II)", "scheduledValue": 5790, "locator": "p. 1, Scheduled Disease / Scheduled Value table"},
+        {"diseaseLevel": "Severe Asbestosis (Level I)", "scheduledValue": 27233, "locator": "p. 1, Scheduled Disease / Scheduled Value table"}
+      ],
+      "applicability": "Adjusted values apply to Trust offers from the date of the notice.",
+      "limitation": "The notice states that the adjustment does not trigger supplemental payments under TDP Section 4.3. Values are scheduled values, not payment percentages or actual paid amounts.",
+      "proposedUse": "Historical valuation table only"
+    },
+    {
+      "trust": "Pittsburgh Corning Corporation Asbestos PI Trust",
+      "sourceUrl": "https://www.pccasbestostrust.com/wp-content/uploads/2025/12/PCC-Resolution-re-Amendment-of-TDP-5.5-Secondary-Exposure-Claims-Fully-Executed-12-2025-4920-7296-0894.1.pdf",
+      "documentTitle": "Resolution — Amendment of TDP Section 5.5 (Secondary Exposure Claims)",
+      "resolutionEffectiveDate": "2025-11-14",
+      "sourceClass": "official_resolution",
+      "fieldType": "historical_claim_procedure",
+      "facts": [
+        {
+          "locator": "p. 1, amended Section 5.5",
+          "fact": "Secondary-exposure claims generally require Individual Review under TDP Section 5.3(b); Disease Level VIII Mesothelioma may seek either Expedited Review or Individual Review."
+        },
+        {
+          "locator": "p. 1, amended Section 5.5(a)-(d)",
+          "fact": "The resolution states disease, direct-exposure-equivalent, same-time-frame, and causation requirements."
+        },
+        {
+          "locator": "p. 1 final sentence; p. 2 specified-duration paragraph",
+          "fact": "For non-Level-VIII claims, the resolution states a five-times exposure-duration requirement and specific thresholds for Disease Levels II–V and VII."
+        },
+        {
+          "locator": "p. 2, preservation paragraph",
+          "fact": "All other liquidation, payment, and requirement/limitation provisions in the TDP remain applicable."
+        }
+      ],
+      "limitations": [
+        "The resolution is a historical procedure source, not a rate or payment notice.",
+        "Do not use it to assess an individual claim or current processing status."
+      ],
+      "proposedUse": "Historical procedure source note with exact section link"
+    },
+    {
+      "trust": "W.R. Grace Asbestos PI Trust",
+      "sourceUrl": "https://www.wrgraceasbestostrust.com/please-see-the-notices-below-from-the-wrg-asbestos-pi-trust/",
+      "documentTitle": "Official notice pages identifying November/December 2025 ADR and Section 5.5 materials",
+      "noticePageDate": "2025-12-03",
+      "sourceClass": "official_notice_index",
+      "fieldType": "historical_source_inventory",
+      "identifiedDocuments": [
+        "WRG Resolution with Exhibit A—ADR Procedures (Fully Executed 11-2025)",
+        "WRG Comparison ADR Procedures (9-26-2019 to 10-30-2025)",
+        "WRG Amended ADR Procedures (10-30-2025)",
+        "WRG Resolution re: Amendment of TDP 5.5—Secondary Exposure Claims (linked filename identifies fully executed 11-24-2025)"
+      ],
+      "limitations": [
+        "The official linked PDFs returned HTTP 403 Sucuri firewall responses during retrieval.",
+        "The official notice pages establish document titles, dates, and URLs only; they do not establish the operative text, exact procedure changes, affected sections, or effective dates.",
+        "No payment percentage, asset, payout, or current claims-status field may be added from this inventory."
+      ],
+      "proposedUse": "Source-inventory card only; retain as blocked pending readable official PDF"
+    },
+    {
+      "trust": "United Gilsonite Laboratories Asbestos Personal Injury Trust",
+      "sourceUrl": "https://www.ugltrust.com/documents/Notice-of-Inflation-Adjustments-to-SV-AV-and-MV-under-UGL-TDP-1-1-2026.pdf",
+      "documentTitle": "Notice to Holders of Trust Claims — Notice of Inflation Adjustments to Scheduled Values, Average Values, and Maximum Values under UGL TDP",
+      "noticeDate": "Not explicitly printed in document text",
+      "effectiveDate": "2026-01-01",
+      "sourceClass": "official_notice",
+      "fieldType": "historical_scheduled_average_maximum_values",
+      "statedAdjustment": "1.75% per annum for compensable Disease Levels",
+      "values": [
+        {"diseaseLevel": "Mesothelioma (VIII)", "scheduledValue": 259614, "averageValue": 292067, "maximumValue": 519231},
+        {"diseaseLevel": "Lung Cancer 1 (VII)", "scheduledValue": 27260, "averageValue": 29206, "maximumValue": 38942},
+        {"diseaseLevel": "Lung Cancer 2 (VI)", "scheduledValue": null, "scheduledValueLabel": "N/A", "averageValue": 15576, "maximumValue": 20120},
+        {"diseaseLevel": "Other Cancer (V)", "scheduledValue": 11682, "averageValue": 11682, "maximumValue": 11682},
+        {"diseaseLevel": "Severe Asbestosis (IV)", "scheduledValue": 15576, "averageValue": 16227, "maximumValue": 19471},
+        {"diseaseLevel": "Asbestosis/Pleural Disease (III)", "scheduledValue": 1947, "averageValue": 1947, "maximumValue": 1947},
+        {"diseaseLevel": "Asbestosis/Pleural Disease (II)", "scheduledValue": 1169, "averageValue": 1169, "maximumValue": 1169},
+        {"diseaseLevel": "Other Asbestos Disease (I)", "scheduledValue": 0, "averageValue": 0, "maximumValue": 0}
+      ],
+      "locator": "p. 1, value table and offer-applicability paragraph",
+      "applicability": "Adjusted values apply to all Trust offers from the date of the notice.",
+      "limitation": "The notice states that adjusted values do not trigger supplemental payments under TDP Section 4.3. Values are not payment percentages or actual paid amounts.",
+      "proposedUse": "Historical valuation table only"
+    }
+  ]
+}

@@ -90,22 +90,62 @@
     {
       "trust": "W.R. Grace Asbestos PI Trust",
       "sourceUrl": "https://www.wrgraceasbestostrust.com/please-see-the-notices-below-from-the-wrg-asbestos-pi-trust/",
-      "documentTitle": "Official notice pages identifying November/December 2025 ADR and Section 5.5 materials",
+      "documentTitle": "Officially linked November/December 2025 ADR and Section 5.5 materials",
       "noticePageDate": "2025-12-03",
-      "sourceClass": "official_notice_index",
-      "fieldType": "historical_source_inventory",
-      "identifiedDocuments": [
-        "WRG Resolution with Exhibit A—ADR Procedures (Fully Executed 11-2025)",
-        "WRG Comparison ADR Procedures (9-26-2019 to 10-30-2025)",
-        "WRG Amended ADR Procedures (10-30-2025)",
-        "WRG Resolution re: Amendment of TDP 5.5—Secondary Exposure Claims (linked filename identifies fully executed 11-24-2025)"
+      "sourceClass": "official_notice_index_with_recovered_linked_pdfs",
+      "fieldType": "historical_claim_procedure",
+      "recoveredDocuments": [
+        {
+          "title": "WRG Resolution re: Amendment of TDP Section 5.5 — Secondary Exposure Claims",
+          "officialUrl": "https://www.wrgraceasbestostrust.com/wp-content/uploads/2025/12/WRG-Resolution-re-Amendment-of-TDP-5.5-Secondary-Exposure-Claims-Fully-Executed-11-24-2025-4924-2008-3838.1.pdf",
+          "pages": 2,
+          "bytes": 176361,
+          "md5": "e750a40ebc33082320eb2a33a1df36bb",
+          "sha256": "3808c487650193ec0a69faaeffe7af74c93379922085d96852acd847f57d23ed"
+        },
+        {
+          "title": "WRG Resolution with Exhibit A — ADR Procedures (Fully Executed 11-2025)",
+          "officialUrl": "https://www.wrgraceasbestostrust.com/wp-content/uploads/2025/12/WRG-Resolution-with-Exhibit-A-ADR-Procedures-Fully-Executed-11-2025-4934-2826-2524.1-1.pdf",
+          "pages": 37,
+          "bytes": 307638,
+          "md5": "8645ace94518d3efeed1fe7ac40a6803",
+          "sha256": "6976d2b44300ced7e1bb361ce1197a1499cd089a0f54552cbfd6c6da4eb25372"
+        },
+        {
+          "title": "WRG Amended ADR Procedures (October 30, 2025)",
+          "officialUrl": "https://www.wrgraceasbestostrust.com/wp-content/uploads/2025/12/10-30-25-Amended-ADR-Procedures-4898-0392-1528.1-1.pdf",
+          "pages": 30,
+          "bytes": 234387,
+          "md5": "a676cd3b850f4fe7bbd4b587d9d29e76",
+          "sha256": "65956aaee82a6f49599d0002c15ca32172ad024e1ad4e8e894cde2a63f69271e"
+        },
+        {
+          "title": "WRG Comparison ADR Procedures (September 26, 2019 to October 30, 2025)",
+          "officialUrl": "https://www.wrgraceasbestostrust.com/wp-content/uploads/2025/12/WRG-Comparison-ADR-Procedures-9-26-2019-to-10-30-2025-4900-7375-6030.1-2.pdf",
+          "pages": 30,
+          "bytes": 749011,
+          "md5": "29bd0e84bbee8f0232a9288562566885",
+          "sha256": "d9471cd2b5acd3bde22cc3af63c689a0375b2bad87a37d4ff2235e699bf22b61"
+        }
+      ],
+      "facts": [
+        {
+          "locator": "Section 5.5 resolution, p. 1–2",
+          "fact": "Effective November 14, 2025, the amended TDP generally routes secondary-exposure claims to Individual Review; a Disease Level VIII Mesothelioma claimant may seek either Expedited Review or Individual Review.",
+          "scope": "The resolution also states disease, direct-exposure-equivalency, timing, causation, and additional duration/intensity requirements for non-Level-VIII secondary-exposure claims."
+        },
+        {
+          "locator": "ADR resolution, p. 1; Amended ADR Procedures, p. 2",
+          "fact": "For an ADR request where statute of limitations is at issue, the Trust has 30 days to provide its supporting material; the claimant then has 30 days from receipt to respond; an ADR packet follows upon the earlier of response or expiration of that period.",
+          "scope": "The resolution adopts the ADR amendment and attaches procedures marked amended October 30, 2025."
+        }
       ],
       "limitations": [
-        "On October 2, 2026, direct retrieval of the official notice pages and linked PDFs returned HTTP 403 from Sucuri/Cloudproxy with x-sucuri-block: GEO02. This identifies a request-origin access rule, not a missing document.",
-        "The official notice pages establish document titles, dates, and URLs only; they do not establish the operative text, exact procedure changes, affected sections, or effective dates.",
-        "No payment percentage, asset, payout, or current claims-status field may be added from this inventory."
+        "On October 2, 2026, direct retrieval from the research environment still returned HTTP 403 from Sucuri/Cloudproxy with x-sucuri-block: GEO02. The recovered PDFs are user-supplied copies matching the filenames directly linked by the official notice page; their hashes are retained above.",
+        "This is a historical procedure record, not an individualized claim instruction or a statement of a claimant's current processing status.",
+        "No payment percentage, asset, payout, or current claims-status field may be added from these procedure documents."
       ],
-      "proposedUse": "Source-inventory card only; retain as blocked pending readable official PDF"
+      "proposedUse": "Source-verified historical procedure note, pending separate editorial review and public-release approval"
     },
     {
       "trust": "United Gilsonite Laboratories Asbestos Personal Injury Trust",

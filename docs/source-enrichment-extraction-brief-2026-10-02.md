@@ -2,7 +2,7 @@
 
 ## Conclusion
 
-Five pre-pilot official sources were extracted for a future **source-enrichment** release. Four yielded bounded historical procedure or valuation facts. The W.R. Grace notice pages establish document titles and URLs, but their linked PDFs were blocked by the official firewall and cannot yet support a description of their operative changes. None of these sources changes a current payment percentage, assets figure, cumulative-payment figure, or current claim-processing status. None should be presented as timely news.
+Five pre-pilot official sources were extracted for a future **source-enrichment** release. Four yielded bounded historical procedure or valuation facts. The W.R. Grace linked-PDF access block has since been resolved with four supplied copies that match the exact filenames directly linked by the official notice page; their MD5 and SHA-256 values are retained in the companion dataset. None of these sources changes a current payment percentage, assets figure, cumulative-payment figure, or current claim-processing status. None should be presented as timely news.
 
 The companion machine-readable candidate dataset retains the field-level values, effective dates, locators, and caveats. No canonical public tracker file was changed in this pass.
 
@@ -20,11 +20,13 @@ Maremont’s official notice states a one-percent annual scheduled-value adjustm
 
 The Pittsburgh Corning resolution states that it became effective November 14, 2025 and amended TDP Section 5.5. It generally routes secondary-exposure claims to Individual Review, while allowing a Disease Level VIII Mesothelioma claim to seek either Expedited Review or Individual Review. The amendment includes disease, exposure-equivalency, timing, causation, and duration/intensity requirements. It preserves other TDP liquidation and payment rights, requirements, and limitations. The resolution is a historical procedural source; it does not state a current payment percentage, payment amount, or current claim outcome. [3]
 
-### W.R. Grace document inventory remains blocked
+### W.R. Grace historical procedure documents recovered
 
-The official W.R. Grace notice pages identify a December 3, 2025 ADR notice with fully executed and amended ADR materials, plus a linked resolution concerning TDP Section 5.5 and secondary exposure claims. Direct retrieval of both the notice-page URLs and the linked Section 5.5 PDF returned **HTTP 403** from `Sucuri/Cloudproxy`, with the response header `x-sucuri-block: GEO02`, on October 2, 2026. This identifies an access-control rule for the request origin; it does not mean the documents are absent or nonpublic.
+The official W.R. Grace notice pages identify a December 3, 2025 ADR notice with fully executed and amended ADR materials, plus a linked resolution concerning TDP Section 5.5 and secondary exposure claims. Direct retrieval from the research environment continues to return **HTTP 403** from `Sucuri/Cloudproxy`, with `x-sucuri-block: GEO02`; this is a request-origin access rule, not a missing-document finding.
 
-The enrichment record may retain the official titles and source URLs, but it must not describe the operative terms, sections changed, or effective dates until a readable primary document is recovered. A normal browser session in a permitted network region, an Internet Archive capture, or an available free court repository may yield a readable copy. Any recovered PDF must be checked against the official linked filename, hashed, and cited by page and section before it is treated as evidence. [4] [5]
+On October 2, four readable copies were supplied that match the official linked filenames, including the two-page Section 5.5 resolution, the resolution with the 37-page ADR exhibit, the 30-page amended ADR procedures, and the 30-page comparison copy. The copies were hashed and are recorded in the companion dataset. The Section 5.5 resolution says it was effective November 14, 2025; it generally routes secondary-exposure claims to Individual Review, except that a Disease Level VIII Mesothelioma claimant may seek either Expedited Review or Individual Review. It sets disease, direct-exposure-equivalency, timing, causation, and additional non-Level-VIII duration/intensity conditions, while preserving the rest of the TDP’s payment and liquidation provisions. [5]
+
+The ADR resolution adopts a procedure amendment concerning ADR requests where statute of limitations is at issue: the Trust has 30 days to send its supporting material, the claimant then has 30 days from receipt to respond, and an ADR packet follows after the response or its deadline. The attached ADR Procedures are marked amended October 30, 2025. These are historical procedural facts only; they are not individual guidance and do not establish a current claim outcome, payment rate, asset value, or payout. [4]
 
 ### UGL scheduled, average, and maximum-value adjustment
 
@@ -32,7 +34,7 @@ UGL’s official notice states an annual 1.75-percent proportional adjustment to
 
 ## Recommended staging boundary
 
-The next source-enrichment release can add **historical procedure** and **historical scheduled-value** records only. Each public record should display its official source, document date or effective date, page or table locator, and the distinction between a scheduled, average, or maximum value and an actual payment. The W.R. Grace entry should remain an access-limited source inventory until the linked primary PDFs are readable.
+The next source-enrichment release can add **historical procedure** and **historical scheduled-value** records only. Each public record should display its official source, document date or effective date, page or table locator, and the distinction between a scheduled, average, or maximum value and an actual payment. The W.R. Grace entry is now source-verified for its limited historical procedure scope, but still requires editorial review and release approval before any public use.
 
 A future release should not add a claimant-facing deadline calculator, eligibility conclusion, present processing-status claim, current rate, asset figure, or payout total from any of these materials.
 

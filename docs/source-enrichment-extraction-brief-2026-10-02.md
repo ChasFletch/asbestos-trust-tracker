@@ -22,7 +22,9 @@ The Pittsburgh Corning resolution states that it became effective November 14, 2
 
 ### W.R. Grace document inventory remains blocked
 
-The official W.R. Grace notice pages identify a December 3, 2025 ADR notice with fully executed and amended ADR materials, plus a linked resolution concerning TDP Section 5.5 and secondary exposure claims. Direct retrieval of those PDFs returned the official site’s HTTP 403 Sucuri firewall response. The enrichment record may retain the official titles and source URLs, but it must not describe the operative terms, sections changed, or effective dates until a readable primary document is recovered. [4] [5]
+The official W.R. Grace notice pages identify a December 3, 2025 ADR notice with fully executed and amended ADR materials, plus a linked resolution concerning TDP Section 5.5 and secondary exposure claims. Direct retrieval of both the notice-page URLs and the linked Section 5.5 PDF returned **HTTP 403** from `Sucuri/Cloudproxy`, with the response header `x-sucuri-block: GEO02`, on October 2, 2026. This identifies an access-control rule for the request origin; it does not mean the documents are absent or nonpublic.
+
+The enrichment record may retain the official titles and source URLs, but it must not describe the operative terms, sections changed, or effective dates until a readable primary document is recovered. A normal browser session in a permitted network region, an Internet Archive capture, or an available free court repository may yield a readable copy. Any recovered PDF must be checked against the official linked filename, hashed, and cited by page and section before it is treated as evidence. [4] [5]
 
 ### UGL scheduled, average, and maximum-value adjustment
 

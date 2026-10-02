@@ -101,7 +101,7 @@
         "WRG Resolution re: Amendment of TDP 5.5—Secondary Exposure Claims (linked filename identifies fully executed 11-24-2025)"
       ],
       "limitations": [
-        "The official linked PDFs returned HTTP 403 Sucuri firewall responses during retrieval.",
+        "On October 2, 2026, direct retrieval of the official notice pages and linked PDFs returned HTTP 403 from Sucuri/Cloudproxy with x-sucuri-block: GEO02. This identifies a request-origin access rule, not a missing document.",
         "The official notice pages establish document titles, dates, and URLs only; they do not establish the operative text, exact procedure changes, affected sections, or effective dates.",
         "No payment percentage, asset, payout, or current claims-status field may be added from this inventory."
       ],

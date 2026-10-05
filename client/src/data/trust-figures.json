@@ -463,13 +463,13 @@
       "netAssets": 700346779,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": 10.8,
+      "paymentPercentage": 7.8,
       "status": "active",
       "confidence": "secondary",
-      "paymentPctAsOf": "2026-06-11",
-      "paymentPercentageSource": "Armstrong World Industries Asbestos Trust, Notice of Payment Percentage Reconsideration (2026-06-11): the Trustees deemed reconsideration of the current 10.8% payment percentage appropriate under TDP \u00a74.2. The notice is a reconsideration notice, not a new rate notice.",
-      "paymentPercentageSourceUrl": "https://www.armstrongworldasbestostrust.com/awi-notice-of-payment-percentage-reconsideration-6-11-2026/",
-      "note": "raise-then-cut history: 20->35->10.8%; official 2026-06-11 notice confirms 10.8% as the current rate and begins a TDP \u00a74.2 reconsideration, but does not announce a new rate. FY2025 report served 4/30/2026 (00-04471 Doc 11009), PACER-only",
+      "paymentPctAsOf": "2026-10-05",
+      "paymentPercentageSource": "Armstrong World Industries Asbestos Personal Injury Settlement Trust, Notice of Payment Percentage Reduction (2026-10-05): \u2018the Trustees have determined that the payment percentage should be decreased to 7.8%. The Trustees have requested that the TAC and FCR consent to this adjustment. In the meantime, in accordance with TDP Section 4.3, from today (the \u201cProposal Date\u201d) forward, the Trust will begin to pay claims at the proposed 7.8%.\u2019 Resolves the 2026-06-11 TDP \u00a74.2 reconsideration.",
+      "paymentPercentageSourceUrl": "https://www.armstrongworldasbestostrust.com/wp-content/uploads/2026/10/AWI-Notice-re-Payment-Percentage-Reduction-10.5.26.pdf",
+      "note": "raise-then-cut history: 20->35->10.8->7.8%. Official 2026-10-05 notice cuts the rate from 10.8% to 7.8% (proposed; paying at 7.8% from 10/5/2026 per TDP \u00a74.3 pending TAC/FCR consent), resolving the 2026-06-11 \u00a74.2 reconsideration. FY2025 report served 4/30/2026 (00-04471 Doc 11009), PACER-only",
       "cumulativePaid": 1600408304,
       "cumulativePaidAsOf": "2014-12-31",
       "cumulativePaidSource": "FY2014 Annual Report, Claim Report exhibit (579,458 claims paid, inception through 12-31-2014); filed Bankr. D. Del. 00-04471; trust-reports/non-pacer-recovery/armstrong-fy2014-annual-report.pdf",
@@ -480,9 +480,13 @@
       "court": "Bankr. D. Del.",
       "docket": "00-04469",
       "website": "https://www.armstrongworldasbestostrust.com",
-      "paymentPctEffective": null,
-      "direction": "stable",
-      "reportingFrequency": "annual"
+      "paymentPctEffective": "2026-10-05",
+      "direction": "down",
+      "reportingFrequency": "annual",
+      "paymentPctNoticePublishedAt": "2026-10-05",
+      "paymentPctImplementationStatus": "proposed_pending_tac_fcr_consent",
+      "paymentPctImplementationNote": "Trustees determined the payment percentage should be decreased to 7.8% and requested TAC/FCR consent; under TDP \u00a74.3 the Trust pays at the proposed 7.8% from the 2026-10-05 Proposal Date, with carve-outs: (a) releases transmitted before the Proposal Date or within 30 days of receipt are paid at 10.8%; (b) deceased/incompetent claimants with pending court/probate approval are paid at the percentage in effect when the offer was first made. If a higher percentage is ultimately adopted, supplemental payments will be made.",
+      "paymentPctConfidence": "filed"
     },
     {
       "name": "Bondex (Specialty Products Holding Corp.) Trust",
@@ -1434,20 +1438,21 @@
   ],
   "changes": [
     {
+      "date": "2026-10-05",
+      "type": "payment_percentage_change",
+      "trust": "Armstrong World Industries Asbestos PI Trust",
+      "detail": "The Armstrong World Industries Asbestos Personal Injury Settlement Trust issued a Notice of Payment Percentage Reduction dated October 5, 2026: the Trustees determined the payment percentage should be decreased from 10.8% to 7.8% and requested TAC and FCR consent. Under TDP \u00a74.3 the Trust pays claims at the proposed 7.8% from the October 5, 2026 Proposal Date, except releases transmitted before the Proposal Date (or within 30 days of receipt) pay at 10.8%, and deceased/incompetent claimants with pending court or probate approval pay at the percentage in effect when the offer was first made. If a higher percentage is ultimately adopted, the Trust will make supplemental payments. The notice resolves the TDP \u00a74.2 reconsideration announced June 11, 2026.",
+      "source": "Armstrong World Industries Asbestos Personal Injury Settlement Trust, Notice of Payment Percentage Reduction, 2026-10-05",
+      "sourceUrl": "https://www.armstrongworldasbestostrust.com/wp-content/uploads/2026/10/AWI-Notice-re-Payment-Percentage-Reduction-10.5.26.pdf",
+      "confidence": "primary"
+    },
+    {
       "date": "2026-10-01",
       "type": "plan_confirmation",
       "trust": "Uniroyal Legacy Unit",
       "detail": "Bankruptcy judge approved the disclosure statement for Uniroyal debtors' Chapter 11 plan (Bankr. D.N.J.). Plan contemplates establishing a \u00a7 524(g) trust to resolve current and future asbestos claims, payment in full of non-personal injury claims, and eventual dissolution of debtor entities. Restructuring support agreement covers ~88% of known asbestos personal injury and wrongful death claimants.",
       "source": "Mealey's Bankruptcy Report, Oct 1, 2026; Law360; Porzio Bromberg & Newman client announcement (Sep 28, 2026)",
       "confidence": "secondary"
-    },
-    {
-      "date": "2026-09-22",
-      "type": "litigation",
-      "trust": "DBMP / CertainTeed",
-      "detail": "Asbestos claimants filed petition for certiorari with U.S. Supreme Court in Herlihy v. DBMP, LLC (No. 26-394), docketed Sep 22, 2026. Petition asks whether pursuing bankruptcy through a Texas Two-Step restructuring lacks good faith and provides cause to lift the automatic stay under \u00a7 362(d). Fourth Circuit had affirmed denial of stay relief on Feb 11, 2026.",
-      "source": "The Harm Report, Sep 29, 2026; U.S. Supreme Court docket No. 26-394",
-      "confidence": "primary"
     },
     {
       "date": "2026-09-24",
@@ -1457,6 +1462,14 @@
       "source": "Leslie Controls, Inc. Asbestos Personal Injury Trust FY2025 Special-Purpose Financial Statements, Bankr. D. Del. 10-12199 (CSS) Doc 825, filed 2026-04-20; Leslie payment-percentage notice dated 2025-07-14",
       "sourceUrl": "https://leslie.mfrclaims.com/assets/documents/resources/LESLIE%20CONTROLS%20TRUST_Annual%20_Report_2025.pdf",
       "confidence": "filed"
+    },
+    {
+      "date": "2026-09-22",
+      "type": "litigation",
+      "trust": "DBMP / CertainTeed",
+      "detail": "Asbestos claimants filed petition for certiorari with U.S. Supreme Court in Herlihy v. DBMP, LLC (No. 26-394), docketed Sep 22, 2026. Petition asks whether pursuing bankruptcy through a Texas Two-Step restructuring lacks good faith and provides cause to lift the automatic stay under \u00a7 362(d). Fourth Circuit had affirmed denial of stay relief on Feb 11, 2026.",
+      "source": "The Harm Report, Sep 29, 2026; U.S. Supreme Court docket No. 26-394",
+      "confidence": "primary"
     },
     {
       "date": "2026-09-18",
@@ -1486,6 +1499,12 @@
       "confidence": "secondary"
     },
     {
+      "date": "2026-09-01",
+      "type": "annual_report",
+      "trust": "ABB Lummus Global Inc. 524(g) Asbestos PI Trust",
+      "note": "Completed the 2026-08-12 intended addition: netAssets $14,960,830 as of 2025-12-31 verified against the filed FY2025 annual report (Bankr. D. Del. 06-10401-MFW Doc 529, filed 04/28/2026, Exhibit A audited special-purpose statements); 9.5% payment percentage confirmed for 2025. Record already carried confidence=filed; no (b)->(a) upgrades this cycle. Aggregate floor $16,018,528,449 -> $16,033,489,279; high $21,742,138,783 -> $21,757,099,613. Source URL switched from Wayback capture to the live trust-site PDF (verified retrievable)."
+    },
+    {
       "date": "2026-08-29",
       "type": "payment_percentage_change",
       "trust": "Paddock Enterprises (Owens-Illinois) Asbestos Trust",
@@ -1511,6 +1530,43 @@
       "source": "Mealey's Asbestos Bankruptcy, 'Judge Confirms Chapter 11 Plan For Ship Subcontractor Hopeman Brothers,' 2026-08-19 (trade press); case background per Bankr. E.D. Va. 24-32428",
       "sourceUrl": "https://www.mealeys.com/mealeys/articles/2515486/judge-confirms-chapter-11-plan-for-ship-subcontractor-hopeman-brothers",
       "confidence": "secondary"
+    },
+    {
+      "date": "2026-08-18",
+      "type": "litigation",
+      "trust": "Georgia-Pacific / Bestwall",
+      "detail": "The executor of a mesothelioma victim's estate filed an opening brief in the Fourth Circuit arguing the court should reverse the W.D.N.C. bankruptcy court's denial of relief from the automatic stay in Bestwall LLC's Chapter 11 case, contending the Georgia-Pacific spinoff's Texas Two-Step bankruptcy was filed in bad faith. Bestwall remains in Chapter 11; Georgia-Pacific itself has not refiled.",
+      "source": "Mealey's Asbestos Bankruptcy, \u2018Executor In Georgia-Pacific Debtor\u2019s Case Tells 4th Circuit Stay Relief Warranted,\u2019 Aug 18, 2026 (trade press)",
+      "sourceUrl": "https://www.mealeys.com/mealeys/mealeys-asbestos-bankruptcy",
+      "confidence": "secondary"
+    },
+    {
+      "date": "2026-08-16",
+      "type": "addition",
+      "trust": "(multiple)",
+      "note": "Added Hercules Chemical ($4,018,899 @2022, 2.0% eff. 2022-10-17, Verus) and United Gilsonite UGL ($16,044,821 @2022, 3.35% eff. 2024-04-11, Verus) \u2014 research corpus followup_dim08. Aggregate floor $15,967,208,224 -> $15,987,271,944; high $21,721,071,877 -> $21,742,138,783. '$30B' origin attribution corrected (Bates White/Mealey's 2012-13, not GAO/RAND); per-claimant statistics void documented (RAND TR-872 p. xvii; Garlock 504 B.R. 71, 96; Ableman Mealey's 30:19)."
+    },
+    {
+      "date": "2026-08-13",
+      "type": "annual_report",
+      "trust": "Babcock & Wilcox Asbestos PI Settlement Trust",
+      "detail": "Owner-supplied E.D. La. 00-10992 Doc 7876 and Exhibit 1 (filed 4/29/2024) directly state approximately $1.916B paid on unliquidated PI claims plus approximately $62.3M on pre-petition liquidated PI claims, both inception-to-date through 12/31/2023. The combined approximately $1.9783B figure is now filed/source-linked; prior $1.94B secondary floor removed from Tier 2.",
+      "source": "Babcock & Wilcox FY2023 Annual Report and Account, Doc 7876-1"
+    },
+    {
+      "date": "2026-08-12",
+      "type": "merge_patch",
+      "trust": "(multiple)",
+      "note": "Applied trust-figures-merge-patch-v2.json: netAssets ASARCO Asbestos PI Settlement Trust: 735865455 -> 625807675 @ 2025-12-31; netAssets Combustion Engineering 524(g) Asbestos PI Trust: 445898474 -> 385240071 @ 2025-12-31; netAssets Kaiser Gypsum Asbestos PI Trust: 49993178 -> 63680663 @ 2025-12-31; netAssets Congoleum Plan Trust: 159982645 -> 148083220 @ 2025-12-31; paymentPercentage Eagle-Picher Industries PI Settlement Trust: None -> 35; paymentPercentage Yarway Asbestos PI Trust: None -> 27.5; paymentPercentage A.P. Green (APG) Asbestos Trust: None -> 6; paymentPercentage Fuller-Austin Asbestos Settlement Trust: None -> 45; paymentPercentage G-I Holdings (GAF) Asbestos PI Settlement Trust: None -> 5; paymentPercentage Kaiser Gypsum Asbestos PI Trust: None -> 62; paymentPercentage Congoleum Plan Trust: None -> 8.67; paymentPercentage NGC Bodily Injury Trust (National Gypsum): None -> 45; paymentPercentage ACandS Asbestos Settlement Trust: None -> 2.89; paymentPercentage Christy Refractories Asbestos PI Trust: None -> 55; paymentPercentage A-Best Products Asbestos Trust: None -> 18; paymentPercentage Paddock Enterprises (Owens-Illinois) Asbestos Trust: 50 -> 100; subAccounts added for Federal-Mogul Asbestos PI Trust (4 sub-accounts); paymentPercentage ASARCO Asbestos PI Settlement Trust: None -> 35; confidence Pittsburgh Corning Asbestos PI Settlement Trust: filed -> secondary; confidence United States Gypsum (USG) Asbestos Trust: filed -> secondary; confidence Owens Corning/Fibreboard Asbestos PI Trust: filed -> secondary; confidence Armstrong World Industries Asbestos PI Trust: filed -> secondary; confidence Federal-Mogul Asbestos PI Trust: filed -> secondary; confidence H.K. Porter Asbestos Trust: filed -> secondary; removal Paddock Enterprises (Owens-Illinois) Asbestos Trust: netAssets 610000000 -> null; re-filed as initialFunding; addition: A & I Corporation Asbestos Bodily Injury Trust (pct=None, conf=secondary); addition: Burns and Roe Personal Injury Settlement Trust (pct=None, conf=secondary); addition: C.E. Thurston & Sons Asbestos Trust (pct=None, conf=secondary); addition: Duro Dyne Asbestos Personal Injury Trust (pct=None, conf=secondary); addition: Leslie Controls, Inc. Asbestos Personal Injury Trust (pct=6.25, conf=secondary); addition: ABB Lummus Global Inc. 524(g) Asbestos PI Trust (pct=9.5, conf=filed); addition: Shook & Fletcher Asbestos Settlement Trust (pct=58, conf=secondary); addition: Brauer 524(g) Asbestos Trust (Brauer Supply Company) (pct=None, conf=secondary); addition: T H Agriculture & Nutrition, L.L.C. Asbestos Personal Injury Trust (THAN) (pct=15, conf=filed); addition: United States Mineral Products Company Asbestos PI Settlement Trust (pct=32, conf=secondary)"
+    },
+    {
+      "date": "2026-08-10",
+      "type": "litigation",
+      "trust": "Trane / Aldrich Pump",
+      "detail": "The first phase of the Aldrich Pump LLC / Murray Boiler LLC asbestos-liability estimation hearing commenced the week of August 10, 2026 in the W.D.N.C. bankruptcy court (Case No. 20-30608), per Trane Technologies' SEC-filed FY2025 annual report. The bankruptcy court granted the FCR's motion to streamline estimation proceedings on December 17, 2025. The estimation outcome will determine the size of the \u00a7524(g) trust; the FCR's $545M framework remains unconfirmed pending the estimation.",
+      "source": "Trane Technologies plc, FY2025 Annual Report (SEC filing, asbestos-related matters note): \u2018The first phase of the estimation hearing will commence the week of August 10, 2026.\u2019",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1466258/000162828026026681/tt2026_proxyandannualreporta.pdf",
+      "confidence": "primary"
     },
     {
       "date": "2026-08-03",
@@ -1601,6 +1657,46 @@
       "confidence": "secondary"
     },
     {
+      "date": "2026-08-02",
+      "type": "future_trust",
+      "trust": "Vi-Jon LLC (trust in formation)",
+      "detail": "Vi-Jon LLC, a private-label personal care and bath products maker facing talc-related asbestos claims (reported 367 mesothelioma and lung cancer claims), filed a prepackaged Chapter 11 case in the District of Delaware on August 2, 2026. The proposed plan channels talc injury claims into a trust to be funded by $25 million in cash. On September 14, 2026 the debtor sought interim approval of the plan's disclosure statement. Trust not yet established; not dataset-eligible.",
+      "source": "Bondoro Chapter 11 case summary (filed 2026-08-02, D. Del.); Law360 Bankruptcy Authority (Aug 2026); Mealey's Asbestos Bankruptcy, \u2018Maker Of Bath Products Seeks Approval Of Plan\u2019s Disclosure Statement,\u2019 Sep 14, 2026; Sokolove Law talc lawsuit tracker (367 claims figure)",
+      "sourceUrl": "https://app.bondoro.com/preview/cases/Vijon_LLC/case-summary",
+      "confidence": "secondary"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "Western Asbestos Settlement Trust",
+      "note": "Enhanced basis description with exact docket citation (N.D. Cal. 13-31914 Doc# 1944) for FY2025 annual report filed 04/28/2026"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "Plant Asbestos Settlement Trust",
+      "note": "Enhanced basis description with exact docket citation (N.D. Cal. 09-31347 Doc# 3050) for FY2025 annual report filed 04/28/2026"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "Thorpe Insulation Company Asbestos Settlement Trust",
+      "note": "Enhanced basis description with exact docket citation (C.D. Cal. 07-20016 Doc# 242) for FY2025 annual report filed 04/28/2026"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "annual_report",
+      "trust": "J.T. Thorpe Settlement Trust (CA)",
+      "note": "Enhanced basis description with exact docket citation (C.D. Cal. 02-14216 Doc# 1901) for FY2025 annual report filed 04/28/2026; payment percentage corrected to 50% (reviewed 02/21/2025, unchanged)"
+    },
+    {
+      "date": "2026-07-29",
+      "type": "methodology_update",
+      "trust": "aggregate",
+      "detail": "Added bottomUpPayouts: $29,981,797,653 total = $19,810,476,508 filed (14 trusts) + $6,671,321,145 secondary-citing-filed (5 components) + ~$3.5B estimated residual (~25 undocumented trusts). Armstrong cumulativePaid restored ($1,600,408,304 @2014-12-31, filed FY2014 AR). Round $24B point superseded as clock figure; retained as legacy reference.",
+      "source": "trust-figures.json bottomUpPayouts; armstrong-fy2014-annual-report.pdf p33"
+    },
+    {
       "date": "2026-07-28",
       "type": "data_addition",
       "trust": "Armstrong, Owens Corning/Fibreboard, USG, Celotex (non-PACER recovery sweep)",
@@ -1643,6 +1739,36 @@
       "detail": "dii-early-years PACER pull COMPLETE. Pulled 9 documents from Bankr. W.D. Pa. 03-35592-CMB via harvested browser ECF session (cookie-jar replay of CM/ECF goDLS fee-acceptance; $9.90 total fees, ledger at trust-reports/pacer/pacer-ledger.json). Early-years claims paid: FY2005 $0 (audited statement, Doc 2601), FY2006 $21,177,938 (Doc 2686), FY2007 $57,162,897 (Doc 2697), FY2008 $200,470,282 (Doc 2754-2), FY2009 $167,835,243 (Doc 2764-2), FY2010 $354,406,496 (Doc 2812-2, level-summed), FY2011 $123,747,056 (Doc 2836-2), FY2012 $109,937,261 (Doc 2855-2), FY2013 $59,879,276 (Doc 2913-1). With FY2014-FY2025 subtotal $1,254,425,009, DII cumulativePaid = $2,349,041,458 inception-to-date through 12/31/2025. Aggregate documented floor rises $9,381,393,128 -> $11,730,434,586 (8 trusts); estimated remainder falls to ~$12.27B."
     },
     {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "Maremont",
+      "detail": "FY2025 annual report filed 4/20/2026 (D. Del. 19-10118-LSS Doc 374; posted free on maremont.mfrclaims.com): NCE $49.59M as of 12/31/2025 (from $48.73M); total assets $53.32M; 166 claims paid totaling $2.09M in 2025; payment percentage 28.4% estimate (filed figure rolled forward from FY2024)",
+      "source": "Maremont FY2025 Annual Report and Financial Statements (filed)",
+      "confidence": "filed"
+    },
+    {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "API, Inc.",
+      "detail": "FY2025 annual report filed 4/29/2026 (Bankr. D. Minn. 05-30073-GFK; posted free on trust site): NCE $7.73M as of 12/31/2025 (from $7.67M); total assets $7.91M; $151.7K distributions in 2025; cumulative claims paid to date $93.99M; 22% payment percentage confirmed",
+      "source": "API, Inc. FY2025 Annual Report of the Trustee (filed)",
+      "confidence": "filed"
+    },
+    {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "W.R. Grace",
+      "detail": "FY2025 annual report filed 4/29/2026 (D. Del. 01-01139 Doc 33347); exhibits PACER-only - figures pending PACER pull; DB retains FY2022 secondary figure (no unverified upgrade)",
+      "source": "CourtListener docket mirror (notice free; exhibits PACER)"
+    },
+    {
+      "date": "2026-07-28",
+      "type": "annual_report",
+      "trust": "Motors Liquidation (GM)",
+      "detail": "FY2025 annual report filed 4/30/2026 (S.D.N.Y. 09-50026 Doc 14861); exhibits PACER-only - figures pending PACER pull; DB retains FY2021 secondary figure",
+      "source": "CourtListener docket mirror (notice free; exhibits PACER)"
+    },
+    {
       "date": "2026-07-27",
       "type": "verification",
       "trust": "Congoleum / Fuller-Austin / Kaiser / ACandS",
@@ -1683,38 +1809,6 @@
       "confidence": "primary"
     },
     {
-      "date": "2025-10-30",
-      "type": "percentage_cut",
-      "trust": "Quigley",
-      "detail": "Non-Releasing subfund payment percentage cut 14.5% -> 13.3% effective 10/30/2025 (official notice); Releasing subfund 3.3%",
-      "source": "Quigley official trust notice, effective 10/30/2025",
-      "confidence": "primary"
-    },
-    {
-      "date": "2025-05-30",
-      "type": "percentage_increase",
-      "trust": "Shook & Fletcher",
-      "detail": "Payment percentage raised 50% -> 58% effective 5/30/2025 (CRMC notice). Trust is outside the tracked 41-trust floor - changes-log entry only, not added to trusts array",
-      "source": "CRMC Notice of Payment Percentage Increase 5/30/2025, claimsres.com",
-      "confidence": "primary"
-    },
-    {
-      "date": "2025-01-31",
-      "type": "administration",
-      "trust": "H.K. Porter",
-      "detail": "Held 3.0% payment percentage; resumed offers 1/31/2025 after court-approved ACRP amendment (Dec 2024)",
-      "source": "asbestosclaims.law / asbestos.com H.K. Porter trust profiles",
-      "confidence": "secondary"
-    },
-    {
-      "date": "2025-01-22",
-      "type": "governance",
-      "trust": "Celotex",
-      "detail": "'2025 Notice to Firms re: Audit' issued 1/22/2025",
-      "source": "Celotex Asbestos Settlement Trust official notice, celotextrust.com",
-      "confidence": "primary"
-    },
-    {
       "date": "2026-07-27",
       "type": "percentage_cut",
       "trust": "United States Gypsum (USG)",
@@ -1729,43 +1823,6 @@
       "detail": "Payment percentage corrected to 2.9% for T&N subfund per official trust notice 6/30/2026 (federalmogulasbestostrust.com). Prior DB entry of 12.2% was the FMP subfund rate. T&N history: 5.9% (2022) -> 2.9% (June 2026). FMP subfund remains 12.2%.",
       "source": "Federal-Mogul T&N Notice Regarding Payment Percentage 6/30/2026, federalmogulasbestostrust.com",
       "confidence": "primary"
-    },
-    {
-      "date": "2026-07-28",
-      "type": "annual_report",
-      "trust": "Maremont",
-      "detail": "FY2025 annual report filed 4/20/2026 (D. Del. 19-10118-LSS Doc 374; posted free on maremont.mfrclaims.com): NCE $49.59M as of 12/31/2025 (from $48.73M); total assets $53.32M; 166 claims paid totaling $2.09M in 2025; payment percentage 28.4% estimate (filed figure rolled forward from FY2024)",
-      "source": "Maremont FY2025 Annual Report and Financial Statements (filed)",
-      "confidence": "filed"
-    },
-    {
-      "date": "2026-07-28",
-      "type": "annual_report",
-      "trust": "API, Inc.",
-      "detail": "FY2025 annual report filed 4/29/2026 (Bankr. D. Minn. 05-30073-GFK; posted free on trust site): NCE $7.73M as of 12/31/2025 (from $7.67M); total assets $7.91M; $151.7K distributions in 2025; cumulative claims paid to date $93.99M; 22% payment percentage confirmed",
-      "source": "API, Inc. FY2025 Annual Report of the Trustee (filed)",
-      "confidence": "filed"
-    },
-    {
-      "date": "2026-07-28",
-      "type": "annual_report",
-      "trust": "W.R. Grace",
-      "detail": "FY2025 annual report filed 4/29/2026 (D. Del. 01-01139 Doc 33347); exhibits PACER-only - figures pending PACER pull; DB retains FY2022 secondary figure (no unverified upgrade)",
-      "source": "CourtListener docket mirror (notice free; exhibits PACER)"
-    },
-    {
-      "date": "2026-07-28",
-      "type": "annual_report",
-      "trust": "Motors Liquidation (GM)",
-      "detail": "FY2025 annual report filed 4/30/2026 (S.D.N.Y. 09-50026 Doc 14861); exhibits PACER-only - figures pending PACER pull; DB retains FY2021 secondary figure",
-      "source": "CourtListener docket mirror (notice free; exhibits PACER)"
-    },
-    {
-      "date": "2026-04-07",
-      "type": "reconsideration_notice",
-      "trust": "Maremont",
-      "detail": "TDP Section 4.3 reconsideration of payment percentage announced; 28.4% under reconsideration, change possible",
-      "source": "Maremont Notice Regarding Payment Percentage (4/7/2026), maremont.mfrclaims.com"
     },
     {
       "date": "2026-06-30",
@@ -1787,6 +1844,13 @@
       "trust": "USG",
       "detail": "Payment-percentage reconsideration notice issued May 2026; cut possible within 12-24 months per pattern",
       "source": "USG trust notice (secondary reporting)"
+    },
+    {
+      "date": "2026-04-07",
+      "type": "reconsideration_notice",
+      "trust": "Maremont",
+      "detail": "TDP Section 4.3 reconsideration of payment percentage announced; 28.4% under reconsideration, change possible",
+      "source": "Maremont Notice Regarding Payment Percentage (4/7/2026), maremont.mfrclaims.com"
     },
     {
       "date": "2026-04-01",
@@ -1831,11 +1895,27 @@
       "source": "TDP amendment notices"
     },
     {
+      "date": "2025-10-30",
+      "type": "percentage_cut",
+      "trust": "Quigley",
+      "detail": "Non-Releasing subfund payment percentage cut 14.5% -> 13.3% effective 10/30/2025 (official notice); Releasing subfund 3.3%",
+      "source": "Quigley official trust notice, effective 10/30/2025",
+      "confidence": "primary"
+    },
+    {
       "date": "2025-06-06",
       "type": "closure",
       "trust": "Rapid-American",
       "detail": "Trust closed - stopped accepting claims, depleted. Final payouts ~18-21%",
       "source": "trust records / docket"
+    },
+    {
+      "date": "2025-05-30",
+      "type": "percentage_increase",
+      "trust": "Shook & Fletcher",
+      "detail": "Payment percentage raised 50% -> 58% effective 5/30/2025 (CRMC notice). Trust is outside the tracked 41-trust floor - changes-log entry only, not added to trusts array",
+      "source": "CRMC Notice of Payment Percentage Increase 5/30/2025, claimsres.com",
+      "confidence": "primary"
     },
     {
       "date": "2025-04-17",
@@ -1850,6 +1930,22 @@
       "trust": "Kaiser",
       "detail": "Payment percentage cut (current 10.6%; from 18.1%)",
       "source": "trust notice (secondary reporting)"
+    },
+    {
+      "date": "2025-01-31",
+      "type": "administration",
+      "trust": "H.K. Porter",
+      "detail": "Held 3.0% payment percentage; resumed offers 1/31/2025 after court-approved ACRP amendment (Dec 2024)",
+      "source": "asbestosclaims.law / asbestos.com H.K. Porter trust profiles",
+      "confidence": "secondary"
+    },
+    {
+      "date": "2025-01-22",
+      "type": "governance",
+      "trust": "Celotex",
+      "detail": "'2025 Notice to Firms re: Audit' issued 1/22/2025",
+      "source": "Celotex Asbestos Settlement Trust official notice, celotextrust.com",
+      "confidence": "primary"
     },
     {
       "date": "2025-01-01",
@@ -1885,62 +1981,6 @@
       "trust": "Manville",
       "detail": "Pro rata percentage raised 4.3% -> 5.1% with retroactive true-up (~$5.6M)",
       "source": "Manville TDP history / Q1 2026 filing"
-    },
-    {
-      "date": "2026-07-29",
-      "type": "methodology_update",
-      "trust": "aggregate",
-      "detail": "Added bottomUpPayouts: $29,981,797,653 total = $19,810,476,508 filed (14 trusts) + $6,671,321,145 secondary-citing-filed (5 components) + ~$3.5B estimated residual (~25 undocumented trusts). Armstrong cumulativePaid restored ($1,600,408,304 @2014-12-31, filed FY2014 AR). Round $24B point superseded as clock figure; retained as legacy reference.",
-      "source": "trust-figures.json bottomUpPayouts; armstrong-fy2014-annual-report.pdf p33"
-    },
-    {
-      "date": "2026-08-01",
-      "type": "annual_report",
-      "trust": "Western Asbestos Settlement Trust",
-      "note": "Enhanced basis description with exact docket citation (N.D. Cal. 13-31914 Doc# 1944) for FY2025 annual report filed 04/28/2026"
-    },
-    {
-      "date": "2026-08-01",
-      "type": "annual_report",
-      "trust": "Plant Asbestos Settlement Trust",
-      "note": "Enhanced basis description with exact docket citation (N.D. Cal. 09-31347 Doc# 3050) for FY2025 annual report filed 04/28/2026"
-    },
-    {
-      "date": "2026-08-01",
-      "type": "annual_report",
-      "trust": "Thorpe Insulation Company Asbestos Settlement Trust",
-      "note": "Enhanced basis description with exact docket citation (C.D. Cal. 07-20016 Doc# 242) for FY2025 annual report filed 04/28/2026"
-    },
-    {
-      "date": "2026-08-01",
-      "type": "annual_report",
-      "trust": "J.T. Thorpe Settlement Trust (CA)",
-      "note": "Enhanced basis description with exact docket citation (C.D. Cal. 02-14216 Doc# 1901) for FY2025 annual report filed 04/28/2026; payment percentage corrected to 50% (reviewed 02/21/2025, unchanged)"
-    },
-    {
-      "date": "2026-08-12",
-      "type": "merge_patch",
-      "trust": "(multiple)",
-      "note": "Applied trust-figures-merge-patch-v2.json: netAssets ASARCO Asbestos PI Settlement Trust: 735865455 -> 625807675 @ 2025-12-31; netAssets Combustion Engineering 524(g) Asbestos PI Trust: 445898474 -> 385240071 @ 2025-12-31; netAssets Kaiser Gypsum Asbestos PI Trust: 49993178 -> 63680663 @ 2025-12-31; netAssets Congoleum Plan Trust: 159982645 -> 148083220 @ 2025-12-31; paymentPercentage Eagle-Picher Industries PI Settlement Trust: None -> 35; paymentPercentage Yarway Asbestos PI Trust: None -> 27.5; paymentPercentage A.P. Green (APG) Asbestos Trust: None -> 6; paymentPercentage Fuller-Austin Asbestos Settlement Trust: None -> 45; paymentPercentage G-I Holdings (GAF) Asbestos PI Settlement Trust: None -> 5; paymentPercentage Kaiser Gypsum Asbestos PI Trust: None -> 62; paymentPercentage Congoleum Plan Trust: None -> 8.67; paymentPercentage NGC Bodily Injury Trust (National Gypsum): None -> 45; paymentPercentage ACandS Asbestos Settlement Trust: None -> 2.89; paymentPercentage Christy Refractories Asbestos PI Trust: None -> 55; paymentPercentage A-Best Products Asbestos Trust: None -> 18; paymentPercentage Paddock Enterprises (Owens-Illinois) Asbestos Trust: 50 -> 100; subAccounts added for Federal-Mogul Asbestos PI Trust (4 sub-accounts); paymentPercentage ASARCO Asbestos PI Settlement Trust: None -> 35; confidence Pittsburgh Corning Asbestos PI Settlement Trust: filed -> secondary; confidence United States Gypsum (USG) Asbestos Trust: filed -> secondary; confidence Owens Corning/Fibreboard Asbestos PI Trust: filed -> secondary; confidence Armstrong World Industries Asbestos PI Trust: filed -> secondary; confidence Federal-Mogul Asbestos PI Trust: filed -> secondary; confidence H.K. Porter Asbestos Trust: filed -> secondary; removal Paddock Enterprises (Owens-Illinois) Asbestos Trust: netAssets 610000000 -> null; re-filed as initialFunding; addition: A & I Corporation Asbestos Bodily Injury Trust (pct=None, conf=secondary); addition: Burns and Roe Personal Injury Settlement Trust (pct=None, conf=secondary); addition: C.E. Thurston & Sons Asbestos Trust (pct=None, conf=secondary); addition: Duro Dyne Asbestos Personal Injury Trust (pct=None, conf=secondary); addition: Leslie Controls, Inc. Asbestos Personal Injury Trust (pct=6.25, conf=secondary); addition: ABB Lummus Global Inc. 524(g) Asbestos PI Trust (pct=9.5, conf=filed); addition: Shook & Fletcher Asbestos Settlement Trust (pct=58, conf=secondary); addition: Brauer 524(g) Asbestos Trust (Brauer Supply Company) (pct=None, conf=secondary); addition: T H Agriculture & Nutrition, L.L.C. Asbestos Personal Injury Trust (THAN) (pct=15, conf=filed); addition: United States Mineral Products Company Asbestos PI Settlement Trust (pct=32, conf=secondary)"
-    },
-    {
-      "date": "2026-08-13",
-      "type": "annual_report",
-      "trust": "Babcock & Wilcox Asbestos PI Settlement Trust",
-      "detail": "Owner-supplied E.D. La. 00-10992 Doc 7876 and Exhibit 1 (filed 4/29/2024) directly state approximately $1.916B paid on unliquidated PI claims plus approximately $62.3M on pre-petition liquidated PI claims, both inception-to-date through 12/31/2023. The combined approximately $1.9783B figure is now filed/source-linked; prior $1.94B secondary floor removed from Tier 2.",
-      "source": "Babcock & Wilcox FY2023 Annual Report and Account, Doc 7876-1"
-    },
-    {
-      "date": "2026-08-16",
-      "type": "addition",
-      "trust": "(multiple)",
-      "note": "Added Hercules Chemical ($4,018,899 @2022, 2.0% eff. 2022-10-17, Verus) and United Gilsonite UGL ($16,044,821 @2022, 3.35% eff. 2024-04-11, Verus) \u2014 research corpus followup_dim08. Aggregate floor $15,967,208,224 -> $15,987,271,944; high $21,721,071,877 -> $21,742,138,783. '$30B' origin attribution corrected (Bates White/Mealey's 2012-13, not GAO/RAND); per-claimant statistics void documented (RAND TR-872 p. xvii; Garlock 504 B.R. 71, 96; Ableman Mealey's 30:19)."
-    },
-    {
-      "date": "2026-09-01",
-      "type": "annual_report",
-      "trust": "ABB Lummus Global Inc. 524(g) Asbestos PI Trust",
-      "note": "Completed the 2026-08-12 intended addition: netAssets $14,960,830 as of 2025-12-31 verified against the filed FY2025 annual report (Bankr. D. Del. 06-10401-MFW Doc 529, filed 04/28/2026, Exhibit A audited special-purpose statements); 9.5% payment percentage confirmed for 2025. Record already carried confidence=filed; no (b)->(a) upgrades this cycle. Aggregate floor $16,018,528,449 -> $16,033,489,279; high $21,742,138,783 -> $21,757,099,613. Source URL switched from Wayback capture to the live trust-site PDF (verified retrievable)."
     }
   ],
   "sources": [

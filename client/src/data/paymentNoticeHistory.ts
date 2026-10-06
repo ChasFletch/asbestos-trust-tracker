@@ -7,6 +7,7 @@ export type OfficialPaymentNotice = {
   priorPercentage?: number;
   currentPercentage: number;
   effectiveDate?: string;
+  interimPaymentDate?: string;
   publishedDate?: string;
   sourceLabel: string;
   sourceUrl: string;
@@ -19,6 +20,20 @@ export type OfficialPaymentNotice = {
  * for every trust and absence here is never evidence of an unchanged rate.
  */
 export const OFFICIAL_PAYMENT_NOTICES: OfficialPaymentNotice[] = [
+  {
+    id: "armstrong-2026-10-05",
+    trustName: "Armstrong World Industries Asbestos PI Trust",
+    trustSlug: "armstrong-world-industries-asbestos-pi-trust",
+    scope: "Trust-wide interim payment treatment; TAC/FCR consent remains pending",
+    noticeKind: "payment_change",
+    priorPercentage: 10.8,
+    currentPercentage: 7.8,
+    interimPaymentDate: "2026-10-05",
+    publishedDate: "2026-10-05",
+    sourceLabel: "Armstrong World Industries Asbestos PI Trust — Notice of Payment Percentage Reduction",
+    sourceUrl: "https://www.armstrongworldasbestostrust.com/wp-content/uploads/2026/10/AWI-Notice-re-Payment-Percentage-Reduction-10.5.26.pdf",
+    summary: "Trustees proposed reducing the payment percentage from 10.8% to 7.8% and requested TAC/FCR consent. Under TDP §4.3, the Trust began interim payments at 7.8% from the October 5 Proposal Date; the notice does not establish an unqualified final adoption.",
+  },
   {
     id: "jt-thorpe-2026-09-18",
     trustName: "J.T. Thorpe Settlement Trust (CA)",
@@ -76,7 +91,7 @@ export const OFFICIAL_PAYMENT_NOTICES: OfficialPaymentNotice[] = [
   {
     id: "armstrong-2026-06-11",
     trustName: "Armstrong World Industries Asbestos Trust",
-    trustSlug: "armstrong-world-industries-asbestos-trust",
+    trustSlug: "armstrong-world-industries-asbestos-pi-trust",
     scope: "Current trust payment percentage reconsideration",
     noticeKind: "reconsideration",
     currentPercentage: 10.8,

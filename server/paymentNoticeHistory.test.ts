@@ -8,7 +8,7 @@ const read = (relativePath: string) => fs.readFileSync(path.join(root, relativeP
 
 describe("official payment-notice history", () => {
   it("keeps every public history entry source-linked, scoped, and limited to reviewed official records", () => {
-    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(7);
+    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(8);
     for (const item of OFFICIAL_PAYMENT_NOTICES) {
       expect(item.sourceUrl).toMatch(/^https:\/\//);
       expect(item.sourceLabel.length).toBeGreaterThan(20);
@@ -20,6 +20,17 @@ describe("official payment-notice history", () => {
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "jt-thorpe-2026-09-18")).toMatchObject({ priorPercentage: 50, currentPercentage: 53.7, publishedDate: "2026-09-18" });
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "jt-thorpe-2026-09-18")?.effectiveDate).toBeUndefined();
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "armstrong-2026-06-11")?.effectiveDate).toBeUndefined();
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "armstrong-2026-10-05")).toMatchObject({
+      priorPercentage: 10.8,
+      currentPercentage: 7.8,
+      publishedDate: "2026-10-05",
+      interimPaymentDate: "2026-10-05",
+      trustSlug: "armstrong-world-industries-asbestos-pi-trust",
+    });
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "armstrong-2026-10-05")?.effectiveDate).toBeUndefined();
+    const page = read("client/src/pages/PaymentNoticeHistory.tsx");
+    expect(page).toContain("Proposed interim rate");
+    expect(page).toContain("Proposal / interim-payment date");
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.scope).toContain("T&N Sub-Account only");
   });
 

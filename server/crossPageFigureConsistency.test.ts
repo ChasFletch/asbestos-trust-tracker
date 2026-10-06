@@ -38,6 +38,7 @@ describe("cross-page figure consistency", () => {
   const remainingAssets = trustFigures.aggregate.remainingAssetsPoint;
   const payouts = trustFigures.aggregate.cumulativePayoutsBottomUp;
   const asOf = trustFigures.asOf;
+  const remainingAssetsAsOf = trustFigures.aggregate.remainingAssetsPointAsOf ?? asOf;
   const coverage = `Documented floor: ${currency(remainingAssets)} across ${trustsWithAssets.length} of ${activeTrusts.length} active tracker records.`;
   const dateScope = `FY${Math.min(...assetYears)}–FY${Math.max(...assetYears)}`;
 
@@ -71,15 +72,15 @@ describe("cross-page figure consistency", () => {
   });
 
   it("keeps reader-facing, structured-data, and crawler guidance synchronized to the canonical snapshot", () => {
-    expect(methodology).toContain(`As of ${formatAsOfDate(asOf)}, the documented asset floor is`);
+    expect(methodology).toContain(`As of ${formatAsOfDate(remainingAssetsAsOf)}, the documented asset floor is`);
     expect(methodology).toContain(currency(remainingAssets));
     expect(methodology).toContain(`across ${trustsWithAssets.length} of the tracker&apos;s ${activeTrusts.length} active records`);
 
-    expect(prefetch).toContain(`As of ${formatAsOfDate(asOf)}, the documented remaining-assets floor`);
+    expect(prefetch).toContain(`As of ${formatAsOfDate(remainingAssetsAsOf)}, the documented remaining-assets floor`);
     expect(prefetch).toContain(currency(remainingAssets));
     expect(prefetch).toContain(`${trustsWithAssets.length} of the tracker’s ${activeTrusts.length} active records`);
 
-    expect(llms).toContain(`## Canonical Figures (as of ${asOf})`);
+    expect(llms).toContain(`## Canonical Figures (as of ${remainingAssetsAsOf})`);
     expect(llms).toContain(currency(remainingAssets));
     expect(llms).toContain(`${trustsWithAssets.length} of ${activeTrusts.length} active tracker records`);
     expect(llms).toContain("trusts historically established");

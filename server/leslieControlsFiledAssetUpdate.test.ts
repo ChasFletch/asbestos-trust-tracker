@@ -34,7 +34,9 @@ describe("Leslie Controls FY2025 filed asset update", () => {
       .filter((trust) => trust.netAssets != null && trust.status !== "closed")
       .reduce((total, trust) => total + (trust.netAssets ?? 0), 0);
 
-    expect(trustFigures.asOf).toBe("2026-09-24");
+    // The asset floor is unchanged, while the canonical tracker snapshot moved
+    // forward when the later Armstrong payment-notice update was recorded.
+    expect(trustFigures.asOf).toBe("2026-10-05");
     expect(assetSum).toBe(16097458607);
     expect(trustFigures.aggregate.remainingAssetsPoint).toBe(16097458607);
     expect(trustFigures.aggregate.remainingAssetsLow).toBe(16097458607);

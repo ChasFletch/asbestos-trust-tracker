@@ -326,7 +326,8 @@ export default function TrustDetail() {
   const chartData = (() => {
     if (!trust) return [];
     const history = [...(trust.paymentHistory ?? [])];
-    if (trust.paymentPercentage !== null && trust.assetsAsOf && trust.paymentPctImplementationStatus !== "announced_pending_implementation") {
+    const hasImplementedPaymentRate = !trust.paymentPctImplementationStatus || trust.paymentPctImplementationStatus === "implemented";
+    if (trust.paymentPercentage !== null && trust.assetsAsOf && hasImplementedPaymentRate) {
       const lastDate = history[history.length - 1]?.effective;
       if (!lastDate || lastDate < trust.assetsAsOf) {
         history.push({ effective: trust.assetsAsOf, pct: trust.paymentPercentage, notes: "Current" } as any);
@@ -523,10 +524,16 @@ export default function TrustDetail() {
               {trust.paymentPctImplementationNote}
             </div>
           )}
+          {trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" && (
+            <div className="mt-1.5 rounded border border-amber-200/80 bg-amber-50/60 px-2 py-1.5 text-[11px] leading-relaxed text-amber-950/80">
+              <span className="font-semibold text-amber-900">Interim rate; consent pending.</span>{" "}
+              {trust.paymentPctImplementationNote}
+            </div>
+          )}
           {(trust as any).paymentPctEffective && (
             <div className="flex items-center gap-1 text-xs text-muted-foreground/60 mt-0.5">
               <Calendar size={10} className="shrink-0" />
-              <span>effective {new Date((trust as any).paymentPctEffective + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</span>
+              <span>{trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" ? "proposal dated" : "effective"} {new Date((trust as any).paymentPctEffective + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</span>
             </div>
           )}
           {(trust as any).paymentPctNoticePublishedAt ? (

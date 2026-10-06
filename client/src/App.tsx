@@ -21,6 +21,7 @@ import EmbedClock from "./pages/EmbedClock";
 import FigureProvenance from "./pages/FigureProvenance";
 import SourceRecovery from "./pages/SourceRecovery";
 import PaymentNoticeHistory from "./pages/PaymentNoticeHistory";
+import AdminSourceRecoveryMonitor from "./pages/AdminSourceRecoveryMonitor";
 
 function Router() {
   return (
@@ -33,6 +34,7 @@ function Router() {
       <Route path="/methodology" component={Methodology} />
       <Route path="/provenance" component={FigureProvenance} />
       <Route path="/source-recovery" component={SourceRecovery} />
+      <Route path="/admin/source-monitor" component={AdminSourceRecoveryMonitor} />
       <Route path="/payment-notices" component={PaymentNoticeHistory} />
       <Route path="/about" component={About} />
   <Route path="/corrections" component={Corrections} />

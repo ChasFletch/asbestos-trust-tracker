@@ -2,7 +2,7 @@
 
 **Date:** October 5, 2026  
 **Scope:** Bounded, user-authorized review of two October 5 sweep leads.  
-**Public-release status:** **Not published.** This record does not change the tracker, the Hopeman article, the trust count, or any payment field. The living-tracker pilot remains completed and its schedule remains paused.
+**Public-release status:** The original reconciliation did not change public content. After a direct October 5 request and documented technical checks, the Armstrong tracker record and payment-notice history were updated to display the **proposed 7.8% interim rate**, its October 5 proposal/interim-payment date, and the TAC/FCR-consent qualification. The Hopeman correction remains **not public** and is staged for ANCHOR → CLEO → Charles review. The living-tracker pilot remains completed and its schedule remains paused.
 
 ## Conclusion
 
@@ -18,7 +18,7 @@ The notice also specifies an interim rule. Starting on the October 5 “Proposal
 
 If 7.8% is not ultimately adopted and a higher percentage is adopted, the notice says the Trust will make supplemental payments to claims liquidated at 7.8% during the intervening period. That provision reinforces that the notice is not evidence of an unqualified final adoption.[1]
 
-**Correction candidate:** Replace the stale 10.8% field only with structured status language that distinguishes the 7.8% proposal, interim payment treatment, TAC/FCR-consent qualification, October 5 proposal date, and release/probate carve-outs. No payment percentage, date, or direction was changed in this review.
+**Implemented routine transparency correction:** The tracker now displays the 7.8% figure only as a proposed interim rate, with the October 5 proposal/interim-payment date and TAC/FCR-consent qualification. It does not present the rate as a final, unconditional adoption.
 
 ## Hopeman Brothers, Inc.
 

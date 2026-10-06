@@ -39,7 +39,8 @@ function formatDate(value: Date | string | null) {
   return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(value));
 }
 
-function formatScheduledCheck(value: Date | string | null) {
+function formatScheduledCheck(value: Date | string | null, monitoringPaused = false) {
+  if (monitoringPaused) return "Monitoring paused after pilot close";
   if (!value) return "Schedule not yet available";
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -79,9 +80,13 @@ export default function SourceRecovery() {
             </p>
           </div>
           <div className="rounded border border-primary/25 bg-primary/5 p-4 text-sm text-muted-foreground">
-            <div className="font-mono text-[0.68rem] uppercase tracking-widest text-primary/80">Current pilot</div>
-            <p className="mt-1 font-semibold text-foreground">Ends {formatDate(data.pilotEndsOn)}</p>
-            <p className="mt-1 text-xs leading-relaxed">Five ranked historical items are prepared for the monthly no-charge research cycle, capped at {data.monthlyResearchCapMinutes} minutes.</p>
+            <div className="font-mono text-[0.68rem] uppercase tracking-widest text-primary/80">Pilot status</div>
+            <p className="mt-1 font-semibold text-foreground">{data.pilotStatus === "completed" ? "Completed" : "Ends " + formatDate(data.pilotEndsOn)}</p>
+            <p className="mt-1 text-xs leading-relaxed">
+              {data.monitoringSchedulePaused
+                ? "The 30-day pilot ended October 5, 2026. Its recurring monitoring schedule is paused; future rechecks require renewed authorization."
+                : `Five ranked historical items are prepared for the monthly no-charge research cycle, capped at ${data.monthlyResearchCapMinutes} minutes.`}
+            </p>
           </div>
         </div>
       </header>
@@ -136,7 +141,7 @@ export default function SourceRecovery() {
                   <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{repair.retrievalNotes}</p>
                   <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
                     <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Last successful access</dt><dd className="mt-0.5 text-foreground">{formatDate(repair.lastSuccessfulCheckAt)}</dd></div>
-                    <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Next scheduled check</dt><dd className="mt-0.5 text-foreground">{formatScheduledCheck(repair.nextScheduledCheckAt)}</dd></div>
+                    <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Monitoring status</dt><dd className="mt-0.5 text-foreground">{formatScheduledCheck(repair.nextScheduledCheckAt, data.monitoringSchedulePaused)}</dd></div>
                   </dl>
                   <a href={repair.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary underline underline-offset-2 hover:no-underline">Open controlling public source <ExternalLink size={13} aria-hidden="true" /></a>
                 </article>
@@ -214,7 +219,7 @@ export default function SourceRecovery() {
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Last check</dt><dd className="mt-0.5 text-foreground">{formatDate(item.lastCheckedAt)}</dd></div>
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Last successful access</dt><dd className="mt-0.5 text-foreground">{formatDate(item.lastSuccessfulCheckAt)}</dd></div>
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Source access age</dt><dd className="mt-0.5 text-foreground">{item.sourceAccessAge}</dd></div>
-                        <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Next scheduled check</dt><dd className="mt-0.5 text-foreground">{formatScheduledCheck(item.nextScheduledCheckAt)} <span className="text-muted-foreground">(America/Chicago)</span></dd></div>
+                        <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Monitoring status</dt><dd className="mt-0.5 text-foreground">{formatScheduledCheck(item.nextScheduledCheckAt, data.monitoringSchedulePaused)} {!data.monitoringSchedulePaused && <span className="text-muted-foreground">(America/Chicago)</span>}</dd></div>
                         <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Next archive recheck</dt><dd className="mt-0.5 text-foreground">{formatDate(item.archiveRecheckOn)} <span className="text-muted-foreground">(planned research review)</span></dd></div>
                         {item.lastStatusCode !== null && <div><dt className="font-mono uppercase tracking-wider text-[0.62rem] text-muted-foreground">Latest response</dt><dd className="mt-0.5 text-foreground">HTTP {item.lastStatusCode}</dd></div>}
                       </dl>

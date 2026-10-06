@@ -90,9 +90,10 @@ describe("Public historical-document recovery dashboard", () => {
     expect(pageSource).toContain("Source reachable");
     expect(pageSource).toContain("Access attention");
     expect(pageSource).toContain("Open monitored public source");
-    expect(pageSource).toContain("no-charge research cycle");
+    expect(pageSource).toContain("The 30-day pilot ended October 5, 2026.");
+    expect(pageSource).toContain("Monitoring paused after pilot close");
     expect(pageSource).toContain("Source access age");
-    expect(pageSource).toContain("Next scheduled check");
+    expect(pageSource).toContain("Monitoring status");
     expect(pageSource).toContain("Next archive recheck");
     expect(pageSource).toContain("planned research review");
     expect(pageSource).toContain("America/Chicago");

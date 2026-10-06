@@ -5,6 +5,7 @@
     "remainingAssetsPoint": 16097458607,
     "remainingAssetsLow": 16097458607,
     "remainingAssetsHigh": 21821068941,
+    "remainingAssetsPointAsOf": "2026-09-24",
     "cumulativePayoutsPoint": 24000000000,
     "cumulativePayoutsLow": 17500000000,
     "trustsWithFigures": 44,
@@ -485,7 +486,7 @@
       "reportingFrequency": "annual",
       "paymentPctNoticePublishedAt": "2026-10-05",
       "paymentPctImplementationStatus": "proposed_pending_tac_fcr_consent",
-      "paymentPctImplementationNote": "Trustees determined the payment percentage should be decreased to 7.8% and requested TAC/FCR consent; under TDP \u00a74.3 the Trust pays at the proposed 7.8% from the 2026-10-05 Proposal Date, with carve-outs: (a) releases transmitted before the Proposal Date or within 30 days of receipt are paid at 10.8%; (b) deceased/incompetent claimants with pending court/probate approval are paid at the percentage in effect when the offer was first made. If a higher percentage is ultimately adopted, supplemental payments will be made.",
+      "paymentPctImplementationNote": "Payments began on the proposed basis while TAC/FCR consent remains pending. Releases transmitted before the proposal date or within 30 days are paid at 10.8%.",
       "paymentPctConfidence": "filed"
     },
     {

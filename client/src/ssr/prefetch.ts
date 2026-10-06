@@ -94,6 +94,18 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
     };
   }
 
+  // ── Internal source-monitor route ────────────────────────────────────────
+  // This route is authentication-gated client-side and is never a public
+  // research resource; keep it out of search indexing and link previews.
+  if (clean === "/admin/source-monitor") {
+    return {
+      title: `Source Recovery Monitor · ${SITE_NAME}`,
+      description: "Internal source-recovery operations monitor.",
+      canonicalPath: "/admin/source-monitor",
+      noindex: true,
+    };
+  }
+
   // ── Trust list (/trusts) ─────────────────────────────────────────────────
   if (clean === "/trusts") {
     const [allTrusts, trusts] = await Promise.all([
@@ -129,7 +141,11 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
     if (reports) {
       await seed(qc, getQueryKey(trpc.trustFiguresExtra.reportsIndex, undefined, "query"), reports);
     }
-    const pct = jsonTrust.paymentPercentage !== null ? ` · ${jsonTrust.paymentPercentage}% payment` : "";
+    const pct = jsonTrust.paymentPercentage !== null
+      ? jsonTrust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent"
+        ? ` · proposed ${jsonTrust.paymentPercentage}% interim payment rate (TAC/FCR consent pending)`
+        : ` · ${jsonTrust.paymentPercentage}% payment`
+      : "";
     const assets = jsonTrust.netAssets ? ` · $${(jsonTrust.netAssets / 1e9).toFixed(2)}B assets` : "";
     return {
       title: `${jsonTrust.name} · AsbestosTrusts.org`,

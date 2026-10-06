@@ -19,7 +19,7 @@ import {
   upsertTrustFromPipeline,
 } from "./db";
 import { getDb } from "./db";
-import { sourceRegistry } from "../drizzle/schema";
+import { operationsPilots, sourceRegistry } from "../drizzle/schema";
 import { HISTORICAL_SOURCE_BACKLOG } from "../shared/historicalSourceBacklog";
 import { LIVING_TRACKER_PILOT_ID, nextScheduledMonitoringCheck, sourceAccessAgeLabel } from "./operationsPilot";
 
@@ -185,6 +185,10 @@ export const appRouter = router({
     recoveryDashboard: publicProcedure.query(async () => {
       const db = await getDb();
       const generatedAt = new Date();
+      const [pilot] = db
+        ? await db.select().from(operationsPilots).where(eq(operationsPilots.id, LIVING_TRACKER_PILOT_ID)).limit(1)
+        : [];
+      const monitoringSchedulePaused = pilot?.status !== "active";
       const trustSlugs = HISTORICAL_SOURCE_BACKLOG.map((item) => item.trustSlug);
       const rows = db
         ? await db.select().from(sourceRegistry).where(and(
@@ -221,7 +225,9 @@ export const appRouter = router({
           lastCheckedAt: source?.lastCheckedAt ?? null,
           lastSuccessfulCheckAt: source?.lastSuccessfulCheckAt ?? null,
           sourceAccessAge: sourceAccessAgeLabel(source?.lastSuccessfulCheckAt, generatedAt),
-          nextScheduledCheckAt: source ? nextScheduledMonitoringCheck(source.checkCadence, generatedAt) : null,
+          // An expired or completed pilot must never present a hypothetical
+          // recheck time as an active authorization.
+          nextScheduledCheckAt: source && !monitoringSchedulePaused ? nextScheduledMonitoringCheck(source.checkCadence, generatedAt) : null,
           archiveRecheckOn: item.archiveRecheckOn,
           lastStatusCode: source?.lastStatusCode ?? null,
           failureCount: source?.failureCount ?? 0,
@@ -231,6 +237,8 @@ export const appRouter = router({
       return {
         generatedAt,
         pilotEndsOn: "2026-10-05",
+        pilotStatus: pilot?.status ?? "completed",
+        monitoringSchedulePaused,
         monthlyResearchCapMinutes: 150,
         items,
         accessRepairs: accessRepairRows.map((source) => {
@@ -244,7 +252,7 @@ export const appRouter = router({
             lastCheckedAt: source.lastCheckedAt,
             lastSuccessfulCheckAt: source.lastSuccessfulCheckAt,
             sourceAccessAge: sourceAccessAgeLabel(source.lastSuccessfulCheckAt, generatedAt),
-            nextScheduledCheckAt: nextScheduledMonitoringCheck(source.checkCadence, generatedAt),
+            nextScheduledCheckAt: !monitoringSchedulePaused ? nextScheduledMonitoringCheck(source.checkCadence, generatedAt) : null,
             retrievalNotes: source.retrievalNotes,
           };
         }),
@@ -450,6 +458,93 @@ export const appRouter = router({
 
   // ── Admin ───────────────────────────────────────────────────────────────────
   admin: router({
+    // Internal-only view of source access and the remaining historical-document
+    // recovery queue. It does not grant a new monitoring or publication authority.
+    sourceRecoveryMonitor: adminProcedure.query(async () => {
+      const db = await getDb();
+      const generatedAt = new Date();
+      if (!db) {
+        return {
+          generatedAt,
+          pilot: null,
+          registry: { totalActive: 0, reachableActive: 0, accessNeedsAction: 0, retiredFailures: 0 },
+          recoveryBacklog: [],
+          retiredFailures: [],
+        };
+      }
+
+      const [[pilot], activeSources, inactiveSources] = await Promise.all([
+        db.select().from(operationsPilots).where(eq(operationsPilots.id, LIVING_TRACKER_PILOT_ID)).limit(1),
+        db.select().from(sourceRegistry).where(and(
+          eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID),
+          eq(sourceRegistry.isActive, true),
+        )),
+        db.select().from(sourceRegistry).where(and(
+          eq(sourceRegistry.pilotId, LIVING_TRACKER_PILOT_ID),
+          eq(sourceRegistry.isActive, false),
+        )),
+      ]);
+
+      const sourcesByTrust = new Map(activeSources.map((source) => [source.trustSlug, source]));
+      const activeAccessIssues = activeSources.filter((source) =>
+        source.failureCount > 0 || source.lastSuccessfulCheckAt === null || (source.lastStatusCode !== null && source.lastStatusCode >= 400),
+      );
+      const retiredFailures = inactiveSources
+        .filter((source) => source.failureCount > 0 || (source.lastStatusCode !== null && source.lastStatusCode >= 400))
+        .sort((a, b) => b.failureCount - a.failureCount || (a.trustName ?? "").localeCompare(b.trustName ?? ""));
+
+      return {
+        generatedAt,
+        pilot: pilot
+          ? {
+              status: pilot.status,
+              startDate: pilot.startDate,
+              endDate: pilot.endDate,
+              timezone: pilot.timezone,
+              monitoringSchedulePaused: pilot.status !== "active",
+            }
+          : null,
+        registry: {
+          totalActive: activeSources.length,
+          reachableActive: activeSources.length - activeAccessIssues.length,
+          accessNeedsAction: activeAccessIssues.length,
+          retiredFailures: retiredFailures.length,
+        },
+        recoveryBacklog: HISTORICAL_SOURCE_BACKLOG.map((item) => {
+          const source = sourcesByTrust.get(item.trustSlug);
+          return {
+            rank: item.rank,
+            trustSlug: item.trustSlug,
+            trustName: item.trustName,
+            focus: item.focus,
+            historicalCutoff: item.historicalCutoff,
+            currentEvidence: item.currentEvidence,
+            noChargeResearchPath: item.noChargeResearchPath,
+            archiveRecheckOn: item.archiveRecheckOn,
+            monitoredSourceUrl: source?.sourceUrl ?? null,
+            sourceClass: source?.sourceClass ?? null,
+            checkCadence: source?.checkCadence ?? null,
+            lastCheckedAt: source?.lastCheckedAt ?? null,
+            lastSuccessfulCheckAt: source?.lastSuccessfulCheckAt ?? null,
+            sourceAccessAge: sourceAccessAgeLabel(source?.lastSuccessfulCheckAt, generatedAt),
+            sourceReachable: Boolean(source?.lastSuccessfulCheckAt) && source?.failureCount === 0,
+            documentRecoveryStatus: "unresolved",
+          };
+        }),
+        retiredFailures: retiredFailures.map((source) => ({
+          id: source.id,
+          trustName: source.trustName,
+          trustSlug: source.trustSlug,
+          sourceUrl: source.sourceUrl,
+          sourceClass: source.sourceClass,
+          failureCount: source.failureCount,
+          lastCheckedAt: source.lastCheckedAt,
+          lastError: source.lastError,
+          retrievalNotes: source.retrievalNotes,
+        })),
+      };
+    }),
+
     // Update a single trust field
     updateTrust: adminProcedure
       .input(

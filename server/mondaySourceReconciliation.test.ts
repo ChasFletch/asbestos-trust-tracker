@@ -19,14 +19,16 @@ describe("Monday official-source reconciliation", () => {
     expect(federalMogul.paymentPercentageSource).toContain("FMP Sub-Account rate remains 12.2%");
   });
 
-  it("records Armstrong's current-rate reconsideration notice without inventing an effective date", () => {
+  it("supersedes Armstrong's reconsideration notice with the October interim-rate notice and consent qualification", () => {
     const armstrong = trust("Armstrong World Industries Asbestos PI Trust");
     expect(armstrong).toMatchObject({
-      paymentPercentage: 10.8,
-      paymentPctAsOf: "2026-06-11",
-      paymentPctEffective: null,
-      paymentPercentageSourceUrl: expect.stringContaining("awi-notice-of-payment-percentage-reconsideration"),
+      paymentPercentage: 7.8,
+      paymentPctAsOf: "2026-10-05",
+      paymentPctEffective: "2026-10-05",
+      paymentPctImplementationStatus: "proposed_pending_tac_fcr_consent",
+      paymentPercentageSourceUrl: expect.stringContaining("AWI-Notice-re-Payment-Percentage-Reduction-10.5.26.pdf"),
     });
-    expect(armstrong.paymentPercentageSource).toContain("not a new rate notice");
+    expect(armstrong.paymentPercentageSource).toContain("requested that the TAC and FCR consent");
+    expect(armstrong.paymentPctImplementationNote).toContain("Payments began on the proposed basis");
   });
 });

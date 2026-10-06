@@ -17,6 +17,8 @@ The project task list available to this production task does not expose a named 
 
 When a named ANCHOR task becomes available, send both packet paths with a request for an editorial disposition. After ANCHOR completes that disposition, send the revised materials and source map to CLEO for final factual QA. Charles remains the only publication gate.
 
+**October 5 follow-up:** Charles requested progression through the review path. The accessible Project task roster was rechecked and still did not expose a named ANCHOR or CLEO destination. Both packets remain re-flagged as ready for the designated review task; no message was sent to an unrelated task and no review disposition is claimed. See `2026-10-05-anchor-cleo-routing-follow-up.md` for the dated routing record.
+
 ## Review-record requirements
 
 Each item’s release record must retain a dated ANCHOR disposition, dated CLEO disposition, final source cut-off, material changes, and any actual attorney-review scope. The existing article-specific review field remains `NULL` until an actual named review occurs.

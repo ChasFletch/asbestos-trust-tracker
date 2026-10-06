@@ -577,7 +577,9 @@ export default function TrustDetail() {
                     </span>
                   </div>
                   {sa.effective && (
-                    <div className="text-[11px] text-muted-foreground/60 mt-0.5">effective {sa.effective}</div>
+                    <div className="text-[11px] text-muted-foreground/60 mt-0.5">
+                      {sa.implementationStatus === "proposed_pending_tac_fcr_consent" ? "proposal / interim-payment date" : "effective"} {sa.effective}
+                    </div>
                   )}
                   {sa.note && (
                     <div className="text-[11px] text-muted-foreground/50 mt-1 italic leading-relaxed">{sa.note}</div>

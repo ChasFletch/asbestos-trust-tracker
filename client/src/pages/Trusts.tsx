@@ -457,6 +457,9 @@ export default function Trusts() {
                     {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (
                       <div className="mt-0.5 text-[10px] leading-tight text-amber-700/80">announced · implementation pending</div>
                     )}
+                    {trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" && (
+                      <div className="mt-0.5 text-[10px] leading-tight text-amber-700/80">interim · consent pending</div>
+                    )}
                   </div>
                   <div className="text-sm font-mono">
                     <span className={trust.netAssets ? "text-foreground" : "text-muted-foreground/40"}>
@@ -511,9 +514,11 @@ export default function Trusts() {
                           </div>
                         )}
                         {trust.note && <div className="mt-2 text-muted-foreground/70 leading-relaxed">{trust.note}</div>}
-                        {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (
+                        {(trust.paymentPctImplementationStatus === "announced_pending_implementation" || trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent") && (
                           <div className="mt-2 rounded border border-amber-200/70 bg-amber-50/60 p-2 text-xs leading-relaxed text-amber-950/80">
-                            <span className="font-semibold text-amber-900">Announced payment percentage:</span>{" "}
+                            <span className="font-semibold text-amber-900">
+                              {trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" ? "Interim payment rate; consent pending:" : "Announced payment percentage:"}
+                            </span>{" "}
                             {trust.paymentPctImplementationNote ?? "The source states that implementation remains pending."}
                             {trust.paymentPercentageSourceUrl && (
                               <a href={trust.paymentPercentageSourceUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="ml-1 font-medium text-amber-800 underline underline-offset-2 hover:no-underline">
@@ -540,7 +545,7 @@ export default function Trusts() {
                            </div>
                             <div className="text-muted-foreground/60 italic">
                               {trust.name.includes('Federal-Mogul')
-                                ? 'T&N and FMP are separate subfunds with different scheduled values and payment rates. Source: federalmogulasbestostrust.com'
+                                ? 'T&N and FMP are separate subfunds with different scheduled values and payment rates. The T&N rate is interim while TAC/FCR consent is pending. Source: federalmogulasbestostrust.com'
                                 : 'Owens Corning and Fibreboard claimants are paid from separate sub-accounts at different rates. Both effective 2026-06-30.'}
                             </div>
                          </div>

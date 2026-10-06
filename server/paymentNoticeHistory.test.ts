@@ -28,9 +28,20 @@ describe("official payment-notice history", () => {
       trustSlug: "armstrong-world-industries-asbestos-pi-trust",
     });
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "armstrong-2026-10-05")?.effectiveDate).toBeUndefined();
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")).toMatchObject({
+      priorPercentage: 3.9,
+      currentPercentage: 2.9,
+      interimPaymentDate: "2026-06-30",
+    });
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.effectiveDate).toBeUndefined();
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.summary).toContain("consent remains pending");
     const page = read("client/src/pages/PaymentNoticeHistory.tsx");
     expect(page).toContain("Proposed interim rate");
     expect(page).toContain("Proposal / interim-payment date");
+    expect(read("client/src/pages/TrustDetail.tsx")).toContain('sa.implementationStatus === "proposed_pending_tac_fcr_consent"');
+    const trustList = read("client/src/pages/Trusts.tsx");
+    expect(trustList).toContain("interim · consent pending");
+    expect(trustList).toContain("Interim payment rate; consent pending:");
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.scope).toContain("T&N Sub-Account only");
   });
 

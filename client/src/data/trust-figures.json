@@ -590,9 +590,11 @@
       "status": "active",
       "confidence": "secondary",
       "paymentPctAsOf": "2026-06-30",
-      "paymentPercentageSource": "Federal-Mogul Asbestos PI Trust, Notice of Payment Percentage Change \u2014 T&N Sub-Account (2026-06-30): the T&N Sub-Account payment percentage was reduced to 2.9%. The separate FMP Sub-Account rate remains 12.2%; see the sub-account detail.",
+      "paymentPctImplementationStatus": "proposed_pending_tac_fcr_consent",
+      "paymentPctImplementationNote": "The proposed 2.9% T&N Sub-Account rate is applied under TDP \u00a74.3 while TAC/FCR consent remains pending. Fully documented claims transmitted by 12:01 a.m. EDT on June 30, 2026 retain the prior 3.9% rate; the separate FMP Sub-Account remains 12.2%.",
+      "paymentPercentageSource": "Federal-Mogul Asbestos PI Trust, Notice of Payment Percentage Change \u2014 T&N Sub-Account (2026-06-30): Trustees proposed a reduction from 3.9% to 2.9%. Under TDP \u00a74.3, 2.9% is applied during the pending TAC/FCR-consent process, subject to the notice's complete-documentation cutoff. The separate FMP Sub-Account rate remains 12.2%.",
       "paymentPercentageSourceUrl": "https://www.federalmogulasbestostrust.com/wp-content/uploads/2026/06/Notice-of-Payment-Percentage-Change-TN-Subfund-June-18-2026-4923-8029-8166-v.1-1.pdf",
-      "note": "CORRECTION: prior DB entry carried 12.2%, which was the FMP subfund rate; T&N subfund is 2.9% per official trust notice 6/30/2026 (down from 5.9% in 2022); FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 01-10578 Doc 582593677, 4/29/2025)",
+      "note": "CORRECTION: a prior DB entry carried 12.2%, which is the separate FMP subfund rate. The T&N Sub-Account is at a source-supported interim 2.9% pending TAC/FCR consent, down from 3.9% for claims after the June 30, 2026 complete-documentation cutoff. FY2025 report not confirmed docketed as of 7/27/2026 (FY2024: 01-10578 Doc 582593677, 4/29/2025).",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
@@ -612,6 +614,7 @@
           "name": "T&N Sub-Account",
           "value": 2.9,
           "effective": "2026-06-30",
+          "implementationStatus": "proposed_pending_tac_fcr_consent",
           "quote": "The payment percentage applicable to claims against T&N Sub-Account (the \u201cTrust\u201d) has been reduced to 2.9%.",
           "page": "p.1",
           "as_of": "2026-06-30",
@@ -1438,6 +1441,15 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-10-06",
+      "type": "payment_percentage_qualification",
+      "trust": "Federal-Mogul Asbestos PI Trust \u2014 T&N Sub-Account",
+      "detail": "Clarified the existing 2.9% T&N Sub-Account record without changing its numeric value: the June 2026 official notice proposed a 3.9% to 2.9% reduction, applies 2.9% under TDP \u00a74.3 while TAC/FCR consent remains pending, and preserves 3.9% for fully documented claims transmitted by the stated June 30 cutoff. The distinct 12.2% FMP Sub-Account remains separate.",
+      "source": "Federal-Mogul Asbestos PI Trust, Notice of Payment Percentage Change \u2014 T&N Sub-Account (June 2026)",
+      "sourceUrl": "https://www.federalmogulasbestostrust.com/wp-content/uploads/2026/06/Notice-of-Payment-Percentage-Change-TN-Subfund-June-18-2026-4923-8029-8166-v.1-1.pdf",
+      "confidence": "primary"
+    },
     {
       "date": "2026-10-05",
       "type": "payment_percentage_change",

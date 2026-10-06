@@ -20,6 +20,8 @@ When a named ANCHOR task becomes available, send both packet paths with a reques
 
 **October 5 follow-up:** Charles requested progression through the review path. The accessible Project task roster was rechecked and still did not expose a named ANCHOR or CLEO destination. Both packets remain re-flagged as ready for the designated review task; no message was sent to an unrelated task and no review disposition is claimed. See `2026-10-05-anchor-cleo-routing-follow-up.md` for the dated routing record.
 
+**October 6 direct-review hold:** Charles elected to review the Hopeman correction packet directly before providing an ANCHOR/CLEO destination. The correction remains prepared, not public, and ineligible for implementation or publication. This hold does not record an ANCHOR, CLEO, attorney, or Charles review disposition.
+
 ## Review-record requirements
 
 Each item’s release record must retain a dated ANCHOR disposition, dated CLEO disposition, final source cut-off, material changes, and any actual attorney-review scope. The existing article-specific review field remains `NULL` until an actual named review occurs.

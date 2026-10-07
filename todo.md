@@ -623,3 +623,12 @@
 - [x] Deduplicate and assess six September 24 official-source fingerprint candidates using only no-charge official materials
 - [x] Record that Manville is duplicate; Celotex, DII, Flintkote, and Babcock & Wilcox are routine maintenance or otherwise unchanged; and Maremont materials are pre-pilot and already reflected in the tracker
 - [x] Record the internal no-publication disposition and preserve Celotex FY2025 primary-report recovery and partial weekly-coverage follow-up as open items
+
+
+## Post-Pilot Official Payment-Rate Sweep — October 7, 2026
+
+- [x] Completed a no-charge, trust-by-trust manual reconciliation of all 55 tracked payment-percentage records against official trust, administrator, or filed-source material.
+- [x] Preserved the source-by-source result, material qualifications, and the no-publication boundary in `docs/payment-rate-verification-2026-10-07/manual-official-payment-rate-sweep.md`.
+- [ ] Obtain a specific release decision before editing any public tracker record. The controlled correction queue includes: API (44% effective 2026-09-01); Quigley dual claimant rates; Kaiser date/finality; Raytech (1.35%); Keene (1.05%); Burns and Roe (36.87%); Duro Dyne (20% current, 40% proposed); Brauer (9.5%); THAN (16.3% effective 2026-09-01); and removal/reclassification questions for Eagle-Picher, A-Best, and A&I. Resolve the official NGC 45%/40% source conflict before any public assertion.
+- [ ] Retain seven official-current-rate gaps as unreported unless a later controlling publication establishes a current figure: G-I Holdings, Eagle-Picher, J.T. Thorpe TX, Porter Hayden, A-Best, Rapid-American, and C.E. Thurston. Do not infer a rate from historical, initial, intended-action, or third-party material.
+- [ ] Preserve scope/implementation qualifiers before any public release, including current-versus-proposed, pending-consent, ER/IR value base, sub-account, cutoff, released-claim, cash-discount, and final-distribution distinctions.

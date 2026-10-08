@@ -29,6 +29,12 @@ interface TrustRow {
   paymentPercentageSourceUrl?: string | null;
   status: string;
   paymentPercentageFB?: number | null;
+  paymentPercentageLabel?: string | null;
+  paymentPercentageFBLabel?: string | null;
+  paymentPctPresentation?: string | null;
+  paymentPctScopeNote?: string | null;
+  paymentPctHistoricalNote?: string | null;
+  paymentPctAvailability?: string | null;
   confidence: string; // "filed" | "secondary" | "estimate"
   note: string | null;
   // DB-only extras (may be null for JSON-only trusts)
@@ -165,6 +171,12 @@ export default function Trusts() {
         paymentPercentageSourceUrl: (jt as any).paymentPercentageSourceUrl ?? null,
         status: jt.status,
         paymentPercentageFB: (jt as any).paymentPercentageFB ?? null,
+        paymentPercentageLabel: (jt as any).paymentPercentageLabel ?? null,
+        paymentPercentageFBLabel: (jt as any).paymentPercentageFBLabel ?? null,
+        paymentPctPresentation: (jt as any).paymentPctPresentation ?? null,
+        paymentPctScopeNote: (jt as any).paymentPctScopeNote ?? null,
+        paymentPctHistoricalNote: (jt as any).paymentPctHistoricalNote ?? null,
+        paymentPctAvailability: (jt as any).paymentPctAvailability ?? null,
         confidence: jt.confidence,
         note: jt.note,
         administrator: db?.administrator ?? null,
@@ -451,8 +463,16 @@ export default function Trusts() {
                       ) : (
                         <span className="text-foreground">{trust.paymentPercentage}%</span>
                       )
+                    ) : trust.paymentPctAvailability === "not_publicly_reported" ? (
+                      <span className="text-muted-foreground/60 text-xs">not publicly reported</span>
                     ) : (
                       <span className="text-muted-foreground/40 text-xs">MSV/N/A</span>
+                    )}
+                    {trust.paymentPctPresentation === "dual_rate" && trust.paymentPercentageLabel && trust.paymentPercentageFBLabel && (
+                      <div className="mt-0.5 text-[10px] leading-tight text-amber-700/80">{trust.paymentPercentageLabel} / {trust.paymentPercentageFBLabel} · two rates</div>
+                    )}
+                    {trust.paymentPctScopeNote && trust.paymentPctPresentation !== "dual_rate" && (
+                      <div className="mt-0.5 text-[10px] leading-tight text-sky-800/80">scope-limited · see detail</div>
                     )}
                     {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (
                       <div className="mt-0.5 text-[10px] leading-tight text-amber-700/80">announced · implementation pending</div>
@@ -527,11 +547,26 @@ export default function Trusts() {
                             )}
                           </div>
                         )}
+                        {trust.paymentPctScopeNote && trust.paymentPctPresentation !== "dual_rate" && (
+                          <div className="mt-2 rounded border border-sky-200/70 bg-sky-50/60 p-2 text-xs leading-relaxed text-sky-950/80">
+                            <span className="font-semibold text-sky-900">Rate scope:</span> {trust.paymentPctScopeNote}
+                          </div>
+                        )}
+                        {trust.paymentPctHistoricalNote && (
+                          <div className="mt-2 rounded border border-dashed border-slate-300 bg-slate-50/70 p-2 text-xs leading-relaxed text-slate-700">
+                            <span className="font-semibold text-slate-800">Historical only — not a current payment rate:</span> {trust.paymentPctHistoricalNote}
+                          </div>
+                        )}
                        {trust.paymentPercentageFB != null && (
                          <div className="mt-2 p-2 rounded bg-amber-50/50 border border-amber-200/40 text-xs space-y-1">
-                           <div className="font-semibold text-amber-800/80 uppercase tracking-wider text-[10px]">Dual Sub-Account Payment Percentages</div>
+                           <div className="font-semibold text-amber-800/80 uppercase tracking-wider text-[10px]">{trust.paymentPctPresentation === "dual_rate" ? "Separate Claimant-Group Payment Percentages" : "Dual Sub-Account Payment Percentages"}</div>
                            <div className="flex gap-4">
-                              {trust.name.includes('Federal-Mogul') ? (
+                              {trust.paymentPercentageLabel && trust.paymentPercentageFBLabel ? (
+                                <>
+                                  <div><span className="text-muted-foreground">{trust.paymentPercentageLabel}: </span><span className="font-mono font-bold">{trust.paymentPercentage}%</span></div>
+                                  <div><span className="text-muted-foreground">{trust.paymentPercentageFBLabel}: </span><span className="font-mono font-bold">{trust.paymentPercentageFB}%</span></div>
+                                </>
+                              ) : trust.name.includes('Federal-Mogul') ? (
                                 <>
                                   <div><span className="text-muted-foreground">T&amp;N Subfund: </span><span className="font-mono font-bold">{trust.paymentPercentage}%</span></div>
                                   <div><span className="text-muted-foreground">FMP Subfund: </span><span className="font-mono font-bold">{trust.paymentPercentageFB}%</span></div>
@@ -544,7 +579,9 @@ export default function Trusts() {
                               )}
                            </div>
                             <div className="text-muted-foreground/60 italic">
-                              {trust.name.includes('Federal-Mogul')
+                              {trust.paymentPctPresentation === "dual_rate" && trust.paymentPctScopeNote
+                                ? trust.paymentPctScopeNote
+                                : trust.name.includes('Federal-Mogul')
                                 ? 'T&N and FMP are separate subfunds with different scheduled values and payment rates. The T&N rate is interim while TAC/FCR consent is pending. Source: federalmogulasbestostrust.com'
                                 : 'Owens Corning and Fibreboard claimants are paid from separate sub-accounts at different rates. Both effective 2026-06-30.'}
                             </div>

@@ -141,10 +141,17 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
     if (reports) {
       await seed(qc, getQueryKey(trpc.trustFiguresExtra.reportsIndex, undefined, "query"), reports);
     }
+    const jt = jsonTrust as any;
     const pct = jsonTrust.paymentPercentage !== null
-      ? jsonTrust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent"
+      ? jt.paymentPctPresentation === "dual_rate" && jt.paymentPercentageFB != null
+        ? ` · two separate payment rates: ${jsonTrust.paymentPercentage}% ${jt.paymentPercentageLabel ?? ""} / ${jt.paymentPercentageFB}% ${jt.paymentPercentageFBLabel ?? ""}`.replace(/\s+\//g, " /")
+        : jsonTrust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent"
         ? ` · proposed ${jsonTrust.paymentPercentage}% interim payment rate (TAC/FCR consent pending)`
+        : jt.paymentPctScopeNote
+        ? ` · ${jsonTrust.paymentPercentage}% payment (scope-limited; see rate scope)`
         : ` · ${jsonTrust.paymentPercentage}% payment`
+      : jt.paymentPctAvailability === "not_publicly_reported"
+      ? " · current payment percentage not publicly reported"
       : "";
     const assets = jsonTrust.netAssets ? ` · $${(jsonTrust.netAssets / 1e9).toFixed(2)}B assets` : "";
     return {

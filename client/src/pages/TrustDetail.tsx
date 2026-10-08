@@ -315,6 +315,14 @@ export default function TrustDetail() {
         paymentPctNoticePublishedAt: (jsonTrust as any)?.paymentPctNoticePublishedAt ?? null,
         paymentPctImplementationStatus: (jsonTrust as any)?.paymentPctImplementationStatus ?? null,
         paymentPctImplementationNote: (jsonTrust as any)?.paymentPctImplementationNote ?? null,
+        paymentPctScopeNote: (jsonTrust as any)?.paymentPctScopeNote ?? null,
+        paymentPctHistoricalNote: (jsonTrust as any)?.paymentPctHistoricalNote ?? null,
+        paymentPctHistoricalSourceUrl: (jsonTrust as any)?.paymentPctHistoricalSourceUrl ?? null,
+        paymentPctPresentation: (jsonTrust as any)?.paymentPctPresentation ?? null,
+        paymentPercentageFB: (jsonTrust as any)?.paymentPercentageFB ?? null,
+        paymentPercentageLabel: (jsonTrust as any)?.paymentPercentageLabel ?? null,
+        paymentPercentageFBLabel: (jsonTrust as any)?.paymentPercentageFBLabel ?? null,
+        subAccounts: (jsonTrust as any)?.subAccounts ?? null,
         rateSource: (jsonTrust as any)?.rateSource ?? null,
         tdpCaveat: (jsonTrust as any)?.tdpCaveat ?? null,
         netAssetsCitation: jsonTrust.assetsBasis ?? dbTrust?.netAssetsCitation ?? null,
@@ -497,6 +505,19 @@ export default function TrustDetail() {
               <span className="ml-auto"><ConfidenceBadge confidence={(trust as any).paymentPctConfidence} /></span>
             )}
           </div>
+          {trust.paymentPctPresentation === "dual_rate" && trust.paymentPercentage !== null && trust.paymentPercentageFB !== null ? (
+            <div className="space-y-0.5" data-payment-presentation="dual_rate">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-xl font-mono font-bold text-foreground">{trust.paymentPercentage}%</span>
+                <span className="text-[11px] text-muted-foreground">{trust.paymentPercentageLabel}</span>
+              </div>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-xl font-mono font-bold text-foreground">{trust.paymentPercentageFB}%</span>
+                <span className="text-[11px] text-muted-foreground">{trust.paymentPercentageFBLabel}</span>
+              </div>
+              <div className="text-[10px] uppercase tracking-wider text-amber-800/80">Two separate rates · not a trust-wide figure</div>
+            </div>
+          ) : (
           <div className="text-xl font-mono font-bold text-foreground">
             {trust.paymentPercentage !== null
               ? `${trust.paymentPercentage}%`
@@ -504,6 +525,7 @@ export default function TrustDetail() {
               ? "Not publicly reported"
               : "MSV / N/A"}
           </div>
+          )}
           {trust.paymentPercentage !== null && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">
               {trust.hasDiseaseLevelScheduledValueMatrix === false
@@ -528,6 +550,21 @@ export default function TrustDetail() {
             <div className="mt-1.5 rounded border border-amber-200/80 bg-amber-50/60 px-2 py-1.5 text-[11px] leading-relaxed text-amber-950/80">
               <span className="font-semibold text-amber-900">Interim rate; consent pending.</span>{" "}
               {trust.paymentPctImplementationNote}
+            </div>
+          )}
+          {trust.paymentPctScopeNote && (
+            <div className="mt-1.5 rounded border border-sky-200/80 bg-sky-50/60 px-2 py-1.5 text-[11px] leading-relaxed text-sky-950/80" data-payment-scope-note>
+              <span className="font-semibold text-sky-900">Rate scope:</span>{" "}
+              {trust.paymentPctScopeNote}
+            </div>
+          )}
+          {trust.paymentPctHistoricalNote && (
+            <div className="mt-1.5 rounded border border-dashed border-slate-300 bg-slate-50/70 px-2 py-1.5 text-[11px] leading-relaxed text-slate-700" data-payment-historical-note>
+              <span className="font-semibold text-slate-800">Historical only — not a current payment rate.</span>{" "}
+              {trust.paymentPctHistoricalNote}
+              {trust.paymentPctHistoricalSourceUrl && (
+                <a href={trust.paymentPctHistoricalSourceUrl} target="_blank" rel="noopener noreferrer" className="ml-1 underline decoration-dotted hover:text-foreground">official notice ↗</a>
+              )}
             </div>
           )}
           {(trust as any).paymentPctEffective && (

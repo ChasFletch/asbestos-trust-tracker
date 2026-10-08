@@ -1,6 +1,6 @@
 {
   "schema": "asbestos-trust-figures/v1.1",
-  "asOf": "2026-10-05",
+  "asOf": "2026-10-08",
   "aggregate": {
     "remainingAssetsPoint": 16097458607,
     "remainingAssetsLow": 16097458607,
@@ -237,10 +237,10 @@
       "netAssets": 7734226,
       "assetsAsOf": "2025-12-31",
       "assetsBasis": "net claimants' equity (filed FY2025 annual report, Bankr. D. Minn. 05-30073-GFK)",
-      "paymentPercentage": 22,
+      "paymentPercentage": 44,
       "status": "active",
       "confidence": "filed",
-      "note": "Total assets $7.91M; distributions $151.7K in 2025; cumulative claims paid to date $93.99M through 12/31/2025; 22% since 7/1/2023",
+      "note": "Payment Sum Percentage raised from 22% (claims approved on or after 7/1/2023) to 44% for Claims approved on or after 9/1/2026 per the Trustee's 9/1/2026 notice; Enhanced Claims retain distinct treatment. Total assets $7.91M; distributions $151.7K in 2025; cumulative claims paid to date $93.99M through 12/31/2025.",
       "cumulativePaid": 93990000,
       "cumulativePaidAsOf": "2025-12-31",
       "cumulativePaidSource": "API, Inc. Asbestos Settlement Trust FY2025 Annual Report of the Trustee (Bankr. D. Minn. 05-30073-GFK, filed 4/29/2026) - cumulative claims paid to date $93.99M through 12/31/2025",
@@ -253,7 +253,14 @@
       "court": "Bankr. D. Minn.",
       "docket": "05-30073",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctEffective": "2026-09-01",
+      "paymentPctAsOf": "2026-09-01",
+      "paymentPctNoticePublishedAt": "2026-09-01",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "API, Inc. Asbestos Settlement Trust, Notices from the Trustee (2026-09-01): the Payment Sum Percentage of the Allowed Liquidated Value of approved Claims has been set at 44%, effective for all Claims approved on or after September 1, 2026; Enhanced Claims continue to be accepted and approved without that adjustment.",
+      "paymentPercentageSourceUrl": "https://apiincasbestossettlementtrust.com/notices-from-the-trustee/",
+      "paymentPctScopeNote": "44% Payment Sum Percentage of Allowed Liquidated Value for Claims approved on or after September 1, 2026. Enhanced Claims have distinct treatment and are not covered by this general rate. The Trust also authorized a supplemental distribution to bring prior approved Claims to the 44% level."
     },
     {
       "name": "W.R. Grace Asbestos PI Trust",
@@ -567,7 +574,7 @@
       "paymentPercentage": 13.3,
       "status": "active",
       "confidence": "secondary",
-      "note": "Non-Releasing subfund 13.3% (cut from 14.5% eff. 10/30/2025 per official notice); Releasing subfund 3.3%",
+      "note": "Two-rate trust: 13.3% for Non-Releasing Asbestos PI Claimants (cut from 14.5%) and 3.3% for Releasing Asbestos PI Claimants (cut from 3.6%), both effective 10/30/2025 per the official notice dated 11/10/2025. 13.3% is not a trust-wide rate.",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
@@ -577,9 +584,35 @@
       "court": "Bankr. S.D.N.Y.",
       "docket": "04-15739",
       "website": "https://www.quigleyasbestostrust.com",
-      "paymentPctEffective": "2013-01-01",
+      "paymentPctEffective": "2025-10-30",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPercentageFB": 3.3,
+      "paymentPercentageLabel": "Non-Releasing",
+      "paymentPercentageFBLabel": "Releasing",
+      "paymentPctPresentation": "dual_rate",
+      "paymentPctAsOf": "2025-10-30",
+      "paymentPctNoticePublishedAt": "2025-11-10",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "Quigley Asbestos PI Trust, Notice (dated 2025-11-10): effective October 30, 2025, the payment percentage is 13.3% for Non-Releasing Asbestos PI Claimants and 3.3% for Releasing Asbestos PI Claimants (TAC and Future Demand Holders' Representative consent).",
+      "paymentPercentageSourceUrl": "https://www.quigleytrust.com/assets/uploadedFiles/86ced2a8-b934-4657-a9d2-63311a567492.pdf",
+      "paymentPctScopeNote": "Two separate current rates: 13.3% for Non-Releasing Asbestos PI Claimants and 3.3% for Releasing Asbestos PI Claimants, both effective October 30, 2025. Neither figure is a single trust-wide rate.",
+      "subAccounts": [
+        {
+          "name": "Non-Releasing Asbestos PI Claimants",
+          "value": 13.3,
+          "effective": "2025-10-30",
+          "note": "Decreased from 14.5% effective October 30, 2025.",
+          "url": "https://www.quigleytrust.com/assets/uploadedFiles/86ced2a8-b934-4657-a9d2-63311a567492.pdf"
+        },
+        {
+          "name": "Releasing Asbestos PI Claimants",
+          "value": 3.3,
+          "effective": "2025-10-30",
+          "note": "Decreased from 3.6% effective October 30, 2025.",
+          "url": "https://www.quigleytrust.com/assets/uploadedFiles/86ced2a8-b934-4657-a9d2-63311a567492.pdf"
+        }
+      ]
     },
     {
       "name": "Federal-Mogul Asbestos PI Trust",
@@ -754,7 +787,7 @@
       "paymentPercentage": 10.6,
       "status": "active",
       "confidence": "secondary",
-      "note": "18.1->10.6% (cut Feb 2025). Trust website (kaiserasbestostrust.com) posts no annual reports (resources + notices pages verified 2026-07-27) - filed reports are PACER-only; cumulativePaid stays null",
+      "note": "Interim, consent-pending 10.6% applied from 2/5/2025 under TDP \u00a74.3 while the proposed decrease from 15.5% awaits TAC/FCR consent (official notice dated 2/5/2025); not described as final. Trust website (kaiserasbestostrust.com) posts no annual reports (resources + notices pages verified 2026-07-27) - filed reports are PACER-only; cumulativePaid stays null",
       "cumulativePaid": null,
       "cumulativePaidAsOf": null,
       "cumulativePaidSource": null,
@@ -764,9 +797,16 @@
       "court": "Bankr. D. Del.",
       "docket": "02-10429",
       "website": "https://www.kaiserasbestostrust.com",
-      "paymentPctEffective": "2006-01-01",
+      "paymentPctEffective": "2025-02-05",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctAsOf": "2025-02-05",
+      "paymentPctNoticePublishedAt": "2025-02-05",
+      "paymentPctConfidence": "filed",
+      "paymentPctImplementationStatus": "proposed_pending_tac_fcr_consent",
+      "paymentPctImplementationNote": "Interim, consent-pending applied rate: beginning February 5, 2025, the Trustees directed claims to be paid at 10.6% while the proposed reduction remained subject to TAC and FCR consent. Not a final or fully adopted rate.",
+      "paymentPercentageSource": "Kaiser Aluminum & Chemical Corporation Asbestos PI Trust, Notice of Request for Consent to Decrease Payment Percentage (2025-02-05): the Trustees sought FCR and TAC consent to decrease the Payment Percentage from 15.5% to 10.6% and, under TDP \u00a74.3, directed claims to be paid at 10.6% effective February 5, 2025 pending that consent.",
+      "paymentPercentageSourceUrl": "https://www.kaiserasbestostrust.com/assets/uploadedFiles/a9fa8368-7c64-4c40-9312-d95c42ff8c06.pdf"
     },
     {
       "name": "Babcock & Wilcox Asbestos PI Settlement Trust",
@@ -818,7 +858,7 @@
       "netAssets": 298142186,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": 35,
+      "paymentPercentage": null,
       "status": "active",
       "confidence": "secondary",
       "cumulativePaid": null,
@@ -832,7 +872,12 @@
       "website": "https://www.eaglepicherasbestostrust.com",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2023-11-01"
+      "paymentPctAsOf": "2026-10-07",
+      "paymentPctAvailability": "not_publicly_reported",
+      "paymentPctAvailabilityNote": "The accessible official administrator page (Claims Processing Facility, EPI Trust), reviewed October 7, 2026, does not publish a current payment percentage. The previously displayed 35% is not supported by a current official notice, and historical 33% material is not current-rate proof. No rate is inferred.",
+      "paymentPercentageSource": "Claims Processing Facility \u2014 EPI Trust page, reviewed October 7, 2026: no current payment percentage is published.",
+      "paymentPercentageSourceUrl": "https://www.cpf-inc.com/trusts/epi-trust/",
+      "note": "Current payment percentage not publicly reported: the official administrator page reviewed 10/7/2026 publishes no current rate. The previously displayed 35% (eff. 2023-11-01) was unsupported and has been withdrawn; historical 33% material is not current-rate proof."
     },
     {
       "name": "Yarway Asbestos PI Trust",
@@ -1102,7 +1147,7 @@
       "netAssets": 22014500,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": null,
+      "paymentPercentage": 1.35,
       "status": "active",
       "confidence": "secondary",
       "cumulativePaid": null,
@@ -1114,14 +1159,21 @@
       "court": "Bankr. D. Conn.",
       "docket": "89-20419",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctEffective": "2024-11-14",
+      "paymentPctAsOf": "2024-11-14",
+      "paymentPctNoticePublishedAt": "2024-11-19",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "Raytech Corporation Asbestos PI Settlement Trust, Notice of Pro-Rata Percentage Increase (dated 2024-11-19): with TAC and Legal Representative consent, the Trustees increased the Pro-rata Percentage to 1.35% effective November 14, 2024.",
+      "paymentPercentageSourceUrl": "https://www.cpf-inc.com/api/files/media/Raytech%20Trust%20Notice%20of%20Payment%20Percentage%20Increase%2011_2024%20%284%29.pdf",
+      "note": "Pro-rata Percentage 1.35% effective 11/14/2024 per the official administrator notice dated 11/19/2024."
     },
     {
       "name": "Keene Creditors Trust",
       "netAssets": 20896919,
       "assetsAsOf": "2021-12-31",
       "assetsBasis": "assets per FY2021 annual report (secondary compilation)",
-      "paymentPercentage": null,
+      "paymentPercentage": 1.05,
       "status": "active",
       "confidence": "secondary",
       "cumulativePaid": null,
@@ -1133,7 +1185,14 @@
       "court": "Bankr. S.D.N.Y.",
       "docket": "93-46090",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctEffective": "2024-10-24",
+      "paymentPctAsOf": "2024-10-24",
+      "paymentPctNoticePublishedAt": "2024-10-28",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "Keene Creditors Trust, Notice of Payment Percentage Increase (dated 2024-10-28): with Trust Advisory Committee consent, the Trustee increased the payment percentage to 1.05% effective October 24, 2024.",
+      "paymentPercentageSourceUrl": "https://www.cpf-inc.com/api/files/media/Keene_Trust_Notice_of_Payment_Percentage_Increase_2024%20%284%29.pdf",
+      "note": "Payment percentage 1.05% effective 10/24/2024 per the official administrator notice dated 10/28/2024."
     },
     {
       "name": "H.K. Porter Asbestos Trust",
@@ -1181,7 +1240,7 @@
       "netAssets": 9145960,
       "assetsAsOf": "2022-12-31",
       "assetsBasis": "assets per FY2022 annual report (secondary compilation)",
-      "paymentPercentage": 18,
+      "paymentPercentage": null,
       "status": "active",
       "confidence": "secondary",
       "cumulativePaid": null,
@@ -1194,7 +1253,12 @@
       "docket": "02-20388",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2020-09-01"
+      "paymentPctAsOf": "2026-10-07",
+      "paymentPctAvailability": "not_publicly_reported",
+      "paymentPctAvailabilityNote": "The latest official document located (2020) announced the Trustee's intended action to reduce the payment percentage from 21% to 18% on or about September 1, 2020; it is not a post-effective implementation confirmation, and no later official implementation notice or current rate statement was found. No rate is inferred.",
+      "paymentPercentageSource": "A-Best Asbestos Settlement Trust, Notice of Trustee Action to Adjust Payment Percentage (2020): notice of intended action to decrease 21% to 18% effective on or about September 1, 2020, subject to a written-response process; not a post-effective confirmation.",
+      "paymentPercentageSourceUrl": "https://www.abestasbestostrust.com/assets/documents/resources/Notice-of-Trustee-Action-to-Reduce-Payment-Percentage-2020.pdf",
+      "note": "Current payment percentage not publicly reported. The previously displayed 18% came from a 2020 notice of intended Trustee action (21% to 18% on or about 9/1/2020), not a post-effective implementation confirmation."
     },
     {
       "name": "ARTRA 524(g) Asbestos Trust",
@@ -1249,25 +1313,33 @@
       "paymentPctAsOf": "2026-06-07",
       "status": "active",
       "confidence": "secondary",
-      "note": "Track as ACTIVE, but flag it as a dissolution trust under West Virginia state-court supervision \u2014 NOT a 524(g) bankruptcy trust. It pays Scheduled Payments per disease class, so a payment-percentage field does not apply; the spreadsheet's '1' is not a percentage in the same sense as other rows. Retrieve the Kanawha County order and the TDP from the Resources page for the Scheduled Payment schedule.",
+      "note": "Current payment-rate field remains unreported. HISTORICAL FINAL DISTRIBUTION ONLY (not a current rate): 8.46% prorated final distribution on 7/8/2020 after funds were exhausted, per the official 9/1/2020 Notice Regarding Final Payments. Dissolution trust under West Virginia state-court supervision \u2014 NOT a 524(g) bankruptcy trust; it paid Scheduled Payments per disease class. The spreadsheet's '1' is not a percentage.",
       "evidence": "CORRECTED after an initial CDX query wrongly returned zero captures; a retry found captures through 2026-06-07. The official trust site (Wayback capture 2026-06-07) describes an operating trust and \u2014 importantly \u2014 one that is NOT a bankruptcy 524(g) trust: \"The A&I Corporation Asbestos Bodily Injury",
       "sourceUrl": "https://web.archive.org/web/20260607234806id_/https://www.aisettlement.com/",
       "sourceType": "official_trust_website",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctHistoricalNote": "Historical final distribution \u2014 not an operating payment rate: after the Trust reported its funds were exhausted, the final claims distribution on July 8, 2020 prorated remaining valid claims at 8.46% (official Notice Regarding Final Payments, September 1, 2020). Claims had previously been paid at 100% of liquidated value.",
+      "paymentPctHistoricalSourceUrl": "https://www.aisettlement.com/assets/documents/resources/AI-Notice-re-final-payments.pdf"
     },
     {
       "name": "Burns and Roe Personal Injury Settlement Trust",
       "netAssets": null,
       "assetsAsOf": null,
-      "paymentPercentage": null,
-      "paymentPctAsOf": "2026-02-10",
+      "paymentPercentage": 36.87,
+      "paymentPctAsOf": "2024-03-13",
       "status": "active",
       "confidence": "secondary",
-      "note": "Track as ACTIVE. Retrieve the two payment-percentage notice PDFs from the Resources page to source a current percentage; spreadsheet's 32% is unverified.",
+      "note": "Track as ACTIVE. Payment percentage 36.87% effective 3/13/2024 per the Trust's official Payment Percentage Adjustment notice (TAC and FCR consent); Disease Level I cash-discount claims are excluded and paid at Scheduled Value.",
       "evidence": "Official trust site, live as of the 2026-02-10 Wayback capture, describes an operating trust: \"The Burns and Roe Personal Injury Settlement Trust was created in 2009 as a result of the confirmation of the Burns and Roe Chapter 11 Joint Plan of Reorganization\" and states claim forms and TDP are avail",
       "sourceUrl": "https://web.archive.org/web/20260210212647id_/https://www.burnsandroetrust.com/",
       "sourceType": "official_trust_website",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctEffective": "2024-03-13",
+      "paymentPctNoticePublishedAt": "2024-03-13",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "Burns and Roe Asbestos PI Settlement Trust, Payment Percentage Adjustment (dated 2024-03-13): with Future Claimants' Representative and Trust Advisory Committee consent, the Trustee adjusted the Payment Percentage to 36.87% effective March 13, 2024.",
+      "paymentPercentageSourceUrl": "https://www.burnsandroetrust.com/assets/uploadedFiles/ca37d73b-c3d2-4897-9201-607bce86df54.pdf",
+      "paymentPctScopeNote": "36.87% applies generally to Trust Claims. Exception: Disease Level I cash-discount claims are excluded from the payment percentage and are paid at Scheduled Value."
     },
     {
       "name": "C.E. Thurston & Sons Asbestos Trust",
@@ -1291,15 +1363,20 @@
       "name": "Duro Dyne Asbestos Personal Injury Trust",
       "netAssets": null,
       "assetsAsOf": null,
-      "paymentPercentage": null,
-      "paymentPctAsOf": "2021-11-30",
+      "paymentPercentage": 20,
+      "paymentPctAsOf": "2026-07-10",
       "status": "active",
       "confidence": "secondary",
-      "note": "Track as ACTIVE (open to claims since 2021-09-20) with NO payment percentage. Do not publish 28.4% \u2014 it is HTML-commented, i.e. staged but unpublished. The newest capture is 2022-01-12, so current status is 4+ years stale; request a grant for durodyneasbestostrust.com to refresh.",
+      "note": "Track as ACTIVE (open to claims since 2021-09-20). Current applied rate 20% per the official 7/10/2026 notice; 40% is proposed only and is not published as the operating rate. The earlier HTML-commented 28.4% remains unpublished and unused.",
       "evidence": "CORRECTED after an initial CDX query wrongly returned zero captures; a retry found a 2021-11-30 capture. The official trust site states: \"The Trust began accepting claims on 09/20/2021. A $50 filing fee is required for ALL claims.\" Administered by MFR Claims Processing, Newtown PA. This supersedes t",
       "sourceUrl": "https://web.archive.org/web/20211130144422id_/http://durodyneasbestostrust.com/",
       "sourceType": "official_trust_website",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctNoticePublishedAt": "2026-07-10",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "Duro Dyne Asbestos PI Trust, Notice Regarding Payment Percentage (dated 2026-07-10): the Payment Percentage currently applied to claims paid by the Trust is 20%; the Trustee is reconsidering it under TDP \u00a74.3 and the proposed Payment Percentage is 40%, subject to TAC and Future Claimants' Representative consent under TDP \u00a74.2.",
+      "paymentPercentageSourceUrl": "https://durodyne.mfrclaims.com/assets/documents/resources/DuroDyne_Notice%20Regarding%20Payment%20Percentage%20%287-10-2026%29.pdf",
+      "paymentPctScopeNote": "20% is the current rate applied to paid claims. 40% is only a proposed rate under reconsideration (requires TAC and Future Claimants' Representative consent) and is not the operating rate."
     },
     {
       "name": "Leslie Controls, Inc. Asbestos Personal Injury Trust",
@@ -1357,29 +1434,38 @@
       "name": "Brauer 524(g) Asbestos Trust (Brauer Supply Company)",
       "netAssets": null,
       "assetsAsOf": null,
-      "paymentPercentage": null,
-      "paymentPctAsOf": "2025-11-13",
+      "paymentPercentage": 9.5,
+      "paymentPctAsOf": "2023-04-01",
       "status": "active",
       "confidence": "secondary",
-      "note": "Track as ACTIVE. Retrieve the payment-percentage notice PDF before publishing a percentage; spreadsheet's 5.5% is unverified.",
+      "note": "Track as ACTIVE. Payment percentage 9.5% effective 4/1/2023 per the official Resolution of the Trustee, TAC, and Futures Representative.",
       "evidence": "Official trust site (Wayback capture 2025-11-13) describes an operating trust: \"The Brauer 524(g) Asbestos Trust was created in 2012 as a result of the confirmation of the Brauer Supply Company Chapter 11 Fourth Amended Plan of Reorganization\" with claim forms and TDP available for download. The Not",
       "sourceUrl": "https://web.archive.org/web/20251113141327id_/https://www.brauertrust.com/",
       "sourceType": "official_trust_website",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctEffective": "2023-04-01",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "Brauer 524(g) Asbestos Trust, Resolution of the Trustee, Trust Advisory Committee, and Futures Representative: payment percentage set at 9.5% effective April 1, 2023.",
+      "paymentPercentageSourceUrl": "https://www.brauertrust.com/assets/uploadedFiles/a661c741-38a2-4760-bc79-6876c8b169fd.pdf"
     },
     {
       "name": "T H Agriculture & Nutrition, L.L.C. Asbestos Personal Injury Trust (THAN)",
       "netAssets": null,
       "assetsAsOf": null,
-      "paymentPercentage": 15,
-      "paymentPctAsOf": "2020-04-22",
+      "paymentPercentage": 16.3,
+      "paymentPctAsOf": "2026-09-01",
       "status": "active",
       "confidence": "filed",
-      "note": "ADD to the tracked dataset. Publish the 15% percentage ONLY with its 2020-04-22 as-of date \u2014 it is 6 years stale and may have been superseded. FY2023 is the newest annual report posted; pull FY2024/FY2025 from the SDNY docket for current net assets.",
+      "note": "Payment Percentage for FIFO Payment Queue claims increased from 15% (as of 2020-04-22) to 16.3% effective 9/1/2026 per the Trust's official notice; prior 15% payments receive supplemental payments under TDP \u00a74.3. FY2023 is the newest annual report posted; pull FY2024/FY2025 from the SDNY docket for current net assets.",
       "evidence": "Official trust site live as of the 2026-01-13 Wayback capture. The court-filed FY2023 annual report (Bankr. S.D.N.Y., Case No. 08-14692 (REG), Doc 666, filed 04/30/24) confirms the trust's separate identity and origin: \"On November 24, 2008, T H Agriculture & Nutrition, L.L.C. ... filed a petition f",
       "sourceUrl": "https://web.archive.org/web/20260113070233id_/https://www.thanasbestostrust.com/assets/uploadedFiles/751077d8-fd36-48bf-9a79-e817980e6975.pdf",
       "sourceType": "court_filed_document",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctEffective": "2026-09-01",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSource": "T H Agriculture & Nutrition, L.L.C. Asbestos PI Trust, Notice Regarding Payment Percentage: effective September 1, 2026, the Payment Percentage applied to all claims in the FIFO Payment Queue increased from 15% to 16.3%; claims previously paid at 15% receive supplemental payments under TDP \u00a74.3.",
+      "paymentPercentageSourceUrl": "https://www.thanasbestostrust.com/assets/uploadedFiles/ff70ae1e-c348-4494-81d4-790125ea7b4d.pdf",
+      "paymentPctScopeNote": "16.3% applies to claims in the FIFO Payment Queue, effective September 1, 2026. Claims previously paid at the prior 15% Payment Percentage receive supplemental payments under TDP \u00a74.3."
     },
     {
       "name": "United States Mineral Products Company Asbestos PI Settlement Trust",
@@ -1441,6 +1527,114 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_change",
+      "trust": "API, Inc. Asbestos Settlement Trust",
+      "detail": "Payment Sum Percentage updated from 22% to 44% for Claims approved on or after September 1, 2026; Enhanced Claims retain distinct treatment. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "API, Inc. Asbestos Settlement Trust, Notices from the Trustee (2026-09-01)",
+      "sourceUrl": "https://apiincasbestossettlementtrust.com/notices-from-the-trustee/",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_added",
+      "trust": "Raytech (Raymark) Trust",
+      "detail": "Payment percentage added: unreported \u2192 1.35% Pro-rata Percentage, effective November 14, 2024. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Raytech Trust, Notice of Pro-Rata Percentage Increase (2024-11-19)",
+      "sourceUrl": "https://www.cpf-inc.com/api/files/media/Raytech%20Trust%20Notice%20of%20Payment%20Percentage%20Increase%2011_2024%20%284%29.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_added",
+      "trust": "Keene Creditors Trust",
+      "detail": "Payment percentage added: unreported \u2192 1.05%, effective October 24, 2024. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Keene Creditors Trust, Notice of Payment Percentage Increase (2024-10-28)",
+      "sourceUrl": "https://www.cpf-inc.com/api/files/media/Keene_Trust_Notice_of_Payment_Percentage_Increase_2024%20%284%29.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_added",
+      "trust": "Burns and Roe Personal Injury Settlement Trust",
+      "detail": "Payment percentage added: unreported \u2192 36.87%, effective March 13, 2024, with TAC and FCR consent; Disease Level I cash-discount claims remain excluded and are paid at Scheduled Value. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Burns and Roe Trust, Payment Percentage Adjustment (2024-03-13)",
+      "sourceUrl": "https://www.burnsandroetrust.com/assets/uploadedFiles/ca37d73b-c3d2-4897-9201-607bce86df54.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_added",
+      "trust": "Brauer 524(g) Asbestos Trust (Brauer Supply Company)",
+      "detail": "Payment percentage added: unreported \u2192 9.5%, effective April 1, 2023, after Trustee, TAC, and Futures Representative consent. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Brauer 524(g) Asbestos Trust, Resolution of the Trustee, TAC, and Futures Representative",
+      "sourceUrl": "https://www.brauertrust.com/assets/uploadedFiles/a661c741-38a2-4760-bc79-6876c8b169fd.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_change",
+      "trust": "T H Agriculture & Nutrition, L.L.C. Asbestos Personal Injury Trust (THAN)",
+      "detail": "Payment Percentage updated from 15% to 16.3% for claims in the FIFO Payment Queue, effective September 1, 2026; claims previously paid at 15% receive supplemental payments under TDP \u00a74.3. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "THAN Trust, Notice Regarding Payment Percentage (2026)",
+      "sourceUrl": "https://www.thanasbestostrust.com/assets/uploadedFiles/ff70ae1e-c348-4494-81d4-790125ea7b4d.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_qualification",
+      "trust": "Quigley Company Asbestos PI Trust",
+      "detail": "Single 13.3% value replaced with a two-rate presentation: 13.3% for Non-Releasing and 3.3% for Releasing Asbestos PI Claimants, both effective October 30, 2025. 13.3% is no longer shown as a trust-wide rate. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Quigley Asbestos PI Trust, Notice (2025-11-10)",
+      "sourceUrl": "https://www.quigleytrust.com/assets/uploadedFiles/86ced2a8-b934-4657-a9d2-63311a567492.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_qualification",
+      "trust": "Kaiser Asbestos PI Trust",
+      "detail": "10.6% retained only as an interim, consent-pending applied rate beginning February 5, 2025 (proposed decrease subject to TAC and FCR consent); the unsupported 2006-01-01 effective date was removed. Not described as final or fully adopted. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Kaiser Asbestos PI Trust, Notice of Request for Consent to Decrease Payment Percentage (2025-02-05)",
+      "sourceUrl": "https://www.kaiserasbestostrust.com/assets/uploadedFiles/a9fa8368-7c64-4c40-9312-d95c42ff8c06.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_added",
+      "trust": "Duro Dyne Asbestos Personal Injury Trust",
+      "detail": "Payment percentage added: unreported \u2192 20% current applied rate. 40% is labeled as proposed only and is not published as the operating rate. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Duro Dyne Trust, Notice Regarding Payment Percentage (2026-07-10)",
+      "sourceUrl": "https://durodyne.mfrclaims.com/assets/documents/resources/DuroDyne_Notice%20Regarding%20Payment%20Percentage%20%287-10-2026%29.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_qualification",
+      "trust": "A & I Corporation Asbestos Bodily Injury Trust",
+      "detail": "Current payment-rate field kept unreported. Added a visibly separate historical note: 8.46% was the prorated final distribution on July 8, 2020 after funds were exhausted, not an operating payment rate. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "A&I Trust, Notice Regarding Final Payments (2020-09-01)",
+      "sourceUrl": "https://www.aisettlement.com/assets/documents/resources/AI-Notice-re-final-payments.pdf",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_withdrawn",
+      "trust": "Eagle-Picher Industries PI Settlement Trust",
+      "detail": "Unsupported current 35% replaced with 'not publicly reported': the accessible official administrator page publishes no current percentage; historical 33% material is not current-rate proof. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "Claims Processing Facility \u2014 EPI Trust page (reviewed 2026-10-07)",
+      "sourceUrl": "https://www.cpf-inc.com/trusts/epi-trust/",
+      "confidence": "primary"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "payment_percentage_withdrawn",
+      "trust": "A-Best Products Asbestos Trust",
+      "detail": "18% replaced with 'not publicly reported': the 2020 official notice announced intended Trustee action to reduce 21% to 18% on or about September 1, 2020 but is not a post-effective implementation confirmation. Released 2026-10-08 under the approved bounded release of the 2026-10-07 payment-rate reconciliation packet (approver: C.V.F.).",
+      "source": "A-Best Trust, Notice of Trustee Action to Adjust Payment Percentage (2020)",
+      "sourceUrl": "https://www.abestasbestostrust.com/assets/documents/resources/Notice-of-Trustee-Action-to-Reduce-Payment-Percentage-2020.pdf",
+      "confidence": "primary"
+    },
     {
       "date": "2026-10-06",
       "type": "payment_percentage_qualification",

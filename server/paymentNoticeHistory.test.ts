@@ -8,7 +8,7 @@ const read = (relativePath: string) => fs.readFileSync(path.join(root, relativeP
 
 describe("official payment-notice history", () => {
   it("keeps every public history entry source-linked, scoped, and limited to reviewed official records", () => {
-    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(8);
+    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(18);
     for (const item of OFFICIAL_PAYMENT_NOTICES) {
       expect(item.sourceUrl).toMatch(/^https:\/\//);
       expect(item.sourceLabel.length).toBeGreaterThan(20);

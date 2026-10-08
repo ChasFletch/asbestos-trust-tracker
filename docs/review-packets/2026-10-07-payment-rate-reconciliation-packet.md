@@ -1,15 +1,25 @@
 # Payment-Rate Reconciliation Packet — October 7, 2026
 
-**Status:** Pending Charles’s specific release decision  
+**Status:** Decision recorded — approved: full bounded release (12 records), 2026-10-08  
 **Scope:** Public tracker payment-percentage fields only  
 **Prepared by:** Manus AI  
-**Public action in this packet:** None
+**Public action in this packet:** None at preparation; see the decision record below for the approved release
 
 ## Decision requested
 
 The manual official-source sweep reviewed all 55 tracker records and found source-supported corrections or reclassifications that should **not** be applied as one automatic batch. This packet separates fully supported numerical changes from records that require a more conservative public presentation. It asks for a specific decision on whether to release a bounded tracker-update batch after final record-by-record implementation and validation.
 
 No public tracker data, news item, source code, or deployment has changed as part of this packet. It preserves the post-pilot monitoring authorization: a verified source finding is not a publication decision.
+
+## Decision record
+
+| Field | Value |
+|---|---|
+| Decision | **Approved — full bounded release** of all twelve records in this packet: the six release-safe numerical corrections as plain numbers, and the six qualified-presentation records using exactly the handling in the table below. |
+| Approver | C.V.F. |
+| Decision date | 2026-10-08, 6:40 PM CT (“Release all twelve, with caveats on six.”) |
+| Not released | The NGC Bodily Injury Trust conflict (no change; 45% remains pending recheck), the qualification-only follow-up list, and any article. No attorney reviewer is credited. |
+| Implementation | Canonical dataset (`client/src/data/trust-figures.json`, 12 `changes` entries dated 2026-10-08), official payment-notice history, trust detail, trust list, CSV/API projections, crawler-visible trust-detail metadata, Corrections page, and `docs/figure-provenance-changelog.md`. Regression test: `server/paymentRateReconciliationRelease.test.ts`. |
 
 ## Release-safe numerical corrections
 

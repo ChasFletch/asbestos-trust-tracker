@@ -229,8 +229,8 @@ export function registerDataRoutes(app: Express) {
       const jsonTrusts = data?.trusts ?? [];
       const headers = [
         "name", "shortName", "netAssets", "assetsAsOf", "assetsBasis",
-        "paymentPercentage", "paymentPctEffective", "paymentPctAsOf",
-        "paymentPctAvailability", "paymentPctAvailabilityNote", "paymentPctNoticePublishedAt", "paymentPctImplementationStatus", "paymentPctImplementationNote", "paymentPercentageSourceUrl",
+        "paymentPercentage", "paymentPercentageLabel", "paymentPercentageFB", "paymentPercentageFBLabel", "paymentPctEffective", "paymentPctAsOf",
+        "paymentPctAvailability", "paymentPctAvailabilityNote", "paymentPctNoticePublishedAt", "paymentPctImplementationStatus", "paymentPctImplementationNote", "paymentPctScopeNote", "paymentPctHistoricalNote", "paymentPercentageSourceUrl",
         "status", "confidence", "note",
       ];
       const escape = (v: unknown) => {

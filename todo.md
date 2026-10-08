@@ -642,3 +642,13 @@
 - [x] Reviewed the C.E. Thurston official-page fingerprint signal; the page did not publish a current rate or new annual report, so its public **not publicly reported** rate posture remains unchanged.
 - [x] Recorded 19 direct access limitations as operational findings only; no source replacement was registered and no absence-of-change inference was made.
 - [ ] Keep the October 7 payment-rate reconciliation packet pending a specific release decision. This detection pass did not create or amend a correction packet, edit public tracker data, create public news, publish source code, or deploy.
+
+
+## Post-Pilot Rate and Annual-Report Monitoring — October 8, 2026
+
+- [x] Reviewed the active monitoring authorization, former-pilot run status, 61-source registry health, current candidate queue, and latest weekly coverage before detection.
+- [x] Checked 25 registered controlling sources within 20 seconds; retained the raw outcome in `docs/post-pilot-monitoring/2026-10-08-detection-pass.json`.
+- [x] Deduplicated the Manville feed and notice signals to the existing September 3, 2026 5.1%→5.6% event; the official notice presents no newer rate or annual report.
+- [x] Reviewed the C.E. Thurston official-page signal; it states no current percentage and announces no new annual report, so the public **not publicly reported** posture remains unchanged.
+- [x] Recorded 19 direct-access limitations without registering a new source or inferring a rate/report absence. The DBMP docket signal remains excluded as out of scope.
+- [ ] Keep the October 7 payment-rate reconciliation packet pending a specific release decision. This run did not create or amend a correction packet, edit public tracker data, create public news, publish source code, or deploy.

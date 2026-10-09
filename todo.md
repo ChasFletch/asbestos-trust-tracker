@@ -630,6 +630,7 @@
 - [x] Completed a no-charge, trust-by-trust manual reconciliation of all 55 tracked payment-percentage records against official trust, administrator, or filed-source material.
 - [x] Preserved the source-by-source result, material qualifications, and the no-publication boundary in `docs/payment-rate-verification-2026-10-07/manual-official-payment-rate-sweep.md`.
 - [x] Recorded C.V.F.'s October 8 approval and released the bounded 12-record correction set: API, Raytech, Keene, Burns and Roe, Brauer, THAN, Quigley, Kaiser, Duro Dyne, A&I, Eagle-Picher, and A-Best. The NGC 45%/40% conflict remains unchanged pending an official-source recheck.
+- [x] Reconciled the NGC conflict against the dated January 19, 2023 40%→45% Trustee notice, the February 16, 2023 official 45% implementation update, the current undated 40% FAQ, and the CRP. The tracker remains at 45% without public action; the FAQ is retained as an unresolved official-site contradiction, not called stale. See `docs/ngc-payment-percentage-reconciliation-2026-10-08.md`.
 - [x] Retained G-I Holdings, Eagle-Picher, J.T. Thorpe TX, Porter Hayden, A-Best, Rapid-American, and C.E. Thurston as **not publicly reported** where a current official rate is unavailable; no rate was inferred from historical, initial, intended-action, or third-party material.
 - [x] Shipped adjacent scope and implementation qualifications: current versus proposed, interim consent-pending treatment, claimant group, FIFO queue, cash-discount, and historical final-distribution distinctions.
 

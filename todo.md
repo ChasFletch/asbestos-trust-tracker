@@ -629,9 +629,9 @@
 
 - [x] Completed a no-charge, trust-by-trust manual reconciliation of all 55 tracked payment-percentage records against official trust, administrator, or filed-source material.
 - [x] Preserved the source-by-source result, material qualifications, and the no-publication boundary in `docs/payment-rate-verification-2026-10-07/manual-official-payment-rate-sweep.md`.
-- [ ] Obtain a specific release decision before editing any public tracker record. The controlled correction queue includes: API (44% effective 2026-09-01); Quigley dual claimant rates; Kaiser date/finality; Raytech (1.35%); Keene (1.05%); Burns and Roe (36.87%); Duro Dyne (20% current, 40% proposed); Brauer (9.5%); THAN (16.3% effective 2026-09-01); and removal/reclassification questions for Eagle-Picher, A-Best, and A&I. Resolve the official NGC 45%/40% source conflict before any public assertion.
-- [ ] Retain seven official-current-rate gaps as unreported unless a later controlling publication establishes a current figure: G-I Holdings, Eagle-Picher, J.T. Thorpe TX, Porter Hayden, A-Best, Rapid-American, and C.E. Thurston. Do not infer a rate from historical, initial, intended-action, or third-party material.
-- [ ] Preserve scope/implementation qualifiers before any public release, including current-versus-proposed, pending-consent, ER/IR value base, sub-account, cutoff, released-claim, cash-discount, and final-distribution distinctions.
+- [x] Recorded C.V.F.'s October 8 approval and released the bounded 12-record correction set: API, Raytech, Keene, Burns and Roe, Brauer, THAN, Quigley, Kaiser, Duro Dyne, A&I, Eagle-Picher, and A-Best. The NGC 45%/40% conflict remains unchanged pending an official-source recheck.
+- [x] Retained G-I Holdings, Eagle-Picher, J.T. Thorpe TX, Porter Hayden, A-Best, Rapid-American, and C.E. Thurston as **not publicly reported** where a current official rate is unavailable; no rate was inferred from historical, initial, intended-action, or third-party material.
+- [x] Shipped adjacent scope and implementation qualifications: current versus proposed, interim consent-pending treatment, claimant group, FIFO queue, cash-discount, and historical final-distribution distinctions.
 
 
 ## Post-Pilot Rate and Annual-Report Monitoring — October 7, 2026
@@ -641,7 +641,7 @@
 - [x] Deduplicated the two Manville fingerprint signals to one already-covered September 3 payment event; no newer controlling rate or annual-report event was found.
 - [x] Reviewed the C.E. Thurston official-page fingerprint signal; the page did not publish a current rate or new annual report, so its public **not publicly reported** rate posture remains unchanged.
 - [x] Recorded 19 direct access limitations as operational findings only; no source replacement was registered and no absence-of-change inference was made.
-- [ ] Keep the October 7 payment-rate reconciliation packet pending a specific release decision. This detection pass did not create or amend a correction packet, edit public tracker data, create public news, publish source code, or deploy.
+- [x] Reconciled this detection pass to the October 8 approved bounded tracker release; the pass itself did not contribute a new candidate or public fact.
 
 
 ## Post-Pilot Rate and Annual-Report Monitoring — October 8, 2026
@@ -651,4 +651,4 @@
 - [x] Deduplicated the Manville feed and notice signals to the existing September 3, 2026 5.1%→5.6% event; the official notice presents no newer rate or annual report.
 - [x] Reviewed the C.E. Thurston official-page signal; it states no current percentage and announces no new annual report, so the public **not publicly reported** posture remains unchanged.
 - [x] Recorded 19 direct-access limitations without registering a new source or inferring a rate/report absence. The DBMP docket signal remains excluded as out of scope.
-- [ ] Keep the October 7 payment-rate reconciliation packet pending a specific release decision. This run did not create or amend a correction packet, edit public tracker data, create public news, publish source code, or deploy.
+- [x] Reconciled this detection pass to the October 8 approved bounded tracker release; no fact from this run changed the release scope.

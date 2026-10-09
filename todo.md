@@ -653,3 +653,11 @@
 - [x] Reviewed the C.E. Thurston official-page signal; it states no current percentage and announces no new annual report, so the public **not publicly reported** posture remains unchanged.
 - [x] Recorded 19 direct-access limitations without registering a new source or inferring a rate/report absence. The DBMP docket signal remains excluded as out of scope.
 - [x] Reconciled this detection pass to the October 8 approved bounded tracker release; no fact from this run changed the release scope.
+
+## Post-Pilot Rate and Annual-Report Monitoring — October 9, 2026
+
+- [x] Reviewed the active October 6–November 5 authorization, 61-source registry, open candidate queue, October 4 coverage, and October 7–8 monitoring records before detection.
+- [x] Checked 25 due registered official-trust, administrator, and primary-document URLs in 5.8 seconds; retained the raw outcome in `docs/post-pilot-monitoring/2026-10-09-detection-pass.json` and the source review in `docs/post-pilot-monitoring/2026-10-09-rate-and-annual-report-monitoring-log.md`.
+- [x] Deduplicated the Manville feed and September 3 notice to the already-covered 5.1%→5.6% event; no later controlling notice or annual report was identified.
+- [x] Reviewed the API, Motors Liquidation, and C.E. Thurston official-source signals within the three-candidate cap. No current/new rate or annual-report posting qualified: API supplied only generic information, MLC’s latest listed rate notice remains December 3, 2025, and Thurston’s rate remains **not publicly reported**.
+- [x] Recorded 18 direct access blockers operationally, without inferring that any affected trust did not publish a notice or annual report. No source-registration change, correction packet, public-data edit, article, code publication, deployment, or reviewer attribution resulted.

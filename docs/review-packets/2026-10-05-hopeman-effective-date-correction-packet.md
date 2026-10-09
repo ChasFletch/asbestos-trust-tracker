@@ -1,8 +1,9 @@
 # Hopeman Brothers Article Correction — Review Packet
 
-**Prepared:** October 5, 2026  
-**Status:** Prepared for ANCHOR → CLEO → Charles review; **not public**  
-**Affected public article:** `https://asbestostrusts.org/news/hopeman-brothers-plan-confirmed`  
+**Prepared:** October 5, 2026
+**Routing reactivated:** October 9, 2026
+**Status:** Ready for ANCHOR → CLEO → Charles review; named reviewer destination not available to this task; **not public**
+**Affected public article:** `https://asbestostrusts.org/news/hopeman-brothers-plan-confirmed`
 **Current public title:** *Hopeman Brothers Plan Confirmed: What the Proposed Asbestos Trust Does—and Does Not—Mean Yet*
 
 ## Why this correction is required
@@ -45,3 +46,9 @@ The correction is substantive court-status reporting. It must not be published u
 | Charles | Publication decision after the two review dispositions. |
 
 No attorney review is claimed. The article-specific review field remains `NULL` unless a named, dated review with a documented scope occurs.
+
+## October 9 routing status
+
+The affected public article was rechecked on October 9 and still carries the stale September 3 source cut-off, the incorrect Bankruptcy Court attribution, and language saying the plan was not effective / trust establishment was not publicly established. A complete non-public replacement draft is available as `2026-10-09-hopeman-effective-date-correction-draft.md`.
+
+No factual source is missing from this packet for the proposed correction. The remaining requirements are procedural: (1) a named ANCHOR destination and dated editorial disposition, (2) a dated CLEO source-to-sentence QA with a final source cut-off, and (3) Charles’s publication decision. The current Project task roster has no named ANCHOR or CLEO review task, and this task cannot access an agent-routing endpoint. No review or release has been inferred from this status update.

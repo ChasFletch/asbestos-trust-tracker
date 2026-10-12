@@ -661,3 +661,10 @@
 - [x] Deduplicated the Manville feed and September 3 notice to the already-covered 5.1%→5.6% event; no later controlling notice or annual report was identified.
 - [x] Reviewed the API, Motors Liquidation, and C.E. Thurston official-source signals within the three-candidate cap. No current/new rate or annual-report posting qualified: API supplied only generic information, MLC’s latest listed rate notice remains December 3, 2025, and Thurston’s rate remains **not publicly reported**.
 - [x] Recorded 18 direct access blockers operationally, without inferring that any affected trust did not publish a notice or annual report. No source-registration change, correction packet, public-data edit, article, code publication, deployment, or reviewer attribution resulted.
+
+## Post-Pilot Rate and Annual-Report Monitoring — October 12, 2026
+
+- [x] Reviewed the active October 6–November 5 authorization, active 62-source registry, unresolved candidate queue, October 4 coverage, and October 9 post-pilot pass before detection.
+- [x] Checked 25 due registered official-trust, administrator, and primary-document URLs in 20.7 seconds. Retained the raw outcome in `docs/post-pilot-monitoring/2026-10-12-detection-pass.json` and the controlling-source review in `docs/post-pilot-monitoring/2026-10-12-rate-and-annual-report-monitoring-log.md`.
+- [x] Reviewed exactly three fingerprint signals within the candidate cap: Manville’s individual notice is the already-covered September 3, 2026 5.1%→5.6% event; Bondex’s official CPF page supplies no current rate, rate notice, or annual report; and C.E. Thurston remains **not publicly reported** with no new report.
+- [x] Recorded 20 direct access observations—two configured no-charge transport timeouts included—as operational run evidence only. No source-registration decision, correction packet, public-data edit, article, code publication, deployment, or reviewer attribution resulted.

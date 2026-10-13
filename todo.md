@@ -668,3 +668,10 @@
 - [x] Checked 25 due registered official-trust, administrator, and primary-document URLs in 20.7 seconds. Retained the raw outcome in `docs/post-pilot-monitoring/2026-10-12-detection-pass.json` and the controlling-source review in `docs/post-pilot-monitoring/2026-10-12-rate-and-annual-report-monitoring-log.md`.
 - [x] Reviewed exactly three fingerprint signals within the candidate cap: Manville’s individual notice is the already-covered September 3, 2026 5.1%→5.6% event; Bondex’s official CPF page supplies no current rate, rate notice, or annual report; and C.E. Thurston remains **not publicly reported** with no new report.
 - [x] Recorded 20 direct access observations—two configured no-charge transport timeouts included—as operational run evidence only. No source-registration decision, correction packet, public-data edit, article, code publication, deployment, or reviewer attribution resulted.
+
+## Post-Pilot Rate and Annual-Report Monitoring — October 13, 2026
+
+- [x] Reviewed the active October 6–November 5 authorization, 75-record/62-active-source registry, unresolved queue, October 4 coverage, and October 12 monitoring record before detection.
+- [x] Checked 25 due registered official-trust, administrator, and primary-document URLs in 13.6 seconds. Retained the raw outcome in `docs/post-pilot-monitoring/2026-10-13-detection-pass.json` and the controlling-source review in `docs/post-pilot-monitoring/2026-10-13-rate-and-annual-report-monitoring-log.md`.
+- [x] Reviewed exactly three signals within the candidate cap: Manville remains the already-covered September 3, 2026 5.1%→5.6% event; Maremont’s undated 28.4% statement establishes no new dated rate/report event; and J.T. Thorpe (CA) repeats the already-recorded September 18 50%→53.7% announcement pending implementation. Bondex and C.E. Thurston were deduplicated to their October 12 dispositions.
+- [x] Recorded four direct access observations as operational evidence only. No source-registration decision, correction packet, public-data edit, article, code publication, deployment, or reviewer attribution resulted.

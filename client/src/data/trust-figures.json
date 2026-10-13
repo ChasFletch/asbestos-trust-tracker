@@ -2132,11 +2132,11 @@
       "source": "official trust notice"
     },
     {
-      "date": "2025-02-01",
+      "date": "2025-02-05",
       "type": "percentage_cut",
       "trust": "Kaiser",
-      "detail": "Payment percentage cut (current 10.6%; from 18.1%)",
-      "source": "trust notice (secondary reporting)"
+      "detail": "Interim, consent-pending payment percentage of 10.6% applied from 15.5% while the proposed decrease awaits TAC/FCR consent",
+      "source": "official trust notice (Notice of Request for Consent to Decrease Payment Percentage, 2025-02-05)"
     },
     {
       "date": "2025-01-31",

@@ -53,6 +53,19 @@ At approximately **2026-10-14 19:05 UTC**, independent public fetches of `https:
 
 No deploy or publication command was initiated in response to the intake handoff. The relevant owner request asked to create the homepage section; the intake handoff did not provide a separate release instruction. Because the feature was already publicly observable, no repeat deployment is appropriate. This QA packet records the observed release state only; it does not expand the monitoring authorization or retroactively claim an unrecorded release decision.
 
+## Release-record reconciliation — October 14 intake follow-up
+
+| Evidence class | Recovered evidence | What it proves | What it does not prove |
+|---|---|---|---|
+| Implementation checkpoint | `c5c827be`, created **2026-10-14 18:34:53 UTC** | The reviewed homepage implementation, its sources, and its local validation existed by that time. Its record expressly described the work as staged and stated that no deployment or publication had been requested or performed. | A production deployment, public-release timing, or a release decision. |
+| QA checkpoint | `84e3c938`, created **2026-10-14 19:09:05 UTC** | The later bounded QA record captured a live-page observation and adds no code/content change. | The mechanism that made the earlier checkpoint public. |
+| Independent public observation | Public homepage and detailed brief fetched at approximately **19:05 UTC** | The card and complete detailed brief were publicly visible before the documentation-only checkpoint. | Exact deployment time, actor, automation mechanism, or authority for a release. |
+| Visible article metadata | The detailed brief displays September 9 publication/material-update dates and a September 3 source cutoff. | The content’s stated editorial and source dates. | A real production-release date, approval, or deployment audit record. |
+
+No build/version identifier was exposed in the public response headers or available metadata endpoints that could tie the live response to `c5c827be` or `84e3c938`. No documented production-publish command, owner release disposition, or applicable `operations_releases` record was recovered during this read-only audit. The managed-database audit path did not yield a completed release-record query from this runtime; this is an **unknown**, not evidence that no record exists.
+
+**Current status:** **observed public**. The earlier “staged” statement remains historically accurate for `c5c827be` at its creation time. The reason and precise time of public availability are unverified. Automatic publication is not inferred from the observed result. This discrepancy is flagged to the publication owner in the project’s internal intake record and requires an owner/audit disposition before any future change to release controls.
+
 ## Disposition
 
 **No further site action.** Retain the live card and detailed brief as the verified presentation of the September 3 Manville notice. Future monitoring must continue to treat this as an already-covered event unless a later controlling official Manville notice or annual report appears.

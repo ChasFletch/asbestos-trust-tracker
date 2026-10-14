@@ -34,7 +34,7 @@ For the record, the citation correction this series exists to enforce: the ubiqu
 
 2025 was the busiest year for downward adjustments since the current cycle began. Four documented cuts landed:
 
-- **Kaiser** — cut to 10.6% (from 18.1%), February 2025 (b). The largest single-step reduction of the year.
+- **Kaiser** — cut to 10.6% (from 15.5%), February 2025 (b). The largest single-step reduction of the year.
 - **W.R. Grace** — cut 31.7% → 30.1%, effective April 17, 2025 (a, official trust notice).
 - **Quigley** — cut its Non-Releasing rate 14.5% → 13.3%, effective October 30, 2025 (a, official trust notice). The notice also adjusted the Releasing rate; the dataset does not capture the dual-rate structure, and we flag that rather than print half a figure. Verified from the official notice during backfill and queued for the changes log.
 - **Motors Liquidation (GM)** — cut 12.2% → 10.3%, announced December 3, 2025 (b, CRMC notice).

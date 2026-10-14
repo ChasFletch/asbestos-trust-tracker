@@ -50,7 +50,7 @@ The dataset's changes log records the direction of travel unambiguously. Since J
 
 - **Celotex** — 8% → 7% in June 2023 (a).
 - **Pittsburgh Corning** — 24.5% → 19% in November 2024 (a), pending TAC/FCR consent process with a true-up rider if not adopted.
-- **Kaiser** — 18.1% → 10.6% in February 2025 (b).
+- **Kaiser** — 15.5% → 10.6% in February 2025 (b).
 - **W.R. Grace** — 31.7% → 30.1% in April 2025 (a).
 - **Motors Liquidation (GM)** — 12.2% → 10.3% in December 2025 (b).
 - **Combustion Engineering** — cut to 15.3% in April 2026 (b). The documented history (18.5% → 29.5% → 15.3% (b)) remains the system's clearest raise-then-reverse case.

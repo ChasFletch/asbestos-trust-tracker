@@ -10,7 +10,7 @@
 |---|---|---|---|
 | Hopeman effective-date correction | Tier 2 review-ready correction | Existing complete replacement and review packet remain queued for named ANCHOR → CLEO → Charles routing; no duplicate draft or release | Existing article remains live and stale pending review |
 | Vanderbilt disclosure-statement proceedings | Tier 2 staged research brief | Preserve the completed primary-source brief as the evidence base; require a current docket cutoff and editorial conversion before any article path | No public article established |
-| Kaiser correction citation | Tier 1 citation-maintenance packet | Prepare a bounded source-link maintenance packet only; no numeric or status revision and no public edit without a specific release decision | Existing correction wording is live; source-link improvement pending |
+| Kaiser correction citation | Tier 1 citation-maintenance packet | Existing tracker correction wording is live; a separate bounded report-amendment provenance packet is complete and held for a specific release decision | No additional public edit from the intake packet |
 | Imerys proposed trust record | Needs source recovery/fact check | Preserve the three draft artifacts; recover later plan/court/effectiveness records before ANCHOR routing | No public record exists |
 | Unresolved candidate export | Needs source recovery/fact check | Preserve and reconcile the 76-row export with its derivative/count question before any candidate-by-candidate action | Internal only |
 | NGC 45%/40% conflict | Monitoring/reconciliation follow-up | Retain 45% without public change; recheck only if later controlling official material appears | Current public 45% remains unchanged |
@@ -58,6 +58,12 @@ The verified correction wording is already live: the 10.6% rate is described as 
 > Kaiser Trust, *Notice of Request for Consent to Decrease Payment Percentage* (Feb. 5, 2025) — payment rate; Kaiser Asbestos PI Trust 2022 Annual Report — net assets.
 
 **Disposition:** Prepare this as a **Tier 1 citation-maintenance packet** only. Do not change the rate, rate history, consent status, asset value, or aggregate. The active monitor does not authorize a public edit; a specific release decision remains required.
+
+### Report-amendment provenance follow-up — received October 14
+
+The two published reports now contain the corrected 15.5%→10.6% historical Kaiser baseline. The October 14 source commit and production verification corrected only those two report lines. A later intake handoff identified the remaining report-specific provenance gap: each report still displays its original publication date as its material-update date, has no direct official-notice link at the amended Kaiser statement, and retains the secondary `(b)` source tag despite the official trust notice now supporting the statement.
+
+**Disposition:** The complete, bounded packet is retained at `docs/review-packets/2026-10-14-kaiser-report-amendment-provenance-packet.md`. It preserves the existing July 27 and October 8 tracker corrections, requires no new rate conclusion, and is explicitly **held**. The original narrow production authorization does not release the separate report-provenance implementation, publication, or deployment.
 
 ## 4. Imerys Talc America proposed trust draft
 

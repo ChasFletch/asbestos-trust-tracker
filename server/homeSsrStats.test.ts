@@ -14,4 +14,14 @@ describe("Homepage statistic SSR", () => {
     expect(homeSource).toContain("{displayed}");
     expect(homeSource).not.toContain("{inView ? displayed : 0}");
   });
+
+  it("includes the source-qualified Manville trust update with usable reader links", () => {
+    expect(homeSource).toContain("Recent Trust Updates");
+    expect(homeSource).toContain("Payment percentage increased from");
+    expect(homeSource).toContain("5.1%");
+    expect(homeSource).toContain("5.6%");
+    expect(homeSource).toContain("/news/manville-payment-percentage-increase-september-2026");
+    expect(homeSource).toContain("https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/");
+    expect(homeSource).toContain("rel=\"noopener noreferrer\"");
+  });
 });

@@ -271,6 +271,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Recent trust updates ───────────────────────────────────────────── */}
+      <section className="container py-12" aria-labelledby="recent-trust-updates-heading">
+        <div className="flex flex-col gap-2 mb-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-mono uppercase tracking-[0.16em] text-primary">Official source update</p>
+            <h2 id="recent-trust-updates-heading" className="font-display font-bold uppercase tracking-wider text-lg mt-1">
+              Recent Trust Updates
+            </h2>
+          </div>
+          <Link href="/payment-notices" className="text-sm text-primary hover:underline no-underline flex items-center gap-1 w-fit">
+            View notice history <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+
+        <article className="relative overflow-hidden rounded-lg border border-primary/25 bg-card shadow-sm">
+          <div className="absolute inset-y-0 left-0 w-1 bg-primary" aria-hidden="true" />
+          <div className="p-6 pl-7 md:p-7 md:pl-8">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-muted-foreground">
+              <span className="font-semibold uppercase tracking-wider text-primary">Manville Personal Injury Settlement Trust</span>
+              <span aria-hidden="true">•</span>
+              <time dateTime="2026-09-03">Notice posted September 3, 2026</time>
+            </div>
+            <h3 className="font-display font-bold text-xl text-foreground mt-3 leading-tight md:text-2xl">
+              Payment percentage increased from <span className="text-primary">5.1%</span> to <span className="text-primary">5.6%</span>
+            </h3>
+            <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground mt-3">
+              Manville’s administrator states that the Trustees approved an immediate pro rata increase. The notice says e-Claims changes were implemented September 2, 2026 for future offers and outstanding offers.
+            </p>
+            <p className="max-w-3xl text-xs leading-relaxed text-muted-foreground/85 mt-3">
+              The notice does not report a new trust-asset balance, cumulative payout total, individual claim outcome, or universal eligibility for supplemental payment.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-5">
+              <Link href="/news/manville-payment-percentage-increase-september-2026" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline no-underline">
+                Read the full update <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+              <a
+                href="https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary hover:underline"
+              >
+                Open the official notice <span className="sr-only">(opens in a new tab)</span><ArrowRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
       {/* ── Latest news strip ───────────────────────────────────────────────── */}
       {news && news.length > 0 && (
         <section className="container py-12">

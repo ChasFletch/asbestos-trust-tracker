@@ -683,6 +683,13 @@
 - [x] Reviewed exactly two fingerprint signals within the candidate cap: Manville repeats the already-covered September 3, 2026 5.1%→5.6% event and does not establish completion of its planned supplemental-payment adjustment; C.E. Thurston’s general official homepage supplies no current rate, dated rate notice, or annual-report posting. Both candidates were rejected as no-new-fact dispositions.
 - [x] Recorded 18 direct access observations; eight new first-instance runtime-access candidates were marked blocked for a future no-charge recheck. No source-registration decision, correction packet, public-data edit, article, code publication, deployment, or reviewer attribution resulted.
 
+## Post-Pilot Rate and Annual-Report Monitoring — October 15, 2026
+
+- [x] Reviewed the active October 6–November 5 authorization, 75-record/62-active-source registry, 84-record unresolved queue, October 4 coverage, and October 14 post-pilot record before detection. Court and case-agent records were excluded because they cannot independently establish a rate or annual-report posting.
+- [x] Checked 25 due registered official-trust, administrator, and primary-document URLs in 33.8 seconds. Retained the raw outcome in `docs/post-pilot-monitoring/2026-10-15-detection-pass.json` and the controlling-source review in `docs/post-pilot-monitoring/2026-10-15-rate-and-annual-report-monitoring-log.md`.
+- [x] Reviewed exactly three fingerprint signals within the candidate cap: Maremont’s undated 28.4% statement repeats the October 13 review; Eagle-Picher’s official CPF page supplies no current rate, later rate action, or annual-report posting; and Combustion Engineering’s registered host returned a generic non-trust landing page. C.E. Thurston was deduplicated to October 14’s **payment percentage not publicly reported** disposition.
+- [x] Recorded 19 direct access observations operationally. Combustion Engineering is blocked for source-registration revalidation only; no replacement URL was registered. No correction packet, public-data edit, article, code publication, deployment, or reviewer attribution resulted.
+
 ## Manville Homepage Update — Intake QA — October 14, 2026
 
 - [x] Recovered and verified the existing `Recent Trust Updates` homepage card and its exact detailed brief destination, `/news/manville-payment-percentage-increase-september-2026`; no duplicate feature or article was created.

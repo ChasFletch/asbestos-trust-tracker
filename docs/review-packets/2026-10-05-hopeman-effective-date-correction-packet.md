@@ -52,3 +52,9 @@ No attorney review is claimed. The article-specific review field remains `NULL` 
 The affected public article was rechecked on October 9 and still carries the stale September 3 source cut-off, the incorrect Bankruptcy Court attribution, and language saying the plan was not effective / trust establishment was not publicly established. A complete non-public replacement draft is available as `2026-10-09-hopeman-effective-date-correction-draft.md`.
 
 No factual source is missing from this packet for the proposed correction. The remaining requirements are procedural: (1) a named ANCHOR destination and dated editorial disposition, (2) a dated CLEO source-to-sentence QA with a final source cut-off, and (3) Charles’s publication decision. The current Project task roster has no named ANCHOR or CLEO review task, and this task cannot access an agent-routing endpoint. No review or release has been inferred from this status update.
+
+## October 15 appeals provenance — bounded supplement
+
+Free CourtListener/RECAP notices now identify three Fourth Circuit appeal groups from originating district case `3:26-cv-00016-DJN`: Century Indemnity / Westchester Fire (No. 26-2188), Liberty Mutual (No. 26-2191), and St. Paul / Travelers (No. 26-2224). The free materials support party names, case numbers, origin/opening dates, and bankruptcy docket-entry dates only. The notices do not identify the precise district order appealed, and the text/effect of Liberty Mutual Fourth Circuit Doc. 38 (listed as an October 14 “Order filed”) is not freely available.
+
+This supplement is preserved at `intake-2026-10-15/03-hopeman-appeals.md`. It does **not** change the required effective-date correction, source cutoff, public article, review gates, or operational limitations. It adds no merits, funding, claims-opening, payment, or current-trust conclusion and must not be folded into public copy without a separately reviewed source-to-sentence decision.

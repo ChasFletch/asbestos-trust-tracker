@@ -106,9 +106,29 @@ export async function getCurrentAggregate() {
 
 // ── News queries ──────────────────────────────────────────────────────────────
 
+export const BW_HOMEPAGE_NEWS_ID = 1;
+export const BW_OBSOLETE_RECENCY_SUMMARY = "The B&W Asbestos Settlement Trust issued a payment percentage change notice reducing its rate from 4.7% to 4.3%, effective June 30, 2026. This is the most recent payment percentage change in the entire asbestos trust system.";
+export const BW_CORRECTED_SUMMARY = "The B&W Asbestos Settlement Trust issued a payment percentage change notice reducing its rate from 4.7% to 4.3%, effective June 30, 2026.";
+
+export function shouldCorrectBAndWHomepageSummary(item: { id: number; summary: string | null }) {
+  return item.id === BW_HOMEPAGE_NEWS_ID && item.summary === BW_OBSOLETE_RECENCY_SUMMARY;
+}
+
+async function correctBAndWHomepageSummary(db: NonNullable<Awaited<ReturnType<typeof getDb>>>) {
+  // This exact-match migration repairs the legacy production seed without
+  // touching any other news row or overwriting a later editorial update.
+  await db.update(newsItems)
+    .set({ summary: BW_CORRECTED_SUMMARY })
+    .where(and(
+      eq(newsItems.id, BW_HOMEPAGE_NEWS_ID),
+      eq(newsItems.summary, BW_OBSOLETE_RECENCY_SUMMARY),
+    ));
+}
+
 export async function getVisibleNews(limit = 20, category?: string) {
   const db = await getDb();
   if (!db) return [];
+  await correctBAndWHomepageSummary(db);
   const conditions = [eq(newsItems.isVisible, true)];
   if (category) conditions.push(eq(newsItems.category, category as any));
   return db.select().from(newsItems)

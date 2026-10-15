@@ -694,7 +694,7 @@
 
 - [x] Confirmed the homepage `news_items` row `id: 1` still serves the obsolete B&W phrase “This is the most recent payment percentage change in the entire asbestos trust system.” Its visible 4.7%→4.3% rate and June 30, 2026 date were not re-audited or changed.
 - [x] Prepared a bounded remove-only correction packet because the later September 3, 2026 CRMC Manville notice disproves the June 30 system-wide recency claim. The exact source record, old/new copy, shared database-field path, release gate, and no-ranking replacement rule are documented in `docs/review-packets/2026-10-14-bw-homepage-recency-correction-packet.md`.
-- [x] Completed the authorized internal correction-packet work and preserved the hold: a separate explicit Tier 1 production-release decision is required before removing the obsolete final B&W sentence and verifying the homepage/initial SSR HTML. No public mutation has been made.
+- [x] Released the explicitly authorized correction: removed only the obsolete final system-wide recency sentence from row `id: 1`, preserved the B&W title/rate/date/source/position, updated the seed source, and added an exact-row regression guard. Public crawler-visible HTML was rechecked after deployment; the sentence is absent and no replacement ranking claim was introduced.
 
 ## Kaiser Report Amendment Provenance — Tier 1 Packet — October 14, 2026
 

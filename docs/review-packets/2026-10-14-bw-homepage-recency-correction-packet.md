@@ -2,7 +2,7 @@
 
 **Prepared:** October 14, 2026  
 **Intake handoff:** `AT-INTAKE-20261014-03`  
-**Status:** Prepared and held — no public edit, deployment, or publication decision made  
+**Status:** Released and production-verified — October 14, 2026  
 **Affected public URL:** `https://asbestostrusts.org/`
 
 ## Issue
@@ -49,6 +49,8 @@ The notice states that Manville’s Trustees approved an immediate pro rata paym
 5. The exact old/new text, Manville primary source, and correction reason remain in the release record.
 6. A documented Tier 1 production-release decision and production verification occur before any public mutation.
 
-## Hold and disposition
+## Release and disposition
 
-The intake handoff is not a release authorization. **No database update, source-code edit, deploy, publication, or release-control change was performed.** The packet is ready for the applicable Tier 1 release decision; if that decision is not given, it remains an internal correction record only.
+Charles authorized the bounded remove-only correction on October 14, 2026. The database-backed B&W summary and seed source were changed to the exact new text above; a guarded production migration updates only row `id: 1` when its summary exactly matches the documented legacy text. A focused regression test prevents the obsolete system-wide claim from being reintroduced.
+
+**Production verification:** A cache-busted fetch of the homepage confirmed that the B&W card still displays the unchanged title, 4.7%→4.3% rate, June 30, 2026 date, and source label, while the system-wide “most recent” sentence is absent from crawler-visible HTML. No replacement ranking claim, trust-data, payment-history, asset, payout, aggregate, API, CSV, article, authorship, or reviewer field was changed.

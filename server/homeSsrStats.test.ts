@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import {
+  BW_CORRECTED_SUMMARY,
+  BW_HOMEPAGE_NEWS_ID,
+  BW_OBSOLETE_RECENCY_SUMMARY,
+  shouldCorrectBAndWHomepageSummary,
+} from "./db";
 
 const homeSource = readFileSync(
   resolve(process.cwd(), "client/src/pages/Home.tsx"),
@@ -31,5 +37,11 @@ describe("Homepage statistic SSR", () => {
       "The B&W Asbestos Settlement Trust issued a payment percentage change notice reducing its rate from 4.7% to 4.3%, effective June 30, 2026."
     );
     expect(seedSource).not.toContain("This is the most recent payment percentage change in the entire asbestos trust system.");
+  });
+
+  it("limits the production B and W repair to the exact legacy row and summary", () => {
+    expect(shouldCorrectBAndWHomepageSummary({ id: BW_HOMEPAGE_NEWS_ID, summary: BW_OBSOLETE_RECENCY_SUMMARY })).toBe(true);
+    expect(shouldCorrectBAndWHomepageSummary({ id: BW_HOMEPAGE_NEWS_ID, summary: BW_CORRECTED_SUMMARY })).toBe(false);
+    expect(shouldCorrectBAndWHomepageSummary({ id: 2, summary: BW_OBSOLETE_RECENCY_SUMMARY })).toBe(false);
   });
 });

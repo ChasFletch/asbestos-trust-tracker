@@ -6,6 +6,7 @@ const homeSource = readFileSync(
   resolve(process.cwd(), "client/src/pages/Home.tsx"),
   "utf8"
 );
+const seedSource = readFileSync(resolve(process.cwd(), "seed.mjs"), "utf8");
 
 describe("Homepage statistic SSR", () => {
   it("renders statistic targets in the initial SSR-compatible state", () => {
@@ -23,5 +24,12 @@ describe("Homepage statistic SSR", () => {
     expect(homeSource).toContain("/news/manville-payment-percentage-increase-september-2026");
     expect(homeSource).toContain("https://www.claimsres.com/2026/09/03/manville-increase-in-the-pro-rata-payment-percentage/");
     expect(homeSource).toContain("rel=\"noopener noreferrer\"");
+  });
+
+  it("keeps the B and W update without an unsupported system-wide recency claim", () => {
+    expect(seedSource).toContain(
+      "The B&W Asbestos Settlement Trust issued a payment percentage change notice reducing its rate from 4.7% to 4.3%, effective June 30, 2026."
+    );
+    expect(seedSource).not.toContain("This is the most recent payment percentage change in the entire asbestos trust system.");
   });
 });

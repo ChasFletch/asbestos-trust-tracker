@@ -2,10 +2,20 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import {
+  APG_ARCHIVE_NEWS_ID,
+  APG_CORRECTED_SUMMARY,
+  APG_OBSOLETE_SUMMARY,
+  APG_OBSOLETE_TITLE,
   BW_CORRECTED_SUMMARY,
   BW_HOMEPAGE_NEWS_ID,
   BW_OBSOLETE_RECENCY_SUMMARY,
+  NARCO_ARCHIVE_NEWS_ID,
+  NARCO_CORRECTED_SUMMARY,
+  NARCO_OBSOLETE_SUMMARY,
+  NARCO_OBSOLETE_TITLE,
+  shouldCorrectApgArchiveRecord,
   shouldCorrectBAndWHomepageSummary,
+  shouldCorrectNarcoArchiveRecord,
 } from "./db";
 
 const homeSource = readFileSync(
@@ -43,5 +53,21 @@ describe("Homepage statistic SSR", () => {
     expect(shouldCorrectBAndWHomepageSummary({ id: BW_HOMEPAGE_NEWS_ID, summary: BW_OBSOLETE_RECENCY_SUMMARY })).toBe(true);
     expect(shouldCorrectBAndWHomepageSummary({ id: BW_HOMEPAGE_NEWS_ID, summary: BW_CORRECTED_SUMMARY })).toBe(false);
     expect(shouldCorrectBAndWHomepageSummary({ id: 2, summary: BW_OBSOLETE_RECENCY_SUMMARY })).toBe(false);
+  });
+
+  it("keeps the APG and NARCO archive repairs limited to their documented legacy records", () => {
+    expect(seedSource).toContain("Effective April 13, 2026");
+    expect(seedSource).toContain("$1,327,153,783");
+    expect(seedSource).toContain("that historical balance is not a current balance.");
+    expect(seedSource).not.toContain("making it one of the very few active trusts");
+    expect(seedSource).not.toContain("Correcting Widespread Stale Data");
+
+    expect(shouldCorrectApgArchiveRecord({ id: APG_ARCHIVE_NEWS_ID, title: APG_OBSOLETE_TITLE, summary: APG_OBSOLETE_SUMMARY })).toBe(true);
+    expect(shouldCorrectApgArchiveRecord({ id: APG_ARCHIVE_NEWS_ID, title: APG_OBSOLETE_TITLE, summary: APG_CORRECTED_SUMMARY })).toBe(false);
+    expect(shouldCorrectApgArchiveRecord({ id: 4, title: APG_OBSOLETE_TITLE, summary: APG_OBSOLETE_SUMMARY })).toBe(false);
+
+    expect(shouldCorrectNarcoArchiveRecord({ id: NARCO_ARCHIVE_NEWS_ID, title: NARCO_OBSOLETE_TITLE, summary: NARCO_OBSOLETE_SUMMARY })).toBe(true);
+    expect(shouldCorrectNarcoArchiveRecord({ id: NARCO_ARCHIVE_NEWS_ID, title: NARCO_OBSOLETE_TITLE, summary: NARCO_CORRECTED_SUMMARY })).toBe(false);
+    expect(shouldCorrectNarcoArchiveRecord({ id: 5, title: NARCO_OBSOLETE_TITLE, summary: NARCO_OBSOLETE_SUMMARY })).toBe(false);
   });
 });

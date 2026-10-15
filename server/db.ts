@@ -109,9 +109,33 @@ export async function getCurrentAggregate() {
 export const BW_HOMEPAGE_NEWS_ID = 1;
 export const BW_OBSOLETE_RECENCY_SUMMARY = "The B&W Asbestos Settlement Trust issued a payment percentage change notice reducing its rate from 4.7% to 4.3%, effective June 30, 2026. This is the most recent payment percentage change in the entire asbestos trust system.";
 export const BW_CORRECTED_SUMMARY = "The B&W Asbestos Settlement Trust issued a payment percentage change notice reducing its rate from 4.7% to 4.3%, effective June 30, 2026.";
+export const APG_ARCHIVE_NEWS_ID = 5;
+export const APG_OBSOLETE_TITLE = "APG Asbestos Trust Raises Payment Percentage to 6.0% — Effective June 2026";
+export const APG_OBSOLETE_SUMMARY = "The APG Asbestos Trust increased its payment percentage from 5.3% to 6.0%, effective June 2026, making it one of the very few active trusts to increase its payment percentage in 2025–2026.";
+export const APG_CORRECTED_TITLE = "APG Asbestos Trust Raises Payment Percentage to 6.0% — Effective April 13, 2026";
+export const APG_CORRECTED_SUMMARY = "The APG Asbestos Trust increased its payment percentage from 5.3% to 6.0%, effective April 13, 2026.";
+export const APG_CORRECTED_SOURCE = "APG Asbestos Trust Notice of Payment Percentage Increase (April 13, 2026)";
+export const NARCO_ARCHIVE_NEWS_ID = 4;
+export const NARCO_OBSOLETE_TITLE = "Honeywell Contributes $1.325 Billion to NARCO Trust — Correcting Widespread Stale Data";
+export const NARCO_OBSOLETE_SUMMARY = "In January 2023, Honeywell International contributed $1.325 billion to the NARCO Asbestos Trust. Most trust directories still show the pre-2023 balance of $280.7 million — a figure that is now more than three years out of date.";
+export const NARCO_CORRECTED_TITLE = "Honeywell Pays $1.327 Billion to NARCO Trust at January 2023 Buyout Closing";
+export const NARCO_CORRECTED_SUMMARY = "On January 30, 2023, Honeywell paid $1,327,153,783 to the NARCO Asbestos Trust in connection with the closing of the amended buyout agreement. The Trust's FY2022 financial statements separately reported $280,710,185 in net claimants' equity as of December 31, 2022; that historical balance is not a current balance.";
+export const NARCO_CORRECTED_SOURCE = "NARCO Asbestos Trust, Notice of Closing on NARCO Asbestos Trust Amended Buyout Agreement (January 30, 2023)";
 
 export function shouldCorrectBAndWHomepageSummary(item: { id: number; summary: string | null }) {
   return item.id === BW_HOMEPAGE_NEWS_ID && item.summary === BW_OBSOLETE_RECENCY_SUMMARY;
+}
+
+export function shouldCorrectApgArchiveRecord(item: { id: number; title: string; summary: string | null }) {
+  return item.id === APG_ARCHIVE_NEWS_ID
+    && item.title === APG_OBSOLETE_TITLE
+    && item.summary === APG_OBSOLETE_SUMMARY;
+}
+
+export function shouldCorrectNarcoArchiveRecord(item: { id: number; title: string; summary: string | null }) {
+  return item.id === NARCO_ARCHIVE_NEWS_ID
+    && item.title === NARCO_OBSOLETE_TITLE
+    && item.summary === NARCO_OBSOLETE_SUMMARY;
 }
 
 async function correctBAndWHomepageSummary(db: NonNullable<Awaited<ReturnType<typeof getDb>>>) {
@@ -125,10 +149,41 @@ async function correctBAndWHomepageSummary(db: NonNullable<Awaited<ReturnType<ty
     ));
 }
 
+async function correctApgAndNarcoArchiveRecords(db: NonNullable<Awaited<ReturnType<typeof getDb>>>) {
+  // Each correction is limited to its documented legacy row and exact legacy
+  // wording so a subsequent editorial revision is never overwritten.
+  await db.update(newsItems)
+    .set({
+      title: APG_CORRECTED_TITLE,
+      summary: APG_CORRECTED_SUMMARY,
+      source: APG_CORRECTED_SOURCE,
+      publishedAt: new Date("2026-04-13T12:00:00.000Z"),
+    })
+    .where(and(
+      eq(newsItems.id, APG_ARCHIVE_NEWS_ID),
+      eq(newsItems.title, APG_OBSOLETE_TITLE),
+      eq(newsItems.summary, APG_OBSOLETE_SUMMARY),
+    ));
+
+  await db.update(newsItems)
+    .set({
+      title: NARCO_CORRECTED_TITLE,
+      summary: NARCO_CORRECTED_SUMMARY,
+      source: NARCO_CORRECTED_SOURCE,
+      publishedAt: new Date("2023-01-30T12:00:00.000Z"),
+    })
+    .where(and(
+      eq(newsItems.id, NARCO_ARCHIVE_NEWS_ID),
+      eq(newsItems.title, NARCO_OBSOLETE_TITLE),
+      eq(newsItems.summary, NARCO_OBSOLETE_SUMMARY),
+    ));
+}
+
 export async function getVisibleNews(limit = 20, category?: string) {
   const db = await getDb();
   if (!db) return [];
   await correctBAndWHomepageSummary(db);
+  await correctApgAndNarcoArchiveRecords(db);
   const conditions = [eq(newsItems.isVisible, true)];
   if (category) conditions.push(eq(newsItems.category, category as any));
   return db.select().from(newsItems)

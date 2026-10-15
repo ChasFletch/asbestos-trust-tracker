@@ -30,6 +30,8 @@ When a named ANCHOR task becomes available, send both packet paths with a reques
 
 **October 15 DCPF intake routing:** The October 12 official New SSN Policy and linked DCPF instructions support a complete, non-public cross-trust procedure draft at `2026-10-15-dcpf-ssn-policy-procedure-draft.md`. The draft retains exactly nine named trusts, does not include O-I/Paddock, reports the notice’s relative 30-day language without calculating a calendar deadline, and makes no payment, claim-outcome, or individualized legal conclusion. The item is time-sensitive but remains subject to ANCHOR → CLEO → Charles; no legal review, public URL, or publication approval is implied. The additional October 15 intake dispositions are recorded in `2026-10-15-six-item-intake-dispositions.md`.
 
+**October 15 DCPF artifact recovery:** The exact existing manuscript, source-verification note, source URLs, cutoff, authorship, sponsorship/nonadvice statement, and SHA-256 content identifiers are now recoverable through `2026-10-15-dcpf-review-package-manifest.md`. The recovery found no dated ANCHOR disposition, CLEO QA, qualified legal review, attorney review, or Charles publication decision. The item remains complete but **not yet routed** because no named ANCHOR destination is available; artifact recovery is not a review or release disposition.
+
 ## Review-record requirements
 
 Each item’s release record must retain a dated ANCHOR disposition, dated CLEO disposition, final source cut-off, material changes, and any actual attorney-review scope. The existing article-specific review field remains `NULL` until an actual named review occurs.
@@ -44,3 +46,4 @@ Each item’s release record must retain a dated ANCHOR disposition, dated CLEO 
 6. `2026-10-14-project-task-intake-dispositions.md`
 7. `2026-10-15-dcpf-ssn-policy-procedure-draft.md` (draft; not public)
 8. `2026-10-15-six-item-intake-dispositions.md` (internal routing only)
+9. `2026-10-15-dcpf-review-package-manifest.md` (private retrieval manifest; not a review record)

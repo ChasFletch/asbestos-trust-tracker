@@ -2,7 +2,7 @@
 
 **Prepared:** October 15, 2026  
 **Intake handoff:** `AT-INTAKE-20261015-01`  
-**Status:** Prepared for a separate Tier 1 archive-release decision; **not released**  
+**Status:** Released and production-verified — October 15, 2026
 **Scope:** Two existing database-backed News archive rows only. This packet does not authorize a deployment, publication, code change, tracker-data change, payment-history change, new article, reviewer attribution, or a system-wide comparison/survey.
 
 ## Shared delivery-path audit
@@ -95,9 +95,13 @@ No existing dated, reproducible survey was recovered for “widespread stale dat
 6. The rendered `/news` archive and initial crawler-visible content are checked after any separately authorized release, with the old APG June wording and old NARCO comparison wording absent.
 7. The release record retains the old/new text, exact document sources, and the reasons for correction.
 
-## Release boundary
+## Release decision and verification
 
-The October 6–November 5 post-pilot authorization permits internal source verification and correction-packet preparation for payment-rate and annual-report monitoring. It does **not** authorize these archive-content changes. A separately documented Tier 1 archive-release decision is required before any database, seed, source-code, public-content, or deployment action.
+Charles authorized the two exact source-qualified archive-card corrections on October 15, 2026. The matching `news_items` rows and seed records were amended, with exact-match guards that prevent a later editorial revision from being overwritten. No other News row, detailed route, tracker-data field, payment-history entry, aggregate, author/reviewer field, design element, or source URL was changed.
+
+**Technical validation:** TypeScript checking, the focused `homeSsrStats` suite (5 tests), the full Vitest suite (41 files, 148 passed; 1 pre-existing opt-in test skipped), and the production build passed. The guarded database verification confirmed the two corrected rows, their visibility, null detail-route state, dates, source labels, and the absence of every listed legacy phrase.
+
+**Production verification:** The rendered `https://asbestostrusts.org/news` archive was checked after checkpoint `3972e511`. It contains the APG title and summary with **April 13, 2026**, and the NARCO title, exact **$1,327,153,783** payment, December 31, 2022 historical-balance qualification, and corrected source label. The obsolete APG June/comparative phrases and the NARCO “widespread stale data”/“most trust directories” phrases are absent. The canonical News archive URL remains unchanged.
 
 ## References
 

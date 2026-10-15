@@ -37,6 +37,8 @@ When a named ANCHOR task becomes available, send both packet paths with a reques
 
 **October 15 T&N UK-scheme record receipt:** Referenced task `aP7eBPvVaE9ipnPkhH4ME9` supplied a complete Tier 2 draft record (`tn-trust-record.md`) and field-level evidence map (`tn-sources.md`), both dated September 30, 2026. The work order expressly treats the subject as a United Kingdom compensation scheme in scope only if it remains visibly separate from U.S. § 524(g) trust records; it must not enter U.S. trust counts, rate/asset aggregates, or the post-pilot U.S. rate/report monitor. Trustee-issued FY2025 documents support the scheme structure, separate trust assets, annual activity, and fund-specific dividends; the late-September Indian/Kymore figures are secondary-source material and must retain their source class, scope limits, and missing as-of/period caveats. The draft does not have an ANCHOR disposition, CLEO QA, actual legal review, Charles publication decision, public route, or public URL. It is now staged for the existing **ANCHOR → CLEO → Charles** pipeline; ANCHOR must first decide whether the proposed separate UK-scheme record type is editorially appropriate and preserve the explicit no-aggregation boundary.
 
+**October 15 T&N package recovery and scope packet:** The exact September 30 draft and source map have been copied into the production workspace under `tn-uk-scheme/`; their staged-copy SHA-256 identifiers and the source-task attachment IDs are recorded in `2026-10-15-tn-uk-scheme-scope-review-manifest.md`. This permits a named ANCHOR reviewer to make the required **scope-first** decision without treating the proposed UK route as existing or approved. The source cutoff remains September 30, 2026; the recovery does not reclassify any FY2025 figure as current, add a reviewer, or launch a new source sweep. The item remains private and not routed pending a named ANCHOR destination.
+
 ## Review-record requirements
 
 Each item’s release record must retain a dated ANCHOR disposition, dated CLEO disposition, final source cut-off, material changes, and any actual attorney-review scope. The existing article-specific review field remains `NULL` until an actual named review occurs.
@@ -52,4 +54,5 @@ Each item’s release record must retain a dated ANCHOR disposition, dated CLEO 
 7. `2026-10-15-dcpf-ssn-policy-procedure-draft.md` (draft; not public)
 8. `2026-10-15-six-item-intake-dispositions.md` (internal routing only)
 9. `2026-10-15-dcpf-review-package-manifest.md` (private retrieval manifest; not a review record)
-10. Referenced task `aP7eBPvVaE9ipnPkhH4ME9`: `tn-trust-record.md` and `tn-sources.md` (Tier 2 UK-scheme draft and source map; retained in the referenced task, not public)
+10. `tn-uk-scheme/tn-trust-record.md` and `tn-uk-scheme/tn-sources.md` (Tier 2 UK-scheme draft and source map; private staged copies, not public)
+11. `2026-10-15-tn-uk-scheme-scope-review-manifest.md` (scope-first routing and package-identity record; not a review disposition)

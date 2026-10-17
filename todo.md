@@ -758,3 +758,10 @@
 ## October 17, 2026 — Approved trust-provenance transparency update
 
 - [x] Released the owner-approved trust provenance update after verifying the Kaiser, Owens-Illinois, THAN, and Owens Corning/Fibreboard source boundaries. Trust detail, trust list, SSR/JSON-LD, CSV, and the 55 trust sitemap entries now disclose rate-date and source-URL limits instead of presenting unsupported current-rate or blanket primary-source claims. No payment percentage, financial figure, status, or NGC-conflict conclusion changed. Record: `docs/review-packets/2026-10-17-trust-provenance-transparency-update.md`.
+
+## October 17, 2026 — 30-record payment-rate primary-URL recovery
+
+- [x] Recovered primary trust, administrator, or filed-document URLs for all 30 records still marked `paymentPctSourceStatus: "not_established"`, with supplied direct-retrieval/quote-audit provenance retained under `docs/review-packets/2026-10-17-rate-source-url-recovery/`.
+- [x] Independently rechecked all eleven rate/scope/finality conflicts against their supplied official primary documents. The output establishes no numerical rate correction, but identifies qualified or interim treatment for Maremont, USG, Combustion Engineering, G-I, Motors Liquidation, ACandS, and W.R. Grace; W.R. Grace also has an unsupported existing effective date.
+- [x] Kept NGC on its existing 45%/40% unresolved-conflict hold. Recorded separate historic/date-integrity limits for NARCO, Western, H.K. Porter, Christy Refractories, and United States Mineral Products. No public tracker, source-status, article, code, sitemap, deployment, reviewer attribution, or monitoring-schedule change occurred.
+- [x] Prepared `docs/review-packets/2026-10-17-rate-source-url-recovery/source-url-recovery-reconciliation.md`, which maps all 30 URLs and divides any later approved work into source/date mapping, scope-qualified presentation, and the continuing NGC hold. A separate explicit Tier 1 release decision remains required before applying any public mapping.

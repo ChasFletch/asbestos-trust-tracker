@@ -15,14 +15,18 @@ interface TrustRow {
   id: string; // derived from name
   name: string;
   shortName: string;
+  commonName?: string | null;
   netAssets: number | null;
   assetsAsOf: string | null;
   assetsBasis: string | null;
   assetsAvailability?: string | null;
   assetsBasisUrl?: string | null;
   paymentPercentage: number | null;
+  paymentPctEffective?: string | null;
   paymentPctAsOf?: string | null;
   paymentPctNoticePublishedAt?: string | null;
+  paymentPctTimingStatus?: string | null;
+  paymentPctTimingNote?: string | null;
   paymentPctImplementationStatus?: string | null;
   paymentPctImplementationNote?: string | null;
   paymentPercentageSource?: string | null;
@@ -91,6 +95,12 @@ function formatAssets(n: number | null): string {
   return `$${n.toLocaleString()}`;
 }
 
+function paymentPercentageDate(trust: Pick<TrustRow, "paymentPctEffective" | "paymentPctAsOf">) {
+  if (trust.paymentPctEffective) return { label: "effective", date: trust.paymentPctEffective };
+  if (trust.paymentPctAsOf) return { label: "as of", date: trust.paymentPctAsOf };
+  return null;
+}
+
 function SortHeader({
   label, sortKey, current, dir, onSort, tooltip,
 }: { label: string; sortKey: SortKey; current: SortKey; dir: SortDir; onSort: (k: SortKey) => void; tooltip?: string }) {
@@ -157,14 +167,18 @@ export default function Trusts() {
         id: slug,
         name: jt.name,
         shortName: jt.shortName,
+        commonName: (jt as any).commonName ?? null,
         netAssets: jt.netAssets,
         assetsAsOf: jt.assetsAsOf,
         assetsBasis: jt.assetsBasis,
         assetsAvailability: (jt as any).assetsAvailability ?? null,
         assetsBasisUrl: (jt as any).assetsBasisUrl ?? null,
         paymentPercentage: jt.paymentPercentage,
+        paymentPctEffective: (jt as any).paymentPctEffective ?? null,
         paymentPctAsOf: (jt as any).paymentPctAsOf ?? null,
         paymentPctNoticePublishedAt: (jt as any).paymentPctNoticePublishedAt ?? null,
+        paymentPctTimingStatus: (jt as any).paymentPctTimingStatus ?? null,
+        paymentPctTimingNote: (jt as any).paymentPctTimingNote ?? null,
         paymentPctImplementationStatus: (jt as any).paymentPctImplementationStatus ?? null,
         paymentPctImplementationNote: (jt as any).paymentPctImplementationNote ?? null,
         paymentPercentageSource: (jt as any).paymentPercentageSource ?? null,
@@ -420,6 +434,7 @@ export default function Trusts() {
           {sorted.map((trust) => {
             const isOpen = expanded.has(trust.id);
             const ph = trust.paymentHistory ?? [];
+            const percentageDate = paymentPercentageDate(trust);
             return (
               <div key={trust.id} className="border-b border-border/30 last:border-0">
                 {/* Main row */}
@@ -439,7 +454,7 @@ export default function Trusts() {
                           onClick={(e) => e.stopPropagation()}
                           className="hover:text-primary hover:underline transition-colors truncate"
                         >
-                          {trust.shortName}
+                          {trust.commonName ? `${trust.commonName} (${trust.shortName})` : trust.shortName}
                         </Link>
                         <Link
                           href={`/trusts/${trust.id}`}
@@ -454,15 +469,17 @@ export default function Trusts() {
                     </div>
                   </div>
                   <div className="text-sm font-mono">
-                    {trust.paymentPercentage !== null ? (
+                    {trust.paymentPercentage !== null && percentageDate ? (
                       trust.paymentPercentageFB != null ? (
                         <span className="text-foreground">
                           {trust.paymentPercentage}%
                           <span className="text-muted-foreground/60 text-xs"> / {trust.paymentPercentageFB}%</span>
                         </span>
                       ) : (
-                        <span className="text-foreground">{trust.paymentPercentage}%</span>
+                      <span className="text-foreground">{trust.paymentPercentage}%</span>
                       )
+                    ) : trust.paymentPercentage !== null ? (
+                      <span className="text-muted-foreground/60 text-xs">rate date not established</span>
                     ) : trust.paymentPctAvailability === "not_publicly_reported" ? (
                       <span className="text-muted-foreground/60 text-xs">not publicly reported</span>
                     ) : (
@@ -479,6 +496,14 @@ export default function Trusts() {
                     )}
                     {trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" && (
                       <div className="mt-0.5 text-[10px] leading-tight text-amber-700/80">interim · consent pending</div>
+                    )}
+                    {percentageDate && (
+                      <div className="mt-0.5 text-[10px] leading-tight text-muted-foreground/50">
+                        {percentageDate.label} {percentageDate.date}
+                      </div>
+                    )}
+                    {trust.paymentPercentage !== null && !percentageDate && trust.paymentPctTimingNote && (
+                      <div className="mt-0.5 text-[10px] leading-tight text-amber-700/80">date not established</div>
                     )}
                   </div>
                   <div className="text-sm font-mono">

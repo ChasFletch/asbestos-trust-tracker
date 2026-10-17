@@ -228,9 +228,9 @@ export function registerDataRoutes(app: Express) {
       const data = await fetchTrustFigures() as any;
       const jsonTrusts = data?.trusts ?? [];
       const headers = [
-        "name", "shortName", "netAssets", "assetsAsOf", "assetsBasis",
+        "name", "shortName", "commonName", "netAssets", "assetsAsOf", "assetsBasis",
         "paymentPercentage", "paymentPercentageLabel", "paymentPercentageFB", "paymentPercentageFBLabel", "paymentPctEffective", "paymentPctAsOf",
-        "paymentPctAvailability", "paymentPctAvailabilityNote", "paymentPctNoticePublishedAt", "paymentPctImplementationStatus", "paymentPctImplementationNote", "paymentPctScopeNote", "paymentPctHistoricalNote", "paymentPercentageSourceUrl",
+        "paymentPctTimingStatus", "paymentPctTimingNote", "paymentPctAvailability", "paymentPctAvailabilityNote", "paymentPctNoticePublishedAt", "paymentPctImplementationStatus", "paymentPctImplementationNote", "paymentPctScopeNote", "paymentPctHistoricalNote", "paymentPctSourceStatus", "paymentPercentageSourceUrl", "paymentPercentageFBSourceUrl",
         "status", "confidence", "note",
       ];
       const escape = (v: unknown) => {

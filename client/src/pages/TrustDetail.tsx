@@ -272,6 +272,7 @@ export default function TrustDetail() {
     ? {
         name: jsonTrust.name,
         shortName: jsonTrust.shortName,
+        commonName: (jsonTrust as any)?.commonName ?? null,
         netAssets: jsonTrust.netAssets,
         assetsAsOf: jsonTrust.assetsAsOf,
         assetsBasis: jsonTrust.assetsBasis,
@@ -308,8 +309,12 @@ export default function TrustDetail() {
         direction: (jsonTrust as any)?.direction ?? dbTrust?.direction ?? null,
         paymentPercentageSource: (jsonTrust as any)?.paymentPercentageSource ?? null,
         paymentPercentageSourceUrl: (jsonTrust as any)?.paymentPercentageSourceUrl ?? null,
+        paymentPercentageFBSourceUrl: (jsonTrust as any)?.paymentPercentageFBSourceUrl ?? null,
+        paymentPctSourceStatus: (jsonTrust as any)?.paymentPctSourceStatus ?? null,
         paymentPctEffective: (jsonTrust as any)?.paymentPctEffective ?? null,
         paymentPctAsOf: (jsonTrust as any)?.paymentPctAsOf ?? null,
+        paymentPctTimingStatus: (jsonTrust as any)?.paymentPctTimingStatus ?? null,
+        paymentPctTimingNote: (jsonTrust as any)?.paymentPctTimingNote ?? null,
         paymentPctAvailability: (jsonTrust as any)?.paymentPctAvailability ?? null,
         paymentPctAvailabilityNote: (jsonTrust as any)?.paymentPctAvailabilityNote ?? null,
         paymentPctNoticePublishedAt: (jsonTrust as any)?.paymentPctNoticePublishedAt ?? null,
@@ -379,6 +384,8 @@ export default function TrustDetail() {
       : "bg-amber-100 text-amber-700 border-amber-200";
   const primarySourceDocuments = primarySourceDocumentsBySlug[slugify(trust.name)] ?? [];
   const cumulativePaidSourceAge = historicalSourceAge(trust.cumulativePaidAsOf, trust.dataAsOf);
+  const paymentPercentageDate = trust.paymentPctEffective ?? trust.paymentPctAsOf ?? null;
+  const hasPaymentPercentageDate = Boolean(paymentPercentageDate);
 
   return (
     <>
@@ -400,7 +407,7 @@ export default function TrustDetail() {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{trust.shortName}</BreadcrumbPage>
+              <BreadcrumbPage>{trust.commonName ?? trust.shortName}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -418,6 +425,11 @@ export default function TrustDetail() {
           {trust.direction && <span className="mt-1.5"><DirectionIcon direction={trust.direction} /></span>}
         </div>
         {trust.company && <p className="text-muted-foreground text-sm">{trust.company}</p>}
+        {trust.commonName && trust.commonName !== trust.shortName && (
+          <p className="text-xs text-muted-foreground/70 mt-1">
+            Also known as: <span className="font-medium text-foreground/80">{trust.commonName}</span>
+          </p>
+        )}
         {trust.website && (
           <a href={trust.website} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-1">
@@ -505,7 +517,7 @@ export default function TrustDetail() {
               <span className="ml-auto"><ConfidenceBadge confidence={(trust as any).paymentPctConfidence} /></span>
             )}
           </div>
-          {trust.paymentPctPresentation === "dual_rate" && trust.paymentPercentage !== null && trust.paymentPercentageFB !== null ? (
+          {trust.paymentPctPresentation === "dual_rate" && trust.paymentPercentage !== null && trust.paymentPercentageFB !== null && hasPaymentPercentageDate ? (
             <div className="space-y-0.5" data-payment-presentation="dual_rate">
               <div className="flex items-baseline gap-1.5">
                 <span className="text-xl font-mono font-bold text-foreground">{trust.paymentPercentage}%</span>
@@ -519,14 +531,16 @@ export default function TrustDetail() {
             </div>
           ) : (
           <div className="text-xl font-mono font-bold text-foreground">
-            {trust.paymentPercentage !== null
+            {trust.paymentPercentage !== null && hasPaymentPercentageDate
               ? `${trust.paymentPercentage}%`
+              : trust.paymentPercentage !== null
+              ? "Rate date not established"
               : trust.paymentPctAvailability === "not_publicly_reported"
               ? "Not publicly reported"
               : "MSV / N/A"}
           </div>
           )}
-          {trust.paymentPercentage !== null && (
+          {trust.paymentPercentage !== null && hasPaymentPercentageDate && (
             <div className="text-xs text-muted-foreground/60 mt-0.5">
               {trust.hasDiseaseLevelScheduledValueMatrix === false
                 ? trust.paymentPercentageBasisLabel ?? "claim payment factor"
@@ -537,6 +551,12 @@ export default function TrustDetail() {
             <div className="mt-1.5 rounded border border-amber-200/80 bg-amber-50/60 px-2 py-1.5 text-[11px] leading-relaxed text-amber-950/80">
               <span className="font-semibold text-amber-900">Current rate unavailable from official public materials.</span>{" "}
               {trust.paymentPctAvailabilityNote}
+            </div>
+          )}
+          {trust.paymentPercentage !== null && !hasPaymentPercentageDate && trust.paymentPctTimingNote && (
+            <div className="mt-1.5 rounded border border-amber-200/80 bg-amber-50/60 px-2 py-1.5 text-[11px] leading-relaxed text-amber-950/80">
+              <span className="font-semibold text-amber-900">Rate date not established.</span>{" "}
+              {trust.paymentPctTimingNote}
             </div>
           )}
           {trust.paymentPctImplementationStatus === "announced_pending_implementation" && (
@@ -567,10 +587,15 @@ export default function TrustDetail() {
               )}
             </div>
           )}
-          {(trust as any).paymentPctEffective && (
+          {paymentPercentageDate && (
             <div className="flex items-center gap-1 text-xs text-muted-foreground/60 mt-0.5">
               <Calendar size={10} className="shrink-0" />
-              <span>{trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" ? "proposal dated" : "effective"} {new Date((trust as any).paymentPctEffective + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</span>
+              <span>
+                {trust.paymentPctEffective
+                  ? trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" ? "proposal dated" : "effective"
+                  : "as of"}{" "}
+                {new Date(`${paymentPercentageDate}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC"})}
+              </span>
             </div>
           )}
           {(trust as any).paymentPctNoticePublishedAt ? (
@@ -582,7 +607,14 @@ export default function TrustDetail() {
               Last verified: {new Date((trust as any).dataAsOf + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
             </div>
           )}
-          {(trust as any).paymentPercentageSource && (
+          {trust.paymentPctPresentation === "dual_rate" && trust.paymentPercentageSourceUrl && trust.paymentPercentageFBSourceUrl ? (
+            <div className="text-xs text-muted-foreground/50 mt-1.5 leading-relaxed border-t border-border/30 pt-1.5">
+              <span className="mr-1">Source notices:</span>
+              <a href={trust.paymentPercentageSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">Owens Corning</a>
+              <span aria-hidden="true"> · </span>
+              <a href={trust.paymentPercentageFBSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">Fibreboard</a>
+            </div>
+          ) : (trust as any).paymentPercentageSource && (
             <div className="text-xs text-muted-foreground/50 mt-1.5 leading-relaxed border-t border-border/30 pt-1.5">
               {(trust as any).paymentPercentageSourceUrl ? (
                 <a href={(trust as any).paymentPercentageSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">

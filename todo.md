@@ -753,3 +753,8 @@
 - [x] Selected 25 due sources under the cap; excluded one court and one case-agent row before requests because this pass is limited to official payment-rate and annual-report sources. Checked the remaining 23 official-trust, administrator, or primary-document sources in 15.7 seconds. The normalized outcomes are in `docs/post-pilot-monitoring/2026-10-16-detection-pass.json` and the full review in `docs/post-pilot-monitoring/2026-10-16-rate-and-annual-report-monitoring-log.md`.
 - [x] Deduplicated six fingerprint signals to existing records. Reviewed exactly three official sources: Manville’s September 3 5.1%→5.6% notice remains the latest controlling event; C.E. Thurston and API published no dated current-rate statement or annual-report posting. No new controlling rate/report event or correction packet qualified.
 - [x] Recorded 15 direct-access outcomes only as operational limitations, without inferring that any affected trust had no notice or annual report. No public data, article, code, deployment, reviewer attribution, paid retrieval, or source-registration change resulted.
+
+
+## October 17, 2026 — Approved trust-provenance transparency update
+
+- [x] Released the owner-approved trust provenance update after verifying the Kaiser, Owens-Illinois, THAN, and Owens Corning/Fibreboard source boundaries. Trust detail, trust list, SSR/JSON-LD, CSV, and the 55 trust sitemap entries now disclose rate-date and source-URL limits instead of presenting unsupported current-rate or blanket primary-source claims. No payment percentage, financial figure, status, or NGC-conflict conclusion changed. Record: `docs/review-packets/2026-10-17-trust-provenance-transparency-update.md`.

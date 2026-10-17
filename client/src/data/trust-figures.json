@@ -58,7 +58,9 @@
       "website": "https://www.narcotrust.com",
       "paymentPctEffective": "2013-01-01",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "DII Industries (Halliburton/Harbison-Walker)",
@@ -80,7 +82,11 @@
       "docket": "03-35592",
       "website": "https://www.diiasbestostrust.org",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Manville Personal Injury Settlement Trust",
@@ -135,7 +141,9 @@
       "website": "https://www.wastrust.com",
       "paymentPctEffective": "2004-01-01",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Thorpe Insulation Company Asbestos Settlement Trust",
@@ -157,7 +165,11 @@
       "docket": "07-19271",
       "website": "https://www.tistrust.com",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Plant Asbestos Settlement Trust",
@@ -179,7 +191,11 @@
       "docket": "95-46678",
       "website": "https://www.pastrust.com",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "J.T. Thorpe Settlement Trust (CA)",
@@ -230,7 +246,11 @@
       "docket": "16-10266",
       "website": "https://www.maremontasbestostrust.com",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "API, Inc. Asbestos Settlement Trust",
@@ -283,7 +303,9 @@
       "website": "https://www.wrgasbestospitrust.com",
       "paymentPctEffective": "2014-01-01",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Pittsburgh Corning Asbestos PI Settlement Trust",
@@ -415,7 +437,9 @@
       "website": "https://www.usgasbestostrust.com",
       "paymentPctEffective": "2006-01-01",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Owens Corning/Fibreboard Asbestos PI Trust",
@@ -430,17 +454,28 @@
       "cumulativePaidAsOf": "2009-12-31",
       "cumulativePaidSource": "COMPUTED SUM of four verbatim per-category inception-to-date figures in FY2009 Annual Report (OC $345.28M Pre-Petition + $1,400.13M Unliquidated; FB $133.58M Pre-Petition + $586.92M Unliquidated, all as of 12/31/2009), Exhibit L to Doc 6491-5, Bankr. S.D.N.Y. 09-50026 (Motors Liquidation docket). HISTORICAL - 16 years stale. FY2025 report (00-3837 Doc 21263) blocked by CM/ECF image failure",
       "paymentPercentageFB": 3.5,
-      "paymentPercentageFBNote": "FB Sub-Account, eff. 2026-06-30 (same notice as OC cut)",
       "cumulativePaidSourceUrl": "/manus-storage/ocfb-fy2009-annual-report-nysb-6491-5_b1acd491.pdf",
       "established": 2006,
       "company": "Owens Corning / Fibreboard Corporation",
       "administrator": "DCPF",
       "court": "Bankr. N.D. Ohio",
       "docket": "00-03837",
-      "website": "https://www.ocfasbestostrust.com",
-      "paymentPctEffective": "2022-01-01",
+      "website": "https://www.ocfbasbestostrust.com",
+      "paymentPctEffective": "2026-06-30",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPercentageSource": "Owens Corning/Fibreboard Asbestos Personal Injury Trust payment-percentage notices, June 30, 2026: 4.3% for the Owens Corning Sub-Account and 3.5% for the Fibreboard Sub-Account during the consent process.",
+      "paymentPctPresentation": "dual_rate",
+      "paymentPercentageLabel": "Owens Corning Sub-Account",
+      "paymentPercentageFBLabel": "Fibreboard Sub-Account",
+      "paymentPctAsOf": "2026-06-30",
+      "paymentPctNoticePublishedAt": "2026-06-30",
+      "paymentPctImplementationStatus": "proposed_pending_tac_fcr_consent",
+      "paymentPctImplementationNote": "The 4.3% Owens Corning and 3.5% Fibreboard sub-account rates apply during the Trust Advisory Committee/Future Claimants' Representative consent process. The notices state that an additional payment would be due if a higher rate is ultimately adopted.",
+      "paymentPctScopeNote": "Separate Owens Corning and Fibreboard sub-accounts have separate asset pools and payment percentages; they are not combined or averaged.",
+      "paymentPercentageSourceUrl": "https://www.ocfbasbestostrust.com/wp-content/uploads/2026/06/OCFB.-OC-Subfund-Payment-Percentage-Notice.6.30.26-C1221413x9DB18-4933-6912-9401-v.1-4905-4767-3529.1.pdf",
+      "paymentPercentageFBSourceUrl": "https://www.ocfbasbestostrust.com/wp-content/uploads/2026/06/OCFB.-FB-Subfund-Payment-Percentage-Notice.6.30.26-C1221412x9DB18-4916-0109-8937.1.pdf",
+      "paymentPctConfidence": "filed"
     },
     {
       "name": "ASARCO Asbestos PI Settlement Trust",
@@ -464,7 +499,9 @@
       "reportingFrequency": "annual",
       "assetsBasisUrl": "https://www.asarcotrust.com/assets/uploadedFiles/a8cab545-069f-48ee-9c08-79c889f1d8e6.pdf",
       "paymentPctAsOf": "2026-04-29",
-      "note": "not stated as a change; in force and unchanged as of the FY2025 annual report (2026-04-29)"
+      "note": "not stated as a change; in force and unchanged as of the FY2025 annual report (2026-04-29)",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Armstrong World Industries Asbestos PI Trust",
@@ -514,7 +551,11 @@
       "docket": "10-11779",
       "website": "https://www.bondexasbestostrust.com",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Flintkote Asbestos Trust",
@@ -535,7 +576,11 @@
       "docket": "04-11300",
       "website": "https://www.flintkoteasbestostrust.com",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Paddock Enterprises (Owens-Illinois) Asbestos Trust",
@@ -564,7 +609,8 @@
       "paymentPctEffective": "2026-08-19",
       "initialFunding": 610000000,
       "initialFundingAsOf": "2022-01-01",
-      "initialFundingBasis": "COMPUTED SUM of plan-funding components: $601.5M cash + $8.5M note"
+      "initialFundingBasis": "COMPUTED SUM of plan-funding components: $601.5M cash + $8.5M note",
+      "commonName": "Owens-Illinois"
     },
     {
       "name": "Quigley Company Asbestos PI Trust",
@@ -734,7 +780,9 @@
       "website": "https://www.celotextrust.com",
       "paymentPctEffective": "2023-06-23",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Combustion Engineering 524(g) Asbestos PI Trust",
@@ -756,7 +804,9 @@
       "website": "https://www.cetrust.com",
       "paymentPctEffective": "2020-01-01",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Fuller-Austin Asbestos Settlement Trust",
@@ -777,7 +827,9 @@
       "docket": "98-22217",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2026-04-01"
+      "paymentPctEffective": "2026-04-01",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Kaiser Asbestos PI Trust",
@@ -830,7 +882,9 @@
       "website": "https://www.bwasbestostrust.com",
       "paymentPctEffective": "2026-06-30",
       "direction": "down",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "G-I Holdings (GAF) Asbestos PI Settlement Trust",
@@ -851,7 +905,11 @@
       "website": "https://www.giasbestostrust.com",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2022-11-22 (interim rate; proposal unresolved on the published record)"
+      "paymentPctEffective": "2022-11-22",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctImplementationStatus": "announced_pending_implementation",
+      "paymentPctImplementationNote": "The tracker retains the 5% interim rate; the published record does not establish that the proposal was finally adopted."
     },
     {
       "name": "Eagle-Picher Industries PI Settlement Trust",
@@ -898,7 +956,9 @@
       "website": "https://www.yarwayasbestostrust.com",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2024-05-01"
+      "paymentPctEffective": "2024-05-01",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "A.P. Green (APG) Asbestos Trust",
@@ -919,7 +979,7 @@
       "paymentPctEffective": "2026-04-13",
       "direction": "up",
       "reportingFrequency": "annual",
-      "paymentPercentageSource": "APG Asbestos Trust Notice of Payment Percentage Increase (April 13, 2026)",
+      "paymentPercentageSource": "APG Asbestos Trust Notice of Payment Percentage Increase (April 13, 2026) A primary source URL for the recorded payment percentage has not yet been established.",
       "paymentPctConfidence": "filed",
       "note": "Raised from 5.3% to 6.0% effective April 13, 2026 (trust notice). One of the few trusts to increase its payment percentage in 2025-2026.",
       "changes": [
@@ -929,7 +989,8 @@
           "detail": "Payment percentage raised from 5.3% to 6.0%",
           "source": "APG Asbestos Trust Notice of Payment Percentage Increase (April 13, 2026)"
         }
-      ]
+      ],
+      "paymentPctSourceStatus": "not_established"
     },
     {
       "name": "NGC Bodily Injury Trust (National Gypsum)",
@@ -950,7 +1011,9 @@
       "website": "https://www.ngcasbestostrust.com",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2023-01-19"
+      "paymentPctEffective": "2023-01-19",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Congoleum Plan Trust",
@@ -972,7 +1035,9 @@
       "website": "https://www.congoleumplantrust.com",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2023-10-12"
+      "paymentPctEffective": "2023-10-12",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Motors Liquidation Co. (GM) Asbestos PI Trust",
@@ -993,7 +1058,11 @@
       "court": "Bankr. S.D.N.Y.",
       "docket": "09-50026",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "ACandS Asbestos Settlement Trust",
@@ -1014,7 +1083,9 @@
       "docket": "02-12687",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2026-05-11"
+      "paymentPctEffective": "2026-05-11",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "J.T. Thorpe Company Successor Trust (TX)",
@@ -1121,7 +1192,9 @@
         "uninsuredClaims": "For an Uninsured Asbestos Claim that satisfies the TDP's tolling conditions and was not already barred, the TDP treats the claim as timely if filed within three years after the six-month anniversary of the Initial Claims Filing Date. For an Uninsured Asbestos Claim first diagnosed after the Petition Date, the filing window is three years after diagnosis or three years after the Initial Claims Filing Date, whichever occurs later.",
         "uninsuredPortionsOfInsuredClaims": "A claim for the uninsured portion of an Insured Asbestos Claim must be filed within three years after the applicable insurer paid the claim\u2014or, if no insurer payment was due, settled it.",
         "caveat": "These are claim-category-specific TDP rules, not a single universal deadline and not a substitute for any applicable federal, state, or foreign statute of limitation or repose. Claimants should review the TDP and obtain advice about their own filing dates."
-      }
+      },
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Porter Hayden Bodily Injury Trust",
@@ -1213,7 +1286,11 @@
       "docket": "91-21071",
       "website": "https://www.hkporterasbestostrust.org",
       "direction": "stable",
-      "reportingFrequency": "annual"
+      "reportingFrequency": "annual",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established.",
+      "paymentPctTimingStatus": "not_established",
+      "paymentPctTimingNote": "An effective date or as-of date for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Christy Refractories Asbestos PI Trust",
@@ -1233,7 +1310,9 @@
       "docket": "08-41019",
       "direction": "stable",
       "reportingFrequency": "annual",
-      "paymentPctEffective": "2022-10-31"
+      "paymentPctEffective": "2022-10-31",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "A-Best Products Asbestos Trust",
@@ -1412,7 +1491,9 @@
       "evidence": "Court-filed FY2025 annual report (Bankr. D. Del., Case No. 06-10401 (MFW), Doc 529, filed 04/28/26) reports audited \"Net Assets Available For The Payment of Claims $ 14,960,830\" as of December 31, 2025 (p.15, Exhibit A; 2024 comparative $14,872,836). The report states \"The Payment Percentage for 202",
       "sourceUrl": "https://abblummustrust.org/assets/uploadedFiles/04e9a249-cf90-4bfd-a2cb-21a0016473ad.pdf",
       "sourceType": "court_filed_document",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Shook & Fletcher Asbestos Settlement Trust",
@@ -1428,7 +1509,9 @@
       "evidence": "Administrator CRMC posted \"Shook & Fletcher Asbestos Settlement Trust May 21, 2026 Notice to Claimants and Claimants' Counsel of Amended Section 5.4\" \u2014 an announcement dated within three months of retrieval. The trust's Notice to Claimants and Claimants' Counsel dated May 30, 2025 is headed \"Payment",
       "sourceUrl": "https://www.claimsres.com/wp-content/uploads/SHK-payment-notice-250602.pdf",
       "sourceType": "official_trust_administrator",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Brauer 524(g) Asbestos Trust (Brauer Supply Company)",
@@ -1465,7 +1548,9 @@
       "paymentPctConfidence": "filed",
       "paymentPercentageSource": "T H Agriculture & Nutrition, L.L.C. Asbestos PI Trust, Notice Regarding Payment Percentage: effective September 1, 2026, the Payment Percentage applied to all claims in the FIFO Payment Queue increased from 15% to 16.3%; claims previously paid at 15% receive supplemental payments under TDP \u00a74.3.",
       "paymentPercentageSourceUrl": "https://www.thanasbestostrust.com/assets/uploadedFiles/ff70ae1e-c348-4494-81d4-790125ea7b4d.pdf",
-      "paymentPctScopeNote": "16.3% applies to claims in the FIFO Payment Queue, effective September 1, 2026. Claims previously paid at the prior 15% Payment Percentage receive supplemental payments under TDP \u00a74.3."
+      "paymentPctScopeNote": "16.3% applies to claims in the FIFO Payment Queue, effective September 1, 2026. Claims previously paid at the prior 15% Payment Percentage receive supplemental payments under TDP \u00a74.3.",
+      "commonName": "TH",
+      "shortName": "THAN Asbestos Trust"
     },
     {
       "name": "United States Mineral Products Company Asbestos PI Settlement Trust",
@@ -1479,7 +1564,9 @@
       "evidence": "Trust's own Notice of Payment Percentage Increase, dated March 29, 2024, states the Trustees \"have made a determination to increase the Trust's payment percentage from 15% to 32% effective as of March 5, 2024\" (p.1), with supplemental payments to claimants who previously liquidated at a lower percen",
       "sourceUrl": "https://web.archive.org/web/20260208163647id_/https://www.usmineraltrust.com/assets/uploadedFiles/52425ec6-8db4-490d-902e-a643e4b50707.pdf",
       "sourceType": "official_trust_website",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "Hercules Chemical Co. Asbestos Settlement Trust",
@@ -1501,7 +1588,9 @@
       "reportingFrequency": "annual",
       "paymentPctEffective": "2022-10-17",
       "note": "2.0% effective 10/17/2022 per trust site (research corpus dim08; hercules.mfrclaims.com).",
-      "added": "2026-08-16"
+      "added": "2026-08-16",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     },
     {
       "name": "United Gilsonite (UGL) Asbestos PI Trust",
@@ -1523,7 +1612,9 @@
       "reportingFrequency": "annual",
       "paymentPctEffective": "2024-04-11",
       "note": "3.35% effective 2024-04-11 for standard claims; 11% for released claims (research corpus dim08; ugltrust.com).",
-      "added": "2026-08-16"
+      "added": "2026-08-16",
+      "paymentPctSourceStatus": "not_established",
+      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
     }
   ],
   "changes": [

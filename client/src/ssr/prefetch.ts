@@ -142,7 +142,8 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       await seed(qc, getQueryKey(trpc.trustFiguresExtra.reportsIndex, undefined, "query"), reports);
     }
     const jt = jsonTrust as any;
-    const pct = jsonTrust.paymentPercentage !== null
+    const paymentPercentageDate = jt.paymentPctEffective ?? jt.paymentPctAsOf ?? null;
+    const pct = jsonTrust.paymentPercentage !== null && paymentPercentageDate
       ? jt.paymentPctPresentation === "dual_rate" && jt.paymentPercentageFB != null
         ? ` · two separate payment rates: ${jsonTrust.paymentPercentage}% ${jt.paymentPercentageLabel ?? ""} / ${jt.paymentPercentageFB}% ${jt.paymentPercentageFBLabel ?? ""}`.replace(/\s+\//g, " /")
         : jsonTrust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent"
@@ -152,28 +153,39 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
         : ` · ${jsonTrust.paymentPercentage}% payment`
       : jt.paymentPctAvailability === "not_publicly_reported"
       ? " · current payment percentage not publicly reported"
+      : jsonTrust.paymentPercentage !== null
+      ? " · recorded payment percentage without an established effective or as-of date"
+      : "";
+    const sourceDescription = jt.paymentPercentageSourceUrl
+      ? " The payment percentage is linked to the cited trust notice."
+      : jt.paymentPctSourceStatus === "not_established"
+      ? " A primary source URL for the recorded payment percentage has not yet been established."
       : "";
     const assets = jsonTrust.netAssets ? ` · $${(jsonTrust.netAssets / 1e9).toFixed(2)}B assets` : "";
+    const commonName = typeof jt.commonName === "string" && jt.commonName.trim() ? jt.commonName.trim() : null;
+    const pageName = commonName ? `${commonName} (${jsonTrust.name})` : jsonTrust.name;
     return {
-      title: `${jsonTrust.name} · AsbestosTrusts.org`,
-      description: `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
+      title: `${pageName} · AsbestosTrusts.org`,
+      description: `${jsonTrust.name} asbestos trust fund data${pct}${assets}.${sourceDescription}`,
       ogType: "article",
       canonicalPath: `/trusts/${slug}`,
-      keywords: `${jsonTrust.shortName ?? jsonTrust.name}, asbestos trust fund, payment percentage, scheduled value, trust distribution procedure`,
+      keywords: `${[commonName, jsonTrust.shortName, jsonTrust.name].filter(Boolean).join(", ")}, asbestos trust fund, payment percentage, scheduled value, trust distribution procedure`,
       jsonLd: [
         {
           "@context": "https://schema.org",
           "@type": "Article",
-          "headline": `${jsonTrust.name} — Trust Fund Data`,
-          "description": `${jsonTrust.name} asbestos trust fund data${pct}${assets}. Primary-sourced from court filings and TDP documents.`,
+          "headline": `${pageName} — Trust Fund Data`,
+          "description": `${jsonTrust.name} asbestos trust fund data${pct}${assets}.${sourceDescription}`,
           "url": `https://asbestostrusts.org/trusts/${slug}`,
           "mainEntityOfPage": `https://asbestostrusts.org/trusts/${slug}`,
+          "dateModified": "2026-10-17",
           "author": { "@id": "https://asbestostrusts.org/#org" },
           "publisher": { "@id": "https://asbestostrusts.org/#org" },
           "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
           "about": {
             "@type": "GovernmentService",
             "name": jsonTrust.name,
+            ...(commonName ? { "alternateName": commonName } : {}),
             "description": "U.S. asbestos bankruptcy trust fund established under Section 524(g)"
           }
         },
@@ -183,7 +195,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
             { "@type": "ListItem", "position": 2, "name": "Trust Data", "item": "https://asbestostrusts.org/trusts" },
-            { "@type": "ListItem", "position": 3, "name": jsonTrust.shortName ?? jsonTrust.name, "item": `https://asbestostrusts.org/trusts/${slug}` }
+            { "@type": "ListItem", "position": 3, "name": commonName ?? jsonTrust.shortName ?? jsonTrust.name, "item": `https://asbestostrusts.org/trusts/${slug}` }
           ]
         }
       ],

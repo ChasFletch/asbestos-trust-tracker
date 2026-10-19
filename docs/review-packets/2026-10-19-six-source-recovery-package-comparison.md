@@ -52,6 +52,12 @@ This review separately retrieved and read the following official documents/pages
 8. [ASARCO FY2025 annual report](https://www.asarcotrust.com/assets/uploadedFiles/334d4a6c-1b94-4adc-bf73-5566b7a5137f.pdf)
 9. [ACandS May 11, 2026 notice](https://www.acandsasbestostrust.com/assets/uploadedFiles/308c0849-826e-4c47-83ba-f74daeb899d6.pdf)
 
+### October 19 direct-FMP verification addendum
+
+After this comparison was prepared, the requested direct retrieval of the [Federal-Mogul FMP April 2024 notice](https://www.federalmogulasbestostrust.com/wp-content/uploads/2024/04/Payment-Percentage-Notice-FMP-April-2024-C1309774x9DB18.pdf) succeeded. The one-page notice is dated **April 15, 2024** and states that, after consultation with and consent of the TAC and FCR, the Trustees adjusted the FMP Subfund payment percentage from **6.9% to 12.2%**. It does **not** state an effective date.
+
+This addendum supersedes only the FMP row’s earlier conclusion that no dated FMP rate-change notice was available. It does not establish an effective date, a Federal-Mogul-wide rate, or the result of the separate April 2026 FMP reconsideration notice.
+
 ## Fact-by-fact reconciliation
 
 | Trust / scope | What both packages corroborate | Material difference / limit | Direct controlling conclusion | Public-data disposition under current authority |
@@ -67,7 +73,7 @@ This review separately retrieved and read the following official documents/pages
 ## What the comparison does **not** establish
 
 - It does not establish later final TAC/FCR consent for Kaiser, T&N, or ACandS.
-- It does not establish a current FMP effective date, a dated FMP change notice, or the outcome of the April 2026 FMP reconsideration.
+- It does not establish a current FMP effective date or the outcome of the April 2026 FMP reconsideration. The April 15, 2024 FMP notice is a dated rate-change notice, but it does not state when the adjustment became effective.
 - It does not prove a later ARTRA change or the chronology of the undated 0.50% notice.
 - It does not establish an ASARCO 35% effective date.
 - It does not establish later annual reports for Kaiser, Federal-Mogul, ARTRA, or ACandS.

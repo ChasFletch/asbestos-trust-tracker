@@ -2,6 +2,15 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
+type SubAccount = {
+  name: string;
+  value?: number;
+  effective?: string;
+  as_of?: string;
+  noticeDate?: string;
+  note?: string;
+};
+
 type TrustRecord = {
   name: string;
   shortName?: string;
@@ -19,10 +28,15 @@ type TrustRecord = {
   paymentPctTimingStatus?: string;
   paymentPctTimingNote?: string;
   paymentPctPresentation?: string;
+  paymentPctImplementationNote?: string;
+  paymentPctScopeNote?: string;
+  paymentPctHistoricalNote?: string;
+  paymentPctHistoricalSourceUrl?: string;
+  subAccounts?: SubAccount[];
   website?: string;
 };
 
-type TrustFigures = { trusts: TrustRecord[] };
+type TrustFigures = { asOf: string; trusts: TrustRecord[] };
 
 const root = process.cwd();
 const figures = JSON.parse(
@@ -85,11 +99,48 @@ describe("trust provenance transparency", () => {
       !item.paymentPercentageSourceUrl
     );
 
-    expect(withoutSourceUrl).toHaveLength(30);
+    expect(withoutSourceUrl).toHaveLength(27);
     for (const item of withoutSourceUrl) {
       expect(item.paymentPctSourceStatus).toBe("not_established");
       expect(item.paymentPercentageSource).toContain("primary source URL");
     }
+  });
+
+  it("adds source URLs without overstating scope or finality for the October 19 rate-source release", () => {
+    const abb = trust("ABB Lummus Global Inc. 524(g) Asbestos PI Trust");
+    const asarco = trust("ASARCO Asbestos PI Settlement Trust");
+    const acands = trust("ACandS Asbestos Settlement Trust");
+    const artra = trust("ARTRA 524(g) Asbestos Trust");
+    const federalMogul = trust("Federal-Mogul Asbestos PI Trust");
+
+    expect(abb).toMatchObject({ paymentPercentage: 9.5, paymentPctEffective: "2024-01-01" });
+    expect(abb.paymentPercentageSourceUrl).toContain("34ed7cf8");
+    expect(abb.paymentPctScopeNote).toContain("TDP Determined");
+
+    expect(asarco).toMatchObject({ paymentPercentage: 35, paymentPctAsOf: "2026-04-29" });
+    expect(asarco.paymentPercentageSourceUrl).toContain("334d4a6c");
+    expect(asarco.paymentPctScopeNote).toContain("does not state an effective date");
+
+    expect(acands).toMatchObject({ paymentPercentage: 2.89, paymentPctEffective: "2026-05-11", paymentPctImplementationStatus: "proposed_pending_tac_fcr_consent" });
+    expect(acands.paymentPercentageSourceUrl).toContain("308c0849");
+    expect(acands.paymentPctImplementationNote).toContain("consent");
+
+    expect(artra.paymentPctHistoricalNote).toContain("undated 0.50%");
+    expect(artra.paymentPctHistoricalSourceUrl).toContain("Notice-of-Payment-Percentage.pdf");
+
+    expect(federalMogul.paymentPctScopeNote).toContain("T&N Sub-Account");
+    expect(federalMogul.paymentPctScopeNote).toContain("12.2%");
+    expect(federalMogul.paymentPctScopeNote).toContain("not combined or averaged");
+
+    const fmp = federalMogul.subAccounts?.find((account) => account.name === "FMP Sub-Account");
+    expect(fmp).toMatchObject({ name: "FMP Sub-Account", value: 12.2, noticeDate: "2024-04-15" });
+    expect(fmp?.effective).toBeUndefined();
+    expect(fmp?.as_of).toBeUndefined();
+    expect(fmp?.note).toContain("does not state an effective date");
+  });
+
+  it("keeps the tracker-wide snapshot date unchanged for a narrow source-and-qualifier release", () => {
+    expect(figures.asOf).toBe("2026-10-08");
   });
 
   it("keeps Owens Corning and Fibreboard as separately sourced, separately dated rates", () => {

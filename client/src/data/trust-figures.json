@@ -500,8 +500,10 @@
       "assetsBasisUrl": "https://www.asarcotrust.com/assets/uploadedFiles/a8cab545-069f-48ee-9c08-79c889f1d8e6.pdf",
       "paymentPctAsOf": "2026-04-29",
       "note": "not stated as a change; in force and unchanged as of the FY2025 annual report (2026-04-29)",
-      "paymentPctSourceStatus": "not_established",
-      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
+      "paymentPercentageSource": "ASARCO Asbestos Personal Injury Settlement Trust, FY2025 Annual Report, Bankr. S.D. Tex. 05-21207 Doc 17049 (filed 2026-04-29), p. 6: \u201cThe Payment Percentage remains at 35%.\u201d",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSourceUrl": "https://www.asarcotrust.com/assets/uploadedFiles/334d4a6c-1b94-4adc-bf73-5566b7a5137f.pdf",
+      "paymentPctScopeNote": "This is an annual-report status statement for the ASARCO Asbestos PI Settlement Trust. It is not a payment-change notice and does not state an effective date."
     },
     {
       "name": "Armstrong World Industries Asbestos PI Trust",
@@ -726,10 +728,8 @@
         {
           "name": "FMP Sub-Account",
           "value": 12.2,
-          "effective": "2024-04-15",
           "quote": "the Trustees have determined to adjust the payment percentage to twelve and two tenths percent (12.2%).",
           "page": "p.1",
-          "as_of": "2024-04-15",
           "url": "https://www.federalmogulasbestostrust.com/wp-content/uploads/2024/04/Payment-Percentage-Notice-FMP-April-2024-C1309774x9DB18.pdf",
           "history": [
             {
@@ -738,10 +738,11 @@
             },
             {
               "pct": 12.2,
-              "effective": "2024-04-15"
+              "noticeDate": "2024-04-15"
             }
           ],
-          "note": "This was an INCREASE from 6.9%, with supplemental payments owed. Reconsideration notice issued 2026-04-27; no change notice posted as of 2026-08-12, so 12.2% stands."
+          "note": "The April 15, 2024 notice records an adjustment from 6.9% to 12.2% after TAC/FCR consent. It is a dated notice, but it does not state an effective date.",
+          "noticeDate": "2024-04-15"
         },
         {
           "name": "Fel-Pro Subfund",
@@ -757,7 +758,8 @@
           "value": null,
           "note": "Same as Fel-Pro. Suit against 'Federal-Mogul Asbestos Personal Injury Trust as successor to the former Vellumoid division of Federal-Mogul'. Distinct from Vellumoid, Inc. of Worcester, MA."
         }
-      ]
+      ],
+      "paymentPctScopeNote": "The displayed 2.9% rate applies only to the T&N Sub-Account and remains an interim, consent-pending payment treatment. The separate FMP Subfund has a 12.2% rate set with TAC/FCR consent in the April 15, 2024 notice; that notice does not state an effective date. The two sub-account rates are not combined or averaged."
     },
     {
       "name": "Celotex Asbestos Settlement Trust",
@@ -1084,8 +1086,14 @@
       "direction": "stable",
       "reportingFrequency": "annual",
       "paymentPctEffective": "2026-05-11",
-      "paymentPctSourceStatus": "not_established",
-      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
+      "paymentPercentageSource": "ACandS Asbestos Settlement Trust, Trustee Notice (2026-05-11): the Trustee proposed decreasing the payment percentage to 2.89%, requested TAC/FCR consent, and began interim payments at 2.89% under TDP \u00a74.3 from the Proposal Date.",
+      "paymentPctAsOf": "2026-05-11",
+      "paymentPctNoticePublishedAt": "2026-05-11",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSourceUrl": "https://www.acandsasbestostrust.com/assets/uploadedFiles/308c0849-826e-4c47-83ba-f74daeb899d6.pdf",
+      "paymentPctImplementationStatus": "proposed_pending_tac_fcr_consent",
+      "paymentPctImplementationNote": "The Trustee began paying at the proposed 2.89% rate on May 11, 2026 while TAC/FCR evaluate consent. If a higher rate is ultimately adopted, the notice provides for supplemental payments to claims liquidated at 2.89% during the intervening period.",
+      "paymentPctScopeNote": "Claims with specified timely executed releases and certain court- or probate-approval claims retain the payment percentage described in the notice; the prior 3.2% rate is relevant only to those stated exceptions and last-adopted history."
     },
     {
       "name": "J.T. Thorpe Company Successor Trust (TX)",
@@ -1362,7 +1370,9 @@
       "administrator": "Verus Claims Services",
       "direction": "up",
       "reportingFrequency": "annual",
-      "added": "2026-08-12"
+      "added": "2026-08-12",
+      "paymentPctHistoricalNote": "The official site also hosts an undated 0.50% adjustment notice. Its chronology relative to the dated April 1, 2025 0.70% notice is not established, so it is preserved as an unsequenced historical source and does not displace the dated notice.",
+      "paymentPctHistoricalSourceUrl": "https://www.artratrust.com/assets/documents/Notice-of-Payment-Percentage.pdf"
     },
     {
       "name": "Rapid-American Asbestos PI Trust",
@@ -1492,8 +1502,11 @@
       "sourceUrl": "https://abblummustrust.org/assets/uploadedFiles/04e9a249-cf90-4bfd-a2cb-21a0016473ad.pdf",
       "sourceType": "court_filed_document",
       "added": "2026-08-12",
-      "paymentPctSourceStatus": "not_established",
-      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
+      "paymentPercentageSource": "ABB Lummus Global Inc. 524(g) Asbestos PI Trust, Notice Regarding Payment Percentage: with TAC and Future Claimants\u2019 Representative consent, the Trust set 9.5% for TDP Determined Lummus Asbestos PI Trust Claims paid January 1, 2024 and thereafter. The FY2025 annual report confirms 9.5% for 2025.",
+      "paymentPctEffective": "2024-01-01",
+      "paymentPctConfidence": "filed",
+      "paymentPercentageSourceUrl": "https://www.abblummustrust.org/assets/uploadedFiles/34ed7cf8-61ba-464b-93fc-9851a0670df7.pdf",
+      "paymentPctScopeNote": "Applies to TDP Determined Lummus Asbestos PI Trust Claims paid on or after January 1, 2024; the notice identifies TDP \u00a74.3 exceptions and applies the percentage in effect at time of payment."
     },
     {
       "name": "Shook & Fletcher Asbestos Settlement Trust",

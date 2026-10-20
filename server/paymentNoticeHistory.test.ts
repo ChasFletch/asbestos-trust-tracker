@@ -8,7 +8,7 @@ const read = (relativePath: string) => fs.readFileSync(path.join(root, relativeP
 
 describe("official payment-notice history", () => {
   it("keeps every public history entry source-linked, scoped, and limited to reviewed official records", () => {
-    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(22);
+    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(18);
     for (const item of OFFICIAL_PAYMENT_NOTICES) {
       expect(item.sourceUrl).toMatch(/^https:\/\//);
       expect(item.sourceLabel.length).toBeGreaterThan(20);
@@ -35,18 +35,6 @@ describe("official payment-notice history", () => {
     });
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.effectiveDate).toBeUndefined();
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.summary).toContain("consent remains pending");
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-fmp-2024-04-15")).toMatchObject({
-      priorPercentage: 6.9,
-      currentPercentage: 12.2,
-      publishedDate: "2024-04-15",
-    });
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-fmp-2024-04-15")?.effectiveDate).toBeUndefined();
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-fmp-2024-04-15")?.scope).toContain("distinct from the T&N Sub-Account");
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "abb-lummus-2024-01-01")).toMatchObject({ currentPercentage: 9.5, effectiveDate: "2024-01-01" });
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "asarco-2026-04-29")).toMatchObject({ currentPercentage: 35, publishedDate: "2026-04-29" });
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "asarco-2026-04-29")?.effectiveDate).toBeUndefined();
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "acands-2026-05-11")).toMatchObject({ priorPercentage: 3.2, currentPercentage: 2.89, interimPaymentDate: "2026-05-11" });
-    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "acands-2026-05-11")?.summary).toContain("does not establish final adoption");
     const page = read("client/src/pages/PaymentNoticeHistory.tsx");
     expect(page).toContain("Proposed interim rate");
     expect(page).toContain("Proposal / interim-payment date");

@@ -1,0 +1,19 @@
+# Post-Pilot Payment-Rate and Annual-Report Monitoring Log — October 21, 2026
+
+The October 6–November 5 authorization permits payment-percentage and annual-report monitoring only. Before source work, this pass reviewed the October 6 official-source inventory, the open candidate and access-blocker queue, the October 19 regular monitoring record, and the October 20 expanded sweep. No public tracker data, article, source code, deployment, reviewer credit, PACER record, paid API, or paid external tool was used.
+
+The routine cap was observed: **25 registered official, administrator, or primary-document URLs** were requested directly in 19 seconds. Eight returned usable official content. One registered source returned a non-trust placeholder page, and 16 returned an access outcome. The reproducible per-source results, URLs, response types, and finding boundaries are in [`2026-10-21-detection-pass.json`](2026-10-21-detection-pass.json).
+
+No newly dated controlling payment-percentage notice, current official rate statement, or annual-report posting was verified after the October 20 baseline. The accessible material confirms only previously known events: Manville’s September 3 5.1% to 5.6% notice; J.T. Thorpe’s September 18 50% to 53.7% rate announcement with implementation still pending; Federal-Mogul T&N’s June 30 2.9% consent-pending interim notice; and the existing NARCO/Thurston status pages. Their respective official sources were [Manville’s category feed](https://www.claimsres.com/category/manville/feed/), [J.T. Thorpe’s trust page](https://www.jttstrust.com/), [Federal-Mogul’s T&N notice](https://www.federalmogulasbestostrust.com/wp-content/uploads/2026/06/Notice-of-Payment-Percentage-Change-TN-Subfund-June-18-2026-4923-8029-8166-v.1-1.pdf), [NARCO’s trust page](https://www.narcoasbestostrust.org/), and [C.E. Thurston’s CRMC document index](https://www.claimsres.com/documents/c-e-thurston/).
+
+A new operational finding requires follow-up, not a public fact: the registered Combustion Engineering URL redirected to `cetrust.com` and displayed a GoDaddy “Launching Soon” placeholder rather than trust material. That content mismatch is a source-replacement investigation need. It does not prove a rate change, report absence, closure, or other change in the underlying trust.
+
+The 16 direct access outcomes were eight HTTP 403/WAF-style responses (Armstrong, Owens-Illinois, Flintkote, Babcock & Wilcox, Bondex, Eagle-Picher, Raytech, and Keene) and eight TLS self-signed-certificate failures (ACandS, ASARCO, ABB Lummus, ARTRA, A.P. Green, Maremont, Congoleum, and Quigley). These are operational observations only. No absence, rate, annual-report, or current-status inference is made from them.
+
+No material candidate qualified for a correction packet. The next regular pass remains subject to the normal 25-source/12-minute cap and the authorization’s November 5, 2026 Central-time end condition.
+
+## Afternoon scheduled preflight — 1:03 PM Central
+
+The afternoon preflight again reviewed the 55-record official-source inventory, the project queue, today’s completed detection artifact, the October 20 expanded-sweep record, and the documented coverage gaps. The 9:02 AM Central pass had already directly requested the full **25-source** daily allowance. Its result remains the controlling same-day result: no new payment-percentage or annual-report candidate; one Combustion Engineering source-replacement need; and the listed access-only outcomes.
+
+No additional source request was made. Repeating a source or selecting another registered source would exceed the authorization’s daily 25-source ceiling and would not supply a distinct, permitted same-day detection result. This was a cap-preserving no-op, not evidence that no later source posting could occur. No public tracker data, article, source code, deployment, reviewer credit, paid retrieval, or correction packet changed.

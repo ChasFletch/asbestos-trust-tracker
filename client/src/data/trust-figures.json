@@ -300,7 +300,7 @@
       "administrator": "DCPF",
       "court": "Bankr. D. Del.",
       "docket": "01-01139",
-      "website": "https://www.wrgasbestospitrust.com",
+      "website": "https://www.wrgraceasbestostrust.com",
       "paymentPctEffective": "2014-01-01",
       "direction": "stable",
       "reportingFrequency": "annual",
@@ -680,6 +680,11 @@
       "established": 2007,
       "shortName": "Federal-Mogul (T&N / FMP)",
       "paymentPercentageFB": 12.2,
+      "paymentPctPresentation": "dual_rate",
+      "paymentPercentageLabel": "T&N Sub-Account",
+      "paymentPercentageFBLabel": "FMP Sub-Account",
+      "paymentPercentageFBSourceUrl": "https://www.federalmogulasbestostrust.com/wp-content/uploads/2024/04/Payment-Percentage-Notice-FMP-April-2024-C1309774x9DB18.pdf",
+      "paymentPctScopeNote": "T&N and FMP are separate subfunds with separate payment percentages; neither rate is trust-wide and they are not combined or averaged. The June 30, 2026 proposal/interim-payment date applies only to T&N. The FMP notice is dated April 15, 2024 and confirms 12.2% with TAC/FCR consent, but does not state an effective date.",
       "company": "Federal-Mogul Corporation",
       "administrator": "DCPF",
       "court": "Bankr. D. Del.",
@@ -802,7 +807,9 @@
       "court": "Bankr. D. Del.",
       "docket": "03-10495",
       "website": "https://www.cetrust.com",
-      "paymentPctEffective": "2020-01-01",
+      "paymentPctEffective": "2026-04-01",
+      "paymentPctImplementationStatus": "proposed_pending_tac_fcr_consent",
+      "paymentPctImplementationNote": "The April 1, 2026 notice withdraws and supersedes the March 5 notice, proposes 15.3%, and states the Trustees will apply 15.3% to TDP Determined Claims in the Payment Queue, subject to TAC/FCR consent. April 1 is the notice/proposal date; a final adoption or separate effective date is not established by this notice.",
       "direction": "stable",
       "reportingFrequency": "annual",
       "paymentPctSourceStatus": "not_established",
@@ -1193,8 +1200,9 @@
         "uninsuredPortionsOfInsuredClaims": "A claim for the uninsured portion of an Insured Asbestos Claim must be filed within three years after the applicable insurer paid the claim\u2014or, if no insurer payment was due, settled it.",
         "caveat": "These are claim-category-specific TDP rules, not a single universal deadline and not a substitute for any applicable federal, state, or foreign statute of limitation or repose. Claimants should review the TDP and obtain advice about their own filing dates."
       },
-      "paymentPctSourceStatus": "not_established",
-      "paymentPercentageSource": "A primary source URL for the recorded payment percentage has not yet been established."
+      "paymentPctSourceStatus": "established",
+      "paymentPercentageSource": "Action Taken in Writing by the Trustee of the Kaiser Gypsum Asbestos Personal Injury Trust, adopted and effective May 19, 2026, pp.1\u20132, signed by David F. Levi solely as Trustee: adjusts the initial 55.2% Payment Percentage to 62.0%, based on Ankura Consulting Group's March 6, 2026 analysis, with TAC consent dated May 11, 2026 and FCR consent dated May 15, 2026.",
+      "paymentPercentageSourceUrl": "https://www.kaisergypsumtrust.org/assets/uploadedFiles/586bd551-8da3-4dad-bbe6-6badc8537ca7.pdf"
     },
     {
       "name": "Porter Hayden Bodily Injury Trust",

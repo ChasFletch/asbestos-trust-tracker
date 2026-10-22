@@ -287,7 +287,9 @@ export default function TrustDetail() {
         administrator: (jsonTrust as any)?.administrator ?? dbTrust?.administrator ?? null,
         court: (jsonTrust as any)?.court ?? dbTrust?.court ?? null,
         docket: (jsonTrust as any)?.docket ?? dbTrust?.docket ?? null,
-        website: dbTrust?.website ?? (jsonTrust as any)?.website ?? null,
+        website: jsonTrust.name === "W.R. Grace Asbestos PI Trust"
+          ? (jsonTrust as any)?.website ?? null
+          : dbTrust?.website ?? (jsonTrust as any)?.website ?? null,
         scheduledValues: (jsonTrust as any)?.scheduledValues ?? null,
         hasDiseaseLevelScheduledValueMatrix: (jsonTrust as any)?.hasDiseaseLevelScheduledValueMatrix ?? null,
         paymentPercentageBasisLabel: (jsonTrust as any)?.paymentPercentageBasisLabel ?? null,
@@ -610,9 +612,9 @@ export default function TrustDetail() {
           {trust.paymentPctPresentation === "dual_rate" && trust.paymentPercentageSourceUrl && trust.paymentPercentageFBSourceUrl ? (
             <div className="text-xs text-muted-foreground/50 mt-1.5 leading-relaxed border-t border-border/30 pt-1.5">
               <span className="mr-1">Source notices:</span>
-              <a href={trust.paymentPercentageSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">Owens Corning</a>
+              <a href={trust.paymentPercentageSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">{trust.paymentPercentageLabel}</a>
               <span aria-hidden="true"> · </span>
-              <a href={trust.paymentPercentageFBSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">Fibreboard</a>
+              <a href={trust.paymentPercentageFBSourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-foreground transition-colors">{trust.paymentPercentageFBLabel}</a>
             </div>
           ) : (trust as any).paymentPercentageSource && (
             <div className="text-xs text-muted-foreground/50 mt-1.5 leading-relaxed border-t border-border/30 pt-1.5">

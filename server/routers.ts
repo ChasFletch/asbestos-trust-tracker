@@ -72,7 +72,9 @@ function mergeTrust(jsonTrust: any, dbTrust?: any, history?: any[]) {
     administrator: (jsonTrust as any).administrator ?? dbTrust?.administrator ?? null,
     court: (jsonTrust as any).court ?? dbTrust?.court ?? null,
     docket: (jsonTrust as any).docket ?? dbTrust?.docket ?? null,
-    website: dbTrust?.website ?? (jsonTrust as any).website ?? null,
+    website: jsonTrust.name === "W.R. Grace Asbestos PI Trust"
+      ? (jsonTrust as any).website ?? null
+      : dbTrust?.website ?? (jsonTrust as any).website ?? null,
     // ── Financials: JSON is authoritative ──
     paymentPct: jsonTrust.paymentPercentage ?? null,
     paymentPctFB: (jsonTrust as any).paymentPercentageFB ?? null,

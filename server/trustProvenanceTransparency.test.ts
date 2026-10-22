@@ -85,7 +85,7 @@ describe("trust provenance transparency", () => {
       !item.paymentPercentageSourceUrl
     );
 
-    expect(withoutSourceUrl).toHaveLength(30);
+    expect(withoutSourceUrl).toHaveLength(29);
     for (const item of withoutSourceUrl) {
       expect(item.paymentPctSourceStatus).toBe("not_established");
       expect(item.paymentPercentageSource).toContain("primary source URL");
@@ -103,6 +103,38 @@ describe("trust provenance transparency", () => {
     expect(ocfb.paymentPercentageFBSourceUrl).toContain("FB-Subfund-Payment-Percentage-Notice");
     expect(trustDetailSource).toContain("Two separate rates · not a trust-wide figure");
     expect(trustDetailSource).toContain("Source notices:");
+  });
+
+  it("stages AT-WO-2026-10-22-009 hygiene fixes without changing payment-rate values", () => {
+    const seedSource = readFileSync(resolve(root, "seed.mjs"), "utf8");
+    const manvilleSeed = seedSource.split("\n").find((line) => line.includes('id:"manville"'));
+    expect(manvilleSeed).toContain("paymentPct:5.6,");
+    expect(trust("Manville Personal Injury Settlement Trust").paymentPercentage).toBe(5.6);
+
+    const ce = trust("Combustion Engineering 524(g) Asbestos PI Trust");
+    expect(ce.paymentPercentage).toBe(15.3);
+    expect(ce.paymentPctEffective).toBe("2026-04-01");
+    expect(ce.paymentPctImplementationStatus).toBe("proposed_pending_tac_fcr_consent");
+
+    const grace = trust("W.R. Grace Asbestos PI Trust");
+    expect(grace.paymentPercentage).toBe(30.1);
+    expect(grace.website).toBe("https://www.wrgraceasbestostrust.com");
+
+    const federalMogul = trust("Federal-Mogul Asbestos PI Trust");
+    expect(federalMogul.paymentPercentage).toBe(2.9);
+    expect(federalMogul.paymentPercentageFB).toBe(12.2);
+    expect(federalMogul.paymentPctPresentation).toBe("dual_rate");
+    expect(federalMogul.paymentPercentageFBSourceUrl).toContain("Payment-Percentage-Notice-FMP-April-2024");
+    expect(trustDetailSource).toContain(">{trust.paymentPercentageLabel}</a>");
+    expect(trustDetailSource).toContain(">{trust.paymentPercentageFBLabel}</a>");
+
+    const gypsum = trust("Kaiser Gypsum Asbestos PI Trust");
+    expect(gypsum.paymentPercentage).toBe(62);
+    expect(gypsum.paymentPctEffective).toBe("2026-05-19");
+    expect(gypsum.paymentPctSourceStatus).toBe("established");
+    expect(gypsum.paymentPercentageSourceUrl).toBe("https://www.kaisergypsumtrust.org/assets/uploadedFiles/586bd551-8da3-4dad-bbe6-6badc8537ca7.pdf");
+    expect(gypsum.paymentPercentageSource).toContain("David F. Levi");
+    expect(gypsum.paymentPercentageSource).toContain("May 19, 2026");
   });
 
   it("exposes approved aliases and normalized G-I timing across the page, metadata, and CSV", () => {

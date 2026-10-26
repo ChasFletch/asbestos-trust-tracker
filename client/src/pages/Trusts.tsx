@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { Info } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, Cell, ResponsiveContainer } from "recharts";
 import { SourceDocModal } from "@/components/SourceDocModal";
+import { RESEARCH_RECORDS } from "@/data/researchRecords";
 
 type SortKey = "name" | "paymentPercentage" | "netAssets" | "status" | "confidence" | "established";
 type SortDir = "asc" | "desc";
@@ -691,6 +692,28 @@ export default function Trusts() {
           )}
         </div>
       )}
+
+      <section className="mt-10 border-t border-border/50 pt-8" aria-labelledby="non-operating-records-heading" data-non-operating-research-records>
+        <div className="max-w-3xl">
+          <div className="flex items-start gap-3">
+            <FileText size={19} className="mt-0.5 shrink-0 text-primary" aria-hidden="true" />
+            <div>
+              <h2 id="non-operating-records-heading" className="font-display text-xl font-bold text-foreground">Bankruptcy and proposed-trust research records</h2>
+              <p className="mt-1.5 text-sm leading-6 text-muted-foreground">These source-linked records cover bankruptcy estates and proposed trust structures. They are not operating trusts and are excluded from the table above, the trust counts, payment-percentage summaries, net-asset totals, and cumulative-payment totals.</p>
+            </div>
+          </div>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {RESEARCH_RECORDS.map((record) => (
+              <article key={record.slug} className="rounded-lg border border-amber-300/50 bg-amber-50/35 p-4">
+                <span className="inline-flex rounded border border-amber-300/70 bg-background/70 px-1.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-amber-950">{record.statusLabel}</span>
+                <h3 className="mt-3 font-serif text-lg font-semibold leading-snug text-foreground"><Link href={`/trusts/${record.slug}`} className="hover:text-primary hover:underline">{record.title}</Link></h3>
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">Source cut-off: {record.sourceCutoffAt}. Published {record.publishedAt}.</p>
+                <Link href={`/trusts/${record.slug}`} className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">Read source-linked record <ArrowUpRight size={13} aria-hidden="true" /></Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground/60">

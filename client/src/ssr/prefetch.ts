@@ -7,6 +7,7 @@ import type { AppRouter } from "../../../server/routers";
 import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
 import { getRelatedReportIdsForTrust } from "@/data/reportRelations";
 import { OFFICIAL_PAYMENT_NOTICES } from "@/data/paymentNoticeHistory";
+import { getResearchRecordBySlug } from "@/data/researchRecords";
 
 export type HeadMeta = {
   title: string;
@@ -127,6 +128,43 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
   const trustMatch = clean.match(/^\/trusts\/([^/]+)$/);
   if (trustMatch) {
     const slug = trustMatch[1];
+    const researchRecord = getResearchRecordBySlug(slug);
+    if (researchRecord) {
+      return {
+        title: `${researchRecord.title} · ${SITE_NAME}`,
+        description: researchRecord.seoDescription,
+        ogType: "article",
+        canonicalPath: `/trusts/${slug}`,
+        publishedTime: researchRecord.publishedAt,
+        modifiedTime: researchRecord.statusAsOf,
+        keywords: researchRecord.keywords,
+        jsonLd: [
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": researchRecord.title,
+            "description": researchRecord.seoDescription,
+            "url": `https://asbestostrusts.org/trusts/${slug}`,
+            "mainEntityOfPage": `https://asbestostrusts.org/trusts/${slug}`,
+            "datePublished": researchRecord.publishedAt,
+            "dateModified": researchRecord.statusAsOf,
+            "author": { "@id": "https://asbestostrusts.org/#research-desk" },
+            "publisher": { "@id": "https://asbestostrusts.org/#org" },
+            "isPartOf": { "@id": "https://asbestostrusts.org/#website" },
+            "about": researchRecord.statusLabel,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
+              { "@type": "ListItem", "position": 2, "name": "Trust Data", "item": "https://asbestostrusts.org/trusts" },
+              { "@type": "ListItem", "position": 3, "name": researchRecord.title, "item": `https://asbestostrusts.org/trusts/${slug}` },
+            ],
+          },
+        ],
+      };
+    }
     const reportIds = getRelatedReportIdsForTrust(slug);
     const [jsonTrust, dbTrust, reports] = await Promise.all([
       p.trustFiguresBySlug(slug),

@@ -41,6 +41,10 @@ function trust(name: string) {
   return result!;
 }
 
+function slugify(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
 describe("trust provenance transparency", () => {
   it("does not describe every trust detail page as primary-sourced", () => {
     expect(prefetchSource).not.toContain("Primary-sourced from court filings and TDP documents.");
@@ -156,11 +160,22 @@ describe("trust provenance transparency", () => {
     expect(csvSource).toContain('"paymentPctSourceStatus"');
   });
 
-  it("includes a lastmod element for every trust detail URL in the sitemap", () => {
+  it("includes a lastmod element for every operating-trust detail URL and keeps non-operating records separate", () => {
     const trustBlocks = sitemap.match(/<url>\s*<loc>https:\/\/asbestostrusts\.org\/trusts\/[^<]+<\/loc>[\s\S]*?<\/url>/g) ?? [];
-    expect(trustBlocks).toHaveLength(55);
-    for (const block of trustBlocks) {
+    const operatingSlugs = new Set(figures.trusts.map((item) => slugify(item.name)));
+    const operatingBlocks = trustBlocks.filter((block) => {
+      const slug = block.match(/<loc>https:\/\/asbestostrusts\.org\/trusts\/([^<]+)<\/loc>/)?.[1];
+      return Boolean(slug && operatingSlugs.has(slug));
+    });
+    const nonOperatingBlocks = trustBlocks.filter((block) => !operatingBlocks.includes(block));
+
+    expect(operatingBlocks).toHaveLength(55);
+    for (const block of operatingBlocks) {
       expect(block).toContain("<lastmod>2026-10-17</lastmod>");
     }
+    expect(nonOperatingBlocks).toHaveLength(2);
+    expect(nonOperatingBlocks.join("\n")).toContain("whittaker-clark-daniels-bankruptcy-estate");
+    expect(nonOperatingBlocks.join("\n")).toContain("imerys-talc-america-proposed-trust");
+    expect(nonOperatingBlocks.join("\n")).toContain("<lastmod>2026-10-26</lastmod>");
   });
 });

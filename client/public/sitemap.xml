@@ -119,6 +119,20 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Non-operating bankruptcy and proposed-trust research records -->
+  <url>
+    <loc>https://asbestostrusts.org/trusts/whittaker-clark-daniels-bankruptcy-estate</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://asbestostrusts.org/trusts/imerys-talc-america-proposed-trust</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Trust detail pages (55 trusts) -->
   <url>
     <loc>https://asbestostrusts.org/trusts/narco-asbestos-trust</loc>

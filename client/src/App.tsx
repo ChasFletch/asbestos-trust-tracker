@@ -9,7 +9,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { Head } from "./components/Head";
 import Home from "./pages/Home";
 import Trusts from "./pages/Trusts";
-import TrustDetail from "./pages/TrustDetail";
+import TrustRecordRoute from "./pages/TrustRecordRoute";
 import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import Methodology from "./pages/Methodology";
@@ -28,7 +28,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/trusts" component={Trusts} />
-          <Route path="/trusts/:slug" component={TrustDetail} />
+      <Route path="/trusts/:slug" component={TrustRecordRoute} />
       <Route path="/news/:slug" component={NewsDetail} />
       <Route path="/news" component={News} />
       <Route path="/methodology" component={Methodology} />

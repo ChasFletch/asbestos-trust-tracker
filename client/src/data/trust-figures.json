@@ -731,19 +731,16 @@
         {
           "name": "FMP Sub-Account",
           "value": 12.2,
-          "effective": "2024-04-15",
+          "noticeDate": "2024-04-15",
           "quote": "the Trustees have determined to adjust the payment percentage to twelve and two tenths percent (12.2%).",
           "page": "p.1",
-          "as_of": "2024-04-15",
           "url": "https://www.federalmogulasbestostrust.com/wp-content/uploads/2024/04/Payment-Percentage-Notice-FMP-April-2024-C1309774x9DB18.pdf",
           "history": [
             {
-              "pct": 6.9,
-              "through": "2024-04-15"
+              "pct": 6.9
             },
             {
-              "pct": 12.2,
-              "effective": "2024-04-15"
+              "pct": 12.2
             }
           ],
           "note": "This was an INCREASE from 6.9%, with supplemental payments owed. Reconsideration notice issued 2026-04-27; no change notice posted as of 2026-08-12, so 12.2% stands."

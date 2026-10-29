@@ -1,0 +1,75 @@
+{
+  "schema": "asbestostrusts-post-pilot-detection-pass-v1",
+  "date": "2026-10-27",
+  "timezone": "America/Chicago",
+  "authorization": "2026-10-06 through 2026-11-05 payment-rate and annual-report monitoring only",
+  "preflight": {
+    "registry": "docs/payment-rate-verification-2026-10-06/manifest.json",
+    "candidateQueue": "todo.md",
+    "latestCompletedRun": "docs/post-pilot-monitoring/2026-10-26-rate-and-annual-report-monitoring-log.md",
+    "coverageFindings": "docs/source-enrichment-candidates-2026-10-02.json"
+  },
+  "initialDetection": {
+    "registeredSourcesRequested": 25,
+    "initialDetectionCap": 25,
+    "result": "no_verified_new_rate_or_annual_report_candidate",
+    "sourceIndexes": [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+    "retainedRawResultPath": "/tmp/asbestostrusts-oct27-detection-results.tsv"
+  },
+  "accessOutcomes": {
+    "tlsCertificateValidation": [
+      "G-I Holdings (GAF)",
+      "Yarway",
+      "A.P. Green",
+      "NGC",
+      "Congoleum",
+      "ACandS",
+      "J.T. Thorpe Company Successor Trust (TX)",
+      "Kaiser Gypsum",
+      "Porter Hayden",
+      "H.K. Porter",
+      "Christy Refractories",
+      "A-Best",
+      "ARTRA",
+      "A & I Corporation",
+      "Burns and Roe",
+      "Duro Dyne",
+      "Leslie Controls",
+      "ABB Lummus"
+    ],
+    "connectionTimeout": [
+      "Motors Liquidation Co. (GM)",
+      "Shook & Fletcher"
+    ],
+    "http403": [
+      "Rapid-American"
+    ],
+    "limitation": "These are monitoring-transport outcomes only. They do not establish that a trust has no later notice or report, or that any previously recorded rate or annual-report fact is unchanged."
+  },
+  "followUpReviews": [
+    {
+      "trust": "C.E. Thurston & Sons Asbestos Trust",
+      "sourceUrl": "https://www.thurstonasbestostrust.com/",
+      "reason": "Direct detector text contained an August 2026 date signal.",
+      "controllingReview": "The official page contains trust background and links to CRMC announcements/documents; it does not state a dated current payment percentage or annual-report posting.",
+      "disposition": "not_a_rate_or_annual_report_candidate"
+    },
+    {
+      "trust": "Raytech (Raymark) Trust",
+      "sourceUrl": "https://www.cpf-inc.com/trusts/raytech-trust/",
+      "reason": "Reader transport referenced annual-report text.",
+      "controllingReview": "The official CPF page lists Raytech adjusted liquidated values and payment-percentage items labeled 2024. It provides no 2025 or 2026 annual-report or payment-rate event in the reviewed page text.",
+      "disposition": "existing_historical_material_only"
+    },
+    {
+      "trust": "Keene Creditors Trust",
+      "sourceUrl": "https://www.cpf-inc.com/keene-trust-payment-percentage2024",
+      "reason": "Reader transport referenced payment-percentage text.",
+      "controllingReview": "The official CPF page is dated July 31, 2024 and states that the Trustee approved an increase to 1.05%, with a linked notice. The reviewed page identifies no later 2025 or 2026 payment-rate event.",
+      "disposition": "existing_historical_material_only"
+    }
+  ],
+  "candidateCount": 0,
+  "publicChange": false,
+  "paidSourceUsed": false
+}

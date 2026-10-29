@@ -1,0 +1,95 @@
+{
+  "schema": "asbestostrusts-post-pilot-detection-pass-v1",
+  "date": "2026-10-28",
+  "timezone": "America/Chicago",
+  "authorization": "2026-10-06 through 2026-11-05 payment-rate and annual-report monitoring only",
+  "preflight": {
+    "registry": "docs/payment-rate-verification-2026-10-06/manifest.json",
+    "candidateQueue": "todo.md",
+    "latestCompletedRun": "docs/post-pilot-monitoring/2026-10-27-rate-and-annual-report-monitoring-log.md",
+    "coverageFindings": "docs/source-enrichment-candidates-2026-10-02.json"
+  },
+  "initialDetection": {
+    "registeredSourcesRequested": 25,
+    "initialDetectionCap": 25,
+    "requestWindowUtc": "2026-10-28T14:04:33Z through 2026-10-28T14:04:39Z",
+    "sourceIndexes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+    "result": "no_verified_new_rate_or_annual_report_candidate",
+    "retainedLocalResultDirectory": "/tmp/asbestostrusts-oct28-monitor"
+  },
+  "reviewedExistingMaterials": [
+    {
+      "trust": "Western Asbestos Settlement Trust",
+      "sourceUrl": "https://www.wastrust.com/",
+      "material": "Twenty-Second Annual Report and Accounting for 2025",
+      "sourceDate": "2026-04-30",
+      "disposition": "existing_annual_report_posting_not_new"
+    },
+    {
+      "trust": "Thorpe Insulation Company Asbestos Settlement Trust",
+      "sourceUrl": "https://www.tistrust.com/",
+      "material": "Sixteenth Annual Report and Accounting for 2025",
+      "sourceDate": "2026-04-30",
+      "disposition": "existing_annual_report_posting_not_new"
+    },
+    {
+      "trust": "Plant Asbestos Settlement Trust",
+      "sourceUrl": "https://www.pastrust.com/",
+      "material": "Fourteenth Annual Report and Accounting for 2025",
+      "sourceDate": "2026-04-30",
+      "disposition": "existing_annual_report_posting_not_new"
+    },
+    {
+      "trust": "J.T. Thorpe Settlement Trust (CA)",
+      "sourceUrl": "https://www.jttstrust.com/",
+      "material": "Payment Percentage Review: 50% to 53.7%; implementation remains tied to system and payment-procedure updates",
+      "sourceDate": "2026-09-18",
+      "disposition": "already_recorded_rate_event_not_new"
+    },
+    {
+      "trust": "Owens Corning/Fibreboard Asbestos PI Trust",
+      "sourceUrl": "https://www.ocfbasbestostrust.com/",
+      "material": "OC and FB subfund payment-percentage notices",
+      "sourceDate": "2026-06-30",
+      "disposition": "already_recorded_subfund_rate_event_not_new"
+    },
+    {
+      "trust": "Babcock & Wilcox Asbestos PI Settlement Trust",
+      "sourceUrl": "https://www.bwasbestostrust.com/",
+      "material": "Payment Percentage Notice",
+      "sourceDate": "2026-06-30",
+      "disposition": "already_recorded_rate_event_not_new"
+    },
+    {
+      "trust": "Celotex Asbestos Settlement Trust",
+      "sourceUrl": "https://www.celotextrust.com/",
+      "material": "Current IRC payment percentage statement: 7%",
+      "sourceDate": "2023-06-23",
+      "disposition": "existing_rate_statement_not_new"
+    },
+    {
+      "trust": "Maremont Asbestos PI Trust",
+      "sourceUrl": "https://maremont.mfrclaims.com/",
+      "material": "Initial payment percentage statement: 28.4%",
+      "sourceDate": null,
+      "disposition": "undated_existing_rate_statement_not_new"
+    }
+  ],
+  "excludedNonScopeMaterial": [
+    {
+      "trusts": ["Owens Corning/Fibreboard", "Celotex", "Babcock & Wilcox"],
+      "material": "October 12, 2026 SSN-policy news-card item",
+      "reason": "not a payment-percentage change or annual-report posting"
+    }
+  ],
+  "accessOutcomes": {
+    "http406": ["NARCO", "USG", "Armstrong payment-percentage notice", "Paddock/Owens-Illinois payment-percentage notice", "Federal-Mogul T&N payment-percentage notice"],
+    "http403": ["DII Industries", "W.R. Grace", "Pittsburgh Corning", "Flintkote"],
+    "tlsCertificateValidation": ["ASARCO", "Quigley", "Fuller-Austin"],
+    "connectionTimeout": ["Manville"],
+    "limitation": "These are monitoring-transport outcomes only. They do not establish a document's absence, a rate's currentness, an annual-report absence, or a change in trust status."
+  },
+  "candidateCount": 0,
+  "publicChange": false,
+  "paidSourceUsed": false
+}

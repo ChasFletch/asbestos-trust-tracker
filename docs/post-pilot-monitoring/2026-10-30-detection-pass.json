@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-30",
+  "authorization": "2026-10-06 through 2026-11-05 America/Chicago; payment-percentage changes and annual-report postings only",
+  "initialDetection": {
+    "startedAt": "2026-10-30T14:01:36Z",
+    "sourceCount": 25,
+    "timeLimitMinutes": 12,
+    "sourceRegistry": "docs/payment-rate-verification-2026-10-06/manifest.json",
+    "deduplicationBaseline": "2026-10-29 rate-and-annual-report monitoring log",
+    "outcomes": [
+      {"trust": "J.T. Thorpe Settlement Trust (CA)", "url": "https://www.jttstrust.com/", "outcome": "reviewed_official_page", "finding": "September 18, 2026 50% to 53.7% payment-percentage review and April 30, 2026 FY2025 annual-report posting already known; no newer rate/report event"},
+      {"trust": "Plant Asbestos Settlement Trust", "url": "https://www.pastrust.com/", "outcome": "reviewed_official_page", "finding": "April 30, 2026 FY2025 annual-report posting already known; no newer rate/report event"},
+      {"trust": "Thorpe Insulation Settlement Trust", "url": "https://www.tistrust.com/", "outcome": "reviewed_official_page", "finding": "April 30, 2026 FY2025 annual-report posting already known; no newer rate/report event"},
+      {"trust": "NARCO Asbestos Trust", "url": "https://www.narcoasbestostrust.org/", "outcome": "reviewed_official_page", "finding": "Latest displayed news dated May 27, 2026; no newer rate/report event"},
+      {"trust": "Combustion Engineering 524(g) Asbestos PI Trust", "url": "https://cetrust.com/", "outcome": "noncontrolling_placeholder", "finding": "Generic GoDaddy Launching Soon page, not a trust notice or report"},
+      {"trust": "Armstrong World Industries", "url": "https://www.armstrongworldasbestostrust.com/", "outcome": "http_403_access_limited"},
+      {"trust": "Owens-Illinois / Paddock", "url": "https://www.oiasbestospersonalinjurytrust.com/", "outcome": "http_403_access_limited"},
+      {"trust": "Federal-Mogul", "url": "https://www.federalmogulasbestostrust.com/", "outcome": "http_403_access_limited"},
+      {"trust": "W.R. Grace", "url": "https://www.wrgraceasbestostrust.com/", "outcome": "http_403_access_limited"},
+      {"trust": "Flintkote", "url": "https://www.flintkoteasbestostrust.com/", "outcome": "http_403_access_limited"},
+      {"trust": "United States Gypsum", "url": "https://www.usgasbestostrust.com/", "outcome": "http_403_access_limited"},
+      {"trust": "Raytech", "url": "https://www.cpf-inc.com/trusts/raytech-trust/", "outcome": "http_403_access_limited"},
+      {"trust": "Keene", "url": "https://www.cpf-inc.com/keene-trust-payment-percentage2024", "outcome": "http_403_access_limited"},
+      {"trust": "A.P. Green", "url": "https://apg.mfrclaims.com/", "outcome": "tls_validation_failure"},
+      {"trust": "ABB Lummus", "url": "https://www.abblummustrust.org/", "outcome": "tls_validation_failure"},
+      {"trust": "ACandS", "url": "https://www.acandsasbestostrust.com/", "outcome": "tls_validation_failure"},
+      {"trust": "ARTRA", "url": "https://www.artratrust.com/", "outcome": "tls_validation_failure"},
+      {"trust": "ASARCO", "url": "https://www.asarcotrust.com/", "outcome": "tls_validation_failure"},
+      {"trust": "Kaiser", "url": "https://www.kaiserasbestostrust.com/", "outcome": "tls_validation_failure"},
+      {"trust": "A & I", "url": "https://www.a-i-trust.org/", "outcome": "dns_resolution_failure"},
+      {"trust": "Duro Dyne", "url": "https://www.durodyneasbestostrust.com/", "outcome": "dns_resolution_failure"},
+      {"trust": "Eagle-Picher", "url": "https://www.eaglepichertrust.com/", "outcome": "dns_resolution_failure"},
+      {"trust": "Pittsburgh Corning", "url": "https://www.pccasbestos.org/", "outcome": "dns_resolution_failure"},
+      {"trust": "C.E. Thurston", "url": "https://www.claimsres.com/documents/c-e-thurston/", "outcome": "connection_timeout"},
+      {"trust": "Manville", "url": "https://www.claimsres.com/category/manville/", "outcome": "connection_timeout"}
+    ]
+  },
+  "materialCandidates": [],
+  "conclusion": "No material new activity was verified. Access limitations are operational observations only and do not establish a document's absence, a rate's currentness, or an annual report's absence."
+}

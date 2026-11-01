@@ -181,7 +181,8 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
     }
     const jt = jsonTrust as any;
     const paymentPercentageDate = jt.paymentPctEffective ?? jt.paymentPctAsOf ?? null;
-    const pct = jsonTrust.paymentPercentage !== null && paymentPercentageDate
+    const hasPaymentPercentageContext = Boolean(paymentPercentageDate || jt.paymentPctPaymentCycle || jt.paymentPctImplementationStatus);
+    const pct = jsonTrust.paymentPercentage !== null && !["historical_only", "conflict_unresolved"].includes(jt.paymentPctSourceStatus) && hasPaymentPercentageContext
       ? jt.paymentPctPresentation === "dual_rate" && jt.paymentPercentageFB != null
         ? ` · two separate payment rates: ${jsonTrust.paymentPercentage}% ${jt.paymentPercentageLabel ?? ""} / ${jt.paymentPercentageFB}% ${jt.paymentPercentageFBLabel ?? ""}`.replace(/\s+\//g, " /")
         : jsonTrust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent"
@@ -194,7 +195,11 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       : jsonTrust.paymentPercentage !== null
       ? " · recorded payment percentage without an established effective or as-of date"
       : "";
-    const sourceDescription = jt.paymentPercentageSourceUrl
+    const sourceDescription = jt.paymentPctSourceStatus === "historical_only"
+      ? " The linked official record documents a historical payment rate, not a current rate."
+      : jt.paymentPctSourceStatus === "conflict_unresolved"
+      ? " Official records conflict on the current payment rate; the rate is under review."
+      : jt.paymentPercentageSourceUrl
       ? " The payment percentage is linked to the cited trust notice."
       : jt.paymentPctSourceStatus === "not_established"
       ? " A primary source URL for the recorded payment percentage has not yet been established."

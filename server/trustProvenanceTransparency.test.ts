@@ -14,6 +14,7 @@ type TrustRecord = {
   paymentPctSourceStatus?: string;
   paymentPctEffective?: string;
   paymentPctAsOf?: string;
+  paymentPctPaymentCycle?: string;
   paymentPctNoticePublishedAt?: string;
   paymentPctImplementationStatus?: string;
   paymentPctTimingStatus?: string;
@@ -34,6 +35,7 @@ const prefetchSource = readFileSync(resolve(root, "client/src/ssr/prefetch.ts"),
 const routerSource = readFileSync(resolve(root, "server/routers.ts"), "utf8");
 const csvSource = readFileSync(resolve(root, "server/dataRoutes.ts"), "utf8");
 const sitemap = readFileSync(resolve(root, "client/public/sitemap.xml"), "utf8");
+const correctionsSource = readFileSync(resolve(root, "client/src/pages/Corrections.tsx"), "utf8");
 
 function trust(name: string) {
   const result = figures.trusts.find((item) => item.name === name);
@@ -52,7 +54,7 @@ describe("trust provenance transparency", () => {
     expect(prefetchSource).toContain("A primary source URL for the recorded payment percentage has not yet been established.");
   });
 
-  it("withholds a payment percentage where its date is not established", () => {
+  it("does not manufacture dates where a mapped rate has no effective or as-of date", () => {
     const undated = figures.trusts.filter((item) =>
       item.paymentPercentage !== null &&
       item.paymentPercentage !== undefined &&
@@ -62,18 +64,16 @@ describe("trust provenance transparency", () => {
     );
 
     expect(undated.map((item) => item.name)).toEqual([
+      "NARCO Asbestos Trust",
       "DII Industries (Halliburton/Harbison-Walker)",
       "Thorpe Insulation Company Asbestos Settlement Trust",
       "Plant Asbestos Settlement Trust",
-      "Maremont Asbestos PI Trust",
       "Bondex (Specialty Products Holding Corp.) Trust",
       "Flintkote Asbestos Trust",
-      "Motors Liquidation Co. (GM) Asbestos PI Trust",
       "H.K. Porter Asbestos Trust",
     ]);
     for (const item of undated) {
       expect(item.paymentPctTimingStatus).toBe("not_established");
-      expect(item.paymentPctTimingNote).toContain("date");
     }
 
     expect(trustDetailSource).toContain("Rate date not established");
@@ -82,18 +82,62 @@ describe("trust provenance transparency", () => {
     expect(trustsSource).toContain("paymentPercentageDate(trust)");
   });
 
-  it("marks every rate without a source URL as not established instead of implying a primary source", () => {
+  it("preserves only three explicit unresolved source-status holds", () => {
     const withoutSourceUrl = figures.trusts.filter((item) =>
       item.paymentPercentage !== null &&
       item.paymentPercentage !== undefined &&
       !item.paymentPercentageSourceUrl
     );
 
-    expect(withoutSourceUrl).toHaveLength(29);
-    for (const item of withoutSourceUrl) {
-      expect(item.paymentPctSourceStatus).toBe("not_established");
-      expect(item.paymentPercentageSource).toContain("primary source URL");
+    expect(withoutSourceUrl.map((item) => [item.name, item.paymentPctSourceStatus])).toEqual([
+      ["NGC Bodily Injury Trust (National Gypsum)", "not_established"],
+      ["Christy Refractories Asbestos PI Trust", "conflict_unresolved"],
+      ["Shook & Fletcher Asbestos Settlement Trust", "not_established"],
+    ]);
+    expect(trust("Christy Refractories Asbestos PI Trust").paymentPercentageSource).toContain("conflict unresolved");
+  });
+
+  it("maps recovered official sources without erasing historical-only and qualified-rate limits", () => {
+    const sourceMapped = figures.trusts.filter((item) => item.paymentPercentage != null && item.paymentPercentageSourceUrl);
+    expect(sourceMapped).toHaveLength(45);
+
+    const maremont = trust("Maremont Asbestos PI Trust");
+    expect(maremont.paymentPercentage).toBe(34);
+    expect(maremont.paymentPctPaymentCycle).toBe("September 2026");
+    expect(maremont.paymentPctEffective).toBeUndefined();
+    expect(maremont.paymentPctAsOf).toBeUndefined();
+    expect(maremont.paymentPercentageSourceUrl).toContain("9-29-2026");
+
+    const usg = trust("United States Gypsum (USG) Asbestos Trust");
+    expect(usg.paymentPercentage).toBe(10);
+    expect(usg.paymentPctEffective).toBeUndefined();
+    expect(usg.paymentPctImplementationStatus).toBe("proposed_pending_tac_fcr_consent");
+    expect(usg.paymentPercentageSourceUrl).toContain("USG.-Payment-Percentage-Notice.6.30.26");
+
+    for (const name of [
+      "Bondex (Specialty Products Holding Corp.) Trust",
+      "G-I Holdings (GAF) Asbestos PI Settlement Trust",
+      "Hercules Chemical Co. Asbestos Settlement Trust",
+      "United Gilsonite (UGL) Asbestos PI Trust",
+      "United States Mineral Products Company Asbestos PI Settlement Trust",
+    ]) {
+      const item = trust(name);
+      expect(item.paymentPctHistoricalNote).toContain("historical");
+      expect(item.paymentPctSourceStatus).toBe("historical_only");
     }
+    expect(trust("H.K. Porter Asbestos Trust").paymentPctSourceStatus).toBe("established");
+    expect(trustDetailSource).toContain("payment cycle {trust.paymentPctPaymentCycle}");
+    expect(trustDetailSource).toContain("Current rate not established");
+    expect(trustDetailSource).toContain("Current rate under review");
+    expect(trustDetailSource).toContain("Conflicting official records — current rate under review.");
+    expect(trustsSource).toContain("historical rate only");
+    expect(trustsSource).toContain("current rate under review");
+    expect(prefetchSource).toContain("historical payment rate, not a current rate");
+    expect(prefetchSource).toContain("Official records conflict on the current payment rate; the rate is under review.");
+    expect(routerSource).toContain("paymentPctPaymentCycle:");
+    expect(csvSource).toContain('"paymentPctPaymentCycle"');
+    expect(correctionsSource).toContain("Payment percentage corrected from 28.4% to 34.0%");
+    expect(correctionsSource).toContain("unsupported January 1, 2006 effective date was removed");
   });
 
   it("keeps Owens Corning and Fibreboard as separately sourced, separately dated rates", () => {
@@ -117,7 +161,8 @@ describe("trust provenance transparency", () => {
 
     const ce = trust("Combustion Engineering 524(g) Asbestos PI Trust");
     expect(ce.paymentPercentage).toBe(15.3);
-    expect(ce.paymentPctEffective).toBe("2026-04-01");
+    expect(ce.paymentPctEffective).toBeUndefined();
+    expect(ce.paymentPctNoticePublishedAt).toBe("2026-04-01");
     expect(ce.paymentPctImplementationStatus).toBe("proposed_pending_tac_fcr_consent");
 
     const grace = trust("W.R. Grace Asbestos PI Trust");
@@ -149,8 +194,9 @@ describe("trust provenance transparency", () => {
     expect(owensIllinois.commonName).toBe("Owens-Illinois");
     expect(than.commonName).toBe("TH");
     expect(than.shortName).toBe("THAN Asbestos Trust");
-    expect(gaf.paymentPctEffective).toBe("2022-11-22");
-    expect(gaf.paymentPctImplementationStatus).toBe("announced_pending_implementation");
+    expect(gaf.paymentPctEffective).toBeUndefined();
+    expect(gaf.paymentPctNoticePublishedAt).toBe("2022-12-01");
+    expect(gaf.paymentPctImplementationStatus).toBe("proposed_pending_tac_fcr_consent");
     expect(trustDetailSource).toContain("Also known as:");
     expect(trustsSource).toContain("trust.commonName ?");
     expect(prefetchSource).toContain('"alternateName": commonName');

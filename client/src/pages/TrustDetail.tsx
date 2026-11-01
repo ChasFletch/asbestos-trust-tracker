@@ -315,6 +315,7 @@ export default function TrustDetail() {
         paymentPctSourceStatus: (jsonTrust as any)?.paymentPctSourceStatus ?? null,
         paymentPctEffective: (jsonTrust as any)?.paymentPctEffective ?? null,
         paymentPctAsOf: (jsonTrust as any)?.paymentPctAsOf ?? null,
+        paymentPctPaymentCycle: (jsonTrust as any)?.paymentPctPaymentCycle ?? null,
         paymentPctTimingStatus: (jsonTrust as any)?.paymentPctTimingStatus ?? null,
         paymentPctTimingNote: (jsonTrust as any)?.paymentPctTimingNote ?? null,
         paymentPctAvailability: (jsonTrust as any)?.paymentPctAvailability ?? null,
@@ -388,6 +389,7 @@ export default function TrustDetail() {
   const cumulativePaidSourceAge = historicalSourceAge(trust.cumulativePaidAsOf, trust.dataAsOf);
   const paymentPercentageDate = trust.paymentPctEffective ?? trust.paymentPctAsOf ?? null;
   const hasPaymentPercentageDate = Boolean(paymentPercentageDate);
+  const hasPaymentPercentageContext = !["historical_only", "conflict_unresolved"].includes(trust.paymentPctSourceStatus ?? "") && Boolean(paymentPercentageDate || trust.paymentPctPaymentCycle || trust.paymentPctImplementationStatus);
 
   return (
     <>
@@ -533,8 +535,12 @@ export default function TrustDetail() {
             </div>
           ) : (
           <div className="text-xl font-mono font-bold text-foreground">
-            {trust.paymentPercentage !== null && hasPaymentPercentageDate
+            {trust.paymentPercentage !== null && hasPaymentPercentageContext
               ? `${trust.paymentPercentage}%`
+              : trust.paymentPctSourceStatus === "historical_only"
+              ? "Current rate not established"
+              : trust.paymentPctSourceStatus === "conflict_unresolved"
+              ? "Current rate under review"
               : trust.paymentPercentage !== null
               ? "Rate date not established"
               : trust.paymentPctAvailability === "not_publicly_reported"
@@ -582,7 +588,7 @@ export default function TrustDetail() {
           )}
           {trust.paymentPctHistoricalNote && (
             <div className="mt-1.5 rounded border border-dashed border-slate-300 bg-slate-50/70 px-2 py-1.5 text-[11px] leading-relaxed text-slate-700" data-payment-historical-note>
-              <span className="font-semibold text-slate-800">Historical only — not a current payment rate.</span>{" "}
+              <span className="font-semibold text-slate-800">{trust.paymentPctSourceStatus === "conflict_unresolved" ? "Conflicting official records — current rate under review." : "Historical only — not a current payment rate."}</span>{" "}
               {trust.paymentPctHistoricalNote}
               {trust.paymentPctHistoricalSourceUrl && (
                 <a href={trust.paymentPctHistoricalSourceUrl} target="_blank" rel="noopener noreferrer" className="ml-1 underline decoration-dotted hover:text-foreground">official notice ↗</a>
@@ -595,9 +601,15 @@ export default function TrustDetail() {
               <span>
                 {trust.paymentPctEffective
                   ? trust.paymentPctImplementationStatus === "proposed_pending_tac_fcr_consent" ? "proposal dated" : "effective"
-                  : "as of"}{" "}
+                  : "as of"} {" "}
                 {new Date(`${paymentPercentageDate}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC"})}
               </span>
+            </div>
+          )}
+          {!paymentPercentageDate && trust.paymentPctPaymentCycle && (
+            <div className="flex items-center gap-1 text-xs text-muted-foreground/60 mt-0.5">
+              <Calendar size={10} className="shrink-0" />
+              <span>payment cycle {trust.paymentPctPaymentCycle}</span>
             </div>
           )}
           {(trust as any).paymentPctNoticePublishedAt ? (

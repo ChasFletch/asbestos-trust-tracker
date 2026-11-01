@@ -309,6 +309,7 @@ export const appRouter = router({
           paymentPercentage: (t.paymentPercentage ?? null) as number | null,
           paymentPctEffective: (t.paymentPctEffective ?? null) as string | null,
           paymentPctAsOf: (t.paymentPctAsOf ?? null) as string | null,
+          paymentPctPaymentCycle: (t.paymentPctPaymentCycle ?? null) as string | null,
           paymentPctTimingStatus: (t.paymentPctTimingStatus ?? null) as string | null,
           paymentPctTimingNote: (t.paymentPctTimingNote ?? null) as string | null,
           paymentPctAvailability: (t.paymentPctAvailability ?? null) as string | null,

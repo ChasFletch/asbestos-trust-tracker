@@ -8,7 +8,7 @@ const read = (relativePath: string) => fs.readFileSync(path.join(root, relativeP
 
 describe("official payment-notice history", () => {
   it("keeps every public history entry source-linked, scoped, and limited to reviewed official records", () => {
-    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(18);
+    expect(OFFICIAL_PAYMENT_NOTICES).toHaveLength(20);
     for (const item of OFFICIAL_PAYMENT_NOTICES) {
       expect(item.sourceUrl).toMatch(/^https:\/\//);
       expect(item.sourceLabel.length).toBeGreaterThan(20);
@@ -35,6 +35,21 @@ describe("official payment-notice history", () => {
     });
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.effectiveDate).toBeUndefined();
     expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "federal-mogul-tn-2026-06-30")?.summary).toContain("consent remains pending");
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "maremont-2026-09-29")).toMatchObject({
+      priorPercentage: 28.4,
+      currentPercentage: 34,
+      publishedDate: "2026-09-29",
+    });
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "maremont-2026-09-29")?.effectiveDate).toBeUndefined();
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "maremont-2026-09-29")?.summary).toContain("September 2026 payment of claims");
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "usg-2026-06-30")).toMatchObject({
+      priorPercentage: 11,
+      currentPercentage: 10,
+      interimPaymentDate: "2026-06-30",
+      publishedDate: "2026-06-30",
+    });
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "usg-2026-06-30")?.effectiveDate).toBeUndefined();
+    expect(OFFICIAL_PAYMENT_NOTICES.find((item) => item.id === "usg-2026-06-30")?.summary).toContain("not ultimately adopted");
     const page = read("client/src/pages/PaymentNoticeHistory.tsx");
     expect(page).toContain("Proposed interim rate");
     expect(page).toContain("Proposal / interim-payment date");

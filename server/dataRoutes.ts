@@ -230,7 +230,7 @@ export function registerDataRoutes(app: Express) {
       const headers = [
         "name", "shortName", "commonName", "netAssets", "assetsAsOf", "assetsBasis",
         "paymentPercentage", "paymentPercentageLabel", "paymentPercentageFB", "paymentPercentageFBLabel", "paymentPctEffective", "paymentPctAsOf",
-        "paymentPctTimingStatus", "paymentPctTimingNote", "paymentPctAvailability", "paymentPctAvailabilityNote", "paymentPctNoticePublishedAt", "paymentPctImplementationStatus", "paymentPctImplementationNote", "paymentPctScopeNote", "paymentPctHistoricalNote", "paymentPctSourceStatus", "paymentPercentageSourceUrl", "paymentPercentageFBSourceUrl",
+        "paymentPctPaymentCycle", "paymentPctTimingStatus", "paymentPctTimingNote", "paymentPctAvailability", "paymentPctAvailabilityNote", "paymentPctNoticePublishedAt", "paymentPctImplementationStatus", "paymentPctImplementationNote", "paymentPctScopeNote", "paymentPctHistoricalNote", "paymentPctSourceStatus", "paymentPercentageSourceUrl", "paymentPercentageFBSourceUrl",
         "status", "confidence", "note",
       ];
       const escape = (v: unknown) => {

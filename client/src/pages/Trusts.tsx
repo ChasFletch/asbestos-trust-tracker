@@ -25,11 +25,13 @@ interface TrustRow {
   paymentPercentage: number | null;
   paymentPctEffective?: string | null;
   paymentPctAsOf?: string | null;
+  paymentPctPaymentCycle?: string | null;
   paymentPctNoticePublishedAt?: string | null;
   paymentPctTimingStatus?: string | null;
   paymentPctTimingNote?: string | null;
   paymentPctImplementationStatus?: string | null;
   paymentPctImplementationNote?: string | null;
+  paymentPctSourceStatus?: string | null;
   paymentPercentageSource?: string | null;
   paymentPercentageSourceUrl?: string | null;
   status: string;
@@ -96,9 +98,10 @@ function formatAssets(n: number | null): string {
   return `$${n.toLocaleString()}`;
 }
 
-function paymentPercentageDate(trust: Pick<TrustRow, "paymentPctEffective" | "paymentPctAsOf">) {
+function paymentPercentageDate(trust: Pick<TrustRow, "paymentPctEffective" | "paymentPctAsOf" | "paymentPctPaymentCycle">) {
   if (trust.paymentPctEffective) return { label: "effective", date: trust.paymentPctEffective };
   if (trust.paymentPctAsOf) return { label: "as of", date: trust.paymentPctAsOf };
+  if (trust.paymentPctPaymentCycle) return { label: "payment cycle", date: trust.paymentPctPaymentCycle };
   return null;
 }
 
@@ -177,11 +180,13 @@ export default function Trusts() {
         paymentPercentage: jt.paymentPercentage,
         paymentPctEffective: (jt as any).paymentPctEffective ?? null,
         paymentPctAsOf: (jt as any).paymentPctAsOf ?? null,
+        paymentPctPaymentCycle: (jt as any).paymentPctPaymentCycle ?? null,
         paymentPctNoticePublishedAt: (jt as any).paymentPctNoticePublishedAt ?? null,
         paymentPctTimingStatus: (jt as any).paymentPctTimingStatus ?? null,
         paymentPctTimingNote: (jt as any).paymentPctTimingNote ?? null,
         paymentPctImplementationStatus: (jt as any).paymentPctImplementationStatus ?? null,
         paymentPctImplementationNote: (jt as any).paymentPctImplementationNote ?? null,
+        paymentPctSourceStatus: (jt as any).paymentPctSourceStatus ?? null,
         paymentPercentageSource: (jt as any).paymentPercentageSource ?? null,
         paymentPercentageSourceUrl: (jt as any).paymentPercentageSourceUrl ?? null,
         status: jt.status,
@@ -436,6 +441,7 @@ export default function Trusts() {
             const isOpen = expanded.has(trust.id);
             const ph = trust.paymentHistory ?? [];
             const percentageDate = paymentPercentageDate(trust);
+            const canDisplayPaymentPercentage = trust.paymentPercentage !== null && !["historical_only", "conflict_unresolved"].includes(trust.paymentPctSourceStatus ?? "") && Boolean(percentageDate || trust.paymentPctImplementationStatus);
             return (
               <div key={trust.id} className="border-b border-border/30 last:border-0">
                 {/* Main row */}
@@ -470,7 +476,7 @@ export default function Trusts() {
                     </div>
                   </div>
                   <div className="text-sm font-mono">
-                    {trust.paymentPercentage !== null && percentageDate ? (
+                    {canDisplayPaymentPercentage ? (
                       trust.paymentPercentageFB != null ? (
                         <span className="text-foreground">
                           {trust.paymentPercentage}%
@@ -479,6 +485,10 @@ export default function Trusts() {
                       ) : (
                       <span className="text-foreground">{trust.paymentPercentage}%</span>
                       )
+                    ) : trust.paymentPctSourceStatus === "historical_only" ? (
+                      <span className="text-muted-foreground/60 text-xs">historical rate only</span>
+                    ) : trust.paymentPctSourceStatus === "conflict_unresolved" ? (
+                      <span className="text-muted-foreground/60 text-xs">current rate under review</span>
                     ) : trust.paymentPercentage !== null ? (
                       <span className="text-muted-foreground/60 text-xs">rate date not established</span>
                     ) : trust.paymentPctAvailability === "not_publicly_reported" ? (

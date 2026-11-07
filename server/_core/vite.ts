@@ -113,6 +113,11 @@ export async function setupVite(app: Express, server: Server) {
       const { render } = await vite.ssrLoadModule("/src/entry-server.tsx");
       const prefetch = await buildSsrPrefetch(req, res);
       const { html, dehydratedState, head } = await render(url, prefetch);
+      const requestedPath = req.originalUrl.split("?")[0];
+      if (!head.notFound && head.canonicalPath && requestedPath !== head.canonicalPath) {
+        const query = req.originalUrl.slice(requestedPath.length);
+        return res.redirect(301, head.canonicalPath + query);
+      }
       res
         .status(head.notFound ? 404 : 200)
         .set("Cache-Control", "no-cache")
@@ -155,22 +160,24 @@ export function serveStatic(app: Express) {
       const { render } = await import(serverEntryPath);
       const prefetch = await buildSsrPrefetch(req, res);
       const { html, dehydratedState, head } = await render(req.originalUrl, prefetch);
+      const requestedPath = req.originalUrl.split("?")[0];
+      if (!head.notFound && head.canonicalPath && requestedPath !== head.canonicalPath) {
+        const query = req.originalUrl.slice(requestedPath.length);
+        return res.redirect(301, head.canonicalPath + query);
+      }
       res
         .status(head.notFound ? 404 : 200)
         .set("Cache-Control", "no-cache")
         .type("html")
         .end(composeHtml(template, html, head, dehydratedState));
     } catch (e) {
-      console.error("[SSR] render failed, serving shell:", e);
-      try {
-        const tmpl = await fs.promises.readFile(templatePath, "utf-8");
-        const fallbackHead = buildHeadTags({ title: SITE_TITLE, description: SITE_DESC }, SITE_NAME);
-        res.status(200).set("Cache-Control", "no-cache").type("html").end(
-          tmpl.replace("<!--app-head-->", () => fallbackHead).replace("<!--app-html-->", () => "")
-        );
-      } catch {
-        res.status(500).send("Internal Server Error");
-      }
+      console.error("[SSR] render failed:", e);
+      res.status(503)
+        .set("Cache-Control", "no-store")
+        .set("X-Robots-Tag", "noindex")
+        .set("Retry-After", "60")
+        .type("html")
+        .end('<!doctype html><html lang="en"><head><title>Service Unavailable</title><meta name="robots" content="noindex"></head><body><h1>Service Unavailable</h1></body></html>');
     }
   });
 }

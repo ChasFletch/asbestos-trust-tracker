@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "wouter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,75 +9,22 @@ import {
 } from "@/components/ui/breadcrumb";
 import { ArticleAuthorshipReviewBox } from "@/components/ArticleAuthorshipReviewBox";
 import { DESIGNATED_LEGAL_REVIEWERS, RESEARCH_DESK } from "@/data/researchDeskPeople";
+import { loadReportContent, reportContentQueryKey } from "@shared/reportContent";
 
-interface ReportMeta {
-  id: string;
-  title: string;
-  date?: string;
-  asOf?: string;
-  path?: string;
-}
-
-// Strip YAML frontmatter (--- ... ---) from the top of the markdown
-function stripFrontmatter(md: string): string {
-  if (!md.startsWith("---")) return md;
-  const end = md.indexOf("\n---", 3);
-  if (end === -1) return md;
-  return md.slice(end + 4).trimStart();
-}
-
-// Parse frontmatter fields we care about
-function parseFrontmatter(md: string): Record<string, string> {
-  const result: Record<string, string> = {};
-  if (!md.startsWith("---")) return result;
-  const end = md.indexOf("\n---", 3);
-  if (end === -1) return result;
-  const block = md.slice(4, end);
-  for (const line of block.split("\n")) {
-    const colon = line.indexOf(":");
-    if (colon === -1) continue;
-    const key = line.slice(0, colon).trim();
-    const val = line.slice(colon + 1).trim().replace(/^["']|["']$/g, "");
-    result[key] = val;
-  }
-  return result;
-}
+export { reportContentQueryKey } from "@shared/reportContent";
 
 const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ChasFletch/asbestos-trust-tracker/main";
 
 export default function ReportDetail() {
   const { id } = useParams<{ id: string }>();
-  const [meta, setMeta] = useState<ReportMeta | null>(null);
-  const [markdown, setMarkdown] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
-
-  useEffect(() => {
-    if (!id) return;
-    setLoading(true);
-    setNotFound(false);
-
-    // Fetch metadata and markdown in parallel
-    Promise.all([
-      fetch(`/api/reports/${id}`).then((r) => (r.ok ? r.json() : null)),
-      fetch(`/api/reports/${id}/markdown`).then((r) => (r.ok ? r.text() : null)),
-    ])
-      .then(([metaData, mdText]) => {
-        if (!metaData && !mdText) { setNotFound(true); return; }
-        // Merge frontmatter into meta
-        const fm = mdText ? parseFrontmatter(mdText) : {};
-        setMeta({
-          id: id,
-          title: metaData?.title ?? fm["title"] ?? id,
-          date: metaData?.date ?? fm["published"],
-          asOf: metaData?.asOf ?? fm["as_of"],
-          path: metaData?.path,
-        });
-        setMarkdown(mdText ? stripFrontmatter(mdText) : null);
-      })
-      .catch(() => setNotFound(true))
-      .finally(() => setLoading(false));
-  }, [id]);
+  const reportId = id ?? "";
+  const { data: report, isLoading: loading } = useQuery({
+    queryKey: reportContentQueryKey(reportId),
+    queryFn: () => loadReportContent(reportId),
+    enabled: Boolean(id),
+  });
+  const meta = report?.meta ?? null;
+  const markdown = report?.markdown ?? null;
 
   const githubUrl = meta?.path ? `${GITHUB_RAW_BASE}/${meta.path}` : null;
 
@@ -94,7 +41,7 @@ export default function ReportDetail() {
     );
   }
 
-  if (notFound || !markdown) {
+  if (!markdown) {
     return (
       <div className="container py-10 max-w-3xl text-center">
         <FileText size={40} className="text-muted-foreground/30 mx-auto mb-4" />

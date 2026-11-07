@@ -1,0 +1,6 @@
+# Preserve the existing pinned pnpm 10 toolchain; no dependency versions change.
+packages:
+  - '.'
+onlyBuiltDependencies:
+  - esbuild
+  - '@tailwindcss/oxide'

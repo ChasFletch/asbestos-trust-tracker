@@ -227,7 +227,7 @@ export const OFFICIAL_PAYMENT_NOTICES: OfficialPaymentNotice[] = [
   {
     id: "owens-illinois-2026-08-19",
     trustName: "Owens-Illinois Asbestos Personal Injury Trust",
-    trustSlug: "paddock-enterprises-llc-asbestos-pi-trust",
+    trustSlug: "paddock-enterprises-owens-illinois-asbestos-trust",
     scope: "Owens-Illinois sub-account; separate Fibreboard terms are not represented by this entry",
     noticeKind: "payment_change",
     priorPercentage: 50,
@@ -267,7 +267,7 @@ export const OFFICIAL_PAYMENT_NOTICES: OfficialPaymentNotice[] = [
   {
     id: "artra-2025-04-01",
     trustName: "ARTRA 524(g) Asbestos Trust",
-    trustSlug: "artra-524g-asbestos-trust",
+    trustSlug: "artra-524-g-asbestos-trust",
     scope: "Trust-wide payment percentage adjustment",
     noticeKind: "payment_change",
     currentPercentage: 0.7,
@@ -280,7 +280,7 @@ export const OFFICIAL_PAYMENT_NOTICES: OfficialPaymentNotice[] = [
   {
     id: "pittsburgh-corning-2024-11-07",
     trustName: "Pittsburgh Corning Corporation Asbestos PI Trust",
-    trustSlug: "pittsburgh-corning-corporation-asbestos-pi-trust",
+    trustSlug: "pittsburgh-corning-asbestos-pi-settlement-trust",
     scope: "Current trust rate statement: Expedited Review scheduled value and Individual Review gross settlement value",
     noticeKind: "current_rate_statement",
     currentPercentage: 19,

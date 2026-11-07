@@ -1,18 +1,11 @@
 import { trpc } from "@/lib/trpc";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { loadNewsDrafts, NEWS_DRAFTS_QUERY_KEY } from "@shared/newsDrafts";
 import { ExternalLink } from "lucide-react";
 import { LegalTermText } from "@/components/LegalTermTooltip";
 import { Link } from "wouter";
 import { NEWS_BRIEFS_BY_CARD_TITLE, NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
-
-interface NewsDraft {
-  filename: string;
-  date: string;
-  title: string;
-  summary: string;
-  category: string;
-  url?: string;
-}
 
 const CATEGORIES = [
   { value: "all", label: "All Updates" },
@@ -25,21 +18,15 @@ const CATEGORIES = [
 
 export default function News() {
   const [category, setCategory] = useState("all");
-  const { data: news, isLoading: dbLoading } = trpc.news.list.useQuery({
+  const { data: news, isLoading: dbLoading, isError: dbError } = trpc.news.list.useQuery({
     limit: 50,
     category: category === "all" ? undefined : category as "payment_change" | "annual_report" | "court_filing" | "trust_news" | "system_update",
   });
 
-  const [drafts, setDrafts] = useState<NewsDraft[]>([]);
-  const [draftsLoading, setDraftsLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/api/news-drafts")
-      .then((r) => r.json())
-      .then((d) => setDrafts(d.drafts ?? []))
-      .catch(() => setDrafts([]))
-      .finally(() => setDraftsLoading(false));
-  }, []);
+  const { data: drafts = [], isLoading: draftsLoading, isError: draftsError } = useQuery({
+    queryKey: NEWS_DRAFTS_QUERY_KEY,
+    queryFn: loadNewsDrafts,
+  });
 
   // Merge: drafts first (newest), then DB items — both filtered by category
   const filteredDrafts = drafts.filter(
@@ -91,7 +78,11 @@ export default function News() {
       </div>
 
       {/* News list */}
-      {isLoading ? (
+      {draftsError || dbError ? (
+        <div role="alert" className="text-center py-16 text-muted-foreground">
+          News updates are temporarily unavailable. Please try again.
+        </div>
+      ) : isLoading ? (
         <div className="space-y-4">
           {Array.from({ length: 5 }).map((_, i) => (
             <div key={i} className="h-24 rounded bg-card/50 animate-pulse" />

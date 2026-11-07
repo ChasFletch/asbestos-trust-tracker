@@ -8,6 +8,8 @@ import { NEWS_BRIEFS_BY_SLUG } from "@/data/newsBriefs";
 import { getRelatedReportIdsForTrust } from "@/data/reportRelations";
 import { OFFICIAL_PAYMENT_NOTICES } from "@/data/paymentNoticeHistory";
 import { getResearchRecordBySlug } from "@/data/researchRecords";
+import { NEWS_DRAFTS_QUERY_KEY, type NewsDraft } from "@shared/newsDrafts";
+import { seedReportContent, type ReportContentLoader } from "@shared/reportContent";
 
 export type HeadMeta = {
   title: string;
@@ -39,6 +41,8 @@ export type SsrPrefetch = {
   trustsBySlug: (slug: string) => Promise<RO["trusts"]["bySlug"]>;
   reportsIndex: () => Promise<RO["trustFiguresExtra"]["reportsIndex"]>;
   recoveryDashboard: () => Promise<RO["operations"]["recoveryDashboard"]>;
+  newsDrafts: () => Promise<NewsDraft[]>;
+  reportContent: ReportContentLoader;
 };
 
 async function seed(qc: QueryClient, key: unknown, data: unknown) {
@@ -174,6 +178,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
     if (!jsonTrust) {
       return { title: SITE, description: DESC, notFound: true };
     }
+    const canonicalSlug = jsonTrust.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
     await seed(qc, getQueryKey(trpc.trustFigures.bySlug, { slug }, "query"), jsonTrust);
     await seed(qc, getQueryKey(trpc.trusts.bySlug, { slug }, "query"), dbTrust);
     if (reports) {
@@ -211,7 +216,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
       title: `${pageName} · AsbestosTrusts.org`,
       description: `${jsonTrust.name} asbestos trust fund data${pct}${assets}.${sourceDescription}`,
       ogType: "article",
-      canonicalPath: `/trusts/${slug}`,
+      canonicalPath: `/trusts/${canonicalSlug}`,
       keywords: `${[commonName, jsonTrust.shortName, jsonTrust.name].filter(Boolean).join(", ")}, asbestos trust fund, payment percentage, scheduled value, trust distribution procedure`,
       jsonLd: [
         {
@@ -219,8 +224,8 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           "@type": "Article",
           "headline": `${pageName} — Trust Fund Data`,
           "description": `${jsonTrust.name} asbestos trust fund data${pct}${assets}.${sourceDescription}`,
-          "url": `https://asbestostrusts.org/trusts/${slug}`,
-          "mainEntityOfPage": `https://asbestostrusts.org/trusts/${slug}`,
+          "url": `https://asbestostrusts.org/trusts/${canonicalSlug}`,
+          "mainEntityOfPage": `https://asbestostrusts.org/trusts/${canonicalSlug}`,
           "dateModified": "2026-10-17",
           "author": { "@id": "https://asbestostrusts.org/#org" },
           "publisher": { "@id": "https://asbestostrusts.org/#org" },
@@ -238,7 +243,7 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://asbestostrusts.org/" },
             { "@type": "ListItem", "position": 2, "name": "Trust Data", "item": "https://asbestostrusts.org/trusts" },
-            { "@type": "ListItem", "position": 3, "name": commonName ?? jsonTrust.shortName ?? jsonTrust.name, "item": `https://asbestostrusts.org/trusts/${slug}` }
+            { "@type": "ListItem", "position": 3, "name": commonName ?? jsonTrust.shortName ?? jsonTrust.name, "item": `https://asbestostrusts.org/trusts/${canonicalSlug}` }
           ]
         }
       ],
@@ -247,8 +252,10 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
 
   // ── News (/news) ─────────────────────────────────────────────────────────
   if (clean === "/news") {
-    const news = await p.newsList({ limit: 50 });
-    await seed(qc, getQueryKey(trpc.news.list, { limit: 50 }, "query"), news);
+    const input = { limit: 50, category: undefined };
+    const [news, drafts] = await Promise.all([p.newsList(input), p.newsDrafts()]);
+    await seed(qc, getQueryKey(trpc.news.list, input, "query"), news);
+    await seed(qc, NEWS_DRAFTS_QUERY_KEY, drafts);
     return {
       title: `Trust Fund News · ${SITE_NAME}`,
       description: "Latest updates on U.S. asbestos trust fund payment changes, annual reports, and court filings.",
@@ -320,6 +327,9 @@ export async function prefetchForPath(url: string, qc: QueryClient, p: SsrPrefet
     if (!report) {
       return { title: SITE, description: DESC, notFound: true };
     }
+    const content = await p.reportContent(id);
+    if (!content?.markdown) throw new Error(`Report body unavailable: ${id}`);
+    seedReportContent(qc, id, content);
     return {
       title: `${report.title} · ${SITE_NAME}`,
       description: report.summary ?? DESC,

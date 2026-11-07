@@ -181,7 +181,8 @@ async function correctApgAndNarcoArchiveRecords(db: NonNullable<Awaited<ReturnTy
 
 export async function getVisibleNews(limit = 20, category?: string) {
   const db = await getDb();
-  if (!db) return [];
+  // A missing database is not an authoritative empty News feed.
+  if (!db) throw new Error("News database unavailable");
   await correctBAndWHomepageSummary(db);
   await correctApgAndNarcoArchiveRecords(db);
   const conditions = [eq(newsItems.isVisible, true)];

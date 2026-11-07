@@ -18,6 +18,8 @@ const CACHE_TTL_MS = 60 * 1000; // 1 minute; source data is maintained independe
 
 let cachedNewsDrafts: Array<NewsDraft> | null = null;
 let newsDraftsCacheTs = 0;
+let newsDraftsFetchGeneration = 0;
+let newsDraftsCacheGeneration = 0;
 const NEWS_CACHE_TTL = 15 * 60 * 1000; // 15 min
 
 let cachedReportsIndex: unknown = null;
@@ -107,54 +109,57 @@ export async function fetchTrustFigures(): Promise<unknown> {
 }
 
 // ── News drafts ──────────────────────────────────────────────────────────────
-async function fetchNewsDrafts(): Promise<NewsDraft[]> {
+export async function fetchNewsDrafts(_strict = false): Promise<NewsDraft[]> {
   const now = Date.now();
   if (cachedNewsDrafts && now - newsDraftsCacheTs < NEWS_CACHE_TTL) {
     return cachedNewsDrafts;
   }
-  try {
-    // List the directory via GitHub API (returns 404 if dir doesn't exist yet)
-    const listRes = await fetch(
-      `${GITHUB_API_BASE}/contents/client/src/data/news-drafts?ref=main&cachebust=${now}`,
-      {
-        headers: {
-          Accept: "application/vnd.github.v3+json",
-          "User-Agent": "asbestostrusts-server/1.0",
-          "Cache-Control": "no-cache",
-        },
-        signal: AbortSignal.timeout(8000),
-      }
-    );
-    if (!listRes.ok) return cachedNewsDrafts ?? []; // dir not yet created
-    const listing = (await listRes.json()) as Array<{ name: string; download_url: string }>;
-    if (!Array.isArray(listing)) return cachedNewsDrafts ?? [];
-
-    // Filter .md files, sort newest first (filenames: YYYY-MM-DD-*.md)
-    const mdFiles = listing
-      .filter((f) => f.name.endsWith(".md"))
-      .sort((a, b) => b.name.localeCompare(a.name))
-      .slice(0, 20);
-
-    const drafts = await Promise.all(
-      mdFiles.map(async (f): Promise<NewsDraft | null> => {
-        try {
-          const r = await fetch(f.download_url, { signal: AbortSignal.timeout(5000) });
-          if (!r.ok) return null;
-          const text = await r.text();
-          return parseNewsDraft(f.name, text);
-        } catch {
-          return null;
-        }
-      })
-    );
-
-    const valid = drafts.filter(Boolean) as NewsDraft[];
-    cachedNewsDrafts = valid;
-    newsDraftsCacheTs = now;
-    return valid;
-  } catch {
-    return cachedNewsDrafts ?? [];
+  const generation = ++newsDraftsFetchGeneration;
+  // Both the API and strict SSR consume this cache. A failed listing or card
+  // must reject for both: returning a partial feed would make it look complete.
+  const listRes = await fetch(
+    `${GITHUB_API_BASE}/contents/client/src/data/news-drafts?ref=main&cachebust=${now}`,
+    {
+      headers: {
+        Accept: "application/vnd.github.v3+json",
+        "User-Agent": "asbestostrusts-server/1.0",
+        "Cache-Control": "no-cache",
+      },
+      signal: AbortSignal.timeout(8000),
+    }
+  );
+  if (!listRes.ok) throw new Error(`News listing unavailable: ${listRes.status}`);
+  const listing: unknown = await listRes.json();
+  if (!Array.isArray(listing) || listing.some((f) => !f || typeof f.name !== "string")) {
+    throw new Error("Invalid public news listing");
   }
+
+  // Keep the existing newest-20 feed policy; publish to cache only once all
+  // selected cards have been fetched and parsed successfully.
+  const mdFiles = (listing as Array<{ name: string; download_url: unknown }>)
+    .filter((f) => f.name.endsWith(".md"))
+    .sort((a, b) => b.name.localeCompare(a.name))
+    .slice(0, 20);
+  const drafts = await Promise.all(mdFiles.map(async (f): Promise<NewsDraft> => {
+    if (typeof f.download_url !== "string" || !f.download_url) {
+      throw new Error(`News card URL unavailable: ${f.name}`);
+    }
+    const r = await fetch(f.download_url, { signal: AbortSignal.timeout(5000) });
+    if (!r.ok) throw new Error(`News card unavailable: ${f.name}`);
+    const text = await r.text();
+    if (!text.trim()) throw new Error(`News card is empty: ${f.name}`);
+    return parseNewsDraft(f.name, text);
+  }));
+
+  // An older refresh can finish after a newer one. Do not replace or return
+  // its older snapshot when a later-started complete refresh already won.
+  if (generation < newsDraftsCacheGeneration && cachedNewsDrafts !== null) {
+    return cachedNewsDrafts;
+  }
+  cachedNewsDrafts = drafts;
+  newsDraftsCacheTs = Date.now();
+  newsDraftsCacheGeneration = generation;
+  return drafts;
 }
 
 // ── Reports index ────────────────────────────────────────────────────────────
@@ -184,7 +189,7 @@ const reportMarkdownCache = new Map<string, { content: string; ts: number }>();
 const REPORT_MD_TTL = 60 * 60 * 1000;
 const isSafeReportId = (id: string) => /^[A-Z0-9-]{3,64}$/.test(id);
 
-async function fetchReportMarkdown(reportId: string): Promise<string | null> {
+export async function fetchReportMarkdown(reportId: string): Promise<string | null> {
   const cached = reportMarkdownCache.get(reportId);
   if (cached && Date.now() - cached.ts < REPORT_MD_TTL) return cached.content;
   const index = (await fetchReportsIndex()) as { reports?: ReportEntry[] } | null;
@@ -263,7 +268,8 @@ export function registerDataRoutes(app: Express) {
       res.set("Cache-Control", "no-store");
       res.json({ drafts });
     } catch {
-      res.status(500).json({ error: "Failed to fetch news drafts" });
+      res.set("Cache-Control", "no-store");
+      res.status(503).json({ error: "News drafts temporarily unavailable" });
     }
   });
 
